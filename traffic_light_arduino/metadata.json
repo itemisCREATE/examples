@@ -1,0 +1,11 @@
+{
+	"id":"org.yakindu.sct.examples.traffic_light_arduino",
+	"title":"Traffic light Arduino sketch",
+	"description":"The traffic light ported to the Arduino platform. You will need a plugin for Arduino development - see http://eclipse.baeyens.it/",
+    "group" : "Arduino",
+	"images":[
+		"https://github.com/Yakindu/examples/master/traffic_light_arduino/TrafficLightCtrl.png",
+		"https://github.com/Yakindu/examples/master/traffic_light_arduino/arduino_1.JPG",
+		"https://github.com/Yakindu/examples/master/traffic_light_arduino/arduino_2.JPG"
+	]
+}

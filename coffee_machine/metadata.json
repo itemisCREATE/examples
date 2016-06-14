@@ -1,0 +1,12 @@
+{
+	"id":"org.yakindu.sct.examples.coffeemachine",
+	"title":"Four iterations of a coffeemachine",
+	"description":"Four coffeemachine statecharts without any generated source code.",
+    "group" : "Example",
+	"images":[
+		"https://github.com/Yakindu/examples/coffee_machine/CoffeeMachine_01.png",
+		"https://github.com/Yakindu/examples/coffee_machine/CoffeeMachine_02.png",
+		"https://github.com/Yakindu/examples/coffee_machine/CoffeeMachine_03.png",
+		"https://github.com/Yakindu/examples/coffee_machine/CoffeeMachine_04.png"
+	]
+}

@@ -1,0 +1,9 @@
+{
+	"id":"org.yakindu.sct.examples.digital_watch",
+	"title":"Digital Watch",
+	"description":"A digital watch featuring several different modes.",
+    "group" : "Examples",
+	"images":[
+		"https://github.com/Yakindu/examples/master/digital_watch/Watch.png"			
+	]
+}

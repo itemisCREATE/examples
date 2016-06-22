@@ -4,9 +4,9 @@
 	"description":"Four coffeemachine statecharts without any generated source code.",
     "group" : "Example",
 	"images":[
-		"https://github.com/Yakindu/examples/master/coffee_machine/CoffeeMachine_01.png",
-		"https://github.com/Yakindu/examples/master/coffee_machine/CoffeeMachine_02.png",
-		"https://github.com/Yakindu/examples/master/coffee_machine/CoffeeMachine_03.png",
-		"https://github.com/Yakindu/examples/master/coffee_machine/CoffeeMachine_04.png"
+		"CoffeeMachine_01.png",
+		"CoffeeMachine_02.png",
+		"CoffeeMachine_03.png",
+		"CoffeeMachine_04.png"
 	]
 }

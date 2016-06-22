@@ -4,6 +4,6 @@
 	"description":"A very basic example for the Arduino platform that switches a LED on and off.",
     "group" : "Arduino",
 	"images":[
-		"https://github.com/Yakindu/examples/master/ArduinoFSM/image.png"
+		"image.png"
 	]
 }

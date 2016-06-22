@@ -4,8 +4,8 @@
 	"description":"The traffic light ported to the Arduino platform. You will need a plugin for Arduino development - see http://eclipse.baeyens.it/",
     "group" : "Arduino",
 	"images":[
-		"https://github.com/Yakindu/examples/master/traffic_light_arduino/TrafficLightCtrl.png",
-		"https://github.com/Yakindu/examples/master/traffic_light_arduino/arduino_1.JPG",
-		"https://github.com/Yakindu/examples/master/traffic_light_arduino/arduino_2.JPG"
+		"TrafficLightCtrl.png",
+		"arduino_1.JPG",
+		"arduino_2.JPG"
 	]
 }

@@ -4,6 +4,6 @@
 	"description":"The lightswitch example from the tutorial",
     "group" : "Tutorial",
 	"images":[
-		"https://github.com/Yakindu/examples/light_switch/lightswitch1.png"			
+		"lightswitch1.png"			
 	]
 }

@@ -2,6 +2,7 @@
 	"id":"org.yakindu.sct.examples.coffeemachine",
 	"title":"Four iterations of a coffeemachine",
 	"description":"Four coffeemachine statecharts without any generated source code.",
+	"category":"open source",
     "group" : "Example",
 	"images":[
 		"CoffeeMachine_01.png",

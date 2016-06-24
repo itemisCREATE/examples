@@ -2,6 +2,7 @@
 	"id":"org.yakindu.sct.examples.arduinoFSM",
 	"title":"Basic Arduino Lightswitch",
 	"description":"A very basic example for the Arduino platform that switches a LED on and off.",
+	"category":"open source",
     "group" : "Arduino",
 	"images":[
 		"image.png"

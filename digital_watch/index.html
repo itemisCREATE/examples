@@ -18,30 +18,15 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Arduino Traffic Light Example!</h1>
-	A very basic example for the Arduino platform that switches a LED on and off.
-	
-	<img class="standard-image" style="border-width: 0px;" alt="Features of YAKINDU Statechart Tools" src="Watch.png" />
-	<p>The statechart tools are a central part of YAKINDU: the modular toolkit for model-driven development of embedded systems. It is based on the open-source development platform Eclipse. YAKINDU Statechart Tools (YAKINDU SCT) provide the following tools to deal with state machine diagrams:</p>
-		<ul>
-			<li>
-				<strong>Statechart diagram editor</strong> to graphically create and edit statecharts
-			</li>
-			<li>
-				<strong>Statechart simulator</strong> to simulate the behavior of statecharts
-			</li>
-			<li>
-				<strong>Code generators for Java, C, C++</strong> to transform statecharts into code
-			</li>
-			<li>
-				<strong>Custom generator projects</strong> to easily create model-to-text transformations with Xtend/Java or Xpand
-			</li>
-			<li>
-				<strong>Integrated validator</strong> to check for syntactical or semantical problems of the statechart model 
-			</li>
-		</ul>
-		<p>The following graph shows these features and their relation to each other:</p>
-		<br />
+    <h1>Digital Watch</h1>
+	<p>The digital watch example is based on a statechart created by David Harel in "On Visual Formalisms", in Communications of the ACM, May 1998. It is a good example for advanced statecharts,
+	makes use of History States, and can be used to showcase a feature of YAKINDU SCT - refactoring composite states into subdiagrams.</p>
+	<p>The statechart in its original form is pretty huge, see the image below. It's rather hard to really see what is going on.</p>
+	<img class="standard-image" style="border-width: 0px;" alt="First form" src="images/Watch.png" />
+	<p>After refactoring, the whole situation is much better - two composite states have been refactored into subdiagrams and can be seen in a separate editor.
+	<img class="standard-image" style="border-width: 0px;" alt="Second form after refactoring" src="images/watch_subdiagrams.png" />
+	The subdiagram:
+	<img class="standard-image" style="border-width: 0px;" alt="Second form after refactoring" src="images/subdiagram.png" /></p>
 		
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>

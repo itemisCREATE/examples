@@ -1,0 +1,10 @@
+{
+	"id":"org.yakindu.sct.examples.lightswitch",
+	"title":"The Lightswitch example",
+	"description":"The lightswitch example from the tutorial",
+	"category":"open source",
+    "group" : "Tutorial",
+	"images":[
+		"lightswitch1.png"			
+	]
+}

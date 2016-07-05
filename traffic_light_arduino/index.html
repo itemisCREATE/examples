@@ -19,31 +19,49 @@
   </head>
   <body>
     <h1>Arduino Traffic Light Example!</h1>
-	A very basic example for the Arduino platform that switches a LED on and off.
+	<p>Based on the standard traffic-light example, this project shows how to use a statechart to develop software for the Arduino platform.</p>
+	<img class="standard-image" style="border-width: 0px;" alt="The statechart" src="images/TrafficLightCtrl.png" />
+	<p>More information about the statechart itself can be found in the standard traffic light example, which should be considered first. In summary, we have two traffic lights here: one for the traffic,
+	and one for pedestrians who want to cross the street. They can push a button to request their traffic light to turn green, which activates a blinking wait-light first. The cars' traffic light then 
+	goes through the standard procedure, turning on the yellow, then the red light, allowing the pedestrians to cross safely. After some time, the pedestrians traffic light turns red again, 
+	and the cars are allowed to pass until the request is made another time by a pedestrian. Also, the traffic light is able to be switched off completely, which turns the yellow lights into a blinking mode, 
+	signaling that the traffic light is indeed switched off and can be crossed in a careful manner.</p>
+	<h2>Install the Arduino plugin</h2>
+	<p>To compile the generated C code for Arduino, you should install an Eclipse plugin that can handle this and brings the needed libraries. On Windows, if you have not already, you should also install the regular arduino
+	IDE, because Windows is lacking the drivers to use the Arduino without it.</p>
+	<p>One plugin that works pretty well can be found at <a href="http://eclipse.baeyens.it/">http://eclipse.baeyens.it/</a>. In YAKINDU SCT, simply install it by going to Help -> Install New Software, paste 
+	http://www.baeyens.it/eclipse/V3 into the given field, and follow the regular procedure. SCT will restart and download the needed Arduino libraries for you.
+	<h2>Build the hardware</h2>
+	<img class="standard-image" style="border-width: 0px;" alt="The circuit needed for the project" src="images/screenshot_installhardware.png" />
+	<p>Get your parts ready! You will need:
 	
-	<img class="standard-image" style="border-width: 0px;" alt="Features of YAKINDU Statechart Tools" src="TrafficLightCtrl.png" />
-	<p>The statechart tools are a central part of YAKINDU: the modular toolkit for model-driven development of embedded systems. It is based on the open-source development platform Eclipse. YAKINDU Statechart Tools (YAKINDU SCT) provide the following tools to deal with state machine diagrams:</p>
+	<ul>
+    <li>2 Pushbuttons</li>
+    <li>6 LEDs, ideally:
 		<ul>
-			<li>
-				<strong>Statechart diagram editor</strong> to graphically create and edit statecharts
-			</li>
-			<li>
-				<strong>Statechart simulator</strong> to simulate the behavior of statecharts
-			</li>
-			<li>
-				<strong>Code generators for Java, C, C++</strong> to transform statecharts into code
-			</li>
-			<li>
-				<strong>Custom generator projects</strong> to easily create model-to-text transformations with Xtend/Java or Xpand
-			</li>
-			<li>
-				<strong>Integrated validator</strong> to check for syntactical or semantical problems of the statechart model 
-			</li>
+		<li>2x red</li>
+		<li>2x green</li>
+		<li>1x yellow</li>
+		<li>1x white</li>
 		</ul>
-		<p>The following graph shows these features and their relation to each other:</p>
-		<br />
-		<img class="standard-image" style="border-width: 0px;" alt="Features of YAKINDU Statechart Tools" src="arduino_1.JPG" />
-		<img class="standard-image" style="border-width: 0px;" alt="Features of YAKINDU Statechart Tools" src="arduino_2.JPG" />
+	</li>
+    <li>8 Resistors: 
+		<ul>
+		<li>2x 10kR or similar</li>
+		<li>6x 220R or similar</li>
+		</ul>
+	</li>
+	</ul>
+	</p>
+	<p>Of course, you can change the pins, but since this represents the pin numbers in the software don't forget to change those as well.</p>
+	<h2>Build the project</h2>
+	<p>With this example in your workspace and active, the Arduino plugin installed, the Arduino connected and the correct port set in Project -> Properties -> Arduino, 
+	you can now build and upload the example to your Arduino.</p>
+	<p>You should have seen the new buttons in your SCT installation:
+	<img class="inlinemediaobject" style="border-width: 0px;" alt="Arduino plugin buttons" src="images/arduino_buttons.PNG" />
+	Use the button second to the left to build and upload the code in one step.</p>
+	<h2>In depth walk-through</h2>
+	If this short instruction has left you with questions, refer to the <a href="https://blogs.itemis.com/en/developing-software-for-arduino-with-yakindu-statechart-tools">blog post</a> on the itemis website. 
 			
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>

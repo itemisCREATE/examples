@@ -18,30 +18,17 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Arduino Traffic Light Example!</h1>
-	A very basic example for the Arduino platform that switches a LED on and off.
+    <h1>Digital Watch</h1>
+	<p>This digital watch was first designed by Harel, the founder of the Statecharts Theory. He described it in "On Visual Formalisms", published in "Communications of the ACM" in May 1988.</p>
+	<p>As you can see in the picture below, the complete statechart is rather complicated and not easy to completely grasp on first glance.
+	<img class="standard-image" style="border-width: 0px;" alt="First version of the statechart" src="images/Watch.png" /></p>
+	<p>We can use one of YAKINDU SCT's features, extracting composite states into subdiagrams!
+	<img class="standard-image" style="border-width: 0px;" alt="Abstracted statechart using subdiagrams" src="images/Watch_subdiagrams.png" /></p>
+	<p>This allows you to abstract the statechart to any level you want, so that you can review the statechart's overall functionality and its inner workings separately - much like a class diagram versus the complete codebase.
+	Copy the example to your workspace and try the subdiagram editor!</p>
+	<p>For reference, the interface declaration of both statecharts:
+	<img class="standard-image" style="border-width: 0px;" alt="Interface declaration" src="images/Watch_declaration.png" /></p>
 	
-	<img class="standard-image" style="border-width: 0px;" alt="Features of YAKINDU Statechart Tools" src="Watch.png" />
-	<p>The statechart tools are a central part of YAKINDU: the modular toolkit for model-driven development of embedded systems. It is based on the open-source development platform Eclipse. YAKINDU Statechart Tools (YAKINDU SCT) provide the following tools to deal with state machine diagrams:</p>
-		<ul>
-			<li>
-				<strong>Statechart diagram editor</strong> to graphically create and edit statecharts
-			</li>
-			<li>
-				<strong>Statechart simulator</strong> to simulate the behavior of statecharts
-			</li>
-			<li>
-				<strong>Code generators for Java, C, C++</strong> to transform statecharts into code
-			</li>
-			<li>
-				<strong>Custom generator projects</strong> to easily create model-to-text transformations with Xtend/Java or Xpand
-			</li>
-			<li>
-				<strong>Integrated validator</strong> to check for syntactical or semantical problems of the statechart model 
-			</li>
-		</ul>
-		<p>The following graph shows these features and their relation to each other:</p>
-		<br />
 		
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>

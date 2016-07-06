@@ -1,0 +1,10 @@
+{
+	"id": "org.yakindu.sct.examples.traffic_light_waiting_java",
+	"title": "Traffic Light Waiting (Java)",
+	"category": [
+		"open source",
+		"basic",
+		"legacy",
+		"java"
+	]
+}

@@ -1,9 +1,9 @@
 {
 	"id":"org.yakindu.sct.examples.digital_watch",
 	"title":"Digital Watch",
-	"category":{
+	"category":[
 		"open source",
 		"advanced",
 		"subdiagrams"
-	}
+	]
 }

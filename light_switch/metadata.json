@@ -1,7 +1,7 @@
 {
 	"id":"org.yakindu.sct.examples.lightswitch",
 	"title":"Lightswitch Example Series",
-	"category":{
+	"category":[
 		"open source",
 		"basic",
 		"advanced",
@@ -10,6 +10,6 @@
 		"operation"
 		"history state",
 		"java"
-	}
+	]
 
 }

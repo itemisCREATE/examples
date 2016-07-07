@@ -1,8 +1,8 @@
 {
 	"id":"org.yakindu.sct.examples.coffeemachine",
 	"title":"Four Iterations Of A Coffeemachine",
-	"category":{
+	"category":[
 		"open source",
 		"composite state"
-	}
+	]
 }

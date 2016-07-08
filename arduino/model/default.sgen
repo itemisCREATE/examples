@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c {
 	statechart LightCtrl {
 
 		feature Outlet {
-			targetProject = "ArduinoFSM"
+			targetProject = "light_switch_basic_arduino"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src-gen"
 		}

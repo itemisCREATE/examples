@@ -2,7 +2,7 @@
 //This is a automatic generated file
 //Please do not modify this file
 //If you touch this file your change will be overwritten during the next build
-//This file has been generated on 2016-06-20 12:47:24
+//This file has been generated on 2016-07-08 13:53:49
 
 #include "Arduino.h"
 #include "Arduino.h"
@@ -16,7 +16,7 @@ void lightCtrlIface_setLight(const LightCtrl* handle, const sc_boolean lightOn) 
 void setup() ;
 void loop() ;
 
-#include "ArduinoFSM.ino"
 
+#include "ArduinoFSM.ino"
 
 #endif

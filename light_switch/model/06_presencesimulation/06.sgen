@@ -1,7 +1,7 @@
 GeneratorModel for yakindu::java {
 	statechart _06_LightSwitch_simulation {
 		feature Outlet {
-			targetProject = "lightswitch_extended_java"
+			targetProject = "light_switch"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
 		}

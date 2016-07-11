@@ -1,9 +1,0 @@
-{
-	"id":"org.yakindu.sct.examples.arduinoFSM",
-	"title":"Basic Arduino Finite State Machine",
-	"category":[
-		"open source",
-		"arduino",
-		"basic"
-	]
-}

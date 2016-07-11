@@ -1,7 +1,7 @@
 {
-	"id":"org.yakindu.sct.examples.lightswitch",
-	"title":"Lightswitch Example Series",
-	"category":[
+	"id": "org.yakindu.sct.examples.lightswitch",
+	"title": "Light Switch Example Series",
+	"category": [
 		"open source",
 		"basic",
 		"advanced",
@@ -11,5 +11,4 @@
 		"history state",
 		"java"
 	]
-
 }

@@ -1,4 +1,4 @@
-package org.yakindu.scr;
+package org.yakindu.sct.examples.lightswitch;
 
 import org.yakindu.scr._02_lightswitch._02_LightSwitchStatemachine;
 

@@ -1,4 +1,4 @@
-package org.yakindu.scr;
+package org.yakindu.sct.examples.lightswitch;
 
 // for console interface
 import java.io.BufferedReader;

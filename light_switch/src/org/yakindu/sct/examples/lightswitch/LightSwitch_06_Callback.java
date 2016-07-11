@@ -1,4 +1,4 @@
-package org.yakindu.scr;
+package org.yakindu.sct.examples.lightswitch;
 
 import java.time.LocalDateTime;
 import java.util.Random;

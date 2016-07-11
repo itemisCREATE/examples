@@ -1,36 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Digital Watch</title>
+<head>
+<meta charset="UTF-8">
+<title>Digital Watch</title>
+<link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
 
-    <!-- Bootstrap -->
-    <link href="../css/style.css" rel="stylesheet">
+  <h1>Digital Watch</h1>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <h1>Digital Watch</h1>
-	<p>This digital watch was first designed by Harel, the founder of the Statecharts Theory. He described it in "On Visual Formalisms", published in "Communications of the ACM" in May 1988.</p>
-	<p>As you can see in the picture below, the complete statechart is rather complicated and not easy to completely grasp on first glance.
-	<img class="standard-image" style="border-width: 0px;" alt="First version of the statechart" src="images/Watch.png" /></p>
-	<p>We can use one of YAKINDU SCT's features, extracting composite states into subdiagrams!
-	<img class="standard-image" style="border-width: 0px;" alt="Abstracted statechart using subdiagrams" src="images/Watch_subdiagrams.png" /></p>
-	<p>This allows you to abstract the statechart to any level you want, so that you can review the statechart's overall functionality and its inner workings separately - much like a class diagram versus the complete codebase.
-	Copy the example to your workspace and try the subdiagram editor!</p>
-	<p>For reference, the interface declaration of both statecharts:
-	<img class="standard-image" style="border-width: 0px;" alt="Interface declaration" src="images/Watch_declaration.png" /></p>
-	
-		
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+  <p>This digital watch was first designed by Harel, the founder of the
+    Statecharts Theory. He described it in "On Visual Formalisms", published in
+    "Communications of the ACM" in May 1988.</p>
+
+  <div>
+    <h2>The Digital Watch in all its Details</h2>
+
+    <p>As you can see in the picture below, the complete statechart is
+      rather complicated and not easy to grasp on first glance:</p>
+
+    <p>
+      <img class="standard-image"
+        alt="The digital watch statechart in all its details"
+        src="images/watch.png" />
+    </p>
+  </div>
+
+  <div>
+    <h2>Gaining a Better Understanding Using Subdiagrams</h2>
+    <p>We can use a YAKINDU SCT feature to extract composite states into
+      subdiagrams. This makes the statechart much easier to comprehend:</p>
+    <p>
+      <img class="standard-image"
+        alt="The digital watch statechart with details hidden into subdiagrams"
+        src="images/watch_subdiagrams.png" />
+    </p>
+
+    <p>Using subdiagrams allows you to abstract the statechart to any level
+      you want, so that you can review the statechart's overall functionality
+      and its inner workings separately – much like a class diagram versus the
+      complete codebase. Copy the example to your workspace and try out the
+      subdiagram editor!</p>
+  </div>
+
+  <div>
+    <h2>The Interface Definition</h2>
+    <p>For reference, here's the interface declaration of both statecharts:</p>
+
+    <p>
+      <img class="standard-image" alt="Interface declaration"
+        src="images/watch_declaration.png" />
+    </p>
+  </div>
+
+</body>
 </html>

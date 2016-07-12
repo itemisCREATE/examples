@@ -1,67 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Lightswitch Example Series</title>
+<head>
+<meta charset="UTF-8">
+<title>Light Switch Example Series</title>
+<link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
 
-    <!-- Bootstrap -->
-    <link href="../css/style.css" rel="stylesheet">
+  <h1>Light Switch Example Series</h1>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <h1>Lightswitch Example Series</h1>
-	<p>A Series of examples that demonstrates multiple features of YAKINDU SCT. With each iteration, more features are shown. This example is a good starting point to dive into SCT head-first.</p>
-	<h4>The First Iteration</h4>
-	<p>The most basic way to model a light switch. When the "operate"-event is raised, it changes between the "On"- and the "Off"-state, using an "Internal"-Interface.
-	<img class="standard-image" style="border-width: 0px;" alt="First iteration without any features" src="images/01_LightSwitch.png" />
-	This statechart can be simulated, but the "Internal"-interface does not allow to use it with Code in a useful way.</p>
-	<h4>The Second Iteration - Introducing Interfaces</h4>
-	<p>To use the statechart from code, you need an interface to it. This version has an interface named "user", so "user.operate" can be raised. YAKINDU SCT does not generate methods to
-	interact with objects belonging to the "Internal"-Interface. 
-	<img class="standard-image" style="border-width: 0px;" alt="Second iteration, introducing interfaces" src="images/02_LightSwitch.png" /></p>
-	<h4>The Third Iteration - Introducing Variables</h4>
-	<p>While the classic theory of input-output-automatons is only aware of events, Harel's statecharts and YAKINDU SCT have many more features - including variables.<br>
-	With these, you can model a dimmer.
-	<img class="standard-image" style="border-width: 0px;" alt="Third iteration, introducing variables" src="images/03_LightSwitch_dimmer.png" />
-	When the user operates the 'On'-button the first time, the light is switched on, with the brightness level set to 1. On further operations of the button, the brightness increases up to a value of 10.
-	Operating the 'off'-button switches off the light. The dimmer will not remember the brightness level and restart with a brightness of 1. You can see how the variable can both be manipulated and 
-	used as a guard for transitions.</p>
-	<h4>The Fourth Iteration - Introducing Composite States</h4>
-	<p>Composite states are another feature of YAKINDU SCT. With these, you can create a state that contains one or more other states. The main advantages are a better clarity of the statechart and the
-	possibility to create exit transitions from everywhere in the composite state. Without the composite state, you would need one more transition: Both states in "MotionSense" would have a transition with 
-	"user.on_switch" to the "Manual" "Dimm"-state.
-	<img class="standard-image" style="border-width: 0px;" alt="Fourth iteration, using composite states" src="images/04_LightSwitch_motion.png"/></p>
-	<h4>The Fifth Iteration - History States</h4>
-	<p>This example should clarify how history states work, what they do, and especially what they don't do. We introduce another mode, twilight / luminosity control, for our lightswitch, that starts to change into a whole light control module.
-	You can see that the statechart contains three "shallow history" states.
-	<img class="standard-image" style="border-width: 0px;" alt="Fifth iteration, including history states" src="images/05_LightSwitch_twilight.png"/>
-	So, what do these history states do? There is one in "Twilight", one in "MotionSense", and one in the whole "Automatic" composite state.<br>
-	A shallow history state, contained in a composite state with a set of possible states inside that composite state, remembers which of these states was last active when that composite state is left. <br>
-	The one in "Automatic" remembers if "Twilight" or "MotionSense" was active when "Automatic" is left, but not what was active inside these two. On re-entry, the history state would activate either "Twilight" or "MotionSense",
-	but these would start on their respective entry-states. This is why there is a history state in these as well.</p>
-	<p>If you have worked with history states before, you might now be inclined to say "A deep history state would have been the correct thing here". You would only be partially right - on first glance, yes.
-	A deep history state remembers the active state in his region and everything that was active inside of this state, and so on, down to the lowest level. We might spare the two shallow history states in "Twilight"
-	and "MotionSense". But this would not act the same - a history state is only activated when the region where it is contained in is actually left. Using one deep history state would not allow us to remember the
-	active state in "MotionSense" when we switch to "Twilight" and vice versa, without leaving the whole "Automatic" composite state, because this transition would not activate the deep history.
-	</p>
-	<h4>The Sixth And Last Iteration - Introducing Operations</h4>
-	<p>This final version of the light switch, that has become a light computer, adds a presence simulation. The motion detection and the twilight detection are left out for clarity.<br>
-	The presence simulation is activated on certain hours of the day (from 6 PM to midnight and 8 AM to 10 AM) and switches the light on and off repeatedly in random intervals.<br>
-	To implement this functionality, we finally hit the limits of the statechart - there is neither a function for random values, nor one for the current date / time. YAKINDU SCT allows you to implement your own
-	methods, called "operation", to overcome these limits. These are then called from the statechart itself, so you don't have to care about when (and how) they will be called. You can receive arguments from the statechart
-	and return values, exactly like a normal function.
-	<img class="standard-image" style="border-width: 0px;" alt="Sixth iteration, introducing operations" src="images/06_LightSwitch_simulation.png"/></p>
-	
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+  <p>This is a series of examples demonstrating multiple features of YAKINDU
+    SCT. With each iteration, more features are shown. This example is a good
+    starting point to dive into SCT headfirst.</p>
+
+  <div>
+    <h2>The First Iteration: A Simple Switch</h2>
+
+    <p>
+      This is the most basic way to model a light switch. When the <em>operate</em>
+      event is raised, the light switch changes between <strong>On</strong> and
+      <strong>Off</strong> states.
+    </p>
+
+    <p>
+      <img class="standard-image" alt="First iteration without any features"
+        src="images/01_light_switch.png" />
+    </p>
+
+    <p>
+      This statechart can be simulated, but the <em>internal</em> interface does
+      not allow to use it with code in a useful way.
+    </p>
+  </div>
+
+  <div>
+    <h2>The Second Iteration: Introducing Interfaces</h2>
+
+    <p>
+      To use the statechart from code, you need an interface to it. This version
+      has an interface named <em>user</em>, so <em>user.operate</em> can be
+      raised. YAKINDU SCT does not generate methods to interact with objects
+      belonging to the <em>internal</em> interface.
+    </p>
+
+    <p>
+      <img class="standard-image" alt="Second iteration, introducing interfaces"
+        src="images/02_light_switch.png" />
+    </p>
+  </div>
+
+  <div>
+    <h2>The Third Iteration: Introducing Variables</h2>
+
+    <p>
+      While the classic theory of <a
+        href="https://en.wikipedia.org/wiki/Input/output_automaton">input/output
+        automata</a> is only aware of events, Harel's statecharts and YAKINDU SCT
+      have many more features – including variables.
+    </p>
+
+    <p>With these, you can model a dimmer.</p>
+
+    <p>
+      <img class="standard-image" alt="Third iteration, introducing variables"
+        src="images/03_light_switch_dimmer.png" />
+    </p>
+
+    <p>
+      When the user operates the <strong>On</strong> button for the first time,
+      the light is switched on with the brightness level set to 1. On further
+      operations of the button, the brightness is incremented by 1 up to a value
+      of 10. Operating the <strong>Off</strong> button switches off the light.
+      The dimmer will not remember the last brightness level and will restart
+      with a brightness of 1 when the <strong>On</strong> button is pressed. The
+      example shows that the variable is manipulated by actions as well as used
+      as a guard in transitions.
+    </p>
+  </div>
+
+  <div>
+    <h2>The Fourth Iteration: Introducing Composite States</h2>
+
+    <p>
+      Composite states are another feature of YAKINDU SCT. With these, you can
+      create a state that contains one or more other states. The main advantages
+      are a better clarity of the statechart and the possibility to create exit
+      transitions from everywhere in the composite state. Without the composite
+      state, you would need one more transition: Both states in the <strong>MotionSense</strong>
+      composite state would have a transition with <em>user.on_switch</em> to
+      the <strong>Dimm</strong> state in the <strong>Manual</strong> composite
+      state.
+    </p>
+
+    <p>
+      <img class="standard-image" alt="Fourth iteration, using composite states"
+        src="images/04_light_switch_motion.png" />
+    </p>
+  </div>
+
+  <div>
+    <h2>The Fifth Iteration: History States</h2>
+
+    <p>
+      This example should clarify how history states work, what they do, and
+      especially what they don't do. We introduce another mode, twilight /
+      luminosity control, for our light switch, which starts to change into a
+      full light control module. The statechart now contains three <em>shallow
+        history</em> states:
+    </p>
+
+    <p>
+      <img class="standard-image"
+        alt="Fifth iteration, including history states"
+        src="images/05_light_switch_twilight.png" />
+    </p>
+
+    <p>
+      So, what do these history states do? There is one in <strong>Twilight</strong>,
+      one in <strong>MotionSense</strong>, and one in the <strong>Automatic</strong>
+      composite state the former two are nested in.
+    </p>
+
+    <p>A shallow history state, contained in a composite state with a set of
+      possible states inside that composite state, remembers which of these
+      states was last active when that composite state is left.</p>
+
+    <p>
+      The one in <strong>Automatic</strong> remembers whether <strong>Twilight</strong>
+      or <strong>MotionSense</strong> was active when <strong>Automatic</strong>
+      was left, but it doesn't remember which state was active within the active
+      one of these two. On re-entry, the history state would activate either <strong>Twilight</strong>
+      or <strong>MotionSense</strong>, but these would start on their respective
+      entry states. This is why there is a history state in them as well.
+    </p>
+
+    <p>
+      If you have worked with history states before, you might now be inclined
+      to say "A deep history state would have been the correct thing here." You
+      would only be partially right – on first glance, yes. A deep history state
+      remembers the active state in its own region and everything that was
+      active inside of this state, and so on, down to the lowest level. We might
+      spare the two shallow history states in <strong>Twilight</strong> and <strong>MotionSense</strong>.
+      But this would not act in the same way – a history state is activated only
+      when its containing region is actually left. Using one deep history state
+      would not allow to remember the active state in <strong>MotionSense</strong>
+      when switching to <strong>Twilight</strong>, and vice versa. The deep
+      history state would be activated only if we left the whole <strong>Automatic</strong>
+      composite state – and we are not about to do that.
+    </p>
+  </div>
+
+  <div>
+    <h2>The Sixth And Last Iteration: Introducing Operations</h2>
+
+    <p>This is the final version of the light switch, which has become a
+      light computer. This version adds a presence simulation, which means it
+      behaves as if a person operated the light switch although nobody in
+      present. The motion detection and the twilight detection are left out for
+      clarity.</p>
+
+    <p>The presence simulation is activated on certain hours of the day
+      (from 6 PM to midnight and from 6 AM to 10 AM). It switches the light on
+      and off repeatedly in sensible, random intervals.</p>
+
+    <p>
+      To implement this functionality, we finally hit the limits of the
+      statechart language: There is neither a function for random values, nor
+      one to get the current date and time. However, YAKINDU SCT allows you to
+      implement your own <em>operations</em> to overcome these limitations. An
+      operation is called from the state machine itself, so you don't have to
+      care about when and how they will be called. You can receive arguments
+      from the state machine and return a value, exactly like a normal function
+      or method call.
+    </p>
+
+    <p>
+      <img class="standard-image" alt="Sixth iteration, introducing operations"
+        src="images/06_light_switch_simulation.png" />
+    </p>
+  </div>
+
+</body>
 </html>

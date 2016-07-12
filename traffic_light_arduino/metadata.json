@@ -1,7 +1,7 @@
 {
-	"id":"org.yakindu.sct.examples.traffic_light_arduino",
-	"title":"Traffic Light ported to Arduino",
-	"category":[
+	"id": "org.yakindu.sct.examples.traffic_light_arduino",
+	"title": "Traffic Light Ported to Arduino",
+	"category": [
 		"open source",
 		"arduino",
 		"advanced",

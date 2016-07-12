@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::c {
+
+	statechart LightCtrl {
+
+		feature Outlet {
+			targetProject = "basic_finite_state_machine_for_arduino"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src-gen"
+		}
+	}
+}

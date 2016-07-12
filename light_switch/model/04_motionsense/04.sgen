@@ -7,7 +7,7 @@ GeneratorModel for yakindu::java {
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
 		}
-		
+
 		feature GeneralFeatures {
 			TimerService = true
 		}

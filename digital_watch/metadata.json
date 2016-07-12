@@ -1,7 +1,7 @@
 {
-	"id":"org.yakindu.sct.examples.digital_watch",
-	"title":"Digital Watch",
-	"category":[
+	"id": "org.yakindu.sct.examples.digital_watch",
+	"title": "Digital Watch",
+	"category": [
 		"open source",
 		"advanced",
 		"subdiagrams"

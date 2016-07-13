@@ -18,8 +18,8 @@
 
     <p>
       This is the most basic way to model a light switch. When the <em>operate</em>
-      event is raised, the light switch changes between the <strong>On</strong>
-      and <strong>Off</strong> states back and forth.
+      event is raised, the light switch changes back and forth between the <strong>On</strong>
+      and <strong>Off</strong> states.
     </p>
 
     <p>
@@ -29,9 +29,9 @@
     </p>
 
     <p>
-      The statechart can be simulated, but since the <em>operate</em> event is
-      in the <em>internal</em> interface it cannot be raised from any external
-      client code.
+      The statechart can be simulated in YAKINDU Statechart Tools, but since the
+      <em>operate</em> event is declared as <em>internal</em> it cannot be
+      raised from any external client code.
     </p>
   </div>
 
@@ -42,10 +42,10 @@
       A statechart is accesible from the outside, i.&nbsp;e. from client code,
       via <em>interfaces</em>. This light switch version has an interface named
       <em>user</em>, and this interface provides the <em>user.operate</em> event
-      to the outside so that it can be raised externally. Events belonging to
-      the <em>internal</em> interface – nomen est omen – can only be used
-      internally. YAKINDU SCT does not generate any methods to interact with
-      internal objects except with the state machine itself.
+      to the outside so that it can be raised externally. Events declared as <em>internal</em>
+      interface can – nomen est omen – only be used internally. YAKINDU SCT does
+      not generate any methods to interact with internal objects except for the
+      state machine itself.
     </p>
 
     <p>
@@ -67,9 +67,9 @@
     </p>
 
     <p>
-      Using variables, we can model a dimmer. The idea is to maintain the
-      brightness of the lamp in a variable named <em>brightness</em>. Changing
-      this variable's value changes corresponds to changing the lamp's
+      Using variables, we can model a <strong>dimmer</strong>. The idea is to
+      maintain the brightness of the lamp in a variable named <em>brightness</em>.
+      Changing this variable's value corresponds to changing the lamp's
       brightness. Each time the state machine activates the <strong>Off</strong>
       state, the <em>brightness</em> variable is explicitly set to 0 in the <strong>Off</strong>
       state's entry actions.
@@ -79,7 +79,7 @@
       single switch to turn the light on and off. Now it has two buttons:</p>
     <ul>
       <li><p>The "on" button turns on the light and, upon repeated
-          pressing, turn the brightness higher until the latter's maximum is
+          pushing, turn the brightness higher until the latter's maximum is
           reached.</p></li>
       <li><p>The "off" button turns off the light.</p></li>
     </ul>
@@ -96,15 +96,15 @@
       leading from the <strong>Off</strong> state to the <strong>On</strong>
       state. This transition has an action
       <code>user.brightness = 1</code>
-      to set the brightness to its lowest level.
+      to set the brightness to 1.
     </p>
 
     <p>
-      While the <strong>On</strong> state is active, each further press on the
-      "on" button resp. each further raising the <em>user.on_button</em> event,
-      triggers the transition leading from the <strong>On</strong> state to
-      itself. The brightness is incremented by 1 up to a value of 10. The guard
-      condition
+      While the <strong>On</strong> state is active, each further push on the
+      "on" button resp. each further raising of the <em>user.on_button</em>
+      event, triggers the transition leading from the <strong>On</strong> state
+      to itself. The brightness is incremented by 1 up to a value of 10. The
+      guard condition
       <code>[user.brightness &lt; 10]</code>
       inhibits execution of the transition if the brightness is 10 (or greater,
       but that cannot happen).
@@ -124,18 +124,19 @@
     <h2>The Fourth Iteration: Introducing Composite States</h2>
 
     <p>
-      Let's enhance our light switch by a <strong>motion sensor</strong> now.
+      Let's enhance our light switch by a <strong>motion sensor</strong>.
       Initially, the light is off, but whenever the motion sensor senses a
-      motion, it turns on the light at its lowest brightness. After 30 seconds
-      without any motion the light is turned off again.
+      motion, it turns the light on. After 30 seconds without any motion the
+      light is turned off again.
     </p>
 
-    <p>The user can override this behaviour at any time. When he pushes the
-      "on" button, the light's light's brightness is increased by 1, effectively
-      turning the light on if it was off and turning it one step brighter if it
-      was on already. In this mode the light switch behaves just a the dimmer
-      described above. If the user pushes the "off" button the light switch
-      changes back to motion sensing mode.</p>
+    <p>Operating the light switch manually overrides this behaviour at any
+      time. When the user pushes the "on" button, the light's brightness is
+      increased by 1, effectively turning the light on if it was off and turning
+      it one step brighter if it was on already. In this mode the light switch
+      behaves just like the dimmer described in the previous section. If the
+      user pushes the "off" button the light switch changes back to motion
+      sensing mode.</p>
 
     <p>
       The sensor is modeled by an additional <em>sensor</em> interface. It has a
@@ -144,18 +145,20 @@
     </p>
 
     <p>
-      For modeling the behavior of the light switch, <em>composite states</em>
-      come in handy, another important feature of YAKINDU SCT. A composite state
-      is a state that contains one or more other states (substates). One of the
-      advantages is the possibility to group states into logical compounds and
-      thus make the statechart more clear.
+      For modeling the behavior of the light switch with a motion sensor, <em>composite
+        states</em> come in handy, another important feature of YAKINDU SCT. A
+      composite state is a state that contains one or more other states
+      (substates). One of the advantages is the possibility to group states into
+      logical compounds and thus make the statechart more comprehensible.
     </p>
 
-    <p>Another advantage is the option to exit a composite state by certain
-      transitions, regardless of which of the composite state's substates are
-      active at the moment. You could do the same without composite states, but
-      it would be cumbersome since you would need a transition each of the
-      states in the group to the "outside".</p>
+    <p>Another advantage is the option to exit a composite state by
+      transitions that have the composite state as their source states, not any
+      substate. If such a transition is executed, the composite state is left
+      regardless of which of its substates are active at the moment. You could
+      achieve the same without composite states, but it would be cumbersome
+      since you would need a transition from each of the plain states in the
+      group to the "outside".</p>
 
     <p>
       In the model depicted below, the initial state defines the <strong>MotionSensing</strong>
@@ -164,9 +167,10 @@
       from the motion sensor, i.&nbsp;e. raising the <em>sensor.motion</em>
       event, transitions to the <strong>On</strong> state and sets the
       brightness to 1 via the <strong>On</strong> state's entry action.
-      Subsequent <em>sensor.motion</em> events keep the state machine in the <strong>On</strong>.
-      After 30 seconds without any signal from the motion sensor the light is
-      turned off.
+      Subsequent <em>sensor.motion</em> events keep the state machine in the <strong>On</strong>
+      state. After 30 seconds without any signal from the motion sensor the
+      execution flow transitions to the <strong>Off</strong> state and the light
+      is turned off again.
     </p>
 
     <p>
@@ -179,9 +183,9 @@
     <p>
       The <strong>Manual</strong> state's entry action increases the brightness
       by one, so that the light is turned on when the source state was <strong>Off</strong>
-      and turned on step brighter if the source state was <strong>On</strong>.
-      The entry action is also executed when the <em>user.on_button</em> event
-      is raised, until the brightness reaches its maximum. The <em>user.off_button</em>
+      and turned one step brighter if the source state was <strong>On</strong>.
+      The entry action is also executed each time the <em>user.on_button</em>
+      event is raised, until the brightness reaches its maximum. The <em>user.off_button</em>
       returns to the <strong>MotionSensing</strong> mode and turns the light
       off.
     </p>
@@ -199,28 +203,29 @@
       This example clarifies how history states work, what they do, and
       especially what they don't do. To illustrate this, we introduce another
       mode to our light switch: <strong>twilight / luminosity control</strong>.
-      When operating in twilight mode the light switch automatically turns on
+      When operating in twilight mode, the light switch automatically turns on
       the light when it is dark and turns it off when it is bright. For this
-      purpose we introduce a luminosity sensor. It permanently senses the
-      ambient brightness and fires <em>lum_sensor.bright</em> or <em>lum_sensor.dark</em>
+      purpose we introduce a <em>luminosity sensor</em>. It permanently senses
+      the ambient brightness and fires <em>lum_sensor.bright</em> or <em>lum_sensor.dark</em>
       events all the time. It is out of scope how "dark" and "bright" are
       defined and how they are configured in the luminosity sensor. Suffice to
       say that the sensor is always raising events – say, multiple times per
       second – and that each event is either <em>lum_sensor.bright</em> or <em>lum_sensor.dark</em>.
-      that the sensor ambient brightness is either "dark" or "bright" and that
-      there is a certain threshold differentiating between the two.
     </p>
 
-    <p>The light switch is either operated manually or operates
-      automatically. When in automatic mode, the light switch functions either
-      as a twilight switch as explained above or as a montion sense switch. The
-      user interface gets another button to toggle between the two modes. We
-      should have added a third automatic mode where the light switch doesn't do
-      anything but is simply turned of. However, for brevity we let that out
-      resp. as an exercise to the reader.</p>
+    <p>
+      The light switch is either operated manually or operates automatically.
+      When in automatic mode, the light switch functions either as a twilight
+      switch as explained above or as a montion sense switch, see the previous
+      section. The user interface gets another button to toggle between the two
+      modes via the <em>user.mode_button</em> event. We should have added a
+      third automatic mode where the light switch doesn't do anything but simply
+      turning the light of. However, for brevity we left that out resp. as an
+      exercise to the reader.
+    </p>
 
-    <p>The light switch starts to change into a full light control module.
-      Its statechart now looks like this:</p>
+    <p>The light switch is starting to change into a full light control
+      module. Its statechart now looks like this:</p>
 
     <p>
       <img class="standard-image"
@@ -231,23 +236,25 @@
     <p>
       The automatic modes are grouped into the <strong>Automatic</strong>
       composite state. That state is subdivided into a composite state for the
-      twilight functionality and another one for the motion sensing mode. We
-      have discussed motion sensing before, but the <strong>Twilight</strong>
-      composite state deserves some explanation. When the ambient brightness
-      changes from day to night or vice versa the luminosity sensor doesn't
-      deliver consistent values but rather a succession of quickly alternating <em>lum_sensor.dark</em>
-      and <em>lum_sensor.bright</em> events. Having each of these events turn
-      the light on or off would result in flickering during the twilight time.
-      To avoid this, the state machine requires a certain permanence in the
-      luminosity sensor's results before actually toggling the light's state.
+      twilight functionality and another one for motion sensing. We have
+      discussed motion sensing before, but the <strong>Twilight</strong>
+      composite state deserves some explanation. When the ambient brightness is
+      changing from day to night or from night to day, the luminosity sensor
+      doesn't deliver consistent values. Rather small fluctuations are causing a
+      succession of quickly alternating <em>lum_sensor.dark</em> and <em>lum_sensor.bright</em>
+      events. Having each of these events turn the light on or off,
+      respectively, would result in a flickering lamp for some time during
+      twilight. To avoid this, the state machine requires a certain permanence
+      in the luminosity sensor's results before actually toggling the light's
+      state.
     </p>
 
     <p>
       This is done like this: During the day the <strong>Twilight</strong>
-      composite state's <strong>Off</strong> state is active. In this state the
-      state machine listens for <em>lum_sensor.dark</em> events. These events
-      are starting to come in when it is about to get dark. First they come in
-      spuriously, later there are more <em>lum_sensor.dark</em> than <em>lum_sensor.bright</em>
+      composite state's <strong>Off</strong> substate is active. In this state
+      the state machine listens for <em>lum_sensor.dark</em> events. These
+      events are starting to be raised when it is about to get dark. First they
+      come in spuriously, later there are more <em>lum_sensor.dark</em> than <em>lum_sensor.bright</em>
       events within a given period of time, until only <em>lum_sensor.dark</em>
       events are raised. The first <em>lum_sensor.dark</em> changes the state
       from <strong>Off</strong> to <strong>Dark_waiting</strong>. In this state
@@ -255,33 +262,34 @@
       be configured as constant <em>lum_sensor.wait_time</em>. However, each <em>lum_sensor.bright</em>
       event brings the state machine back to the <strong>Off</strong>. Only if
       the waiting time has passed without any <em>lum_sensor.bright</em>
-      interfering the <strong>On</strong> state is reached an the light is
-      turned on. The analogous happens in the morning when the daylight is
-      coming. The twilight switch is also robust against short disruptions like
-      overshadowing the sensor in the day or illuminating it by a car's
-      headlamps in the night.
+      interfering, the <strong>On</strong> state is reached and the light is
+      turned on. The analogous happens in the morning when the first light of
+      the day is close. The twilight switch is also robust against short
+      disruptions like overshadowing the sensor during the day or illuminating
+      it briefly by a car's headlamps during the night.
     </p>
 
     <p>
       An important requirement is that any of the automatic modes can be
-      interrupted by manually switching the light on via <em>user.on_button</em>.
-      When the user then raises a <em>user.off_button</em> event, the state
-      machine should return to that <strong>Automatic</strong> substate that was
-      active before the manual intervention. Similarly, when switching between <strong>Twilight</strong>
-      and <strong>MotionSensing</strong> the state machine should remember the
-      respective active substate and return there when control is turned back.
+      interrupted at any time by manually operating the light switch via <em>user.on_button</em>.
+      When the user later raises a <em>user.off_button</em> event, the state
+      machine should return to that particular substate somewhere down in the <strong>Automatic</strong>
+      composite state that was active before the manual intervention. Similarly,
+      when toggling between <strong>Twilight</strong> and <strong>MotionSensing</strong>,
+      the state machine should remember the respective active substate and
+      return there when control is turned back.
     </p>
 
     <p>
-      This is what <strong>history states</strong> are good for. The statechart
-      contains three <em>shallow history</em> states. There is one in <strong>Twilight</strong>,
+      That's what <strong>history states</strong> are good for. The statechart
+      contains three <em>shallow history states</em>. There is one in <strong>Twilight</strong>,
       one in <strong>MotionSensing</strong>, and one in the <strong>Automatic</strong>
       composite state the former two are nested in.
     </p>
 
     <p>A shallow history state, contained in a composite state with a set of
       possible states inside that composite state, remembers which of these
-      states was active when that composite state is left.</p>
+      states was active when that composite state was left.</p>
 
     <p>
       The shallow history state in <strong>Automatic</strong> remembers whether
@@ -295,7 +303,7 @@
 
     <p>
       If you have worked with history states before, you might be inclined now
-      to say: "A <em>deep history state</em> would have been the correct thing
+      to say: "A <em>deep</em> history state would have been the correct thing
       here." However, you would only be partially right. A deep history state
       remembers the active state in its own region and everything that was
       active inside of this state, recursively down to the lowest level. We

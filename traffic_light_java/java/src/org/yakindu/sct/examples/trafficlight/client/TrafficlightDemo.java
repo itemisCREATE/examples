@@ -8,15 +8,17 @@
  * 	committers of YAKINDU - initial API and implementation
  * 
  */
-package traffic.light;
+package org.yakindu.sct.examples.trafficlight.client;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-import traffic.light.trafficlightctrl.ITrafficLightCtrlStatemachine;
-import traffic.light.trafficlightctrl.SynchronizedTrafficLightCtrlStatemachine;
+import org.yakindu.sct.examples.trafficlight.RuntimeService;
+import org.yakindu.sct.examples.trafficlight.TimerService;
+import org.yakindu.sct.examples.trafficlight.trafficlightimpl.ITrafficLightStatemachine;
+import org.yakindu.sct.examples.trafficlight.trafficlightimpl.SynchronizedTrafficLightStatemachine;
 
 /**
  * 
@@ -28,7 +30,7 @@ public class TrafficlightDemo extends JFrame {
 
 	private static final long serialVersionUID = -8909693541678814631L;
 
-	protected SynchronizedTrafficLightCtrlStatemachine statemachine;
+	protected SynchronizedTrafficLightStatemachine statemachine;
 
 	protected TimerService timer;
 
@@ -65,10 +67,10 @@ public class TrafficlightDemo extends JFrame {
 	}
 
 	protected void setupStatemachine() {
-		statemachine = new SynchronizedTrafficLightCtrlStatemachine();
+		statemachine = new SynchronizedTrafficLightStatemachine();
 		timer = new TimerService();
 		statemachine.setTimer(timer);
-		statemachine.getSCInterface().setSCInterfaceOperationCallback(new ITrafficLightCtrlStatemachine.SCInterfaceOperationCallback() {
+		statemachine.getSCInterface().setSCInterfaceOperationCallback(new ITrafficLightStatemachine.SCInterfaceOperationCallback() {
 			@Override
 			public void synchronize() {
 				checkTrafficLightStates();

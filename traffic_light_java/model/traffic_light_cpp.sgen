@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::cpp {
+
+	statechart TrafficLight {
+
+		feature Outlet {
+			targetProject = "traffic_light"
+			targetFolder = "cpp/src-gen"
+			libraryTargetFolder = "cpp/src"
+		}
+	}
+}

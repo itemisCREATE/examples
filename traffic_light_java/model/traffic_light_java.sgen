@@ -1,0 +1,25 @@
+GeneratorModel for yakindu::java {
+
+	statechart TrafficLight {
+
+		feature Outlet {
+			targetProject = "traffic_light"
+			targetFolder = "java/src-gen"
+		}
+
+		feature Naming {
+			basePackage = "org.yakindu.sct.examples.trafficlight"
+			implementationSuffix = "Impl"
+		}
+
+		feature GeneralFeatures {
+			RuntimeService = true
+			TimerService = true
+		}
+
+		feature SynchronizedWrapper {
+			namePrefix = "Synchronized"
+			nameSuffix = ""
+		}
+	}
+}

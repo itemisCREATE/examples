@@ -8,13 +8,11 @@
  * 	committers of YAKINDU - initial API and implementation
  * 
  */
-package traffic.light;
+package org.yakindu.sct.examples.trafficlight.client;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-
-import traffic.light.TrafficLight.Alignment;
 
 /**
  * 
@@ -34,9 +32,9 @@ public class CrossingPanel extends CrossWalkPanel {
 	public CrossingPanel() {
 		super();
 		
-		trafficLightWest = new TrafficLight(Alignment.HORIZONTAL);
-		trafficLightNorth = new TrafficLight(Alignment.VERTICAL);
-		trafficLightSouth = new TrafficLight(Alignment.VERTICAL);
+		trafficLightWest = new TrafficLight(TrafficLight.Alignment.HORIZONTAL);
+		trafficLightNorth = new TrafficLight(TrafficLight.Alignment.VERTICAL);
+		trafficLightSouth = new TrafficLight(TrafficLight.Alignment.VERTICAL);
 		pedlightNorth = new PedestrianLight(PedestrianLight.Alignment.HORIZONTAL);
 	}
 

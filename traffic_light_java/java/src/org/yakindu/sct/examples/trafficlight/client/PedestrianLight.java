@@ -8,7 +8,7 @@
  * 	committers of YAKINDU - initial API and implementation
  * 
  */
-package traffic.light;
+package org.yakindu.sct.examples.trafficlight.client;
 
 import java.awt.Color;
 import java.awt.Graphics;

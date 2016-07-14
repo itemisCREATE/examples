@@ -1,4 +1,4 @@
-package traffic.light;
+package org.yakindu.sct.examples.trafficlight.client;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,8 +6,6 @@ import java.awt.Graphics;
 import java.awt.Point;
 
 import javax.swing.JPanel;
-
-import traffic.light.TrafficLight.Alignment;
 
 public class CrossWalkPanel extends JPanel {
 
@@ -18,7 +16,7 @@ public class CrossWalkPanel extends JPanel {
 	
 	public CrossWalkPanel() {
 		super();
-		trafficLight = new TrafficLight(Alignment.HORIZONTAL);
+		trafficLight = new TrafficLight(TrafficLight.Alignment.HORIZONTAL);
 		pedLight = new PedestrianLight(PedestrianLight.Alignment.VERTICAL);
 	}
 	

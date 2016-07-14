@@ -1,0 +1,12 @@
+{
+	"id": "org.yakindu.sct.examples.traffic_light_java",
+	"title": "Traffic Light (Java)",
+	"category": [
+		"open source",
+		"java",
+		"basic",
+		"interface",
+		"composite state",
+		"timer service"
+	]
+}

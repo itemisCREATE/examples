@@ -350,15 +350,24 @@
 	We use this feature here to do two things:
 	<ol>
 		<li>
-		Ask for the current time of day to decide if we should actually engage the Presence simulation
+		Ask for the current time of day to decide if we should actually engage the Presence simulation (using the <em>every</em>-keyword 
+		inside of the declaration)
 		</li>
 		<li>
 		Ask for a random float to produce a random waiting interval in minutes between WAIT_MIN and WAIT_MAX. 
-		Every 60 seconds, the waiting time is decreased by one. Everytime wait_minutes reaches a value of 0, which means the waiting time is over, the <em>waitOver</em>-event is raised and makes the light switch between the <strong>On</strong> and <strong>Off</strong> states.
-		On this occasion a new waiting time is calculated by calling get_rand() as well.
+		Every 60 seconds, the waiting time is decreased by one. This happens in an orthogonal state to showcase
+		the different available possibilities to do periodic tasks. Everytime wait_minutes reaches a value of 0,
+		which means the waiting time is over, the <em>waitOver</em>-event is raised (<em>raise</em>-keyword)
+		which makes the light switch between the <strong>On</strong> and <strong>Off</strong> states.
+		On this occasion a new waiting time is calculated by calling <em>get_rand()</em> as well.
 		</li>
 	</ol>
-	The other features from earlier iterations are stripped away here to keep the statechart comprehensible.
+	Furthermore, we make use of three <em>orthogonal states</em>, which you can see inside of the state <strong>Wait</strong>.
+	The reason for this is that these three states are then executed virtually in parallel (their order is relevant, though).
+	This way, we can have three tiny statecharts that count down every 60 seconds, check if a new waiting time needs to be
+	calculated and if the light's state needs to be switched (the two latter ones happen at the same time, but the functionality
+	is different).
+	The other features of the light switch from earlier iterations are stripped away here to keep the statechart comprehensible.
 	</p>
   </div>
 

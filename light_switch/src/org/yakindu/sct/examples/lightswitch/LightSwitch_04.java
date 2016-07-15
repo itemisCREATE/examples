@@ -37,11 +37,11 @@ public class LightSwitch_04 {
 			
 			if(input.equals("On"))
 			{
-				sm.getSCIUser().raiseOn_switch();
+				sm.getSCIUser().raiseOn_button();
 			}
 			else if(input.equals("Off"))
 			{
-				sm.getSCIUser().raiseOff_switch();
+				sm.getSCIUser().raiseOff_button();
 			}
 			else if(input.equals("Exit"))
 			{

@@ -4,5 +4,9 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="java/src-gen"/>
 	<classpathentry kind="src" path="java/src"/>
+	<classpathentry kind="src" path="c/src-gen"/>
+	<classpathentry kind="src" path="c/src"/>
+	<classpathentry kind="src" path="cpp/src-gen"/>
+	<classpathentry kind="src" path="cpp/src"/>
 	<classpathentry kind="output" path="java/bin"/>
 </classpath>

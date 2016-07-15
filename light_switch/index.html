@@ -314,7 +314,7 @@
       the active state in <strong>MotionSensing</strong> when switching to <strong>Twilight</strong>,
       and vice versa. The deep history state would be activated only if we left
       the whole <strong>Automatic</strong> composite state – and when switching
-      automatic modes we are going to do that.
+      between automatic modes we are not going to do that.
     </p>
   </div>
 
@@ -345,6 +345,21 @@
       <img class="standard-image" alt="Sixth iteration, introducing operations"
         src="images/06_light_switch_simulation.png" />
     </p>
+	
+	<p>
+	We use this feature here to do two things:
+	<ol>
+		<li>
+		Ask for the current time of day to decide if we should actually engage the Presence simulation
+		</li>
+		<li>
+		Ask for a random float to produce a random waiting interval in minutes between WAIT_MIN and WAIT_MAX. 
+		Every 60 seconds, the waiting time is decreased by one. Everytime wait_minutes reaches a value of 0, which means the waiting time is over, the <em>waitOver</em>-event is raised and makes the light switch between the <strong>On</strong> and <strong>Off</strong> states.
+		On this occasion a new waiting time is calculated by calling get_rand() as well.
+		</li>
+	</ol>
+	The other features from earlier iterations are stripped away here to keep the statechart comprehensible.
+	</p>
   </div>
 
 </body>

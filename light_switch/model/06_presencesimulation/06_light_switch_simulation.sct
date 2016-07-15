@@ -12,7 +12,7 @@
             <outgoingTransitions xmi:id="_b7heUDe5EeaQIqD3TyMHVw" specification="" target="__uMF4De4EeaQIqD3TyMHVw"/>
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="__uMF4De4EeaQIqD3TyMHVw" specification="entry / user.brightness = 0" name="Inactive" incomingTransitions="_b7heUDe5EeaQIqD3TyMHVw _pbAlcDe9EeaQIqD3TyMHVw">
-            <outgoingTransitions xmi:id="_mqTYYDe9EeaQIqD3TyMHVw" specification="[!(hour > 17 ||&#xA;(hour > 7 &amp;&amp; hour &lt; 10))]" target="_jRBvcDe9EeaQIqD3TyMHVw"/>
+            <outgoingTransitions xmi:id="_mqTYYDe9EeaQIqD3TyMHVw" specification="[hour >= 17 ||&#xA;(hour >= 7 &amp;&amp; hour &lt; 10)]" target="_jRBvcDe9EeaQIqD3TyMHVw"/>
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="_jRBvcDe9EeaQIqD3TyMHVw" name="Wait" incomingTransitions="_mqTYYDe9EeaQIqD3TyMHVw">
             <outgoingTransitions xmi:id="_pbAlcDe9EeaQIqD3TyMHVw" specification="[!(hour > 17 ||&#xA;(hour > 7 &amp;&amp; hour &lt; 10))]" target="__uMF4De4EeaQIqD3TyMHVw"/>

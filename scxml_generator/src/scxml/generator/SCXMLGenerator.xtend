@@ -17,6 +17,7 @@ import org.yakindu.sct.model.sgraph.Transition
 class SCXMLGenerator extends AbstractWorkspaceGenerator implements ISGraphGenerator {
 
 	override generate(Statechart sc, GeneratorEntry entry) {
+		initFileSystemAccess(entry)
 		entry.targetFolder.write(sc.name + '.scxml', sc.generate as String)
 	}
 

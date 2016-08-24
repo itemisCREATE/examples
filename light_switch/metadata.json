@@ -1,6 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.lightswitch",
 	"title": "Light Switch Example Series",
+	"description": "This is a series of examples demonstrating multiple features of YAKINDU SCT. With each iteration, more features are shown. This example is a good starting point to dive into SCT headfirst.",
 	"category": [
 		"open source",
 		"basic",

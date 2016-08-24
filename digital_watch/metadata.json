@@ -1,6 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.digital_watch",
 	"title": "Digital Watch",
+	"description": "This digital watch was first designed by David Harel, the founder of the Statecharts Theory. He described it in \"On Visual Formalisms\", published in \"Communications of the ACM\" in May 1988.",
 	"category": [
 		"open source",
 		"advanced",

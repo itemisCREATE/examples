@@ -1,6 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.traffic_light_java",
 	"title": "Traffic Light (Java)",
+	"description": "Demonstrates how to to generate Java source code from a statechart. The procedure is explained in the documentation, section \"Java code generator\".",
 	"category": [
 		"open source",
 		"java",

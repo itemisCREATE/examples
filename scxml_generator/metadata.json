@@ -1,7 +1,8 @@
 {
-	"id":"org.yakindu.sct.examples.scxml",
-	"title":"custom generator example for SCXML",
-	"category":[
+	"id": "org.yakindu.sct.examples.scxml",
+	"title": "Custom generator example for SCXML",
+	"description": "Explains how to generate Statechart XML (SCXML) from a simple stop watch state machine",
+	"category": [
 		"open source",
 		"code generators"
 	]

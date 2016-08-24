@@ -1,7 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.traffic_light_cpp",
 	"title": "Traffic Light (C++)",
-	"description": "",
+	"description": "This example illustrates C++ code generation and integration. It is used in the YAKINDU Statechart Tools documentation.",
 	"category": [
 		"open source",
 		"basic",

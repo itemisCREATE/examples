@@ -1,7 +1,8 @@
 {
-	"id":"org.yakindu.sct.examples.scxml",
-	"title":"custom generator example for SCXML",
-	"category":[
+	"id": "org.yakindu.sct.examples.scxml",
+	"title": "custom generator example for SCXML",
+	"description": "",
+	"category": [
 		"open source",
 		"code generators"
 	]

@@ -1,6 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.example_template",
 	"title": "Example Template",
+	"description": "A short description of this example",
 	"category": [
 		"open source",
 		"basic"

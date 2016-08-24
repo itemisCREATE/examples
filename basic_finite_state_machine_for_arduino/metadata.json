@@ -1,6 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.arduino_fsm",
 	"title": "Basic Finite State Machine for Arduino",
+	"description": "Basic Finite State Machine for Arduino",
 	"category": [
 		"open source",
 		"arduino",

@@ -1,6 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.lightswitch",
 	"title": "Light Switch Example Series",
+	"description": "",
 	"category": [
 		"open source",
 		"basic",

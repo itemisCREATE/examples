@@ -1,7 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.arduino_fsm",
 	"title": "Basic Finite State Machine for Arduino",
-	"description": "A very basic state machine example for the Arduino platform that switches an LED on and off. This example was used in an article on the website <a href=\"http://www.instructables.com/\">instructables.com</a>. You can read the article <a href=\"http://www.instructables.com/id/Finite-State-Machine-on-an-Arduino/\">here</a>. It demonstrates how to get started with YAKINDU Statechart Tools and the Arduino platform and contains a timer service for the Arduino. You need to have an Arduino plugin, as described in the example \"Arduino traffic light\" and in the linked article.",
+	"description": "A very basic state machine example for the Arduino platform that switches an LED on and off. It demonstrates how to get started with YAKINDU Statechart Tools and the Arduino platform and contains a timer service for the Arduino. You need to have an Arduino plugin, as described in the \"Traffic Light Ported to Arduino\" example.",
 	"category": [
 		"open source",
 		"arduino",

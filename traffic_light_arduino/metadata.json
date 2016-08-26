@@ -1,7 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.traffic_light_arduino",
 	"title": "Traffic Light Ported to Arduino",
-	"description": "Shows how to develop statechart-based software for the Arduino platform, by means of the standard traffic light example.",
+	"description": "Wondering how to execute your state machine on the Arduino platform? This example demonstrates the necessary steps, like installing the Arduino plugin, building the hardware, turning your statechart into code and uploading it to the Arduino. It does so by means of the standard traffic light example.",
 	"previewImage": "YAKINDU-Statecharts-Arduino.jpg",
 	"category": [
 		"open source",

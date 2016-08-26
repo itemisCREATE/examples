@@ -1,8 +1,8 @@
 {
-	"id":"org.yakindu.sct.examples.coffeemachine",
-	"title":"Four Iterations Of A Coffee Machine",
-	"descriptions":"Explains various aspects of statecharts by modeling a coffee machine in several iterations with increasing complexity.",
-	"category":[
+	"id": "org.yakindu.sct.examples.coffeemachine",
+	"title": "Four Iterations Of A Coffee Machine",
+	"descriptions": "Explains various aspects of statecharts by modeling a coffee machine in several iterations with increasing complexity. The example introduces states, transitions, events, and composite states.",
+	"category": [
 		"open source",
 		"composite state"
 	]

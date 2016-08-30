@@ -1,0 +1,9 @@
+{
+	"id": "org.yakindu.sct.examples.lightswitch",
+	"title": "Light Switch",
+	"description": "This example demonstrates one of the most basic state machines that are actually doing something useful: a light switch that can be turned on and off, and repeatedly.",
+	"category": [
+		"open source",
+		"basic"
+	]
+}

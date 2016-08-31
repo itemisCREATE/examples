@@ -32,63 +32,23 @@
     are supported to showcase how to get started. We expect the following XML
     fragment to be generated from the model above:
   </p>
-  <pre id="xmlOutput" class="xml prettyprint">
-    <span class="tag"><span class="pun">&lt;?</span><span class="pln">xml version</span><span
-      class="pun">=</span><span class="str">"1.0"</span><span class="pln"> encoding</span><span
-      class="pun">=</span><span class="str">"UTF-8"</span><span class="pun">?&gt;</span><br>&lt;scxml</span><span
-      class="pln"> </span><span class="atn">xmlns</span><span class="pun">=</span><span
-      class="atv">"http://www.w3.org/2005/07/scxml"</span><span class="pln"> </span><span
-      class="atn">version</span><span class="pun">=</span><span class="atv">"1.0"</span><span
-      class="pln"> </span><span class="atn">initial</span><span class="pun">=</span><span
-      class="atv">"ready"</span><span class="tag">&gt;</span><span class="pln">
-   </span><span class="tag">&lt;state</span><span class="pln"> </span><span class="atn">id</span><span
-      class="pun">=</span><span class="atv">"ready"</span><span class="tag">&gt;</span><span
-      class="pln">
-      </span><span class="tag">&lt;transition</span><span class="pln"> </span><span
-      class="atn">event</span><span class="pun">=</span><span class="atv">"watch.start"</span><span
-      class="pln"> </span><span class="atn">target</span><span class="pun">=</span><span
-      class="atv">"running"</span><span class="pln"> </span><span class="tag">/&gt;</span><span
-      class="pln">
-   </span><span class="tag">&lt;/state&gt;</span><span class="pln">
-   </span><span class="tag">&lt;state</span><span class="pln"> </span><span class="atn">id</span><span
-      class="pun">=</span><span class="atv">"running"</span><span class="tag">&gt;</span><span
-      class="pln">
-      </span><span class="tag">&lt;transition</span><span class="pln"> </span><span
-      class="atn">event</span><span class="pun">=</span><span class="atv">"watch.split"</span><span
-      class="pln"> </span><span class="atn">target</span><span class="pun">=</span><span
-      class="atv">"paused"</span><span class="pln"> </span><span class="tag">/&gt;</span><span
-      class="pln">
-      </span><span class="tag">&lt;transition</span><span class="pln"> </span><span
-      class="atn">event</span><span class="pun">=</span><span class="atv">"watch.stop"</span><span
-      class="pln"> </span><span class="atn">target</span><span class="pun">=</span><span
-      class="atv">"stopped"</span><span class="pln"> </span><span class="tag">/&gt;</span><span
-      class="pln">
-   </span><span class="tag">&lt;/state&gt;</span><span class="pln">
-   </span><span class="tag">&lt;state</span><span class="pln"> </span><span class="atn">id</span><span
-      class="pun">=</span><span class="atv">"paused"</span><span class="tag">&gt;</span><span
-      class="pln">
-      </span><span class="tag">&lt;transition</span><span class="pln"> </span><span
-      class="atn">event</span><span class="pun">=</span><span class="atv">"watch.stop"</span><span
-      class="pln"> </span><span class="atn">target</span><span class="pun">=</span><span
-      class="atv">"stopped"</span><span class="pln"> </span><span class="tag">/&gt;</span><span
-      class="pln">
-      </span><span class="tag">&lt;transition</span><span class="pln"> </span><span
-      class="atn">event</span><span class="pun">=</span><span class="atv">"watch.unsplit"</span><span
-      class="pln"> </span><span class="atn">target</span><span class="pun">=</span><span
-      class="atv">"running"</span><span class="pln"> </span><span class="tag">/&gt;</span><span
-      class="pln">
-   </span><span class="tag">&lt;/state&gt;</span><span class="pln">
-   </span><span class="tag">&lt;state</span><span class="pln"> </span><span class="atn">id</span><span
-      class="pun">=</span><span class="atv">"stopped"</span><span class="tag">&gt;</span><span
-      class="pln">
-      </span><span class="tag">&lt;transition</span><span class="pln"> </span><span
-      class="atn">event</span><span class="pun">=</span><span class="atv">"watch.reset"</span><span
-      class="pln"> </span><span class="atn">target</span><span class="pun">=</span><span
-      class="atv">"ready"</span><span class="pln"> </span><span class="tag">/&gt;</span><span
-      class="pln">
-   </span><span class="tag">&lt;/state&gt;</span><span class="pln">
-</span><span class="tag">&lt;/scxml&gt;</span>
-  </pre>
+  <pre id="xmlOutput" class="xml prettyprint"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" initial="ready"&gt;
+   &lt;state id="ready"&gt;
+      &lt;transition event="watch.start" target="running" /&gt;
+   &lt;/state&gt;
+   &lt;state id="running"&gt;
+      &lt;transition event="watch.split" target="paused" /&gt;
+      &lt;transition event="watch.stop" target="stopped" /&gt;
+   &lt;/state&gt;
+   &lt;state id="paused"&gt;
+      &lt;transition event="watch.stop" target="stopped" /&gt;
+      &lt;transition event="watch.unsplit" target="running" /&gt;
+   &lt;/state&gt;
+   &lt;state id="stopped"&gt;
+      &lt;transition event="watch.reset" target="ready" /&gt;
+   &lt;/state&gt;
+&lt;/scxml&gt;</code></pre>
   <h2>SExec and SGraph meta models</h2>
   <p>
     Before starting with a code generator, we have to decide which of the two

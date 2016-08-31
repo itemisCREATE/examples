@@ -3,6 +3,7 @@
 	"title": "Traffic Light (Java)",
 	"previewImage": "pelican_crossing_preview.jpg",
 	"description": "Demonstrates how to to generate Java source code from a statechart. The procedure is actually explained in the YAKINDU Statechart Tools documentation, section \"Java code generator\".",
+	"previewImage": "traffic_light_thumb.jpg",
 	"category": [
 		"open source",
 		"java",

@@ -10,15 +10,15 @@
   <h1>Custom Generator Example for SCXML</h1>
 
   <p>
-    This blog post explains how to develop a custom code generator for the open
+    This example explains how to develop a custom code generator for the open
     source framework <a href="http://www.statecharts.org" target="_blank">YAKINDU
-      Statechart Tools</a>. As an example, we will generate <a
+      Statechart Tools</a>. In this example, we will generate <a
       href="https://en.wikipedia.org/wiki/SCXML" target="_blank">Statechart
       XML (SCXML)</a> from a simple stopwatch state machine. The stopwatch use case
     is taken from the <a
       href="http://commons.apache.org/proper/commons-scxml/usecases/scxml-stopwatch.html">Apache
       Commons SCXML</a> site. The stopwatch model consists of four different states
-    (<em>ready, running, stopped,</em> and <em>paused</em>) and the state
+    (<b>ready, running, stopped,</b> and <b>paused</b>) and the state
     transitions are triggered by events that represent the stopwatch buttons (<em>watch.start,
       watch.stop, watch.split, watch.unsplit, watch.reset</em>).
   </p>
@@ -118,21 +118,20 @@
   <script
     src="https://gist.github.com/andreasmuelder/ca415996d7ef3af1a3c9ad3e9423defd.js"></script>
   <p>
-    The <em>SCXMLGenerator</em> class extends from <em>AbstractWorkspaceGenerator</em>
-    to inherit some utility functions and implements the <em>ISGraphGenerator</em>
-    interface (line 17). This interface defines which meta model will be used
+    The <em>SCXMLGenerator</em> class implements the <em>ISGraphGenerator</em>
+    interface. This interface defines which meta model will be used
     for the code generator. If you want to implement a code generator based on
     the ExecutionFlow meta model you would implement <em>IExecutionFlowGenerator</em>
     interface instead.
   </p>
   <p>
-    The generate function in line 23 uses Xtends template string to generate the
+    The generate function uses Xtends template string to generate the
     scxml header. Most of the text ist static except the value for the initial
-    attribute – this is calculated in the initialState function (line 30). After
+    attribute – this is calculated in the initialState function. After
     the scxml header, the <em>generate</em> function for the head region
-    (parallel regions are not implemented) is called (line 26). This function
-    (line 34) simply iterates over all states in this region and calls the
-    generate function for states (line 40). Other vertex types, for example <em>Histories</em>,
+    (parallel regions are not implemented) is called. This function
+     simply iterates over all states in this region and calls the
+    generate function for states . Other vertex types, for example <em>Histories</em>,
     <em>Synchronizations</em> or<em> Final States</em> are filtered out. Last,
     the generate function for states creates a new XML element and iterates over
     all outgoing transitions to generate the nested transition element.

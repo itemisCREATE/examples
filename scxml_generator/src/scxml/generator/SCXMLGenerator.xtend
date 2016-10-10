@@ -5,8 +5,8 @@ package scxml.generator
 
 import java.io.File
 import java.io.FileOutputStream
-import org.yakindu.sct.generator.core.AbstractWorkspaceGenerator
-import org.yakindu.sct.generator.core.impl.ISGraphGenerator
+import org.eclipse.xtext.generator.IFileSystemAccess
+import org.yakindu.sct.generator.core.ISGraphGenerator
 import org.yakindu.sct.model.sgen.GeneratorEntry
 import org.yakindu.sct.model.sgraph.Entry
 import org.yakindu.sct.model.sgraph.Region
@@ -14,11 +14,12 @@ import org.yakindu.sct.model.sgraph.State
 import org.yakindu.sct.model.sgraph.Statechart
 import org.yakindu.sct.model.sgraph.Transition
 
-class SCXMLGenerator extends AbstractWorkspaceGenerator implements ISGraphGenerator {
+class SCXMLGenerator implements ISGraphGenerator {
+	
 
-	override generate(Statechart sc, GeneratorEntry entry) {
-		initFileSystemAccess(entry)
-		entry.targetFolder.write(sc.name + '.scxml', sc.generate as String)
+	override generate(Statechart sc, GeneratorEntry entry,  IFileSystemAccess fsa) {
+		
+		fsa.generateFile(sc.name + '.scxml', sc.generate as String)
 	}
 
 	def dispatch String generate(Statechart it) '''
@@ -56,4 +57,7 @@ class SCXMLGenerator extends AbstractWorkspaceGenerator implements ISGraphGenera
 		bos.write(content.bytes)
 		bos.close
 	}
+	
+
+	
 }

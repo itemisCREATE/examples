@@ -23,4 +23,4 @@ Require-Bundle: org.eclipse.jdt.core;bundle-version="3.5.0",
  org.yakindu.sct.model.sexec;bundle-version="1.0.0",
  org.yakindu.sct.model.stext;bundle-version="1.0.0",
  org.yakindu.sct.model.sgraph;bundle-version="1.0.0"
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

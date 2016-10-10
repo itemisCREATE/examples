@@ -1,9 +1,9 @@
 {
 	"id": "org.yakindu.sct.examples.lightswitch",
-	"title": "Light Switch Example Series",
+	"title": "Light Switch Example",
 	"author": "itemis AG",
-	"description": "This is a series of examples demonstrating multiple features of YAKINDU Statechart Tools (SCT). With each iteration, more features are shown. This example is a good starting point to dive into SCT headfirst. It introduces states, transitions, variables, interfaces, guard conditions, effects (actions), composite states, history states, non-orthogonal regions, and operations.",
-	"previewImage": "lights_thumb.jpg",
+	"description": "This example demonstrates one of the most basic state machines that are actually doing something useful: a light switch that can be turned on and off, and repeatedly.",
+	"previewImage": "light_thumbs.jpg",
 	"category": [
 		"open source",
 		"basic"

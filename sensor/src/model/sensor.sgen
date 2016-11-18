@@ -1,0 +1,23 @@
+GeneratorModel for yakindu::c {
+
+	statechart sensor {
+
+		feature Outlet {
+			targetProject = "sensor"
+			targetFolder = "src/model/src-gen"
+			libraryTargetFolder = "src/model/src"
+		}
+
+		feature FunctionInlining {
+			inlineChoices = true
+			inlineEnterRegion = true
+			inlineEnterSequences = true
+			inlineEntries = true
+			inlineEntryActions = true
+			inlineExitActions = true
+			inlineExitRegion = true
+			inlineExitSequences = true
+			inlineReactions = true
+		}
+	}
+}

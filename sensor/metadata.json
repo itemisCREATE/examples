@@ -1,10 +1,10 @@
 {
 	"id": "com.yakindu.sct.examples.coffeemachine",
-	"title": "YAKINDU Sensor Array pro example",
+	"title": "[Pro] Sensor example with Arrays",
 	"author": "itemis AG",
-	"description": "Explains various aspects of statecharts modeling with the deep C integration feature.",
+	"description": " This is an example for the handling of arrays imported from usercode in SCT. You can see how to make the best use of arrays.",
 	"previewImage": "array_example_thumb.jpg",
 	"category": [
-		"professional"
+		"professional", "arrays", "sensor"
 	]
 }

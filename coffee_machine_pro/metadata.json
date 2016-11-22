@@ -1,8 +1,8 @@
 {
 	"id": "com.yakindu.sct.examples.coffeemachine",
-	"title": "Coffee Machine with SCTpro",
+	"title": "[PRO] Coffee Machine with C integration",
 	"author": "itemis AG",
-	"description": "Explains various aspects of statecharts modeling with the deep C integration feature.",
+	"description": "This is a comprehensive example for the deep integration of YAKINDU statecharts with manually written C code. The example is implemented as a simple command line tool.",
 	"previewImage": "coffee_machine_thumb.jpg",
 	"category": [
 		"professional"

@@ -11,10 +11,39 @@
 		<p class="pro-feature">
 			This is an example for the handling of arrays imported from usercode
 			in SCT. You can see how iterating an array in SCT is possible and how
-			to make
-			the best use of arrays.
+			to make the best use of arrays.
 			<img class="standard-image" alt="The sensor statechart in all its details"
 				src="images/sensor_model.png" />
+		</p>
+		<p>The context of this example are ultrasonic sensors. These are
+			frequently
+			used in robotics to measure the distance
+			to the next solid
+			object. They generate an ultrasonic sound, and when
+			the
+			soundwave is
+			reflected by a solid object back to the sensor, the time taken
+			for the
+			roundtrip can be used to determine the distance. The quality
+			of the
+			result can vary greatly with the geometric orientation and the
+			material of
+			the object. Surfaces not parallel to the sensor can
+			generate multiple
+			echos,
+			and soft tissues like carpet and similar can
+			absorb the signal
+			completely.</p>
+		<p>To rule out these effects, the measurements are often filtered.
+			This statechart shows one of the simplest methods of filtering –
+			the
+			mean and the standard deviation are calculated and the mean
+			is
+			returned as long as the standard deviation is not greater than
+			a
+			threshold value, indicating that
+			all measurements were in a close
+			margin to each other.
 		</p>
 		<h3>Statechart and source code</h3>
 		<p>
@@ -32,10 +61,8 @@
 		</p>
 		<p>
 			The model basically shows how to take a measurement multiple times,
-			store the
-			values in an array, calculate the mean and standard
-			deviation and so forth.
-			Calling a function with an array as argument
+			store the values in an array, calculate the mean and standard
+			deviation and so forth. Calling a function with an array as argument
 			is shown as well.
 		</p>
 		<h3>Set up your system</h3>
@@ -54,17 +81,13 @@
 			This project is preconfigured for Linux and gcc. If you use another
 			system:
 			<ul>
-				<li>
-					right-click on project 'coffee_machine' in the 'Project Explorer'
-					<li>
-						choose 'Properties'
-						<li>
-							a dialog appears - choose 'C/C++ Build'
-							<li>
-								select 'Tool Chain Editor'
-								<li>
-									choose the appropriate tool chain for 'current tool chain'
-									<li>click 'OK'
+				<li>right-click on project 'coffee_machine' in the 'Project
+					Explorer'</li>
+				<li>choose 'Properties'	</li>
+				<li>a dialog appears - choose 'C/C++ Build'</li>
+				<li>select 'Tool Chain Editor'</li>
+				<li>choose the appropriate tool chain for 'current tool chain'</li>
+				<li>click 'OK'</li>
 			</ul>
 			... and your project should be ready to build
 		</p>
@@ -72,8 +95,7 @@
 		<p>
 			<ul>
 				<li>right-click on project 'coffee_machine' in the 'Project
-					Explorer'
-				</li>
+					Explorer'</li>
 				<li> choose 'Build Project'</li>
 			</ul>
 		</li>
@@ -111,7 +133,8 @@
 		<p>
 			If you have changed the model you can generate state machine code by
 			right-click on
-			'sensor.sgen' and choose 'Generate Code Artefacts'. This will generate:
+			'sensor.sgen' and choose 'Generate Code Artefacts'.
+			This will generate:
 			<ul>
 				<li> Sensor.d</li>
 				<li> Sensor.o</li>

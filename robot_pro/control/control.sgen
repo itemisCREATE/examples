@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c {
 	statechart control {
 
 		feature Outlet {
-			targetProject = "robot"
+			targetProject = "robot_pro"
 			targetFolder = "control/src-gen"
 			libraryTargetFolder = "control/src"
 		}

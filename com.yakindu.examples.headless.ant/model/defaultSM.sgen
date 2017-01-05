@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::java {
+
+	statechart defaultSM {
+
+		feature Outlet {
+			targetProject = "com.yakindu.examples.headless.ant"
+			targetFolder = "src/main/java"
+			libraryTargetFolder = "src/main/java"
+		}
+	}
+}

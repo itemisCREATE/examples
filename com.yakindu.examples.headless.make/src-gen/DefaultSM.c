@@ -137,11 +137,11 @@ sc_boolean defaultSM_isStateActive(const DefaultSM* handle, DefaultSMStates stat
 
 
 
-uint32_t defaultSMIface_get_a(const DefaultSM* handle)
+sc_integer defaultSMIface_get_a(const DefaultSM* handle)
 {
 	return handle->iface.a;
 }
-void defaultSMIface_set_a(DefaultSM* handle, uint32_t value)
+void defaultSMIface_set_a(DefaultSM* handle, sc_integer value)
 {
 	handle->iface.a = value;
 }

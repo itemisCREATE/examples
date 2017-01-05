@@ -22,7 +22,7 @@ typedef enum
 /*! Type definition of the data structure for the DefaultSMIface interface scope. */
 typedef struct
 {
-	uint32_t a;
+	sc_integer a;
 } DefaultSMIface;
 
 
@@ -55,9 +55,9 @@ extern void defaultSM_runCycle(DefaultSM* handle);
 
 
 /*! Gets the value of the variable 'a' that is defined in the default interface scope. */ 
-extern uint32_t defaultSMIface_get_a(const DefaultSM* handle);
+extern sc_integer defaultSMIface_get_a(const DefaultSM* handle);
 /*! Sets the value of the variable 'a' that is defined in the default interface scope. */ 
-extern void defaultSMIface_set_a(DefaultSM* handle, uint32_t value);
+extern void defaultSMIface_set_a(DefaultSM* handle, sc_integer value);
 
 /*!
  * Checks whether the state machine is active (until 2.4.1 this method was used for states).

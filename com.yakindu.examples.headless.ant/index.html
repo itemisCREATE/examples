@@ -2,18 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Ant Headless Example</title>
+<title>[Pro] Headless: Ant</title>
 <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="body-container">
 
-  <h1>Ant Headless Example</h1>
+  <h1>[Pro] Headless: Ant</h1>
 
   <div>
     <h2>Overview</h2>
 
     <p>Invoke headless code generation with ant.</p>
   </div>
+
+  <div>
+<h2><br>Integration in Apache Ant</h2>
+<p>Apache Ant is another build tool specialized for building Java projects. It uses an xml as well, but one that is a bit less talkative. The exact same project can be built with Ant using the following xml:</p>
+<pre class="prettyprint">&lt;project&gt;<br> &lt;target name="clean"&gt;<br> &lt;delete dir="build"/&gt;<br> &lt;/target&gt;<br> <br> &lt;target name="generate"&gt;<br> &lt;exec executable="scc"/&gt;<br> &lt;/target&gt;<br> <br> &lt;target name="compile" depends="generate"&gt;<br> &lt;mkdir dir="build/classes"/&gt;<br> &lt;javac srcdir="src/main/java" destdir="build/classes"/&gt;<br> &lt;/target&gt;<br> <br> &lt;target name="jar" depends="compile"&gt;<br> &lt;mkdir dir="build/jar"/&gt;<br> &lt;jar destfile="build/jar/HelloWorld.jar" basedir="build/classes"&gt;<br> &lt;manifest&gt;<br> &lt;attribute name="Main-Class" value="hello.HelloWorld"/&gt;<br> &lt;/manifest&gt;<br> &lt;/jar&gt;<br> &lt;/target&gt;<br><br> &lt;target name="run" depends="jar"&gt;<br> &lt;java jar="build/jar/HelloWorld.jar" fork="true"/&gt;<br> &lt;/target&gt; <br> <br>&lt;/project&gt;</pre>
+<p><br>The important bit is the part with “generate” and that the step “compile” depends on it.</p>
+</div>
 
 </body>
 </html>

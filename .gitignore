@@ -3,8 +3,6 @@
 */bin/*
 */build*/
 */classes*/
-*.project
-*.cproject
 *.settings*
 */target/*
 */.gradle/*

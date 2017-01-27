@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.examples.headless.gradle",
-	"title": "Gradle Headless Example",
+	"title": "[Pro] Headless: Gradle",
 	"description": "Invoke headless code generation with gradle.",
 	"previewImage": "preview.jpeg",
     "author": "Rene Beckmann",

@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.examples.headless.make",
-	"title": "Make Headless Example",
+	"title": "[Pro] Headless: Make",
 	"description": "Invoke headless code generation with make.",
 	"previewImage": "preview.jpeg",
     "author": "Rene Beckmann",

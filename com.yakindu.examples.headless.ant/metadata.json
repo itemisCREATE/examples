@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.examples.headless.ant",
-	"title": "Ant Headless Example",
+	"title": "[Pro] Headless: Ant",
 	"description": "Invoke headless code generation with ant.",
 	"previewImage": "preview.jpeg",
     "author": "Rene Beckmann",

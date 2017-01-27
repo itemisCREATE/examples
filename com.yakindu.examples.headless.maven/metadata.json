@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.examples.headless.maven",
-	"title": "Maven Headless Example",
+	"title": "[Pro] Headless: Maven",
 	"description": "Invoke headless code generation with Maven.",
 	"previewImage": "preview.jpeg",
     "author": "Rene Beckmann",

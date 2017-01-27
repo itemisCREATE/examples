@@ -1,0 +1,12 @@
+{
+	"id": "com.yakindu.examples.headless.maven",
+	"title": "Maven Headless Example",
+	"description": "Invoke headless code generation with Maven.",
+	"previewImage": "preview.jpeg",
+    "author": "Rene Beckmann",
+    "organization": "itemis AG",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+	"category": [
+		"headless"
+	]
+}

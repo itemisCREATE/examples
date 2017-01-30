@@ -1,7 +1,7 @@
 {
 	"id": "com.yakindu.examples.headless.ant",
 	"title": "[Pro] Headless: Ant",
-	"description": "Invoke headless code generation with ant.",
+	"description": "Integrate the headless statechart generator into your Apache Ant build process.",
 	"previewImage": "preview.jpeg",
     "author": "Rene Beckmann",
     "organization": "itemis AG",

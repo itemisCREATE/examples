@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::cpp {
+
+	statechart sct_lightswitch {
+
+		feature Outlet {
+			targetProject = "Qt-Lightswitch"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+}

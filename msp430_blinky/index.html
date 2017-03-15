@@ -9,23 +9,25 @@
 
   <h1>MSP430 Blinky LED</h1>
 
-  <div>
     <h2>Overview</h2>
 
-    <p>This example can serve as a template for your own YAKINDU Statechart
-      Tools example. Copy and modify the files in this project as needed.</p>
-  </div>
+    <p>This is a simple blink example for TI's MSP430G2 Launchpad.
+	<img alt="The MSP430G2 Launchpad" src="images/msp430.jpg" />
+	<p>
+	
+	<p>
+	The example includes three states - Initialization, redOn and redOff.
+	In this pro example the header file of the MSP430G2553 is included,
+	so that it is possible to access and manipulate the registers of the MPS430 directly in Statechart Tools.
+	<img alt="The MSP430G2 Launchpad" src="images/blinkyStateMachine.png" />
+	</p>
 
-  <div>
-    <h2>Images</h2>
+    <h2>Using another Launchpad </h2>
 
-    <p>This section demonstrates how to include an image.</p>
-
+    <p>If you want to run the Example on another Launchpad you have to do only some changes. 
+	For example for the MSP430FR5969 - At first replace the MSP430G2533 header by the MSP430GFR5969 header file.
+	Change the import of the MSP430 in the Statechart Tool. Now you can adapt the WDT and LED Ports.</p>
     <p>
-      <img class="standard-image" alt="The state machine"
-        src="images/msp430.jpg" />
-    </p>
-  </div>
 
 </body>
 </html>

@@ -1,0 +1,17 @@
+{
+	"id": "org.yakindu.sct.examples.lightswitch_series",
+	"title": "Light Switch Example Series",
+	"author": "itemis AG",
+	"description": "This is a series of examples demonstrating multiple features of YAKINDU SCT. With each iteration, more features are shown. This example is a good starting point to dive into SCT headfirst.",
+	"previewImage": "lights_thumb.jpg",
+	"category": [
+		"open source",
+		"basic",
+		"advanced",
+		"interface",
+		"composite state",
+		"operation",
+		"history state",
+		"java"
+	]
+}

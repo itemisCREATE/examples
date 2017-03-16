@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>[Pro] Headless: Gradle</title>
+<link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+
+  <h1>[Pro] Headless: Gradle</h1>
+
+  <div>
+    <h2>Overview</h2>
+
+    <p>Invoke headless code generation with gradle.</p>
+  </div>
+
+  <div>
+<h2><br>Integration in Gradle</h2>
+<p>While both Maven and Ant rely on a xml file to specify the build process, Gradle uses a DSL based on Groovy. This allows Gradle to have the shortest build configuration file of the three Java build tools mentioned here. Also, keep in mind that Gradle isn’t only a Java build tool, but can be used to build projects such as C/C++ and Android, as well. This script, named build.gradle, is located in the project root. It will allow you to build the project from the Ant and Maven example.</p>
+<pre class="prettyprint">apply plugin: 'java'<br>apply plugin: 'application'<br><br>mainClassName = 'hello.HelloWorld'<br><br>jar {<br> baseName = 'sct-gradle-example'<br> version = '0.1.0'<br> manifest {<br> attributes 'Main-Class': 'hello.HelloWorld'<br> }<br>}<br><br>task generateStatechart(type:Exec) {<br> commandLine 'scc'<br>}<br><br>compileJava.dependsOn(generateStatechart)</pre>
+<p><br>Just like with Ant and Maven, the important part is the task specification (generateStatechart) and defining that compiling the Java depends on that task.</p>
+  </div>
+
+</body>
+</html>

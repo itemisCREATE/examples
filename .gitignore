@@ -1,2 +1,8 @@
 *~
-src-gen/
+*.o
+*/bin/*
+*/build*/
+*/classes*/
+*.settings*
+*/target/*
+*/.gradle/*

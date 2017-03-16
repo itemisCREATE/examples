@@ -1,14 +1,11 @@
 {
 	"id": "org.yakindu.sct.examples.lightswitch",
-	"title": "Light Switch Example Series",
+	"title": "Light Switch Example",
+	"author": "itemis AG",
+	"description": "This example demonstrates one of the most basic state machines that are actually doing something useful: a light switch that can be turned on and off, and repeatedly.",
+	"previewImage": "light_thumbs.jpg",
 	"category": [
 		"open source",
-		"basic",
-		"advanced",
-		"interface",
-		"composite state",
-		"operation",
-		"history state",
-		"java"
+		"basic"
 	]
 }

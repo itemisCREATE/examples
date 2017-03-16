@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>MSP430 Blinky LED for Community Edition</title>
+<title>MSP430 Blinky</title>
 <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="body-container">
+  <h1>MSP430 Blinky</h1>
 
-  <h1>MSP430 Blinky LED for Community Edition</h1>
+  <h2>Overview</h2>
 	<p>
 		<img class="standard-image", src="images/msp430.jpg" />
 	<p>
@@ -22,7 +23,7 @@
 		The whole tutorial is a step by step tutorial and should give guidance till you can upload the project.
 	</p>
 	
-  <h1> Installing the YAKINDU Statechart Tool as a Plugin to Texas Instruments Code Composer Studio </h1>
+  <h2> Installing the YAKINDU Statechart Tool as a Plugin to Texas Instruments Code Composer Studio </h2>
 	<p>
 		Firstly you need to install TIs Code Composer Studio, which you can find here: 
 	<p>
@@ -46,15 +47,17 @@
 		After this, you need to get a the download site of YAKINDU Statechart Tool. 
 		Go to <a href=https://info.itemis.com/download-yakindu-statechart-tools> our download site </a> and complete a free regestration. 
 		Then you will get different installation options. 
-		Choose the black button with install from <i>update site</i>. 
+	<p>
+		Click on <i>Community Edition</i> on the bottom right of the site. Afterwards, choose the newest release and then
+		click on the black button with install from <i>update site</i>. 
 	<p>
 		<img class="standard-image" src="images/DownloadOptions.png" />
 	<p>
 		Once again, go over the tab and install a new software. 
 		There you add the url, which you copied from our site. 
-		Choose at least the <i>YAKINDU Statechart Tools Professional Edition</i>. 
-		You will get a trial version, which last for 30 days. 
-		Don’t hesitate, our aren’t buying anything. If the time expired, you can still use all free Community Edition features.
+		Choose <i>YAKINDU BASE</i> and <i>YAKINDU SCT</i>. 
+		You also can download a Professional Edition, which includes a trial version for 30 days. 
+		You can still use all Community Edition features after the trial version has expired.
 	<p>
 		<img class="standard-image" src="images/installSCT.png" />
 	<p>
@@ -65,7 +68,7 @@
 		Afterwards, the installation is finished.
 	<p>
 	
-  <h1> Working with YAKINDU Statecharts Tool in CCS </h1>
+  <h2> Working with YAKINDU Statecharts Tool in CCS </h2>
   	<p>
 		To use state machines proceed as normal and create a new CCS Project. 
 		Open the <i>File</i> tab, open <i>New</i>, click on <i>Other</i> and search for <i>Code Composer Studio</i>. 
@@ -74,10 +77,9 @@
 		I’ve used the MSP430G2553.
 	<p>
 	Now you can start working with state machines! 
-	At this point it depends on you, which Edition you want to use - the Professional or Community Edition.
 	<p>
 	
-  <h1> Working with YAKINDU Statecharts Tool Community Edition </h1>
+  <h2> Working with YAKINDU Statecharts Tool Community Edition </h2>
   	<p>
 		Right click the project, open New and choose a <i>Statechart Model</i>. 
 		A Wizard will be opened in which you can select your project and name your project. 
@@ -104,7 +106,7 @@
 	<p>
 		<i>operation redOff() </i>
 	<p>
-		<img class="standard-image" src="images/Operations.png" />
+		<img class="small-image" src="images/Operations.png" />
 	<p>
 		Within this operations the commands, which were used to control the MSP430 were called, like they are called in the Professional Edition. 
 		They will be defined later on.
@@ -113,7 +115,7 @@
 		<img class="standard-image" src="images/StateMachineCommunity.png" />
 	<p>
 	
-  <h1> Generate the C-Code </h1>
+  <h2> Generate the C-Code </h2>
 	<p> 
 		Now it is time to generate the C-Code. Therefore, a generator must be added. 
 		Right click the project once again and open <i>New</i> and click on <i>Code Generator Model</i>. 
@@ -137,10 +139,10 @@
 	<p>
 		Your project folder now should look like this:
 	<p>
-		<img class="standard-image" src="images/projectView.png" />
+		<img class="small-image" src="images/projectView.png" />
 	<p>
 	
-  <h1> Change Compiler to C99 </h1>
+  <h2> Change Compiler to C99 </h2>
 	<p>
 		Now you need to set the compiler. Therefore, right click your Project and open the <i>Properties view</i>. 
 		Then go to <i>Build -> Advanced Options -> Language Options</i> and choose <i>Compile program in ANSI C99 mode. (--c99)</i> as the <i>C Dialect</i>.
@@ -148,7 +150,7 @@
 		<img class="standard-image" src="images/c99.png" />
 	<p>
 	
-  <h1> Calling the State Machine in your main.c </h1>
+  <h2> Calling the State Machine in your main.c </h2>
 	<p>
 		Finally the state machine can be called in your main function. 
 		Firstly you have to include the state machine and the timer service. 
@@ -163,13 +165,13 @@
 		The <i>main.c</i> file is added to the example.
 	<p>
 	
-  <h1> That’s it - Now you can build and upload it to your MSP430! </h1>
+  <h2> That’s it - Now you can build and upload it to your MSP430! </h2>
 	<p>
 		Feel free to implement your own projects. Of course you can freely choose your microcontroller or launchpad of TI. 
 		You can also try to rebuild old projects and implement them with YAKINDU Statecharts Tool!
 	<p>
 	
-  <h1> System and Version Information </h1>
+  <h2> System and Version Information </h2>
 	<p>
 		System: Windows 10
 	<p>

@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c {
 	statechart blinkyStateMachine {
 
 		feature Outlet {
-			targetProject = "msp430_sctpro_blink"
+			targetProject = "msp430_blinky_pro"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
 		}

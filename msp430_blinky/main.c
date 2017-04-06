@@ -48,7 +48,7 @@ void main(void) {
 
     // Init timer and state machine
     sc_timer_service_init(&timer_service, timers, MAX_TIMERS,
-                (sc_raise_time_event_fp) & blinkyStateMachine_raiseTimeEvent);
+                (sc_raise_time_event_fp) &blinkyStateMachine_raiseTimeEvent);
     blinkyStateMachine_init(&blinky);
     blinkyStateMachine_enter(&blinky);
 

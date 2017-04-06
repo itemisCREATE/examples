@@ -2,33 +2,34 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>MSP430 Blinky LED for Community Edition</title>
+<title>MSP430 Blinky</title>
 <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="body-container">
+  <h1>MSP430 Blinky</h1>
 
-  <h1>MSP430 Blinky LED for Community Edition</h1>
+  <h2>Overview</h2>
 	<p>
 		<img class="standard-image", src="images/msp430.jpg" />
 	<p>
-		This tutorial is mainly contain three parts:
+		This tutorial contains three parts:
 	<p>
-		1. Installing the YAKINDU Statechart Tool as a Plugin to Texas Instruments Code Composer Studio
+		1. Installing the YAKINDU Statechart Tool as a Plugin into Texas Instruments Code Composer Studio
 	<p>
 		2. Adding state machines to the project
 	<p>
 		3. Creating the Blinky example with the Community Edition
 	<p>
-		The whole tutorial is a step by step tutorial and should give guidance till you can upload the project.
+		The whole tutorial gives you step-by-step instructions to enable you to upload the project.
 	</p>
 	
-  <h1> Installing the YAKINDU Statechart Tool as a Plugin to Texas Instruments Code Composer Studio </h1>
+  <h2> Installing the YAKINDU Statechart Tool as a Plugin into Texas Instruments Code Composer Studio </h2>
 	<p>
-		Firstly you need to install TIs Code Composer Studio, which you can find here: 
+		First, you need to install TIs Code Composer Studio, which you can find here: 
 	<p>
 		<a href=http://www.ti.com/tool/CCSTUDIO> Click for download </a>
 	<p>
-		Ensure you have at least chosen the MSP430 ultra-low power MCUs.
+		Ensure you have at least chosen the MSP430 ultra-low power MCUs. <!-- What does this mean? -->
 	<p>
 		Open your CCS after installation. You can choose a test example of TI to ensure that you are connected to the launchpad and that you can compile and upload Code. 
 		After this little test, you can install the plugin. Therefore, open the <i>Help</i> tab and click on <i>Install New Software...</i>
@@ -37,110 +38,102 @@
 	<p>
 		There you can install Yakindu. You need two update sites for this. 
 	<p>
-		Firstly, the Eclipse Neon, which is used by TI, needs an update site for adding some Xtext plugins. 
-		You don’t need to install anything. Yakindu just needs some parts of Xtext and must know the download site. 
-		Click on Add and add  <a href=http://download.eclipse.org/releases/neon/> Eclipse Neon </a> to your repository.
+		First you need to add the update site of Eclipse Neon to allow Yakindu Statechart Tools to find Xtext plugins.  
+		Click on Add and paste <a href=http://download.eclipse.org/releases/neon/> to add Eclipse Neon </a> to your repository.
+		You do not need to install anything, the update site just needs to be set.
 	<p>
 		<img class="standard-image" src="images/AddNeon.png" />		
 	<p>
-		After this, you need to get a the download site of YAKINDU Statechart Tool. 
-		Go to <a href=https://info.itemis.com/download-yakindu-statechart-tools> our download site </a> and complete a free regestration. 
-		Then you will get different installation options. 
-		Choose the black button with install from <i>update site</i>. 
+		After this, you need to get the download site of YAKINDU Statechart Tools. 
+		Go to <a href=https://info.itemis.com/download-yakindu-statechart-tools> our download site </a> and complete the free registration, in case you have not done this already. 
+		Then you will get a number of different installation options. 
+	<p>
+		Click on <i>Community Edition</i> on the bottom right of the site. Afterwards, choose the newest release and then
+		click on the black button with <i>Install from update site</i>. 
 	<p>
 		<img class="standard-image" src="images/DownloadOptions.png" />
 	<p>
-		Once again, go over the tab and install a new software. 
-		There you add the url, which you copied from our site. 
-		Choose at least the <i>YAKINDU Statechart Tools Professional Edition</i>. 
-		You will get a trial version, which last for 30 days. 
-		Don’t hesitate, our aren’t buying anything. If the time expired, you can still use all free Community Edition features.
+		Once again, go over to <i>install new software</i>. 
+		There you add the URL you copied from our site. 
+		Choose <i>YAKINDU BASE</i> and <i>YAKINDU SCT</i>. 
+		You also can download a Professional Edition, which includes a trial version for 30 days. 
+		You can still use the Community Edition features after the trial version has expired.
 	<p>
 		<img class="standard-image" src="images/installSCT.png" />
 	<p>
 		Start the installation by clicking on <i>Next</i> and follow the instructions. 
-		The installation wizard asks, if you really want to install the software. 
-		Click on <i>Ok</i>. 
-		After a successful installation CCS needs to be restartet. 
-		Afterwards, the installation is finished.
+		After a successful installation CCS needs to be restarted. 
+		Afterwards the installation is finished.
 	<p>
 	
-  <h1> Working with YAKINDU Statecharts Tool in CCS </h1>
+  <h2> Working with YAKINDU Statecharts Tool in CCS </h2>
   	<p>
 		To use state machines proceed as normal and create a new CCS Project. 
 		Open the <i>File</i> tab, open <i>New</i>, click on <i>Other</i> and search for <i>Code Composer Studio</i>. 
 		There you can choose a <i>CCS Project</i>. 
 		Define a project name, choose your microcontroller and create a empty project, which contains an empty main.c file. 
-		I’ve used the MSP430G2553.
+		I used the <code>MSP430G2553</code>.
 	<p>
 	Now you can start working with state machines! 
-	At this point it depends on you, which Edition you want to use - the Professional or Community Edition.
 	<p>
 	
-  <h1> Working with YAKINDU Statecharts Tool Community Edition </h1>
+  <h2> Working with YAKINDU Statecharts Tool Community Edition </h2>
   	<p>
 		Right click the project, open New and choose a <i>Statechart Model</i>. 
-		A Wizard will be opened in which you can select your project and name your project. 
+		A Wizard will be opened in which you can select your project and name your statechart. 
 		For example, call it “<i>blinkyStateMachine.sct</i>”.
 	<p>
 		<img class="standard-image" src="images/addStatechart.png" />
 	<p>
-		In the project folder the Statechart Model will appear, after clicking on <i>Finish</i>. 
-		Click on <i>Yes</i>, if you were asked to change the perspective. 
+		The Statechart model will appear in the project folder after clicking on <i>Finish</i>. 
+		Click on <i>Yes</i> if you are asked to change the perspective. 
 	<p>
-		Afterwards add the three states, name them and add the transitions, like shown on the following picutre.
+		Afterwards add the three states, name them and add the transitions, like shown on the following picture.
 		<img class="standard-image" src="images/StatechartTrans.png" />
 	<p>
-		In the Community Edition you cannot include header files, but it is possible to create operations, in which the msp430g2553 specific C-Code can be called. 
+		In the Community Edition you cannot include header files, but it is possible to create operations, in which the MSP430 specific C-Code can be called. 
 		Open the textual notifications and add three internal operations:
 	<p>
 		You can copy them here:
 	<p> 
-		<i>internal: </i>
+		<code>internal:</br> operation init()</br> operation redOn()</br> operation redOff()</code>
 	<p>
-		<i>operation init() </i>
+		<img class="small-image" src="images/Operations.png" />
 	<p>
-		<i>operation redOn() </i>
+		Within these operations we can call the specific C code to interact with the hardware.
 	<p>
-		<i>operation redOff() </i>
-	<p>
-		<img class="standard-image" src="images/Operations.png" />
-	<p>
-		Within this operations the commands, which were used to control the MSP430 were called, like they are called in the Professional Edition. 
-		They will be defined later on.
-		The last step in the generation of the state machine is to call the operations. 
+		The last step in the design of the statechart is to add the operations you just defined.
 	<p>
 		<img class="standard-image" src="images/StateMachineCommunity.png" />
 	<p>
 	
-  <h1> Generate the C-Code </h1>
+  <h2> Generate the C-Code </h2>
 	<p> 
-		Now it is time to generate the C-Code. Therefore, a generator must be added. 
+		Now it is time to generate the C-Code. Therefore, a generator model (.sgen) must be added. 
 		Right click the project once again and open <i>New</i> and click on <i>Code Generator Model</i>. 
-		Choose a name for the sgen file. It’s a good choice to stay with the state machine name. 
+		Choose a name for the sgen file. It is good practice to stay with the state machine name. 
 		Call it "<i>blinkyStateMachine.sgen</i>" for example and click on Next. Choose the desired state machine by clicking on the checkbox. 
 		Ensure that you have chosen the <i>YAKINDU SCT C Code Generator</i> and click on <i>Finish</i>.
 	<p>
 		<img class="standard-image" src="images/sgen.png" />
 	<p>
-		Build the project. The foldes src and src-gen should appear in your project.
-		They include the generated C-Code, which will be automatically get updated, by editing and saving the Statechart. 
+		Build the project. The folders src and src-gen should appear in your project.
+		They include the generated C-Code, which will be automatically be updated when you edit and save the statechart. 
 	<p>
-		Because of the time dependent events two files must be added:
+		Because this statechart uses time based events, a timer service needs to be implemented. To prepare this, you need these two files:
 	<p>
 		<i>sc_timer_service.c </i>
 	<p>
 		<i>sc_timer_service.h </i>
 	<p>
-		You can get them from Github. Just click on this <a href=https://github.com/Yakindu/examples/tree/master/basic_finite_state_machine_for_arduino/scutil> link </a>. 
-		They were already added to the project.
+		You can get them from <a href=https://github.com/Yakindu/examples/tree/master/basic_finite_state_machine_for_arduino/scutil>GitHub</a>, but they are already included in this example.
 	<p>
 		Your project folder now should look like this:
 	<p>
-		<img class="standard-image" src="images/projectView.png" />
+		<img class="small-image" src="images/projectView.png" />
 	<p>
 	
-  <h1> Change Compiler to C99 </h1>
+  <h2> Change Compiler to C99 </h2>
 	<p>
 		Now you need to set the compiler. Therefore, right click your Project and open the <i>Properties view</i>. 
 		Then go to <i>Build -> Advanced Options -> Language Options</i> and choose <i>Compile program in ANSI C99 mode. (--c99)</i> as the <i>C Dialect</i>.
@@ -148,28 +141,28 @@
 		<img class="standard-image" src="images/c99.png" />
 	<p>
 	
-  <h1> Calling the State Machine in your main.c </h1>
+  <h2> Calling the State Machine from your code</h2>
 	<p>
-		Finally the state machine can be called in your main function. 
-		Firstly you have to include the state machine and the timer service. 
-		Then the state machine and timers must be defined. Afterwards the required functions must be declared. 
+		Finally the state machine can be used in your main function. 
+		First you have to include the state machine and the timer service. 
+		Then the state machine, the timer service and the required functions for the timer service must be declared and defined.
 		The main function contains two parts. The initialization and enter function of the state machine and the initialization of the timer. 
 		The second part is an endless loop - the while(1) loop. 
-		Within this loop the run cycle function of the state machine gets executed. 
+		Within this loop the run cycle function of the state machine is called. 
 		Afterwards the MSP430 will be set into the Low Power Mode 0 and the General Interrupt Enable bit gets set. 
 		Now the microcontroller is sleeping and waits for an interrupt. After the interrupt of the WDT, the timer will proceed. 
 		This means that every timer gets updated and the elapsed time gets incremented by 32 - the time in milliseconds, which is proceed after every interrupt of the WDT. 
 	<p>
-		The <i>main.c</i> file is added to the example.
+		The <i>main.c</i> file is included in the example.
 	<p>
 	
-  <h1> That’s it - Now you can build and upload it to your MSP430! </h1>
+  <h2> That’s it - Now you can build and upload the program to your MSP430! </h2>
 	<p>
-		Feel free to implement your own projects. Of course you can freely choose your microcontroller or launchpad of TI. 
-		You can also try to rebuild old projects and implement them with YAKINDU Statecharts Tool!
+		Hopefully this tutorial helped you to successfully create a project for your MSP430. Now it's time to implement your own ideas!
 	<p>
 	
-  <h1> System and Version Information </h1>
+  <h2> System and Version Information </h2>
+	<p> The following tools were used in the creation of this tutorial:
 	<p>
 		System: Windows 10
 	<p>
@@ -177,7 +170,7 @@
 	<p>
 		Code Composer Version: 7.0.0.00043
 	<p>
-		<i>Note: The MSP430G2 Launchpad is not supported by any Version of Linux.</i>
+		<i>Note: The MSP430G2 Launchpad does not support Linux.</i>
 
 </body>
 </html>

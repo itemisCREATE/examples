@@ -1,8 +1,8 @@
 {
 	"id": "com.yakindu.sct.examples.msp430.blinky.professional",
 	"title": "[Pro] MSP430 Blinky LED",
-	"description": "Blinking LED on MSP430G2553 by using TIs Code Composer Studio and Yakindu Statechart Tools as a plugin",
-	"previewImage": "preview-image-ideally-442px-wide-295px-heigh.jpg",
+	"description": "Blinking LED on MSP430G2553 by using TIs Code Composer Studio and YAKINDU Statechart Tools as a plugin",
+	"previewImage": "msp430_thumb.jpg",
     "author": "itemis AG",
 	"category": [
 		"professional"

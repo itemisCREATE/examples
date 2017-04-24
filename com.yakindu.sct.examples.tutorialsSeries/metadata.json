@@ -1,0 +1,10 @@
+{
+	"id": "com.yakindu.sct.examples.tutorialsSeries",
+	"title": "Beginner tutorial to introduce YAKINDU Statechart Tools",
+	"author": "itemis AG",
+	"description": "This is a very basic tutorial for new eclipse and modeling users to get started with the basic principles of YAKINDU Statechart Tools",
+	"previewImage": ".jpg",
+	"category": [
+		"beginner", "eclipse","usability"
+	]
+}

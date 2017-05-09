@@ -3,7 +3,6 @@
 	<name>org.yakindu.examples.raspberry.helloworld</name>
 	<comment></comment>
 	<projects>
-		<project>coffee_machine_pro</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -1,0 +1,12 @@
+GeneratorModel for sctunit::java {
+	test LightSwitchTest{
+		feature Naming {
+			basePackage =  "org.yakindu.sct" 
+		}
+		feature Outlet {
+			targetProject =  "light_switch_sctunit" 
+			targetFolder =  "src-gen" 
+		}
+		
+	}
+}

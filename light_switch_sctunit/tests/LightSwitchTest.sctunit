@@ -1,0 +1,29 @@
+
+testclass LightSwitchTest for statechart Light_Switch{
+	@Test
+	operation initialStateIsOff(){ 
+		enter
+		assert active(Light_Switch.main_region.Off) 
+	}
+	
+	@Test
+	operation onAfterRaisingCirculate(){
+		enter
+		raiseOperate
+		assert active(Light_Switch.main_region.On)
+	}
+	
+	@Test
+	operation offAfterRaisingOperateSecondTime(){
+		enter
+		raiseOperate
+		raiseOperate
+		assert active (Light_Switch.main_region.Off)
+	}
+	
+	operation raiseOperate() : void{
+		raise operate
+		proceed 1 cycle
+	}
+}
+	

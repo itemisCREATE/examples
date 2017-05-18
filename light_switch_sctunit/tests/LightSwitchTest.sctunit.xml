@@ -1,0 +1,8 @@
+<testsuite name="LightSwitchTest" time="">
+  <testcase name="initialStateIsOff" classname="" time="">
+  </testcase>
+  <testcase name="onAfterRaisingCirculate" classname="" time="">
+  </testcase>
+  <testcase name="offAfterRaisingOperateSecondTime" classname="" time="">
+  </testcase>
+</testsuite>

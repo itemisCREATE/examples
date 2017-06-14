@@ -1,0 +1,10 @@
+GeneratorModel for yakindu::c {
+	statechart testedStatechart {
+		feature Outlet {
+			targetProject =  "com.yakindu.sct.examples.sctunit.basic" 
+			targetFolder =  "src-gen" 
+			libraryTargetFolder =  "src" 
+			apiTargetFolder = ""
+		}
+	}
+}

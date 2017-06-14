@@ -1,0 +1,29 @@
+testclass tests for statechart testedStatechart {
+	@Test
+	operation test_good () {
+		enter
+		assert active (testedStatechart.main_region.Idle)
+		raise start
+		proceed 1 cycle
+		assert active (testedStatechart.main_region.Process)
+		mock getQuality () returns (0.99)
+		assert good == 1
+		assert bad == 0
+		assert active (testedStatechart.main_region.Idle)
+		exit
+	}
+
+	@Test
+	operation test_bad () {
+		enter
+		assert active (testedStatechart.main_region.Idle)
+		raise start
+		proceed 1 cycle
+		assert active (testedStatechart.main_region.Process)
+		mock getQuality () returns (0.8)
+		assert bad == 1
+		assert good == 0
+		assert active (testedStatechart.main_region.Idle)
+		exit
+	}
+}

@@ -1,0 +1,11 @@
+GeneratorModel for sctunit::c {
+	test tests {
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.sctunit.basic"
+			targetFolder = "src-gen"
+		}
+		feature JUnitWrapper {
+			WrapToJUnit="true"
+		}
+	}
+}

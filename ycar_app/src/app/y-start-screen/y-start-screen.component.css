@@ -1,0 +1,10 @@
+p {
+    font-size: x-large;
+    color: #7de87e;
+}
+
+.logo {
+  background-image: url("/src/assets/imgs/logo.png");
+    width: 950px;
+    height: 341px;
+}

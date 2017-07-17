@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Traffic Light (Java)</title>
+<link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+
+  <h1>Traffic Light (Java)</h1>
+
+  <p>This example demonstrates how a SCTUnit Test File could look like and how you can execute them to verify that a statechart model works correctly.
+  </p>
+
+  <p>
+    <img class="standard-image" alt="The statechart"
+      src="images/TrafficLightCtrl.png" />
+  </p>
+
+  <p>
+  This project builds up on the Traffic Light example for Java. The SCTUnit File in the folder 'tests' tests the function and logic of the statechart.
+  To run the Test, right click on the File and Select 'Run As -> SCT Unit'. The JUnit view will open and you will see the results.
+  In the package 'traffic.light.tests' in the folder 'src-gen' is also a JUnit Test which was generated from the SCTUnit File.
+  </p>
+
+  <p>To sum up the statechart model: There are two traffic lights: one for the traffic on the street, and
+    one for pedestrians who want to cross the street. They can push a button to
+    request their traffic light to turn green, which activates a blinking
+    wait-light first. The street's traffic light then goes through the standard
+    procedure, turning on the yellow light, followed by the red light, allowing
+    the pedestrians to cross safely. After some time, the pedestrians' traffic
+    light turns red again, and the cars are allowed to pass until the next
+    request is made by a pedestrian.</p>
+
+  <p>Additionally, the traffic light can be switched off completely. This
+    turns the yellow lights into a blinking mode, signaling that the traffic
+    light is indeed switched off and that the street should be crossed in a
+    careful manner.</p>
+
+Please be aware of the following issues:
+
+<ol>
+<li>The example requires a JAVA 8 JDK.</li> 
+<li>When you installed the example, Eclipse may show errors on the project. This 
+is likely due to a missing configuration of the JDK. In this case select 'Properties'
+from the project's context menu and set the correct JDK in 'Java Build Path'. You 
+will find further help in the 'Java development user guide' section of the Eclipse help.</li>
+<li> For the generated Java Tests you will need JUnit 4 (simply configure in 'Java Build Path' and add the JUnit library to the build path) and <a href="https://mvnrepository.com/artifact/org.mockito/mockito-core/2.0.2-beta">Mockito 2.0.2</a>
+</ol>
+</body>
+</html>

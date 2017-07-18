@@ -1,0 +1,33 @@
+
+p {
+    font-size: x-large;
+    color: yellow;
+}
+
+.logo {
+    background: url("/assets/backgrounds/yakindu.png");
+    background-size: auto;
+    width: 950px;
+    height: 341px;
+    display: flex;
+    flex-direction: column-reverse;
+
+}
+
+.button {
+    /* BG: */
+    background-image: linear-gradient(-180deg, #B4ED50 0%, #429321 100%);
+    border-radius: 5px;
+    /* 10:30: */
+    font-family: Monaco;
+    font-size: 24px;
+    color: #F1F1F1;
+
+    align-self: center;
+    margin-bottom: 38px;
+
+    width: 161px;
+    text-align: center;
+
+    cursor: pointer;
+}

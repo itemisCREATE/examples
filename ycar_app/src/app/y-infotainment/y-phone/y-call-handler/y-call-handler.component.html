@@ -1,0 +1,67 @@
+<div class="call_handler_background" [@flyInOut]="'active'">
+
+  <!-- INCOMING CALL -->
+  <div class="call_handler_container" *ngIf="phoneService.phoneState === phoneState.INCOMING_CALL">
+
+    <div class="call_handler_content">
+      <h2>Incoming Call</h2>
+      <h3>{{phoneService.contact.firstName}} {{phoneService.contact.lastName}}
+        ({{phoneService.contact.phoneNumber}})</h3>
+    </div>
+
+    <div class="call_handler_content_bottom" style="margin-top: auto">
+      <div class="call_handler_button_group">
+
+        <p class="call_handler_button_group_item"
+           *ngFor="let button of phoneService.buttons.incomingCall_buttons; let selectedButton = index;">
+          <y-call-handler-button [caption]="button.caption" [active]="button.active"></y-call-handler-button>
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTGOING CALL -->
+  <div class="call_handler_container" *ngIf="phoneService.phoneState === phoneState.OUTGOING_CALL">
+
+    <div class="call_handler_content">
+      <h2>Outgoing Call</h2>
+      <h3>{{phoneService.contact.firstName}} {{phoneService.contact.lastName}}
+        ({{phoneService.contact.phoneNumber}})</h3>
+    </div>
+
+    <div class="call_handler_content_bottom" style="margin-top: auto">
+      <div class="call_handler_button_group">
+
+        <p class="call_handler_button_group_item"
+           *ngFor="let button of phoneService.buttons.outgoingCall_buttons; let selectedButton = index;">
+          <y-call-handler-button [caption]="button.caption" [active]="button.active"></y-call-handler-button>
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- HANG UP -->
+  <div class="call_handler_container" *ngIf="phoneService.phoneState === phoneState.HANG_UP">
+
+
+    <div class="call_handler_content">
+      <h2>Hang UP</h2>
+      <h3>{{phoneService.contact.firstName}} {{phoneService.contact.lastName}}
+        ({{phoneService.contact.phoneNumber}})</h3>
+    </div>
+
+    <div class="call_handler_content_bottom" style="margin-top: auto">
+      <div class="call_handler_button_group" style="justify-content: center">
+        <p class="call_handler_button_group_item">
+          <y-call-handler-button [caption]="'Hang Up'" [active]="true"></y-call-handler-button>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

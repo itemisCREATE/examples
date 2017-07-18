@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+@font-face {
+  font-family: 'Roboto';
+ /* src: url("https://fonts.googleapis.com/css?family=Roboto:400,700,700i,900,900i");*/
+  src: url("./assets/fonts/Roboto/Roboto-Thin.ttf");
+}
+
+body {
+	background-color: black;
+
+	color: white;
+
+/*  height: 100%; */
+  overflow: hidden;
+
+  font-family: 'Roboto';
+
+/*  margin: 0 auto; */
+
+}
+

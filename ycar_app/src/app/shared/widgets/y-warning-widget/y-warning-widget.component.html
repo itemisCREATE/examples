@@ -1,0 +1,15 @@
+<div class="warning_container" [@flyInOut]="animationState">
+
+  <div class="title_container">
+    <h2 >{{(warningService.warning$ | async).title}}</h2>
+  </div>
+
+  <div class="message_container">
+    <span>{{(warningService.warning$ | async).message}}</span>
+
+  </div>
+
+
+
+
+</div>

@@ -1,0 +1,10 @@
+.playlist_container {
+
+ /* top: 80px;*/
+  display: flex;
+
+  flex-direction: column;
+  width: 100%;
+}
+
+

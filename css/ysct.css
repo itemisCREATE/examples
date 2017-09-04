@@ -91,3 +91,8 @@ span.pro-feature:before {
 .eclipsehelp .edit-on-github {
     display: none
 }
+
+/* Highlight Search Results */
+.highlight {
+    background: yellow;
+}

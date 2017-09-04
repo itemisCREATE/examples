@@ -1,12 +1,17 @@
 testclass tests for statechart testedStatechart {
+	
 	@Test
 	operation test_good () {
+		mock getQuality () returns (0.99)
+
 		enter
 		assert active (testedStatechart.main_region.Idle)
 		raise start
 		proceed 1 cycle
 		assert active (testedStatechart.main_region.Process)
-		mock getQuality () returns (0.99)
+		proceed 10 s
+		assert active (testedStatechart.main_region.Done)
+		proceed 1 cycle
 		assert good == 1
 		assert bad == 0
 		assert active (testedStatechart.main_region.Idle)
@@ -15,12 +20,16 @@ testclass tests for statechart testedStatechart {
 
 	@Test
 	operation test_bad () {
+		mock getQuality () returns (0.8)
+
 		enter
 		assert active (testedStatechart.main_region.Idle)
 		raise start
 		proceed 1 cycle
 		assert active (testedStatechart.main_region.Process)
-		mock getQuality () returns (0.8)
+		proceed 10 s
+		assert active (testedStatechart.main_region.Done)
+		proceed 1 cycle
 		assert bad == 1
 		assert good == 0
 		assert active (testedStatechart.main_region.Idle)

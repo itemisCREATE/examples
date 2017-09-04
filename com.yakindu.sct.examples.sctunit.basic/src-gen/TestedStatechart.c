@@ -1,9 +1,9 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include "../src/sc_types.h"
-#include "../TestedStatechart.h"
-#include "../TestedStatechartRequired.h"
+#include "sc_types.h"
+#include "TestedStatechart.h"
+#include "TestedStatechartRequired.h"
 /*! \file Implementation of the state machine 'testedStatechart'
 */
 
@@ -40,24 +40,23 @@ static void testedStatechart_clearOutEvents(TestedStatechart* handle);
 
 void testedStatechart_init(TestedStatechart* handle)
 {
-	sc_integer i;
-
-	for (i = 0; i < TESTEDSTATECHART_MAX_ORTHOGONAL_STATES; ++i)
-	{
-		handle->stateConfVector[i] = TestedStatechart_last_state;
-	}
+		sc_integer i;
 	
+		for (i = 0; i < TESTEDSTATECHART_MAX_ORTHOGONAL_STATES; ++i)
+		{
+			handle->stateConfVector[i] = TestedStatechart_last_state;
+		}
+		
+		
+		handle->stateConfVectorPosition = 0;
 	
-	handle->stateConfVectorPosition = 0;
-
-	testedStatechart_clearInEvents(handle);
-	testedStatechart_clearOutEvents(handle);
-
-	/* Default init sequence for statechart testedStatechart */
-	handle->iface.quality = 0.0;
-	handle->iface.good = 0;
-	handle->iface.bad = 0;
-
+		testedStatechart_clearInEvents(handle);
+		testedStatechart_clearOutEvents(handle);
+	
+		/* Default init sequence for statechart testedStatechart */
+		handle->iface.quality = 0.0;
+		handle->iface.good = 0;
+		handle->iface.bad = 0;
 }
 
 void testedStatechart_enter(TestedStatechart* handle)
@@ -109,7 +108,6 @@ void testedStatechart_runCycle(TestedStatechart* handle)
 {
 	
 	testedStatechart_clearOutEvents(handle);
-	
 	for (handle->stateConfVectorPosition = 0;
 		handle->stateConfVectorPosition < TESTEDSTATECHART_MAX_ORTHOGONAL_STATES;
 		handle->stateConfVectorPosition++)
@@ -117,17 +115,17 @@ void testedStatechart_runCycle(TestedStatechart* handle)
 			
 		switch (handle->stateConfVector[handle->stateConfVectorPosition])
 		{
-		case TestedStatechart_main_region_Idle :
+		case TestedStatechart_main_region_Idle:
 		{
 			testedStatechart_react_main_region_Idle(handle);
 			break;
 		}
-		case TestedStatechart_main_region_Process :
+		case TestedStatechart_main_region_Process:
 		{
 			testedStatechart_react_main_region_Process(handle);
 			break;
 		}
-		case TestedStatechart_main_region_Done :
+		case TestedStatechart_main_region_Done:
 		{
 			testedStatechart_react_main_region_Done(handle);
 			break;

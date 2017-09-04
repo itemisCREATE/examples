@@ -1,0 +1,13 @@
+{
+	"id": "org.yakindu.sct.examples.elevator",
+	"title": "Testing Elevator Model with SCTUnit",
+	"description": "This video tutorial is presented by Prof. Tom Mens (Software Engineering Lab, University of Mons). It provides a hands-on demonstration, on the basis of a simulation of an elevator statechart, of how to write and run unit tests for statecharts with Yakindu Statechart Tools 3.0",
+	"previewImage": "elevator.jpg",
+    "author": "Prof. Tom Mens",
+    "organization": "Software Engineering Lab, University of Mons",
+    "license": "",
+	"category": [
+		"open source",
+		"sct unit"
+	]
+}

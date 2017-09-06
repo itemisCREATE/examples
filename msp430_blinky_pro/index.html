@@ -70,7 +70,7 @@
       you copied from our site. Choose at least the <i>YAKINDU Statechart
         Tools Professional Edition</i>. You will get a trial version, which lasts
       for 30 days. Don’t hesitate, our aren’t buying anything. If the time
-      expired, you can still use all free Community Edition features.
+      expired, you can still use all free Standard Edition features.
     </p>
     <p>
       <img class="standard-image" src="images/installSCT.png" />
@@ -228,7 +228,28 @@
     <p>
       <i>Note: The MSP430G2 Launchpad does not support Linux.</i>
     </p>
-
+	
+	<h2>Support for Code Composer Studio Version 6</h2>
+	<p> Code Composer Studio V6 is based Eclipse Mars (4.5.) and Java 7.
+	  Installing and running YAKINDU Statechart Tools within CCSV6 requires two steps:</p>
+	<p> 1st: Use the Mars update site instead of the Neon update site, which you <a
+      href="http://download.eclipse.org/releases/mars/">can find here</a>. As I mentioned 
+      before, you do not need to install anything of the Mars update site. Just add the update site. 
+      After this you are able to install YAKINDU Statechart Tools within CCS V6 as described before. 
+      You need to get the download site of YAKINDU Statechart Tools. 
+      Go to <a href=https://info.itemis.com/download-yakindu-statechart-tools>
+      our download site </a> and complete the free registration, in case you have
+      not done this already. Then you will get a number of different
+      installation options. Choose the black button with <i>install from
+      update site</i>.</p>
+    <p> 2nd: YAKINDU Statechart Tools has been added, but it won't be executed, 
+      because Java 8 is missing. Therefore, if you don't already have, install a 32 bit version of Java 8. 
+      Afterwards, right click your CCS V6 shortcut and add the path of the 32 bit Java 8.
+      For my machine it looks like this:</p>
+    <p>
+      	<i>C:\ti2\ccsv6\eclipse\ccstudio.exe <b>-vm "C:\Program Files (x86)\Java\jre1.8.0_141\bin"</b></i>	
+    </p>
+    <p>  <img class="standard-image" src="images/ShortcutPath.PNG" /> </p>
   </div>
 </body>
 </html>

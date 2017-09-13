@@ -17,7 +17,7 @@
     <p>1. Installing the YAKINDU Statechart Tool as a Plugin into Texas
       Instruments Code Composer Studio
     <p>2. Adding state machines to the project
-    <p>3. Creating the Blinky example with the Community Edition
+    <p>3. Creating the Blinky example with the Standard Edition
     <p>The whole tutorial gives you step-by-step instructions to enable you
       to upload the project.</p>
 
@@ -54,16 +54,14 @@
       not done this already. Then you will get a number of different
       installation options.
     <p>
-      Click on <i>Community Edition</i> on the bottom right of the site.
-      Afterwards, choose the newest release and then click on the black button
-      with <i>Install from update site</i>.
+      Choose the black button with <i>install from update site</i>
     <p>
       <img class="standard-image" src="images/DownloadOptions.png" />
     <p>
       Once again, go over to <i>install new software</i>. There you add the URL
-      you copied from our site. Choose <i>YAKINDU BASE</i> and <i>YAKINDU
-        SCT</i>. You also can download a Professional Edition, which includes a
-      trial version for 30 days. You can still use the Community Edition
+      you copied from our site. Choose <i>YAKINDU Statechart Tools Standard Edition</i>. You also can install
+      a Professional Edition, which includes a
+      trial version for 30 days. You can still use the Standard Edition
       features after the trial version has expired.
     <p>
       <img class="standard-image" src="images/installSCT.png" />
@@ -83,7 +81,7 @@
       .
     <p>Now you can start working with state machines!
     <p>
-    <h2>Working with YAKINDU Statecharts Tool Community Edition</h2>
+    <h2>Working with YAKINDU Statecharts Tool Standard Edition</h2>
     <p>
       Right click the project, open New and choose a <i>Statechart Model</i>. A
       Wizard will be opened in which you can select your project and name your
@@ -97,7 +95,7 @@
       Afterwards add the three states, name them and add the transitions, like
       shown on the following picture. <img class="standard-image"
         src="images/StatechartTrans.png" />
-    <p>In the Community Edition you cannot include header files, but it is
+    <p>In the Standard Edition you cannot include header files, but it is
       possible to create operations, in which the MSP430 specific C-Code can be
       called. Open the textual notifications and add three internal operations:
 
@@ -182,6 +180,27 @@
     <p>Code Composer Version: 7.0.0.00043
     <p>
       <i>Note: The MSP430G2 Launchpad does not support Linux.</i>
+    <h2>Support for Code Composer Studio Version 6</h2>
+	<p> Code Composer Studio V6 is based Eclipse Mars (4.5.) and Java 7.
+	  Installing and running YAKINDU Statechart Tools within CCSV6 requires two steps:</p>
+	<p> 1st: Use the Mars update site instead of the Neon update site, which you <a
+      href="http://download.eclipse.org/releases/mars/">can find here</a>. As I mentioned 
+      before, you do not need to install anything of the Mars update site. Just add the update site. 
+      After this you are able to install YAKINDU Statechart Tools within CCS V6 as described before. 
+      You need to get the download site of YAKINDU Statechart Tools. 
+      Go to <a href=https://info.itemis.com/download-yakindu-statechart-tools>
+      our download site </a> and complete the free registration, in case you have
+      not done this already. Then you will get a number of different
+      installation options. Choose the black button with <i>install from
+      update site</i>.</p>
+    <p> 2nd: YAKINDU Statechart Tools has been added, but it won't be executed, 
+      because Java 8 is missing. Therefore, if you don't already have, install a 32 bit version of Java 8. 
+      Afterwards, right click your CCS V6 shortcut and add the path of the 32 bit Java 8.
+      For my machine it looks like this:</p>
+    <p>
+      	<i>C:\ti2\ccsv6\eclipse\ccstudio.exe <b>-vm "C:\Program Files (x86)\Java\jre1.8.0_141\bin"</b></i>	
+    </p>
+    <p>  <img class="standard-image" src="images/ShortcutPath.PNG" /> </p>
   </div>
 </body>
 </html>

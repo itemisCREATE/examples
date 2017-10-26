@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_YX1FIBwqEeKIxfpHJtPpBA" specification="/*&#xA; * This is an example of a digital watch. &#xA; * It is a classic watch with four buttons that control the &#xA; * different functions. Available functions are &#xA; * - clock&#xA; * - alarm 1 &amp; 2&#xA; * - chime&#xA; * - stop watch&#xA; * - light&#xA; */&#xA; &#xA;/* &#xA; * The display is part of the watch's external interface. &#xA; */&#xA;interface display:&#xA;  var readonly first : integer&#xA;  var readonly second : integer&#xA;  var readonly third : integer&#xA;  var readonly text : string&#xA;&#x9; &#xA;/*&#xA; * The buttons are also part of the external interface.&#xA; */&#xA;interface button:&#xA;  in event mode&#xA;  in event light&#x9;&#x9;// light start stop&#xA;  in event light_r&#x9;// light released&#xA;  in event set &#x9;&#x9;// set&#xA;  in event onoff &#x9;&#x9;// on/off date&#xA;&#xA;/*  */&#xA;internal:&#xA;  var time : integer = 0&#x9;// elapsed time in tenth of a second&#xA;&#x9;&#xA;  var alarm_1_time : integer = 0&#xA;  var alarm_1_enabled : boolean = false&#xA;  var alarm_2_time : integer = 0&#xA;  var alarm_2_enabled : boolean = false&#xA;&#xA;  var chime_enabled : boolean = false&#xA;   &#xA;  var stop_time : integer = 0&#xA;  var stop_lap_time : integer = 0&#xA;  var stop_display_time : integer = 0&#xA;   &#xA;  var set_time : integer = 0&#xA;   &#xA;  // count the time - assume 100ms cycles&#xA;  oncycle /  time += 1 &#xA;   &#xA;  // handle day overflow after 24 hours&#xA;  oncycle [time >= 864000] / time = 0 " name="watch">
+  <sgraph:Statechart xmi:id="_YX1FIBwqEeKIxfpHJtPpBA" specification="/*&#xA; * This is an example of a digital watch. &#xA; * It is a classic watch with four buttons that control the &#xA; * different functions. Available functions are &#xA; * - clock&#xA; * - alarm 1 &amp; 2&#xA; * - chime&#xA; * - stop watch&#xA; * - light&#xA; */&#xA; &#xA;/* &#xA; * The display is part of the watch's external interface. &#xA; */&#xA;interface display:&#xA;  var readonly first : integer&#xA;  var readonly second : integer&#xA;  var readonly third : integer&#xA;  var readonly text : string&#xA;&#x9; &#xA;/*&#xA; * The buttons are also part of the external interface.&#xA; */&#xA;interface button:&#xA;  in event mode&#xA;  in event light&#x9;&#x9;// light start stop&#xA;  in event light_r&#x9;// light released&#xA;  in event set &#x9;&#x9;// set&#xA;  in event onoff &#x9;&#x9;// on/off date&#xA;&#xA;/*  */&#xA;internal:&#xA;  var time : integer = 0&#x9;// elapsed time in tenth of a second&#xA;&#x9;&#xA;  var alarm_1_time : integer = 0&#xA;  var alarm_1_enabled : boolean = false&#xA;  var alarm_2_time : integer = 0&#xA;  var alarm_2_enabled : boolean = false&#xA;&#xA;  var chime_enabled : boolean = false&#xA;   &#xA;  var stop_time : integer = 0&#xA;  var stop_lap_time : integer = 0&#xA;  var stop_display_time : integer = 0&#xA;   &#xA;  var time_set : integer = 0&#xA;   &#xA;  // count the time - assume 100ms cycles&#xA;  oncycle /  time += 1 &#xA;   &#xA;  // handle day overflow after 24 hours&#xA;  oncycle [time >= 864000] / time = 0 " name="watch">
     <regions xmi:id="_YYlTEBwqEeKIxfpHJtPpBA" name="modes">
       <vertices xsi:type="sgraph:Entry" xmi:id="_YaNqwBwqEeKIxfpHJtPpBA">
         <outgoingTransitions xmi:id="_YaW0sBwqEeKIxfpHJtPpBA" target="_YaQHABwqEeKIxfpHJtPpBA"/>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="_YaQHABwqEeKIxfpHJtPpBA" specification="always / set_time = 0 // reset the set time as soon as possible" name="Regular" incomingTransitions="_YaW0sBwqEeKIxfpHJtPpBA">
+      <vertices xsi:type="sgraph:State" xmi:id="_YaQHABwqEeKIxfpHJtPpBA" specification="always / time_set = 0 // reset the set time as soon as possible" name="Regular" incomingTransitions="_YaW0sBwqEeKIxfpHJtPpBA">
         <outgoingTransitions xmi:id="_vcVgkBxAEeKIxfpHJtPpBA" specification="[time == alarm_1_time &#xA;  &amp;&amp; alarm_1_enabled]" target="_blXWIBxAEeKIxfpHJtPpBA"/>
         <outgoingTransitions xmi:id="_4oREoBxAEeKIxfpHJtPpBA" specification="[time == alarm_2_time &#xA; &amp;&amp; alarm_2_enabled]" target="_dwX1IBxAEeKIxfpHJtPpBA"/>
         <outgoingTransitions xmi:id="_6C_coKBlEeWDt4W4L22fSw" specification=" # set_time >" target="__z-ikBwuEeKIxfpHJtPpBA"/>
@@ -14,13 +14,13 @@
             <outgoingTransitions xmi:id="_npd70BwtEeKIxfpHJtPpBA" specification="" target="_IqgIQBw4EeKIxfpHJtPpBA"/>
           </vertices>
           <vertices xsi:type="sgraph:Entry" xmi:id="_QrFkcBxBEeKIxfpHJtPpBA" name="deep_entry" incomingTransitions="_TLUFgBxBEeKIxfpHJtPpBA" kind="DEEP_HISTORY"/>
-          <vertices xsi:type="sgraph:State" xmi:id="_IqgIQBw4EeKIxfpHJtPpBA" specification="entry [set_time > 0] / time = set_time&#xA;&#xA;always [time % 10 == 0] / &#xA;  display.first = (time / 36000) % 24;&#xA;  display.second = (time / 600) % 60;&#xA;  display.third = (time / 10) % 60;&#xA;  display.text = &quot;&quot;" name="Clock" incomingTransitions="__vdRIBw9EeKIxfpHJtPpBA _npd70BwtEeKIxfpHJtPpBA _WnjIoKBuEeWDt4W4L22fSw">
+          <vertices xsi:type="sgraph:State" xmi:id="_IqgIQBw4EeKIxfpHJtPpBA" specification="entry [time_set > 0] / time = time_set&#xA;&#xA;always [time % 10 == 0] / &#xA;  display.first = (time / 36000) % 24;&#xA;  display.second = (time / 600) % 60;&#xA;  display.third = (time / 10) % 60;&#xA;  display.text = &quot;&quot;" name="Clock" incomingTransitions="__vdRIBw9EeKIxfpHJtPpBA _npd70BwtEeKIxfpHJtPpBA _WnjIoKBuEeWDt4W4L22fSw">
             <outgoingTransitions xmi:id="_2Hi7sBw9EeKIxfpHJtPpBA" specification="button.onoff" target="_uhGHsBw9EeKIxfpHJtPpBA"/>
             <outgoingTransitions xmi:id="_0MoaABz0EeK8y5nqxOI-SA" specification="button.mode" target="_q1BO4KBrEeWDt4W4L22fSw"/>
             <regions xmi:id="_xY_L0KBjEeWDt4W4L22fSw">
               <vertices xsi:type="sgraph:State" xmi:id="_a6KiMBwuEeKIxfpHJtPpBA" name="wait_set" incomingTransitions="_kqyjMBw4EeKIxfpHJtPpBA">
                 <outgoingTransitions xmi:id="_t4XtEBw4EeKIxfpHJtPpBA" specification="after 2s" target="_2xKKYKBjEeWDt4W4L22fSw"/>
-                <outgoingTransitions xmi:id="_w3eGABw5EeKIxfpHJtPpBA" specification="button.set &#xA;  / set_time = time" target="_fW1_kKBkEeWDt4W4L22fSw"/>
+                <outgoingTransitions xmi:id="_w3eGABw5EeKIxfpHJtPpBA" specification="button.set &#xA;  / time_set = time" target="_fW1_kKBkEeWDt4W4L22fSw"/>
               </vertices>
               <vertices xsi:type="sgraph:Entry" xmi:id="_0IYxUKBjEeWDt4W4L22fSw">
                 <outgoingTransitions xmi:id="_DUg9QKBkEeWDt4W4L22fSw" target="_2xKKYKBjEeWDt4W4L22fSw"/>
@@ -35,12 +35,12 @@
           </vertices>
           <vertices xsi:type="sgraph:Exit" xmi:id="_fW1_kKBkEeWDt4W4L22fSw" name="set_time" incomingTransitions="_w3eGABw5EeKIxfpHJtPpBA _eZWi8KBsEeWDt4W4L22fSw _J8fyUKBuEeWDt4W4L22fSw"/>
           <vertices xsi:type="sgraph:Entry" xmi:id="_iKY94KBnEeWDt4W4L22fSw" name="time_set" incomingTransitions="_XTlfQBw9EeKIxfpHJtPpBA _H54KUBw9EeKIxfpHJtPpBA" kind="SHALLOW_HISTORY"/>
-          <vertices xsi:type="sgraph:State" xmi:id="_q1BO4KBrEeWDt4W4L22fSw" specification="entry [set_time > 0] / alarm_1_time = set_time&#xA;&#xA;always / &#xA;  display.first = (alarm_1_time / 36000) % 24;&#xA;  display.second = (alarm_1_time / 600) % 60;&#xA;  display.third = (alarm_1_time / 10) % 60;&#xA;  display.text = (alarm_1_enabled) &#xA;    ? &quot;Alarm 1 ON&quot; : &quot;Alarm 1 OFF&quot;&#xA;&#x9;&#xA;button.onoff / alarm_1_enabled = ! alarm_1_enabled" name="Alarm 1" incomingTransitions="_0MoaABz0EeK8y5nqxOI-SA">
-            <outgoingTransitions xmi:id="_eZWi8KBsEeWDt4W4L22fSw" specification="button.set&#xA;  / set_time = alarm_1_time" target="_fW1_kKBkEeWDt4W4L22fSw"/>
+          <vertices xsi:type="sgraph:State" xmi:id="_q1BO4KBrEeWDt4W4L22fSw" specification="entry [time_set > 0] / alarm_1_time = time_set&#xA;&#xA;always / &#xA;  display.first = (alarm_1_time / 36000) % 24;&#xA;  display.second = (alarm_1_time / 600) % 60;&#xA;  display.third = (alarm_1_time / 10) % 60;&#xA;  display.text = (alarm_1_enabled) &#xA;    ? &quot;Alarm 1 ON&quot; : &quot;Alarm 1 OFF&quot;&#xA;&#x9;&#xA;button.onoff / alarm_1_enabled = ! alarm_1_enabled" name="Alarm 1" incomingTransitions="_0MoaABz0EeK8y5nqxOI-SA">
+            <outgoingTransitions xmi:id="_eZWi8KBsEeWDt4W4L22fSw" specification="button.set&#xA;  / time_set = alarm_1_time" target="_fW1_kKBkEeWDt4W4L22fSw"/>
             <outgoingTransitions xmi:id="_S5VxgKBuEeWDt4W4L22fSw" specification="button.mode" target="_BTIIy6BuEeWDt4W4L22fSw"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_BTIIy6BuEeWDt4W4L22fSw" specification="entry [set_time > 0] / alarm_2_time = set_time&#xA;&#xA;always / &#xA;  display.first = (alarm_2_time / 36000) % 24;&#xA;  display.second = (alarm_2_time / 600) % 60;&#xA;  display.third = (alarm_2_time / 10) % 60;&#xA;  display.text = (alarm_2_enabled) &#xA;    ? &quot;Alarm 2 ON&quot; : &quot;Alarm 2 OFF&quot;&#xA;&#x9;&#xA;button.onoff / alarm_2_enabled = !alarm_2_enabled" name="Alarm 2" incomingTransitions="_S5VxgKBuEeWDt4W4L22fSw">
-            <outgoingTransitions xmi:id="_J8fyUKBuEeWDt4W4L22fSw" specification="button.set &#xA;  / set_time = alarm_2_time" target="_fW1_kKBkEeWDt4W4L22fSw"/>
+          <vertices xsi:type="sgraph:State" xmi:id="_BTIIy6BuEeWDt4W4L22fSw" specification="entry [time_set > 0] / alarm_2_time = time_set&#xA;&#xA;always / &#xA;  display.first = (alarm_2_time / 36000) % 24;&#xA;  display.second = (alarm_2_time / 600) % 60;&#xA;  display.third = (alarm_2_time / 10) % 60;&#xA;  display.text = (alarm_2_enabled) &#xA;    ? &quot;Alarm 2 ON&quot; : &quot;Alarm 2 OFF&quot;&#xA;&#x9;&#xA;button.onoff / alarm_2_enabled = !alarm_2_enabled" name="Alarm 2" incomingTransitions="_S5VxgKBuEeWDt4W4L22fSw">
+            <outgoingTransitions xmi:id="_J8fyUKBuEeWDt4W4L22fSw" specification="button.set &#xA;  / time_set = alarm_2_time" target="_fW1_kKBkEeWDt4W4L22fSw"/>
             <outgoingTransitions xmi:id="_J_nvwBz2EeK8y5nqxOI-SA" specification="button.mode" target="_hMyHC6HkEeWijoaLnhzRTg"/>
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="_wlnnYBxBEeKIxfpHJtPpBA" specification="// show the current stop watch time MM:SS:TENTH&#xA;always / &#xA;  display.first = (alarm_2_time / 600) % 60;&#xA;  display.second = (stop_display_time / 10) % 60;&#xA;  display.third = (stop_display_time) % 10;&#xA;  display.text = &quot;Stop&quot;" name="Stop Watch" incomingTransitions="_runHAKHkEeWijoaLnhzRTg">
@@ -96,11 +96,11 @@
           <vertices xsi:type="sgraph:State" xmi:id="_dwX1IBxAEeKIxfpHJtPpBA" name="alarm 2 beeps" incomingTransitions="_4oREoBxAEeKIxfpHJtPpBA"/>
         </regions>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="__z-ikBwuEeKIxfpHJtPpBA" specification="entry / &#xA;  display.first = (set_time / 36000) % 24;&#xA;  display.second = (set_time / 600) % 60;&#xA;  display.third = (set_time / 10) % 60" name="SetTime" incomingTransitions="_6C_coKBlEeWDt4W4L22fSw">
+      <vertices xsi:type="sgraph:State" xmi:id="__z-ikBwuEeKIxfpHJtPpBA" specification="entry / &#xA;  display.first = (time_set / 36000) % 24;&#xA;  display.second = (time_set / 600) % 60;&#xA;  display.third = (time_set / 10) % 60" name="SetTime" incomingTransitions="_6C_coKBlEeWDt4W4L22fSw">
         <outgoingTransitions xmi:id="_H54KUBw9EeKIxfpHJtPpBA" specification="button.light, after 120s" target="_iKY94KBnEeWDt4W4L22fSw"/>
         <regions xmi:id="_itPb8Bw5EeKIxfpHJtPpBA" name="">
           <vertices xsi:type="sgraph:State" xmi:id="_mAbrABw5EeKIxfpHJtPpBA" specification="button.onoff / display.third = (display.third + 1) % 60" name="sec" incomingTransitions="_xia1kBw7EeKIxfpHJtPpBA">
-            <outgoingTransitions xmi:id="_XTlfQBw9EeKIxfpHJtPpBA" specification="button.set &#xA;  / set_time = &#xA;    (3600 * display.first  &#xA;    + 60 * display.second &#xA;    + display.third) * 10&#x9;" target="_iKY94KBnEeWDt4W4L22fSw"/>
+            <outgoingTransitions xmi:id="_XTlfQBw9EeKIxfpHJtPpBA" specification="button.set &#xA;  / time_set = &#xA;    (3600 * display.first  &#xA;    + 60 * display.second &#xA;    + display.third) * 10&#x9;" target="_iKY94KBnEeWDt4W4L22fSw"/>
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="_rcQIkBw7EeKIxfpHJtPpBA" specification="button.onoff / display.second =( (display.second + 1) % 60)" name="min" incomingTransitions="_8AglEBw7EeKIxfpHJtPpBA">
             <outgoingTransitions xmi:id="_xia1kBw7EeKIxfpHJtPpBA" specification="button.set" target="_mAbrABw5EeKIxfpHJtPpBA"/>
@@ -687,7 +687,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_YaD5wRwqEeKIxfpHJtPpBA"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_YYsn0RwqEeKIxfpHJtPpBA" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_YaEg0BwqEeKIxfpHJtPpBA" x="330" y="10" width="1721" height="1031"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_YaEg0BwqEeKIxfpHJtPpBA" x="360" y="10" width="1721" height="1031"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_YagltBwqEeKIxfpHJtPpBA" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_YahMwBwqEeKIxfpHJtPpBA" type="StatechartName">
@@ -697,7 +697,7 @@
       <children xsi:type="notation:Shape" xmi:id="_YahMwxwqEeKIxfpHJtPpBA" type="StatechartTextExpression" fontName="Verdana" lineColor="4210752">
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_YahMxBwqEeKIxfpHJtPpBA"/>
       </children>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Yahz0BwqEeKIxfpHJtPpBA" x="8" y="10" width="316" height="726"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Yahz0BwqEeKIxfpHJtPpBA" x="8" y="10" width="353" height="758"/>
     </children>
     <children xmi:id="_ffiCYB0AEeK8y5nqxOI-SA" type="Region" element="_ffdw8B0AEeK8y5nqxOI-SA">
       <children xsi:type="notation:DecorationNode" xmi:id="_ffipcB0AEeK8y5nqxOI-SA" type="RegionName">

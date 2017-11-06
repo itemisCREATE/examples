@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
+  <sgraph:Statechart xmi:id="_sCQXgA50Eee6HbH_je4Vjg" specification="interface:&#xA;// Define events and&#xA;// and variables here" name="lesson_01">
+    <regions xmi:id="_sCxU4A50Eee6HbH_je4Vjg" name="main region">
+      <vertices xsi:type="sgraph:State" xmi:id="_sDYY4A50Eee6HbH_je4Vjg" specification="" name="StateA" incomingTransitions="_bAHmYA7bEeeI87AG0PM0Nw"/>
+      <vertices xsi:type="sgraph:Entry" xmi:id="_YO7RIA7bEeeI87AG0PM0Nw">
+        <outgoingTransitions xmi:id="_bAHmYA7bEeeI87AG0PM0Nw" specification="" target="_sDYY4A50Eee6HbH_je4Vjg"/>
+      </vertices>
+    </regions>
+    <regions xmi:id="_sZIzoCjlEeel0eqJIE10NQ" name="second region"/>
+  </sgraph:Statechart>
+  <notation:Diagram xmi:id="_sCwt0A50Eee6HbH_je4Vjg" type="org.yakindu.sct.ui.editor.editor.StatechartDiagramEditor" element="_sCQXgA50Eee6HbH_je4Vjg" measurementUnit="Pixel">
+    <children xmi:id="_sC4poA50Eee6HbH_je4Vjg" type="Region" element="_sCxU4A50Eee6HbH_je4Vjg">
+      <children xsi:type="notation:DecorationNode" xmi:id="_sDSSQA50Eee6HbH_je4Vjg" type="RegionName">
+        <styles xsi:type="notation:ShapeStyle" xmi:id="_sDSSQQ50Eee6HbH_je4Vjg"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_sDSSQg50Eee6HbH_je4Vjg"/>
+      </children>
+      <children xsi:type="notation:Shape" xmi:id="_sDTgYA50Eee6HbH_je4Vjg" type="RegionCompartment" fontName="Verdana" lineColor="4210752">
+        <children xmi:id="_sDbcMA50Eee6HbH_je4Vjg" type="State" element="_sDYY4A50Eee6HbH_je4Vjg">
+          <children xsi:type="notation:DecorationNode" xmi:id="_sDcDQA50Eee6HbH_je4Vjg" type="StateName">
+            <styles xsi:type="notation:ShapeStyle" xmi:id="_sDcDQQ50Eee6HbH_je4Vjg"/>
+            <layoutConstraint xsi:type="notation:Location" xmi:id="_sDcDQg50Eee6HbH_je4Vjg"/>
+          </children>
+          <children xsi:type="notation:Compartment" xmi:id="_sDd4cA50Eee6HbH_je4Vjg" type="StateTextCompartment">
+            <children xsi:type="notation:Shape" xmi:id="_sDd4cQ50Eee6HbH_je4Vjg" type="StateTextCompartmentExpression" fontName="Verdana" lineColor="4210752">
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_sDd4cg50Eee6HbH_je4Vjg"/>
+            </children>
+          </children>
+          <children xsi:type="notation:Compartment" xmi:id="_sDefgA50Eee6HbH_je4Vjg" type="StateFigureCompartment"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_sDbcMQ50Eee6HbH_je4Vjg" fontName="Verdana" fillColor="15981773" lineColor="12632256"/>
+          <styles xsi:type="notation:FontStyle" xmi:id="_sDbcMg50Eee6HbH_je4Vjg"/>
+          <styles xsi:type="notation:BooleanValueStyle" xmi:id="_sDfGkA50Eee6HbH_je4Vjg" name="isHorizontal" booleanValue="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_sDfGkQ50Eee6HbH_je4Vjg" x="864" y="272"/>
+        </children>
+        <children xsi:type="notation:Shape" xmi:id="_ylvSoA50Eee6HbH_je4Vjg" type="Text" fontName="Verdana" fontHeight="12" description="This series is aimed towards first time users of this application. During the course of a few lessons you will learn the core functionality of YAKINDU SCT.&#xD;&#xA;&#xD;&#xA;To the right you see a very simple Statemachine Diagram. It consists of an Entry Point (black circle), a State called 'StateA' and a transition from the entry to StateA (the arrow).&#xD;&#xA;&#xD;&#xA;Your first task is to add a new 'StateB' and then connect 'StateA' to 'StateB' with a transition.&#xD;&#xA;&#xD;&#xA;To do this simply drag and drop a new state from the palette on the right in to the main region and name it afterwards. &#xD;&#xA;&#xD;&#xA;In order to connect the states, click on transition in the palette, then click on StateA, keep your mouse button pressed and draw the arrow from StateA to StateB.&#xD;&#xA;&#xD;&#xA;Now you need to add a transition description, which we call trigger. Type 'after 3s' into the transition textbox. If you don't see any textbox. Doublick the black arrowhead to make it appear.&#xD;&#xA;&#xD;&#xA;Your last task is to create another transition that leads back from StateB to StateA, the trigger is again 'after 3s'. You should now have a small circual statemachine.&#xD;&#xA;&#xD;&#xA;If you want to compare your first steps with the sample solution you can look it up under the 'Sample Solution' Folder on the left side of the screen." lineColor="4210752">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_ylv5sQ50Eee6HbH_je4Vjg" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_ylv5sg50Eee6HbH_je4Vjg" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_ylv5sA50Eee6HbH_je4Vjg" x="1" y="25" width="484" height="513"/>
+        </children>
+        <children xsi:type="notation:Shape" xmi:id="_EJK3sA52Eee6HbH_je4Vjg" type="Text" fontName="Verdana" fontHeight="12" bold="true" description="1) Welcome to the YAKINDU SCT Beginners Tutorial!" lineColor="4210752">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_EJK3sg52Eee6HbH_je4Vjg" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_EJLewA52Eee6HbH_je4Vjg" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_EJK3sQ52Eee6HbH_je4Vjg" x="1" y="5"/>
+        </children>
+        <children xmi:id="_YO-UcA7bEeeI87AG0PM0Nw" type="Entry" element="_YO7RIA7bEeeI87AG0PM0Nw">
+          <children xmi:id="_YO-7gA7bEeeI87AG0PM0Nw" type="BorderItemLabelContainer">
+            <children xsi:type="notation:DecorationNode" xmi:id="_YO_ikA7bEeeI87AG0PM0Nw" type="BorderItemLabel">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_YO_ikQ7bEeeI87AG0PM0Nw"/>
+              <layoutConstraint xsi:type="notation:Location" xmi:id="_YO_ikg7bEeeI87AG0PM0Nw"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" xmi:id="_YO-7gQ7bEeeI87AG0PM0Nw" fontName="Verdana" lineColor="4210752"/>
+            <layoutConstraint xsi:type="notation:Bounds" xmi:id="_YO-7gg7bEeeI87AG0PM0Nw"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_YO-UcQ7bEeeI87AG0PM0Nw" fontName="Verdana" fillColor="0" lineColor="16777215"/>
+          <styles xsi:type="notation:NamedStyle" xmi:id="_YO-Ucg7bEeeI87AG0PM0Nw" name="allowColors"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_YO-Ucw7bEeeI87AG0PM0Nw" x="864" y="197"/>
+        </children>
+        <children xsi:type="notation:Shape" xmi:id="_5pBIkCjVEeekBdaxYdvd9A" type="Note" fontName="Verdana" description="This is an entry state! " fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_5pBvoCjVEeekBdaxYdvd9A" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_5pCWsCjVEeekBdaxYdvd9A" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xsi:type="notation:TextStyle" xmi:id="_5pBIkSjVEeekBdaxYdvd9A"/>
+          <styles xsi:type="notation:LineTypeStyle" xmi:id="_5pBIkijVEeekBdaxYdvd9A"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_5pBIkyjVEeekBdaxYdvd9A" x="764" y="147" width="116" height="46"/>
+        </children>
+        <children xsi:type="notation:Shape" xmi:id="_Ew1xkCjWEeekBdaxYdvd9A" type="Note" fontName="Verdana" description="This is a transition." fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_Ew2YoCjWEeekBdaxYdvd9A" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_Ew2YoSjWEeekBdaxYdvd9A" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xsi:type="notation:TextStyle" xmi:id="_Ew1xkSjWEeekBdaxYdvd9A"/>
+          <styles xsi:type="notation:LineTypeStyle" xmi:id="_Ew1xkijWEeekBdaxYdvd9A"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Ew1xkyjWEeekBdaxYdvd9A" x="714" y="197" width="144" height="30"/>
+        </children>
+        <children xsi:type="notation:Shape" xmi:id="_NsO_QCjWEeekBdaxYdvd9A" type="Note" fontName="Verdana" description="This is a state!" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_NsPmUCjWEeekBdaxYdvd9A" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_NsPmUSjWEeekBdaxYdvd9A" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xsi:type="notation:TextStyle" xmi:id="_NsO_QSjWEeekBdaxYdvd9A"/>
+          <styles xsi:type="notation:LineTypeStyle" xmi:id="_NsO_QijWEeekBdaxYdvd9A"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NsO_QyjWEeekBdaxYdvd9A" x="714" y="272"/>
+        </children>
+        <children xsi:type="notation:Shape" xmi:id="_fgj8gCjWEeekBdaxYdvd9A" type="Note" fontName="Verdana" fontHeight="11" bold="true" description="Your Task: Add a new 'StateB'; Connect 'StateA' to 'StateB' with a transition." fillColor="13890513" transparency="0" lineColor="10011046" lineWidth="1">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_fgkjkCjWEeekBdaxYdvd9A" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_fgkjkSjWEeekBdaxYdvd9A" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xsi:type="notation:TextStyle" xmi:id="_fgj8gSjWEeekBdaxYdvd9A"/>
+          <styles xsi:type="notation:LineTypeStyle" xmi:id="_fgj8gijWEeekBdaxYdvd9A"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_fgj8gyjWEeekBdaxYdvd9A" x="505" width="206" height="116"/>
+        </children>
+        <children xsi:type="notation:Shape" xmi:id="_j6SYACjlEeel0eqJIE10NQ" type="Note" fontName="Verdana" description="This is a region! You can only add states and statemachines to regions!" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_j6VbUCjlEeel0eqJIE10NQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_j6WCYCjlEeel0eqJIE10NQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xsi:type="notation:TextStyle" xmi:id="_j6SYASjlEeel0eqJIE10NQ"/>
+          <styles xsi:type="notation:LineTypeStyle" xmi:id="_j6SYAijlEeel0eqJIE10NQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_j6SYAyjlEeel0eqJIE10NQ" x="14" y="597"/>
+        </children>
+        <layoutConstraint xsi:type="notation:Bounds" xmi:id="_sDTgYQ50Eee6HbH_je4Vjg"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_sC4poQ50Eee6HbH_je4Vjg" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_sDUugA50Eee6HbH_je4Vjg" x="200" y="15" width="1001" height="701"/>
+    </children>
+    <children xsi:type="notation:Shape" xmi:id="_sDpeoA50Eee6HbH_je4Vjg" type="StatechartText" fontName="Verdana" lineColor="4210752">
+      <children xsi:type="notation:DecorationNode" xmi:id="_sDqFsA50Eee6HbH_je4Vjg" type="StatechartName">
+        <styles xsi:type="notation:ShapeStyle" xmi:id="_sDqFsQ50Eee6HbH_je4Vjg"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_sDqFsg50Eee6HbH_je4Vjg"/>
+      </children>
+      <children xsi:type="notation:Shape" xmi:id="_sDqFsw50Eee6HbH_je4Vjg" type="StatechartTextExpression" fontName="Verdana" lineColor="4210752">
+        <layoutConstraint xsi:type="notation:Bounds" xmi:id="_sDqFtA50Eee6HbH_je4Vjg"/>
+      </children>
+      <styles xsi:type="notation:StringValueStyle" xmi:id="_KjOnkB69EeemipDcuLBxyw" name="featureToShow" stringValue="documentation"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_sDqFtQ50Eee6HbH_je4Vjg" y="115" width="176" height="475"/>
+    </children>
+    <children xsi:type="notation:Shape" xmi:id="_e9QIMCjjEeel0eqJIE10NQ" type="Note" fontName="Verdana" description="This is the Definition Section " fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+      <children xsi:type="notation:BasicDecorationNode" xmi:id="_e9YrECjjEeel0eqJIE10NQ" type="DiagramName">
+        <element xsi:nil="true"/>
+      </children>
+      <children xsi:type="notation:BasicDecorationNode" xmi:id="_e9YrESjjEeel0eqJIE10NQ" type="Description">
+        <element xsi:nil="true"/>
+      </children>
+      <styles xsi:type="notation:TextStyle" xmi:id="_e9QIMSjjEeel0eqJIE10NQ"/>
+      <styles xsi:type="notation:LineTypeStyle" xmi:id="_e9QIMijjEeel0eqJIE10NQ"/>
+      <element xsi:nil="true"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_e9QIMyjjEeel0eqJIE10NQ" x="75" y="615" width="101" height="56"/>
+    </children>
+    <children xmi:id="_sZKo0CjlEeel0eqJIE10NQ" type="Region" element="_sZIzoCjlEeel0eqJIE10NQ">
+      <children xsi:type="notation:DecorationNode" xmi:id="_sZNsICjlEeel0eqJIE10NQ" type="RegionName">
+        <styles xsi:type="notation:ShapeStyle" xmi:id="_sZNsISjlEeel0eqJIE10NQ"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_sZNsIijlEeel0eqJIE10NQ"/>
+      </children>
+      <children xsi:type="notation:Shape" xmi:id="_sZOTMCjlEeel0eqJIE10NQ" type="RegionCompartment" fontName="Verdana" lineColor="4210752">
+        <children xsi:type="notation:Shape" xmi:id="_tIVb8CjlEeel0eqJIE10NQ" type="Note" fontName="Verdana" description="You can add multiple regions to your state machine." fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_tIWqECjlEeel0eqJIE10NQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_tIXRICjlEeel0eqJIE10NQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xsi:type="notation:TextStyle" xmi:id="_tIWDACjlEeel0eqJIE10NQ"/>
+          <styles xsi:type="notation:LineTypeStyle" xmi:id="_tIWDASjlEeel0eqJIE10NQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_tIWDAijlEeel0eqJIE10NQ" x="15" y="2" height="51"/>
+        </children>
+        <layoutConstraint xsi:type="notation:Bounds" xmi:id="_sZOTMSjlEeel0eqJIE10NQ"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_sZKo0SjlEeel0eqJIE10NQ" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_sZKo0ijlEeel0eqJIE10NQ" x="200" y="740" width="1001" height="101"/>
+    </children>
+    <children xsi:type="notation:Shape" xmi:id="_3ir68CjlEeel0eqJIE10NQ" type="Note" fontName="Verdana" description="---> there is the  Palette. If it is not click on the little triangle > to make it visible again!" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+      <children xsi:type="notation:BasicDecorationNode" xmi:id="_3itJECjlEeel0eqJIE10NQ" type="DiagramName">
+        <element xsi:nil="true"/>
+      </children>
+      <children xsi:type="notation:BasicDecorationNode" xmi:id="_3itJESjlEeel0eqJIE10NQ" type="Description">
+        <element xsi:nil="true"/>
+      </children>
+      <styles xsi:type="notation:TextStyle" xmi:id="_3ir68SjlEeel0eqJIE10NQ"/>
+      <styles xsi:type="notation:LineTypeStyle" xmi:id="_3ir68ijlEeel0eqJIE10NQ"/>
+      <element xsi:nil="true"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ir68yjlEeel0eqJIE10NQ" x="1225" y="40" width="126" height="101"/>
+    </children>
+    <children xsi:type="notation:Shape" xmi:id="_QY4YcCjmEeel0eqJIE10NQ" type="Note" fontName="Verdana" description="^ You can view the other state machines of your project by clicking on the triangle >." fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+      <children xsi:type="notation:BasicDecorationNode" xmi:id="_QY4_gCjmEeel0eqJIE10NQ" type="DiagramName">
+        <element xsi:nil="true"/>
+      </children>
+      <children xsi:type="notation:BasicDecorationNode" xmi:id="_QY4_gSjmEeel0eqJIE10NQ" type="Description">
+        <element xsi:nil="true"/>
+      </children>
+      <styles xsi:type="notation:TextStyle" xmi:id="_QY4YcSjmEeel0eqJIE10NQ"/>
+      <styles xsi:type="notation:LineTypeStyle" xmi:id="_QY4YcijmEeel0eqJIE10NQ"/>
+      <element xsi:nil="true"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_QY4YcyjmEeel0eqJIE10NQ" y="15" width="176" height="76"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_sCwt0Q50Eee6HbH_je4Vjg">
+      <verticalGuides xmi:id="_sjPnUCjkEeel0eqJIE10NQ" position="100"/>
+    </styles>
+    <edges xmi:id="_bAKpsA7bEeeI87AG0PM0Nw" type="Transition" element="_bAHmYA7bEeeI87AG0PM0Nw" source="_YO-UcA7bEeeI87AG0PM0Nw" target="_sDbcMA50Eee6HbH_je4Vjg">
+      <children xsi:type="notation:DecorationNode" xmi:id="_bALQwA7bEeeI87AG0PM0Nw" type="TransitionExpression">
+        <styles xsi:type="notation:ShapeStyle" xmi:id="_bALQwQ7bEeeI87AG0PM0Nw"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_bALQwg7bEeeI87AG0PM0Nw" y="10"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_bAKpsQ7bEeeI87AG0PM0Nw" routing="Rectilinear" lineColor="4210752"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_bAKpsw7bEeeI87AG0PM0Nw" fontName="Verdana"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_bAKpsg7bEeeI87AG0PM0Nw" points="[0, 7, 5, -86]$[16, 89, 21, -4]"/>
+    </edges>
+    <edges xsi:type="notation:Connector" xmi:id="_C7v4MCjWEeekBdaxYdvd9A" type="NoteAttachment" source="_YO-UcA7bEeeI87AG0PM0Nw" target="_5pBIkCjVEeekBdaxYdvd9A" routing="Rectilinear" lineColor="4210752" lineWidth="1">
+      <styles xsi:type="notation:ArrowStyle" xmi:id="_C7v4MSjWEeekBdaxYdvd9A"/>
+      <styles xsi:type="notation:LineTypeStyle" xmi:id="_C7v4MijWEeekBdaxYdvd9A"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_C7v4MyjWEeekBdaxYdvd9A" points="[7, 0, 181, 22]$[-4, 0, 170, 22]$[-4, -24, 170, -2]$[-77, -24, 97, -2]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_C7zikCjWEeekBdaxYdvd9A" id="(0.15517241379310345,0.6521739130434783)"/>
+    </edges>
+    <edges xsi:type="notation:Connector" xmi:id="_LrUQYCjWEeekBdaxYdvd9A" type="NoteAttachment" source="_Ew1xkCjWEeekBdaxYdvd9A" target="_bAKpsA7bEeeI87AG0PM0Nw" routing="Rectilinear" lineColor="4210752" lineWidth="1">
+      <styles xsi:type="notation:ArrowStyle" xmi:id="_LrUQYSjWEeekBdaxYdvd9A"/>
+      <styles xsi:type="notation:LineTypeStyle" xmi:id="_LrUQYijWEeekBdaxYdvd9A"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_LrUQYyjWEeekBdaxYdvd9A" points="[2, -1, 91, -37]$[-89, 27, 0, -9]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_LrVegCjWEeekBdaxYdvd9A" id="(0.375,1.0)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_LrVegSjWEeekBdaxYdvd9A" id="(0.5365853658536586,0.635593220338983)"/>
+    </edges>
+    <edges xsi:type="notation:Connector" xmi:id="_NsSpoCjWEeekBdaxYdvd9A" type="NoteAttachment" source="_sDbcMA50Eee6HbH_je4Vjg" target="_NsO_QCjWEeekBdaxYdvd9A" routing="Rectilinear" lineColor="4210752" lineWidth="1">
+      <styles xsi:type="notation:ArrowStyle" xmi:id="_NsSpoSjWEeekBdaxYdvd9A"/>
+      <styles xsi:type="notation:LineTypeStyle" xmi:id="_NsSpoijWEeekBdaxYdvd9A"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_NsSpoyjWEeekBdaxYdvd9A" points="[-27, -9, 519, 172]$[-546, -181, 0, 0]"/>
+    </edges>
+    <edges xsi:type="notation:Connector" xmi:id="_gZuGMCjjEeel0eqJIE10NQ" type="NoteAttachment" source="_e9QIMCjjEeel0eqJIE10NQ" target="_sDpeoA50Eee6HbH_je4Vjg" routing="Rectilinear" lineColor="4210752" lineWidth="1">
+      <styles xsi:type="notation:ArrowStyle" xmi:id="_gZuGMSjjEeel0eqJIE10NQ"/>
+      <styles xsi:type="notation:LineTypeStyle" xmi:id="_gZuGMijjEeel0eqJIE10NQ"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_gZuGMyjjEeel0eqJIE10NQ" points="[0, 0, -51, 36]$[0, -25, -51, 11]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_gZy-sCjjEeel0eqJIE10NQ" id="(0.41,0.0)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_gZy-sSjjEeel0eqJIE10NQ" id="(0.9528301886792453,0.9768421052631578)"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>

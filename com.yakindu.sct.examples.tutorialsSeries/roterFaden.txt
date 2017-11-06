@@ -1,0 +1,13 @@
+L 1: States? Transition? Editor? Editor / Properties View, Palette, wie arbeite ich mit der Palette, 
+
+L 1.1: Styling
+
+L 2: Simulation? Starten Stoppen? Perspectives / Simulation View
+
+L 3: DSL Basics Ctrl Space
+
+L 4: Basics der Code Generierung, Generator Model
+
+
+
+

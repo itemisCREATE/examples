@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+			<title>Mealy Moore Harel statecharts</title>
+			<link href="../css/style.css" rel="stylesheet">
+	</head>
+	<body class="body-container">
+		<h1>A brief overview of state machine types (Mealy, Moore, Harel and
+			UML)</h1>
+
+		<p>State machines are used as behavior models. They consist of
+			different so called states. Because the amount of states of a state
+			machine is finite it is called finite state machine (FSM). There are
+			basic types like Mealy and Moore machines and more complex types like
+			Harel and UML statecharts. This article gives a short overview of the
+			common basis and the differences between state machine types.
+		</p>
+		<p>
+			In automata theory a state is a situation of a system depending on
+			previous inputs and causes a reaction on following inputs. Automata
+			theory uses the terms input/output for simple text input/output.
+			Modern state machines use an extended definition of inputs and
+			outputs. These can be events or more complex reactions than simply
+			printing a certain text. Another important element of state machines
+			are transitions. A transition, as the name says, describes the
+			transition from one state to another.
+		</p>
+
+		<p>
+			To explain this concept we introduce a common example:
+		</p>
+		<p>
+			Let's watch a ferry that sails from the northern port to the
+			southern port
+			and back. We build a state machine that demonstrates the
+			behavior of
+			the ferry. When the latter reaches the northern port the
+			state
+			machine is in state NorthernPort. The moving ferry makes up the
+			states Northwards and Southwards.
+		</p>
+		<h2>States and transitions – The ferry as a Moore machine </h2>
+		<p>
+			In automata theory, there are two basic types of finite state
+			machines
+			(FSM). One of those is called Moore machine, named after its
+			inventor
+			Edward Moore. Moore machines consist of states and
+			transitions.
+			States are able to produce outputs, and the output is
+			determined
+			solely by the current state, not by any input. Modeled as a
+			Moore
+			machine the ferry example looks like the following:
+		</p>
+		<p>
+			<img src="images/ferry_moore.png" alt="The ferry as a Moore statemachine"></img>
+		</p>
+		<p>
+			The state diagram has four states: NorthernPort, SouthernPort,
+			Northwards and Southwards. Each of these states produces an output
+			which is an action of the ferry. The ferry can either stop when one
+			of the two ports is reached (ferry.stop) or move from one port to
+			another (ferry.moveSouthwards and ferry.moveNorthwards). In Moore
+			machines the output only relies on the current state. This means that
+			the output will not change unless the state also changes. This
+			happens when a transition is taken. In our example, we have two kinds
+			of inputs that may trigger a state transition: The ship’s mate who
+			can decide where to sail (e.g. mate.sailSouthwards) and the quay
+			which can detect an arriving ferry (e.g. quay.reachedSouthernBank).
+		</p>
+		<h2>Compact state machines by George H. Mealy</h2>
+		<p>
+			In comparison with the Moore machines seen above, Mealy machines
+			produce outputs only on transitions and not in states. This often
+			results in state diagrams with fewer states because more logic can be
+			put on transitions. As a Mealy machine, the ferry example looks like
+			the following image:
+		</p>
+		<p>
+			<img src="images/ferry_mealy_1.png" alt="The ferry as a Mealy statemachine"></img>
+		</p>
+		<p>
+			States do not produce outputs anymore, but the transitions do.
+			Whether the
+			ferry moves northwards or southwards is now expressed by
+			the
+			corresponding transitions. The input event mate.sail may lead to
+			the
+			output ferry.moveSouthwards or ferry.moveNorthwards depending on
+			the
+			active state. The state machine offers an extended logic: the
+			states
+			Northwards and Southwards have two transitions that lead to
+			different
+			states depending on the input event: If the event mate.sail
+			is raised
+			in Northwards the output is ferry.moveSouthwards, if
+			quay.reachedNorthernBank is raised the ferry stops. The same logic as
+			a Moore machine would lead to additional states like the following
+			image shows:
+		</p>
+		<p>
+			<img src="images/ferry_moore2.png" alt="The ferry as an extended Moore statemachine"></img>
+		</p>
+		<p>
+			Be aware that both state diagrams, the Moore machine above and the
+			Mealy one, describe exactly the same system. Indeed, automata theory
+			states that you can always translate a Moore machine into a Mealy
+			machine and vice versa, without losing any expressiveness.
+		</p>
+		<h2>Representing complex systems with Harel statecharts</h2>
+		<p>
+			Harel introduced elements for modeling complex systems with finite
+			state
+			diagrams and also introduced the term “statecharts”, defined as:
+		</p>
+		<p>
+			“statecharts = state-diagrams + depth + orthogonality + broadcast
+			communication”
+		</p>
+		<p>
+			Using composite states and substate machines, we are able to bring
+			more
+			depth into state diagrams, while keeping the diagrams clear and
+			well-structured. Regions help us to express orthogonality: Different
+			substate machines that can be executed side by side. Events allow us
+			to achieve broadcast communication and give us a strong means to
+			describe complex behavior. Using conditions, we can state that a
+			certain event is fired only if a given condition is met. Inter-level
+			transitions, history states, temporal logic as well as entry, exit
+			and throughout actions are further Harel statechart elements.
+		</p>
+		<p>
+			Now let us extend the Mealy statechart with more details about what
+			is
+			happening on the ferry at habor: The ferry can take three cars. The
+			mate has to admit these or let them out after arrival. At sea the
+			lifts to the parking spaces shall be locked, so that the passengers
+			stay on deck. The resulting state machine looks like the following:
+		</p>
+		<p>
+			<img src="images/ferry_mealy_2.png" alt="The ferry as an extended Mealy statemachine"></img>
+		</p>
+		<p>
+			For every car that leaves or enters and also for both sides we use
+			a
+			state. This blows up the state machine. With the means of composite
+			states and conditions we are able to minimize the state machine again
+			by describing the same behavior. The following image describes the
+			ferry behavior as a Harel statechart. It illustrates composite
+			states, guard conditions and inter-level transitions.
+		</p>
+		<p>
+			<img src="images/ferry_harel_1.png" alt="The ferry as a Harel statemachine"></img>
+		</p>
+		<p>
+			The carEnter/carLeave states were substituted by a composite state
+			FerryStops with a substate machine that describes the behavior of the
+			ferry at harbor. The lifts to the car deck shall be locked, because
+			passengers should not be there during transfer. There are transitions
+			crossing the hierarchy from the substate machine to the upper-level
+			states (inter-level transitions) like the one from state LockLifts to
+			Northwards.
+		</p>
+		
+	</div>
+	</body>
+</html>

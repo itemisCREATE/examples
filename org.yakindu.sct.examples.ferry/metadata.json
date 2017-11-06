@@ -1,0 +1,13 @@
+{
+	"id": "org.yakindu.sct.examples.ferry",
+	"title": "Mealy Moore Harel statecharts",
+	"previewImage": "images/ferryPiC.jpg",
+    "author": "Svenja Wendler",
+    "organization": "itemis AG",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+	"category": [
+		"basic",
+		"composite state",
+		"Mealy", "Moore", "Harel"		
+	]
+}

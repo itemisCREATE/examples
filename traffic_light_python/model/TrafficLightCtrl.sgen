@@ -1,0 +1,18 @@
+GeneratorModel for yakindu::python {
+
+	statechart TrafficLightCtrl {
+
+		feature Outlet {
+			targetProject = "traffic_light_python"
+			targetFolder = "src-gen"
+		}
+		
+		feature GeneralFeatures {
+			DefaultTimer = true
+		}
+		
+		feature Naming {
+			basePackage = "traffic.light"
+		}
+	}
+}

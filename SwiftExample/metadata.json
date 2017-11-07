@@ -2,7 +2,7 @@
 	"id": "org.yakindu.sct.examples.swift_example",
 	"title": "Swift Example",
 	"author": "itemis AG",
-	"previewImage": "swift_example_preview.png",
+	"previewImage": "images/swift_example_preview.png",
 	"description": "Demonstrates how to to generate Swift source code from a statechart.",
 	"category": [
 		"open source",

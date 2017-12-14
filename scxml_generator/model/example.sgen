@@ -3,12 +3,12 @@ GeneratorModel for yakindu::generic {
 	statechart example {
 
 		feature Outlet {
-			targetProject = "scxml_generator"
+			targetProject = "scxml.generator"
 			targetFolder = "src-gen"
 		}
  
 		feature Generator {
-			generatorProject = "scxml_generator"
+			generatorProject = "scxml.generator"
 			generatorClass = "scxml.generator.SCXMLGenerator"
 		}
 	}

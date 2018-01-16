@@ -4,7 +4,7 @@
 	"author": "itemis AG",
 	"description": "This example demonstrates how a state machine can be generated as typescript artifact and how to integrate this into an angular 4 application.",
 	"previewImage": "ycar_thumbs.png",
-	"category": [
+	"category": ["labs",
 		"generator",
 		"typescript"
 	]

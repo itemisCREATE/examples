@@ -1,0 +1,10 @@
+testclass Zowi_SCT_Tests for statechart ZowiSCT {
+	
+	@Test
+	operation test() {
+		enter
+		assert active(ZowiSCT.main_region.Init)
+		exit
+	}
+	
+}

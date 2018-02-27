@@ -3,9 +3,9 @@ GeneratorModel for yakindu::cpp {
 	statechart ZowiSCT {
 
 		feature Outlet {
-			targetProject = "Zowi_SCT_CppDomain"
+			targetProject = "Zowi_CppDomain"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
 		}
 	}
-}    
+} 

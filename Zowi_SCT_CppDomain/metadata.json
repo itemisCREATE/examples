@@ -1,5 +1,5 @@
 {
-	"id": "com.yakindu.sct.examples.Zowi_SCT_CppDomain",
+	"id": "com.yakindu.sct.examples.Zowi_CppDomain",
 	"title": "[Pro] Zowi example with C++ Domain",
 	"author": "itemis AG",
 	"description": "This is a example for the C++ integration of YAKINDU statechart tools.",

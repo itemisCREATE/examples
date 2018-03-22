@@ -1,10 +1,3 @@
-/*
- * CoffeeMachine.h
- *
- *  Created on: 19.03.2018
- *      Author: administrator
- */
-
 #ifndef SCR_COFFEEMACHINE_HPP_
 #define SCR_COFFEEMACHINE_HPP_
 

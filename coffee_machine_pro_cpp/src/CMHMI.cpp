@@ -1,10 +1,3 @@
-/*
- * CMHMI.cpp
- *
- *  Created on: 19.03.2018
- *      Author: administrator
- */
-
 #include "CMHMI.hpp"
 
 CM_HMI::CM_HMI() {

@@ -1,10 +1,3 @@
-/*
- * CMHMI.h
- *
- *  Created on: 19.03.2018
- *      Author: administrator
- */
-
 #ifndef SCR_CMHMI_HPP_
 #define SCR_CMHMI_HPP_
 

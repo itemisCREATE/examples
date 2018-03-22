@@ -1,10 +1,3 @@
-/*
- * CoffeeMachine.cpp
- *
- *  Created on: 19.03.2018
- *      Author: administrator
- */
-
 #include "CoffeeMachine.hpp"
 #include "CMHMI.hpp"
 

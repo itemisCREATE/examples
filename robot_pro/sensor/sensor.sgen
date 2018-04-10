@@ -1,6 +1,6 @@
 GeneratorModel for yakindu::c {
 
-	statechart sensor {
+	statechart Sensor {
 
 		feature Outlet {
 			targetProject = "robot_pro"

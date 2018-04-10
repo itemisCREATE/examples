@@ -5,7 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.yakindu.scr._03_lightswitch._03_LightSwitchStatemachine;
+import light_switch_series._03_lightswitch._03_LightSwitchStatemachine;
 
 public class LightSwitch_03 {
 	public static void main(String[] args) throws InterruptedException, IOException {

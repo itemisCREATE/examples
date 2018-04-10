@@ -3,7 +3,7 @@ package org.yakindu.sct.examples.lightswitch;
 import java.time.LocalDateTime;
 import java.util.Random;
 
-import org.yakindu.scr._06_lightswitch_simulation.I_06_LightSwitch_simulationStatemachine.InternalOperationCallback;
+import light_switch_series._06_lightswitch_simulation.I_06_LightSwitch_simulationStatemachine.InternalOperationCallback;
 
 public class LightSwitch_06_Callback implements InternalOperationCallback {
 

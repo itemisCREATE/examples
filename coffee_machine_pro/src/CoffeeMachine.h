@@ -2,9 +2,9 @@
 #ifndef COFFEEMACHINE_H_
 #define COFFEEMACHINE_H_
 
-#include "sc/sc_types.h"
-#include "cm_hmi.h"
+#include "sc\sc_types.h"
 #include "coffee_machine.h"
+#include "cm_hmi.h"
 		
 #ifdef __cplusplus
 extern "C" { 
@@ -13,9 +13,11 @@ extern "C" {
 /*! \file Header of the state machine 'CoffeeMachine'.
 */
 
+
 /*! Enumeration of all states */ 
 typedef enum
 {
+	CoffeeMachine_last_state,
 	CoffeeMachine_main_Off,
 	CoffeeMachine_main_On,
 	CoffeeMachine_main_On_r_Welcome,
@@ -27,8 +29,7 @@ typedef enum
 	CoffeeMachine_main_On_r_Process_Recipe_r_Make_Milk_r_Make_Steam,
 	CoffeeMachine_main_On_r_Process_Recipe_r_Make_Coffee,
 	CoffeeMachine_main_On_r_Process_Recipe_r_Make_Coffee_r_Milling_Beans,
-	CoffeeMachine_main_On_r_Process_Recipe_r_Make_Coffee_r_Brew_Coffee,
-	CoffeeMachine_last_state
+	CoffeeMachine_main_On_r_Process_Recipe_r_Make_Coffee_r_Brew_Coffee
 } CoffeeMachineStates;
 
 /*! Type definition of the data structure for the CoffeeMachineIface interface scope. */
@@ -43,7 +44,7 @@ typedef struct
 {
 	cm_recipe_t recipe;
 	UserEvents lastChoice;
-	bool processing;
+	sc_boolean processing;
 	UserEvents userInput;
 } CoffeeMachineInternal;
 
@@ -62,6 +63,23 @@ typedef struct
 /*! Define dimension of the state configuration vector for orthogonal states. */
 #define COFFEEMACHINE_MAX_ORTHOGONAL_STATES 1
 
+/*! Define maximum number of time events that can be active at once */
+#define COFFEEMACHINE_MAX_PARALLEL_TIME_EVENTS 3
+
+/*! Define indices of states in the StateConfVector */
+#define SCVI_COFFEEMACHINE_MAIN_OFF 0
+#define SCVI_COFFEEMACHINE_MAIN_ON 0
+#define SCVI_COFFEEMACHINE_MAIN_ON_R_WELCOME 0
+#define SCVI_COFFEEMACHINE_MAIN_ON_R_HEATING_UP 0
+#define SCVI_COFFEEMACHINE_MAIN_ON_R_WAIT_FOR_CHOICE 0
+#define SCVI_COFFEEMACHINE_MAIN_ON_R_SAVE_ENERGY 0
+#define SCVI_COFFEEMACHINE_MAIN_ON_R_PROCESS_RECIPE 0
+#define SCVI_COFFEEMACHINE_MAIN_ON_R_PROCESS_RECIPE_R_MAKE_MILK 0
+#define SCVI_COFFEEMACHINE_MAIN_ON_R_PROCESS_RECIPE_R_MAKE_MILK_R_MAKE_STEAM 0
+#define SCVI_COFFEEMACHINE_MAIN_ON_R_PROCESS_RECIPE_R_MAKE_COFFEE 0
+#define SCVI_COFFEEMACHINE_MAIN_ON_R_PROCESS_RECIPE_R_MAKE_COFFEE_R_MILLING_BEANS 0
+#define SCVI_COFFEEMACHINE_MAIN_ON_R_PROCESS_RECIPE_R_MAKE_COFFEE_R_BREW_COFFEE 0
+
 /*! 
  * Type definition of the data structure for the CoffeeMachine state machine.
  * This data structure has to be allocated by the client code. 
@@ -75,6 +93,7 @@ typedef struct
 	CoffeeMachineInternal internal;
 	CoffeeMachineTimeEvents timeEvents;
 } CoffeeMachine;
+
 
 /*! Initializes the CoffeeMachine state machine data structures. Must be called before first usage.*/
 extern void coffeeMachine_init(CoffeeMachine* handle);
@@ -109,6 +128,8 @@ extern sc_boolean coffeeMachine_isFinal(const CoffeeMachine* handle);
 
 /*! Checks if the specified state is active (until 2.4.1 the used method for states was called isActive()). */
 extern sc_boolean coffeeMachine_isStateActive(const CoffeeMachine* handle, CoffeeMachineStates state);
+
+
 
 #ifdef __cplusplus
 }

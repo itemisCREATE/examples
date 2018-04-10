@@ -2,7 +2,7 @@
 #ifndef COFFEEMACHINEREQUIRED_H_
 #define COFFEEMACHINEREQUIRED_H_
 
-#include "sc/sc_types.h"
+#include "sc\sc_types.h"
 #include "CoffeeMachine.h"
 
 #ifdef __cplusplus

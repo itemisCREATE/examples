@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::cpp {
+
+	statechart CoffeeMachineCpp {
+
+		feature Outlet {
+			targetProject = "coffee_machine_pro_cpp"
+			targetFolder = "src"
+			libraryTargetFolder = "src/sc"
+		}
+	}
+}

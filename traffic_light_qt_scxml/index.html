@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>[Pro] TrafficLight Qt SCXML</title>
+<link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>YAKINDU TrafficLight Qt SCXML pro example</h1>
+		<p class="pro-feature">
+			This is a simple example for the Qt SCXML integration of YAKINDU
+			Statechart Tools. The example is inspired by the traffic light
+			examples that can be found at <a
+				href="http://doc.qt.io/qt-5/qtexamples.html#qt-scxml"> </a>. The
+			example uses a manually made statechart model from which a scxml-file
+			is generated, which then can be executed as a standalone application
+			within the QT environment. The manually made statechart model looks
+			as follows: <img alt="The traffic light statechart"
+				src="images/trafficlight_example.png" /> The main part of the
+			statechart consists of two composite states "working" and "broken".
+			Each of the states has several substates for the different modes of a
+			traffic light.
+		</p>
+		<h2>Overview</h2>
+		<p>
+			To run this example an installation of Qt is needed. It is
+			recommended to use the latest version, but at least <b>Qt 5.10.1</b>
+			with <b>Qt Creator 4.6.1</b>. We also recommend to use MinGW 5.3.0
+			and CMake for building the project when using Windows.
+		<p>
+			To check the compiler configuration, navigate to <i>'Tools >
+				Options ... > Build & Run > Compilers'</i> in your Qt installation.
+		</p>
+		</p>
+		<p>The example project contains several files which declare the
+			behaviour and look-and-feel of the traffic light:
+		<ul title="Qt specific files">
+			<li>Button.qml - Declares the trigger for break/repair the
+				traffic light</li>
+			<li>Lights.ui.qml - Declares how the traffic light is displayed
+				when executing</li>
+			<li>TrafficLight.qml - Declares which components should be used
+				for displaying the traffic light within an application window</li>
+			<li>TrafficLightStateMachine.scxml - The statemachine generated
+				as sccxml-file from the reference model</li>
+			<li>trafficlight-project.qrc - The resources file which
+				references images for displaying the traffic light</li>
+			<li>trafficlight-project.pro - The Qt project file that is
+				needed for execution</li>
+			<li>several images</li>
+		</ul>
+		<ul title="Implementation">
+			<li>trafficlight (.h, .cpp) - Mapping between the trafficlight
+				statemachine and user interface</li>
+			<li>trafficlight-main (.cpp) - Implementation of the main
+				application</li>
+		</ul>
+		</p>
+
+		<h2>Set up the project</h2>
+		<p>To setup the trafficlight project you will first need to
+			generate the .scxml statemachine file.
+		<ul title="setup_project">
+			<li>Right-click on <i>'src/model/model.sgen'</i> in the
+				traffic_light_qt_scxml project in the 'Project Explorer'
+			</li>
+			<li>Choose 'Generate Code Artifacts'</li>
+			<p>
+				<br>The <i>'TrafficLightStateMachine.scxml'</i> should be
+				created in the 'src' folder.
+			</p>
+		</ul>
+
+		</p>
+		<h2>Load the project</h2>
+
+		<ul title="load_project">
+			<li>Select 'Open Project' in the welcome page</li>
+			<li>Navigate to the folder 'src' within the trafficlight example
+				project</li>
+			<li>Choose 'trafficlight-project.pro'</li>
+			<li>Click 'Open'</li>
+			<p>
+				<br>The project should be opened and build automatically.
+			</p>
+		</ul>
+
+
+		<h2 id="build">Build the project manually</h2>
+		<ul title="build_manually">
+			<li>Right-click on project 'trafficlight-project' in the Qt
+				projects view</li>
+			<li>Select 'Run qmake'</li>
+			<li>Wait for completion</li>
+			<li>Right-click again on project</li>
+			<li>Select 'Build'</li>
+			<li>Wait for completion</li>
+
+		</ul>
+
+		<h2>Run application</h2>
+		<ul>
+			<li>Right-click again on project 'trafficlight-project' in the
+				Qt projects view</li>
+			<li>Select 'Run'</li>
+			<p>
+				<br>The traffic light application should be started. A traffic
+				light which consists of a red, yellow and green bulb is displayed
+				and is switching between the states. The traffic light can be set to
+				broken/repaired by clicking on the 'Pause/Play' button at the bottom
+				right, see the following image: <img alt="Traffic light"
+					src="images/trafficlight.png" />
+			</p>
+		</ul>
+
+		<h2>Run Qt Unit tests</h2>
+		<p>You can run Qt Unit tests to test the traffic light
+			statemachine behaviour. For this YAKINDU Statechart Tools provides a
+			SCTUnit code generator which generates a whole Qt Unit test project.
+		<p>
+		<ul>
+			<li>Right-click on 'QtScxmlStateMachine.sgen' in project folder
+				traffic_light_qt_scxml in 'Project Explorer' of YAKINDU Statechart
+				Tools</li>
+			<p>
+				<br>The folder 'test-gen' should be created in 'src' folder
+				containing the QtSCTUnit project for Qt.<br>When switching to
+				the Qt environment, after reopening the traffic light example
+				project, a SCTUnitTests project should be displayed as subproject.
+			</p>
+			<h3>Activate QT Unit tests</h3>
+			<p style="color: red">
+				Please note:<br>After performing the following steps, the run
+				configuration of the traffic light example is overridden.<br>To
+				be able to run the traffic light example again, these steps has to
+				be reverted. Also the project needs to be cleaned and rebuild.
+			</p>
+			<ul>
+				<li>Open 'trafficlight-project.pro' file from the Qt projects
+					view</li>
+				<li>Follow the steps that are described in 'Please note'
+					section</li>
+				<li>Uncomment the lines starting with 'TEMPLATE' and 'SUBDIRS'
+					at the bottom of the file</li>
+				<li>Right-click on project, select 'Clean' and rebuild the
+					project by performing the steps described in chapter <a
+					href="index.html#build">'Build the project manually'</a>
+					<p>
+						<br>The tests can now be run by executing 'Run' on the
+						traffic light project.<br>The test results should be logged
+						in the Qt console.
+					</p>
+			</ul>
+		</ul>
+
+		<h2>Run statechart simulation</h2>
+		<p>Additionally you can simulate the statechart in YAKINDU
+			Statechart Tools by right-click on the 'TrafficLightStateMachine.sct'
+			file and choose:
+		<ul>
+			<li>'Run As > Statechart Simulation'</li>
+		</ul>
+		<p>
+			You'll find more information on using the simulation in the <a
+				href="https://www.itemis.com/en/yakindu/statechart-tools/documentation/user-guide/">help</a>.
+		</p>
+
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+testclass TrafficLightStateMachineTests for statechart TrafficLightStateMachine {
+	
+	@Test
+	operation test() {
+		enter
+		
+		exit
+	}
+}

@@ -1,0 +1,9 @@
+GeneratorModel for yakindu::scxml {
+
+	statechart TrafficLightStateMachine {
+		feature Outlet {
+			targetProject = "traffic_light_qt_scxml"
+			targetFolder = "src"
+		}
+	}
+}

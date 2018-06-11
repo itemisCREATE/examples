@@ -1,9 +1,44 @@
 testclass TrafficLightStateMachineTests for statechart TrafficLightStateMachine {
 	
 	@Test
-	operation test() {
+	operation shouldOperateNormal() {
 		enter
-		
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.yellow)
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.yellow.r1.switchToGreen)
+		proceed 1 s
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.green)
+		proceed 3 s 
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.yellow.r1.switchToRed)
+		proceed 1 s
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.red)
+		proceed 3 s
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.yellow.r1.switchToGreen)
+		exit
+	}
+	
+	@Test
+	operation shouldBlink(){
+		enter
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.yellow)
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.yellow.r1.switchToGreen)
+		raise smash
+		assert active(TrafficLightStateMachine.trafficlight.broken.region_broken.blinking)
+		proceed 1 s
+		assert active(TrafficLightStateMachine.trafficlight.broken.region_broken.notBlinking)
+		exit
+	}
+	
+	@Test
+	operation shouldBeRepaired(){
+		enter
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.yellow)
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.yellow.r1.switchToGreen)
+		raise smash
+		assert active(TrafficLightStateMachine.trafficlight.broken)
+		assert active(TrafficLightStateMachine.trafficlight.broken.region_broken.blinking)
+		raise repair
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.yellow)
+		assert active(TrafficLightStateMachine.trafficlight.working.region_working.yellow.r1.switchToGreen)
 		exit
 	}
 }

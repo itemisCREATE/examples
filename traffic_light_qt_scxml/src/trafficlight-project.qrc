@@ -6,6 +6,5 @@
         <file alias="pause.png">pause.png</file>
         <file alias="play.png">play.png</file>
         <file alias="background.png">background.png</file>
-        <file>TrafficLightStateMachine.scxml</file>
     </qresource>
 </RCC>

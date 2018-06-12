@@ -52,11 +52,12 @@
 
 #include <QApplication>
 #include <QTextStream>
+#include "TrafficLightStateMachine.h"
 
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
-    QScxmlStateMachine *machine = QScxmlStateMachine::fromFile(QStringLiteral("../src-gen/TrafficLightStateMachine.scxml"));
+    TrafficLightStateMachine *machine = new TrafficLightStateMachine;
     if (!machine->parseErrors().isEmpty()) {
         QTextStream errs(stderr, QIODevice::WriteOnly);
         const auto errors = machine->parseErrors();

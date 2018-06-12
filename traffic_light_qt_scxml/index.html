@@ -119,18 +119,11 @@
 		<p>You can run Qt Unit tests to test the traffic light
 			statemachine behaviour. For this YAKINDU Statechart Tools provides a
 			SCTUnit code generator which generates a whole Qt Unit test project.
-		
 		<p>
 		<ul>
 			<li>Right-click on 'QtSCXMLTests.sgen' in project folder
 				traffic_light_qt_scxml in 'Project Explorer' of YAKINDU Statechart
 				Tools</li>
-			<li>Open the SCTUnitTests.pro in the generated
-				test-gen/QtSCTUnit folder</li>
-			<li>Change the line starting with <b>STATECHARTS</b> to the
-				following:
-			</li>
-			<em>STATECHARTS += ../../src-gen/TrafficLightStateMachine.scxml</em>
 			<p>
 				<br>The folder 'test-gen' should be created containing the
 				QtSCTUnit project with a reference to the statechart defined

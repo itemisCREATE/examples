@@ -56,7 +56,7 @@
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
-    QScxmlStateMachine *machine = QScxmlStateMachine::fromFile(QStringLiteral(":TrafficLightStateMachine.scxml"));
+    QScxmlStateMachine *machine = QScxmlStateMachine::fromFile(QStringLiteral("../src-gen/TrafficLightStateMachine.scxml"));
     if (!machine->parseErrors().isEmpty()) {
         QTextStream errs(stderr, QIODevice::WriteOnly);
         const auto errors = machine->parseErrors();

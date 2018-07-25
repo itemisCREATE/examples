@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.yakindu.examples.msp430.blinky</name>
+	<name>org.yakindu.sct.examples.msp430.blinky</name>
 	<comment></comment>
 	<projects>
 	</projects>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>com.yakindu.examples.headless.maven</name>
+	<name>com.yakindu.sct.examples.headless.ant</name>
 	<comment></comment>
 	<projects>
 	</projects>

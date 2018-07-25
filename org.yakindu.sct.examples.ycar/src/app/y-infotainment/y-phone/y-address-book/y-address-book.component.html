@@ -1,0 +1,51 @@
+<div class="address_book_container">
+
+  <figure class="photo">
+    <img [src]="phoneService.contact.photo">
+  </figure>
+
+  <div class="contact_list_container">
+
+    <div [class.selectedContact]="phoneService.selectedContactIndex === selectedIndex"
+         class="contact_list_item_container"
+         *ngFor="let contact of phoneService.contacts; let selectedIndex = index" (click)="callContact()">
+
+      <span class="firstName">{{contact.firstName}} {{contact.lastName}}</span>
+      <span class="phoneNumber"
+            [class.selectedContact]="phoneService.selectedContactIndex === selectedIndex">
+            {{contact.phoneNumber}}
+      </span>
+
+      <svg *ngIf="phoneService.selectedContactIndex === selectedIndex" width="38px" height="38px" viewBox="267 0 38 38"
+           version="1.1" xmlns="http://www.w3.org/2000/svg"
+           xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+        <desc>Created with Sketch.</desc>
+        <defs>
+          <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#B4ED50" offset="0%"></stop>
+            <stop stop-color="#429321" offset="100%"></stop>
+          </linearGradient>
+        </defs>
+        <g id="call-button" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+           transform="translate(267.000000, 0.000000)">
+          <rect id="BG" fill="url(#linearGradient-1)" x="0" y="0" width="38" height="38" rx="5"></rect>
+          <path
+            d="M12.7,17.772 C13.558671,19.4146749 14.65066,20.89866 15.976,22.224 C17.30134,23.54934 18.7853251,24.641329 20.428,25.5 L23.004,22.924 C23.1533341,22.7559992 23.3399989,22.6440003 23.564,22.588 C23.7880011,22.5319997 24.0026656,22.5506662 24.208,22.644 C25.4400062,23.0733355 26.8213257,23.288 28.352,23.288 C28.6693349,23.288 28.9399989,23.3999989 29.164,23.624 C29.3880011,23.8480011 29.5,24.1186651 29.5,24.436 L29.5,28.552 C29.5,28.8693349 29.3880011,29.1399989 29.164,29.364 C28.9399989,29.5880011 28.6693349,29.7 28.352,29.7 C25.6639866,29.7 23.0880123,29.1773386 20.624,28.132 C18.2533215,27.123995 16.1533425,25.7053425 14.324,23.876 C12.4946575,22.0466575 11.076005,19.9466785 10.068,17.576 C9.02266144,15.1119877 8.5,12.5360134 8.5,9.848 C8.5,9.53066508 8.61199888,9.26000112 8.836,9.036 C9.06000112,8.81199888 9.33066508,8.7 9.648,8.7 L13.764,8.7 C14.0813349,8.7 14.3519989,8.81199888 14.576,9.036 C14.8000011,9.26000112 14.912,9.53066508 14.912,9.848 C14.912,11.3786743 15.1266645,12.7599938 15.556,13.992 C15.6120003,14.1973344 15.6213335,14.4119989 15.584,14.636 C15.5466665,14.8600011 15.4440008,15.0466659 15.276,15.196 L12.7,17.772 Z"
+            id="5:5" fill="#FFFFFF"></path>
+        </g>
+      </svg>
+
+
+      <div *ngIf="phoneService.selectedContactIndex !== selectedIndex" class="button_placeholder">
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+

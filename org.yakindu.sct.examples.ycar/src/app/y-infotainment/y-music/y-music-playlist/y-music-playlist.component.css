@@ -1,0 +1,53 @@
+.playlist_content_container {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 420px;
+
+  align-items: center;
+  justify-content: space-around;
+}
+
+.cover {
+}
+
+.track_list_container {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+
+}
+
+.track_list {
+  display:flex;
+  flex-direction: row;
+
+  height: 30px;
+  width: 80%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+
+}
+
+
+.track_selection {
+  background-color: #1c3242;
+}
+
+
+.controll_buttons {
+
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+
+  height: 100px;
+
+  width: 80%;
+}

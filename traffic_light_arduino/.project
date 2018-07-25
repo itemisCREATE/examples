@@ -42,16 +42,4 @@
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 		<nature>org.yakindu.sct.builder.SCTNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>core/core</name>
-			<type>2</type>
-			<location>C:/Users/Rene Beckmann/yakindu-sct/arduinoPlugin/packages/arduino/hardware/avr/1.6.11/cores/arduino</location>
-		</link>
-		<link>
-			<name>core/variant</name>
-			<type>2</type>
-			<location>C:/Users/Rene Beckmann/yakindu-sct/arduinoPlugin/packages/arduino/hardware/avr/1.6.11/variants/standard</location>
-		</link>
-	</linkedResources>
 </projectDescription>

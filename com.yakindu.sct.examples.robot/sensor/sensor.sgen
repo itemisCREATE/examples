@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::c {
+
+	statechart Sensor {
+
+		feature Outlet {
+			targetProject = "robot_pro"
+			targetFolder = "sensor/src-gen"
+			libraryTargetFolder = "sensor/src"
+		}
+	}
+}

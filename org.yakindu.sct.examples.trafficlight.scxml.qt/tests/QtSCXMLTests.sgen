@@ -1,0 +1,16 @@
+GeneratorModel for sctunit::scxml::qt {
+	test TrafficLightStateMachineTests {
+
+		feature Outlet {
+			targetProject = "traffic_light_qt_scxml"
+			targetFolder = "test-gen"
+		}
+	}
+	test TestSuite {
+
+		feature Outlet {
+			targetProject = "traffic_light_qt_scxml"
+			targetFolder = "test-gen"
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"id": "org.yakindu.sct.examples.trafficlight.python",
+	"title": "Traffic Light (Python)",
+	"description": "Demonstrates how to to generate Python source code from a statechart.",
+	"previewImage": "traffic_light_python.jpg",
+	"author": "Norbert Lang",
+	"organization": "itemis AG",
+	"license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+	"category": ["labs",
+		"open source",
+		"python",
+		"basic",
+		"interface",
+		"composite state",
+		"timer service"
+	]
+}

@@ -1,0 +1,9 @@
+GeneratorModel for yakindu::swift {
+	statechart SwiftExample {
+		feature Outlet {
+			targetProject = "SwiftExample"
+			targetFolder = "Sources"
+			libraryTargetFolder = "Sources"
+		}
+	}
+}

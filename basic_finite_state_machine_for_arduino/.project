@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>basic_finite_state_machine_for_arduino</name>
+	<name>org.yakindu.sct.examples.arduino_fsm</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -46,12 +46,12 @@
 		<link>
 			<name>core/core</name>
 			<type>2</type>
-			<location>/data/home/klute/itemis/yakindu_statechart_tools/sct-master/C::/Users/Rene Beckmann/yakindu-sct/arduinoPlugin/packages/arduino/hardware/avr/1.6.11/cores/arduino</location>
+			<location>C:/data/home/klute/itemis/yakindu_statechart_tools/sct-master/C::/Users/Rene Beckmann/yakindu-sct/arduinoPlugin/packages/arduino/hardware/avr/1.6.11/cores/arduino</location>
 		</link>
 		<link>
 			<name>core/variant</name>
 			<type>2</type>
-			<location>/data/home/klute/itemis/yakindu_statechart_tools/sct-master/C::/Users/Rene Beckmann/yakindu-sct/arduinoPlugin/packages/arduino/hardware/avr/1.6.11/variants/standard</location>
+			<location>C:/data/home/klute/itemis/yakindu_statechart_tools/sct-master/C::/Users/Rene Beckmann/yakindu-sct/arduinoPlugin/packages/arduino/hardware/avr/1.6.11/variants/standard</location>
 		</link>
 	</linkedResources>
 </projectDescription>

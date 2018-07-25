@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>traffic_light_arduino</name>
+	<name>org.yakindu.sct.examples.traffic_light_arduino</name>
 	<comment></comment>
 	<projects>
 	</projects>

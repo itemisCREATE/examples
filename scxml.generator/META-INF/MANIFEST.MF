@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: scxml.generator
-Bundle-SymbolicName: scxml.generator; singleton:=true
+Bundle-SymbolicName: org.yakindu.sct.examples.scxml;singleton:=true
 Bundle-Version: 1.0.0
 Require-Bundle: org.eclipse.jdt.core;bundle-version="3.5.0",
  org.apache.commons.logging,

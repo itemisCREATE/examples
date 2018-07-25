@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>msp430_sct_blink</name>
+	<name>org.yakindu.examples.msp430.blinky</name>
 	<comment></comment>
 	<projects>
 	</projects>

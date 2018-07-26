@@ -1,6 +1,6 @@
 {
 	"id": "org.yakindu.sct.examples.swift",
-	"title": "[Labs] Showcase (Swift)",
+	"title": "Showcase (Swift)",
 	"author": "itemis AG",
 	"previewImage": "swift_example_preview.jpg",
 	"description": "Demonstrates how to to generate Swift source code from a statechart.",

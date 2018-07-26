@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.examples.headless.maven",
-	"title": "[Pro] Headless: Maven",
+	"title": "Headless: Maven",
 	"description": "Probably the majority of all Java projects in the world is built by Apache Maven, and with the new headless code generator of the YAKINDU statechart tools, Maven now builds your statecharts as well.",
 	"previewImage": "preview.jpeg",
     "author": "Rene Beckmann",

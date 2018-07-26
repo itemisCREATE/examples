@@ -1,6 +1,6 @@
 {
 	"id": "org.yakindu.sct.examples.trafficlight.scxml.qt",
-	"title": "[Pro] Traffic Light (SCXML) for QT",
+	"title": "Traffic Light (SCXML) for QT",
 	"description": "This traffic light is inspired by the Qt examples. It provides a simple traffic light that consists of the main states red, yellow and green. It demonstrates how to connect to the active properties of a state in a dynamically loaded statemachine within YAKINDU Statechart Tools and the Qt environment.",
 	"previewImage": "trafficlight.png",
     "author": "itemis AG",

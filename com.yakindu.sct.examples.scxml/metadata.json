@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.sct.examples.scxml",
-	"title": "[Generator] Custom Generator Example for SCXML",
+	"title": "Custom Generator Example for SCXML",
 	"author": "itemis AG",
 	"description": "Explains how to develop your own code generator. A custom code generator is one that is not shipped with YAKINDU Statechart Tools, but developed by the user himself for his own specific purposes. This example takes a simple stopwatch state machine and generates Statechart XML (SCXML) from it.",
 	"previewImage": "watch_gears_thumb.jpg",

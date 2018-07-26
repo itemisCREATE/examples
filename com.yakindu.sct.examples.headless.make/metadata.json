@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.examples.headless.make",
-	"title": "[Pro] Headless: Make",
+	"title": "Headless: Make",
 	"description": "While many people fear Makefiles, they are not as complicated as everyone believes. Integrating the command line statechart builder into your Make-driven build is as easy as it can get.",
 	"previewImage": "preview.jpeg",
     "author": "Rene Beckmann",

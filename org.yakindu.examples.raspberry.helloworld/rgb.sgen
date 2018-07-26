@@ -1,0 +1,9 @@
+GeneratorModel for yakindu::c {
+	statechart rgb {
+		feature Outlet {
+			targetProject = "org.yakindu.examples.raspberry.helloworld"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+}

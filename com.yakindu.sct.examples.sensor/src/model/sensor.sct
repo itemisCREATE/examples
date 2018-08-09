@@ -113,7 +113,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_noDxBJRKEeawhIM_qHOv3w"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_noAtsZRKEeawhIM_qHOv3w" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_noEYEJRKEeawhIM_qHOv3w" x="228" y="8" width="1081" height="475"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_noEYEJRKEeawhIM_qHOv3w" x="16" width="1081" height="475"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_noLFw5RKEeawhIM_qHOv3w" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_noLs0JRKEeawhIM_qHOv3w" type="StatechartName">
@@ -126,6 +126,7 @@
       <layoutConstraint xsi:type="notation:Bounds" xmi:id="_noMT4JRKEeawhIM_qHOv3w" x="10" y="10" width="215" height="400"/>
     </children>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_nn-4gZRKEeawhIM_qHOv3w"/>
+    <styles xsi:type="notation:BooleanValueStyle" xmi:id="_LFu0EJwPEeiWEbEH-mHIYA" name="inlineDefinitionSection"/>
     <edges xmi:id="_noKesJRKEeawhIM_qHOv3w" type="Transition" element="_noIpgpRKEeawhIM_qHOv3w" source="_noE_IZRKEeawhIM_qHOv3w" target="_QDyRgJUSEea7gJB6lgT_cg">
       <children xsi:type="notation:DecorationNode" xmi:id="_noLFwJRKEeawhIM_qHOv3w" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_noLFwZRKEeawhIM_qHOv3w"/>

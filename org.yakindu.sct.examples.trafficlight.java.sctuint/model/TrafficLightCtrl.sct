@@ -368,7 +368,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NPjBixA-EeGQ0KsLDV4EFg"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_NPjBhRA-EeGQ0KsLDV4EFg" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NPjBjBA-EeGQ0KsLDV4EFg" x="225" y="10" width="1283" height="892"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NPjBjBA-EeGQ0KsLDV4EFg" x="16" y="8" width="1283" height="892"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_NPsyjxA-EeGQ0KsLDV4EFg" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_NPsykRA-EeGQ0KsLDV4EFg" type="StatechartName">
@@ -381,6 +381,7 @@
       <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NPsylhA-EeGQ0KsLDV4EFg" x="10" y="10" width="216" height="386"/>
     </children>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_NPjBghA-EeGQ0KsLDV4EFg"/>
+    <styles xsi:type="notation:BooleanValueStyle" xmi:id="_9a3xIJwPEeiWEbEH-mHIYA" name="inlineDefinitionSection"/>
     <edges xmi:id="_NPsyiBA-EeGQ0KsLDV4EFg" type="Transition" element="_NPsyhxA-EeGQ0KsLDV4EFg" source="_NPjBjhA-EeGQ0KsLDV4EFg" target="_MGCXkBBFEeGQ0KsLDV4EFg">
       <children xsi:type="notation:DecorationNode" xmi:id="_NPsyjBA-EeGQ0KsLDV4EFg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_NPsyjRA-EeGQ0KsLDV4EFg"/>

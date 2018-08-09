@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_NPjBgBA-EeGQ0KsLDV4EFg" specification="&#xD;&#xA;interface TrafficLight:&#xD;&#xA;var red:boolean&#x9;&#x9;&#x9;&#xD;&#xA;var yellow:boolean&#x9;&#x9;&#x9;&#xD;&#xA;var green:boolean&#xD;&#xA;&#xD;&#xA;interface Pedestrian:&#xD;&#xA;var request:boolean&#x9;&#x9;&#xD;&#xA;var red:boolean&#x9;&#x9;&#x9;&#xD;&#xA;var green:boolean&#xD;&#xA;&#xD;&#xA;interface:&#xD;&#xA;in event pedestrianRequest&#x9;&#x9;&#xD;&#xA;in event onOff&#xD;&#xA;operation synchronize() : void&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#xD;&#xA;internal: &#xD;&#xA;every 200ms / synchronize&#xD;&#xA;&#x9;&#xD;&#xA;" name="TrafficLightCtrl">
+  <sgraph:Statechart xmi:id="_NPjBgBA-EeGQ0KsLDV4EFg" specification="&#xD;&#xA;interface TrafficLight:&#xD;&#xA;&#x9;var red:boolean&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;var yellow:boolean&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;var green:boolean&#xD;&#xA;&#xD;&#xA;interface Pedestrian:&#xD;&#xA;&#x9;var request:boolean&#x9;&#x9;&#xD;&#xA;&#x9;var red:boolean&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;var green:boolean&#xD;&#xA;&#xD;&#xA;interface:&#xD;&#xA;&#x9;in event pedestrianRequest&#x9;&#x9;&#xD;&#xA;&#x9;in event onOff&#xD;&#xA;&#x9;operation synchronize() : void&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#xD;&#xA;internal: &#xD;&#xA;&#x9;every 200ms / synchronize&#xD;&#xA;&#x9;&#xD;&#xA;" name="TrafficLightCtrl">
     <regions xmi:id="_NPjBgxA-EeGQ0KsLDV4EFg" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_NPjBjRA-EeGQ0KsLDV4EFg">
         <outgoingTransitions xmi:id="_NPsyhxA-EeGQ0KsLDV4EFg" target="_MF4mkBBFEeGQ0KsLDV4EFg"/>
@@ -368,7 +368,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NPjBixA-EeGQ0KsLDV4EFg"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_NPjBhRA-EeGQ0KsLDV4EFg" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NPjBjBA-EeGQ0KsLDV4EFg" x="225" y="10" width="1204" height="891"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NPjBjBA-EeGQ0KsLDV4EFg" x="16" y="4" width="1204" height="891"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_NPsyjxA-EeGQ0KsLDV4EFg" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_NPsykRA-EeGQ0KsLDV4EFg" type="StatechartName">
@@ -381,6 +381,7 @@
       <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NPsylhA-EeGQ0KsLDV4EFg" x="10" y="10" width="216" height="386"/>
     </children>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_NPjBghA-EeGQ0KsLDV4EFg"/>
+    <styles xsi:type="notation:BooleanValueStyle" xmi:id="_1sB2IJwPEeiWEbEH-mHIYA" name="inlineDefinitionSection"/>
     <edges xmi:id="_NPsyiBA-EeGQ0KsLDV4EFg" type="Transition" element="_NPsyhxA-EeGQ0KsLDV4EFg" source="_NPjBjhA-EeGQ0KsLDV4EFg" target="_MGCXkBBFEeGQ0KsLDV4EFg">
       <children xsi:type="notation:DecorationNode" xmi:id="_NPsyjBA-EeGQ0KsLDV4EFg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_NPsyjRA-EeGQ0KsLDV4EFg"/>

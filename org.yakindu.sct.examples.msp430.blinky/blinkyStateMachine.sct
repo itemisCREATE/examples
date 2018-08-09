@@ -87,7 +87,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_AX1pZ__3Eeafl6WsllPgUg"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_AX1pYf_3Eeafl6WsllPgUg" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_AX2QcP_3Eeafl6WsllPgUg" x="220" y="10" width="427" height="301"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_AX2QcP_3Eeafl6WsllPgUg" x="12" y="4" width="427" height="301"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_AX5Tw__3Eeafl6WsllPgUg" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_AX5Txf_3Eeafl6WsllPgUg" type="StatechartName">
@@ -100,6 +100,7 @@
       <layoutConstraint xsi:type="notation:Bounds" xmi:id="_AX560v_3Eeafl6WsllPgUg" x="10" y="10" width="200" height="114"/>
     </children>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_AX1CU__3Eeafl6WsllPgUg"/>
+    <styles xsi:type="notation:BooleanValueStyle" xmi:id="_unrpoJwPEeiWEbEH-mHIYA" name="inlineDefinitionSection"/>
     <edges xmi:id="_AX4ssP_3Eeafl6WsllPgUg" type="Transition" element="_AX4Fpv_3Eeafl6WsllPgUg" source="_AX2Qcv_3Eeafl6WsllPgUg" target="_AX3ekv_3Eeafl6WsllPgUg">
       <children xsi:type="notation:DecorationNode" xmi:id="_AX5TwP_3Eeafl6WsllPgUg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_AX5Twf_3Eeafl6WsllPgUg"/>

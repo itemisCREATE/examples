@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_4y7HkEdIEeaiPfQH0_D2xw" specification="interface:&#xD;&#xA;in event startGoingGreen&#xD;&#xA;in event startGoingRed&#xD;&#xA;in event goGreen&#xD;&#xA;in event goRed&#xD;&#xA;in event blink&#xD;&#xA;in event unblink&#xD;&#xA;in event repair&#xD;&#xA;in event smash" name="TrafficLightStateMachine" domainID="com.yakindu.domain.scxml">
+  <sgraph:Statechart xmi:id="_4y7HkEdIEeaiPfQH0_D2xw" specification="interface:&#xD;&#xA;&#x9;in event startGoingGreen&#xD;&#xA;&#x9;in event startGoingRed&#xD;&#xA;&#x9;in event goGreen&#xD;&#xA;&#x9;in event goRed&#xD;&#xA;&#x9;in event blink&#xD;&#xA;&#x9;in event unblink&#xD;&#xA;&#x9;in event repair&#xD;&#xA;&#x9;in event smash" name="TrafficLightStateMachine" domainID="com.yakindu.domain.scxml">
     <regions xmi:id="_Zyd_AGsfEeiEzcrQZsH6iQ" name="trafficlight">
       <vertices xsi:type="sgraph:Entry" xmi:id="_Zyd_YGsfEeiEzcrQZsH6iQ">
         <outgoingTransitions xmi:id="_Zyd_amsfEeiEzcrQZsH6iQ" specification="" target="_Zyd_NmsfEeiEzcrQZsH6iQ"/>

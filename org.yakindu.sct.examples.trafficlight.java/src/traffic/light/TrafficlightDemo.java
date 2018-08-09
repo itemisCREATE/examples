@@ -18,12 +18,12 @@ import javax.swing.JFrame;
 import traffic.light.trafficlightctrl.ITrafficLightCtrlStatemachine;
 import traffic.light.trafficlightctrl.SynchronizedTrafficLightCtrlStatemachine;
 
+
 /**
  * 
  * @author Tesch
  *
  */
-
 public class TrafficlightDemo extends JFrame {
 
 	private static final long serialVersionUID = -8909693541678814631L;

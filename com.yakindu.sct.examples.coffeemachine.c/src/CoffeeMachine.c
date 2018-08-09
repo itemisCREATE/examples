@@ -1,7 +1,7 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include "sc\sc_types.h"
+#include "sc/sc_types.h"
 #include "CoffeeMachine.h"
 #include "CoffeeMachineRequired.h"
 /*! \file Implementation of the state machine 'CoffeeMachine'
@@ -115,9 +115,9 @@ static void react_main__entry_Default(CoffeeMachine* handle);
 static void react_main_On_r__entry_Default(CoffeeMachine* handle);
 static void react_main_On_r_Process_Recipe_r_Make_Milk_r__entry_Default(CoffeeMachine* handle);
 static void react_main_On_r_Process_Recipe_r_Make_Coffee_r__entry_Default(CoffeeMachine* handle);
-static void react_main_On_r_Process_Recipe_r_Make_Milk_r_done(CoffeeMachine* handle);
-static void react_main_On_r_Process_Recipe_r_done(CoffeeMachine* handle);
-static void react_main_On_r_Process_Recipe_r_Make_Coffee_r_done(CoffeeMachine* handle);
+static void react_main_On_r_Process_Recipe_r_Make_Milk_r__exit_Default(CoffeeMachine* handle);
+static void react_main_On_r_Process_Recipe_r__exit_Default(CoffeeMachine* handle);
+static void react_main_On_r_Process_Recipe_r_Make_Coffee_r__exit_Default(CoffeeMachine* handle);
 static void clearInEvents(CoffeeMachine* handle);
 static void clearOutEvents(CoffeeMachine* handle);
 
@@ -511,7 +511,7 @@ static void effect_main_On_r_Process_Recipe_r_Make_Milk_tr0(CoffeeMachine* handl
 static void effect_main_On_r_Process_Recipe_r_Make_Milk_r_Make_Steam_tr0(CoffeeMachine* handle)
 {
 	exseq_main_On_r_Process_Recipe_r_Make_Milk_r_Make_Steam(handle);
-	react_main_On_r_Process_Recipe_r_Make_Milk_r_done(handle);
+	react_main_On_r_Process_Recipe_r_Make_Milk_r__exit_Default(handle);
 }
 
 static void effect_main_On_r_Process_Recipe_r_Make_Coffee_tr0(CoffeeMachine* handle)
@@ -529,7 +529,7 @@ static void effect_main_On_r_Process_Recipe_r_Make_Coffee_r_Milling_Beans_tr0(Co
 static void effect_main_On_r_Process_Recipe_r_Make_Coffee_r_Brew_Coffee_tr0(CoffeeMachine* handle)
 {
 	exseq_main_On_r_Process_Recipe_r_Make_Coffee_r_Brew_Coffee(handle);
-	react_main_On_r_Process_Recipe_r_Make_Coffee_r_done(handle);
+	react_main_On_r_Process_Recipe_r_Make_Coffee_r__exit_Default(handle);
 }
 
 static void effect_main_On_r_Process_Recipe_r__choice_0_tr0(CoffeeMachine* handle)
@@ -549,7 +549,7 @@ static void effect_main_On_r_Process_Recipe_r__choice_1_tr0(CoffeeMachine* handl
 
 static void effect_main_On_r_Process_Recipe_r__choice_1_tr1(CoffeeMachine* handle)
 {
-	react_main_On_r_Process_Recipe_r_done(handle);
+	react_main_On_r_Process_Recipe_r__exit_Default(handle);
 }
 
 static void effect_main_On_r_Process_Recipe_r__choice_2_tr0(CoffeeMachine* handle)
@@ -559,7 +559,7 @@ static void effect_main_On_r_Process_Recipe_r__choice_2_tr0(CoffeeMachine* handl
 
 static void effect_main_On_r_Process_Recipe_r__choice_2_tr1(CoffeeMachine* handle)
 {
-	react_main_On_r_Process_Recipe_r_done(handle);
+	react_main_On_r_Process_Recipe_r__exit_Default(handle);
 }
 
 /* Entry action for statechart 'CoffeeMachine'. */
@@ -1424,24 +1424,24 @@ static void react_main_On_r_Process_Recipe_r_Make_Coffee_r__entry_Default(Coffee
 	enseq_main_On_r_Process_Recipe_r_Make_Coffee_r_Milling_Beans_default(handle);
 }
 
-/* The reactions of exit done. */
-static void react_main_On_r_Process_Recipe_r_Make_Milk_r_done(CoffeeMachine* handle)
+/* The reactions of exit default. */
+static void react_main_On_r_Process_Recipe_r_Make_Milk_r__exit_Default(CoffeeMachine* handle)
 {
-	/* The reactions of exit done. */
+	/* The reactions of exit default. */
 	effect_main_On_r_Process_Recipe_r_Make_Milk_tr0(handle);
 }
 
-/* The reactions of exit done. */
-static void react_main_On_r_Process_Recipe_r_done(CoffeeMachine* handle)
+/* The reactions of exit default. */
+static void react_main_On_r_Process_Recipe_r__exit_Default(CoffeeMachine* handle)
 {
-	/* The reactions of exit done. */
+	/* The reactions of exit default. */
 	effect_main_On_r_Process_Recipe_tr0(handle);
 }
 
-/* The reactions of exit done. */
-static void react_main_On_r_Process_Recipe_r_Make_Coffee_r_done(CoffeeMachine* handle)
+/* The reactions of exit default. */
+static void react_main_On_r_Process_Recipe_r_Make_Coffee_r__exit_Default(CoffeeMachine* handle)
 {
-	/* The reactions of exit done. */
+	/* The reactions of exit default. */
 	effect_main_On_r_Process_Recipe_r_Make_Coffee_tr0(handle);
 }
 

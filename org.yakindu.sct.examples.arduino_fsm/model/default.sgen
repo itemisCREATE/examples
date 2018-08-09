@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c {
 	statechart LightCtrl {
 
 		feature Outlet {
-			targetProject = "basic_finite_state_machine_for_arduino"
+			targetProject = "org.yakindu.sct.examples.arduino_fsm"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src-gen"
 		}

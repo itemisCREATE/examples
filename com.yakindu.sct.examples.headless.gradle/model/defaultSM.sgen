@@ -3,7 +3,7 @@ GeneratorModel for yakindu::java {
 	statechart defaultSM {
 
 		feature Outlet {
-			targetProject = "com.yakindu.examples.headless.gradle"
+			targetProject = "com.yakindu.sct.examples.headless.gradle"
 			targetFolder = "src/main/java"
 			libraryTargetFolder = "src/main/java"
 		}

@@ -7,7 +7,7 @@ GeneratorModel for yakindu::typescript {
 		}
 		
 		feature Outlet {
-			targetProject = "ycar_app"
+			targetProject = "org.yakindu.sct.examples.ycar"
 			targetFolder = "src/app/gen/statemachine"
 			libraryTargetFolder = "src/app/gen/stateutils"
 		}
@@ -19,7 +19,7 @@ GeneratorModel for yakindu::typescript {
 			useEventQueue = true
 		}
 		feature Outlet {
-			targetProject = "ycar_app"
+			targetProject = "org.yakindu.sct.examples.ycar"
 			targetFolder = "src/app/gen/statemachine"
 			libraryTargetFolder = "src/app/gen/stateutils"
 		}

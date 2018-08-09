@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c {
 	statechart TrafficLightCtrl {
 
 		feature Outlet {
-			targetProject = "traffic_light_arduino"
+			targetProject = "org.yakindu.sct.examples.trafficlight.c.arduino"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src-gen"
 		}

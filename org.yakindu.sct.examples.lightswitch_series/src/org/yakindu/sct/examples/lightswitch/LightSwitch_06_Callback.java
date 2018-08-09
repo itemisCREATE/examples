@@ -3,7 +3,7 @@ package org.yakindu.sct.examples.lightswitch;
 import java.time.LocalDateTime;
 import java.util.Random;
 
-import light_switch_series._06_lightswitch_simulation.I_06_LightSwitch_simulationStatemachine.InternalOperationCallback;
+import org.yakindu.sct.examples.lightswitch_series._06_lightswitch_simulation.I_06_LightSwitch_simulationStatemachine.InternalOperationCallback;
 
 public class LightSwitch_06_Callback implements InternalOperationCallback {
 
@@ -16,7 +16,7 @@ public class LightSwitch_06_Callback implements InternalOperationCallback {
 	@Override
 	public long get_hour() {
 		LocalDateTime time = LocalDateTime.now();
-		long hour = (long)(((float)time.getMinute())/2.5);
+		long hour = (long) (((float) time.getMinute()) / 2.5);
 		System.out.printf("Hour: %d\n", hour);
 		return hour;
 	}

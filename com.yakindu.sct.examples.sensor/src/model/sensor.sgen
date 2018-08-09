@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c {
 	statechart sensorExample {
 
 		feature Outlet {
-			targetProject = "sensor"
+			targetProject = "com.yakindu.sct.examples.sensor"
 			targetFolder = "src/model/src-gen"
 			libraryTargetFolder = "src/model/src"
 		}

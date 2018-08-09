@@ -3,7 +3,7 @@ GeneratorModel for yakindu::java {
 	statechart TrafficLightCtrl {
 	 	
 		feature Outlet {
-			targetProject = "traffic_light_java"
+			targetProject = "org.yakindu.sct.examples.trafficlight.java"
 			targetFolder = "src-gen"
 		}
 

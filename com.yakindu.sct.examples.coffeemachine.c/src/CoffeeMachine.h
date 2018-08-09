@@ -2,7 +2,7 @@
 #ifndef COFFEEMACHINE_H_
 #define COFFEEMACHINE_H_
 
-#include "sc\sc_types.h"
+#include "sc/sc_types.h"
 #include "coffee_machine.h"
 #include "cm_hmi.h"
 		

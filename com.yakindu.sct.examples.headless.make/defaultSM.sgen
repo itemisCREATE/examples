@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c {
 	statechart defaultSM {
 
 		feature Outlet {
-			targetProject = "com.yakindu.examples.headless.make"
+			targetProject = "com.yakindu.sct.examples.headless.make"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
 		}

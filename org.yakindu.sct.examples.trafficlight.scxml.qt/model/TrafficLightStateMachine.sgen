@@ -6,6 +6,7 @@ GeneratorModel for yakindu::scxml {
 			targetFolder = "src-gen"
 		}
 	}
+	
 	statechart TrafficLightStateMachine {
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.trafficlight.scxml.qt"

@@ -8,8 +8,8 @@
 #include <stdio.h>
 
 #include "cm_trace.h"
-#include "CoffeeMachine.h"
-#include "CoffeeMachineRequired.h"
+#include "sc/CoffeeMachine.h"
+#include "sc/CoffeeMachineRequired.h"
 
 static char* stateNames[] = {
 		"Off",

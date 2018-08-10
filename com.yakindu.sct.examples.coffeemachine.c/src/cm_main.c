@@ -12,7 +12,7 @@
 #include <pthread.h>
 
 #include "cm_hmi.h"
-#include "CoffeeMachine.h"
+#include "sc/CoffeeMachine.h"
 #include "scutil/sc_cycle_runner.h"
 #include "scutil/sc_timer_service.h"
 

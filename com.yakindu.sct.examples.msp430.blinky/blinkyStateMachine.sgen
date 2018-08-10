@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c {
 	statechart blinkyStateMachine {
 
 		feature Outlet {
-			targetProject = "com.yakindu.sct.examples.headless.maven"
+			targetProject = "com.yakindu.sct.examples.msp430.blinky"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
 		}

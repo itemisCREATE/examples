@@ -5,7 +5,6 @@ GeneratorModel for yakindu::c {
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.arduino_fsm"
 			targetFolder = "src-gen"
-			libraryTargetFolder = "src-gen"
 		}
 	}
 }

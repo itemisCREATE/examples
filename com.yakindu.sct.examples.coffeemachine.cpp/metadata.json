@@ -1,0 +1,10 @@
+{
+	"id": "com.yakindu.sct.examples.coffeemachine.cpp",
+	"title": "Coffee Machine (C++)",
+	"author": "itemis AG",
+	"description": "This is a comprehensive example for the deep C++ integration of YAKINDU statecharts.",
+	"previewImage": "coffee_machine_thumb.jpg",
+	"category": [
+		"professional"
+	]
+}

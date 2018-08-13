@@ -1,0 +1,17 @@
+GeneratorModel for yakindu::c {
+
+	statechart CoffeeMachine {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.coffemachine.c"
+			targetFolder = "src"
+			libraryTargetFolder = "src/sc"
+		}
+		
+		feature Tracing {
+			enterState = true
+			exitState = true
+		}
+		
+	}
+}

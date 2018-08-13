@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>[Pro] Coffee Machine with C++ integration</title>
+<link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+  <div class="primary">
+    <h1>[Pro] Coffee Machine with C++ integration</h1>
+    <p>
+      This is a example for the deep C++ integration of YAKINDU
+      statecharts. It shows how C++ classes can be used as variables and is based on the C example: <img
+        alt="Model"
+        src="images/CoffeeMachineCpp_0.png" /> The statechart consists of two
+      major states "ON" and "OFF". The "ON" state is a composite state with
+      several substates and substate machines for the different modes.
+
+    <h2>Using deep C++ integration</h2>
+    <p>Imported classes can be referenced by declaring a variable and using the 
+    class as the type of it.
+    Within the example two classes are referenced:
+    <ul>
+      <li>var cm : Coffee_Machine</li>
+      <li>var hmi : CM_HMI</li>
+    </ul>
+    They can be used to access members of the class, like functions, variables, typedefs, etc.
+    For example the class Coffe_Machine, which is declared as the variable cm, includes a function called stop heating:
+  	<img
+        alt="Functions"
+        src="images/functions.png" /> </p>
+    <h2>Simulation</h2>
+    <p> The declared variables can be used and changed in the simulation view.<img
+        alt="SimulationView"
+        src="images/simulationview.png" /> </p>
+    <h2>Generate state machine code</h2>
+    <p>If you have changed the model you can generate state machine code by
+      right-click on 'CoffeeMachine.sgen' and choose 'Generate Code Artefacts'.
+      This will generate:</p>
+    <ul>
+      <li>CoffeeMachineCpp.hpp</li>
+      <li>CoffeeMachineCpp.cpp</li>
+    </ul>
+  </div>
+</body>
+</html>

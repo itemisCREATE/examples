@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c {
 	statechart CoffeeMachine {
 
 		feature Outlet {
-			targetProject = "com.yakindu.sct.examples.coffemachine.c"
+			targetProject = "com.yakindu.sct.examples.coffeemachine.c"
 			targetFolder = "src"
 			libraryTargetFolder = "src/sc"
 		}

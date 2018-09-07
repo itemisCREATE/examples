@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::cpp {
+
+	statechart Arduino_Blinky_SCT {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.arduino"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+}

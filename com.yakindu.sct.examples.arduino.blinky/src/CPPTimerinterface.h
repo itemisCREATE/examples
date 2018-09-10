@@ -1,10 +1,3 @@
-/*
- * CPPTimerinterface.h
- *
- *  Created on: 10.02.2017
- *      Author: rherrmann
- */
-
 #ifndef SRC_CPPTIMERINTERFACE_H_
 #define SRC_CPPTIMERINTERFACE_H_
 

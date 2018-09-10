@@ -1,10 +1,3 @@
-/*
- * CPPTimerInterface.cpp
- *
- *  Created on: 10.02.2017
- *      Author: rherrmann
- */
-
 #include "CPPTimerinterface.h"
 #include "TimedStatemachineInterface.h"
 #include "Arduino.h"

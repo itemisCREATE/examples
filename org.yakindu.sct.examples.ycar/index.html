@@ -12,7 +12,7 @@
 
 <h2>1. Overview</h2>
 
-<figure><img src="./img/tsdomain_hmimain.png"/></figure>
+<figure><img src="images/tsdomain_hmimain.png"/></figure>
 
 <p>This example demonstrates how a state machine can be generated as typescript artifact and how to integrate this into an angular 4 application.</p>
 
@@ -33,9 +33,9 @@ With the update site you can install the typescript generator. </p>
 
 <p>The infotainment component represents a container for further components like <em>infotainment menu</em>, <em>weather</em>, <em>music player</em> and <em>phone</em>. </p>
 
-<figure><img src="./img/tsdomain_hmimain2.png"/></figure>
+<figure><img src="images/tsdomain_hmimain2.png"/></figure>
 
-<figure><img src="./img/tsdomain_screens.png"/></figure>
+<figure><img src="images/tsdomain_screens.png"/></figure>
 
 <h2>2. Set up the Development Environment</h2>
 
@@ -55,13 +55,13 @@ With the update site you can install the typescript generator. </p>
 
 <p>With this command the application is bundled by webpack and a dev server is started. If the bundling process was successful you will see this messages in your terminal/console window: </p>
 
-<figure><img src="./img/2017-05-08_14-09-23.png"/></figure>
+<figure><img src="images/2017-05-08_14-09-23.png"/></figure>
 
 <p>Open the url <em>http://localhost:4200</em> in a web browser. </p>
 
 <p>You should see the <em>main screen</em> of the YCar App as follows: </p>
 
-<figure><img src="./img/2017-05-08_14-16-37.png"/></figure>
+<figure><img src="images/2017-05-08_14-16-37.png"/></figure>
 
 <h2>4. Behavior modeling with SCT Pro</h2>
 
@@ -69,11 +69,11 @@ With the update site you can install the typescript generator. </p>
 
 <p>If you click the <strong>turn on</strong> button on the welcome screen, the welcome screen will disappear and the main screen will be displayed. </p>
 
-<figure><img src="./img/ycar_anim1.gif"/></figure>
+<figure><img src="images/ycar_anim1.gif"/></figure>
 
 <p>This behavior was modeled as follows (<em>ycar_app/control/screenService.sct</em>): </p>
 
-<figure><img src="./img/2017-05-08_15-44-13.png"/></figure>
+<figure><img src="images/2017-05-08_15-44-13.png"/></figure>
 
 <p>In the definition section two <strong>in events</strong> and two <strong>operation callbacks</strong> were defined. When the YCar application starts, the application enters the <em>off-state</em> and call the <em>navigateToWelcomeScreen</em> callback function. Thereby the welcome screen is shown. </p>
 
@@ -83,11 +83,11 @@ With the update site you can install the typescript generator. </p>
 
 <p>On the right side you see the menu with three items. If you click on an item, the correspond feature will be displayed. </p>
 
-<figure><img src="./img/ycar_anim2.gif"/></figure>
+<figure><img src="images/ycar_anim2.gif"/></figure>
 
 <p>The behavior was modeled as follows (<em>ycar_app/control/menuService.sct</em>)</p>
 
-<figure><img src="./img/2017-05-09_09-19-14.png"/></figure>
+<figure><img src="images/2017-05-09_09-19-14.png"/></figure>
 
 <p>In the definition section we defined a menuState <strong>variable</strong> of type string. The menuState is used to decide which state is to be entered. </p>
 
@@ -101,7 +101,7 @@ With the update site you can install the typescript generator. </p>
 
 <p>For configuring the code generation process, YAKINDU Statechart Tools uses a textual generator model called <strong>SGen</strong>. It can be created either by using the provided wizard <strong>YAKINDU Statechart Generator Model</strong> or by creating a new text file with the extension <strong>.sgen</strong>. </p>
 
-<figure><img src="./img/2017-05-09_11-18-37.png"/></figure>
+<figure><img src="images/2017-05-09_11-18-37.png"/></figure>
 
 <p>The <strong>Outlet</strong> feature specifies target project and target folder for the generated artifacts. It is a <em>required</em> feature and has the following parameters: </p>
 
@@ -122,11 +122,11 @@ With the update site you can install the typescript generator. </p>
 
 <p>In context of angular, the generated ScreenService state machine was generated as Service. We need to add this service as provider into the <strong>ycar_app/src/app/app.module.ts</strong>:</p>
 
-<figure><img src="./img/2017-05-09_12-39-11.png"/></figure>
+<figure><img src="images/2017-05-09_12-39-11.png"/></figure>
 
 <p>The service instance is injected into the <em>AppComponent</em> (ycar_app/src/app/ app.component.ts) by constructor injection (line 17). </p>
 
-<figure><img src="./img/2017-05-09_13-24-56.png"/></figure>
+<figure><img src="images/2017-05-09_13-24-56.png"/></figure>
 
 <p>We need to write some glue code for setting the <em>in-events</em> and <em>operation callbacks</em>. We do that in the component lifecycle hook <em>ngAfterViewInit</em> (line 30 - 46).</p>
 
@@ -142,13 +142,13 @@ With the update site you can install the typescript generator. </p>
 
 <p>The menuService need to be added as provider to <em> src/app/y-main-screen/y_main_screen.module.ts </em>.</p>
 
-<figure><img src="./img/2017-05-09_13-51-02.png"/></figure>
+<figure><img src="images/2017-05-09_13-51-02.png"/></figure>
 
 <p>The instance of menuService is also injected like the screenService (line 24). </p>
 
 <p>We need to customize <strong>YMainScreenComponent</strong> (<em>src/app/y-main-screen/y_main_screen.component.ts </em>) </p>
 
-<figure><img src="./img/2017-05-09_14-20-57.png"/></figure>
+<figure><img src="images/2017-05-09_14-20-57.png"/></figure>
 
 <p>From line 34 to 47 we define the operation callback object from type <em>IOperationCallback</em>. The members of this object are callback functions which are called from the <em>menuService</em>. </p>
 

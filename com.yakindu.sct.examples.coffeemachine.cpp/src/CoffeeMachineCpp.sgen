@@ -4,7 +4,7 @@ GeneratorModel for yakindu::cpp {
 
 		feature Outlet {
 			targetProject = "com.yakindu.sct.examples.coffeemachine.cpp"
-			targetFolder = "src"
+			targetFolder = "src/sc"
 			libraryTargetFolder = "src/sc"
 		}
 	}

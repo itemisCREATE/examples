@@ -1,0 +1,96 @@
+GeneratorModel for yakindu::c {
+
+	statechart CoffeeMachine {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.coffeemachine.multi.c"
+			targetFolder = "src"
+			libraryTargetFolder = "src/sc"
+		}
+		
+		feature Tracing {
+			enterState = true
+			exitState = true
+		}
+		
+	}
+	
+	
+	
+	statechart ProcessCappucino {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.coffeemachine.multi.c"
+			targetFolder = "src"
+			libraryTargetFolder = "src/sc"
+		}
+		
+		feature Tracing {
+			enterState = true
+			exitState = true
+		}
+		
+	}
+	
+	
+	statechart ProcessCoffee {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.coffeemachine.multi.c"
+			targetFolder = "src"
+			libraryTargetFolder = "src/sc"
+		}
+		
+		feature Tracing {
+			enterState = true
+			exitState = true
+		}
+		
+	}
+	
+	statechart ProcessEspresso {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.coffeemachine.multi.c"
+			targetFolder = "src"
+			libraryTargetFolder = "src/sc"
+		}
+		
+		feature Tracing {
+			enterState = true
+			exitState = true
+		}
+		
+	}
+	
+	statechart ProcessLatteMacchiato {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.coffeemachine.multi.c"
+			targetFolder = "src"
+			libraryTargetFolder = "src/sc"
+		}
+		
+		feature Tracing {
+			enterState = true
+			exitState = true
+		}
+		
+	}
+	
+	statechart ProcessMilk {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.coffeemachine.multi.c"
+			targetFolder = "src"
+			libraryTargetFolder = "src/sc"
+		}
+		
+		feature Tracing {
+			enterState = true
+			exitState = true
+		}
+		
+	}
+	
+}

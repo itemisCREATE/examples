@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::c {
+
+	statechart TimedStatemachine {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.timer.generic.c.sw"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+}

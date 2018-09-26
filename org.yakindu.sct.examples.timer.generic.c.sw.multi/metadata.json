@@ -1,0 +1,10 @@
+{
+	"id": "org.yakindu.sct.examples.timer.generic.c.sw.mutli",
+	"title": "Two statemachines with generic sw c timer",
+	"description": "Two statemachines with generic sw c timer",
+	"previewImage": "TimedStatemachine.png",
+    "author": "itemis AG",
+	"category": [
+		"platform"
+	]
+}

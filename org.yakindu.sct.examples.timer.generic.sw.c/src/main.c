@@ -26,7 +26,7 @@ int main() {
 		timedStatemachine_runCycle(&statemachine);
 
 		//call this function after some time has proceed
-		sc_sw_timer_service_proceed(&ts_connection, 1);
+		sc_sw_timer_service_proceed(&timer_service, 1);
 	}
 
 	return 0;

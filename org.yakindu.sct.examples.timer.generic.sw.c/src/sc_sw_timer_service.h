@@ -40,7 +40,7 @@ extern void sc_sw_timer_service_init(sc_sw_timer_service_t *this,
 		sc_sw_timer_t *timers,
 		sc_integer count);
 
-extern void sc_sw_timer_service_proceed(struct sc_ts_connection *connection, const sc_integer time_ms);
+extern void sc_sw_timer_service_proceed(sc_sw_timer_service_t *this, const sc_integer time_ms);
 
 
 //extern void start_timer(struct sc_ts_connection *connection, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic);

@@ -79,8 +79,7 @@ void sc_sw_timer_service_init(sc_sw_timer_service_t *this,
 }
 
 
-void sc_sw_timer_service_proceed(struct sc_ts_connection *connection, const sc_integer time_ms) {
-	sc_sw_timer_service_t *this = (sc_sw_timer_service_t *) (connection->ts_handle);
+void sc_sw_timer_service_proceed(sc_sw_timer_service_t *this, const sc_integer time_ms) {
 	/* go through all timers ... */
 	for (int i = 0; i < this->timer_count; i++) {
 
@@ -91,7 +90,7 @@ void sc_sw_timer_service_proceed(struct sc_ts_connection *connection, const sc_i
 				this->timers[i].elapsed_time_ms += time_ms;
 
 				if (this->timers[i].elapsed_time_ms >= this->timers[i].time_ms) {
-					raise_timed_event(connection, this->timers[i].pt_evid);
+					raise_timed_event(this->timers[i].connection, this->timers[i].pt_evid);
 					if (this->timers[i].periodic) {
 						this->timers[i].elapsed_time_ms -= this->timers[i].time_ms;
 					}

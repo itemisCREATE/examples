@@ -1,0 +1,10 @@
+{
+	"id": "org.yakindu.sct.examples.timer.generic.c.pthread",
+	"title": "Simple timed statemachine with generic pthread c timer",
+	"description": "Simple timed statemachine with generic pthread c timer",
+	"previewImage": "TimedStatemachine.png",
+    "author": "itemis AG",
+	"category": [
+		"platform"
+	]
+}

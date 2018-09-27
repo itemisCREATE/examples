@@ -1,6 +1,6 @@
 {
 	"id": "org.yakindu.sct.examples.timer.generic.c.sw",
-	"title": "Simple timed statemachine with generic sw c timer",
+	"title": "Software Timer (C)",
 	"description": "Simple timed statemachine with generic sw c timer",
 	"previewImage": "TimedStatemachine.png",
     "author": "itemis AG",

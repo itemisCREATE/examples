@@ -1,7 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.timer.generic.c.pthread",
-	"title": "Simple timed statemachine with generic pthread c timer",
-	"description": "Simple timed statemachine with generic pthread c timer",
+	"title": "PThread Timer (C)",
+	"description": "Demonstrates how pthread timer can be implemented",
 	"previewImage": "TimedStatemachine.png",
     "author": "itemis AG",
 	"category": [

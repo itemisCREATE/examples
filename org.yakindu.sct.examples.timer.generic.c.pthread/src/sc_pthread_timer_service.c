@@ -1,14 +1,9 @@
 /*
- * sc_timer_service.c
+ * sc_pthread_timer_service.c
  *
- *  Created on: 13.04.2016
- *      Author: korsinski, terfloth
+ *  Created on: 29.09.2018
+ *      Author: herrmann
  */
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <pthread.h>
 
 #include "sc_pthread_timer_service.h"
 
@@ -122,8 +117,3 @@ sc_timer_service_methods_t sc_pthread_timer_service_methods =
 
 	 pthread_mutex_init(&(this->timer_mutex), NULL);
  }
-
-
-
-
-

@@ -9,6 +9,7 @@ sc_sw_timer_t timers[MAX_TIMER];
 sc_sw_timer_service_t timer_service;
 
 extern sc_timer_service_methods_t sc_sw_timer_service_methods;
+
 sc_ts_connection_t ts_connection[] = //
 		{ //
 				{

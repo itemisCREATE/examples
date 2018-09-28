@@ -5,12 +5,17 @@
  *      Author: korsisnki, terfloth
  */
 
-#ifndef SC_TIMER_SERCICE_H_
-#define SC_TIMER_SERCICE_H_
+#ifndef SC_PTHREAD_TIMER_SERCICE_H_
+#define SC_PTHREAD_TIMER_SERCICE_H_
 
 #include <pthread.h>
 #include "sc_types.h"
 #include "sc_timer_service.h"
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <pthread.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -54,4 +59,4 @@ extern void sc_pthread_timer_service_init(sc_pthread_timer_service_t *this,
 #endif
 
 
-#endif /* SC_TIMER_SERCICE_H_ */
+#endif /* SC_PTHREAD_TIMER_SERCICE_H_ */

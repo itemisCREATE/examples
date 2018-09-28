@@ -5,8 +5,8 @@
  *      Author: herrmann
  */
 
-#ifndef SC_TIMER_SERCICE_H_
-#define SC_TIMER_SERCICE_H_
+#ifndef SC_SW_TIMER_SERCICE_H_
+#define SC_SW_TIMER_SERCICE_H_
 
 #include "../src/sc_types.h"
 #include "sc_timer_service.h"
@@ -50,4 +50,4 @@ extern void sc_sw_timer_service_proceed(sc_sw_timer_service_t *this, const sc_in
 #endif
 
 
-#endif /* SC_TIMER_SERCICE_H_ */
+#endif /* SC_SW_TIMER_SERCICE_H_ */

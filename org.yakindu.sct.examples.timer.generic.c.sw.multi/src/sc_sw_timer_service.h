@@ -1,8 +1,8 @@
 /*
- * sc_timer.h
+ * sc_sw_timer_service.h
  *
- *  Created on: 13.04.2016
- *      Author: korsisnki, terfloth
+ *  Created on: 28.09.2018
+ *      Author: herrmann
  */
 
 #ifndef SC_TIMER_SERCICE_H_
@@ -10,6 +10,9 @@
 
 #include "../src/sc_types.h"
 #include "sc_timer_service.h"
+
+#include <stdlib.h>
+#include <stdio.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -41,14 +44,6 @@ extern void sc_sw_timer_service_init(sc_sw_timer_service_t *this,
 		sc_integer count);
 
 extern void sc_sw_timer_service_proceed(sc_sw_timer_service_t *this, const sc_integer time_ms);
-
-
-//extern void start_timer(struct sc_ts_connection *connection, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic);
-//
-//extern void stop_timer(struct sc_ts_connection *connection,
-//	       const sc_eventid evid);
-
-
 
 #ifdef __cplusplus
 }

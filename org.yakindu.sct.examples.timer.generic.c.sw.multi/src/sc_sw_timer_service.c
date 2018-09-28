@@ -1,14 +1,11 @@
 /*
- * sc_timer_service.c
+ * sc_sw_timer_service.c
  *
- *  Created on: 13.04.2016
- *      Author: korsinski, terfloth
+ *  Created on: 28.09.2018
+ *      Author: herrmann
  */
 
 #include "sc_sw_timer_service.h"
-
-#include <stdlib.h>
-#include <stdio.h>
 
 static void raise_timed_event(struct sc_ts_connection *connection, const sc_eventid evid) {
 	connection->sm_callback(connection->sm_handle, evid);
@@ -39,7 +36,6 @@ static void start_timer(struct sc_ts_connection *connection, const sc_eventid ev
 			break;
 		}
 	}
-
 }
 
 
@@ -80,11 +76,8 @@ void sc_sw_timer_service_init(sc_sw_timer_service_t *this,
 
 
 void sc_sw_timer_service_proceed(sc_sw_timer_service_t *this, const sc_integer time_ms) {
-//	sc_sw_timer_service_t *this = (sc_sw_timer_service_t *) (connection->ts_handle);
 	/* go through all timers ... */
 	for (int i = 0; i < this->timer_count; i++) {
-//		if(connection->sm_handle == this->timers[i].connection->sm_handle) {
-
 		/* ... and process all used. */
 		if (this->timers[i].pt_evid != NULL) {
 
@@ -97,13 +90,6 @@ void sc_sw_timer_service_proceed(sc_sw_timer_service_t *this, const sc_integer t
 					}
 				}
 			}
-//		}
 		}
 	}
 }
-
-
-
-
-
-

@@ -56,10 +56,10 @@ static void stop_timer(struct sc_ts_connection *connection,
 	/* go through all timers ... */
 	for (int i = 0; i < this->timer_count; i++) {
 
-		/* and find the one which should be stopped. */
+		/* ... and find the one which should be stopped. */
 		if (this->timers[i].pt_evid == evid) {
 
-			/* reset the timer */
+			/* resets the timer. */
 			this->timers[i].pt_evid = NULL;
 			this->timers[i].connection = NULL;
 			break;

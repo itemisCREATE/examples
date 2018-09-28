@@ -23,7 +23,7 @@ struct sc_pthread_timer_service;
 
 /*! Internal arguments of a timer pthread. */
 typedef struct {
-	struct sc_pthread_timer_service *service;
+	struct sc_sw_timer_service *service;
 	sc_integer time_ms;
 	sc_boolean periodic;
 	sc_integer elapsed_time_ms;
@@ -34,8 +34,8 @@ typedef struct {
 /*! Function pointer type for state machines runCycle function. */
 typedef void (*sc_raise_time_event_fp)(void *handle, sc_eventid evid);
 
-/*! *Internal arguments for pthread timer service. */
-typedef struct sc_pthread_timer_service {
+/*! *Internal arguments for the timer service. */
+typedef struct sc_sw_timer_service {
 	sc_integer timer_count;
 	sc_sw_timer_t *timers;
 } sc_sw_timer_service_t;

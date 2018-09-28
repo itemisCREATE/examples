@@ -1,14 +1,13 @@
 /*
- * sc_timer.h
+ * sc_pthread_timer_service.h
  *
- *  Created on: 13.04.2016
- *      Author: korsisnki, terfloth
+ *  Created on: 29.09.2018
+ *      Author: herrmann
  */
 
 #ifndef SC_PTHREAD_TIMER_SERCICE_H_
 #define SC_PTHREAD_TIMER_SERCICE_H_
 
-#include <pthread.h>
 #include "sc_types.h"
 #include "sc_timer_service.h"
 
@@ -39,7 +38,7 @@ typedef struct {
 /*! Function pointer type for state machines runCycle function. */
 typedef void (*sc_raise_time_event_fp)(void *handle, sc_eventid evid);
 
-
+/*! *Internal arguments for the timer service. */
 typedef struct sc_pthread_timer_service {
 	sc_integer timer_count;
 	sc_pthread_timer_t *timers;

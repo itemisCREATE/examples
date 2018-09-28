@@ -53,18 +53,22 @@ sc_cr_connection_t sc_rc_connection[] = //
 }; //
 
 int main() {
-	puts("started");
+	puts("Started program");
 	sc_pthread_timer_service_init(&timer_service, timers, MAX_TIMER,
 			&statechart_mutex);
+	puts("Initialized PThread timer service");
 	sc_cycle_runner_init(&cycle_runner_service, cycle_runners, MAX_RUNNER, &statechart_mutex);
+	puts("Initialized PThread cycle runner");
 	timedStatemachine_init(&statemachine);
 	timedStatemachine2_init(&statemachine2);
-	puts("start enter");
+	puts("Initialized statemachines");
 	timedStatemachine_enter(&statemachine);
 	timedStatemachine2_enter(&statemachine2);
-	puts("enter done");
+	puts("Entered statemachines");
 	sc_cycle_runner_methods.start(&sc_rc_connection[0], 100);
+	puts("Activated cycle runner for statemachine");
 	sc_cycle_runner_methods.start(&sc_rc_connection[1], 100);
+	puts("Activated cycle runner for statemachine1");
 	for (;;);
 
 	return 0;
@@ -73,27 +77,27 @@ int main() {
 extern void timedStatemachine_setTimer(TimedStatemachine* handle,
 		const sc_eventid evid, const sc_integer time_ms,
 		const sc_boolean periodic) {
-	puts("some timer0 was set");
 	sc_pthread_timer_service_methods.start(&ts_connection[0], evid, time_ms,
 			periodic);
+	puts("Set timer for statemachine");
 }
 
 extern void timedStatemachine_unsetTimer(TimedStatemachine* handle,
 		const sc_eventid evid) {
-	puts("some timer0 was unset");
 	sc_pthread_timer_service_methods.stop(&ts_connection[0], evid);
+	puts("Unset timer for statemachine");
 }
 
 extern void timedStatemachine2_setTimer(TimedStatemachine2* handle,
 		const sc_eventid evid, const sc_integer time_ms,
 		const sc_boolean periodic) {
-	puts("some timer1 was set");
 	sc_pthread_timer_service_methods.start(&ts_connection[1], evid, time_ms,
 			periodic);
+	puts("Set timer for statemachine1");
 }
 
 extern void timedStatemachine2_unsetTimer(TimedStatemachine2* handle,
 		const sc_eventid evid) {
-	puts("some timer1 was unset");
 	sc_pthread_timer_service_methods.stop(&ts_connection[1], evid);
+	puts("Unset timer for statemachine2");
 }

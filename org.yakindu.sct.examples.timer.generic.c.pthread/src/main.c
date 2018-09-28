@@ -15,42 +15,48 @@ sc_pthread_timer_t timers[MAX_TIMER];
 sc_pthread_timer_service_t timer_service;
 
 extern sc_timer_service_methods_t sc_pthread_timer_service_methods;
-sc_ts_connection_t ts_connection =
-			{
-				.ts_handle = &timer_service,
-				.ts_methods = &sc_pthread_timer_service_methods,
-				.sm_handle = &statemachine,
-				.sm_callback = (sc_time_event_callback_fp) timedStatemachine_raiseTimeEvent
-			};
+sc_ts_connection_t ts_connection = //
+		{ //
+				.ts_handle = &timer_service, //
+				.ts_methods = &sc_pthread_timer_service_methods, //
+				.sm_handle = &statemachine, //
+				.sm_callback =
+						(sc_time_event_callback_fp) timedStatemachine_raiseTimeEvent //
+		};//
 
 static void run_cycle(void *handle) {
-	puts("runCycle was called");
 	timedStatemachine_runCycle(handle);
 }
 
 int main() {
-	puts("started");
-	sc_pthread_timer_service_init(&timer_service, timers, MAX_TIMER, &statechart_mutex);
+	puts("Started program");
+	sc_pthread_timer_service_init(&timer_service, timers, MAX_TIMER,
+			&statechart_mutex);
+	puts("Initialized PThread timer service ");
 	timedStatemachine_init(&statemachine);
-	puts("start enter");
+	puts("Initialized statemachine");
 	timedStatemachine_enter(&statemachine);
-	puts("enter done");
-	sc_cycle_runner_start(
-			&cycle_runner,
-			&run_cycle,
-			&statemachine,
-			100, &statechart_mutex);
-	for(;;);
+	puts("Entered statemachine");
+	sc_cycle_runner_start(&cycle_runner, &run_cycle, &statemachine, 100,
+			&statechart_mutex);
+	puts("Activated cycle runner");
+	for (;;) {
+		// Endless loop
+	}
 
 	return 0;
 }
 
-extern void timedStatemachine_setTimer(TimedStatemachine* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
-	puts("some timer was set");
-	sc_pthread_timer_service_methods.start(&ts_connection, evid, time_ms, periodic);
+extern void timedStatemachine_setTimer(TimedStatemachine* handle,
+		const sc_eventid evid, const sc_integer time_ms,
+		const sc_boolean periodic) {
+	sc_pthread_timer_service_methods.start(&ts_connection, evid, time_ms,
+			periodic);
+	puts("Set timer");
 }
 
-extern void timedStatemachine_unsetTimer(TimedStatemachine* handle, const sc_eventid evid){
-	puts("some timer was unset");
-	sc_pthread_timer_service_methods.stop(&ts_connection ,evid);
+extern void timedStatemachine_unsetTimer(TimedStatemachine* handle,
+		const sc_eventid evid) {
+	sc_pthread_timer_service_methods.stop(&ts_connection, evid);
+	puts("Unset timer");
 }

@@ -3,7 +3,8 @@ src/main.o: ../src/main.c ../src/../src-gen/TimedStatemachineRequired.h \
  ../src/../src-gen/TimedStatemachine.h \
  ../src/../src-gen/TimedStatemachine2Required.h \
  ../src/../src-gen/TimedStatemachine2.h ../src/sc_pthread_timer_service.h \
- ../src/sc_types.h ../src/sc_timer_service.h ../src/sc_cycle_runner.h
+ ../src/sc_types.h ../src/sc_timer_service.h \
+ ../src/sc_pthread_cycle_runner.h
 
 ../src/../src-gen/TimedStatemachineRequired.h:
 
@@ -21,4 +22,4 @@ src/main.o: ../src/main.c ../src/../src-gen/TimedStatemachineRequired.h \
 
 ../src/sc_timer_service.h:
 
-../src/sc_cycle_runner.h:
+../src/sc_pthread_cycle_runner.h:

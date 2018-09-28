@@ -5,17 +5,17 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/main.c \
-../src/sc_cycle_runner.c \
+../src/sc_pthread_cycle_runner.c \
 ../src/sc_pthread_timer_service.c 
 
 OBJS += \
 ./src/main.o \
-./src/sc_cycle_runner.o \
+./src/sc_pthread_cycle_runner.o \
 ./src/sc_pthread_timer_service.o 
 
 C_DEPS += \
 ./src/main.d \
-./src/sc_cycle_runner.d \
+./src/sc_pthread_cycle_runner.d \
 ./src/sc_pthread_timer_service.d 
 
 

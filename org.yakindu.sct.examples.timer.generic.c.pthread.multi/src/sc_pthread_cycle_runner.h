@@ -1,5 +1,5 @@
 /*
- * sc_cycle_runner.h
+ * sc_pthread_cycle_runner.h
  *
  *  Created on: 28.09.2018
  *      Author: herrmann
@@ -35,36 +35,46 @@ typedef struct sc_cr_connection {
 	sc_run_cycle_fp sm_runCycle;
 } sc_cr_connection_t;
 
+/* internal arguments of a cycle runner pthread */
 typedef struct {
 	int interval_ms;
 	sc_run_cycle_fp runCycle;
 	pthread_t thread;
 	sc_cr_connection_t *connection;
-	struct sc_cycle_runner_service *service;
-} sc_cycle_runner_t;
+	struct sc_pthread_cycle_runner_service *service;
+} sc_pthread_cycle_runner_t;
 
-typedef struct sc_cycle_runner_service {
+/*! *Internal arguments for the runner service. */
+typedef struct sc_pthread_cycle_runner_service {
 	sc_integer runner_count;
-	sc_cycle_runner_t *runners;
+	sc_pthread_cycle_runner_t *runners;
 	pthread_mutex_t runner_mutex;
 	pthread_mutex_t *event_mutex;
-} sc_cycle_runner_service_t;
+} sc_pthread_cycle_runner_service_t;
 
+
+/*! Function pointer for cycle runner start function*/
 typedef void (*sc_start_cycle_runner_fp)(struct sc_cr_connection *connection,
 		int cycle_interval_ms);
 
+/*! Function pointer for cycle runner stop function*/
 typedef void (*sc_stop_cycle_runner_fp)(struct sc_cr_connection* connection);
 
+/*! Typedef for start and stop methods */
 typedef struct sc_cycle_runner_methods_t {
 	sc_start_cycle_runner_fp start;
 	sc_stop_cycle_runner_fp stop;
 } sc_cycle_runner_methods_t;
 
 /*! Start the cycle runner in an new thread. */
-void sc_cycle_runner(struct sc_cr_connection *connection, int cycle_interval_ms);
+void sc_cycle_runner_start(struct sc_cr_connection *connection, int cycle_interval_ms);
+
+/*! Cancels a runner for the specified connection. */
 void sc_cycle_runner_stop(struct sc_cr_connection *connection);
-void sc_cycle_runner_init(sc_cycle_runner_service_t* this,
-		sc_cycle_runner_t *runners, sc_integer count,
+
+/*! Initializes a cycle runner service with a set of runners. */
+void sc_cycle_runner_init(sc_pthread_cycle_runner_service_t* this,
+		sc_pthread_cycle_runner_t *runners, sc_integer count,
 		pthread_mutex_t *event_mutex);
 
 #ifdef __cplusplus

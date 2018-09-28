@@ -1,10 +1,10 @@
 #include "../src-gen/TimedStatemachineRequired.h"
 #include "../src-gen/TimedStatemachine2Required.h"
 #include "sc_pthread_timer_service.h"
-#include "sc_cycle_runner.h"
 #include <unistd.h>
 #include <pthread.h>
 #include <stdio.h>
+#include "sc_pthread_cycle_runner.h"
 
 #define MAX_TIMER 5
 #define MAX_RUNNER 2
@@ -15,11 +15,11 @@ static pthread_mutex_t statechart_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 
 sc_pthread_timer_t timers[MAX_TIMER];
-sc_cycle_runner_t cycle_runners[MAX_RUNNER];
+sc_pthread_cycle_runner_t cycle_runners[MAX_RUNNER];
 sc_pthread_timer_service_t timer_service;
-sc_cycle_runner_service_t cycle_runner_service;
+sc_pthread_cycle_runner_service_t cycle_runner_service;
 
-extern sc_cycle_runner_methods_t sc_cycle_runner_methods;
+extern sc_cycle_runner_methods_t sc_pthread_cycle_runner_methods;
 extern sc_timer_service_methods_t sc_pthread_timer_service_methods;
 sc_ts_connection_t ts_connection[] = { //
 		{ //
@@ -65,16 +65,16 @@ int main() {
 	timedStatemachine_enter(&statemachine1);
 	timedStatemachine2_enter(&statemachine2);
 	puts("Entered statemachines");
-	sc_cycle_runner_methods.start(&sc_rc_connection[0], 100);
+	sc_pthread_cycle_runner_methods.start(&sc_rc_connection[0], 100);
 	puts("Activated cycle runner for statemachine1");
-	sc_cycle_runner_methods.start(&sc_rc_connection[1], 100);
+	sc_pthread_cycle_runner_methods.start(&sc_rc_connection[1], 100);
 	puts("Activated cycle runner for statemachine2");
 	for (;;) {
 		if(timedStatemachine_isFinal(&statemachine1)){
-			sc_cycle_runner_methods.stop(&sc_rc_connection[0]);
+			sc_pthread_cycle_runner_methods.stop(&sc_rc_connection[0]);
 		}
 		if(timedStatemachine2_isFinal(&statemachine2)){
-			sc_cycle_runner_methods.stop(&sc_rc_connection[1]);
+			sc_pthread_cycle_runner_methods.stop(&sc_rc_connection[1]);
 		}
 	}
 	return 0;

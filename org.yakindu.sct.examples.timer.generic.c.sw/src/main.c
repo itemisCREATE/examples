@@ -3,7 +3,7 @@
 
 #define MAX_TIMER 5
 
-TimedStatemachine statemachine;
+TimedStatemachine statemachine1;
 
 sc_sw_timer_t timers[MAX_TIMER];
 sc_sw_timer_service_t timer_service;
@@ -15,7 +15,7 @@ sc_ts_connection_t ts_connection[] = //
 				{
 						.ts_handle = &timer_service, //
 						.ts_methods = &sc_sw_timer_service_methods, //
-						.sm_handle = &statemachine, //
+						.sm_handle = &statemachine1, //
 						.sm_callback =
 								(sc_time_event_callback_fp) timedStatemachine_raiseTimeEvent //
 
@@ -24,11 +24,11 @@ sc_ts_connection_t ts_connection[] = //
 
 int main() {
 	sc_sw_timer_service_init(&timer_service, timers, MAX_TIMER);
-	timedStatemachine_init(&statemachine);
-	timedStatemachine_enter(&statemachine);
+	timedStatemachine_init(&statemachine1);
+	timedStatemachine_enter(&statemachine1);
 
 	while (1) {
-		timedStatemachine_runCycle(&statemachine);
+		timedStatemachine_runCycle(&statemachine1);
 
 		//call this function after some time has proceed
 		sc_sw_timer_service_proceed(&timer_service, 1);

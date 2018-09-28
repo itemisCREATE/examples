@@ -80,7 +80,7 @@ void stop_timer(struct sc_ts_connection *connection,
 	for (int i = 0; i < this->timer_count; i++) {
 		if (this->timers[i].pt_evid == evid) {
 			pthread_cancel(this->timers[i].pt);
-			pthread_join(this->timers[i].pt, NULL); // knallt hier..
+			pthread_join(this->timers[i].pt, NULL);
 
 			this->timers[i].pt_evid = NULL;
 			this->timers[i].connection = NULL;

@@ -7,7 +7,7 @@
 
 #define MAX_TIMER 5
 
-TimedStatemachine statemachine;
+TimedStatemachine statemachine1;
 static sc_cycle_runner_t cycle_runner;
 static pthread_mutex_t statechart_mutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -19,7 +19,7 @@ sc_ts_connection_t ts_connection = //
 		{ //
 				.ts_handle = &timer_service, //
 				.ts_methods = &sc_pthread_timer_service_methods, //
-				.sm_handle = &statemachine, //
+				.sm_handle = &statemachine1, //
 				.sm_callback =
 						(sc_time_event_callback_fp) timedStatemachine_raiseTimeEvent //
 		};//
@@ -33,11 +33,11 @@ int main() {
 	sc_pthread_timer_service_init(&timer_service, timers, MAX_TIMER,
 			&statechart_mutex);
 	puts("Initialized PThread timer service ");
-	timedStatemachine_init(&statemachine);
+	timedStatemachine_init(&statemachine1);
 	puts("Initialized statemachine");
-	timedStatemachine_enter(&statemachine);
+	timedStatemachine_enter(&statemachine1);
 	puts("Entered statemachine");
-	sc_cycle_runner_start(&cycle_runner, &run_cycle, &statemachine, 100,
+	sc_cycle_runner_start(&cycle_runner, &run_cycle, &statemachine1, 100,
 			&statechart_mutex);
 	puts("Activated cycle runner");
 	for (;;) {

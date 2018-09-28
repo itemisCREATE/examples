@@ -53,12 +53,16 @@ typedef struct sc_cycle_runner_service {
 typedef void (*sc_start_cycle_runner_fp)(struct sc_cr_connection *connection,
 		int cycle_interval_ms);
 
+typedef void (*sc_stop_cycle_runner_fp)(struct sc_cr_connection* connection);
+
 typedef struct sc_cycle_runner_methods_t {
 	sc_start_cycle_runner_fp start;
+	sc_stop_cycle_runner_fp stop;
 } sc_cycle_runner_methods_t;
 
 /*! Start the cycle runner in an new thread. */
 void sc_cycle_runner(struct sc_cr_connection *connection, int cycle_interval_ms);
+void sc_cycle_runner_stop(struct sc_cr_connection *connection);
 void sc_cycle_runner_init(sc_cycle_runner_service_t* this,
 		sc_cycle_runner_t *runners, sc_integer count,
 		pthread_mutex_t *event_mutex);

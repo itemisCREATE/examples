@@ -61,5 +61,4 @@ typedef struct sc_ts_connection {
 } sc_ts_connection_t;
 
 
-
 #endif /* SC_TYPES_H_ */

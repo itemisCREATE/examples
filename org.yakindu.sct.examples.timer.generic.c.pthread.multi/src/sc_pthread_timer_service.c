@@ -77,9 +77,7 @@ void stop_timer(struct sc_ts_connection *connection,
 
 	pthread_mutex_lock(&(this->timer_mutex));
 
-	int i;
-
-	for (i = 0; i < this->timer_count; i++) {
+	for (int i = 0; i < this->timer_count; i++) {
 		if (this->timers[i].pt_evid == evid) {
 			pthread_cancel(this->timers[i].pt);
 			pthread_join(this->timers[i].pt, NULL); // knallt hier..

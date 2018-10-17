@@ -1,0 +1,19 @@
+GeneratorModel for yakindu::c {
+
+	statechart TimedStatemachine {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.timer.generic.c.pthread.multi"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+	statechart TimedStatemachine2 {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.timer.generic.c.pthread.multi"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+} 

@@ -1,0 +1,10 @@
+{
+	"id": "org.yakindu.sct.examples.timer.generic.c.sw.mutli",
+	"title": "Software Timer (C) Multi Statecharts",
+	"description": "Demonstrates how one software timer can handle the timing for two statecharts",
+	"previewImage": "TimedStatemachine.png",
+    "author": "itemis AG",
+	"category": [
+		"platform"
+	]
+}

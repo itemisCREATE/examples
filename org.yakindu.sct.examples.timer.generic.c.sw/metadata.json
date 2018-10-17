@@ -1,0 +1,10 @@
+{
+	"id": "org.yakindu.sct.examples.timer.generic.c.sw",
+	"title": "Software Timer (C)",
+	"description": "Demonstrates how software timer can be implemented",
+	"previewImage": "TimedStatemachine.png",
+    "author": "itemis AG",
+	"category": [
+		"platform"
+	]
+}

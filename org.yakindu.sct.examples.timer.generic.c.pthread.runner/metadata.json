@@ -1,0 +1,10 @@
+{
+	"id": "org.yakindu.sct.examples.timer.generic.c.pthread.runner",
+	"title": "PThread Timer (C) with RunCycle",
+	"description": "Demonstrates how pthread timer can be implemented with runCycle",
+	"previewImage": "TimedStatemachine.png",
+    "author": "itemis AG",
+	"category": [
+		"platform"
+	]
+}

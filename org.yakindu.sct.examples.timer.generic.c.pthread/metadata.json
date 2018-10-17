@@ -1,0 +1,10 @@
+{
+	"id": "org.yakindu.sct.examples.timer.generic.c.pthread",
+	"title": "PThread Timer (C)",
+	"description": "Demonstrates how pthread timer can be implemented",
+	"previewImage": "TimedStatemachine.png",
+    "author": "itemis AG",
+	"category": [
+		"platform"
+	]
+}

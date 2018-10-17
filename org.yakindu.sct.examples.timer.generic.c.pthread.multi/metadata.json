@@ -1,0 +1,10 @@
+{
+	"id": "org.yakindu.sct.examples.timer.generic.c.pthread.multi",
+	"title": "PThread Timer (C) Multi Statecharts",
+	"description": "Demonstrates how one pthread timer and one cycle runner can handle the execution of two statecharts",
+	"previewImage": "TimedStatemachine.png",
+    "author": "itemis AG",
+	"category": [
+		"platform"
+	]
+}

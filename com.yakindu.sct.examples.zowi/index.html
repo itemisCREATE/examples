@@ -9,14 +9,18 @@
   <div class="primary">
     <h1>Zowi (C++)</h1>
     <p>
-      This is a example of how to use the C/C++ Domain together with the Zowi by BQ. C++ Timer are integrated. The Zowi hardware is based on an Arduino Uno.
-      The underlying statechart looks as follows: <img
+      This is a example of how to use the C/C++ Domain together with the Zowi by BQ, which is based on an Arduino Uno. C++ Timer are integrated. </p>
+    <p> <img
         alt="ZowiStatechart"
-        src="images/ZowiSCT_0.png" />
+        src="images/Zowi.jpg" width="35%" height="35%"/></p>
+    <p>The statechart contains four states. Firstly, the zowi will be initialized. After this Zowi is awake and tries to walk a circle. If maximum is reached he will wait for some noise. If something in his way he will detect it and stop walking. The underlying statechart looks like follows:</p> 
+     <p> <img
+        alt="ZowiStatechart"
+        src="images/ZowiSCT_0.png" /> </p>
     </p>
     <h2>Addons for compiling and flashing</h2>
-    <p>For compiling and flashing the Eclipse C++ IDE for Arduino plugin has been used. This can be found at 'https://marketplace.eclipse.org/content/eclipse-c-ide-arduino'. Please ensure that you have installed the Arduino toolchain. This can easily be done by installing the Arduino IDE.</p>
-  	<h2>How to install the Eclipse C++ IDE for Arduino plugin</h2>
+    <p>For compiling and flashing the Eclipse C++ IDE for Arduino plugin has been used. This can be found at 'https://marketplace.eclipse.org/content/eclipse-c-ide-arduino'. Please ensure that you have installed the Arduino toolchain/AVRDude. This can easily be done by installing the Arduino IDE.</p>
+  	<h3>How to install the Eclipse C++ IDE for Arduino plugin</h3>
   	<p>
   	This instructions shows step by step of how to install the plugin.</p>
   	 <ol>
@@ -25,16 +29,32 @@
    	  <li>Use the filter and type 'Arduino C++ Tools'. Choose this feature and click on 'Next..'. Follow installation instructions.</li>
    	  <li>The installation dialog will ask you for a restart. After this restart is done, the installition has been finished.</li>
     </ol>
-    <h2>Using the Eclipse C++ IDE for Arduino plugin</h2>
-    After the installation you should notice a new Toolbar, which allows you to compile and flash your Arduino.
+    <h2>Download the required platform and libraries</h2>
+    <p> At first the required platform and libraries have to be installed: </p>
     <ol>
-      <li>First of all, your project should contain no errors any more.</li>
-      <li>To get started you need to configure the desired platform. Choose your personal settings and board. Most of the Arduinos (Uno, Due, Mega, etc.) should be supported. Plug in your Arduino and click on 'New Launch Target..'.</li>
-      <li>Set up your device. This depends on your system and configuration.</li>
-	  <li>Build project.</li>
-      <li>Upload the example.</li>
-	  <li>Your Arduino onboard LED should start blinking now!</li>
+      <li>Click on 'Help' ->'Arduino Download Manager'.</li>
+      <li>In the 'Platforms' tab, install the 'arduino' package. In this example version 1.6.23 has been used.</li>
+      <li>In the 'Libraries' tab, install the 'Servo' library. In this example version 1.1.3 has been used.</li>
     </ol>
+   <h2>Add the required platform and libraries</h2>
+    <p>Then it's required to add the required libraries to the project</p>
+    <ol>
+      <li>Right click the Zowi example propject and click on 'Properties'.</li>
+      <li>Open the libraries tab and add 'Servo' and 'EEPROM'. This is shown on the following figure: </li>
+<p>  <img
+        alt="ZowiStatechart"
+        src="images/ZowiLibraries.png" /></p>
+    </ol>
+   <h2>Compile and flash</h2>
+    <p>At least the 'Launch Configuration' needs to be configured:</p>
+    <ol>
+      <li>Plug in the Zowi and click on 'New Launch Target..'.</li>
+      <li>Name: Choose a name</li>
+      <li>Port: Choose the port</li>
+      <li>Board Type: Arduino/Genuino Uno</li>
+      <li>Programmer: AVR ISP</li>
+    </ol>
+      <p>After this you can build and run the project!</p>
   </div>
 </body>
 </html>

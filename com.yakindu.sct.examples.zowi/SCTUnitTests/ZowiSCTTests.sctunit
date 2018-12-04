@@ -1,0 +1,65 @@
+testclass ZowiSCTTests for statechart ZowiSCT {
+
+	operation initializeMockUps () { 
+		mock zowi.getDistance returns (100.0)
+		mock zowi.getNoise returns (0)
+	}
+
+	operation proceedOneWalkingCycle () {
+		assert active (ZowiSCT.main_region.Awake.walkAndAvoidObstacles.WalkStraight)
+		proceed 1 cycle
+		assert active (ZowiSCT.main_region.Awake.walkAndAvoidObstacles.WaitForTurn)
+		proceed 2 s
+		assert active (ZowiSCT.main_region.Awake.walkAndAvoidObstacles.TurnLeft)
+		proceed 1 cycle
+		assert active (ZowiSCT.main_region.Awake.walkAndAvoidObstacles.WaitForWalking)
+		proceed 2 s
+		assert active (ZowiSCT.main_region.Awake.walkAndAvoidObstacles.WalkStraight)
+	}
+	
+	@Test
+	operation testRoundCounterAndNoiseSensor() {
+		enter
+		initializeMockUps
+		proceed 1 cycle
+		assert roundCounter == 0
+		proceedOneWalkingCycle
+		assert roundCounter == 1
+		proceedOneWalkingCycle
+		assert roundCounter == 2
+		proceedOneWalkingCycle 
+		assert roundCounter == 3
+		proceedOneWalkingCycle
+		proceed 1 cycle
+		assert active(ZowiSCT.main_region.IsSomeOneHere_)
+		assert active (ZowiSCT.main_region.IsSomeOneHere_.Changing_mood.Suprised)
+		proceed 5 s
+		assert active (ZowiSCT.main_region.IsSomeOneHere_.Changing_mood.Sad)
+		mock zowi.getNoise returns (701)
+		proceed 1 cycle
+		assert active (ZowiSCT.main_region.Awake)
+		exit
+	}
+	
+	@Test
+	operation testDistanceSensor() {
+		enter
+		initializeMockUps
+		proceed 1 cycle
+		proceedOneWalkingCycle
+		mock zowi.getDistance returns (5.0)
+		proceed 1 cycle
+		assert active(ZowiSCT.main_region.ObstacleDetected)
+		assert active(ZowiSCT.main_region.ObstacleDetected.RemoveTheObstacle.WalkBack)
+		proceed 2 s
+		assert active(ZowiSCT.main_region.ObstacleDetected.RemoveTheObstacle.WalkForward)
+		proceed 2 s
+		assert active(ZowiSCT.main_region.ObstacleDetected.RemoveTheObstacle.WalkBack)
+		mock zowi.getDistance returns (100.0)
+		proceed 1 cycle
+		assert active(ZowiSCT.main_region.Awake)
+		exit
+	}
+
+				
+}

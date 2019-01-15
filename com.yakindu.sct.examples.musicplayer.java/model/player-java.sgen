@@ -1,0 +1,16 @@
+GeneratorModel for yakindu::java {
+
+	statechart player {
+
+		feature GeneralFeatures {
+			InterfaceObserverSupport = true
+			RuntimeService = false
+			TimerService = false
+		}
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.musicplayer.java"
+			targetFolder = "src"
+		}
+	}
+}

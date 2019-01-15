@@ -1,0 +1,10 @@
+{
+	"id": "com.yakindu.sct.examples.musicplayer.java",
+	"title": "Music Player (Java)",
+	"description": "A JavaFX based music player controlled by a statemachine with deep Java integration",
+	"previewImage": "watch_gears_thumb.jpg",
+    "author": "itemis AG",
+	"category": [
+		"professional"
+	]
+}

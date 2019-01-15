@@ -9,17 +9,17 @@
 
 		<h1>YAKINDU Coffee Machine with multiple state machines</h1>
 		<p class="pro-feature">
-			Statechart can get large and in these cases you may want to modularize the behavior and split it into two or more 
+			Statecharts can get large and in these cases you may want to modularize the behavior and split it into two or more 
 			separate but interacting state machines. Modularization of complex reactive behavior facilitates maintainability,
 			reuse, and team work. This example shows how multiple interacting statecharts can be used to build an application. 
 			It integrates the statechart on the level of the generated C code and thus makes use of the capabilities of the
 			deep C integration.<br/>
 			<br/> 
 			The application example is the coffee machine that you may already know from our other example projects. 
-			If you are not femiliar with the 'Deep C Integration' feature of the YAKINDU Statechart Tools then you may consider 
-			to take a look at the '[Pro] Coffee Machine with C integration' first.<br/>
+			If you are not familiar with the 'Deep C Integration' feature of the YAKINDU Statechart Tools then you may consider 
+			to take a look at the 'Coffee Machine (C)' example first.<br/>
 			<br/>
-			In difference to the design of the original coffee maker statechart model the behavior of this example 
+			In difference to the design of the original coffee maker statechart model, the behavior of this example 
 			is described by six statecharts. One statechart for the general functions of the coffee maker like handling user input,
 			power save mode, or executing selected recipes. The other five statecharts define the processing for each recipe as an 
 			independent statechart.</p>
@@ -34,13 +34,12 @@
 		</div>
 
 
-		<p>	There are five statcharts that define the processing of the different recipes that the coffe maker provides. Thus these are named 
-			<i>ProcessCappucino</i>, <i>ProcessCoffee</i> etc.. Based on the user input the main statecahrt <i>CoffeeMachine</i> selects  
+		<p>	There are five statcharts that define the processing of the different recipes that the coffee maker provides. Thus, these are named 
+			<i>ProcessCappucino</i>, <i>ProcessCoffee</i> etc.. Based on the user input the main statechart <i>CoffeeMachine</i> selects  
 			one of the recipe processing state machines. Interacting with these state machines is possible by directly accessing the generated
 			state machine C API. For the example we choose a more generic approach. The <i>sc_statemachine</i> module defines a generic state machine
-			wrapper. Instances of this wrapper refer to state machine and provides general functions to enter, exit, and execute the wrapped state 
-			machine. Thus using the wrapper the main state machine just has a dependency on the wrapper and no direct dependency on the different 
-			the different recipe state machines. </p>
+			wrapper. Instances of this wrapper refer to a state machine and provide general functions to enter, exit, and execute the wrapped state 
+			machine. Thus, by using the wrapper the main state machine just has a dependency on the wrapper and no direct dependency on the different recipe state machines. </p>
 
 		<p> So lets take a look how the coffee machine model is defined. Most things happen in the state <i>Process Recipe</i>. 
 			When this state is entered, the statchart gets a recipe processing state machine from the array <i>recipeProcessors</i> using an index  
@@ -69,16 +68,16 @@
 			The source code artifacts are all located in the 'src' folder. File names that include 'coffee' or 'cm_'
 			include application specific implementations and those with 'sc_' prefix are generic parts that
 			belong to the state machine infrastructure. This also includes state machine wrapper that is defined in 
-			the 'sc_statemachine' module. If you want rto use this in your project then simply copy it. 
+			the 'sc_statemachine' module. If you want to use this in your project then simply copy it. 
 		</p>
 		<h3>Set up your system</h3>
 		<p>
-			As mentioned above you need a compiler tool chain and the 'pthread'
+			As mentioned above you need a compiler toolchain and the 'pthread'
 			libraries.
 			If you have a Linux or Mac OS Xsystem you likely have
 			everything installed. If you run Windows than we propose to install
 			cygwin tools (https://www.cygwin.com).</p>
-		<h3>Set up the roject</h3>
+		<h3>Set up the project</h3>
 		<p>
 			This project is preconfigured for Windows with cygwin. If you use
 			another system:

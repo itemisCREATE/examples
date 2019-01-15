@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.sct.examples.musicplayer.java",
-	"title": "A music player with Java domain",
+	"title": "Music Player (Java)",
 	"description": "A JavaFX based music player controlled by a statemachine with deep Java integration",
 	"previewImage": "tbd.jpg",
     "author": "itemis AG",

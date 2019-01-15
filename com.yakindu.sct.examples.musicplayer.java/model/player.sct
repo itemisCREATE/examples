@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_hOYXkBM_Eemj5KD8G_IkXQ" specification="@EventDriven&#xA;@ChildFirstExecution&#xA;&#xA;import : &quot;java.util.ArrayList&quot;&#xA;&#xA;import : &quot;com.yakindu.sct.examples.musicplayer.java.MusicPlayer&quot;&#xA;import : &quot;com.yakindu.sct.examples.musicplayer.java.Song&quot;&#xA;&#xA;internal:&#xA;var current : int&#xA;&#xA;entry /&#xA;playlist.add(Song.from(&quot;Jingle1.wav&quot;));&#xA;playlist.add(Song.from(&quot;Jingle2.wav&quot;))&#xA;&#xA;interface:&#xA;&#xA;in event playPressed&#xA;in event pausePressed&#xA;in event stopPressed&#xA;in event prevPressed&#xA;in event nextPressed&#xA;&#xA;out event playBtnEnabled : boolean&#xA;out event pauseBtnEnabled : boolean&#xA;out event stopBtnEnabled : boolean&#xA;&#xA;var player : MusicPlayer&#xA;var playlist : ArrayList&lt;Song>&#xA;var currentSong : Song&#xA;&#xA;" name="player" domainID="com.yakindu.domain.java">
+  <sgraph:Statechart xmi:id="_hOYXkBM_Eemj5KD8G_IkXQ" specification="@EventDriven&#xA;@ChildFirstExecution&#xA;&#xA;import : &quot;java.util.ArrayList&quot;&#xA;&#xA;import : &quot;com.yakindu.sct.examples.musicplayer.java.MusicPlayer&quot;&#xA;import : &quot;com.yakindu.sct.examples.musicplayer.java.Song&quot;&#xA;&#xA;internal:&#xA;var current : int&#xA;&#xA;entry /&#xA;playlist.add(Song.from(&quot;Jingle1.wav&quot;));&#xA;playlist.add(Song.from(&quot;Jingle2.wav&quot;))&#xA;&#xA;interface:&#xA;&#xA;in event playPressed&#xA;in event pausePressed&#xA;in event stopPressed&#xA;in event prevPressed&#xA;in event nextPressed&#xA;&#xA;out event playBtnEnabled : boolean&#xA;out event pauseBtnEnabled : boolean&#xA;out event stopBtnEnabled : boolean&#xA;&#xA;var player : MusicPlayer&#xA;var playlist : ArrayList&lt;Song> &#xA;var currentSong : Song&#xA;&#xA;" name="player" domainID="com.yakindu.domain.java">
     <regions xmi:id="__3R_QBNaEemoge3PWcI1LQ" name="Player">
       <vertices xsi:type="sgraph:State" xmi:id="_Lk-IcBPqEemm-4bA3AUdgQ" specification="" name="MusicPlayer" incomingTransitions="_VbhIQBQVEemX1-flgl77_w">
         <outgoingTransitions xmi:id="_tzskYBNiEemoge3PWcI1LQ" specification="prevPressed / current = (current==0)? playlist.size-1 : (current - 1) % playlist.size; raise stopPressed; player.stop()" target="_Bvdo4BNbEemoge3PWcI1LQ"/>
@@ -131,7 +131,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3f88NBM_Eemj5KD8G_IkXQ"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_3fzLMRM_Eemj5KD8G_IkXQ" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3fzLMhM_Eemj5KD8G_IkXQ" x="16" y="507" width="273" height="221"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3fzLMhM_Eemj5KD8G_IkXQ" x="12" y="475" width="273" height="221"/>
     </children>
     <children xmi:id="_iLmscBNNEemIJ_Fy36G6Gw" type="Region" element="_iLkQMBNNEemIJ_Fy36G6Gw">
       <children xsi:type="notation:DecorationNode" xmi:id="_iLsMABNNEemIJ_Fy36G6Gw" type="RegionName">
@@ -187,7 +187,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_iLszERNNEemIJ_Fy36G6Gw"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_iLmscRNNEemIJ_Fy36G6Gw" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_iLmschNNEemIJ_Fy36G6Gw" x="321" y="508" width="281" height="219"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_iLmschNNEemIJ_Fy36G6Gw" x="317" y="476" width="281" height="219"/>
     </children>
     <children xmi:id="_6mJIsBNNEemIJ_Fy36G6Gw" type="Region" element="_6mIhoBNNEemIJ_Fy36G6Gw">
       <children xsi:type="notation:DecorationNode" xmi:id="_6mJIsxNNEemIJ_Fy36G6Gw" type="RegionName">
@@ -243,7 +243,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6mJvwhNNEemIJ_Fy36G6Gw"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_6mJIsRNNEemIJ_Fy36G6Gw" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6mJIshNNEemIJ_Fy36G6Gw" x="631" y="508" width="277" height="220"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6mJIshNNEemIJ_Fy36G6Gw" x="627" y="476" width="277" height="220"/>
     </children>
     <children xmi:id="__3VpoBNaEemoge3PWcI1LQ" type="Region" element="__3R_QBNaEemoge3PWcI1LQ">
       <children xsi:type="notation:DecorationNode" xmi:id="__3cXUBNaEemoge3PWcI1LQ" type="RegionName">
@@ -397,7 +397,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="__3c-YRNaEemoge3PWcI1LQ"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="__3VpoRNaEemoge3PWcI1LQ" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="__3VpohNaEemoge3PWcI1LQ" x="16" y="32" width="892" height="465"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="__3VpohNaEemoge3PWcI1LQ" x="12" width="892" height="465"/>
     </children>
     <styles xsi:type="notation:BooleanValueStyle" xmi:id="_hOaMwRM_Eemj5KD8G_IkXQ" name="inlineDefinitionSection"/>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_hOaMwhM_Eemj5KD8G_IkXQ"/>

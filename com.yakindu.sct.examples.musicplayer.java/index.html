@@ -11,53 +11,67 @@
     <h1>[Pro] Music Player (Java)</h1>
 
     <h2>Overview</h2>
+    This is a comprehensive example for the deep Java integration in YAKINDU Statechart Tools. The developed statechart controls a music player with a JavaFX based UI. The UI consists of 5 buttons: Play, Pause, Stop, Previous and Next. Clicking a button raises an event in the statechart which reacts accordingly by calling operations on the Java-based music player implementation. Additionally, the statechart controls which buttons are enabled in which context, e.g. the Play button gets disabled when a song is playing.
     <p>
-      <img class="standard-image" src="images/msp430.jpg" />
-    </p>
-    This is a comprehensive example for the deep Java integration in YAKINDU Statechart Tools. The developed statechart controls a music player with a JavaFX based UI. The UI consists of 5 buttons: Play, Pause, Stop, Previous and Next. Clicking a button raises an event in the statechart which reacts accordingly by calling operations of the Java-based Music Player. Additionally, the statechart controls which buttons are enabled in which context, e.g. the play button gets disabled when a song is playing.
     <img
         alt="The music player UI written in JavaFX"
         src="images/MusicPlayer_UI.png" />
     <img
         alt="The music player statechart"
         src="images/MusicPlayer_model.png" />
-
-<p>
-    This is an example for the deep Java integration demonstrating the following features:
-    * importing arbitrary (manually written as well as system libraries) Java classes in the statechart
-    * calling Java methods in the statechart
-    * live invocation of Java methods during simulation
-    * code generation for Java domain statecharts
 </p>
 <p>
-    Currently, the Java integration feature has the following known limitations:
-    * It is not possible to use constructors for instantiation of statechart variables
-    ** One way to overcome this is to use static factory methods, see Song.from() in the example
-    ** During simulation, SCT tries to invoke the default constructor for statechart variables. That also means, that you might not be able to use interfaces, like java.lang.List for statechart variables. That is why java.lang.ArrayList is used in the example.
+    This is an example for the deep Java integration demonstrating the following features:
+    <ul>
+    <li>Importing arbitrary (manually written as well as system libraries) Java classes in the statechart</li>
+    <li>Calling Java methods in the statechart</li>
+    <li>Live invocation of Java methods during simulation</li>
+    <li>Code generation for Java domain statecharts</li>
+    </ul>
 </p>
 <h2>Requirements</h2>
 <p>
     For this example to work, you need:
-    * Java 8 installed on your computer (JDK)
-    * YAKINDU Statechart Tools version 3.5.x
-    * The Java Domain feature installed:
-    ** Open the installation wizard with Help -> Install New Software..
-    ** Use TBD as update site
-    ** Select Java Domain and click on Finish
+    <ul>
+    <li>Java 8 installed on your computer (JDK)</li>
+    <li>YAKINDU Statechart Tools version 3.5.x</li>
+    <li>The Java Domain feature installed:</li>
+    <ul>
+        <li>Open the installation wizard with 'Help -> Install New Software..'</li>
+        <li>Use 'http://updates.yakindu.com/statecharts/labs' as update site</li>
+        <li>Select 'YAKINDU Statechart Tools Java Domain' and click on Finish</li>
+    </ul>
+    </ul>
+    </p>
+    <h2>Run the built-in simulation</h2>
+    <p>
+    You can simulate the statechart without starting the JavaFX Application. This allows you to test the behavior of your system before using the generated code.
+    <ul>
+        <li>Right-click on player.sct and choose 'Run As > Statechart Simulation'</li>
+        <li>In the Simulation View on the right you can simulate button clicks by clicking on 'default > playPressed', for example</li>
+        <li>As the simulation directly calls the used Java methods you should already here a sound when simulating the play button</li>
+    </ul>
 </p>
-<h2>Run the application</h2>
-<p>
-    There are two ways to run the music player:
-    1: Run the simulation only
-    ** Right-click on player.sct and choose 'Run As > Statechart Simulation'
-    ** In the simulation view on the right you can simulate button clicks by clicking on default > playPressed, for example
-    ** As the simulation directly calls the used Java methods you should already here a sound when simulating the play button
-
-    2: Run the MusicPlayer App
-    ** Right-click on MusicPlayerApp.java and choose 'Run As > Java Application'
-    ** The UI pops up and you can click on the buttons
-    ** The music player behavior is completely backed by the generated statechart code
-</p>
+    <h2>Run the MusicPlayer App</h2>
+    <p>
+    You can run the music player application like any other Java application. It uses the generated state machine code under the hood. Take a look into MusicPlayer.java to understand how the UI is linked with the statechart.
+    <ul>
+        <li>Right-click on MusicPlayerApp.java and choose 'Run As > Java Application'</li>
+        <li>The UI pops up and you can click on the buttons</li>
+        <li>The music player behavior is completely backed by the generated statechart code</li>
+    </ul>
+    </p>
+    <h2>Limitations</h2>
+    <p>
+    Currently, the Java integration feature has the following known limitations:
+    <ul>
+    <li>It is not possible to use constructors for instantiation of statechart variables</li>
+    <ul>
+        <li>One way to overcome this is to use static factory methods, see Song.from() in the example</li>
+        <li>During simulation, SCT tries to invoke the default constructor for statechart variables. That also means, that you might not be able to use interfaces, like java.lang.List for statechart variables. That is why java.lang.ArrayList is used in the example.</li>
+    </ul>
+    </ul>
+    </p>
   </div>
 </body>
 </html>

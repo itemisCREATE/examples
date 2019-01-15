@@ -10,7 +10,7 @@ GeneratorModel for yakindu::java {
 
 		feature Outlet {
 			targetProject = "com.yakindu.sct.examples.musicplayer.java"
-			targetFolder = "src"
+			targetFolder = "src-gen"
 		}
 	}
 }

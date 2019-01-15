@@ -52,24 +52,13 @@
         <li>As the simulation directly calls the used Java methods you should already here a sound when simulating the play button</li>
     </ul>
 </p>
-    <h2>Run the MusicPlayer App</h2>
+    <h2>Run the Music Player App</h2>
     <p>
     You can run the music player application like any other Java application. It uses the generated state machine code under the hood. Take a look into MusicPlayer.java to understand how the UI is linked with the statechart.
     <ul>
         <li>Right-click on MusicPlayerApp.java and choose 'Run As > Java Application'</li>
         <li>The UI pops up and you can click on the buttons</li>
         <li>The music player behavior is completely backed by the generated statechart code</li>
-    </ul>
-    </p>
-    <h2>Limitations</h2>
-    <p>
-    Currently, the Java integration feature has the following known limitations:
-    <ul>
-    <li>It is not possible to use constructors for instantiation of statechart variables</li>
-    <ul>
-        <li>One way to overcome this is to use static factory methods, see Song.from() in the example</li>
-        <li>During simulation, SCT tries to invoke the default constructor for statechart variables. That also means, that you might not be able to use interfaces, like java.lang.List for statechart variables. That is why java.lang.ArrayList is used in the example.</li>
-    </ul>
     </ul>
     </p>
   </div>

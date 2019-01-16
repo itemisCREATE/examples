@@ -14,9 +14,9 @@ CM_HMI::CM_HMI() {
 CM_HMI::~CM_HMI() {
 }
 
-UserEvents CM_HMI::provideUserEvent() {
+CM_HMI::UserEvents CM_HMI::provideUserEvent() {
 	UserEvents userEvent = lastEvent;
-	lastEvent = NONE;
+	lastEvent = CM_HMI::NONE;
 	return userEvent;
 }
 

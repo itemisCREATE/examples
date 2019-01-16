@@ -31,7 +31,7 @@ public:
 		bool milk_first;
 	}cm_recipe_t;
 
-	cm_recipe_t get_recipe(UserEvents choice);
+	cm_recipe_t get_recipe(CM_HMI::UserEvents choice);
 
 
 	void startHeating();

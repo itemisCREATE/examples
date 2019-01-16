@@ -43,20 +43,20 @@ Coffee_Machine::~Coffee_Machine() {
 //	return
 //}
 
-Coffee_Machine::cm_recipe_t Coffee_Machine::get_recipe(UserEvents choice) {
+Coffee_Machine::cm_recipe_t Coffee_Machine::get_recipe(CM_HMI::UserEvents choice) {
 	switch (choice) {
-	case CAPPUCINO:
+	case CM_HMI::CAPPUCINO:
 		return recipe_CAPPUCINO;
-	case COFFEE:
+	case CM_HMI::COFFEE:
 		return recipe_COFFEE;
-	case ESPRESSO:
+	case CM_HMI::ESPRESSO:
 		return recipe_ESPRESSO;
-	case LATTE_MACCHIATO:
+	case CM_HMI::LATTE_MACCHIATO:
 		return recipe_LATTE_MACCHIATO;
-	case MILK:
+	case CM_HMI::MILK:
 		return recipe_MILK;
-	case ON_OFF:
-	case NONE:
+	case CM_HMI::ON_OFF:
+	case CM_HMI::NONE:
 		break;
 	}
 

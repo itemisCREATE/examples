@@ -6,6 +6,11 @@
 #include <string.h>
 #include <iostream>
 
+class CM_HMI {
+public:
+	CM_HMI();
+	virtual ~CM_HMI();
+
 	typedef enum {
 		ON_OFF,
 		COFFEE,
@@ -15,11 +20,6 @@
 		MILK,
 		NONE
 	} UserEvents;
-class CM_HMI {
-public:
-	CM_HMI();
-	virtual ~CM_HMI();
-
 
 	UserEvents provideUserEvent();
 	void scanUserInput();

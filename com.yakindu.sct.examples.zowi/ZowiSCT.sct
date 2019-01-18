@@ -29,7 +29,7 @@
           </vertices>
         </regions>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="_bL050BrqEeicEeBWcnNzHg" name="IsSomeOneHere?" incomingTransitions="_hYHc8BrqEeicEeBWcnNzHg">
+      <vertices xsi:type="sgraph:State" xmi:id="_bL050BrqEeicEeBWcnNzHg" name="IsSomeOneHere" incomingTransitions="_hYHc8BrqEeicEeBWcnNzHg">
         <outgoingTransitions xmi:id="_kFzLMBrqEeicEeBWcnNzHg" specification="always [zowi.getNoise > noise] / roundCounter = 0" target="_7jJ5YBrdEeiLc73P6eDdCQ"/>
         <regions xmi:id="_zaSo8BrqEeicEeBWcnNzHg" name="Changing mood">
           <vertices xsi:type="sgraph:State" xmi:id="_1WBV0BrqEeicEeBWcnNzHg" specification="entry / zowi.putMouth(bigSurprise)" name="Suprised" incomingTransitions="_-KNvUBrqEeicEeBWcnNzHg _A0EGcBrrEeicEeBWcnNzHg">

@@ -2,7 +2,7 @@
 	"id": "com.yakindu.sct.examples.musicplayer.java",
 	"title": "Music Player (Java)",
 	"description": "A JavaFX based music player controlled by a statemachine with deep Java integration",
-	"previewImage": "cassette_player_thumg.jpg",
+	"previewImage": "cassette_player_thumb.jpg",
     "author": "itemis AG",
 	"category": [
 		"professional"

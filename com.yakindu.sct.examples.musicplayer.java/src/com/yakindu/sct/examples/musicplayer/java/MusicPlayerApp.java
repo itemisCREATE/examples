@@ -67,7 +67,6 @@ public class MusicPlayerApp extends Application {
 		statemachine.init();
 
 		// initialize all statemachine variables
-		statemachine.getSCInterface().setPlayer(new MusicPlayer());
 		statemachine.getSCInterface().setPlaylist(new ArrayList<>());
 		
 		// hook up in-events

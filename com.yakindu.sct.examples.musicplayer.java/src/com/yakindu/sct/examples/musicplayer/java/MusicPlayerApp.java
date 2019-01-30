@@ -1,7 +1,5 @@
 package com.yakindu.sct.examples.musicplayer.java;
 
-import java.util.ArrayList;
-
 import com.yakindu.sct.examples.musicplayer.java.player.IPlayerStatemachine;
 import com.yakindu.sct.examples.musicplayer.java.player.IPlayerStatemachine.SCInterfaceListener;
 import com.yakindu.sct.examples.musicplayer.java.player.PlayerStatemachine;
@@ -65,9 +63,6 @@ public class MusicPlayerApp extends Application {
 		IPlayerStatemachine statemachine = new PlayerStatemachine();
 		
 		statemachine.init();
-
-		// initialize all statemachine variables
-		statemachine.getSCInterface().setPlaylist(new ArrayList<>());
 		
 		// hook up in-events
 		playBtn.setOnAction((e) -> {

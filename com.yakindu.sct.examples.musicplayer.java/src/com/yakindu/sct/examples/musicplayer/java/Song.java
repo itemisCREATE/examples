@@ -5,26 +5,18 @@ import java.net.URL;
 
 public class Song {
 
-	private File file;
-	public String name;
+	public String filename;
 	
-	public Song(File file, String name) {
-		this.file = file;
-		this.name = name;
-	}
-	
-	public static Song from(String fileName) {
-		URL url = Song.class.getResource(fileName);
-		File file = new File(url.getPath());
-		Song song = new Song(file, fileName);
-		return song;
+	public Song(String filename) {
+		this.filename = filename;
 	}
 
 	public String getName() {
-		return name;
+		return filename;
 	}
 
 	public File getFile() {
-		return file;
+		URL url = Song.class.getResource(filename);
+		return new File(url.getPath());
 	}
 }

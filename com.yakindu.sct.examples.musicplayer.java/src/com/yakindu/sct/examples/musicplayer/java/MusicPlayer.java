@@ -13,9 +13,8 @@ public class MusicPlayer {
 	private Clip clip;
 
 	public void play(Song song) {
-		AudioInputStream audioInput;
 		try {
-			audioInput = AudioSystem.getAudioInputStream(song.getFile());
+			AudioInputStream audioInput = AudioSystem.getAudioInputStream(song.getFile());
 			clip = AudioSystem.getClip();
 			clip.open(audioInput);
 			clip.start();

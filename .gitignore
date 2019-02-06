@@ -6,3 +6,4 @@
 *.settings*
 */target/*
 */.gradle/*
+**/.DS_Store

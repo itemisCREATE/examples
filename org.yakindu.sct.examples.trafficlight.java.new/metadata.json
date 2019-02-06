@@ -1,0 +1,15 @@
+{
+	"id": "org.yakindu.sct.examples.trafficlight.java.new",
+	"title": "Traffic Light (Java) - New Version",
+	"author": "itemis AG",
+	"description": "A new version of the Java traffic light. Uses the new generator options synchronized and Runnable to run the statemachine in a thread with ease.",
+	"previewImage": "traffic_light_thumb.jpg",
+	"category": [
+		"open source",
+		"java",
+		"basic",
+		"interface",
+		"composite state",
+		"timer service"
+	]
+}

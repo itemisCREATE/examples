@@ -9,5 +9,11 @@
 		"qt",
 		"c++",
 		"timer service"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://updates.yakindu.com/statecharts/labs",
+			"features": ["org.yakindu.sct.generator.cpp.qt.feature.feature.group"]
+		}
 	]
 }

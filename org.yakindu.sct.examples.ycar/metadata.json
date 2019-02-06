@@ -11,7 +11,7 @@
 	"dependencies": [
 		{
 			"updateSite": "http://updates.yakindu.com/statecharts/labs",
-			"features": ["org.yakindu.sct.generator.typescript.feature.feature.group"]
+			"features": ["com.yakindu.sct.generator.typescript.feature.feature.group"]
 		}
 	]
 }

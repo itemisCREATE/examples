@@ -13,5 +13,11 @@
 		"interface",
 		"composite state",
 		"timer service"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://updates.yakindu.com/statecharts/labs",
+			"features": ["org.yakindu.sct.generator.python.feature.feature.group"]
+		}
 	]
 }

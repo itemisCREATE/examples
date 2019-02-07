@@ -9,5 +9,11 @@
 		"swift",
 		"basic",
 		"timer service"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://updates.yakindu.com/statecharts/labs",
+			"features": ["com.yakindu.sct.generator.swift.feature.feature.group"]
+		}
 	]
 }

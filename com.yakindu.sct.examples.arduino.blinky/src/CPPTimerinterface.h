@@ -80,7 +80,7 @@ public:
 	CPPTimerInterface(){
 		for(int i = 0; i<MAX_TIMER;i++)
 		{
-			this->tasks[i] = null;
+			this->tasks[i] = sc_null;
 		}
 	}
 

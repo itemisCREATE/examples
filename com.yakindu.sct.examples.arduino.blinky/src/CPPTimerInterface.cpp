@@ -20,7 +20,7 @@ void CPPTimerInterface::setTimer( TimedStatemachineInterface* statemachine,
 	{
 
 		/* ... and find an unused one. */
-		if(this->tasks[i] == null)
+		if(this->tasks[i] == sc_null)
 		{
 
 			/* set timer properties */
@@ -44,12 +44,12 @@ void CPPTimerInterface::unsetTimer(TimedStatemachineInterface* statemachine,
 
 		TimerTask *task = this->tasks[i];
 		/* ... and find the used timer */
-		if((task != null) && (task->getPtEvid() == event))
+		if((task != sc_null) && (task->getPtEvid() == event))
 		{
 
 			/* reset the timer */
 			delete this->tasks[i];
-			this->tasks[i] = null;
+			this->tasks[i] = sc_null;
 		}
 	}
 }
@@ -70,7 +70,7 @@ void CPPTimerInterface::updateActiveTimer(TimedStatemachineInterface* statemachi
 
 		/* ... and process all used */
 		TimerTask *task = this->tasks[i];
-		if (task != null)
+		if (task != sc_null)
 		{
 			task->updateElapsedTimeMs(elapsed_ms);
 
@@ -99,6 +99,6 @@ void CPPTimerInterface::cancel()
 	for (int i = 0; i < MAX_TIMER; i++)
 	{
 		delete tasks[i];
-		this->tasks[i] = null;
+		this->tasks[i] = sc_null;
 	}
 }

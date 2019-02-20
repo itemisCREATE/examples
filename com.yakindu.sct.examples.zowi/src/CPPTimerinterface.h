@@ -1,10 +1,3 @@
-/*
- * CPPTimerinterface.h
- *
- *  Created on: 10.02.2017
- *      Author: rherrmann
- */
-
 #ifndef SRC_CPPTIMERINTERFACE_H_
 #define SRC_CPPTIMERINTERFACE_H_
 
@@ -87,7 +80,7 @@ public:
 	CPPTimerInterface(){
 		for(int i = 0; i<MAX_TIMER;i++)
 		{
-			this->tasks[i] = null;
+			this->tasks[i] = sc_null;
 		}
 	}
 

@@ -31,10 +31,10 @@ testclass ZowiSCTTests for statechart ZowiSCT {
 		assert roundCounter == 3
 		proceedOneWalkingCycle
 		proceed 1 cycle
-		assert active(ZowiSCT.main_region.IsSomeOneHere_)
-		assert active (ZowiSCT.main_region.IsSomeOneHere_.Changing_mood.Suprised)
+		assert active(ZowiSCT.main_region.IsSomeOneHere)
+		assert active (ZowiSCT.main_region.IsSomeOneHere.Changing_mood.Suprised)
 		proceed 5 s
-		assert active (ZowiSCT.main_region.IsSomeOneHere_.Changing_mood.Sad)
+		assert active (ZowiSCT.main_region.IsSomeOneHere.Changing_mood.Sad)
 		mock zowi.getNoise returns (701)
 		proceed 1 cycle
 		assert active (ZowiSCT.main_region.Awake)

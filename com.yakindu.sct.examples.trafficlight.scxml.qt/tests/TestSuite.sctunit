@@ -1,0 +1,3 @@
+testsuite TestSuite {
+	TrafficLightStateMachineTests
+}

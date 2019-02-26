@@ -8,6 +8,8 @@
 #ifndef CONTROL_CONTROL_UTILS_H_
 #define CONTROL_CONTROL_UTILS_H_
 
+#include <stdint.h>
+
 #define MIN_DIST 20
 
 typedef enum motormode {

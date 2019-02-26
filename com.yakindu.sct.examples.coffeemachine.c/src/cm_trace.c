@@ -12,6 +12,7 @@
 #include "sc/CoffeeMachineRequired.h"
 
 static char* stateNames[] = {
+		"InvalidState",
 		"Off",
 		"On" ,
 		"On.Welcome" ,

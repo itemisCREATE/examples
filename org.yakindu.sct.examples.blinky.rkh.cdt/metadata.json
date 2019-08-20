@@ -1,0 +1,10 @@
+{
+	"id": "org.yakindu.sct.examples.blinky.rkh",
+	"title": "Blinky LED (RKH)",
+	"description": "Blinking LED on x86 by using Yakindu Statechart Tools and RKH Generator as a plugin",
+	"previewImage": "msp430_thumb.jpg",
+    "author": "itemis AG",
+	"category": [
+		"open source"
+	]
+}

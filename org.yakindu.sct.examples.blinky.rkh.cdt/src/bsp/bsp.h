@@ -31,7 +31,7 @@
 
 /**
  *  \file       bsp.h
- *  \brief      BSP for 80x86 OS win32 Blinky Demo
+ *  \brief      BSP for Blinky example
  *
  *  \ingroup    bsp
  */

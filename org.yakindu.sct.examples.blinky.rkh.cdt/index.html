@@ -24,7 +24,7 @@
       quickly and safely developing reactive applications for real-time 
       embedded systems.
     </p>
-    <p><img class="standard-image" src="images/rkh-framework.png" /></p>
+    <p><img class="standard-image" src="images/rkh-features.PNG" /></p>
 
     <h3>What RKH is?</h3>
     <p>
@@ -57,7 +57,9 @@
       framework, install both Trazer tool and RKH code generator.
     <h3>Get RKH framework</h3>
     <p> 
-      In this example, RKH is a Git submodule of <a href=https://github.com/Yakindu/examples>Yakindu’s examples repository</a>, so it can be obtained from its official repository by using the 
+      In this example, RKH is a Git submodule of 
+      <a href=https://github.com/Yakindu/examples>Yakindu’s examples repository</a>, 
+      so it can be obtained from its official repository by using the 
       following Git commands:
     <ol>
       <li><code>cd path/to/yakindu-examples/org.yakindu.sct.examples.blinky.rkh.cdt/</code></li>
@@ -102,7 +104,6 @@
     </ol>
     <p>
     <h2>Project structure</h2>
-    <p>...</p>
     <dl>
       <dt>model</dt>
       <dd>contains Blinky state machine (blinky.sct) and generator model (blinky.sgen)</dd>
@@ -152,7 +153,9 @@
     </ul>
     <h2>Run and debug</h2>
     <ul>
-      <li>Open a console, change the directory where you previously downloaded Trazer, and run it by executing the following command line: ./trazer -t 6602</li>
+      <li>Open a console, change the directory where you previously 
+          downloaded Trazer, and run it by executing the following command 
+          line: <code>./trazer -t 6602</code></li>
       <li>Right-click on project 'blinky' in the Eclipse 'Project Explorer'</li>
       <li>Choose 'Run As > Local C/C++ Application'</li>
       <p>The embedded Eclipse console shows up and the application starts</p>
@@ -160,17 +163,26 @@
     </ul>
       <p>In order to debug the example</p>
     <ul>
-      <li>Open a console, change the directory where you previously downloaded Trazer, and run it by executing the following command line: ./trazer -t 6602</li>
+      <li>Open a console, change the directory where you previously 
+          downloaded Trazer, and run it by executing the following command 
+          line: <code>./trazer -t 6602</code></li>
       <li>Right-click on project 'blinky' in the Eclipse 'Project Explorer'</li>
       <li>Choose 'Debug As > Local C/C++ Application'</li>
-      <p>You will now see the debug perspective with the blinky application window open. The C/C++ editor repositions in the perspective.</p>
+      <p>You will now see the debug perspective with the blinky application 
+      window open. The C/C++ editor repositions in the perspective.</p>
       <p><img class="standard-image" src="images/blinky-debug.png" /></p>
     </ul>
     <h2>Verify and validate</h2>
-    <ul>
-      <li></li>
-      <li></li>
-    </ul>
+      <p>While the application is running, you can validate and verify its 
+      behaviour through the trace events showed on the Trazer output. Each 
+      trace event includes a time stamp and additional information associated 
+      with it. A capture of Trazer output is shown below. It shows the trace 
+      records when the state machine processes a <code>after 1 sec</code> 
+      trigger. Since RKH can generate more than 100 different trace events 
+      during its execution, its trace module allow you to filter one or more 
+      of them in runtime, so you can choose the traces that you need.
+      </p>
+      <p><img class="standard-image" src="images/trazer-output.png" /></p>
   </div>
 </body>
 </html>

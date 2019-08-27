@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c::rkh {
 	statechart blinky {
 
 		feature Outlet {
-			targetProject = "blinky"
+			targetProject = "org.yakindu.sct.examples.rkh.blinky"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
 		}

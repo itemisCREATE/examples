@@ -7,8 +7,4 @@
 	"category": [ "labs",
 		"open source"
 	]
-	"dependencies": [ {
-			"updateSite": "http://updates.yakindu.com/statecharts/labs",
-			"features": ["com.yakindu.sct.generator.rkh.feature.feature.group"]
-		}
 }

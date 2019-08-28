@@ -1,0 +1,4 @@
+[submodule "org.yakindu.sct.examples.rkh.blinky/rkh"]
+	path = org.yakindu.sct.examples.rkh.blinky/rkh
+	url = https://github.com/vortexmakes/RKH.git
+	branch = develop

@@ -26,15 +26,15 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1792714156" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.345735149" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="../rkh/source/portable/80x86/linux_st/gnu"/>
-									<listOptionValue builtIn="false" value="../rkh/source/sma/inc"/>
+									<listOptionValue builtIn="false" value="../RKH/source/portable/80x86/linux_st/gnu"/>
+									<listOptionValue builtIn="false" value="../RKH/source/sma/inc"/>
 									<listOptionValue builtIn="false" value="../src/bsp"/>
-									<listOptionValue builtIn="false" value="../rkh/source/sm/inc"/>
-									<listOptionValue builtIn="false" value="../rkh/source/fwk/inc"/>
-									<listOptionValue builtIn="false" value="../rkh/source/mempool/inc"/>
-									<listOptionValue builtIn="false" value="../rkh/source/queue/inc"/>
-									<listOptionValue builtIn="false" value="../rkh/source/tmr/inc"/>
-									<listOptionValue builtIn="false" value="../rkh/source/trc/inc"/>
+									<listOptionValue builtIn="false" value="../RKH/source/sm/inc"/>
+									<listOptionValue builtIn="false" value="../RKH/source/fwk/inc"/>
+									<listOptionValue builtIn="false" value="../RKH/source/mempool/inc"/>
+									<listOptionValue builtIn="false" value="../RKH/source/queue/inc"/>
+									<listOptionValue builtIn="false" value="../RKH/source/tmr/inc"/>
+									<listOptionValue builtIn="false" value="../RKH/source/trc/inc"/>
 									<listOptionValue builtIn="false" value="../src"/>
 									<listOptionValue builtIn="false" value="../src-gen"/>
 								</option>
@@ -62,7 +62,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="src/bsp/bsp_ahsm.c|src/build/linux/bsp_ahsm.c|rkh/source/tmr/test|rkh/third-party/unitrazer|src/arch|rkh/source/trc/test|rkh/source/sma/test|rkh/source/sm/test|rkh/source/fwk/test|rkh/source/portable/ucos|rkh/source/portable/test|rkh/source/portable/s08|rkh/source/portable/cfv1|rkh/source/portable/arm-cortex|rkh/source/portable/80x86/win32_st|rkh/source/portable/80x86/win32_mt|rkh/third-party/utrazer|rkh/demo|rkh/template|rkh/tools|rkh/doc|rkh/demo/libbsp/platform/80x86/win|rkh/demo/libbsp/platform/cfv1|rkh/demo/libbsp/platform/s08|rkh/demo/libbsp/platform/arm-cortex|rkh/third-party/utrazer/test_runners|rkh/third-party/utrazer/*.*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="src/bsp/bsp_ahsm.c|src/build/linux/bsp_ahsm.c|RKH/source/tmr/test|RKH/third-party/unitrazer|src/arch|RKH/source/trc/test|RKH/source/sma/test|RKH/source/sm/test|RKH/source/fwk/test|RKH/source/portable/ucos|RKH/source/portable/test|RKH/source/portable/s08|RKH/source/portable/cfv1|RKH/source/portable/arm-cortex|RKH/source/portable/80x86/win32_st|RKH/source/portable/80x86/win32_mt|RKH/third-party/utrazer|RKH/demo|RKH/template|RKH/tools|RKH/doc|RKH/demo/libbsp/platform/80x86/win|RKH/demo/libbsp/platform/cfv1|RKH/demo/libbsp/platform/s08|RKH/demo/libbsp/platform/arm-cortex|RKH/third-party/utrazer/test_runners|RKH/third-party/utrazer/*.*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -107,7 +107,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="src/bsp/bsp_ahsm.c|src/build/linux/bsp_ahsm.c|rkh/source/tmr/test|rkh/third-party/unitrazer|src/arch|rkh/source/trc/test|rkh/source/sma/test|rkh/source/sm/test|rkh/source/fwk/test|rkh/source/portable/ucos|rkh/source/portable/test|rkh/source/portable/s08|rkh/source/portable/cfv1|rkh/source/portable/arm-cortex|rkh/source/portable/80x86/win32_st|rkh/source/portable/80x86/win32_mt|rkh/third-party/utrazer|rkh/demo|rkh/template|rkh/tools|rkh/doc|rkh/demo/libbsp/platform/80x86/win|rkh/demo/libbsp/platform/cfv1|rkh/demo/libbsp/platform/s08|rkh/demo/libbsp/platform/arm-cortex|rkh/third-party/utrazer/test_runners" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="src/bsp/bsp_ahsm.c|src/build/linux/bsp_ahsm.c|RKH/source/tmr/test|RKH/third-party/unitrazer|src/arch|RKH/source/trc/test|RKH/source/sma/test|RKH/source/sm/test|RKH/source/fwk/test|RKH/source/portable/ucos|RKH/source/portable/test|RKH/source/portable/s08|RKH/source/portable/cfv1|RKH/source/portable/arm-cortex|RKH/source/portable/80x86/win32_st|RKH/source/portable/80x86/win32_mt|RKH/third-party/utrazer|RKH/demo|RKH/template|RKH/tools|RKH/doc|RKH/demo/libbsp/platform/80x86/win|RKH/demo/libbsp/platform/cfv1|RKH/demo/libbsp/platform/s08|RKH/demo/libbsp/platform/arm-cortex|RKH/third-party/utrazer/test_runners" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

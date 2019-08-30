@@ -3,6 +3,7 @@
 !.project
 !.settings
 !.git*
+STM32F407G-DISC1.xml
 
 # Prerequisites
 *.d

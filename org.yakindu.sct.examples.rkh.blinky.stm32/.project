@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.yakindu.sct.examples.rkh.blinky</name>
+	<name>org.yakindu.sct.examples.rkh.blinky.stm32</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -23,13 +23,8 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
-			<triggers>full,incremental,</triggers>
+			<name>org.yakindu.sct.builder.SCTBuilder</name>
 			<arguments>
-				<dictionary>
-					<key>LaunchConfigHandle</key>
-					<value>&lt;project&gt;/.externalToolBuilders/org.yakindu.sct.builder.SCTBuilder.launch</value>
-				</dictionary>
 			</arguments>
 		</buildCommand>
 	</buildSpec>
@@ -37,6 +32,8 @@
 		<nature>org.eclipse.cdt.core.cnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+		<nature>fr.ac6.mcu.ide.core.MCUProjectNature</nature>
+		<nature>fr.ac6.mcu.ide.core.MCUSingleCoreProjectNature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 		<nature>org.yakindu.sct.builder.SCTNature</nature>
 	</natures>

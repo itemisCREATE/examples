@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Blinky LED for RKH framework on Linux</title>
+<link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>Blinky LED for RKH framework on Linux</h1>
+
+    <h2>Overview</h2>
+      <p>This is a simple example of how to use the RKH framework together with 
+      Yakindu Statechart Tool, since it provides a RKH specific C code 
+      generator for statecharts.</p>
+      <p><img class="standard-image" src="images/yakindu-rkh.png" /></p>
+      
+      <p>The behavior of blinky is defined by a simple statechart that looks 
+      as follows.</p>
+      <p><img class="standard-image" src="images/state-machine.png" /></p>
+
+    <h3>What RKH is?</h3>
+    <p>
+      RKH is a flexible, efficient, highly portable, and freely available 
+      open-source state machine framework providing the infrastructure for 
+      quickly and safely developing reactive applications for real-time 
+      embedded systems.
+    </p>
+    <p><img class="standard-image" src="images/rkh-features.png" /></p>
+
+    <h3>What RKH is?</h3>
+    <p>
+      RKH provides not only an unusual, efficient and straightforward method 
+      for implementing and executing state machines, but also the needed 
+      infrastructure to build reactive applications in embedded systems. It 
+      is composed of modules, procedures, and supporting tools; such as a 
+      method for implementing and executing flat state machines and 
+      statecharts, asynchronous messaging, cross-platform abstraction, run 
+      time tracing, time management, dynamic memory mechanism to deal with 
+      fragmentation, unit-test harness, plus others.</p>
+    <p>
+      RKH allows developers to verify and validate a reactive application’s 
+      behaviour at runtime by means of the framework’s built-in tracer. It 
+      can utilize any traditional OS/RTOS or work without one. It also 
+      encourages the embedded software community to apply best principles and 
+      practices of software engineering for building flexible, maintainable 
+      and reusable software.</p>
+    <p>
+      RKH is open source and licensed under the GNU v3.0. You can find the 
+      <a href=https://github.com/vortexmakes/RKH>source code on GitHub</a>.</p>
+    <p>
+      If you want to learn more about the benefits of this flexible, 
+      efficient and highly portable state machine framework read on 
+      <a href=https://blogs.itemis.com/en/rkh-state-machine-framework-for-reactive-and-real-time-embedded-systems>here</a>.
+
+    <h2>Setup</h2>
+    <p>
+      In order to run and verify this example you have to download the RKH 
+      framework, install both Trazer tool and RKH code generator.
+    <h3>Get RKH framework</h3>
+    <p> 
+      RKH can be obtained from its official repository by using the following 
+      Git commands:
+    <ol>
+      <li><code>cd path/to/org.yakindu.sct.examples.rkh.blinky/</code></li>
+      <li><code>git clone https://github.com/vortexmakes/RKH.git
+      </code></li>
+    </ol>
+    Refresh your project after cloning. Right click the project and click on Refresh. Otherwise the project will not compile.
+    <p>
+    <h3>Install Trazer tool</h3>
+    <p> 
+      RKH allows developers to verify and validate a reactive application’s 
+      behaviour at runtime by means of its built-in tracer. In addition, 
+      RKH provides a very simple but powerful console application, called 
+      Trazer, to visualize the trace events’ output in a legible manner. It 
+      can be downloaded and installed as follows.
+    <ol>
+      <li>Download Trazer for Linux 64-bits from its 
+          <a href=https://github.com/vortexmakes/Trazer/releases/download/3.2/RC_trazer_3_2_lnx64b.tar.gz>
+          official repository</a></li>
+      <li>Copy downloaded file to a folder and extract it</li>
+      <li>Change the directory to previous folder</li>
+      <li>Check it is alright by executing ./trazer</li>
+    </ol>
+    <p>
+    <h3>Install RKH code generator</h3>
+    <p> 
+      If code generation does not work and Yakindu shows error markers on the 
+      model/Blinky.sgen file then you likely have to install the Yakindu RKH 
+      code generator.
+    <ol>
+      <li>Open Help > Install New Software ... from the menu.</li>
+      <li>Select the Yakindu Labs entry from the Work with: pull down list. 
+          If there is no such entry then</li>
+      <ol>
+        <li>Choose Add</li>
+        <li>Enter <a href=http://updates.yakindu.com/statecharts/labs>https://github.com/Yakindu/examples</a> 
+            in the Location field and optionally choose a name</li>
+        <li>Press OK</li>
+      </ol>
+      <li>Unfold the top level node and check the RKH generator feature.</li>
+      <li>Finish the installation wizard by choosing Next > until finished.</li>
+      <li>Restart.</li>
+    </ol>
+    <p>
+    <h2>Project structure</h2>
+    <dl>
+      <dt>model</dt>
+      <dd>contains Blinky state machine (blinky.sct) and generator model (blinky.sgen)</dd>
+      <dt>src</dt>
+      <dd>Includes both application code and BSP (Board Support Package) code. 
+      The most important files and directories are listed below:</dd>
+      <ul>
+        <li><i>signals.h</i>: defines signals as enumerated constants, which 
+        are used as state machine triggers.</li>
+        <li><i>main.c</i>: contains the main() function, which initializes 
+        both BSP and Blinky active object, then executes the RKH framework in 
+        order to orchestrates this reactive application.</li>
+        <li><i>rkhcfg.h</i>: adapts and configures RKH in compile time.</li>
+        <li><i>bsp</i>: this folder contains the source code of BSP for Linux 
+        platform.  It emulates interrupts, implements the communication with 
+        Trazer tool and a simple event-loop, which is a non-preemptive 
+        cooperative scheduler. In the Yakindu’s Standard Edition you cannot 
+        include header files, but it is possible to create operations, in 
+        which the platform specific C code can be called. Within these 
+        operations we can call the specific code to interact with the 
+        platform, which is located in this folder.</li>
+      </ul>
+      <dt>src-gen</dt>
+      <dd>Includes the generated C code compatible with RKH 
+      framework, which will be automatically be updated when you edit and 
+      save the statechart.</dd>
+      <ul>
+        <li><i>Blinky.h/.c</i>: specifies and implements the state machine of 
+        Blinky active object. Please correlate this implementation 
+        (Blinky.c) with the state diagram shown above.</li>
+        <li><i>BlinkyAct.h/.c</i>: specifies and implements the state machine 
+        actions (entries, exits, effects and guards).</li>
+        <li><i>BlinkyActRequired.h</i>: in the Yakindu’s Standard Edition you 
+        cannot include header files, but it is possible to create operations, 
+        in which the Blinky specific c code can be called. Within these 
+        operations we can call the specific C code to interact with the 
+        platform.</li>
+      </ul>
+      <dt>rkh</dt>
+      <dd>Here is located the RKH framework’s source code.</dd>
+    </dl>
+    <p>
+    <h2>Build</h2>
+    <ul>
+      <li>Right-click on project 'blinky' in the 'Project Explorer'</li>
+      <li>Choose 'Build Project'</li>
+    </ul>
+    <h2>Run and debug</h2>
+    <ul>
+      <li>Open a console, change the directory where you previously 
+          downloaded Trazer, and run it by executing the following command 
+          line: <code>./trazer -t 6602</code></li>
+      <li>Right-click on project 'blinky' in the Eclipse 'Project Explorer'</li>
+      <li>Choose 'Run As > Local C/C++ Application'</li>
+      <p>The embedded Eclipse console shows up and the application starts</p>
+      <p><img class="standard-image" src="images/blinky-output.png" /></p>
+    </ul>
+      <p>In order to debug the example</p>
+    <ul>
+      <li>Open a console, change the directory where you previously 
+          downloaded Trazer, and run it by executing the following command 
+          line: <code>./trazer -t 6602</code></li>
+      <li>Right-click on project 'blinky' in the Eclipse 'Project Explorer'</li>
+      <li>Choose 'Debug As > Local C/C++ Application'</li>
+      <p>You will now see the debug perspective with the blinky application 
+      window open. The C/C++ editor repositions in the perspective.</p>
+      <p><img class="standard-image" src="images/blinky-debug.png" /></p>
+    </ul>
+    <h2>Verify and validate</h2>
+      <p>While the application is running, you can validate and verify its 
+      behaviour through the trace events showed on the Trazer output. Each 
+      trace event includes a time stamp and additional information associated 
+      with it. A capture of Trazer output is shown below. It shows the trace 
+      records when the state machine processes a <code>after 1 sec</code> 
+      trigger. Since RKH can generate more than 100 different trace events 
+      during its execution, its trace module allow you to filter one or more 
+      of them in runtime, so you can choose the traces that you need.
+      </p>
+      <p><img class="standard-image" src="images/trazer-output.png" /></p>
+  </div>
+</body>
+</html>

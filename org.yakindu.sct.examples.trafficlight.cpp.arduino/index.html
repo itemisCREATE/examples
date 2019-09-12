@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Traffic Light (C++) for Arduino</title>
+<link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>Traffic Light (C++) for Arduino</h1>
+
+    <p>Based on the standard traffic light example, this project shows how
+      to use a statechart to develop software for the Arduino platform.</p>
+
+    <p>
+      <img class="standard-image" alt="The statechart"
+        src="images/TrafficLightCtrl.png" />
+    </p>
+
+    <p>More information about the statechart itself can be found in the
+      standard traffic light example, which should be considered first. In
+      summary, we have two traffic lights: one for the traffic on the street,
+      and one for pedestrians who want to cross the street. They can push a
+      button to request their traffic light to turn green, which activates a
+      blinking wait-light first. The street's traffic light then goes through
+      the standard procedure, turning on the yellow light, followed by the red
+      light, allowing the pedestrians to cross safely. After some time, the
+      pedestrians' traffic light turns red again, and the cars are allowed to
+      pass until the next request is made by a pedestrian.</p>
+
+    <p>Additionally, the traffic light can be switched off completely. This
+      turns the yellow lights into a blinking mode, signaling that the traffic
+      light is indeed switched off and that the street should be crossed in a
+      careful manner.</p>
+
+    <div>
+      <h2>Installing the Arduino Plugin</h2>
+
+      <p>To compile the generated C code for Arduino, you should install an
+        Eclipse plugin that can handle this and provides the needed libraries.
+        On Windows, you should also install the regular Arduino IDE, because
+        Windows is lacking the drivers to use the Arduino without Arduino IDE.</p>
+
+      <p>
+        One plugin that works pretty well can be found at <a
+          href="http://eclipse.baeyens.it/">http://eclipse.baeyens.it/</a>. In
+        YAKINDU SCT, simply install it by selecting <em>Help → Install New
+          Software</em> in the main menu, typing or pasting
+        <code>http://www.baeyens.it/eclipse/V3</code>
+        into the proper field, and follow the regular procedure. SCT will
+        restart and download the necessary Arduino libraries for you.
+      </p>
+    </div>
+
+    <div>
+      <h2>Building the Hardware</h2>
+
+      <p>
+        <img class="standard-image" alt="The circuit needed for the project"
+          src="images/screenshot_installhardware.png" />
+      </p>
+
+	  <p>The correct pins can be find in the arduinoPins.h file.</p>
+      <p>Get your parts ready! You will need:</p>
+
+      <ul>
+        <li>2 push buttons</li>
+        <li>6 LEDs, ideally:
+          <ul>
+            <li>2x red</li>
+            <li>2x green</li>
+            <li>1x yellow</li>
+            <li>1x white</li>
+          </ul>
+        </li>
+        <li>8 resistors:
+          <ul>
+            <li>2x 10kR or similar</li>
+            <li>6x 220R or similar</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>Of course you can change the pins, but since this represents the
+        pin numbers in the software, don't forget to change them as well.</p>
+    </div>
+
+    <div>
+          <h2>Addons for compiling and flashing</h2>
+    <p>For compiling and flashing the Eclipse C++ IDE for Arduino plugin has been used. This can be found at 'https://marketplace.eclipse.org/content/eclipse-c-ide-arduino'. Please ensure that you have installed the Arduino toolchain. This can easily be done by installing the Arduino IDE, which can be found here: 'https://www.arduino.cc/en/Main/Software'. It is not possible to compile code with the Eclipse C++ IDE for Arduino plugin without an installed toolchain!</p>
+  	<h2>How to install the Eclipse C++ IDE for Arduino plugin</h2>
+  	<p>
+  	The easiest way for installing is using the example Wizard. Required dependencies will be recoginized automatically and can be installed.
+  	</p>
+    </div>
+    
+        <h2>Using the Eclipse C++ IDE for Arduino plugin</h2>
+    After the installation you should notice a new Toolbar, which allows you to compile and flash your Arduino.
+    <ol>
+      <li>First of all, your project should contain no errors any more.</li>
+      <li>To get started you need to configure the desired platform. Choose your personal settings and board. Most of the Arduinos (Uno, Mega, etc.) should be supported. Plug in your Arduino and click on 'New Launch Target..'.</li>
+      <li>Set up your device. This depends on your system and configuration.</li>
+	  <li>Build project.</li>
+      <li>Upload the example.</li>
+	  <li>The trafficlight should start blinking now!</li>
+    </ol>
+  </div>
+
+  </div>
+
+</body>
+</html>

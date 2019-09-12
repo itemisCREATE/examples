@@ -1,0 +1,25 @@
+{
+	"id": "org.yakindu.sct.examples.trafficlight.cpp.arduino",
+	"title": "Traffic Light (C++) for Arduino",
+	"author": "itemis AG",
+	"description": "Wondering how to execute your state machine on the Arduino platform? This example demonstrates the necessary steps, like installing the Arduino plugin, building the hardware, turning your statechart into code and uploading it to the Arduino. It does so by means of the standard traffic light example.",
+	"previewImage": "YAKINDU-Statecharts-Arduino_thumb.jpg",
+	"category": [
+		"open source",
+		"arduino",
+		"advanced",
+		"interface",
+		"composite state",
+		"timer service"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://updates.yakindu.com/statecharts/releases",
+			"features": ["com.yakindu.sct.domain.c.feature.feature.group"]
+		},
+		{
+			"updateSite": "http://download.eclipse.org/tools/cdt/releases/9.3",
+			"features": ["org.eclipse.cdt.arduino.feature.group"]
+		}
+	]
+}

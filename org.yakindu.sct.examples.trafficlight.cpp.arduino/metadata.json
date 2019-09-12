@@ -14,10 +14,6 @@
 	],
 	"dependencies": [
 		{
-			"updateSite": "http://updates.yakindu.com/statecharts/releases",
-			"features": ["com.yakindu.sct.domain.c.feature.feature.group"]
-		},
-		{
 			"updateSite": "http://download.eclipse.org/tools/cdt/releases/9.3",
 			"features": ["org.eclipse.cdt.arduino.feature.group"]
 		}

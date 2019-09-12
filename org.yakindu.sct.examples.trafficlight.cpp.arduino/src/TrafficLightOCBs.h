@@ -1,9 +1,3 @@
-/*
- * TrafficLightOCBs.h
- *
- *  Created on: 12.09.2019
- *      Author: administrator
- */
 
 #ifndef TRAFFICLIGHTOCBS_H_
 #define TRAFFICLIGHTOCBS_H_

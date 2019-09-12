@@ -1,10 +1,3 @@
-/*
- * arduinoPins.h
- *
- *  Created on: 12.09.2019
- *      Author: administrator
- */
-
 #ifndef ARDUINOPINS_H_
 #define ARDUINOPINS_H_
 

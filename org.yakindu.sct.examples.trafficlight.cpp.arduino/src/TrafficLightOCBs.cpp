@@ -1,9 +1,3 @@
-/*
- * TrafficLightOCBs.cpp
- *
- *  Created on: 12.09.2019
- *      Author: administrator
- */
 
 #include "TrafficLightOCBs.h"
 #include "Arduino.h"

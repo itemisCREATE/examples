@@ -11,5 +11,11 @@
 		"interface",
 		"composite state",
 		"timer service"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://eclipse.baeyens.it/update/V4/stable",
+			"features": ["io.sloeber.feature.feature.group"]
+		}
 	]
 }

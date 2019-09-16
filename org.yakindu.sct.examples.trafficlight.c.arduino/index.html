@@ -39,18 +39,25 @@
 
       <p>To compile the generated C code for Arduino, you should install an
         Eclipse plugin that can handle this and provides the needed libraries.
+        In this example we're using the Sloeber plugin. 
         On Windows, you should also install the regular Arduino IDE, because
         Windows is lacking the drivers to use the Arduino without Arduino IDE.</p>
 
-      <p>
-        One plugin that works pretty well can be found at <a
-          href="http://eclipse.baeyens.it/">http://eclipse.baeyens.it/</a>. In
-        YAKINDU SCT, simply install it by selecting <em>Help → Install New
-          Software</em> in the main menu, typing or pasting
-        <code>http://www.baeyens.it/eclipse/V3</code>
-        into the proper field, and follow the regular procedure. SCT will
-        restart and download the necessary Arduino libraries for you.
-      </p>
+        <p> 
+        	The easiest way of how to install the plugin is using the example wizard.
+        	Select the 'Traffic Light (C) for Arduino' example, click on 
+        	'Install Dependencies...' and follow the instructions.
+        	Your IDE may restart. SCT will
+        	restart and download the necessary Arduino libraries for you.
+        </p>
+        	Another way is using the update side, which can be found at <a 
+        	href="http://eclipse.baeyens.it/">http://eclipse.baeyens.it/</a>. In
+        	YAKINDU SCT, simply install it by selecting <em>Help → Install New
+        	Software</em> in the main menu, typing or pasting
+        	<code>http://www.baeyens.it/eclipse/V4</code>
+        	into the proper field, and follow the regular procedure. SCT will
+        	restart and download the necessary Arduino libraries for you.
+        </p>
     </div>
 
     <div>
@@ -92,7 +99,7 @@
         With this example being active in your workspace, with the Arduino
         plugin installed, the Arduino connected, and the correct port set in <em>Project
           → Properties → Arduino</em>, you can now build the example and upload it to
-        your Arduino.
+        your Arduino. Also, ensure you have selected the correct arduino and toolchain path.
       </p>
 
       <p>You should have seen the new buttons in your SCT installation:</p>

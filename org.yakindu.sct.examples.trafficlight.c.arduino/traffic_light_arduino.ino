@@ -2,7 +2,6 @@
 #include <avr/sleep.h>
 
 #include "pushbutton.h"
-#include "src-gen/TrafficLightCtrl.h"
 #include "src-gen/TrafficLightCtrlRequired.h"
 #include "scutil/sc_timer_service.h"
 

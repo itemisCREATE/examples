@@ -5,7 +5,7 @@ GeneratorModel for yakindu::c {
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.trafficlight.c.arduino"
 			targetFolder = "src-gen"
-			libraryTargetFolder = "src-gen"
+			libraryTargetFolder = "src"
 		}
 		
 		feature FunctionInlining {

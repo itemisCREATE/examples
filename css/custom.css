@@ -75,11 +75,6 @@
 	border-radius: 6px;
 }
 
-.small {
-	width: 270px;
-	height: 180px;
-}
-
 #bgimg {
 	background: #bee2fc
 		url(http://www.yakindu.org/wp-content/themes/yakindu/layout/images/Hintergrund-oben.jpg)
@@ -118,6 +113,12 @@ body {
 	margin: 2%;
 }
 
+div.primary{
+	max-width: 1012px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 
 /* Styling of figures. By default, a figure is rendered as a <div class="figure"> … <img … /> </div> */
 .figure {
@@ -130,27 +131,29 @@ img {
     height: auto;
     text-align: center;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5px;
+    margin-left: 5px;
 }
 
 img.standard-image {
-    height:auto;
+    height:40;
     box-shadow: 10px 10px 20px #888888;
     margin-bottom: 20px;
 }
 
 img.tiny {
-    width:14.6%;
-    min-width:14.6%;
+    width:38.2%;
+    min-width:38.2%;
 }
 
 img.small {
-    width:38.2%;
+    width:61.8%;
+    min-width:61.8%;
 }
 
 img.large {
-    width:61.8%;
+    width:80%;
+    min-width:80%;
 }
 
 img.full {

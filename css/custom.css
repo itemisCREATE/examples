@@ -126,18 +126,17 @@ div.primary{
 }
 
 img {
-    max-width: 61.8%;
-    min-width: 38.2%;
+    max-width: 100%;
+    min-width: 100%;
     height: auto;
     text-align: center;
     display: block;
     margin-left: 5px;
-    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 20px;
 }
 
 img.standard-image {
-    height:40;
-    box-shadow: 10px 10px 20px #888888;
     margin-bottom: 20px;
 }
 

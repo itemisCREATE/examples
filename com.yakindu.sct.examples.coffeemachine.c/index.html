@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>[Pro] Coffee Machine with C integration</title>
 <link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
   <div class="primary">
@@ -13,9 +14,9 @@
       statecharts with manually written C code. The example is implemented as a
       simple command line tool. It makes use of POSIX threads. So you need a
       compiler tool chain and a 'pthread' library to build an run the example.
-      The underlying statechart for the coffee machine looks as follows: <img
+      The underlying statechart for the coffee machine looks as follows: <p><img
         alt="The digital watch statechart in all its details"
-        src="images/CoffeeMachine_model.png" /> The statechart consists of two
+        src="images/CoffeeMachine_model.png" /></p> The statechart consists of two
       major states "ON" and "OFF". The "ON" state is a composite state with
       several substates and substate machines for the different modes.
     </p>
@@ -74,7 +75,7 @@
     <p>
       You may want to change or extend the model. Within the embedded expression
       editor you can press 'Ctrl-Space' to get proposals, which also include the
-      C elements from the imported C header files. <img class="standard-image"
+      C elements from the imported C header files. <img class="full"
         src="images/CodeCompletion.png"
         alt="By pressing CTRL (CMD) +Space you get coding proposals." />
     </p>

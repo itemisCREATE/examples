@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Blinky LED for MSP430</title>
 <link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
   <div class="primary">
@@ -12,7 +13,7 @@
 
     <h2>Overview</h2>
     <p>
-      <img class="standard-image" src="images/msp430.jpg" />
+      <img class="tiny" src="images/msp430.jpg" />
     <p>This tutorial contains three parts:
     <p>1. Installing the YAKINDU Statechart Tool as a Plugin into Texas
       Instruments Code Composer Studio
@@ -37,7 +38,7 @@
       Therefore, open the <i>Help</i> tab and click on <i>Install New
         Software...</i>
     <p>
-      <img class="standard-image" src="images/installNewSoftware.png" />
+      <img class="tiny" src="images/installNewSoftware.png" />
     <p>There you can install Yakindu. You need two update sites for this.
     <p>
       First you need to add the update site of Eclipse Neon to allow Yakindu
@@ -56,7 +57,7 @@
     <p>
       Choose the black button with <i>install from update site</i>
     <p>
-      <img class="standard-image" src="images/DownloadOptions.png" />
+      <img class="tiny" src="images/DownloadOptions.png" />
     <p>
       Once again, go over to <i>install new software</i>. There you add the URL
       you copied from our site. Choose <i>YAKINDU Statechart Tools Standard Edition</i>. You also can install
@@ -87,13 +88,13 @@
       Wizard will be opened in which you can select your project and name your
       statechart. For example, call it “<i>blinkyStateMachine.sct</i>”.
     <p>
-      <img class="standard-image" src="images/addStatechart.png" />
+      <img class="small" src="images/addStatechart.png" />
     <p>
       The Statechart model will appear in the project folder after clicking on <i>Finish</i>.
       Click on <i>Yes</i> if you are asked to change the perspective.
     <p>
       Afterwards add the three states, name them and add the transitions, like
-      shown on the following picture. <img class="standard-image"
+      shown on the following picture. <img class="small"
         src="images/StatechartTrans.png" />
     <p>In the Standard Edition you cannot include header files, but it is
       possible to create operations, in which the MSP430 specific C-Code can be
@@ -106,13 +107,13 @@
     operation init()
     operation redOn()
     operation redOff()</pre>
-      <img class="small-image" src="images/Operations.png" />
+      <img class="small" src="images/Operations.png" />
     <p>Within these operations we can call the specific C code to interact
       with the hardware.
     <p>The last step in the design of the statechart is to add the
       operations you just defined.
     <p>
-      <img class="standard-image" src="images/StateMachineCommunity.png" />
+      <img class="small" src="images/StateMachineCommunity.png" />
     <p>
     <h2>Generate the C-Code</h2>
     <p>
@@ -124,7 +125,7 @@
       clicking on the checkbox. Ensure that you have chosen the <i>YAKINDU
         SCT C Code Generator</i> and click on <i>Finish</i>.
     <p>
-      <img class="standard-image" src="images/sgen.png" />
+      <img class="small" src="images/sgen.png" />
     <p>Build the project. The folders src and src-gen should appear in your
       project. They include the generated C-Code, which will be automatically be
       updated when you edit and save the statechart.
@@ -140,7 +141,7 @@
       but they are already included in this example.
     <p>Your project folder now should look like this:
     <p>
-      <img class="small-image" src="images/projectView.png" />
+      <img class="tiny" src="images/projectView.png" />
     <p>
     <h2>Change Compiler to C99</h2>
     <p>
@@ -200,7 +201,7 @@
     <p>
       	<i>C:\ti2\ccsv6\eclipse\ccstudio.exe <b>-vm "C:\Program Files (x86)\Java\jre1.8.0_141\bin"</b></i>	
     </p>
-    <p>  <img class="standard-image" src="images/ShortcutPath.PNG" /> </p>
+    <p>  <img class="tiny" src="images/ShortcutPath.PNG" /> </p>
   </div>
 </body>
 </html>

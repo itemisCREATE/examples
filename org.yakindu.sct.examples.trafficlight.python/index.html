@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Traffic Light (Python)</title>
 <link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
   <div class="primary">
@@ -14,9 +15,11 @@
     </p>
 
     <p>
-      <img class="standard-image" alt="The statechart"
+      <img class="full" alt="Statechart"
         src="images/TrafficLightCtrl.png" />
     </p>
+    
+    <h2>How it works</h2>
     
     <p>In summary, there are two traffic lights: one for the traffic on the
       street, and one for pedestrians who want to cross the street. They can
@@ -32,6 +35,7 @@
       light is indeed switched off and that the street should be crossed in a
       careful manner.</p>
 
+	<h2>Run the program</h2>
     <p>The traffic light example is based on Python and contains a small GUI
       that demonstrate the state machine behaviour modelled in
       /model/TrafficLightCtrl.sct. This example combines generated Python code
@@ -41,13 +45,14 @@
       src/Main.py. For this, double-click on 'Main.py', start it from the console
       or - if you already added the PyDev plugin to your IDE - just right-click on the
       project and select 'Run As > Python Run'.</p>
-      
+    
     <p>
-      <img class="standard-image" alt="The statechart"
-        src="images/TrafficSceneMainGUI.png" />
+      <img class="tiny" alt="Application"
+        src="images/trafficLightGui.png" />
     </p>
 
-	<p>Using the GUI:</p>
+
+	<h2>Using the GUI:</h2>
 	<ol>
 	  <li>Press the 'OnOff' Button to activate the traffic light system.</li>
 	  <li>Press the 'Go' button to send a request.</li>
@@ -55,7 +60,7 @@
 	  everything shuts down safely.</li>
 	</ol>
 
-    <p>Please be aware of the following issues:</p>
+    <h2>Known issues</h2>
 
     <ol>
       <li>The example requires Python 3.x.</li>

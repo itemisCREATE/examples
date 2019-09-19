@@ -18,6 +18,9 @@
 		{
 			"updateSite": "http://updates.yakindu.com/statecharts/labs",
 			"features": ["org.yakindu.sct.generator.python.feature.feature.group"]
+		}, 
+		{	"updateSite": "http://www.pydev.org/updates/",
+			"features": ["org.python.pydev.feature.feature.group"]
 		}
 	]
 }

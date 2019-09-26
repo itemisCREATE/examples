@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Blinky LED for RKH framework on STM32 Discovery Board</title>
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>Blinky LED for RKH framework on STM32</h1>
+
+    <h2>Overview</h2>
+      <p>This is a simple example of how to use the RKH framework together with 
+      Yakindu Statechart Tool and AC6 System Workbench for STM32.</p>
+      <p><img class="small" src="images/yakindu-rkh.png" /></p>
+      
+      <p>This tutorial contains:</p>
+      <p><a href="#1">1. Blinky Statechart Model</a></p>
+      <p><a href="#2">2. What RKH is?</a></p>
+      <p><a href="#3">3. Toolchain installation</a></p>
+      <p><a href="#4">4. Yakindu project on SW4STM32</a></p>
+      <p><a href="#5">5. Runing on STM32F407F-DISC1 board</a></p>
+
+    <h2 id="1">Blinky Statechart Model</h2>
+
+      <p>The behavior of Blinky is defined by a simple statechart that looks 
+      as follows.</p>
+      <p><img class="standard-image" src="images/state-machine.png" /></p>
+
+    <h2 id="2">What RKH is?</h2>
+    <p>
+      RKH is a flexible, efficient, highly portable, and freely available 
+      open-source state machine framework providing the infrastructure for 
+      quickly and safely developing reactive applications for real-time 
+      embedded systems.
+    </p>
+    <p><img class="standard-image" src="images/rkh-features.png" /></p>
+
+    <p>
+      RKH provides not only an unusual, efficient and straightforward method 
+      for implementing and executing state machines, but also the needed 
+      infrastructure to build reactive applications in embedded systems. It 
+      is composed of modules, procedures, and supporting tools; such as a 
+      method for implementing and executing flat state machines and 
+      statecharts, asynchronous messaging, cross-platform abstraction, run 
+      time tracing, time management, dynamic memory mechanism to deal with 
+      fragmentation, unit-test harness, plus others.</p>
+    <p>
+      RKH allows developers to verify and validate a reactive application’s 
+      behaviour at runtime by means of the framework’s built-in tracer. It 
+      can utilize any traditional OS/RTOS or work without one. It also 
+      encourages the embedded software community to apply best principles and 
+      practices of software engineering for building flexible, maintainable 
+      and reusable software.</p>
+    <p>
+      RKH is open source and licensed under the GNU v3.0. You can find the 
+      <a href=https://github.com/vortexmakes/RKH>source code on GitHub</a>.</p>
+    <p>
+      If you want to learn more about the benefits of this flexible, 
+      efficient and highly portable state machine framework read on 
+      <a href=https://blogs.itemis.com/en/rkh-state-machine-framework-for-reactive-and-real-time-embedded-systems>here</a>.
+
+    <h2 id="3">Toolchain installation</h2>
+
+      <h3>Install AC6 System Workbench for STM32 (SW4STM32)</h3>
+      <p> The System Workbench toolchain, called SW4STM32, is a free multi-OS software development environment based on Eclipse, 
+        which supports the full range of STM32 microcontrollers and associated boards.</p>
+
+      <p><img class="large" src="images/SW4STM32.png" /></p>
+      <p>Download Linux installer from here:
+      <a href=http://www.ac6-tools.com/downloads/SW4STM32/install_sw4stm32_linux_64bits-v2.9.run>SW4STM32-V2.9-lnx64</a> </p>
+
+      <h3>Install YAKINDU SCT Plugin </h3>
+      <p>Go to Eclipse Marketplace and type yakindu in search box:</p>
+      <p><img class="standard-image" src="images/yakindu-plugin.png" /></p>
+    
+      <p>Select and confirm all features</p>
+      <p><img class="standard-image" src="images/yakindu-plugin-features.png" /></p>
+
+      <h3>Install RKH code generator </h3>
+      <p> 
+        If code generation does not work and Yakindu shows error markers on the 
+        model/Blinky.sgen file then you likely have to install the Yakindu RKH 
+        code generator. This can be done in the example wizard or in the SGen wizard.
+      <ol>
+        <li>Open File > New > Code generator module</li>
+        <li>Click on 'next'</li>
+        <li>Choose a 'Generator' and click on 'Install more..'</li>
+        <li>Follow the instructions and select the RKH Generator</li>
+        <li>Finish and Restart.</li>
+      </ol>
+      <p>
+  
+      <h3>Get RKH framework</h3>
+      <p> 
+      In order to build this example you have to download the RKH 
+      framework and install the Trazer tool.
+      RKH can be obtained from its official repository by using the following 
+      Git commands:</p>
+      <ol>
+       <li><code>cd path/to/org.yakindu.sct.examples.rkh.blinky.stm32/</code></li>
+       <li><code>git clone https://github.com/vortexmakes/RKH.git
+       </code></li>
+      </ol>
+      <h3>Install Trazer tool</h3>
+      <p> 
+      RKH allows developers to verify and validate a reactive application’s 
+      behaviour at runtime by means of its built-in tracer. In addition, 
+      RKH provides a very simple but powerful console application, called 
+      Trazer, to visualize the trace events’ output in a legible manner. It 
+      can be downloaded and installed as follows.</p>
+      <ol>
+      <li>Download Trazer for Linux 64-bits from its 
+          <a href=https://github.com/vortexmakes/Trazer/releases/download/3.2/RC_trazer_3_2_lnx64b.tar.gz>
+          official repository</a></li>
+      <li>Copy downloaded file to a folder and extract it</li>
+      <li>Change the directory to previous folder</li>
+      <li>Check it is alright by executing ./trazer</li>
+      </ol>
+
+    <h2 id="4">Yakindu project on SW4STM32</h2>
+
+    <p>
+    <h3>Project structure</h3>
+    <dl>
+      <dt>model</dt>
+      <dd>contains Blinky state machine (<i>blinky.sct</i>) and generator model (<i>blinky.sgen</i>)</dd>
+      <dt>src</dt>
+      <dd>Includes both application code and BSP (Board Support Package) code. 
+      The most important files and directories are listed below:</dd>
+      <ul>
+        <li><i>signals.h</i>: defines signals as enumerated constants, which 
+        are used as state machine triggers.</li>
+        <li><i>main.c</i>: contains the main() function, which initializes 
+        both BSP and Blinky active object, then executes the RKH framework in 
+        order to orchestrates this reactive application.</li>
+        <li><i>rkhcfg.h</i>: adapts and configures RKH in compile time.</li>
+        <li><i>bsp</i>: this folder contains the source code of BSP for STM32 bare metal 
+        platform.  It handles interrupts, implements the communication with 
+        Trazer tool and setups the RKH native non-preemptive cooperative scheduler for dispatch events.
+        The hardware inicialization and peripherals access routines are autogenerated with STM32CubeMX 
+        tool from STM32CubeMX.ioc file located in STM32CubeMX folder.
+        In the Yakindu’s Standard Edition you cannot 
+        include header files, but it is possible to create operations, in 
+        which the platform specific C code can be called. Within these 
+        operations we can call the specific code to interact with the 
+        platform, which is located in this folder.</li>
+      </ul>
+      <dt>src-gen</dt>
+      <dd>Includes the generated C code compatible with RKH 
+      framework, which will be automatically be updated when you edit and 
+      save the statechart.</dd>
+      <ul>
+        <li><i>Blinky.h/.c</i>: specifies and implements the state machine of 
+        Blinky active object. Please correlate this implementation 
+        (<i>Blinky.c</i>) with the state diagram shown above.</li>
+        <li><i>BlinkyAct.h/.c</i>: specifies and implements the state machine 
+        actions (entries, exits, effects and guards).</li>
+        <li><i>BlinkyActRequired.h</i>: in the Yakindu’s Standard Edition you 
+        cannot include header files, but it is possible to create operations, 
+        in which the Blinky specific c code can be called. Within these 
+        operations we can call the specific C code to interact with the 
+        platform.</li>
+      </ul>
+      <dt>RKH</dt>
+      <dd>Here is located the RKH framework’s source code.</dd>
+    </dl>
+    <p>
+
+    <p><img class="standard-image" src="images/blinky-project.png" /></p>
+    
+    <h3>Build</h3>
+    <ul>
+        <li>Right-click on project <b>'org.yakindu.sct.examples.rkh.blinky.stm32'</b> in the 'Project Explorer'</li>
+      <li>Choose 'Build Project'</li>
+    </ul>
+
+    <h2 id="5">Runing on STM32F407F-DISC1 board </h2>
+
+    <h3>Hardware Setup</h3>
+    <p> The STM32F407G-DISC1 allows users to easily develop applications with 
+        the STM32F407VG high performance microcontroller with the ARM® Cortex®-M4 32-bit core. 
+        It includes everything required either for beginners or for experienced users to get quickly started.</p>
+    <p><img class="small" src="images/stm32f407g-disc1.jpg" /></p>
+
+    <p> The demo toggles the <b>LD5 (red)</b> to <b>on/off</b> according to <code>redOn()</code> / <code>redOff()</code> calls.
+     For running the Blinky demo the default jumper configuration must be sets.  </p>
+
+    <p> The BSP for Blinky Demo on STM32, allocate de RKH trace stream output on the <b>USART2</b> peripheral,
+    available on <b>PA3</b> and <b>PA2</b> pins of <b>P1</b> connector. </p>
+
+    <p> There are two ways to visualize RKH trace output with Trazer:</p>
+
+    <li> Using an USART to USB dongle from the market connected for instance to STM32F407 <b>USART2</b> available on connector <b>P1 pin 14 (PA2: USART2_TX)</b> and <b>P1 pin 13 (PA3: USART2_RX)</b>. </li>
+    <li> Using the ST-LINK/V2-A Virtual COM Port available on <b>CN1</b> from <b>U2 pin 12 (ST-LINK_TX)</b> and <b>U2 pin 13 (ST-LINK_RX)</b>.
+        <br>These pins are not connected to the USART of the STM32F407 microcontroller but may be usables flywiring ST-LINK/V2-A virtual COM port 
+        <b>(ST-LINK VCP on U2 pin 12 and 13)</b> to STM32F407 USART2 <b>(PA2 and PA3: P1 pin 14 and 13)</b> as shown in the Figure below: </li>
+    <p><img class="small" src="images/disc1-flywires.png" /></p>
+    
+    <h3>Configure Trazer</h3>
+    <ul>
+      <li>Connect the board to host PC using an micro-usb cable.</li>
+      <li>Identify Trazer COM Port <b>(e.g. /dev/ttyUSB#)</b> according to selection from setup stage.</li>
+      <li><p>Open a console, change the directory where you previously 
+          downloaded Trazer, and run it by executing the following command 
+          line: </p>
+            <code>./trazer -c /dev/ttyUSB# 115200 8n1</code>
+      </li>
+    </ul>
+
+    <h3>Debuging</h3>
+    <ul>
+      <li>Right-click on project <b>'org.yakindu.sct.examples.rkh.blinky.stm32'</b> in the Eclipse 'Project Explorer'</li>
+      <li>Choose <b>'Debug As > Ac6 STM32 C/C++ Application'</b></li>
+      <li>Create and/or Run the Default Debug Configuration for Ac6STM32 Debugging</li>
+      <p><img class="standard-image" src="images/debug.png" /></p>
+      <li>
+      <p>The binary is downloaded to target board and the debugging perspective is shown.</p>
+      <li>Press <b>'F8'</b> to run.</li>
+      <p><img class="standard-image" src="images/blinky-debug.png" /></p>
+    </ul>
+
+    <h3>Verify and validate</h3>
+      <p>While the application is running, you can validate and verify its 
+      behaviour through the trace events showed on the Trazer output. Each 
+      trace event includes a time stamp and additional information associated 
+      with it. A capture of Trazer output is shown below. It shows the trace 
+      records when the state machine processes a <code>after 1 sec</code> 
+      trigger. Since RKH can generate more than 100 different trace events 
+      during its execution, its trace module allow you to filter one or more 
+      of them in runtime, so you can choose the traces that you need.
+      </p>
+      <p><img class="large" src="images/trazer-output.png" /></p>
+  </div>
+</body>
+</html>

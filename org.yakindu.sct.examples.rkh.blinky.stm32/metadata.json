@@ -1,0 +1,16 @@
+{
+	"id": "org.yakindu.sct.examples.rkh.blinky.stm32",
+	"title": "Blinky LED (C) for RKH on STM32",
+	"description": "Blinking a LED on STM32Discovery Board by using YAKINDU Statechart Tools and RKH Generator",
+	"previewImage": "yakindu-rkh.png",
+    	"author": "vortexmakes.com",
+	"category": [ "labs",
+		"open source"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://updates.yakindu.com/statecharts/labs",
+			"features": ["com.yakindu.sct.generator.rkh.feature.feature.group"]
+		}
+	]
+}

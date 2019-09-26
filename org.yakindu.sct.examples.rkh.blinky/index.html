@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Blinky LED for RKH framework on Linux</title>
 <link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
   <div class="primary">
@@ -14,7 +15,7 @@
       <p>This is a simple example of how to use the RKH framework together with 
       Yakindu Statechart Tool, since it provides a RKH specific C code 
       generator for statecharts.</p>
-      <p><img class="standard-image" src="images/yakindu-rkh.png" /></p>
+      <p><img class="small" src="images/yakindu-rkh.png" /></p>
       
       <p>The behavior of blinky is defined by a simple statechart that looks 
       as follows.</p>
@@ -29,7 +30,6 @@
     </p>
     <p><img class="standard-image" src="images/rkh-features.png" /></p>
 
-    <h3>What RKH is?</h3>
     <p>
       RKH provides not only an unusual, efficient and straightforward method 
       for implementing and executing state machines, but also the needed 
@@ -60,13 +60,11 @@
       framework, install both Trazer tool and RKH code generator.
     <h3>Get RKH framework</h3>
     <p> 
-      In this example, RKH is a Git submodule of 
-      <a href=https://github.com/Yakindu/examples>Yakindu’s examples repository</a>, 
-      so it can be obtained from its official repository by using the 
-      following Git commands:
+      RKH can be obtained from its official repository by using the following 
+      Git commands:
     <ol>
       <li><code>cd path/to/org.yakindu.sct.examples.rkh.blinky/</code></li>
-      <li><code>git clone https://github.com/vortexmakes/RKH.git -b develop
+      <li><code>git clone https://github.com/vortexmakes/RKH.git
       </code></li>
     </ol>
     Refresh your project after cloning. Right click the project and click on Refresh. Otherwise the project will not compile.
@@ -91,20 +89,13 @@
     <p> 
       If code generation does not work and Yakindu shows error markers on the 
       model/Blinky.sgen file then you likely have to install the Yakindu RKH 
-      code generator.
+      code generator. This can be done in the example wizard or in the SGen wizard.
     <ol>
-      <li>Open Help > Install New Software ... from the menu.</li>
-      <li>Select the Yakindu Labs entry from the Work with: pull down list. 
-          If there is no such entry then</li>
-      <ol>
-        <li>Choose Add</li>
-        <li>Enter <a href=http://updates.yakindu.com/statecharts/labs>https://github.com/Yakindu/examples</a> 
-            in the Location field and optionally choose a name</li>
-        <li>Press OK</li>
-      </ol>
-      <li>Unfold the top level node and check the RKH generator feature.</li>
-      <li>Finish the installation wizard by choosing Next > until finished.</li>
-      <li>Restart.</li>
+      <li>Open File > New > Code generator module</li>
+      <li>Click on 'next'</li>
+      <li>Choose a 'Generator' and click on 'Install more..'</li>
+      <li>Follow the instructions and select the RKH Generator</li>
+      <li>Finish and Restart.</li>
     </ol>
     <p>
     <h2>Project structure</h2>
@@ -152,7 +143,8 @@
     <p>
     <h2>Build</h2>
     <ul>
-      <li>Right-click on project 'blinky' in the 'Project Explorer'</li>
+      <li>Right-click on project 'org.yakindu.sct.examples.rkh.blinky' in the 
+          'Project Explorer'</li>
       <li>Choose 'Build Project'</li>
     </ul>
     <h2>Run and debug</h2>
@@ -160,17 +152,19 @@
       <li>Open a console, change the directory where you previously 
           downloaded Trazer, and run it by executing the following command 
           line: <code>./trazer -t 6602</code></li>
-      <li>Right-click on project 'blinky' in the Eclipse 'Project Explorer'</li>
+      <li>Right-click on project 'org.yakindu.sct.examples.rkh.blinky' in the 
+          Eclipse 'Project Explorer'</li>
       <li>Choose 'Run As > Local C/C++ Application'</li>
       <p>The embedded Eclipse console shows up and the application starts</p>
-      <p><img class="standard-image" src="images/blinky-output.png" /></p>
+      <p><img class="small" src="images/blinky-output.png" /></p>
     </ul>
       <p>In order to debug the example</p>
     <ul>
       <li>Open a console, change the directory where you previously 
           downloaded Trazer, and run it by executing the following command 
           line: <code>./trazer -t 6602</code></li>
-      <li>Right-click on project 'blinky' in the Eclipse 'Project Explorer'</li>
+      <li>Right-click on project 'org.yakindu.sct.examples.rkh.blinky' in the 
+          Eclipse 'Project Explorer'</li>
       <li>Choose 'Debug As > Local C/C++ Application'</li>
       <p>You will now see the debug perspective with the blinky application 
       window open. The C/C++ editor repositions in the perspective.</p>
@@ -186,7 +180,7 @@
       during its execution, its trace module allow you to filter one or more 
       of them in runtime, so you can choose the traces that you need.
       </p>
-      <p><img class="standard-image" src="images/trazer-output.png" /></p>
+      <p><img class="small" src="images/trazer-output.png" /></p>
   </div>
 </body>
 </html>

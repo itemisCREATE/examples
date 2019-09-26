@@ -1,0 +1,23 @@
+GeneratorModel for yakindu::cpp {
+
+	statechart TrafficLightCtrl {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.trafficlight.cpp.arduino"
+			targetFolder = "src-gen"
+		}
+		
+		feature FunctionInlining {
+			inlineReactions = true
+			inlineEntryActions = true
+			inlineExitActions = true
+			inlineEnterSequences = true
+			inlineExitSequences = true
+			inlineChoices = true
+			inlineEnterRegion = true
+			inlineExitRegion = true
+			inlineEntries = true
+		}
+		
+	}
+}

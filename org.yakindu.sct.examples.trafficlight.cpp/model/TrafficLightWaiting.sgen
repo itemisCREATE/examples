@@ -3,7 +3,7 @@ GeneratorModel for yakindu::c {
 	statechart TrafficLightWaiting {
 	 	
 		feature Outlet {
-			targetProject = "org.yakindu.sct.examples.trafficlight.cpp"
+			targetProject = "org.yakindu.sct.examples.c.trafficlight"
 			targetFolder = "src-gen"
 		} 
 		

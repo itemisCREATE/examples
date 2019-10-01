@@ -8,6 +8,7 @@
 		"professional",
 		"c-domain"
 	],
+	"rank":12,
 	"dependencies": [
 		{
 			"updateSite": "http://updates.yakindu.com/statecharts/releases",

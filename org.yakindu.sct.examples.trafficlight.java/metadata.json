@@ -12,5 +12,6 @@
 		"composite state",
 		"timer service",
 		"code-generation"
-	]
+	],
+	"rank":10
 }

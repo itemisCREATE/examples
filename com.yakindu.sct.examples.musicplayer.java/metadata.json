@@ -5,7 +5,8 @@
 	"previewImage": "watch_gears_thumb.jpg",
     "author": "itemis AG",
 	"category": [
-		"professional"
+		"professional",
+		"java-domain"
 	],
 	"dependencies": [
 		{

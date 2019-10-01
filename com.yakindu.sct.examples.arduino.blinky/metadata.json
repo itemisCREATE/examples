@@ -5,7 +5,8 @@
 	"description": "This is a simple example of how to use the C/C++ Domain together with an Arduino. C++ Timer are integrated",
 	"previewImage": "arduino.jpg",
 	"category": [
-		"professional"
+		"professional",
+		"c-domain"
 	],
 	"dependencies": [
 		{

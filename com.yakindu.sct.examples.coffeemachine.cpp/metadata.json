@@ -5,7 +5,8 @@
 	"description": "This is a comprehensive example for the deep C++ integration of YAKINDU statecharts.",
 	"previewImage": "coffee_machine_thumb.jpg",
 	"category": [
-		"professional"
+		"professional",
+		"c-domain"
 	],
 	"dependencies": [
 		{

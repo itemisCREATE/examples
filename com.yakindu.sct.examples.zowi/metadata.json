@@ -5,7 +5,8 @@
 	"description": "This is a example of how to use the C/C++ Domain together with the Zowi by BQ. C++ Timer are integrated",
 	"previewImage": "Zowi.jpg",
 	"category": [
-		"professional"
+		"professional",
+		"c-domain"
 	],
 	"dependencies": [
 		{

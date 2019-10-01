@@ -10,7 +10,8 @@
 		"advanced",
 		"interface",
 		"composite state",
-		"timer service"
+		"timer service",
+		"application"
 	],
 	"dependencies": [
 		{

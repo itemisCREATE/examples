@@ -5,6 +5,7 @@
 	"previewImage": "msp430_thumb.jpg",
     "author": "itemis AG",
 	"category": [
-		"open source"
+		"open source",
+		"application"
 	]
 }

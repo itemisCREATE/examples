@@ -8,6 +8,7 @@
     "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
 	"category": [
 		"headless",
-		"professional"
+		"professional",
+		"code-generation"
 	]
 }

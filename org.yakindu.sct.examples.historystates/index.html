@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Light Switch Series</title>
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>History States</h1>
+
+    <p>This example demonstrates the usage of history states. Different example models show the difference between shallow and deep history states.</p>
+
+
+	<h3 id="sclang_shallow_history_states">Shallow history states</h3>
+<p>A 
+	<strong>shallow history state</strong> is a pseudo state that is placed inside the region of a composite state. It is used to remember the last active state inside a composite state. This makes it possible to jump back to the remembered state instead of starting at the inner initial state again.
+</p>
+<p>A history state saves the current state exactly when its containing region is left. A shallow history state saves the state of the current level only. If you need to save the status of multiple nested composite states, use a 
+	<a href="sclang_graphical_elements#sclang_deep_history_states">deep history state</a>.
+</p>
+<p><div class="example"></p>
+<p>The following example, showing the answering of a questionaire, explains this:</p>
+<p>
+	<img alt="Shallow history [1]" title="Shallow history [1]" border="0" src="http://info.itemis.com/hubfs/yakindu/statechart-tools/documentation/images/docu_shallow_history_init.png"/>
+	<br/>
+	<img alt="Shallow history [2]" title="Shallow history [2]" border="0" src="http://info.itemis.com/hubfs/yakindu/statechart-tools/documentation/images/docu_shallow_history_nextQuestion1.png"/>
+	<br/>
+	<img alt="Shallow history [3]" title="Shallow history [3]" border="0" src="http://info.itemis.com/hubfs/yakindu/statechart-tools/documentation/images/docu_shallow_history_nextQuestion2.png"/>
+</p>
+<p>Inside the 
+	<strong>answeringQuestions</strong> composite state, it is always possible to send a 
+	<em>pause</em> event, which will return to the 
+	<strong>init</strong> state. At this point, the previous state, i.e., the last-answered question, is saved to the shallow history state.
+</p>
+<p>
+	<img alt="Shallow history [4]" title="Shallow history [4]" border="0" src="http://info.itemis.com/hubfs/yakindu/statechart-tools/documentation/images/docu_shallow_history_pause.png"/>
+</p>
+<p>When the 
+	<em>continue</em> event is triggered, the most recent active state inside of the composite state 
+	<strong>answeringQuestions</strong> is activated again. The respondent doesn&#8217;t have to answer the previous questions again, he can simply resume.
+</p>
+<p>
+	<img alt="Shallow history [5]" title="Shallow history [5]" border="0" src="http://info.itemis.com/hubfs/yakindu/statechart-tools/documentation/images/docu_shallow_history_continue.png"/>
+</p>
+</div>
+<h3 id="sclang_deep_history_states">Deep history states</h3>
+<p>A 
+	<strong>deep history state</strong> is similar to a shallow history state, but more complex. With a deep history state, the latest status of multiple nested states is remembered.
+</p>
+<p>A history state saves the current state exactly when its containing region is left. A deep history state saves the status of multiple nested composite states. If saving the state of the current level only is sufficient, consider using a 
+	<a href="sclang_graphical_elements#sclang_shallow_history_states">shallow history state</a> instead.
+</p>
+      
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+	"id": "org.yakindu.sct.examples.historystates",
+	"title": "History States",
+	"author": "itemis AG",
+	"description": "This example demonstrates the usage of history states. Different example models show the difference between shallow and deep history states.",
+	"previewImage": "todo.jpg",
+	"category": [
+		"open source",
+		"basic",
+		"history state",
+		"tutorial"
+	],
+	"rank":20
+}

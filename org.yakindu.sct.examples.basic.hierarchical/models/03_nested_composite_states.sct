@@ -247,6 +247,18 @@
                   <styles xsi:type="notation:NamedStyle" xmi:id="_6MD4oukQEemeGdc82b-fAg" name="allowColors"/>
                   <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6MD4o-kQEemeGdc82b-fAg" x="667" y="-2" width="15" height="15"/>
                 </children>
+                <children xsi:type="notation:Shape" xmi:id="_kbnQkOm_EemeGdc82b-fAg" type="Note" fontName="Verdana" description="Use the Extract Subdiagram refactoring to hide the internal details of a composite state into a subdiagram." fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+                  <children xsi:type="notation:BasicDecorationNode" xmi:id="_kboesOm_EemeGdc82b-fAg" type="DiagramName">
+                    <element xsi:nil="true"/>
+                  </children>
+                  <children xsi:type="notation:BasicDecorationNode" xmi:id="_kboesem_EemeGdc82b-fAg" type="Description">
+                    <element xsi:nil="true"/>
+                  </children>
+                  <styles xsi:type="notation:TextStyle" xmi:id="_kbnQkem_EemeGdc82b-fAg"/>
+                  <styles xsi:type="notation:LineTypeStyle" xmi:id="_kbnQkum_EemeGdc82b-fAg"/>
+                  <element xsi:nil="true"/>
+                  <layoutConstraint xsi:type="notation:Bounds" xmi:id="_kbnQk-m_EemeGdc82b-fAg" x="95" y="220" width="300"/>
+                </children>
                 <layoutConstraint xsi:type="notation:Bounds" xmi:id="_dY3aIOkQEemeGdc82b-fAg"/>
               </children>
               <styles xsi:type="notation:ShapeStyle" xmi:id="_dY3aGukQEemeGdc82b-fAg" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>

@@ -131,6 +131,18 @@
           <styles xsi:type="notation:BooleanValueStyle" xmi:id="_CrbZAekOEemeGdc82b-fAg" name="isHorizontal" booleanValue="true"/>
           <layoutConstraint xsi:type="notation:Bounds" xmi:id="_CraK4-kOEemeGdc82b-fAg" x="301" y="155"/>
         </children>
+        <children xsi:type="notation:Shape" xmi:id="_CYJyQOm_EemeGdc82b-fAg" type="Note" fontName="Verdana" description="Select the two states, right-click and choose Refactor -> Group States Into Composite State." fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_CYLncOm_EemeGdc82b-fAg" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_CYMOgOm_EemeGdc82b-fAg" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xsi:type="notation:TextStyle" xmi:id="_CYJyQem_EemeGdc82b-fAg"/>
+          <styles xsi:type="notation:LineTypeStyle" xmi:id="_CYJyQum_EemeGdc82b-fAg"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_CYJyQ-m_EemeGdc82b-fAg" x="105" y="235" width="257" height="53"/>
+        </children>
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASJkZOAEeWuO-fDDpYHyA"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_3ARigZOAEeWuO-fDDpYHyA" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>

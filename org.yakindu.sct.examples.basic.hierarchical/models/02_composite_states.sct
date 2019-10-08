@@ -223,6 +223,18 @@
           <styles xsi:type="notation:BooleanValueStyle" xmi:id="_3gI6YOkPEemeGdc82b-fAg" name="isHorizontal" booleanValue="true"/>
           <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3gI6YekPEemeGdc82b-fAg" x="593" y="99" width="498" height="194"/>
         </children>
+        <children xsi:type="notation:Shape" xmi:id="_Y-WjEOm_EemeGdc82b-fAg" type="Note" fontName="Verdana" description="An outgoing transition from a composite state is taken regardless of the active substate." fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_Y-XxMOm_EemeGdc82b-fAg" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_Y-XxMem_EemeGdc82b-fAg" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xsi:type="notation:TextStyle" xmi:id="_Y-WjEem_EemeGdc82b-fAg"/>
+          <styles xsi:type="notation:LineTypeStyle" xmi:id="_Y-WjEum_EemeGdc82b-fAg"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Y-WjE-m_EemeGdc82b-fAg" x="217" y="331" width="205" height="65"/>
+        </children>
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASJkZOAEeWuO-fDDpYHyA"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_3ARigZOAEeWuO-fDDpYHyA" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>

@@ -1,0 +1,21 @@
+{
+	"id": "org.yakindu.sct.examples.hmi.cpp.arduino",
+	"title": "HMI with LCD Keypad Shield (C++) for Arduino",
+	"author": "itemis AG",
+	"description": "Expandable HMI example for Arduino using a 16x2 LCD Keypad Shield",
+	"previewImage": "HMI_LCD.jpeg",
+	"category": [
+		"open source",
+		"arduino",
+		"advanced",
+		"interface",
+		"composite state",
+		"timer service"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://download.eclipse.org/tools/cdt/releases/9.3",
+			"features": ["org.eclipse.cdt.arduino.feature.group"]
+		}
+	]
+}

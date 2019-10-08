@@ -2,7 +2,7 @@
 	"id": "org.yakindu.sct.examples.orthogonality",
 	"title": "Orthogonal States",
 	"author": "itemis AG",
-	"description": "This example demonstrates the usage of orthogonal states in statecharts.",
+	"description": "This example demonstrates the usage of orthogonal states as well as of forking and joining synchronization nodes.",
 	"previewImage": "todo.jpg",
 	"category": [
 		"open source",

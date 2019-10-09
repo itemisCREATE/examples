@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_ynsxUOj6EemjseAjs6pgDA" specification="@CycleBased(2000)&#xA;// Runs a run-to-completion step&#xA;// every 2 seconds. Change&#xA;// the period time and observe the &#xA;// effect when running the simulation.&#xA;&#xA;interface:&#xA;&#xA;  in event input" name="eventdriven">
+  <sgraph:Statechart xmi:id="_ynsxUOj6EemjseAjs6pgDA" specification="@CycleBased(2000)&#xA;// Runs a run-to-completion step&#xA;// every 2 seconds. Change&#xA;// the period time and observe the &#xA;// effect when running the simulation.&#xA;&#xA;interface:&#xA;&#xA;  in event input" name="cyclebased">
     <regions xmi:id="_yoL5gOj6EemjseAjs6pgDA" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_yojs8Oj6EemjseAjs6pgDA">
         <outgoingTransitions xmi:id="_yosP0Oj6EemjseAjs6pgDA" target="_yomJMOj6EemjseAjs6pgDA"/>

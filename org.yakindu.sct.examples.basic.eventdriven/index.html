@@ -11,76 +11,51 @@
 
     <h1>Event-driven vs. Cycle-based Execution</h1>
 
-    <p>This example demonstrates the two different execution schemes of YAKINDU statecharts: event-driven and cycle-based execution.</p>
+    <p>This example demonstrates the two different execution schemes of YAKINDU statecharts: event-driven and cycle-based execution. For more details, please refer to chapter <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/codegen_general_concepts_of_the_state_machine_code#codegen_execution_schemes">Execution schemes</a> in our documentation.</p>
 
 <h2 id="codegen_execution_schemes">Execution schemes</h2>
-<p>The state machine can define one of two execution schemes:</p>
+<p>The state machine can define one of two different execution schemes:</p>
 <ul>
 	<li>In the 
-		<em>cycle-based execution scheme</em>, the state machine will first collect events and later process them in a run-to-completion step. Run-to-completion steps are typically executed in regular time intervals.
+		<em>cycle-based execution scheme</em>, a run-to-completion step is executed <strong>periodically</strong> in regular time intervals.
 	</li>
 	<li>In the 
-		<em>event-driven execution scheme</em>, the state machine becomes active each time an event arrives and processes it right away in a run-to-completion step.
+		<em>event-driven execution scheme</em>, a run-to-completion step is executed <strong>each time an event is raised</strong>.
 	</li>
 </ul>
-<p>You can select the execution scheme via the <code>@CycleBased</code> or <code>@EventDriven</code> annotations. Write the appropriate annotation to the top of your statechart&#8217;s definition section, see sections 
-	<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_definition_section#sclang_cyclebased">&quot;@CycleBased&quot;</a> and 
-	<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_definition_section#sclang_eventdriven">&quot;@EventDriven&quot;</a>.
-</p>
-<h3 id="codegen_cycle-based_execution_scheme">Cycle-based execution scheme</h3>
-
-<p>In the cycle-based execution scheme, each run cycle consists of two different phases:</p>
-<ol>
-	<li>In the first phase, incoming events and time events are collected.</li>
-	<li>In the second phase, 
-		<em>runCycle()</em> is executed and processes the events collected in the first phase.
-	</li>
-</ol>
-<p>This approach allows for explicitly processing several events at the same time as well as for checking combinations of events, e.g., a guard condition like 
-	<code>[eventA &amp;&amp; eventB]</code>. This is very useful for systems that are close to hardware and input signals. Basically it is the 
-	<a href="https://en.wikipedia.org/wiki/IPO_model" target="_blank">input-process-output (IPO) model</a>.
-</p>
-<blockquote>
-	<p>
-		<strong>Please note:</strong> In the cycle-based execution scheme, an event that has been raised internally using the 
-		<a href="../user-guide/sclang_statements#sclang_raising_an_event">
-			<em>raise</em> statement
-		</a> is visible in the run cycle &#8222;downstream&#8221; only, i.e., in such regions and the states therein that have not yet been processed in the current run cycle. Everything that is &#8222;upstream&#8221; in the run cycle cannot &#8222;see&#8221; this event. 
-		<strong>This is semantically different from the event-driven execution scheme.</strong> Read more on this topic in section 
-		<a href="../user-guide/sclang_reactions#sclang_raising_and_processing_an_event">&quot;Raising and processing an event&quot;</a>.
-	</p>
-</blockquote>
-<h3 id="codegen_event-driven_execution_scheme">Event-driven execution scheme
-</h3>
-<p>In the 
-	<em>event-driven execution scheme</em>, each incoming event or time event immediately triggers the execution of a run-to-completion step. As a consequence, the state machine will never process two events simultaneously, and a guard condition like 
-	<code>[eventA &amp;&amp; eventB]</code> will never become true.
-</p>
-<blockquote>
-	<p>
-		<strong>Please note:</strong> In the event-driven execution scheme, an event that is raised internally in a run-to-completion step using the 
-		<a href="../user-guide/sclang_statements#sclang_raising_an_event">
-			<em>raise</em> statement
-		</a> will not be acted upon by any active state &#8222;downstream&#8221; in the event cycle. The reason is that only a single event can be processed at a time, and this is the event that caused the current run cycle to execute in the first place. The internally-raised event will trigger its own run-to-completion step subsequently. Thus it will be visible to all active states in that RTC. 
-		<strong>This is semantically different from the cycle-based execution scheme.</strong> Read more on this topic in section 
-		<a href="../user-guide/sclang_reactions#sclang_raising_and_processing_an_event">&quot;Raising and processing an event&quot;</a>.
-	</p>
-</blockquote>
-<h3>Example</h3>
-
-Consider the following example model:
-
 <p>
-    <img class="small"
-      alt="Example model to explain different execution schemes."
-      src="images/model.png" />
+You can select the execution scheme in the definition section by either using the <code>@CycleBased</code> or <code>@EventDriven</code> annotation. If nothing is specified, the cycle-based execution scheme with a time interval of 200 milliseconds is used for simulation. 
+</p>
+<p>
+In the following, the difference between the two execution schemes will be explained on a simple example model.
+</p>
+</p>
+<h2>Cycle-based execution scheme</h2>
+<p>
+In the cycle-based execution scheme, a run-to-completion step is processed in regular time intervals. For example, the annotation <code>@CycleBased(2000)</code> means that a cycle is invoked every 2000 milliseconds. In the example below, this means that it might take up to two seconds after the <code>input</code> event has been raised for the statechart to process it and activate <strong>StateB</strong>. Same holds for time events. To illustrate this, <strong>StateC</strong> has two outgoing transitions with different time triggers. With a cycle period of 2 seconds, both time triggers are valid. The state machine will then take the higher prioritized transition, which in this case is the one to <strong>StateE</strong>. Changing the cycle period from 2000 to 200 milliseconds will cause <strong>StateD</strong> to be activated as the run-to-completion cycle is executed before the 500ms trigger is raised. 
+</p>
+<p>
+    <img
+      alt="Example model to explain cycle based execution."
+      src="images/cyclebased.png" />
  </p>
-
 <p>
-When the state machine is executed with the cycle-based execution scheme, the incoming event <code>input</code> is not processed immediately, but only once a run-to-completion cycle is triggered. This happens periodically as specified by the <code>@CycleBased</code> annotation. For example, if the cycle period is set to 2000 milliseconds, it might take up to 2000 milliseconds after the input event has been raised for the statechart to process it and activate <code>StateB</code>. Same holds for time events. To illustrate this, <code>StateC</code> has two outgoing transitions with different time triggers. With a cycle period of 2 seconds, both time triggers are valid. The state machine will then take the higher prioritized transition, which in this case is the one to <code>StateE</code>. Changing the cycle period from 2000 to 200 milliseconds will cause <code>StateD</code> to be activated as the run-to-completion cycle is executed before the 500ms trigger is raised.  
+Please note that it is the responsibility of the client code to implement the cycle loop. The generated state machine code provides a <code>runCycle()</code> method that needs to be called periodically.
+</p>
+<h2>Event-driven execution scheme</h2>
+<p>
+In the event-driven execution scheme, incoming events and time events are processed immediately. Consequently, when raising the <code>input</code> event, the statechart instantly activates <strong>StateB</strong>. <strong>StateC</strong> is activated after 200 milliseconds and similarly, the state machine always finishes in <strong>StateD</strong>.
 </p>
 <p>
-In contrast to that, in event driven mode incoming events as well as time events are processed immediately. Consequently, the state machine will always finish in <code>StateD</code>.
+    <img
+      alt="Example model to explain event driven execution."
+      src="images/eventdriven.png" />
+ </p>
+<p>
+Please note that in contrast to the cycle based execution scheme, the client code does not need to invoke the <code>runCycle()</code> method. This is handled internally when a <code>raiseEvent()</code> method is called.
+</p>
+<p>
+Both execution schemes also imply a different semantic when orthogonal regions are used. Please check out our example on orthogonal states for more information.
 </p>
   </div>
 </body>

@@ -11,63 +11,47 @@
 
     <h1>Orthogonality</h1>
 
-    <p>This example demonstrates the usage of orthogonal states as well as of forking and joining synchronization nodes.</p>
+    <p>This example demonstrates the usage of orthogonal states as well as of forking and joining synchronization nodes. For more details, please also refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_synchronizations">documentation</a>.</p>
+    
+    <h2>Orthogonal regions</h2>
+<p>
+YAKINDU Statechart Tools allows to specify orthogonal regions that are executed virtually concurrently. Orthogonal regions can be modeled either on top level, or within a composite state (or subdiagram). They allow to describe that the modeled system can be in multiple states simultaneously.
+</p> 
+<p>
+Let's take the simplified example of a keyboard controller. The user can enable caps lock and num lock. These are two independent functionalities, and the keyboard can have both enabled at the same time.
+</p>
+<p>
+	<img
+          alt="Orthogonal regions on top level."
+          src="images/keyboard.png" />
+</p>
+<h2>Execution order and event handling</h2>
+<p>
+Orthogonal regions are executed in a deterministic sequential order and not in parallel as one might expect. The execution order is defined by the regions' priorities. These are indicated in the top left corner of a region. 
+</p>
+<p>
+The defined execution order plays a particular role when orthogonal regions raise and react to the same events. Let's consider the following example. Region <strong>r2</strong> reacts to <strong>event1</strong> which causes a state transition to <strong>StateD</strong> which in turn as a effect raises <strong>event2</strong>. Intuitively, one would expect that rasing <strong>event2</strong> in region <strong>r2</strong> directly causes a state transition in region <strong>r1</strong>. However, this is only the case for the <code>@EventDriven</code> execution scheme, in which raising an event always invokes a new run-to-completion cycle. 
+Using the <code>@CycleBased</code> execution scheme, events are only visible in those regions that have not been processed yet. After all regions have been processed, the event is no more marked as being raised. Hence, the next cycle does not trigger the transition from <strong>StateA</strong> to <strong>StateB</strong>. See also chapter <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_reactions#sclang_raising_and_processing_an_event">Raising and processing an event</a> in our documentation.
+</p>
+<p>
+	<img
+          alt="Raising internal events in orthgonal regions."
+          src="images/event-raising.png" />
+</p>
 
-	<p>
-	<img class="small"
-          alt="Orthogonal states, forks and joins."
+<h2>Forks and joins</h2>
+
+<p>
+Orthogonal regions can not only be defined on top level but also within composite states. The semantics explained above are the same. 
+The following example model uses a synchronization node to fork the execution flow into both orthogonal regions. After both regions have executed their state transitions, the execution flow is joined again by a synchronization node. A joining synchronization is only executed when all incoming transitions can be taken within the same run-to-completion cycle. For more details, please refer to our documentation on <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_synchronizations">Synchronizations</a>.
+</p>
+<p>
+
+</p>
+<p>
+	<img
+          alt="Orthogonal states, forks and joins"
           src="images/orthogonality.png" />
-    </p>
-    
-    <h2>Orthogonal states</h2>
-<p>
-An <strong>orthogonal state</strong> is basically a composite state with more than one region. These regions are executed virtually concurrently. 
-	<strong>Please note</strong> the word 
-	<em>virtually</em>! YAKINDU Statechart Tools does not guarantee in any way that orthogonal regions are 
-	<em>really</em> executed concurrently. At the moment, no code generator utilizes threads to achieve this. Orthogonal states should rather be understood as a manner to have two or more sub-statecharts working together, however, they are executed 
-	<em>one after the other</em> in every run-to-completion cycle, and in a defined order: top to bottom, left to right. The same applies to multiple regions in the statechart itself. Please consult section 
-	<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_reactions#sclang_raising_and_processing_an_event">&quot;Raising and processing an event&quot;</a> for further information on region priorities and their meanings for the statechart execution.
-</p>
-    
-    <h2>Synchronizations</h2>
-<p>
-A <strong>synchronization</strong> is a means to either split a flow into several parallel regions of a substate or to join several parallel flows from orthogonal regions into a single flow.
-</p>
-<p>
-The synchronization state corresponds to the UML&#8217;s concepts of fork and join. Whether a synchronization state behaves as a fork or as a join depends on its usage.</p>
-<ul>
-	<li>A synchronization with a single incoming transition and several outgoing ones 
-		<em>forks</em> the flow into several regions of the same substate. These regions are executed in parallel.
-	</li>
-	<li>A synchronization with several incoming transitions from parallel regions of the same substate and a single outgoing transition 
-		<em>joins</em> the incoming flows into a single flow of execution.
-	</li>
-</ul>
-<p>
-A synchronization state is shown as a thick horizontal or vertical line.
-</p>
-<p>
-For a synchronization to actually join the incoming transitions and execute the outgoing one, all of the following conditions must be met:
-</p>
-<ul>
-	<li>All source states of all transitions leading to the synchronization must be active.</li>
-	<li>All guard conditions that are specified in all these transitions must be fulfilled.</li>
-	<li>If one or more triggers are defined, at least one trigger must fire at a point in time while the conditions above are met.</li>
-</ul>
-<p>The example model shows a sample statechart containing a forking and a joining synchronization. After having left the 
-	<strong>Initialize</strong> state, the synchronization state forks the execution flow into two regions 
-	<em>r1</em> and 
-	<em>r2</em>. Both are part of the 
-	<strong>Process</strong> composite state and both are executed virtually concurrently. That is, when activating 
-	<strong>Process</strong>, the substates 
-	<strong>Line A 1</strong> and 
-	<strong>Line B 1</strong> also become active. When the flows continues and both 
-	<strong>Line A 2</strong> and 
-	<strong>Line B 2</strong> have been reached, the synchronization state on the right-hand side joins the flows and transitions to substates 
-	<strong>Cleanup</strong>, making it the active state. However, as long as only one of 
-	<strong>Line A 2</strong> and 
-	<strong>Line B 2</strong> is active, the synchronization will wait for the other one to also become active, before proceeding to 
-	<strong>Cleanup</strong>.
 </p>
        
   </div>

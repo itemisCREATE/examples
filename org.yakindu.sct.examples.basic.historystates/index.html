@@ -36,8 +36,6 @@
 	<p>
 	In order to fulfill this requirement, we need to store which state was active before the user switched to manual mode. And this is exactly where history states come in handy.
 	</p>
-	
-	<h2>Shallow history states</h2>
 <p>
 A <em>shallow history state</em> is a pseudo state that is placed inside the region of a composite state. It is used to remember the last active state inside a composite state. This makes it possible to jump back to the remembered state instead of starting at the inner initial state again.
 </p>
@@ -48,7 +46,7 @@ A history state saves the current state exactly when its containing region is le
 Let's go back to our light switch example. You can easily change the initial state that points to the <strong>MotionDetectionMode</strong> state into a history node:
 </p>
 <p>
-	<img alt="Switch entry kind" title="Switch entry kind" border="0" src="images/change_entry_kind.png"/>
+	<img class="small" alt="Switch entry kind" title="Switch entry kind" border="0" src="images/change_entry_kind.png"/>
 </p>
 <p>
 Using a shallow history node changes the behavior of the light switch to the following: Whenever the <strong>AutomaticMode</strong> is entered, the last active state will be activated. For example, if the light switch was in twilight mode when the user pressed the <strong>On</strong> button, pressing the <strong>Off</strong> button will set it again into twilight mode, instead of the motion detection mode.

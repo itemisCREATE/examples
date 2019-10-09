@@ -2,443 +2,55 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Light Switch Series</title>
+<title>Parent-first vs. Child-first Execution</title>
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
   <div class="primary">
 
-    <h1>Child-first vs. Parent-first Execution</h1>
+    <h1>Parent-first vs. Child-first Execution</h1>
 
-    <p>This example demonstrates the two different execution semantics of composite states: child-first and parent-first execution.</p>
+    <p>This example demonstrates the two different execution schemes of composite states: child-first and parent-first execution. For more information, please also refer to chapter <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_parent-first_and_child-first_execution#sclang_parent-first_and_child-first_execution">Parent-first and child-first execution</a>.</p>
 
-<h2 id="sclang_parent-first_and_child-first_execution">Parent-first and child-first execution</h2>
-<p>Whenever a state machine is in a 
-	<a href="sclang_graphical_elements#sclang_composite_states">composite</a> or 
-	<a href="sclang_graphical_elements#sclang_orthogonal_states">orthogonal state</a>, multiple states are active at the same time: the composite/orthogonal state itself (&#8222;parent&#8221;) and one or more of its substates (&#8222;children&#8221;).
-</p>
-<p>When an event occurs, the state machine checks the active states one by one for a transition that can be taken, subject to the event(s) received and the guard conditions on the transitions. As soon as a matching transition is found, it is taken immediately, and its target state becomes active. After executing the transition, the state machine does not check any further for other matching transitions.</p>
-<p>Since the first match always wins, it is crucial in which order states are checked and how you can control that. In an orthogonal state, active substates are checked according to the  arrangement of their regions: They are executed either from left to right or from top to bottom.</p>
-<p>Whether the parent state or its child state(s) are checked first, you can specify by setting either the 
-	<a href="sclang_definition_section#sclang_parentfirstexecution"><code>@ParentFirstExecution</code> annotation</a> or the 
-	<a href="sclang_definition_section#sclang_childfirstexecution"><code>@ChildFirstExecution</code> annotation</a> in the statechart&#8217;s definition section. If the definition section contains none of these annotations, <code>@ParentFirstExecution</code> is assumed. Whichever variant you choose, it is statechart-global and thus applies to 
-	<em>all</em> composite and orthogonal states.
-</p>
-<blockquote>
-	<p>
-		<strong>Please note:</strong> Specifying parent-first or child-first execution pertains to checking for matching transitions only, not to entry and exit actions. Entry actions are always executed from the outside to the inside, i.e., on the parent state first and after that on the children. Exit actions are executed in reverse : in child states first, followed by the parent state.
-	</p>
-</blockquote>
-<h3 id="sclang_examples">Examples
-</h3>
-<p>Parent-first versus child-first execution are best explained by a couple of examples.</p>
-<h4 id="Simplechildfirstparentfirstexamples">Simple child-first/parent-first examples
-</h4>
-<p><div class="example"></p>
-<p id="sclang_example_1a">Example 1a:</p>
-<p>Consider the statechart in the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_1a-1">figure below</a>. Composite state 
-	<strong>A</strong> and its substate 
-	<strong>B</strong> are active, and the <code>@ChildFirstExecution</code> annotation has been specified in the definition section.
-</p>
-<p id="fig_child-first_parent-first_example_1a-1"></p>
+<h2>Composite state execution schemes</h2>
 <p>
-	<img alt="Child-first, example 1a, before transition" title="Child-first, example 1a, before transition" border="0" src="images/docu_childfirst_010_example_01a-1.png"/>
-</p>
-<p style="text-align: center;">Child-first, example 1a, before transition</p>
-<p>When event 
-	<em>e</em> occurs, the state machine considers child state 
-	<strong>B</strong> first, finds a matching transition, and thus immediately proceeds to state 
-	<strong>D</strong>, see the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_1a-2">figure below</a>.
-</p>
-<p id="fig_child-first_parent-first_example_1a-2"></p>
-<p>
-	<img alt="Child-first, example 1a, after transition" title="Child-first, example 1a, after transition" border="0" src="images/docu_childfirst_010_example_01a-2.png"/>
-</p>
-<p style="text-align: center;">Child-first, example 1a, after transition</p>
-</div>
-<p><div class="example"></p>
-<p id="sclang_example_1b">Example 1b:</p>
-<p>Consider the statechart in the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_1b-1">figure below</a>. Composite state 
-	<strong>A</strong> and its substate 
-	<strong>B</strong> are active, and the <code>@ParentFirstExecution</code> annotation has been specified in the definition section.
-</p>
-<p id="fig_child-first_parent-first_example_1b-1"></p>
-<p>
-	<img alt="Parent-first, example 1b, before transition" title="Parent-first, example 1b, before transition" border="0" src="images/docu_childfirst_010_example_01b-1.png"/>
-</p>
-<p style="text-align: center;">Parent-first, example 1b, before transition</p>
-<p>When event 
-	<em>e</em> occurs, the state machine considers parent state 
-	<strong>A</strong> first, finds a matching transition, and thus immediately proceeds to state 
-	<strong>C</strong>, see the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_1b-2">figure below</a>.
-</p>
-<p id="fig_child-first_parent-first_example_1b-2"></p>
-<p>
-	<img alt="Parent-first, example 1b, after transition" title="Parent-first, example 1b, after transition" border="0" src="images/docu_childfirst_010_example_01b-2.png"/>
-</p>
-<p style="text-align: center;">Parent-first, example 1b, after transition</p>
-</div>
-<h4 id="Childfirstparentfirstandreactionsinstates">Child-first/parent-first and reactions in states
-</h4>
-<p>The following examples are somewhat more complex. The statechart used in the examples defines the integer variables 
-	<em>m</em>, 
-	<em>n</em>, 
-	<em>o</em>, 
-	<em>p</em>, 
-	<em>q</em>, and 
-	<em>r</em>. Initially, they are all set to 0. Reactions in states 
-	<strong>A</strong> and 
-	<strong>B</strong> set these variables to non-zero values on certain conditions:
-</p>
+The parent-first and child-first execution schemes define in which order a composite state and its substates are processed:
 <ul>
-	<li>when entering a state,</li>
-	<li>when leaving a state, and</li>
-	<li>when receiving event 
-		<em>e</em>.
-	</li>
+<li>
+In the <em>parent-first execution scheme</em>, the composite state (parent) is processed first, before its substates are processed.
+</li>
+<li>
+In the <em>child-first execution scheme</em>, the active substate (child) is processed first, before its parent composite state is processed.
+</li>
 </ul>
-<p>This is useful to understand which actions are performed (or not performed) and in which order.</p>
-<p>The reactions in composite state 
-	<strong>A</strong> are as follows:
 </p>
-<pre class="prettyprint"><code>entry / m = 1
-e / n = 1
-exit / o = 1; r = 1
-</code></pre>
-<p>The reactions in substate 
-	<strong>B</strong> are as follows:
-</p>
-<pre class="prettyprint"><code>entry / m = 2
-e / p = 1
-exit / q = 1; r = 2
-</code></pre>
-<p>The settings above are the same for all subsequent examples, except for 
-	<a href="sclang_parent-first_and_child-first_execution#sclang_example_4">example 4</a>.
-</p>
-<p><div class="example"></p>
-<p id="sclang_example_2a">Example 2a:</p>
-<p>Consider the statechart in the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_2a-1">figure below</a>. Composite state 
-	<strong>A</strong> and its substate 
-	<strong>B</strong> are active, and the <code>@ChildFirstExecution</code> annotation has been specified in the definition section.
-</p>
-<p id="fig_child-first_parent-first_example_2a-1"></p>
+<h2>Example</h2>
+We will use the following example model to explain the two different execution schemes:
 <p>
-	<img alt="Child-first, example 2a, before transition" title="Child-first, example 2a, before transition" border="0" src="images/docu_childfirst_010_example_02a-1.png"/>
+	<img class="small" alt="Example model to explain parent-first vs. child-first execution" border="0" src="images/model.png"/>
 </p>
-<p style="text-align: center;">Child-first, example 2a, before transition</p>
-<p>In 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_2a-1">this scenario</a>, 
-	<strong>A</strong> and 
-	<strong>B</strong> have just been entered, and their entry actions have already been executed. Since the execution order of entry actions is independent of parent-first/child-first execution order and always proceeds from outer states to inner states, the entry action of 
-	<strong>A</strong> is executed first and sets variable 
-	<em>m</em> to 1. After that, the entry action of 
-	<strong>B</strong> is executed and overrides variable 
-	<em>m</em> with a value of 2.
-</p>
-<p>When event 
-	<em>e</em> occurs, the state machine considers child state 
-	<strong>B</strong> first, finds a matching transition, and thus immediately proceeds to state 
-	<strong>D</strong>, see the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_2a-2">figure below</a>. The state machine executes the exit actions of 
-	<strong>A</strong> and 
-	<strong>B</strong> after these states have become inactive.
-</p>
-<p id="fig_child-first_parent-first_example_2a-2"></p>
 <p>
-	<img alt="Child-first, example 2a, after transition" title="Child-first, example 2a, after transition" border="0" src="images/docu_childfirst_010_example_02a-2.png"/>
+The question that we want to answer is: What happens if event <code>e</code> is raised, i.e. which state gets activated, <strong>C</strong> or <strong>D</strong>; and what are the values of the statechart variables <code>m</code>, <code>n</code> and <code>o</code> afterwards?
 </p>
-<p style="text-align: center;">Child-first, example 2a, after transition</p>
-<p>It is worth having a look at the variables and understand what has happened. When the state machine is in state 
-	<strong>D</strong>, the variable values are as follows:
-</p>
-<table>
-	<tr>
-		<th>Variable</th>
-		<th>Value</th>
-	</tr>
-	<tr>
-		<td>
-			<em>m</em>
-		</td>
-		<td>2</td>
-	</tr>
-	<tr>
-		<td>
-			<em>n</em>
-		</td>
-		<td>0</td>
-	</tr>
-	<tr>
-		<td>
-			<em>o</em>
-		</td>
-		<td>1</td>
-	</tr>
-	<tr>
-		<td>
-			<em>p</em>
-		</td>
-		<td>0</td>
-	</tr>
-	<tr>
-		<td>
-			<em>q</em>
-		</td>
-		<td>1</td>
-	</tr>
-	<tr>
-		<td>
-			<em>r</em>
-		</td>
-		<td>1</td>
-	</tr>
-</table>
-<p>We have already seen why 
-	<em>m</em> is 2.
-</p>
-<p>Variable 
-	<em>n</em> would be set to 1 by a reaction in 
-	<strong>A</strong>, triggered by event 
-	<em>e</em>. However, since the statechart is in child-first mode, and the 
-	<em>e</em> event triggers an immediate transition from 
-	<strong>B</strong> to 
-	<strong>D</strong>, it is no surprise that 
-	<em>n</em> remains 0. The composite state is left before 
-	<code>e / n = 1</code> in 
-	<strong>A</strong> gets any chance to be executed.
-</p>
-<p>However, 
-	<em>p</em> is also 0, although 
-	<strong>B</strong> has priority over 
-	<strong>A</strong>, according to child-first execution. The reason is that an active state is checked for possible transitions 
-	<em>first</em>, and reactions within the state are executed 
-	<em>second</em>. This can lead to certain reactions not being executed at all. In this case, checking for possible transitions after receiving 
-	<em>e</em> finds the transition from 
-	<strong>B</strong> to 
-	<strong>D</strong>. This transition is executed 
-	<em>immediately</em>. &#8222;Immediately&#8221; means that 
-	<strong>B</strong> is left straight away. No further action will be done on it, and consequently the reaction 
-	<code>e / p = 1</code> fails to be executed.
-</p>
-<p>The only exception to the rule is are exit actions, because they are 
-	<em>always</em> executed when the corresponding state becomes inactive. That&#8217;s why the variables 
-	<em>o</em>, 
-	<em>q</em>, and 
-	<em>r</em> all have a value of 1: They have been modified in the exit actions of 
-	<strong>A</strong> and 
-	<strong>B</strong>. The execution of exit actions starts with the inner-most state and then proceeds to the outside. Here, the exit action of 
-	<strong>B</strong> has set 
-	<em>q</em> to 1 and 
-	<em>r</em> to 2. After that, the exit action of 
-	<strong>A</strong> has set 
-	<em>o</em> to 1 and has overridden 
-	<em>r</em> with 1.
-</p>
-</div>
-<p><div class="example"></p>
-<p id="sclang_example_2b">Example 2b:</p>
-<p>Consider the statechart in the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_2b-1">figure below</a>. Composite state 
-	<strong>A</strong> and its substate 
-	<strong>B</strong> are active, and the <code>@ChildFirstExecution</code> annotation has been specified in the definition section.
-</p>
-<p id="fig_child-first_parent-first_example_2b-1"></p>
 <p>
-	<img alt="Parent-first, example 2b, before transition" title="Parent-first, example 2b, before transition" border="0" src="images/docu_childfirst_010_example_02b-1.png"/>
+Let's first answer which state gets active. When the event <code>e</code> is raised, the specified execution scheme defines which of the currently active states', <strong>A</strong>'s or <strong>B</strong>'s, outgoing transitions are evaluated first. In the child-first execution scheme, state <strong>B</strong>, the active child of the composite state, is processed first. Hence, the transition to state <strong>C</strong> is evaluated and taken. In contrast to that, in the parent-first execution scheme, the outer state <strong>A</strong> is processed first and state <strong>D</strong> gets activated:
 </p>
-<p style="text-align: center;">Parent-first, example 2b, before transition</p>
-<p>In 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_2b-1">this scenario</a>, 
-	<strong>A</strong> and 
-	<strong>B</strong> have just been entered, and their entry actions have already been executed. Variable 
-	<em>m</em> has a value of 2, as explained in 
-	<a href="sclang_parent-first_and_child-first_execution#sclang_example_2a">example 2a</a>.
-</p>
-<p>When event 
-	<em>e</em> occurs, the state machine considers parent state 
-	<strong>A</strong> first, finds a matching transition, and thus immediately proceeds to state 
-	<strong>C</strong>, see the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_2b-2">figure below</a>. The state machine executes the exit actions of 
-	<strong>A</strong> and 
-	<strong>B</strong> after these states have become inactive.
-</p>
-<p id="fig_child-first_parent-first_example_2b-2"></p>
 <p>
-	<img alt="Parent-first, example 2b, after transition" title="Parent-first, example 2b, after transition" border="0" src="images/docu_childfirst_010_example_02b-2.png"/>
+	<img alt="Example model after parent-first execution" border="0" src="images/parentfirst.png"/>
 </p>
-<p style="text-align: center;">Parent-first, example 2b, after transition</p>
-<p>The variable values are the same as in 
-	<a href="sclang_parent-first_and_child-first_execution#sclang_example_2a">example 2a</a> and essentially for the same reasons: Entry and exit actions are executed in the same order, and any reactions on event 
-	<em>e</em> are not executed at all.
-</p>
-</div>
-<p><div class="example"></p>
-<p id="sclang_example_3a">Example 3a:</p>
-<p>Let&#8217;s make a small change now to the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_2a-1">statechart in example 2a</a> and add a guard condition 
-	<code>[p == 1]</code> to the transition 
-	<strong>B → D</strong>, see the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_3a-1">figure below</a>. Please note that the <code>@ChildFirstExecution</code> annotation has been specified in the definition section.
-</p>
-<p id="fig_child-first_parent-first_example_3a-1"></p>
 <p>
-	<img alt="Child-first, example 3a, before transition" title="Child-first, example 3a, before transition" border="0" src="images/docu_childfirst_010_example_03a-1.png"/>
+Now let's take a look at the variable values. When starting the simulation (or when entering the statechart), the outer state <strong>A</strong> is activated first, independent of the used execution scheme. Afterwards, the entry action of state <strong>B</strong> sets <code>m</code> to 2. After event <code>e</code> is raised, the inner state <strong>B</strong> is exited first, before <strong>A</strong> is exited which sets the value of <code>o</code> to 1.
 </p>
-<p style="text-align: center;">Child-first, example 3a, before transition</p>
-<p>Event 
-	<em>e</em> causes the following to happen:
-</p>
-<ol>
-	<li>Due to the <code>@ChildFirstExecution</code> annotation, state 
-		<strong>B</strong> is checked first for any transitions to be taken. However, since 
-		<em>p</em> is 0, the guard condition of 
-		<strong>B → D</strong> is not fulfilled, and the transition is not triggered.
-	</li>
-	<li>After that, the reactions of state 
-		<strong>B</strong> are considered. There is one reaction to an 
-		<em>e</em> event, and it sets variable 
-		<em>p</em> to 1. Now the guard condition would be fulfilled. However, looking for a matching transition has already been done and won&#8217;t be repeated in the current run-to-completion step.
-	</li>
-	<li>Since the child (state 
-		<strong>B</strong>) didn&#8217;t trigger a transition, checking continues with the parent (state 
-		<strong>A</strong>). Here a matching transition is found, and the execution flow proceeds to state 
-		<strong>C</strong>.
-	</li>
-	<li>The exit actions of 
-		<strong>B</strong> and 
-		<strong>A</strong> are executed.
-	</li>
-</ol>
-<p>The 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_3a-2">figure below</a> shows the result.
-</p>
-<p id="fig_child-first_parent-first_example_3a-2"></p>
 <p>
-	<img alt="Child-first, example 3a, after transition" title="Child-first, example 3a, after transition" border="0" src="images/docu_childfirst_010_example_03a-2.png"/>
+Notice the difference when child-first execution is used:
 </p>
-<p style="text-align: center;">Child-first, example 3a, after transition</p>
-<p>The variables are set as follows:</p>
-<table>
-	<tr>
-		<th>Variable</th>
-		<th>Value</th>
-	</tr>
-	<tr>
-		<td>
-			<em>m</em>
-		</td>
-		<td>2</td>
-	</tr>
-	<tr>
-		<td>
-			<em>n</em>
-		</td>
-		<td>0</td>
-	</tr>
-	<tr>
-		<td>
-			<em>o</em>
-		</td>
-		<td>1</td>
-	</tr>
-	<tr>
-		<td>
-			<em>p</em>
-		</td>
-		<td>1</td>
-	</tr>
-	<tr>
-		<td>
-			<em>q</em>
-		</td>
-		<td>1</td>
-	</tr>
-	<tr>
-		<td>
-			<em>r</em>
-		</td>
-		<td>1</td>
-	</tr>
-</table>
-</div>
-<p><div class="example"></p>
-<p id="sclang_example_3b">Example 3b:</p>
-<p>This example is here for the sake of completeness only. It is like 
-	<a href="sclang_parent-first_and_child-first_execution#sclang_example_3a">example 3a</a>, but with the <code>@ParentFirstExecution</code> annotation in effect.
-</p>
-<p>The state machine reacts to an event 
-	<em>e</em> just like the one in 
-	<a href="sclang_parent-first_and_child-first_execution#sclang_example_2b">example 2b</a>: Since the parent is checked first and a matching transition from 
-	<strong>A</strong> to 
-	<strong>C</strong> is found, that transition is taken immediately, without considering 
-	<strong>B</strong> in any way, except for executing its exit action.
-</p>
-<p>Thus in state 
-	<strong>C</strong> the variable values are as follows:
-</p>
-<table>
-	<tr>
-		<th>Variable</th>
-		<th>Value</th>
-	</tr>
-	<tr>
-		<td>
-			<em>m</em>
-		</td>
-		<td>2</td>
-	</tr>
-	<tr>
-		<td>
-			<em>n</em>
-		</td>
-		<td>0</td>
-	</tr>
-	<tr>
-		<td>
-			<em>o</em>
-		</td>
-		<td>1</td>
-	</tr>
-	<tr>
-		<td>
-			<em>p</em>
-		</td>
-		<td>0</td>
-	</tr>
-	<tr>
-		<td>
-			<em>q</em>
-		</td>
-		<td>1</td>
-	</tr>
-	<tr>
-		<td>
-			<em>r</em>
-		</td>
-		<td>1</td>
-	</tr>
-</table>
-</div>
-<p><div class="example"></p>
-<p id="sclang_example_4">Example 4:</p>
-<p>Last but not least, here&#8217;s an example that is left as an exercise to the reader: What is the next state in the 
-	<a href="sclang_parent-first_and_child-first_execution#fig_child-first_parent-first_example_4-1">statechart below</a> after event 
-	<em>e</em> arrives? To find out whether your guess is correct, recreate the example and check it with the interactive 
-	<a href="../user-guide/">statechart simulator</a>.
-</p>
-<p id="fig_child-first_parent-first_example_4-1"></p>
 <p>
-	<img alt="Child-first, example 4, before transition" title="Child-first, example 4, before transition" border="0" src="images/docu_childfirst_010_example_04-1.png"/>
+	<img alt="Example model after child-first execution" border="0" src="images/childfirst.png"/>
 </p>
-<p style="text-align: center;">Child-first, example 4, before transition</p>
-</div>
-      
+<p>
+When event <code>e</code> is raised, state <strong>B</strong> is exited, setting variable <code>o</code> to 2. Furthermore, the outer state <strong>A</strong> stays active in this run-to-completion step and hence its local reaction is executed, setting <code>n</code> to 1.
+</p>
 
   </div>
 </body>

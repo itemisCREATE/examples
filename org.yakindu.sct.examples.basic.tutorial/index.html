@@ -9,11 +9,23 @@
 <body class="body-container">
   <div class="primary">
 
-    <h1>Light Switch Example Series</h1>
+    <h1>Basic Tutorial - Light Switch Example Series</h1>
 
-    <p>This is a series of examples demonstrating multiple features of
-      YAKINDU SCT. With each iteration, more features are shown. This example is
-      a good starting point to dive into SCT headfirst.</p>
+    <p>
+    In this example series we will develop a lamp control from scratch. Starting from a simple On/Off switch, we will add further features like brightness adjustment and motion detection step-by-step while introducing new statechart elements with each iteration. In that way you will learn how to use:
+    <ul>
+    <li><strong>States</strong> and <strong>transitions</strong></li>
+    <li>Transition <strong>triggers</strong>, <strong>guards</strong>, and <strong>actions</strong></li>
+    <li>Statechart <strong>interfaces</strong>, and where to declare events, variables and operations</li>
+    <li><strong>Composite states</strong>, and how they help structuring your statechart</li>
+    <li><strong>History states</strong>, and the difference between shallow and deep history</li>
+    </ul>
+    
+    This example is a good starting point to dive into YAKINDU Statechart Tools headfirst.</p>
+
+	<p>
+        <img class="large" src="images/lights.jpg" />
+      </p>
 
     <div>
       <h2>The First Iteration: A Simple Switch</h2>
@@ -88,8 +100,8 @@
       </ul>
 
       <p>
-        <img class="small" alt="Third iteration, introducing variables"
-          src="images/03_light_switch_dimmer.png" />
+        <img alt="Third iteration, introducing variables"
+          src="images/03_light_switch.png" />
       </p>
 
       <p>
@@ -193,10 +205,14 @@
         mode and turns the light off.
       </p>
 
+	  <p>
+	    If you want to learn more about composite states, you can check out our <em>Hierarchical Statecharts</em> example or the chapter <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_composite_states">Composite states</a> in our documentation.
+	  </p>
+
       <p>
         <img class="standard-image"
           alt="Fourth iteration, using composite states"
-          src="images/04_light_switch_motion.png" />
+          src="images/04_light_switch.png" />
       </p>
     </div>
 
@@ -234,7 +250,7 @@
       <p>
         <img class="standard-image"
           alt="Fifth iteration, including history states"
-          src="images/05_light_switch_twilight.png" />
+          src="images/05_light_switch.png" />
       </p>
 
       <p>
@@ -322,6 +338,11 @@
         left the whole <strong>Automatic</strong> composite state – and when
         switching between automatic modes we are not going to do that.
       </p>
+      
+      <p>
+         More information on history states can also be found in the <em>History States</em> example or 
+         the corresponding <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_shallow_history_states">chapter</a> in our documentation.
+      </p>
     </div>
 
     <div>
@@ -350,7 +371,7 @@
       <p>
         <img class="standard-image"
           alt="Sixth iteration, introducing operations"
-          src="images/06_light_switch_simulation.png" />
+          src="images/06_light_switch.png" />
       </p>
 
       <p>We use this feature here to do two things:

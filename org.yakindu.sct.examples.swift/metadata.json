@@ -6,9 +6,7 @@
 	"description": "Demonstrates how to to generate Swift source code from a statechart.",
 	"category": [ "labs",
 		"open source",
-		"swift",
-		"basic",
-		"timer service"
+		"advanced"
 	],
 	"dependencies": [
 		{

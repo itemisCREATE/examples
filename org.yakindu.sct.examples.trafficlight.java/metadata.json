@@ -6,11 +6,6 @@
 	"previewImage": "traffic_light_thumb.jpg",
 	"category": [
 		"open source",
-		"java",
-		"basic",
-		"interface",
-		"composite state",
-		"timer service",
 		"code-generation"
 	],
 	"rank":10

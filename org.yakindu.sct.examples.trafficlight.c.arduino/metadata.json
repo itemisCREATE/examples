@@ -6,12 +6,7 @@
 	"previewImage": "YAKINDU-Statecharts-Arduino_thumb.jpg",
 	"category": [
 		"open source",
-		"arduino",
-		"advanced",
-		"interface",
-		"composite state",
-		"timer service",
-		"application"
+		"embedded"
 	],
 	"dependencies": [
 		{

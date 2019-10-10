@@ -6,7 +6,8 @@
     "author": "itemis AG",
 	"category": [
 		"professional",
-		"java-domain"
+		"java-domain",
+		"advanced"
 	],
 	"dependencies": [
 		{

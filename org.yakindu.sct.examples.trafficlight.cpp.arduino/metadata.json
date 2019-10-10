@@ -6,12 +6,7 @@
 	"previewImage": "arduino-traffic-light.png",
 	"category": [
 		"open source",
-		"arduino",
-		"advanced",
-		"interface",
-		"composite state",
-		"timer service",
-		"application"
+		"embedded"
 	],
 	"dependencies": [
 		{

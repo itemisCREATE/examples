@@ -6,7 +6,8 @@
 	"previewImage": "arduino.jpg",
 	"category": [
 		"professional",
-		"c-domain"
+		"c-domain",
+		"embedded"
 	],
 	"dependencies": [
 		{

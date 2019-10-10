@@ -5,7 +5,8 @@
 	"previewImage": "yakindu-rkh.png",
     	"author": "vortexmakes.com",
 	"category": [ "labs",
-		"open source"
+		"open source",
+		"advanced"
 	],
 	"dependencies": [
 		{

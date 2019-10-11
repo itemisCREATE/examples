@@ -1,6 +1,6 @@
 {
 	"id": "org.yakindu.sct.examples.trafficlight.cpp.arduino",
-	"title": "Traffic Light (C++) for Arduino",
+	"title": "Arduino - Traffic Light (C++)",
 	"author": "itemis AG",
 	"description": "Wondering how to execute your state machine on the Arduino platform? This example demonstrates the necessary steps, like installing the Arduino plugin, building the hardware, turning your statechart into code and uploading it to the Arduino. It does so by means of the standard traffic light example.",
 	"previewImage": "arduino-traffic-light.png",

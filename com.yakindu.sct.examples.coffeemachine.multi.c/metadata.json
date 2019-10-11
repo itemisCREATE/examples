@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.sct.examples.coffeemachine.multi.c",
-	"title": "Coffee Machine with multiple statecharts (C)",
+	"title": "Coffee Machine with multiple statecharts (Deep C)",
 	"author": "itemis AG",
 	"description": "This is a comprehensive example for using multiple state machines using the deep C integration of YAKINDU statecharts. The example is implemented as a simple command line tool.",
 	"previewImage": "coffee_machine_thumb.jpg",

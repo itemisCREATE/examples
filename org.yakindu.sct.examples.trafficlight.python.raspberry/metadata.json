@@ -1,6 +1,6 @@
 {
 	"id": "org.yakindu.sct.examples.trafficlight.python.raspberry",
-	"title": "Traffic Light (Python) for Raspberry Pi",
+	"title": "Raspberry Pi - Traffic Light (Python)",
 	"description": "Demonstrates how to generate Python source code from a statechart.",
 	"previewImage": "traffic_light_python_rasp.jpg",
 	"author": "Norbert Lang",

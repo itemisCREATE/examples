@@ -1,6 +1,6 @@
 {
 	"id": "org.yakindu.sct.examples.raspberry.helloworld",
-	"title": "Hello World (C) for Raspberry Pi",
+	"title": "Raspberry Pi - Hello World (C)",
 	"description": "This example shows how to use a statechart and some C code to control a RGB LED attached to the Raspberry Pi.",
 	"previewImage": "header.jpg",
     "author": "itemis AG",

@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.examples.headless.gradle",
-	"title": "Headless: Gradle",
+	"title": "Code Generation with Gradle",
 	"description": "Use the powerful build infrastructure of Gradle to invoke the headless statechart generator to improve your build workflow.",
 	"previewImage": "preview.jpeg",
     "author": "Rene Beckmann",

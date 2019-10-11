@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.sct.examples.robot",
-	"title": "Autonomous Robot (C)",
+	"title": "Autonomous Robot (Deep C)",
 	"description": "A small example of a robot that drives around, detects obstacles and avoids them. Demonstrates arrays and pointers with Deep C Integration.",
 	"previewImage": "head.jpeg",
     "author": "itemis AG",

@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.sct.examples.arduino.blinky",
-	"title": "Blinky LED (C++) for Arduino",
+	"title": "Arduino - Blinky LED (Deep C++)",
 	"author": "itemis AG",
 	"description": "This is a simple example of how to use the C/C++ Domain together with an Arduino. C++ Timer are integrated",
 	"previewImage": "arduino.jpg",

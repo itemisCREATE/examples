@@ -8,9 +8,8 @@
 	"license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
 	"category": ["labs",
 		"open source",
-		"code-generation"
+		"advanced"
 	],
-	"rank": 40,
 	"dependencies": [
 		{
 			"updateSite": "http://updates.yakindu.com/statecharts/labs",

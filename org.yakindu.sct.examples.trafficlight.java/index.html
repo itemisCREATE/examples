@@ -11,50 +11,73 @@
 
     <h1>Traffic Light (Java)</h1>
 
-    <p>Demonstrates how to to generate Java source code from a statechart.
-      The procedure is explained in the documentation, section "Java code
-      generator".</p>
+    <p>
+    This example application demonstrates how to generate Java source code from a 
+    statechart and how to integrate the generated code in a simple GUI application.
+    </p>
+    <p>
+    The example shows the following features:
+    </p>
+    <ul>
+    <li>Statechart with history states, composite and orthogonal states</li>
+    <li>Java code generator model with timer service</li>
+    <li>Application that wires input and output events with a simple GUI</li>
+    </ul>
 
     <p>
       <img class= "large" alt="The statechart"
-        src="images/TrafficLightCtrl.png" />
+        src="images/statechart.png" />
     </p>
 
-    <h2>Description</h2>
+    <h2>The State Machine</h2>
 
-    <p>In summary, there are two traffic lights: one for the traffic on the
-      street, and one for pedestrians who want to cross the street. They can
-      push a button to request their traffic light to turn green, which
-      activates a blinking wait-light first. The street's traffic light then
-      goes through the standard procedure, turning on the yellow light, followed
-      by the red light, allowing the pedestrians to cross safely. After some
-      time, the pedestrians' traffic light turns red again, and the cars are
-      allowed to pass until the next request is made by a pedestrian.</p>
-
-    <p>Additionally, the traffic light can be switched off completely. This
-      turns the yellow lights into a blinking mode, signaling that the traffic
-      light is indeed switched off and that the street should be crossed in a
-      careful manner.</p>
-
-    <p>The traffic light example is based on Java and contains a small GUI
+	<p>
+	In summary, the traffic light can be in one of two different modes, a <em>normal</em>
+	mode and an <em>interrupt</em> mode which is enabled by the <code>police.interrupt</code> event.
+	The interrupt mode turns the yellow lights into a blinking mode.
+	In an orthogonal region a counter is decremented for visual feedback on the
+	duration of the traffic light's red and green phases. The duration of the corresponding
+	traffic light phases is specified by the variables <code>redPeriod</code>, <code>greenPeriod</code> and <code>yellowPeriod</code>.
+	</p>
+	
+	<h2>The Application</h2>
+	
+	<p>The traffic light example is based on Java and contains a small GUI
       that demonstrate the state machine behaviour in
-      /model/TrafficLightCtrl.sct. This example combines generated Java code
+      <code>/model/TrafficLightCtrl.sct</code>. This example combines generated Java code
       with manual Java implementations (the GUI). To generate the state machine
-      code, right-click on /model/TrafficLightCtrl.sgen and select 'Generate
+      code, right-click on <code>/model/TrafficLightCtrl.sgen</code> and select 'Generate
       Code Artifacts'. To start the application run
-      src/traffic/light/TrafficlightDemo.java. For this, just right-click on the
+      <code>src/traffic/light/TrafficlightDemo.java</code>. For this, just right-click on the
       project and select 'Run As > Java Application'.</p>
+	
+	 <p>
+      <img class= "tiny" alt="The GUI"
+        src="images/gui.png" />
+    </p>
+	
+	<p>
+	For interaction with the GUI, the traffic light controller raises outgoing events whenever a state is entered.
+	The application code in <code>TrafficlightDemo.java</code>
+	implements a corresponding listener to get notified whenever a state changes
+	in order to paint the graphics accordingly.
+	</p>
+	
+	<p>
+      <img class= "large" alt="Wiring of out-events in application code"
+        src="images/application-code.png" />
+    </p>
+    
+    <p>
+    The listener interface is not generated out of the box. It needs to be enabled in the generator model. The corresponding
+    property is <code>InterfaceObserverSupport</code> under <code>GeneralFeatures</code>.
+    </p>
+    
+    <p>
+      <img class= "small" alt="The generator model"
+        src="images/genmodel.png" />
+    </p>
 
-    <h2>Known issues</h2>
-
-    <ol>
-      <li>The example requires a JAVA 8 JDK.</li>
-      <li>When you installed the example, Eclipse may show errors on the
-        project. This is likely due to a missing configuration of the JDK. In
-        this case select 'Properties' from the project's context menu and set
-        the correct JDK in 'Java Build Path'. You will find further help in the
-        'Java development user guide' section of the Eclipse help.</li>
-    </ol>
   </div>
 
 </body>

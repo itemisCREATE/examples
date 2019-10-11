@@ -1,0 +1,13 @@
+{
+	"id": "org.yakindu.sct.examples.codegen.c",
+	"title": "C Code Generation",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to generate C code from a statechart.",
+	"previewImage": "todo.jpg",
+	"category": [
+		"open source",
+		"code-generation"
+	],
+	"rank":60
+}
+ 

@@ -9,7 +9,7 @@
 		"c-domain",
 		"advanced"
 	],
-	"rank":12,
+	"rank":22,
 	"dependencies": [
 		{
 			"updateSite": "http://updates.yakindu.com/statecharts/releases",

@@ -14,5 +14,6 @@
 			"updateSite": "http://updates.yakindu.com/statecharts/releases",
 			"features": ["com.yakindu.sct.domain.java.feature.feature.group"]
 		}
-	]
+	],
+	"rank":41
 }

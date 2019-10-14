@@ -3,7 +3,7 @@
 	"title": "Child-first vs. Parent-first Execution",
 	"author": "itemis AG",
 	"description": "This example demonstrates the two different execution semantics of composite states: child-first and parent-first execution.",
-	"previewImage": "todo.jpg",
+	"previewImage": "lights_thumb.jpg",
 	"category": [
 		"open source",
 		"basic",

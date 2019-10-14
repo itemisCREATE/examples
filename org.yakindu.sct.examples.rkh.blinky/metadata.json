@@ -1,11 +1,12 @@
 {
 	"id": "org.yakindu.sct.examples.rkh.blinky",
-	"title": "Blinky LED (C) for RKH Linux",
+	"title": "RKH/Linux - Blinky LED (C)",
 	"description": "Blinking a LED on Linux by using YAKINDU Statechart Tools and RKH Generator",
 	"previewImage": "yakindu-rkh.png",
     	"author": "vortexmakes.com",
 	"category": [ "labs",
-		"open source"
+		"open source",
+		"embedded"
 	],
 	"dependencies": [
 		{

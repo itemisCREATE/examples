@@ -1,0 +1,13 @@
+{
+	"id": "org.yakindu.sct.examples.eventdriven",
+	"title": "Event-driven vs. Cycle-based Execution",
+	"author": "itemis AG",
+	"description": "This example demonstrates the two different execution semantics of statecharts: event-driven and cycle-based execution.",
+	"previewImage": "todo.jpg",
+	"category": [
+		"open source",
+		"basic",
+		"modeling"
+	],
+	"rank":50
+}

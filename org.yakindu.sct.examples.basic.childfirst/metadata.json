@@ -1,0 +1,13 @@
+{
+	"id": "org.yakindu.sct.examples.childfirst",
+	"title": "Child-first vs. Parent-first Execution",
+	"author": "itemis AG",
+	"description": "This example demonstrates the two different execution semantics of composite states: child-first and parent-first execution.",
+	"previewImage": "todo.jpg",
+	"category": [
+		"open source",
+		"basic",
+		"modeling"
+	],
+	"rank":60
+}

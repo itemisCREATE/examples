@@ -1,0 +1,12 @@
+{
+	"id": "org.yakindu.sct.examples.digital_watch",
+	"title": "Digital Watch",
+	"author": "itemis AG",
+	"description": "This digital watch was first designed by David Harel, the founder of the Statecharts Theory. He described it in \"On Visual Formalisms\", published in \"Communications of the ACM\" in May 1988. A digital watch by that time had a display to show just a few digits. Using four control buttons, the user was able to toggle between displaying the time, displaying the date, using a stopwatch, maintaining an alarm, and setting time, date, and alarm.",
+	"previewImage": "digital_watch_thumb.jpg",
+	"category": [
+		"open source",
+		"advanced"
+	],
+	"rank":10
+}

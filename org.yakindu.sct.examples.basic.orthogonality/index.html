@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Orthogonal States</title>
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>Orthogonality</h1>
+
+    <p>This example demonstrates the usage of orthogonal states as well as of forking and joining synchronization nodes. For more details, please also refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_synchronizations">documentation</a>.</p>
+    
+    <h2>Orthogonal regions</h2>
+<p>
+YAKINDU Statechart Tools allows to specify orthogonal regions that are executed virtually concurrently. Orthogonal regions can be modeled either on top level, or within a composite state (or subdiagram). They allow to describe that the modeled system can be in multiple states simultaneously.
+</p> 
+<p>
+Let's take the simplified example of a keyboard controller. The user can enable caps lock and num lock. These are two independent functionalities, and the keyboard can have both enabled at the same time.
+</p>
+<p>
+	<img class="small"
+          alt="Orthogonal regions on top level."
+          src="images/keyboard.png" />
+</p>
+<h2>Execution order and event handling</h2>
+<p>
+Orthogonal regions are executed in a deterministic sequential order and not in parallel as one might expect. The execution order is defined by the regions' priorities. These are indicated in the top left corner of a region. 
+</p>
+<p>
+The defined execution order plays a particular role when orthogonal regions raise and react to the same events. Let's consider the following example. Region <strong>r2</strong> reacts to <strong>event1</strong> which causes a state transition to <strong>StateD</strong> which in turn as a effect raises <strong>event2</strong>. Intuitively, one would expect that rasing <strong>event2</strong> in region <strong>r2</strong> directly causes a state transition in region <strong>r1</strong>. However, this is only the case for the <code>@EventDriven</code> execution scheme, in which raising an event always invokes a new run-to-completion cycle. 
+Using the <code>@CycleBased</code> execution scheme, events are only visible in those regions that have not been processed yet. After all regions have been processed, the event is no more marked as being raised. Hence, the next cycle does not trigger the transition from <strong>StateA</strong> to <strong>StateB</strong>. See also chapter <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_reactions#sclang_raising_and_processing_an_event">Raising and processing an event</a> in our documentation.
+</p>
+<p>
+	<img class="small"
+          alt="Raising internal events in orthgonal regions."
+          src="images/event-raising.png" />
+</p>
+
+<h2>Forks and joins</h2>
+
+<p>
+Orthogonal regions can not only be defined on top level but also within composite states. The semantics explained above are the same. 
+The following example model uses a synchronization node to fork the execution flow into both orthogonal regions. After both regions have executed their state transitions, the execution flow is joined again by a synchronization node. A joining synchronization is only executed when all incoming transitions can be taken within the same run-to-completion cycle. For more details, please refer to our documentation on <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_synchronizations">Synchronizations</a>.
+</p>
+<p>
+
+</p>
+<p>
+	<img
+          alt="Orthogonal states, forks and joins"
+          src="images/orthogonality.png" />
+</p>
+       
+  </div>
+</body>
+</html>

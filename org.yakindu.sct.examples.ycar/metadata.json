@@ -1,12 +1,11 @@
 {
 	"id": "org.yakindu.sct.examples.ycar",
-	"title": "Webbased YCar App (TypeScript)",
+	"title": "Webbased Car HMI (TypeScript)",
 	"author": "itemis AG",
 	"description": "This example demonstrates how a state machine can be generated as typescript artifact and how to integrate this into an angular 4 application.",
 	"previewImage": "ycar_thumbs.png",
 	"category": ["labs",
-		"generator",
-		"typescript"
+		"hmi"
 	],
 	"dependencies": [
 		{

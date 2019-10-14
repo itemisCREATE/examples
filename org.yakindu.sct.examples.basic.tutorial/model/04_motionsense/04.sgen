@@ -1,0 +1,15 @@
+GeneratorModel for yakindu::java {
+
+	statechart _04_LightSwitch {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.basic.tutorial"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+
+		feature GeneralFeatures {
+			TimerService = true
+		}
+	}
+}

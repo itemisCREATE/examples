@@ -1,5 +1,5 @@
 {
-	"id": "org.yakindu.sct.examples.codegen.c",
+	"id": "org.yakindu.sct.examples.codegen.cpp",
 	"title": "C++ Code Generation",
 	"author": "itemis AG",
 	"description": "This example demonstrates how to generate C++ code from a statechart.",

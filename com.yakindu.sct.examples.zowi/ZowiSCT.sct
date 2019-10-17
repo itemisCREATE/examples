@@ -237,7 +237,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_qrE-dBrcEeiDzpwyKJ3elw"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_qrCiMRrcEeiDzpwyKJ3elw" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_qrFlgBrcEeiDzpwyKJ3elw" x="24" y="-12" width="1166" height="679"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_qrFlgBrcEeiDzpwyKJ3elw" x="-6" y="-6" width="1166" height="679"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_qrLFEBrcEeiDzpwyKJ3elw" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_qrLFEhrcEeiDzpwyKJ3elw" type="StatechartName">
@@ -287,11 +287,11 @@
     <edges xmi:id="_7jaYEBrdEeiLc73P6eDdCQ" type="Transition" element="_7jM8wBrdEeiLc73P6eDdCQ" source="_7jHdLRrdEeiLc73P6eDdCQ" target="_7jHdORrdEeiLc73P6eDdCQ">
       <children xsi:type="notation:DecorationNode" xmi:id="_7jaYERrdEeiLc73P6eDdCQ" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_7jaYEhrdEeiLc73P6eDdCQ"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_7jaYExrdEeiLc73P6eDdCQ" x="2" y="27"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_7jaYExrdEeiLc73P6eDdCQ" x="3" y="36"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_7jaYFBrdEeiLc73P6eDdCQ" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_7jaYFRrdEeiLc73P6eDdCQ" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_7jaYFhrdEeiLc73P6eDdCQ" points="[3, 8, -19, -119]$[3, 93, -19, -34]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_7jaYFhrdEeiLc73P6eDdCQ" points="[17, 7, -7, -123]$[17, 96, -7, -34]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_7jaYFxrdEeiLc73P6eDdCQ" id="(0.4266666666666667,0.9056603773584906)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_doPIUBreEeiLc73P6eDdCQ" id="(0.5721649484536083,0.4473684210526316)"/>
     </edges>

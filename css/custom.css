@@ -172,6 +172,14 @@ img.inlinemediaobject {
     min-width: initial;
 }
 
+img.verytinyinline {
+    image-rendering: pixelated;
+    display: inline;
+    width:3%;
+    min-width:1%;
+    height:auto;
+}
+
 
 
 /* Tables */

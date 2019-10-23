@@ -1,8 +1,8 @@
 {
-	"id": "org.yakindu.sct.examples.integration.arduino.cyclebased.polling",
-	"title": "Arduino - CycleBased Polling (C)",
+	"id": "org.yakindu.sct.examples.integration.arduino.polling",
+	"title": "Arduino - Integration Guide using Polling (C)",
 	"author": "itemis AG",
-	"description": "Embedded Systems Integration Guide - Arduino with CycleBased State Machine using Polling.",
+	"description": "Embedded Systems Integration Guide - Arduino with CycleBased or EventDriven State Machine using Polling.",
 	"previewImage": "",
 	"category": [
 		"integration"

@@ -10,17 +10,6 @@ void hw_init(){
 	digitalWrite(13, LOW);
 }
 
-/*! Poll the inputs/sensors.
- * Wire inputs to the according event.*/
-void handle_in_events(StateMachine* handle) {
-	if(digitalRead(2) == HIGH) {
-		stateMachineIface_raise_inEvent1(handle);
-	}
-	if(digitalRead(3) == HIGH) {
-		stateMachineIface_raise_inEvent2(handle);
-	}
-}
-
 /*! Update your actuators, by checking the
  * out event status */
 void handle_out_events(StateMachine* handle){
@@ -29,5 +18,16 @@ void handle_out_events(StateMachine* handle){
 	}
 	if(stateMachineIface_israised_outEvent2(handle)) {
 		digitalWrite(13,HIGH);
+	}
+}
+
+/*! Poll the inputs/sensors.
+ * Wire inputs to the according event.*/
+void handle_in_events(StateMachine* handle) {
+	if(digitalRead(2) == HIGH) {
+		stateMachineIface_raise_inEvent1(handle);
+	}
+	if(digitalRead(3) == HIGH) {
+		stateMachineIface_raise_inEvent2(handle);
 	}
 }

@@ -9,13 +9,14 @@ StateMachine stateMachine;
 
 /*! Setup the Arduino */
 void setup() {
-	/*! Setup the hardware you're using.
+	/*! Setup the hardware you're using. Activate the interrupts.
 	 * Digital/Analog Ports, Sensors, Actuators, Communication */
 	hw_init();
 
 	/*! Initialize the timer service. Here you must define,
 	 * how many time events you're using.
-	 * The default value is 10. */
+	 * The default value is 10.
+	 * Will be updated via WDT Interrupt every 32 ms */
 	timer_init();
 
 	/*! Initialize and enter the state machine */
@@ -28,10 +29,12 @@ void loop() {
 	/*! Runs until the state machine is final.
 	 * Always true, if there is no final state defined */
 	while (!stateMachine_isFinal(&stateMachine)) {
-		/*! Update timer with elapsed time using millis()*/
-		handle_timer(millis());
+		/*! Update timer if WDT interrupt has been occurred,
+		 * which is set to 32 ms.*/
+		handle_timer();
 
-		/*! Poll the inputs/sensors */
+		/*! Handle flags, if in the meanwhile an interrupt has
+		 * occurred. Status has been stored in flags. */
 		handle_in_events(&stateMachine);
 
 		/*! For @EventDriven state machines, runCycle must not be called.
@@ -40,5 +43,9 @@ void loop() {
 
 		/*! Update your actuators */
 		handle_out_events(&stateMachine);
+		/*! Set Arduino in sleep mode. Can be commented out,
+		 * especially if Serial is used. Won't work together. */
+		sleep_mode();
 	}
 }
+

@@ -20,8 +20,17 @@
         src="images/ZowiSCT_0.png" /> </p>
     </p>
     <h2>Addons for compiling and flashing</h2>
-    <p>For compiling and flashing the Eclipse C++ IDE for Arduino plugin has been used. This can be found at the <a href="https://marketplace.eclipse.org/content/eclipse-c-ide-arduino">Eclipse Marketplace</a>''. Please ensure that you have installed the Arduino toolchain/AVRDude.</p>
+    <p>For compiling and flashing the Eclipse C++ IDE for Arduino plugin has been used. This can be found at the <a href="https://marketplace.eclipse.org/content/eclipse-c-ide-arduino">Eclipse Marketplace</a>''.</p>
   	<h3>How to install the Eclipse C++ IDE for Arduino plugin</h3>
+  	There are the following two ways of installing:
+  	<h4>(Recommended) Auto-Install of all Dependencies</h4>
+  	The following instructions show a simple way of installing the Dependencies via an integrated wizard.
+  	 <ol>
+  	  <li>Click on 'File' -> 'New' -> 'Example...' -> 'YAKINDU SCT' -> 'YAKINDU Statechart Examples' and then 'Next >'.</li>
+  	  <li>Search for 'Embedded Systems' -> 'Zowi (Deep C++)' and click the button on the top right called 'Install Dependencies...'</li>
+  	  <li>Click through the wizard until you are finished.</li>
+  	 </ol>
+  	<h4>(Alternative) Manual installation of all Dependencies</h4>
   	<p>
   	This instructions shows step by step of how to install the plugin.</p>
   	 <ol>
@@ -50,12 +59,16 @@
     <p>At least the 'Launch Configuration' needs to be configured:</p>
     <ol>
       <li>Plug in the Zowi and click on 'New Launch Target..'. This can be found in the upper left corner by clicking on the menu 'on:'. </li>
+      <img alt="BuildHammer" src="images/Launch_Configuration.PNG" class="large" />
       <li>Name: Choose a name</li>
       <li>Port: Choose the port</li>
       <li>Board Type: Arduino/Genuino Uno</li>
       <li>Programmer: AVR ISP</li>
+      <li>Click on 'Finish'</li>
+      <li>Press the button <img alt="BuildHammer" src="images/Build.PNG" class="verytinyinline" /> at the Top left to build the Project.</li>
+      <li>Press the button <img alt="RunArrow" src="images/Run.PNG" class="verytinyinline" /> at the Top left to run the Project on the Zowi.</li>
     </ol>
-      <p>After this you can build and run the project!</p>
+      <p>After this you are done and your Zowi should start moving!</p>
   </div>
 </body>
 </html>

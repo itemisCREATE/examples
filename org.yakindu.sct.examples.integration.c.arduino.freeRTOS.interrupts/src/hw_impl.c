@@ -16,7 +16,6 @@ void hw_init() {
 	digitalWrite(13, LOW);
 
 	sei();
-
 }
 
 /*! Update your actuators, by checking the

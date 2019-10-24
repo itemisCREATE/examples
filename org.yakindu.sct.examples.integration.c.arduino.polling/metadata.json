@@ -1,6 +1,6 @@
 {
 	"id": "org.yakindu.sct.examples.integration.arduino.polling",
-	"title": "Arduino - Integration Guide using Polling (C)",
+	"title": "Arduino - Bare-Metal Polling (C)",
 	"author": "itemis AG",
 	"description": "Embedded Systems Integration Guide - Arduino with CycleBased or EventDriven State Machine using Polling.",
 	"previewImage": "",

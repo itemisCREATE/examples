@@ -1,8 +1,8 @@
 {
-	"id": "org.yakindu.sct.examples.integration.arduino.freeRTOS",
-	"title": "Arduino - Integration Guide using freeRTOS (C)",
+	"id": "org.yakindu.sct.examples.integration.c.arduino.freeRTOS.polling",
+	"title": "Arduino - FreeRTOS Polling (C)",
 	"author": "itemis AG",
-	"description": "Embedded Systems Integration Guide - Arduino with CycleBased or EventDriven State Machine using freeRTOS.",
+	"description": "Embedded Systems Integration Guide - Arduino with CycleBased or EventDriven State Machine using freeRTOS using polling.",
 	"previewImage": "",
 	"category": [
 		"integration"

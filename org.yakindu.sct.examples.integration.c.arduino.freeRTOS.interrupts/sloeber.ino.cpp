@@ -6,9 +6,11 @@
 
 #include "Arduino.h"
 #include "Arduino.h"
+#include "src-gen/StateMachineRequired.h"
+#include "Arduino_FreeRTOS.h"
+#include "timers.h"
 #include "src/hw_impl.h"
 #include "src/timer_impl.h"
-#include "src-gen/StateMachineRequired.h"
 
 void setup() ;
 void loop() ;

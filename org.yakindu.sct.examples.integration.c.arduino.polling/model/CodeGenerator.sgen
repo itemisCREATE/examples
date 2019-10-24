@@ -4,7 +4,7 @@ GeneratorModel for yakindu::c {
 
 		feature Outlet {
 			targetProject =
-			"org.yakindu.sct.examples.integration.arduino.polling"
+			"org.yakindu.sct.examples.integration.c.arduino.polling"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
 		}

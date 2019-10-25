@@ -582,7 +582,7 @@
         <styles xsi:type="notation:ShapeStyle" xmi:id="_YaglshwqEeKIxfpHJtPpBA"/>
         <layoutConstraint xsi:type="notation:Location" xmi:id="_YaglsxwqEeKIxfpHJtPpBA" y="10"/>
       </children>
-      <styles xsi:type="notation:ConnectorStyle" xmi:id="_Yaf-oRwqEeKIxfpHJtPpBA" lineColor="4210752"/>
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_Yaf-oRwqEeKIxfpHJtPpBA" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_YaglsBwqEeKIxfpHJtPpBA" fontName="Verdana"/>
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_Yaf-ohwqEeKIxfpHJtPpBA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
     </edges>
@@ -591,7 +591,7 @@
         <styles xsi:type="notation:ShapeStyle" xmi:id="_nphmMhwtEeKIxfpHJtPpBA"/>
         <layoutConstraint xsi:type="notation:Location" xmi:id="_nphmMxwtEeKIxfpHJtPpBA" y="10"/>
       </children>
-      <styles xsi:type="notation:ConnectorStyle" xmi:id="_npg_IRwtEeKIxfpHJtPpBA" lineColor="4210752"/>
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_npg_IRwtEeKIxfpHJtPpBA" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_nphmMBwtEeKIxfpHJtPpBA" fontName="Verdana"/>
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_npg_IhwtEeKIxfpHJtPpBA" points="[0, 7, -11, -213]$[2, 47, -9, -173]"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_npjbYBwtEeKIxfpHJtPpBA" id="(0.4196239506774684,0.15722605622694577)"/>

@@ -29,7 +29,7 @@
           </children>
           <styles xsi:type="notation:ShapeStyle" xmi:id="_vgcHAdJaEeaXvqKMUv4OZw" fontName="Verdana" fillColor="0" lineColor="16777215"/>
           <styles xsi:type="notation:NamedStyle" xmi:id="_vgcHAtJaEeaXvqKMUv4OZw" name="allowColors"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_vgdVINJaEeaXvqKMUv4OZw" x="72" y="26"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_vgdVINJaEeaXvqKMUv4OZw" x="78" y="20"/>
         </children>
         <children xmi:id="_vgd8MtJaEeaXvqKMUv4OZw" type="State" element="_vgdVIdJaEeaXvqKMUv4OZw">
           <children xsi:type="notation:DecorationNode" xmi:id="_vgejQNJaEeaXvqKMUv4OZw" type="StateName">
@@ -75,6 +75,7 @@
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_vghmkdJaEeaXvqKMUv4OZw" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_vghmk9JaEeaXvqKMUv4OZw" fontName="Verdana"/>
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_vghmktJaEeaXvqKMUv4OZw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_BLSR0Pc5Eema0bKf_hZfqQ" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_-oeCIJwOEeiWEbEH-mHIYA" id="(0.5,0.5)"/>
     </edges>
     <edges xmi:id="_AD55UNJbEeaXvqKMUv4OZw" type="Transition" element="_AD22ANJbEeaXvqKMUv4OZw" source="_vgd8MtJaEeaXvqKMUv4OZw" target="__cJVwNJaEeaXvqKMUv4OZw">

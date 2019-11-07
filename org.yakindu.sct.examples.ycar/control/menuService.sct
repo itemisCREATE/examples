@@ -163,18 +163,18 @@
         <styles xsi:type="notation:ShapeStyle" xmi:id="_brA8Ei8dEeen98eMia83UQ"/>
         <layoutConstraint xsi:type="notation:Location" xmi:id="_brA8Ey8dEeen98eMia83UQ" x="-2" y="-23"/>
       </children>
-      <styles xsi:type="notation:ConnectorStyle" xmi:id="_bq94wS8dEeen98eMia83UQ" lineColor="4210752"/>
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_bq94wS8dEeen98eMia83UQ" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_brA8EC8dEeen98eMia83UQ" fontName="Verdana"/>
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_bq94wi8dEeen98eMia83UQ" points="[-19, -4, 148, 27]$[-164, -31, 3, 0]"/>
     </edges>
     <edges xmi:id="_2Ogo4C8dEeen98eMia83UQ" type="Transition" element="_2OgB0C8dEeen98eMia83UQ" source="_bqy5oC8dEeen98eMia83UQ" target="_2OdlkC8dEeen98eMia83UQ">
       <children xsi:type="notation:DecorationNode" xmi:id="_2OhP8S8dEeen98eMia83UQ" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_2OhP8i8dEeen98eMia83UQ"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_2OhP8y8dEeen98eMia83UQ" x="-10" y="45"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_2OhP8y8dEeen98eMia83UQ"/>
       </children>
-      <styles xsi:type="notation:ConnectorStyle" xmi:id="_2Ogo4S8dEeen98eMia83UQ" lineColor="4210752"/>
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_2Ogo4S8dEeen98eMia83UQ" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_2OhP8C8dEeen98eMia83UQ" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_2Ogo4i8dEeen98eMia83UQ" points="[-2, 24, 0, -111]$[-2, 128, 0, -7]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_2Ogo4i8dEeen98eMia83UQ" points="[-23, 24, 2, -71]$[-23, 89, 2, -6]"/>
     </edges>
     <edges xmi:id="_jGYE8C8eEeen98eMia83UQ" type="Transition" element="_jGXd4C8eEeen98eMia83UQ" source="_2OdlkC8dEeen98eMia83UQ" target="_jGTMcC8eEeen98eMia83UQ">
       <children xsi:type="notation:DecorationNode" xmi:id="_jGYE9C8eEeen98eMia83UQ" type="TransitionExpression">

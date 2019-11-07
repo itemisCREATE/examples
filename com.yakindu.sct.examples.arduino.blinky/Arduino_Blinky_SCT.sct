@@ -3,7 +3,7 @@
   <sgraph:Statechart xmi:id="_j6o2wK9YEei7VJyblLElYA" specification="import: &#xA;&quot;Arduino.h&quot;&#xA;&#xA;internal:&#xA;const ledPin : uint8_t = 13" name="Arduino_Blinky_SCT" domainID="com.yakindu.domain.c">
     <regions xmi:id="_j7DGcK9YEei7VJyblLElYA" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_j7cIAK9YEei7VJyblLElYA">
-        <outgoingTransitions xmi:id="_j7i1sK9YEei7VJyblLElYA" target="_B7hQcK9ZEei7VJyblLElYA"/>
+        <outgoingTransitions xmi:id="_j7i1sK9YEei7VJyblLElYA" specification="" target="_B7hQcK9ZEei7VJyblLElYA"/>
       </vertices>
       <vertices xsi:type="sgraph:State" xmi:id="_j7d9MK9YEei7VJyblLElYA" specification="entry / &#xD;&#xA;digitalWrite(ledPin, HIGH)" name="Led On" incomingTransitions="_q9zXgK9YEei7VJyblLElYA _GAED8K9ZEei7VJyblLElYA">
         <outgoingTransitions xmi:id="_qQ8RgK9YEei7VJyblLElYA" specification="after 1 s" target="_oSIbcK9YEei7VJyblLElYA"/>
@@ -108,7 +108,7 @@
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_j7nuMa9YEei7VJyblLElYA" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_j7nuM69YEei7VJyblLElYA" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_j7nuMq9YEei7VJyblLElYA" points="[-1, 6, 57, -24]$[-1, 27, 57, -3]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_j7nuMq9YEei7VJyblLElYA" points="[0, 7, 61, -23]$[0, 27, 61, -3]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_m4yC4K9YEei7VJyblLElYA" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_E4bGcK9ZEei7VJyblLElYA" id="(0.18518518518518517,0.06349206349206349)"/>
     </edges>

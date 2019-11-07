@@ -1,0 +1,16 @@
+{
+	"id": "org.yakindu.sct.examples.zowi",
+	"title": "Zowi (C++)",
+	"author": "itemis AG",
+	"description": "This is a example of how to use the Default Domain together with the Zowi by BQ. C++ Timer are integrated",
+	"previewImage": "Zowi.jpg",
+	"category": [
+		"embedded"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://download.eclipse.org/tools/cdt/releases/9.3",
+			"features": ["org.eclipse.cdt.arduino.feature.group"]
+		}
+	]
+}

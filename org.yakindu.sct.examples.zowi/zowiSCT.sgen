@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::cpp {
+
+	statechart ZowiSCT {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.zowi"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+}

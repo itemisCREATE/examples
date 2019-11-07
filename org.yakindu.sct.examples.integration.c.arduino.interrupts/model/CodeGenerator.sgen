@@ -1,0 +1,12 @@
+GeneratorModel for yakindu::c {
+
+	statechart StateMachine {
+
+		feature Outlet {
+			targetProject =
+			"org.yakindu.sct.examples.integration.c.arduino.interrupts"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+}

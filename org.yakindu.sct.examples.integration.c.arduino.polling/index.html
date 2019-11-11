@@ -17,18 +17,18 @@
     This example has been created to illustrate how an Arduino can be programmed using @CycleBased or @EventDriven execution and polling.
     You can find a detailed description in our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/embedded_systems_integration_guide">documentation</a>.
 	</p>
-	<h2> The state machine </h2>
+	<h2>The state machine</h2>
 	<p>
 	The state machine contains the following parts:
 	<ul>
-	<li>Two states</li>
+	<li>Two regular states</li>
 	<li>One final state</li>
-	<li>Two in events</li>
-	<li>Two out events</li>
+	<li>Two incoming events</li>
+	<li>Two outgoing events</li>
 	<li>One timed event</li>
 	</ul>
 	The main idea is to use every component, 
-	which got an effect on the integration of the state machine.
+	which has an effect on the integration of the state machine code.
 	A detailed description can be found in our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/embedded_systems_integration_guide">documentation</a>.
 	</p>   
 		<p>
@@ -42,9 +42,9 @@
       	This example uses the Sloeber plugin. 
        </p>
        <p> 
-       	The easiest way to install the plugin is using the example wizard.the
+       	The easiest way to install the plugin is using the example wizard.
     	Select this example, click on 'Install Dependencies...' and follow the instructions.
-        Your IDE may restart. SCT will restart and download the necessary Arduino libraries for you.
+        Your IDE will restart and download the necessary Arduino libraries for you.
 		Ensure that the installation has been completed before taking the next steps.
 		You'll get a hint of the installation progress on the bottom right of your IDE.
        </p>
@@ -56,7 +56,7 @@
         	into the proper field, and follow the regular procedure.
         </p>
 		<h2>Setup the example</h2>
-		After the installation the example will not compile, as no port and board has been selected.
+		After the installation the example will not compile, as no port and board has been selected yet.
 		Right click the project, open the 'Properties' page and open the Arduino tab. 
 		As there was no platform selected before and the platform file was missing, an error will occur.
 		Just click on 'Ok'. Select the platform folder, choose the board and select your port. That's it.

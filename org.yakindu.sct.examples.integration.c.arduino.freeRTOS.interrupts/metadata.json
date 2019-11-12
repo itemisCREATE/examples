@@ -2,8 +2,8 @@
 	"id": "org.yakindu.sct.examples.integration.c.arduino.freeRTOS.interrupts",
 	"title": "Arduino - FreeRTOS Interrupts (C)",
 	"author": "itemis AG",
-	"description": "Embedded Systems Integration Guide - Arduino with CycleBased or EventDriven State Machine using freeRTOS using interrupts.",
-	"previewImage": "",
+	"description": "Embedded Systems Integration Guide - Arduino with @CycleBased or @EventDriven execution using freeRTOS using interrupts.",
+	"previewImage": "embedded_system.jpg",
 	"category": [
 		"integration"
 	],

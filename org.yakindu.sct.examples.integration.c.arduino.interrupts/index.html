@@ -11,14 +11,58 @@
     <h1>Arduino - Integration Guide using Interrupts (C)</h1>
 
     <p>
-   Embedded Systems Integration Guide - Arduino with CycleBased or EventDriven State Machine using Interrupts.
+   Embedded Systems Integration Guide - Arduino with @CycleBased or @EventDriven execution using Interrupts.
     </p>
     <p>
-    This example has been created to illustrate how an Arduino can be programmed using CycleBased or EventDriven execution and interrupts.
-    You can find a detailed description in our <a href="http://www.google.de">documentation</a>.
-    </p>
-    <h2>Used Tools for Compiling & Flashing</h2>
-    <p> Insert a link </p>
+    This example has been created to illustrate how an Arduino can be programmed using @CycleBased or @EventDriven execution and interrupts.
+    You can find a detailed description in our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/embedded_systems_integration_guide">documentation</a>.
+	</p>
+		<h2>The state machine</h2>
+	<p>
+	The state machine contains the following parts:
+	<ul>
+	<li>Two regular states</li>
+	<li>One final state</li>
+	<li>Two incoming events</li>
+	<li>Two outgoing events</li>
+	<li>One timed event</li>
+	</ul>
+	The main idea is to use every component, 
+	which has an effect on the integration of the state machine code.
+	A detailed description can be found in our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/embedded_systems_integration_guide">documentation</a>.
+	</p>  
+	<p>
+	<img class="standard-image" alt="The statechart" src="images/platform_integration_example.jpeg" />
+	</p>     
+<div>
+      <h2>Installing the Arduino plugin</h2>
+      <p>
+		To compile the generated C code for Arduino, you should install an
+        Eclipse plugin that can handle this and provides the needed libraries.
+      	This example uses the Sloeber plugin. 
+       </p>
+       <p> 
+       	The easiest way to install the plugin is using the example wizard.
+    	Select this example, click on 'Install Dependencies...' and follow the instructions.
+        Your IDE will restart and download the necessary Arduino libraries for you.
+		Ensure that the installation has been completed before taking the next steps.
+		You'll get a hint of the installation progress on the bottom right of your IDE.
+       </p>
+        	Another way is using the update site, which can be found at <a 
+        	href="http://eclipse.baeyens.it/">http://eclipse.baeyens.it/</a>. In
+        	YAKINDU Statechart Tools, simply install it by selecting <em>Help → Install New
+        	Software</em> in the main menu, typing or pasting
+        	<code>http://eclipse.baeyens.it/update/V4/stable</code>
+        	into the proper field, and follow the regular procedure.
+        </p>
+		<h2>Setup the example</h2>
+		After the installation the example will not compile, as no port and board has been selected yet.
+		Right click the project, open the 'Properties' page and open the Arduino tab. 
+		As there was no platform selected before and the platform file was missing, an error will occur.
+		Just click on 'Ok'. Select the platform folder, choose the board and select your port. That's it.
+		The project is ready to compile and flash.
+    </div>
+
   </div>
 
 </body>

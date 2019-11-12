@@ -2,8 +2,8 @@
 	"id": "org.yakindu.sct.examples.integration.arduino.interrupts",
 	"title": "Arduino - Bare-Metal Interrupts (C)",
 	"author": "itemis AG",
-	"description": "Embedded Systems Integration Guide - Arduino with CycleBased or EventDriven State Machine using Interrupts.",
-	"previewImage": "",
+	"description": "Embedded Systems Integration Guide - Arduino with @CycleBased or @EventDriven execution using Interrupts.",
+	"previewImage": "embedded_system.jpg",
 	"category": [
 		"integration"
 	],

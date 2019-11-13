@@ -1,0 +1,16 @@
+{
+	"id": "org.yakindu.sct.examples.integration.c.arduino.freeRTOS.interrupts",
+	"title": "Arduino - FreeRTOS Interrupts (C)",
+	"author": "itemis AG",
+	"description": "Embedded Systems Integration Guide - Arduino with @CycleBased or @EventDriven execution using freeRTOS using interrupts.",
+	"previewImage": "embedded_system.jpg",
+	"category": [
+		"integration"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://eclipse.baeyens.it/update/V4/stable",
+			"features": ["io.sloeber.feature.feature.group"]
+		}
+	]
+}

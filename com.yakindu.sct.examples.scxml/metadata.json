@@ -8,5 +8,11 @@
 		"open source",
 		"code-generation"
 	],
+	"dependencies": [
+		{
+			"updateSite": "*",
+			"features": ["org.eclipse.xtend.sdk.feature.group","org.eclipse.pde.feature.group"]
+		}
+	],
 	"rank":90
 }

@@ -1,0 +1,18 @@
+{
+	"id": "org.yakindu.sct.examples.codegen.python",
+	"title": "Python Code Generation",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to generate Python code from a statechart.",
+	"previewImage": "watch_gears_thumb.jpg",
+	"category": [
+		"open source",
+		"code-generation"
+	],
+	"rank":35,
+	"dependencies": [
+		{	"updateSite": "http://www.pydev.org/updates/",
+			"features": ["org.python.pydev.feature.feature.group"]
+		}
+	]
+}
+ 

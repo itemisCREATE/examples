@@ -1,0 +1,12 @@
+GeneratorModel for yakindu::python {
+
+	statechart LightSwitch {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.codegen.python"
+			targetFolder = "src-gen"
+		}
+		
+	}
+}
+

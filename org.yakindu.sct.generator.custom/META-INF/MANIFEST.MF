@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.yakindu.sct.generator.custom
+Bundle-SymbolicName: org.yakindu.sct.generator.custom; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.yakindu.sct.generator.custom
+Require-Bundle: com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro,
+ org.yakindu.sct.model.sgraph,
+ org.yakindu.sct.generator.core,
+ org.yakindu.sct.model.sgen
+

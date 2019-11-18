@@ -1,0 +1,21 @@
+GeneratorModel for yakindu::c::yet {
+
+	statechart Controller {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.yet"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+
+	statechart Heater {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.yet"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+}
+

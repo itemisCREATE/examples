@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>YET - YAKINDU Execution Trace</title>
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>YET - YAKINDU Execution Trace</h1>
+	    <p>
+	    	In this example, a simple system with two statecharts is shown. C code is generated and traced with the YAKINDU Execution Trace that allows to observe the behavior of running state machine code in the simulation view.
+	    </p>
+
+    <h2>The statecharts</h2>
+	    <p>
+	    	The system consists of two statecharts that interact. One represents a simple heating element with a temperature and two states, <b>On</b> and <b>Off</b>. The other statechart is a controller that switches the heater on and off as needed.
+	    </p>
+    	<p>
+			 <img class="small" 
+			alt="The heater statechart" title="The heater statechart" border="0" src="images/heater_sct.png"/>
+    		<img class="small" 
+			alt="The controller statechart" title="The controller statechart" border="0" src="images/controller_sct.png"/>
+    	</p>    
+    	<p>
+    		The new generator model will look similar to this one:
+			<img class="tiny" 
+			alt="Simple C YET generator model" title="Simple C YET generator model" border="0" src="images/heater_controller_sgen.png"/>
+		</p>
+		<p>
+			This generator model works like all others. The only specialty is the generation of two statecharts at once and the usage of the specialized YET-C-generator.
+		</p>
+	
+	<h2>Using YET</h2>
+		<p>
+			For a full introduction to YET, please refer to the documentation. In short, to use YET, you need to use a modified code generator as shown in the generator model above. This code generator calls a function you have to implement that writes the traces to a file or a network socket. This example comes with a socket implementation for UNIX compatible systems (Linux / Mac). 
+		</p>
+		<p>
+			To track the behavior of the state machines, you need to setup the YET trace session.
+			<ol>
+				<li>Run the statechart trace session: Right-click both statecharts and choose <i>Debug As</i> &#8594; <i>YET Tracing</i>. This will start a YET session with default settings. Cancel these with the red square in the simulation view, because we need to change some settings first.</li>
+				<li>Right-click again, but in <i>Debug As</i>, choose <i>Debug Configurations...</i>. In this window, navigate to your two new created configurations. In the YET tab, choose TCP tracing and the default port. Click <i>Apply</i> and start both sessions again.</li>
+				<li>Both sessions are now running and waiting for traces to be received. To start the actual program, right-click on the project and choose <i>Run as</i> &#8594; <i>C/C++ Application</i>. You should now see that there are states active in both simulation settings and values changing. If you click the event <code>on</code> or <code>off</code>, you should see the controller statechart switching between <b>Idle</b> and <b>Heating</b>. This is happening in the actual running code.</li>
+			</ol>
+		</p>
+		<p>
+			<img class="small" 
+			alt="YET settings" title="YET settings" border="0" src="images/YET_settings.png"/>
+		</p>
+		
+</body>
+</html>

@@ -27,20 +27,39 @@ void sc_timer_start(sc_timer_service_t *this, void* handle, const sc_eventid evi
 
 
 	/* go through all timers ... */
-	for (int i = 0; i < this->timer_count; i++) {
+    unsigned int i;
+    for(i = this->timer_count; i; i--) {
+
+        /* ... and find an unused one. */
+        if (this->timers[i-1].pt_evid == NULL) {
+
+            /* set timer properties */
+            this->timers[i-1].pt_evid = evid;
+            this->timers[i-1].time_ms = time_ms;
+            this->timers[i-1].periodic = periodic;
+            this->timers[i-1].handle = handle;
+            this->timers[i-1].service = this;
+
+            // reset the elapsed time ...
+            this->timers[i-1].elapsed_time_ms = 0;
+
+            break;
+        }
+    }
+    for(i = this->timer_count; i; i--) {
 
 		/* ... and find an unused one. */
-		if (this->timers[i].pt_evid == NULL) {
+		if (this->timers[i-1].pt_evid == NULL) {
 
 			/* set timer properties */
-			this->timers[i].pt_evid = evid;
-			this->timers[i].time_ms = time_ms;
-			this->timers[i].periodic = periodic;
-			this->timers[i].handle = handle;
-			this->timers[i].service = this;
+			this->timers[i-1].pt_evid = evid;
+			this->timers[i-1].time_ms = time_ms;
+			this->timers[i-1].periodic = periodic;
+			this->timers[i-1].handle = handle;
+			this->timers[i-1].service = this;
 
 			// reset the elapsed time ...
-			this->timers[i].elapsed_time_ms = 0;
+			this->timers[i-1].elapsed_time_ms = 0;
 
 			break;
 		}
@@ -52,13 +71,12 @@ void sc_timer_start(sc_timer_service_t *this, void* handle, const sc_eventid evi
 /*! Cancels a timer for the specified time event. */
 void sc_timer_cancel(sc_timer_service_t *this, const sc_eventid evid) {
 
-	int i;
+	unsigned int i;
+	 for(i = this->timer_count; i; i--) {
+		if (this->timers[i-1].pt_evid == evid) {
 
-	for (i = 0; i < this->timer_count; i++) {
-		if (this->timers[i].pt_evid == evid) {
-
-			this->timers[i].pt_evid = NULL;
-			this->timers[i].handle = NULL;
+			this->timers[i-1].pt_evid = NULL;
+			this->timers[i-1].handle = NULL;
 
 			break;
 		}
@@ -74,7 +92,9 @@ void sc_timer_service_init(sc_timer_service_t *tservice,
 
 	tservice->timers = timers;
 	tservice->timer_count = count;
-	for (int i=0; i<count; i++) {
+
+	unsigned int i;
+	for(i = tservice->timer_count; i; i--) {
 		tservice->timers->pt_evid = NULL;
 		tservice->timers->service = tservice;
 	}
@@ -86,18 +106,19 @@ void sc_timer_service_init(sc_timer_service_t *tservice,
 void sc_timer_service_proceed(sc_timer_service_t *this, const sc_integer time_ms) {
 
 	/* go through all timers ... */
-	for (int i = 0; i < this->timer_count; i++) {
+    unsigned int i;
+    for(i = this->timer_count; i; i--) {
 
 		/* ... and process all used. */
-		if (this->timers[i].pt_evid != NULL) {
+		if (this->timers[i-1].pt_evid != NULL) {
 
-			if (this->timers[i].elapsed_time_ms < this->timers[i].time_ms) {
-				this->timers[i].elapsed_time_ms += time_ms;
+			if (this->timers[i-1].elapsed_time_ms < this->timers[i-1].time_ms) {
+				this->timers[i-1].elapsed_time_ms += time_ms;
 
-				if (this->timers[i].elapsed_time_ms >= this->timers[i].time_ms) {
-					sc_timer_fired(&(this->timers[i]));
-					if (this->timers[i].periodic) {
-						this->timers[i].elapsed_time_ms -= this->timers[i].time_ms;
+				if (this->timers[i-1].elapsed_time_ms >= this->timers[i-1].time_ms) {
+					sc_timer_fired(&(this->timers[i-1]));
+					if (this->timers[i-1].periodic) {
+						this->timers[i-1].elapsed_time_ms -= this->timers[i-1].time_ms;
 					}
 				}
 			}

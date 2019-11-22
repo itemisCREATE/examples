@@ -30,24 +30,6 @@ void sc_timer_start(sc_timer_service_t *this, void* handle, const sc_eventid evi
     unsigned int i;
     for(i = this->timer_count; i; i--) {
 
-        /* ... and find an unused one. */
-        if (this->timers[i-1].pt_evid == NULL) {
-
-            /* set timer properties */
-            this->timers[i-1].pt_evid = evid;
-            this->timers[i-1].time_ms = time_ms;
-            this->timers[i-1].periodic = periodic;
-            this->timers[i-1].handle = handle;
-            this->timers[i-1].service = this;
-
-            // reset the elapsed time ...
-            this->timers[i-1].elapsed_time_ms = 0;
-
-            break;
-        }
-    }
-    for(i = this->timer_count; i; i--) {
-
 		/* ... and find an unused one. */
 		if (this->timers[i-1].pt_evid == NULL) {
 

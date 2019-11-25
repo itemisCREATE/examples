@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.yakindu.sct.generator.core.generator">
+      <SCTGenerator 
+			executor="org.yakindu.sct.generator.core.execution.SExecGeneratorEntryExecutor"
+            bindings="org.yakindu.sct.generator.custom.CustomGeneratorModule"
+            description="Custom Code Generator for YAKINDU Statechart Tools"
+            id="yakindu::custom"
+            name="Custom Code Generator"
+            contentType="statechart"
+            elementRefType="org.yakindu.sct.model.sgraph.Statechart">
+            <FeatureLibrary
+            	library_id="org.yakindu.generator.core.features">
+            </FeatureLibrary>
+      </SCTGenerator>
+   </extension>
+ <extension point="org.yakindu.sct.generator.core.extensions">
+	 	<ExtensionGeneratorMapping fileExtension="sct" generatorId="yakindu::custom">
+	 	</ExtensionGeneratorMapping>
+ 	</extension>
+</plugin>

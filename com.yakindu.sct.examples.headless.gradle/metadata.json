@@ -3,8 +3,7 @@
 	"title": "Code Generation with Gradle",
 	"description": "Use the powerful build infrastructure of Gradle to invoke the headless statechart generator to improve your build workflow.",
 	"previewImage": "preview.jpeg",
-    "author": "Rene Beckmann",
-    "organization": "itemis AG",
+    "author": "itemis AG",
     "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
 	"category": [
 		"headless",

@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.yakindu.sct.examples.lightswitch_series._03_lightswitch._03_LightSwitchStatemachine;
+import org.yakindu.sct.examples.basic.tutorial._03_lightswitch._03_LightSwitchStatemachine;
 
 public class LightSwitch_03 {
 

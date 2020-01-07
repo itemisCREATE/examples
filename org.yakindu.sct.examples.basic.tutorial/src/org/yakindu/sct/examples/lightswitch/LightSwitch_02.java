@@ -1,6 +1,6 @@
 package org.yakindu.sct.examples.lightswitch;
 
-import org.yakindu.sct.examples.lightswitch_series._02_lightswitch._02_LightSwitchStatemachine;
+import org.yakindu.sct.examples.basic.tutorial._02_lightswitch._02_LightSwitchStatemachine;
 
 public class LightSwitch_02 {
 

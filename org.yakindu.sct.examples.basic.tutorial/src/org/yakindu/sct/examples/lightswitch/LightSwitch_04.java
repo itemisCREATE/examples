@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.yakindu.sct.examples.lightswitch_series.TimerService;
-import org.yakindu.sct.examples.lightswitch_series._04_lightswitch._04_LightSwitchStatemachine;
+import org.yakindu.sct.examples.basic.tutorial.TimerService;
+import org.yakindu.sct.examples.basic.tutorial._04_lightswitch._04_LightSwitchStatemachine;
 
 public class LightSwitch_04 {
 

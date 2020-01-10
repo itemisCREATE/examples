@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::xstate {
+
+	statechart wizardMachine {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.survey.xstate"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+	}
+}

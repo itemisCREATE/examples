@@ -1,6 +1,8 @@
 # Welcome to the YAKINDU Statechart Tools Examples Repository!
 
-This repository is hosting sample state machine models, code, instructions etc. for **YAKINDU Statechart Tools**, a tool suite to create and simulate state machines. Additionally, you use YAKINDU Statechart Tools to turn your state machines into source code of several programming languages.
+This repository is hosting examples for [**YAKINDU Statechart Tools**](https://www.itemis.com/en/yakindu/state-machine/).
+
+With YAKINDU Statechart Tools, you can easily create complex systems in a visual way. Simulate and test your system’s behavior already while you are modeling. Code generators translate your state machine into high-quality source code for different target platforms.
 
 You can browse [all examples on our website.](https://www.itemis.com/en/yakindu/statechart-tools/documentation/examples/)
 

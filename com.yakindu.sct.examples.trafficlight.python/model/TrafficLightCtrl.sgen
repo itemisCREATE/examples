@@ -3,7 +3,7 @@ GeneratorModel for yakindu::python {
 	statechart TrafficLightCtrl {
 
 		feature Outlet {
-			targetProject = "org.yakindu.sct.examples.trafficlight.python"
+			targetProject = "com.yakindu.sct.examples.trafficlight.python"
 			targetFolder = "src-gen"
 		}
 		

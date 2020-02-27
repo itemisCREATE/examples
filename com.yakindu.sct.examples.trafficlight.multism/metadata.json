@@ -1,0 +1,11 @@
+{
+	"id": "com.yakindu.sct.examples.trafficlight.multism",
+	"title": "Traffic Light with Multi State Machines",
+	"description": "This example of the traffic light control demonstrates how to model multiple state machines that communicate with each other.",
+	"previewImage": "traffic_light_thumb.jpg",
+	"author": "itemis AG",
+	"category": [
+		"professional",
+		"advanced"
+	]
+}

@@ -7,10 +7,6 @@ GeneratorModel for yakindu::python {
 			targetFolder = "src-gen"
 		}
 		
-		feature Naming {
-			basePackage = "traffic.light"
-		}
-		
 		feature GeneralFeatures {
 			DefaultTimer = true
 		}

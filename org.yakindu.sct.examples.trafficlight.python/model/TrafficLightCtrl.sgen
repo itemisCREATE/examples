@@ -10,9 +10,5 @@ GeneratorModel for yakindu::python {
 		feature GeneralFeatures {
 			DefaultTimer = true
 		}
-		
-		feature Naming {
-			basePackage = "traffic.light"
-		}
 	}
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Survey for TypeScript/JavaScript and React/XState</title>
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>Simple Survey for TypeScript/JavaScript and React/XState</h1>
+
+    <h2>Overview</h2>
+      <p>This is a simple example of the XState generator, which aims to replace the previously hand written statechart of <a href="https://codesandbox.io/s/xstate-react-form-example-crckp">this</a> project with a generated one.</p>
+      <p><img class="small" src="images/xstate_example_survey.PNG" /></p><h2 id="1">Wizard Machine Model</h2>
+
+      <p>The behavior of the survey is defined by a simple statechart that looks 
+      as follows.</p>
+      <p><img class="standard-image" src="images/statechart_image.PNG" /></p>
+
+    <h2 id="2">How to get from the statechart to a web app</h2>
+    <p>
+      1. Install Node/JS and the npm(Node Package Manager).
+    </p>
+    <p>
+      2. Install the packages 'react', 'react-dom', 'xstate', '@xstate/react', 'tsc'
+    </p>
+    <p>
+      3. Generate a working javascript file by firstly generating a typescript file of the statechart(right-click on the the 'wizardMachine.sgen -> Generate Code Artifacts).
+    </p>
+    <p>
+      4. The new 'wizardMachine.ts' file can now be edited at the specified functions at the bottom of the file.
+    </p>
+  </div>
+</body>
+</html>

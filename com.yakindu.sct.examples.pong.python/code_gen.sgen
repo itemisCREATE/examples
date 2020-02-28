@@ -1,0 +1,10 @@
+GeneratorModel for yakindu::python {
+
+	statechart pong_npc {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.pong.python"
+			targetFolder = ""
+		}
+	}
+}

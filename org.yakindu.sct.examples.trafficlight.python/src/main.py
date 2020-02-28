@@ -19,7 +19,7 @@ import sys, os
 path_to_statemachine = '../src-gen/traffic/light/TrafficLightCtrl'
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), path_to_statemachine)))
 from trafficlightctrl.trafficlightctrl_statemachine import TrafficLightCtrl
-from trafficlightctrl.timer.sct_timer import Timer
+from trafficlightctrl.timer.sct_timer import Timer 
 
 from traffic_scene import TrafficScene
 

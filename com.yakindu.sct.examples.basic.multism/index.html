@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Multi State Machines</title>
+	<link href="../css/style.css" rel="stylesheet">
+	<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Multi State Machines</h1>
+
+		<p>This example demonstrates the usage of multi state machines. For more details, please also refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/multi_state_machine_modelling">documentation</a>.</p>
+
+		<h2>Multi State Machine Modeling</h2>
+		<p>
+			Multi state machines allows to split up large, complex models into smaller once, which can be reused. Thus, complete systems can be modeled step by step in seperated components. Therefore, statechart files can finally be imported into other statecharts, as already supported in the C/C++ and Java domain.
+		</p> 
+		<p>
+			As a simple example take a LED with two states - On and Off. The user can define a controller to control the LED. Furthermore, multiple instances of the LED can be definied in variables. In this example the controller has two LED's, a green and a red one, which will toggle alternating.
+		</p>
+		<p>
+			<img class="small"
+			alt="Orthogonal regions on top level."
+			src="images/multism.gif" />
+		</p>
+		<h2>Importing State Machines</h2>
+		<p>
+			State machines can be imoported using the <code>import: ""</code> statement. Except cyclic dependencies, there are no restrictions, whereby models can be imported over more than one hierarchy.
+		</p>
+		<p>
+			Imagine three different state machines: <b>A</b>, <b>B</b>, <b>C</b>:
+		</p>
+		<p> 
+			The following dependency chain is allowed: <b>A</b> -> <b>B</b> -> <b>C</b> or <b>A</b> -> <b>C</b>
+		</p>
+		<p> 
+			The following dependency chain is <b>not</b> allowed: <b>A</b> -> <b>A</b> or <b>A</b> -> <b>B</b> -> <b>A</b>
+		</p>
+
+		<h2>Using State Machine Types</h2>
+
+		<p>
+			Importing allows the user to use the state machine as a type, which can be used for variables, operation parameters or even events. In this example the <b>led</b> type will be used:
+			<ul>
+				<li><code>var machine : led</code></li>
+				<li><code>operation myOp(param : led)</code></li>
+				<li><code>in/out event : led</code></li>
+			</ul>
+			With this apporach multiple instances of one state machine type can be created and used, which allows an easy, multiple reuse of existing models.
+		</p>
+		<p>
+			Defining a variable with a state machine type, allows the user to access the state machine's API, which are usually generated.
+			<ul>
+				<li><code>machine.enter()</code></li>
+				<li><code>machine.runCycle() //only for @CycleBased state machines</code></li>
+				<li><code>machine.isActive()</code></li>
+				<li><code>machine.isStateActive(state : ledStates)</code></li>
+				<li><code>machine.exit()</code></li>
+			</ul>
+		</p>
+
+	</div>
+</body>
+</html>

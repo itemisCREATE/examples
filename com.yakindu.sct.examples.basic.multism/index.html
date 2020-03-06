@@ -15,10 +15,10 @@
 
 		<h2>Multi State Machine Modeling</h2>
 		<p>
-			Multi state machines allows to split up large, complex models into smaller once, which can be reused. Thus, complete systems can be modeled step by step in seperated components. Therefore, statechart files can finally be imported into other statecharts, as already supported in the C/C++ and Java domain.
+			Using multiple state machines allows to split up large, complex models into smaller ones, which can be reused. Thus, complex systems can be modeled step by step in separated components. To achieve this, statecharts can import other statecharts and instantiate them.
 		</p> 
 		<p>
-			As a simple example take a LED with two states - On and Off. The user can define a controller to control the LED. Furthermore, multiple instances of the LED can be definied in variables. In this example the controller has two LED's, a green and a red one, which will toggle alternating.
+			As an example we will use a simple light controller that controls two LEDs. Each LED's behavior is defined by the same state machine. The controller uses this state machine twice: once for the red and once for the green LED. Both LED state machines are controlled separately to toggle the LEDs in an alternating fashion.
 		</p>
 		<p>
 			<img class="small"
@@ -27,7 +27,7 @@
 		</p>
 		<h2>Importing State Machines</h2>
 		<p>
-			State machines can be imoported using the <code>import: ""</code> statement. Except cyclic dependencies, there are no restrictions, whereby models can be imported over more than one hierarchy.
+			State machines can be imported using the <code>import: ""</code> statement. Except for cyclic dependencies, there are no restrictions, whereby models can be imported over more than one hierarchy.
 		</p>
 		<p>
 			Imagine three different state machines: <b>A</b>, <b>B</b>, <b>C</b>:
@@ -42,25 +42,36 @@
 		<h2>Using State Machine Types</h2>
 
 		<p>
-			Importing allows the user to use the state machine as a type, which can be used for variables, operation parameters or even events. In this example the <b>led</b> type will be used:
+			Importing allows the user to use the state machine as a type, which can be used for variables, operation parameters or even events. Following examples show possible usages of the <b>led</b> state machine type:
 			<ul>
 				<li><code>var machine : led</code></li>
 				<li><code>operation myOp(param : led)</code></li>
 				<li><code>in/out event : led</code></li>
 			</ul>
-			With this apporach multiple instances of one state machine type can be created and used, which allows an easy, multiple reuse of existing models.
+			With this approach, multiple instances of one state machine type can be created and used, which allows an easy, multiple reuse of existing models.
 		</p>
 		<p>
-			Defining a variable with a state machine type, allows the user to access the state machine's API, which are usually generated.
+			Defining a variable with a state machine type allows the user to access the state machine's API, which is usually generated.
 			<ul>
-				<li><code>machine.enter()</code></li>
-				<li><code>machine.runCycle() //only for @CycleBased state machines</code></li>
-				<li><code>machine.isActive()</code></li>
-				<li><code>machine.isStateActive(state : ledStates)</code></li>
-				<li><code>machine.exit()</code></li>
+				<li><code>machine.enter() // starts the state machine</code></li>
+				<li><code>machine.runCycle() //only for @CycleBased state machines, used to invoke a run-cycle step</code></li>
+				<li><code>machine.isActive() // true, if at least one state is active</code></li>
+				<li><code>machine.isStateActive(state : ledStates) // true, if given state is active</code></li>
+				<li><code>machine.exit() // stops the state machine</code></li>
 			</ul>
 		</p>
-
+		<p>
+			In order to communicate with a sub machine, its in events can be raised with the <code>raise</code> command, like in this example with <code>raise red.on</code>.
+		</p>
+		<p>
+			It is also possible to access a sub machine's interface members, like variables or operations.
+		</p>
+		
+		<h2>Simulating Multi State Machines</h2>
+		
+		<p>
+			In order to simulate a multi state machine scenario, just simulate the root machine, in this example the controller machine. Simulating the controller machine automatically sets the simulation up to also simulate all sub machines. These can be selected in the simulation view.
+		</p>
 	</div>
 </body>
 </html>

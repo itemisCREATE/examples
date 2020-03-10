@@ -1,0 +1,12 @@
+GeneratorModel for yakindu::c {
+
+	statechart blinky {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.stm32f407vg.blinky"
+			targetFolder = "Core/Src"
+			libraryTargetFolder = "Core/Inc"
+			apiTargetFolder = "Core/Inc"
+		}
+	}
+}

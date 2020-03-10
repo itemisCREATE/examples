@@ -1,0 +1,12 @@
+{
+	"id": "com.yakindu.sct.examples.stm32f407vg.blinky",
+	"title": "STM32F407 Discovery - Blinky LED (Deep C)",
+	"author": "itemis AG",
+	"description": "This is a simple example of how to use the C Domain together with a STM32F407 Discovery board. C Timer are integrated",
+	"previewImage": "stm_preview.jpg",
+	"category": [
+		"professional",
+		"c-domain",
+		"embedded"
+	]
+}

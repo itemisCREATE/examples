@@ -1,0 +1,22 @@
+GeneratorModel for yakindu::c {
+
+	statechart controller {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.stm32f407vg.multism.blinky"
+			targetFolder = "Core/Src"
+			libraryTargetFolder = "Core/Inc"
+			apiTargetFolder = "Core/Inc"
+		}
+	}
+	
+	statechart LED {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.stm32f407vg.multism.blinky"
+			targetFolder = "Core/Src"
+			libraryTargetFolder = "Core/Inc"
+			apiTargetFolder = "Core/Inc"
+		}
+	}
+}

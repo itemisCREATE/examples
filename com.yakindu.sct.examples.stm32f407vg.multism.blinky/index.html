@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>[Pro] STM32F407 Discovery Board using multi state machines with C integration</title>
+	<link href="../css/style.css" rel="stylesheet">
+	<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+		<h1>[Pro] STM32F407 Discovery Board using multi state machines with C integration</h1>
+		<p>
+			This is a example for multi state machines with the deep C integration of YAKINDU Statechart Tools. It shows the integration of SCT in other IDEs, e.g. the STM32CubeIDE. The underlying HAL headers can be imported and their functions can be called. Thus, an integration of complex application logic can be increased. Additionally, there are significant benefits using the multi state machines. Configurable designed statecharts as a component can be reused for various application. Reusing statecharts, which are already tested and in use, can significantly increase the application's quality. Moreover, changes must be handled only at one model, which allows bugs over more than one application.
+		</p>
+		<p><img
+			alt="Model"
+			src="images/stm.png" /></p> This simple state machine consists of two states, in which the LEDs are controlled. The initialization has been done with the integrated CubeMX tool. The LED state machine will be used as a submachine. It's configurable parameters will be set from the calling state machine. This allows the user to change the port and pin easily.
+			<img
+			alt="Model"
+			src="images/stm2.png" />
+			The controller declares the submachines as variables. Each LED (green, orange, red, blue) will be paramaterized by setting their port and pin. After this, the submachines get entered. For now on the controller can simply raise the events (on, off, toggle) on the submachines.
+
+
+			<h2>Getting started</h2>
+			<p>
+				As already mentioned, the configuration of the STM32F407VG has been realized with the CubeMX tool. The configuration can be adapted in the '.ioc' file. For this, a full installation of the STM32CubeIDE is required. You can find it <a href="https://www.st.com/en/development-tools/stm32cubeide.html">HERE</a>.
+			</p>
+			<p> 
+				After downloading and installing the STM32CubeIDE, YAKINDU Statechart Tools Pro must installed via update site. You can follow these <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/inst_installing_to_an_existing_eclipse_instance">STEPS</a>.
+			</p>
+			<h2>Configuration</h2>
+			<p> 
+				In this example the configuration is quite simple. Four pins, which are connected to the four mounted LEDs, are configured as ouputs. The clock is set to it's maximum of 168 MHz and the timer TIM5 works in interrupt mode, creating an interrupt every 1 ms, which is later on used for the timer.
+				<p><img
+					alt="Model"
+					src="images/stm_configuration.png" /></p>
+				</p>
+			</div>
+		</body>
+		</html>

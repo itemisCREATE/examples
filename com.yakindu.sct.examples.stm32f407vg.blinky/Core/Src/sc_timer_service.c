@@ -10,9 +10,6 @@
 
 #include "sc_timer_service.h"
 
-/*! \file Implementation of YAKINDU SCT timer functionality based on POSIX threads. */
-
-
 /*! Callback that is called when a timer fires. */
 static void sc_timer_fired(sc_timer_t *timer) {
 
@@ -105,9 +102,3 @@ void sc_timer_service_proceed(sc_timer_service_t *this, const sc_integer time_ms
 	}
 
 }
-
-
-
-
-
-

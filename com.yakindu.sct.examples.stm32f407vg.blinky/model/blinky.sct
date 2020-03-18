@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_lEq2kGIOEeqv2ab275S1aQ" specification="@EventDriven&#xA;&#xA;import: &#xA;&quot;main.h&quot;&#xA;&quot;stm32f4xx_hal_gpio.h&quot;&#xA;&quot;stm32f407xx.h&quot;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;interface:&#xA;var main : int8_t = SCT_MAIN&#xA;" name="blinky" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_lEq2kGIOEeqv2ab275S1aQ" specification="@EventDriven&#xA;&#xA;import: &#xA;&quot;main.h&quot;&#xA;&quot;stm32f4xx_hal_gpio.h&quot;&#xA;&quot;stm32f407xx.h&quot;&#xA;&#xA;&#xA;interface:&#xA;var main : int8_t = SCT_MAIN&#xA;" name="blinky" domainID="com.yakindu.domain.c">
     <regions xmi:id="_lE_msGIOEeqv2ab275S1aQ" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_lFWMAGIOEeqv2ab275S1aQ">
         <outgoingTransitions xmi:id="_lFbrkGIOEeqv2ab275S1aQ" specification="" target="_lFXaIGIOEeqv2ab275S1aQ"/>

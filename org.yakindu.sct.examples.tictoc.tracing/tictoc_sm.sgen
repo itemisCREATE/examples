@@ -1,0 +1,23 @@
+GeneratorModel for yakindu::c {
+
+	statechart tictoc {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.tictoc.tracing"
+			targetFolder = "sc"
+			libraryTargetFolder = "sc/base"
+		}	
+		
+		feature GeneratorOptions {
+			inEventQueue =  false 
+			userAllocatedQueue =  false 
+		}
+		
+		feature Tracing {
+			enterState = false
+			exitState = false
+			generic = true
+		}
+		
+	}
+}

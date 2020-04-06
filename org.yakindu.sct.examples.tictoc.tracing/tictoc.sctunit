@@ -1,0 +1,9 @@
+testclass tictoc for statechart tictoc {
+	
+	@Test
+	operation test() {
+		enter
+		
+		exit
+	}
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Qt/C++ State Machine of a Traffic Light</title>
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Qt/C++ State Machine of a Traffic Light</h1>
+		<p>
+			YAKINDU provides a Qt specific C++ code generator for statecharts. 
+			This example project shows how easy YAKINDU Qt/C++ state machines can be integrated 
+			into Qt applications. 
+		</p>
+
+		<h2>The traffic light application</h2>
+		<p>
+			The example application is a simple traffic light with a red, yellow, and green bulb. 
+			the traffic light automatically switches between these colors. Additionally there is a 
+			maintenance control that switches the traffic lights from normal operation to attention mode
+			and back. In attention mode the yellow light siply blinks.
+		</p>			
+		<img class= "tiny" alt="The traffic lights application" src="images/trafficlights.png" />
+
+			
+		<h2>Running the application</h2>
+		<p>
+			To get familiar with the example you may want to run the application. 
+			This Yakindu/Eclipse project includes a preconfigured Qt-Creator project including 
+			all required files. To run the included Qt application you require a Qt installation including its IDE. 
+			If you have everything installed then open the Qt project file <i>./implementation/trafficlight-qt-cpp.pro</i> 
+			in Qt-Creator. The configure the project, build, and run it. 
+		</p>
+		<p>
+			To run this example an installation of Qt is needed. It is
+			recommended to use the latest version, but at least <b>Qt 5.10.1</b>
+			with <b>Qt Creator 4.6.1</b>. We also recommend to use MinGW 5.3.0
+			and CMake for building the project when using Windows.
+		</p>
+		<p>
+			To check the compiler configuration, navigate to <i>'Tools > Options ... > Build & Run > Compilers'</i> in your Qt installation.
+		</p>
+
+		<p>
+			As soon as the application starts up you will see how the traffic light switches the colors starting with red. 
+			if you want to switch the modes simply press the <i>pause/play</i> button at the bottom right corner.
+		</p>
+
+		<h2>The application logic</h2>
+		<p>
+			The behavior of the traffic light is defined by the single statechart (at <I>model/TrafficLightStateMachine.sct</I>). 
+		</p>
+		<img width="80%" height="80%" alt="The statechart" src="images/trafficlights_sc.png" />
+		<p>
+			This statechart defines a set of in and out events that are used to interact wuth the application GUI. 
+			The out events like <I>redOn</I> or <I>redOff</I> are used to switch the traffic light colors. 
+			These out events will become Qt signals of the generated state machine class.
+			The in events <I>standBy</I> or <I>operate</I> switch between the two main states <I>operating</I> and 
+			<I>standby</I> of the traffic light. These in events will become Qt slots of the generated state machine class.
+			The different colors are switched within the entry and exit actions of the different states by raising the 
+			the different out events. The statechart defines to be event driven (see <i>@EventDriven</i> declaration). 
+			This implies that the in events instantly trigger state transition if they are raised through a connected signal. 
+		</p>
+
+		<h2>Integrating with Qt</h2>
+		<p>
+			As mentioned above the Qt specific flavor of the C++ code generator makes use of Qt signals and slots.
+			So the generated state machine can easily be integrated into Qt applications using this mechanism. 
+			Beside the fact that the generated class inherits from <i>QObject</i> also a <i>QTimer</i> based 
+			implementation of a timer service is generated if the statechart makes use of <i>after</i> 
+			or <i>every</i> time triggers. 
+			<i>implementation/main.cpp</i> includes the code that is required to set up the a state machine instance 
+			and to connect it to the GUI. This user interface is implemented using a simple QML defintion 
+			(<i>implementation/main.qml</i>). 			
+		</p>
+
+		<h2>Generating state machine code</h2>
+		<p>
+			Feel free to play around with the the traffic light and its statechart. 
+			When you modify the statechart the code generator will automatically run and 
+			regenerate the sources that you can find in the <i>implementation/machine</i> folder.
+			Also the synchronization between YAKINDU and Qt-Creator works painless. 
+			After generatimg the code Qt-Creator may ask you to synchronize the new versions of the 
+			implementation files. Simply confirm and rebuild the project - thats it.
+		</p>
+
+		<h2>Installing the Qt/C++ code generator</h2>
+		<p>
+			If code generation does not work and YAKINDU shows error markers on the 
+			<i>model/TrafficLightStateMachine.sgen</i> file then you likely have to install the 
+			YAKINDU Qt/C++ code generator. 
+			
+			<ol>
+				<li>Open <i>Help > Install New Software ...</i> from the menu.</li>
+				<li>Select the Yakindu Labs entry from the <i>Work with:</i> pull down list. 
+					If there is no such entry then
+					<ol>
+						<li>Choose <i>Add</i></li>
+						<li>Enter <i>http://updates.yakindu.com/statecharts/labs</i> in the <i>Location</i> 
+							field and optionally choose a name.</li>
+						<li>Press <i>OK</i>.</li>
+					</ol>
+				</li>
+				<li>Unfold the top level node and check the Qt/C++ code generator feature.</li>
+				<li>Finish the installation wizard by choosing <i>Next ></i> until finished.</li>
+				<li>Restart.</li>
+			</ol>
+			
+			may need 		Feel free to play around with the the traffic light and its statechart. 
+			When you modify the statechart the code generator will automatically run and 
+			regenerate the sources that you can find in the <i>implementation/machine</i> folder.
+			Also the synchronization between YAKINDU and Qt-Creator works painless. 
+			After generatimg the code Qt-Creator may ask you to synchronize the new versions of the 
+			implementation files. Simply confirm and rebuild the project - thats it.
+		</p>
+
+
+	</div>
+</body>
+</html>

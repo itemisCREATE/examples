@@ -1,0 +1,17 @@
+{
+	"id": "org.yakindu.sct.examples.tictoc.tracing",
+	"title": "TicToc - Tracing & Remote Control (C)",
+	"description": "YAKINDU provides infrastructure for debugging and remote controlling the state machines using execution traces (YET).",
+	"previewImage": "yet_target_trace_debugging.png",
+    "author": "itemis AG",
+    "license": "GNU Free Documentation License version 1.3",
+	"category": ["labs",
+		"advanced"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://updates.yakindu.com/statecharts/labs",
+			"features": ["com.yakindu.sct.yet.feature.feature.group"]
+		}
+	]
+}

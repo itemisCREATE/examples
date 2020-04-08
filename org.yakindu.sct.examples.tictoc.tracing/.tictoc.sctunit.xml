@@ -1,0 +1,5 @@
+<testsuite name="tictoc" time="">
+  <testcase name="test" classname="platform:/resource/org.yakindu.sct.examples.tictoc.tracing/tictoc.sctunit#tictoc.test" time="">
+    <failure>Test failed due to 'java.lang.IllegalArgumentException': "Could not read trace file: org.yakindu.sct.examples.tictoc.tracing/trace.yet"</failure>
+  </testcase>
+</testsuite>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Qt/C++ State Machine of a Traffic Light</title>
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Debug and remote control state machines using YET</h1>
+		<p>
+			The YAKINDU Execution Trace (YET) infrastructure supports interoperability between 
+			state machines running in a target application and the YAKINDU tooling. 
+			It supports model-level debugging and testing of the state machines based on execution traces. 
+			This example shows how to remote debug a compiled state machine step by step. Please refer to the 
+			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a> for more information.
+		</p>
+
+		<img class= "tiny" alt="Debugging the target using traces" src="images/yet_target_trace_debugging.png" />
+
+		<h2>The Tic-Toc example application</h2>
+		<p>
+			The example state machine is simple has no specific sematics. It simply highlights 
+			how to use YET. The state machine is has two states <i>Idle</i> and <i>Playing</i>.
+			The single input event <i>toggle</i> switches between these two events. Within <i>Playing</i> 
+			state the state machine automatically switches between the states <i>Tic</i> and <i>Toc</i>
+			and raises out events <i>tic</i> and <i>toc</i> respectivley when entering these states. 
+			The time interval between state changes is defined by the variable <i>delay</i>.
+		</p>			
+		<img class= "small" alt="Remote debugging a statechart" src="images/tictoc_debugging.png" />
+
+		<p>
+			This state machine is executed within an interactive application. This application can be used 
+			from the command line. It reads user input from the standard input and writes to the standard output.
+			It is build to run on the host machine. If you have to integrate YET into your application 
+			then you can use the example code as a template. 
+		</p>
+			
+		<h2>Building the application</h2>
+		<p>
+			The example project is a Eclipse CDT project. Configure your platform specific compiler tool chain 
+			in the project properties. The example comes with generated state machine code. Of course you can 
+			change the statechart. In that case you have to regenerate the state machine and tracing code. 
+			With automted build switched on this happens automatically else you have to generate code from the 
+			two <i>sgen</i> files manually by selecting <i>Generate Code Artefacts</i> from the file entries context menu. 
+		</p>
+
+		<h2>Running the application</h2>
+		<p>
+			When everything is built properly then you can simply run the executable from Eclipse 
+			( on project entry select <i>Run As > Local C/C++ Application</i>) or from the terminal. 
+			You will see this output.
+		</p>
+
+		<pre>
+Sending to 127.0.0.1:4444
+Welcome to Tictoc! Press:
+'t' to toggle tictoc idle state
+'+' to increase tictoc delay
+'-' to decrease tictoc delay
+'l' to enable or disable log
+'u' to disable or enable udp tracing
+'h' for this help
+... followed by ENTER.
+
+
+send: %tictoc@Enter,1
+send: #2,tictoc@tev.0.Set
+send: #2,tictoc.b,t
+send: #2,tictoc.i,42.000000
+send: #2,tictoc@StateEntered,main.Idle
+		</pre>
+
+		<p>
+			The first block includes just some output from the application during start up. 
+			This includes instructions how to interact with teh application from the command line.
+			The second block is the log output of trace events which are emitted by the state machine.
+			Simply play around with the different input options. 
+		</p>
+		<p>
+			In addition to what you see on the console the application sends the trace events to the 
+			configured socket using UDP and also writes these to the file <i>trace.yet</i> 
+		</p>
+
+		<h2>Debugging the statemachine trace</h2>
+		<p>
+			Debugging a statechart YET trace is simple. Within a statechart editor or on the model file entry 
+			in the project explorer choose <i>Run As > Statechart Trace Debugging</i> from the context menu. 
+		</p>
+
+		<img class= "small" alt="Starting a trace debug session" src="images/yet_launch_trace_debugging.png" />
+		
+		<p>
+			This will launch the trace debugger and by default will try to read the execution trace from the 
+			file <i>trace.yet</i> from the root of the project folder. If it is not already in place then create 
+			this trace file e.g. by starting the application with enabled YET file tracing. 
+			The UI of the trace debugger is identical to the regular simulation UI. 
+			If you want to choose a different trace file you have to reconfigure the run configuration which was 
+			created by the <i>Run As > Statechart Trace Debugging</i> action. To do this choose <i>Run As > Run Configurations…</i> 
+			from the context menu. The <i>Run Configurations</i> dialog pops up and choose the proper entry 
+			in the category <i>Trace Debugging</i>. The tab <i>Statechart Trace</i> provides several configuration options.
+
+			First the instance name is used to distinguish between multiple running instances of the same state machine 
+			if multiple state machines are executed on the target and if they share a common trace channel. 
+			The default is just the name of the statechart model.
+
+			The obviously most important option is how you want to read or receive traces. It is possible to choose one of 
+			three trace provider:
+
+			<ul>
+				<li> <i>Read trace from file</i> - supports to configure what file should be used.</li>
+				<li> <i>Read trace from UDP socket</i> - opens a UDP socket on the local machine with a configurable 
+					port (default 444). The physical trace channel on the embedded target can connect to this port to 
+					setup a bidirectional communication channel.</li>
+				<li> <i>Read trace from TCP socket</i> - uses TCP instead of UDP to setup a bidirectional 
+					communication channel and can be configured in the same way.The default port is 8444.</li>
+			</ul>
+
+			If UDP or TCP based YET streams are used then the debugging UI supports raising events and modifying statechart 
+			variables. 
+		</p>
+
+		<img class= "small" alt="Configuration of trace debug session" src="images/yet_configure_trace_debugging.png" />
+
+		<p>
+			After that click <i>Apply</i> and <i>Run</i>. The trace debugger UI will be activated. If UDP or TCP trace provider 
+			are used then no active statechart state may be highlighted in the Debugger UI. This is always the case if no 
+			remote target is connected or if the statechart is not yet activated on the remote target. 
+		</p>
+
+		<h2>Integrating YET into your application</h2>
+		<p>
+			As stated before some manual implementation steps are required to enable your application for YET tracing. 
+			Please feel free to reuse the implementation of this example and take a closer look at the 
+			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a>
+		</p>
+
+		<h2>Installing YET support</h2>
+		<p>
+			If you cant find the YET extensions in YAKINDU SCT and if the the code generation for the tracer does not work 
+			then you likely have to install the YET feature. 
+			
+			<ol>
+				<li>Open <i>Help > Install New Software ...</i> from the menu.</li>
+				<li>Select the Yakindu Labs entry from the <i>Work with:</i> pull down list. 
+					If there is no such entry then
+					<ol>
+						<li>Choose <i>Add</i></li>
+						<li>Enter <i>http://updates.yakindu.com/statecharts/labs</i> in the <i>Location</i> 
+							field and optionally choose a name.</li>
+						<li>Press <i>OK</i>.</li>
+					</ol>
+				</li>
+				<li>Unfold the top level node and check the YET feature.</li>
+				<li>Finish the installation wizard by choosing <i>Next ></i> until finished.</li>
+				<li>Restart.</li>
+			</ol>
+		</p>
+
+	</div>
+</body>
+</html>

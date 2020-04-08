@@ -4,8 +4,7 @@
 		
 sc_string TictocMeta_feature_names[] = {
 	"<nothing>",
-	"start",
-	"stop",
+	"toggle",
 	"tic",
 	"toc",
 	"count",

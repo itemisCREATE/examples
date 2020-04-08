@@ -25,6 +25,7 @@ static void sc_timer_fired(sc_timer_t *timer) {
 void sc_timer_start(sc_timer_service_t *this, void* handle, const sc_eventid evid,
 		const sc_integer time_ms, const sc_boolean periodic) {
 
+	//printf("start timer : %d\n", time_ms);
 
 	/* go through all timers ... */
 	for (int i = 0; i < this->timer_count; i++) {
@@ -52,10 +53,13 @@ void sc_timer_start(sc_timer_service_t *this, void* handle, const sc_eventid evi
 /*! Cancels a timer for the specified time event. */
 void sc_timer_cancel(sc_timer_service_t *this, const sc_eventid evid) {
 
+
 	int i;
 
 	for (i = 0; i < this->timer_count; i++) {
 		if (this->timers[i].pt_evid == evid) {
+
+			//printf("stop timer : %d\n", this->timers[i].time_ms);
 
 			this->timers[i].pt_evid = NULL;
 			this->timers[i].handle = NULL;
@@ -84,6 +88,7 @@ void sc_timer_service_init(sc_timer_service_t *tservice,
 
 
 void sc_timer_service_proceed(sc_timer_service_t *this, const sc_integer time_ms) {
+	//printf("proceed time : %d\n", time_ms);
 
 	/* go through all timers ... */
 	for (int i = 0; i < this->timer_count; i++) {
@@ -95,6 +100,8 @@ void sc_timer_service_proceed(sc_timer_service_t *this, const sc_integer time_ms
 				this->timers[i].elapsed_time_ms += time_ms;
 
 				if (this->timers[i].elapsed_time_ms >= this->timers[i].time_ms) {
+
+					//printf("fire timer : %d\n", this->timers[i].time_ms);
 					sc_timer_fired(&(this->timers[i]));
 					if (this->timers[i].periodic) {
 						this->timers[i].elapsed_time_ms -= this->timers[i].time_ms;

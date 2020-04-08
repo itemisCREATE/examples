@@ -10,11 +10,16 @@
 /*! \file Implementation of the state machine 'tictoc'
 */
 
+#ifndef SC_UNUSED
 #define SC_UNUSED(P) (void)(P)
+#endif
 /* prototypes of all internal functions */
 static void enact_main_Idle(Tictoc* handle);
+static void enact_main_Playing(Tictoc* handle);
 static void enact_main_Playing_active_Tic(Tictoc* handle);
 static void enact_main_Playing_active_Toc(Tictoc* handle);
+static void exact_main_Idle(Tictoc* handle);
+static void exact_main_Playing(Tictoc* handle);
 static void exact_main_Playing_active_Tic(Tictoc* handle);
 static void exact_main_Playing_active_Toc(Tictoc* handle);
 static void enseq_main_Idle_default(Tictoc* handle);
@@ -67,7 +72,7 @@ void tictoc_initWithTracing(Tictoc* handle, sc_trace_handler *trace_handler)
 	/* Default init sequence for statechart tictoc */
 	handle->iface.count = 0;
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_count, &handle->iface.count);
-	handle->iface.delay = 5000;
+	handle->iface.delay = 2000;
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_delay, &handle->iface.delay);
 	handle->iface.x = 5;
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_x, &handle->iface.x);
@@ -197,8 +202,9 @@ sc_boolean tictoc_isStateActive(const Tictoc* handle, TictocStates state)
 
 static void clearInEvents(Tictoc* handle)
 {
-	handle->iface.start_raised = bool_false;
-	handle->iface.stop_raised = bool_false;
+	handle->iface.toggle_raised = bool_false;
+	handle->timeEvents.tictoc_main_Idle_tev0_raised = bool_false;
+	handle->timeEvents.tictoc_main_Playing_tev0_raised = bool_false;
 	handle->timeEvents.tictoc_main_Playing_active_Tic_tev0_raised = bool_false;
 	handle->timeEvents.tictoc_main_Playing_active_Toc_tev0_raised = bool_false;
 }
@@ -209,18 +215,10 @@ static void clearOutEvents(Tictoc* handle)
 	handle->iface.toc_raised = bool_false;
 }
 
-void tictocIface_raise_start(Tictoc* handle)
+void tictocIface_raise_toggle(Tictoc* handle)
 {
-	SC_TRACE_FEATURE(handle, sc_trace_event_raised, tictocIface_start, sc_null)
-	handle->iface.start_raised = bool_true;
-	
-	tictoc_runCycle(handle);
-}
-
-void tictocIface_raise_stop(Tictoc* handle)
-{
-	SC_TRACE_FEATURE(handle, sc_trace_event_raised, tictocIface_stop, sc_null)
-	handle->iface.stop_raised = bool_true;
+	SC_TRACE_FEATURE(handle, sc_trace_event_raised, tictocIface_toggle, sc_null)
+	handle->iface.toggle_raised = bool_true;
 	
 	tictoc_runCycle(handle);
 }
@@ -289,10 +287,21 @@ void tictocIfaceFoo_set_y(Tictoc* handle, sc_integer value)
 static void enact_main_Idle(Tictoc* handle)
 {
 	/* Entry action for state 'Idle'. */
+	tictoc_setTimer(handle, (sc_eventid) &(handle->timeEvents.tictoc_main_Idle_tev0_raised) , (20 * 1000), bool_false);
+	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_set, 0);
 	handle->iface.b = bool_true;
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_b, &handle->iface.b);
 	handle->internal.i = 42;
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_i, &handle->internal.i);
+}
+
+/* Entry action for state 'Playing'. */
+static void enact_main_Playing(Tictoc* handle)
+{
+	/* Entry action for state 'Playing'. */
+	tictoc_setTimer(handle, (sc_eventid) &(handle->timeEvents.tictoc_main_Playing_tev0_raised) , (20 * 1000), bool_false);
+	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_set, 1);
+	SC_UNUSED(handle);
 }
 
 /* Entry action for state 'Tic'. */
@@ -300,7 +309,7 @@ static void enact_main_Playing_active_Tic(Tictoc* handle)
 {
 	/* Entry action for state 'Tic'. */
 	tictoc_setTimer(handle, (sc_eventid) &(handle->timeEvents.tictoc_main_Playing_active_Tic_tev0_raised) , handle->iface.delay, bool_false);
-	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_set, 0);
+	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_set, 2);
 	handle->iface.tic_raised = bool_true;
 	SC_TRACE_FEATURE(handle, sc_trace_event_raised, tictocIface_tic, sc_null);
 }
@@ -310,11 +319,29 @@ static void enact_main_Playing_active_Toc(Tictoc* handle)
 {
 	/* Entry action for state 'Toc'. */
 	tictoc_setTimer(handle, (sc_eventid) &(handle->timeEvents.tictoc_main_Playing_active_Toc_tev0_raised) , handle->iface.delay, bool_false);
-	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_set, 1);
+	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_set, 3);
 	handle->iface.toc_raised = bool_true;
 	SC_TRACE_FEATURE(handle, sc_trace_event_raised, tictocIface_toc, sc_null);
 	handle->iface.x += 1;
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_x, &handle->iface.x);
+}
+
+/* Exit action for state 'Idle'. */
+static void exact_main_Idle(Tictoc* handle)
+{
+	/* Exit action for state 'Idle'. */
+	tictoc_unsetTimer(handle, (sc_eventid) &(handle->timeEvents.tictoc_main_Idle_tev0_raised) );		
+	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_unset, 0);
+	SC_UNUSED(handle);
+}
+
+/* Exit action for state 'Playing'. */
+static void exact_main_Playing(Tictoc* handle)
+{
+	/* Exit action for state 'Playing'. */
+	tictoc_unsetTimer(handle, (sc_eventid) &(handle->timeEvents.tictoc_main_Playing_tev0_raised) );		
+	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_unset, 1);
+	SC_UNUSED(handle);
 }
 
 /* Exit action for state 'Tic'. */
@@ -322,7 +349,7 @@ static void exact_main_Playing_active_Tic(Tictoc* handle)
 {
 	/* Exit action for state 'Tic'. */
 	tictoc_unsetTimer(handle, (sc_eventid) &(handle->timeEvents.tictoc_main_Playing_active_Tic_tev0_raised) );		
-	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_unset, 0);
+	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_unset, 2);
 	handle->iface.count = (handle->iface.count + 1);
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_count, &handle->iface.count);
 }
@@ -332,7 +359,7 @@ static void exact_main_Playing_active_Toc(Tictoc* handle)
 {
 	/* Exit action for state 'Toc'. */
 	tictoc_unsetTimer(handle, (sc_eventid) &(handle->timeEvents.tictoc_main_Playing_active_Toc_tev0_raised) );		
-	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_unset, 1);
+	SC_TRACE_TIME_EVENT(handle, sc_trace_time_event_unset, 3);
 	SC_UNUSED(handle);
 }
 
@@ -350,6 +377,7 @@ static void enseq_main_Idle_default(Tictoc* handle)
 static void enseq_main_Playing_default(Tictoc* handle)
 {
 	/* 'default' enter sequence for state Playing */
+	enact_main_Playing(handle);
 	SC_TRACE_STATE(handle, sc_trace_state_entered, Tictoc_main_Playing);
 	enseq_main_Playing_active_default(handle);
 }
@@ -394,8 +422,8 @@ static void exseq_main_Idle(Tictoc* handle)
 	/* Default exit sequence for state Idle */
 	handle->stateConfVector[0] = Tictoc_last_state;
 	handle->stateConfVectorPosition = 0;
+	exact_main_Idle(handle);
 	SC_TRACE_STATE(handle, sc_trace_state_exited, Tictoc_main_Idle);
-	SC_UNUSED(handle);
 }
 
 /* Default exit sequence for state Playing */
@@ -403,6 +431,7 @@ static void exseq_main_Playing(Tictoc* handle)
 {
 	/* Default exit sequence for state Playing */
 	exseq_main_Playing_active(handle);
+	exact_main_Playing(handle);
 	SC_TRACE_STATE(handle, sc_trace_state_exited, Tictoc_main_Playing);
 }
 
@@ -441,12 +470,14 @@ static void exseq_main(Tictoc* handle)
 		case Tictoc_main_Playing_active_Tic :
 		{
 			exseq_main_Playing_active_Tic(handle);
+			exact_main_Playing(handle);
 			SC_TRACE_STATE(handle, sc_trace_state_exited, Tictoc_main_Playing);
 			break;
 		}
 		case Tictoc_main_Playing_active_Toc :
 		{
 			exseq_main_Playing_active_Toc(handle);
+			exact_main_Playing(handle);
 			SC_TRACE_STATE(handle, sc_trace_state_exited, Tictoc_main_Playing);
 			break;
 		}
@@ -500,7 +531,7 @@ static sc_boolean main_Idle_react(Tictoc* handle, const sc_boolean try_transitio
 	sc_boolean did_transition = try_transition;
 	if (try_transition == bool_true)
 	{ 
-		if (handle->iface.start_raised == bool_true)
+		if ((handle->iface.toggle_raised == bool_true) || (handle->timeEvents.tictoc_main_Idle_tev0_raised == bool_true))
 		{ 
 			exseq_main_Idle(handle);
 			enseq_main_Playing_default(handle);
@@ -522,7 +553,7 @@ static sc_boolean main_Playing_react(Tictoc* handle, const sc_boolean try_transi
 	sc_boolean did_transition = try_transition;
 	if (try_transition == bool_true)
 	{ 
-		if (handle->iface.stop_raised == bool_true)
+		if ((handle->iface.toggle_raised == bool_true) || (handle->timeEvents.tictoc_main_Playing_tev0_raised == bool_true))
 		{ 
 			exseq_main_Playing(handle);
 			enseq_main_Idle_default(handle);

@@ -9,89 +9,138 @@
 <body class="body-container">
 	<div class="primary">
 
-		<h1>Qt/C++ State Machine of a Traffic Light</h1>
+		<h1>Debug and remote control state machines using YET</h1>
 		<p>
-			YAKINDU provides a Qt specific C++ code generator for statecharts. 
-			This example project shows how easy YAKINDU Qt/C++ state machines can be integrated 
-			into Qt applications. 
+			The YAKINDU Execution Trace (YET) infrastructure supports interoperability between 
+			state machines running in a target application and the YAKINDU tooling. 
+			It supports model-level debugging and testing of the state machines based on execution traces. 
+			This example shows how to remote debug a compiled state machine step by step. Please refer to the 
+			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a> for more information.
 		</p>
 
-		<h2>The traffic light application</h2>
-		<p>
-			The example application is a simple traffic light with a red, yellow, and green bulb. 
-			the traffic light automatically switches between these colors. Additionally there is a 
-			maintenance control that switches the traffic lights from normal operation to attention mode
-			and back. In attention mode the yellow light siply blinks.
-		</p>			
-		<img class= "tiny" alt="The traffic lights application" src="images/trafficlights.png" />
+		<img class= "tiny" alt="Debugging the target using traces" src="images/yet_target_trace_debugging.png" />
 
+		<h2>The Tic-Toc example application</h2>
+		<p>
+			The example state machine is simple has no specific sematics. It simply highlights 
+			how to use YET. The state machine is has two states <i>Idle</i> and <i>Playing</i>.
+			The single input event <i>toggle</i> switches between these two events. Within <i>Playing</i> 
+			state the state machine automatically switches between the states <i>Tic</i> and <i>Toc</i>
+			and raises out events <i>tic</i> and <i>toc</i> respectivley when entering these states. 
+			The time interval between state changes is defined by the variable <i>delay</i>.
+		</p>			
+		<img class= "small" alt="Remote debugging a statechart" src="images/tictoc_debugging.png" />
+
+		<p>
+			This state machine is executed within an interactive application. This application can be used 
+			from the command line. It reads user input from the standard input and writes to the standard output.
+			It is build to run on the host machine. If you have to integrate YET into your application 
+			then you can use the example code as a template. 
+		</p>
 			
+		<h2>Building the application</h2>
+		<p>
+			The example project is a Eclipse CDT project. Configure your platform specific compiler tool chain 
+			in the project properties. The example comes with generated state machine code. Of course you can 
+			change the statechart. In that case you have to regenerate the state machine and tracing code. 
+			With automted build switched on this happens automatically else you have to generate code from the 
+			two <i>sgen</i> files manually by selecting <i>Generate Code Artefacts</i> from the file entries context menu. 
+		</p>
+
 		<h2>Running the application</h2>
 		<p>
-			To get familiar with the example you may want to run the application. 
-			This Yakindu/Eclipse project includes a preconfigured Qt-Creator project including 
-			all required files. To run the included Qt application you require a Qt installation including its IDE. 
-			If you have everything installed then open the Qt project file <i>./implementation/trafficlight-qt-cpp.pro</i> 
-			in Qt-Creator. The configure the project, build, and run it. 
-		</p>
-		<p>
-			To run this example an installation of Qt is needed. It is
-			recommended to use the latest version, but at least <b>Qt 5.10.1</b>
-			with <b>Qt Creator 4.6.1</b>. We also recommend to use MinGW 5.3.0
-			and CMake for building the project when using Windows.
-		</p>
-		<p>
-			To check the compiler configuration, navigate to <i>'Tools > Options ... > Build & Run > Compilers'</i> in your Qt installation.
+			When everything is built properly then you can simply run the executable from Eclipse 
+			( on project entry select <i>Run As > Local C/C++ Application</i>) or from the terminal. 
+			You will see this output.
 		</p>
 
+		<pre>
+Sending to 127.0.0.1:4444
+Welcome to Tictoc! Press:
+'t' to toggle tictoc idle state
+'+' to increase tictoc delay
+'-' to decrease tictoc delay
+'l' to enable or disable log
+'u' to disable or enable udp tracing
+'h' for this help
+... followed by ENTER.
+
+
+send: %tictoc@Enter,1
+send: #2,tictoc@tev.0.Set
+send: #2,tictoc.b,t
+send: #2,tictoc.i,42.000000
+send: #2,tictoc@StateEntered,main.Idle
+		</pre>
+
 		<p>
-			As soon as the application starts up you will see how the traffic light switches the colors starting with red. 
-			if you want to switch the modes simply press the <i>pause/play</i> button at the bottom right corner.
+			The first block includes just some output from the application during start up. 
+			This includes instructions how to interact with teh application from the command line.
+			The second block is the log output of trace events which are emitted by the state machine.
+			Simply play around with the different input options. 
+		</p>
+		<p>
+			In addition to what you see on the console the application sends the trace events to the 
+			configured socket using UDP and also writes these to the file <i>trace.yet</i> 
 		</p>
 
-		<h2>The application logic</h2>
+		<h2>Debugging the statemachine trace</h2>
 		<p>
-			The behavior of the traffic light is defined by the single statechart (at <I>model/TrafficLightStateMachine.sct</I>). 
-		</p>
-		<img width="80%" height="80%" alt="The statechart" src="images/trafficlights_sc.png" />
-		<p>
-			This statechart defines a set of in and out events that are used to interact wuth the application GUI. 
-			The out events like <I>redOn</I> or <I>redOff</I> are used to switch the traffic light colors. 
-			These out events will become Qt signals of the generated state machine class.
-			The in events <I>standBy</I> or <I>operate</I> switch between the two main states <I>operating</I> and 
-			<I>standby</I> of the traffic light. These in events will become Qt slots of the generated state machine class.
-			The different colors are switched within the entry and exit actions of the different states by raising the 
-			the different out events. The statechart defines to be event driven (see <i>@EventDriven</i> declaration). 
-			This implies that the in events instantly trigger state transition if they are raised through a connected signal. 
+			Debugging a statechart YET trace is simple. Within a statechart editor or on the model file entry 
+			in the project explorer choose <i>Run As > Statechart Trace Debugging</i> from the context menu. 
 		</p>
 
-		<h2>Integrating with Qt</h2>
+		<img class= "small" alt="Starting a trace debug session" src="images/yet_launch_trace_debugging.png" />
+		
 		<p>
-			As mentioned above the Qt specific flavor of the C++ code generator makes use of Qt signals and slots.
-			So the generated state machine can easily be integrated into Qt applications using this mechanism. 
-			Beside the fact that the generated class inherits from <i>QObject</i> also a <i>QTimer</i> based 
-			implementation of a timer service is generated if the statechart makes use of <i>after</i> 
-			or <i>every</i> time triggers. 
-			<i>implementation/main.cpp</i> includes the code that is required to set up the a state machine instance 
-			and to connect it to the GUI. This user interface is implemented using a simple QML defintion 
-			(<i>implementation/main.qml</i>). 			
+			This will launch the trace debugger and by default will try to read the execution trace from the 
+			file <i>trace.yet</i> from the root of the project folder. If it is not already in place then create 
+			this trace file e.g. by starting the application with enabled YET file tracing. 
+			The UI of the trace debugger is identical to the regular simulation UI. 
+			If you want to choose a different trace file you have to reconfigure the run configuration which was 
+			created by the <i>Run As > Statechart Trace Debugging</i> action. To do this choose <i>Run As > Run Configurations…</i> 
+			from the context menu. The <i>Run Configurations</i> dialog pops up and choose the proper entry 
+			in the category <i>Trace Debugging</i>. The tab <i>Statechart Trace</i> provides several configuration options.
+
+			First the instance name is used to distinguish between multiple running instances of the same state machine 
+			if multiple state machines are executed on the target and if they share a common trace channel. 
+			The default is just the name of the statechart model.
+
+			The obviously most important option is how you want to read or receive traces. It is possible to choose one of 
+			three trace provider:
+
+			<ul>
+				<li> <i>Read trace from file</i> - supports to configure what file should be used.</li>
+				<li> <i>Read trace from UDP socket</i> - opens a UDP socket on the local machine with a configurable 
+					port (default 444). The physical trace channel on the embedded target can connect to this port to 
+					setup a bidirectional communication channel.</li>
+				<li> <i>Read trace from TCP socket</i> - uses TCP instead of UDP to setup a bidirectional 
+					communication channel and can be configured in the same way.The default port is 8444.</li>
+			</ul>
+
+			If UDP or TCP based YET streams are used then the debugging UI supports raising events and modifying statechart 
+			variables. 
 		</p>
 
-		<h2>Generating state machine code</h2>
+		<img class= "small" alt="Configuration of trace debug session" src="images/yet_configure_trace_debugging.png" />
+
 		<p>
-			Feel free to play around with the the traffic light and its statechart. 
-			When you modify the statechart the code generator will automatically run and 
-			regenerate the sources that you can find in the <i>implementation/machine</i> folder.
-			Also the synchronization between YAKINDU and Qt-Creator works painless. 
-			After generatimg the code Qt-Creator may ask you to synchronize the new versions of the 
-			implementation files. Simply confirm and rebuild the project - thats it.
+			After that click <i>Apply</i> and <i>Run</i>. The trace debugger UI will be activated. If UDP or TCP trace provider 
+			are used then no active statechart state may be highlighted in the Debugger UI. This is always the case if no 
+			remote target is connected or if the statechart is not yet activated on the remote target. 
 		</p>
 
-		<h2>Installing the Qt/C++ code generator</h2>
+		<h2>Integrating YET into your application</h2>
 		<p>
-			If code generation does not work and YAKINDU shows error markers on the 
-			<i>model/TrafficLightStateMachine.sgen</i> file then you likely have to install the 
-			YAKINDU Qt/C++ code generator. 
+			As stated before some manual implementation steps are required to enable your application for YET tracing. 
+			Please feel free to reuse the implementation of this example and take a closer look at the 
+			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a>
+		</p>
+
+		<h2>Installing YET support</h2>
+		<p>
+			If you cant find the YET extensions in YAKINDU SCT and if the the code generation for the tracer does not work 
+			then you likely have to install the YET feature. 
 			
 			<ol>
 				<li>Open <i>Help > Install New Software ...</i> from the menu.</li>
@@ -104,19 +153,11 @@
 						<li>Press <i>OK</i>.</li>
 					</ol>
 				</li>
-				<li>Unfold the top level node and check the Qt/C++ code generator feature.</li>
+				<li>Unfold the top level node and check the YET feature.</li>
 				<li>Finish the installation wizard by choosing <i>Next ></i> until finished.</li>
 				<li>Restart.</li>
 			</ol>
-			
-			may need 		Feel free to play around with the the traffic light and its statechart. 
-			When you modify the statechart the code generator will automatically run and 
-			regenerate the sources that you can find in the <i>implementation/machine</i> folder.
-			Also the synchronization between YAKINDU and Qt-Creator works painless. 
-			After generatimg the code Qt-Creator may ask you to synchronize the new versions of the 
-			implementation files. Simply confirm and rebuild the project - thats it.
 		</p>
-
 
 	</div>
 </body>

@@ -24,7 +24,7 @@ extern "C" {
 #define TICTOC_MAX_ORTHOGONAL_STATES 1
 
 /*! Define maximum number of time events that can be active at once */
-#define TICTOC_MAX_PARALLEL_TIME_EVENTS 1
+#define TICTOC_MAX_PARALLEL_TIME_EVENTS 2
 
 /*! Define indices of states in the StateConfVector */
 #define SCVI_TICTOC_MAIN_IDLE 0
@@ -48,8 +48,7 @@ typedef enum
 typedef enum
 {
 	tictoc_no_feature = SC_NO_EVENT,
-	tictocIface_start,
-	tictocIface_stop,
+	tictocIface_toggle,
 	tictocIface_tic,
 	tictocIface_toc,
 	tictocIface_count,
@@ -63,8 +62,7 @@ typedef enum
 /*! Type definition of the data structure for the TictocIface interface scope. */
 typedef struct
 {
-	sc_boolean start_raised;
-	sc_boolean stop_raised;
+	sc_boolean toggle_raised;
 	sc_boolean tic_raised;
 	sc_boolean toc_raised;
 	sc_integer count;
@@ -94,6 +92,8 @@ typedef struct
 /*! Type definition of the data structure for the TictocTimeEvents interface scope. */
 typedef struct
 {
+	sc_boolean tictoc_main_Idle_tev0_raised;
+	sc_boolean tictoc_main_Playing_tev0_raised;
 	sc_boolean tictoc_main_Playing_active_Tic_tev0_raised;
 	sc_boolean tictoc_main_Playing_active_Toc_tev0_raised;
 } TictocTimeEvents;
@@ -138,11 +138,8 @@ extern void tictoc_runCycle(Tictoc* handle);
 /*! Raises a time event. */
 extern void tictoc_raiseTimeEvent(Tictoc* handle, sc_eventid evid);
 
-/*! Raises the in event 'start' that is defined in the default interface scope. */ 
-extern void tictocIface_raise_start(Tictoc* handle);
-
-/*! Raises the in event 'stop' that is defined in the default interface scope. */ 
-extern void tictocIface_raise_stop(Tictoc* handle);
+/*! Raises the in event 'toggle' that is defined in the default interface scope. */ 
+extern void tictocIface_raise_toggle(Tictoc* handle);
 
 /*! Checks if the out event 'tic' that is defined in the default interface scope has been raised. */ 
 extern sc_boolean tictocIface_israised_tic(const Tictoc* handle);

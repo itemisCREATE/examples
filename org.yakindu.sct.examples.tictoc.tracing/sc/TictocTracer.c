@@ -19,7 +19,6 @@ static yet_value_serializer feature_value_serializer[] = {
 	yet_serialize_void,
 	yet_serialize_void,
 	yet_serialize_void,
-	yet_serialize_void,
 	yet_serialize_sc_integer,
 	yet_serialize_sc_integer,
 	yet_serialize_sc_integer,
@@ -69,16 +68,10 @@ static uint8_t dispatchMessage(yet_scope *scope, yet_message * msg, char *fqn)
 	char* member;
 	member = fqn;
 	
-	if(strcmp(member, "start") == 0) {
+	if(strcmp(member, "toggle") == 0) {
 		// Skip one message; this should not be re-raised on host
 		tracer->skip_raised_in_event++; // TODO: this is not optimal check if we can get rid of it
-		tictocIface_raise_start(tracer->machine);
-		return 0;
-	}
-	if(strcmp(member, "stop") == 0) {
-		// Skip one message; this should not be re-raised on host
-		tracer->skip_raised_in_event++; // TODO: this is not optimal check if we can get rid of it
-		tictocIface_raise_stop(tracer->machine);
+		tictocIface_raise_toggle(tracer->machine);
 		return 0;
 	}
 	if(strcmp(member, "count") == 0) {

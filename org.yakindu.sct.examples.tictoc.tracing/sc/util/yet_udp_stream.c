@@ -11,14 +11,33 @@
 #include <string.h>
 #include <errno.h>
 #include <poll.h>
+#include <unistd.h>
+
 
 #include "../base/sc_types.h"
 #include "../base/sc_rxc.h"
 #include "yet_udp_stream.h"
 
 
+
+static sc_boolean is_enabled(yet_udp_stream* self) {
+
+	if ( self->enabled ) {
+		if ( self->socket_fd == -1 ) {
+			yet_udp_stream_connect(self);
+		}
+	} else if ( self->socket_fd != -1 ) {
+		yet_udp_stream_disconnect(self);
+	}
+
+	return self->enabled;
+}
+
+
 static void next(yet_udp_stream* self, char* msg)
 {
+	if (! is_enabled(self) ) return;
+
 	int bytes_send =
 			sendto(self->socket_fd,
 					msg,
@@ -42,6 +61,9 @@ void yet_udp_stream_init(yet_udp_stream* self, char* ip, uint16_t port)
 
 	self->received_messages.observer_count = 0;
 	self->received_messages.observers = sc_null;
+
+	self->enabled = true;
+	self->socket_fd = -1;
 
 }
 
@@ -95,6 +117,18 @@ int yet_udp_stream_connect(yet_udp_stream* self) {
 	return 0;
 }
 
+int yet_udp_stream_disconnect(yet_udp_stream* self) {
+
+	int err;
+	if ((err = close(self->socket_fd)) != 0) {
+		print_udp_err(err);
+	}
+
+	self->socket_fd = -1;
+
+	return err;
+}
+
 
 static int receive_from_socket(yet_udp_stream* self, char* buf, int len) {
 	struct pollfd pfd;
@@ -109,6 +143,8 @@ static int receive_from_socket(yet_udp_stream* self, char* buf, int len) {
 
 
 extern void yet_udp_stream_receive(yet_udp_stream* self) {
+
+	if (! is_enabled(self) ) return;
 
 	int rcv_byte_len = receive_from_socket(self, self->receive_buffer, RCV_BUFFER_SIZE);
 	if(rcv_byte_len > 0) {

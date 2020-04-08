@@ -19,6 +19,8 @@
 #include "sc/util/yet_udp_stream.h"
 #include "sc/util/yet_logger.h"
 
+#include "hmi.h"
+
 #define SCT_PORT 4444
 #define SCT_IP "127.0.0.1"
 
@@ -26,7 +28,7 @@
 // declaration of everything related to the timer required for the state machine
 
 /*! Maximum count of concurrently required timers required to implement time triggers (after & every). */
-#define MAX_TIMERS 2
+#define MAX_TIMERS 3
 
 /*! Allocate the desired array of timers. */
 static sc_timer_t timers[MAX_TIMERS];
@@ -143,6 +145,10 @@ void setup(int argc, char **argv) {
 	/* start UDP yet stream */
 	yet_udp_stream_connect(&yet_stream);
 
+	/* init the hmi */
+	hmi_init(&tictoc, &yet_log, &yet_stream);
+	hmi_help();
+
 	/* activate the state machine */
 	tictoc_enter(&tictoc);
 
@@ -151,11 +157,10 @@ void setup(int argc, char **argv) {
 
 void loop() {
 
-	//timestamp_offset = get_ms();
 	struct timespec sleep;
 	sleep.tv_sec = 0;
-	sleep.tv_nsec = 1000;
-	unsigned long last_time = timestamp_offset;
+	sleep.tv_nsec = 100;
+	unsigned long last_time = 0;
 
 	while(bool_true) {
 		nanosleep(&sleep, 0);
@@ -164,6 +169,7 @@ void loop() {
 		sc_timer_service_proceed(&timer_service, time - last_time);
 		last_time = time;
 
+		hmi_proceed();
 		yet_udp_stream_receive(&yet_stream);
 
 	}

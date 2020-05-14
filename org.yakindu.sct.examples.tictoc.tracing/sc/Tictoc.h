@@ -3,6 +3,39 @@
 #ifndef TICTOC_H_
 #define TICTOC_H_
 
+#ifdef __cplusplus
+extern "C" { 
+#endif
+
+/*!
+* Forward declaration for the Tictoc state machine.
+*/
+typedef struct Tictoc Tictoc;
+
+/*!
+* Forward declaration of the data structure for the TictocIface interface scope.
+*/
+typedef struct TictocIface TictocIface;
+
+/*!
+* Forward declaration of the data structure for the TictocIfaceFoo interface scope.
+*/
+typedef struct TictocIfaceFoo TictocIfaceFoo;
+
+/*!
+* Forward declaration of the data structure for the TictocInternal interface scope.
+*/
+typedef struct TictocInternal TictocInternal;
+
+/*!
+* Forward declaration of the data structure for the TictocTimeEvents interface scope.
+*/
+typedef struct TictocTimeEvents TictocTimeEvents;
+
+#ifdef __cplusplus
+}
+#endif
+
 #include "base/sc_tracing.h"
 #include "base/sc_types.h"
 
@@ -59,8 +92,8 @@ typedef enum
 	tictocIface_i
 } TictocFeature;
 
-/*! Type definition of the data structure for the TictocIface interface scope. */
-typedef struct
+/*! Type declaration of the data structure for the TictocIface interface scope. */
+struct TictocIface
 {
 	sc_boolean toggle_raised;
 	sc_boolean tic_raised;
@@ -69,43 +102,43 @@ typedef struct
 	sc_integer delay;
 	sc_integer x;
 	sc_boolean b;
-} TictocIface;
+};
 
 
 
-/*! Type definition of the data structure for the TictocIfaceFoo interface scope. */
-typedef struct
+/*! Type declaration of the data structure for the TictocIfaceFoo interface scope. */
+struct TictocIfaceFoo
 {
 	sc_integer y;
-} TictocIfaceFoo;
+};
 
 
 
-/*! Type definition of the data structure for the TictocInternal interface scope. */
-typedef struct
+/*! Type declaration of the data structure for the TictocInternal interface scope. */
+struct TictocInternal
 {
 	sc_real i;
-} TictocInternal;
+};
 
 
 
-/*! Type definition of the data structure for the TictocTimeEvents interface scope. */
-typedef struct
+/*! Type declaration of the data structure for the TictocTimeEvents interface scope. */
+struct TictocTimeEvents
 {
 	sc_boolean tictoc_main_Idle_tev0_raised;
 	sc_boolean tictoc_main_Playing_tev0_raised;
 	sc_boolean tictoc_main_Playing_active_Tic_tev0_raised;
 	sc_boolean tictoc_main_Playing_active_Toc_tev0_raised;
-} TictocTimeEvents;
+};
 
 
 
 
 /*! 
- * Type definition of the data structure for the Tictoc state machine.
+ * Type declaration of the data structure for the Tictoc state machine.
  * This data structure has to be allocated by the client code. 
  */
-typedef struct
+struct Tictoc
 {
 	TictocStates stateConfVector[TICTOC_MAX_ORTHOGONAL_STATES];
 	sc_ushort stateConfVectorPosition; 
@@ -114,7 +147,7 @@ typedef struct
 	TictocInternal internal;
 	TictocTimeEvents timeEvents;
 	sc_trace_handler *trace_handler;
-} Tictoc;
+};
 
 
 /*! Initializes the Tictoc state machine data structures. Must be called before first usage.*/
@@ -140,7 +173,6 @@ extern void tictoc_raiseTimeEvent(Tictoc* handle, sc_eventid evid);
 
 /*! Raises the in event 'toggle' that is defined in the default interface scope. */ 
 extern void tictocIface_raise_toggle(Tictoc* handle);
-
 /*! Checks if the out event 'tic' that is defined in the default interface scope has been raised. */ 
 extern sc_boolean tictocIface_israised_tic(const Tictoc* handle);
 

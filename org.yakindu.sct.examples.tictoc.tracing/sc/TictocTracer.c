@@ -13,7 +13,6 @@
 
 static sc_string default_scope_name = "tictoc";
 
-
 static yet_value_serializer feature_value_serializer[] = {
 	yet_serialize_void,
 	yet_serialize_void,
@@ -26,6 +25,9 @@ static yet_value_serializer feature_value_serializer[] = {
 	yet_serialize_sc_integer,
 	yet_serialize_sc_real
 };
+
+
+
 
 static char* featureName(sc_integer featureId)
 {
@@ -42,7 +44,7 @@ static char* stateName(sc_integer stateId)
 	return TictocMeta_state_names[stateId];
 }
 
-static uint8_t dispatchMessage(yet_scope *scope, yet_message * msg, char *fqn);
+static yet_error dispatchMessage(yet_scope *scope, yet_message * msg, char *fqn);
 
 void tictoc_init_sc_tracer(yet_sc_tracer *tracer, Tictoc* machine)
 {
@@ -61,16 +63,16 @@ void tictoc_init_sc_tracer(yet_sc_tracer *tracer, Tictoc* machine)
 
 
 // Implementation of yet_handler callback function. Handles incoming stimuli and call appropriate state machine function.
-static uint8_t dispatchMessage(yet_scope *scope, yet_message * msg, char *fqn)
+static yet_error dispatchMessage(yet_scope *scope, yet_message * msg, char *fqn)
 {
 	yet_sc_tracer* tracer = scope->instance;
-//	TictocTracer* tracer = scope->instance;
 	char* member;
 	member = fqn;
 	
 	if(strcmp(member, "toggle") == 0) {
-		// Skip one message; this should not be re-raised on host
-		tracer->skip_raised_in_event++; // TODO: this is not optimal check if we can get rid of it
+		/* Skip one message; this should not be re-raised on host */
+		/* TODO: this is not optimal check if we can get rid of it */
+		tracer->skip_raised_in_event++; 
 		tictocIface_raise_toggle(tracer->machine);
 		return 0;
 	}
@@ -99,8 +101,13 @@ static uint8_t dispatchMessage(yet_scope *scope, yet_message * msg, char *fqn)
 		tictocIfaceFoo_set_y(tracer->machine, converted);
 		return 0;
 	}
+	if(strcmp(member, "i") == 0) {
+		sc_real converted = atof(msg->value);
+		((Tictoc*)tracer->machine)->internal.i = converted;
+		return 0;
+	}
 	
 	
-	return -2;
+	return YET_ERR_INVALID_KEY;
 }
 

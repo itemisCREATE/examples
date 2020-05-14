@@ -59,7 +59,7 @@ unsigned long get_ms() {
 
 
 /*! Function to retrieve the current timestamp, ideally in milliseconds. */
-unsigned long get_current_timestamp() {
+yet_timestamp yet_current_timestamp() {
 	unsigned long ms = get_ms();
 	unsigned long timestamp =  ms - timestamp_offset;
 	return timestamp;
@@ -165,7 +165,7 @@ void loop() {
 	while(bool_true) {
 		nanosleep(&sleep, 0);
 
-		unsigned long time = get_current_timestamp();
+		yet_timestamp time = yet_current_timestamp();
 		sc_timer_service_proceed(&timer_service, time - last_time);
 		last_time = time;
 

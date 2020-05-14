@@ -2,33 +2,37 @@
 
 #include "sc_yet.h"
 #include "sc_types.h"
+#include <inttypes.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
 
+/* The minimum message size: start char '%' or '#', a comma, a newline character and a null terminator*/
+#define YET_MIN_MESSAGE_SIZE 4
+
 static void create_message(char* buf, struct yet_message * msg);
 static void create_init_message(char* buf, char* key, char* value);
-static void create_update_message(char* buf, unsigned long timestamp, char* key, char* value);
+static void create_update_message(char* buf, yet_timestamp timestamp, char* key, char* value);
 
-static unsigned int get_msg_len(yet_message* msg);
-static unsigned int get_msg_len_init(char* key, char* value);
-static unsigned int get_msg_len_update(unsigned long timestamp, char* key, char* value);
-static unsigned int get_char_count_ulong(unsigned long data);
+static yet_msize get_msg_len_init(char* key, char* value);
+static yet_msize get_msg_len_update(yet_timestamp timestamp, char* key, char* value);
+static yet_msize get_char_count_timestamp(yet_timestamp data);
 
-static int read_message(char* text, yet_message* msg);
-static int read_timestamp(char* text, char** endptr, yet_message * msg);
-static int read_key(char* text, char** endptr, yet_message * msg);
-static int read_value(char* text, struct yet_message * msg);
+static yet_error read_message(char* text, yet_message* msg);
+static yet_error read_timestamp(char* text, char** endptr, yet_message * msg);
+static yet_error read_key(char* text, char** endptr, yet_message * msg);
+static yet_error read_value(char* text, struct yet_message * msg);
 
 void yet_scope_send(yet_scope* self, struct yet_message * msg)
 {
-	int len = get_msg_len(msg);
-	char buf[len];
-	create_message(buf, msg);
-
-	// yet_write(buf, len-1);
-	SC_OBSERVABLE_NEXT(&(self->trace_messages), buf);
+	char buf[YET_SCOPE_SEND_BUF_LEN];
+	yet_msize len = yet_message_len(msg);
+	
+	if ( len <= YET_SCOPE_SEND_BUF_LEN) {
+		create_message(buf, msg);	
+		SC_OBSERVABLE_NEXT(&(self->trace_messages), buf);
+	}
 }
 
 static void create_init_message(char* buf, char* key, char* value)
@@ -36,12 +40,12 @@ static void create_init_message(char* buf, char* key, char* value)
 	sprintf(buf, "%c%s,%s\n", YET_MESSAGE_INIT_BEGIN, key, value);
 }
 
-static void create_update_message(char* buf, unsigned long timestamp, char* key, char* value)
+static void create_update_message(char* buf, yet_timestamp timestamp, char* key, char* value)
 {
 	if(value != NULL) {
-		sprintf(buf, "%c%lu,%s,%s\n", YET_MESSAGE_UPDATE_BEGIN, timestamp, key, value);
+		sprintf(buf, "%c%"PRIu64",%s,%s\n", YET_MESSAGE_UPDATE_BEGIN, timestamp, key, value);
 	} else {
-		sprintf(buf, "%c%lu,%s\n", YET_MESSAGE_UPDATE_BEGIN, timestamp, key);
+		sprintf(buf, "%c%"PRIu64",%s\n", YET_MESSAGE_UPDATE_BEGIN, timestamp, key);
 	}
 }
 
@@ -54,18 +58,18 @@ static void create_message(char* buf, struct yet_message * msg)
 	}
 }
 
-static unsigned int get_msg_len_init(char* key, char* value)
+static yet_msize get_msg_len_init(char* key, char* value)
 {
-	unsigned int count = 4; // Start char '%', a comma, a newline character and a null terminator
+	yet_msize count = YET_MIN_MESSAGE_SIZE;
 	count += strlen(key);
 	count += strlen(value);
 	return count;
 }
 
-static unsigned int get_msg_len_update(unsigned long timestamp, char* key, char* value)
+static yet_msize get_msg_len_update(yet_timestamp timestamp, char* key, char* value)
 {
-	unsigned int count = 4; // Start char '#', a comma, a newline character and a null terminator
-	count += get_char_count_ulong(timestamp);
+	yet_msize count = YET_MIN_MESSAGE_SIZE;
+	count += get_char_count_timestamp(timestamp);
 	count += strlen(key);
 	if (value != NULL) {
 		count += strlen(value) + 1; //For needed additional comma separator
@@ -73,7 +77,7 @@ static unsigned int get_msg_len_update(unsigned long timestamp, char* key, char*
 	return count;
 }
 
-static unsigned int get_msg_len(yet_message* msg)
+yet_msize yet_message_len(yet_message* msg)
 {
 	if(msg->type == INIT) {
 		return get_msg_len_init(msg->key, msg->value);
@@ -83,16 +87,16 @@ static unsigned int get_msg_len(yet_message* msg)
 	return 0;
 }
 
-static unsigned int get_char_count_ulong(unsigned long data)
+static yet_msize get_char_count_timestamp(yet_timestamp ts)
 {
-	return (int)log10((double)data) + 1;
+	return (yet_msize)log10((double)ts) + 1;
 }
 
-static int read_message(char* text, yet_message* msg)
+static yet_error read_message(char* text, yet_message* msg)
 {
 	char* endptr = NULL;
 	char begin;
-	int e;
+	yet_error e;
 
 	if(text == NULL || msg == NULL) {
 		return YET_ERR_NULLPTR;
@@ -140,7 +144,7 @@ static int read_message(char* text, yet_message* msg)
 	return 0;
 }
 
-static int read_timestamp(char* text, char** endptr, yet_message * msg)
+static yet_error read_timestamp(char* text, char** endptr, yet_message * msg)
 {
 	msg->timestamp = strtoul(text, endptr, 10);
 	/*
@@ -154,7 +158,7 @@ static int read_timestamp(char* text, char** endptr, yet_message * msg)
 	return YET_ERR_INVALID_TIMESTAMP;
 }
 
-static int read_key(char* text, char** endptr, yet_message * msg)
+static yet_error read_key(char* text, char** endptr, yet_message * msg)
 {
 	if(text == 0 || *text == '\0') {
 		return YET_ERR_INVALID_KEY;
@@ -171,7 +175,7 @@ static int read_key(char* text, char** endptr, yet_message * msg)
 	return YET_ERR_INVALID_KEY;
 }
 
-static int read_value(char* text, struct yet_message * msg)
+static yet_error read_value(char* text, struct yet_message * msg)
 {
 	if(text == 0 || *text == '\0' || (*text == '\n' && *(text+1) == '\0')) {
 		return YET_ERR_INVALID_VALUE;

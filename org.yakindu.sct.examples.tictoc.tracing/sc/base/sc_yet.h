@@ -21,19 +21,30 @@ extern "C" {
 #define YET_ERR_MISSING_VALUE 32
 #define YET_ERR_NULLPTR 64
 
+#ifndef YET_SCOPE_SEND_BUF_LEN
+#define YET_SCOPE_SEND_BUF_LEN 255
+#endif
+
 enum yet_message_type {
 	INIT,
 	UPDATE
 };
 
+typedef uint64_t yet_timestamp;
+typedef uint16_t yet_msize;
+typedef uint16_t yet_error;
+
 typedef struct yet_message yet_message;
 
 struct yet_message {
 	enum yet_message_type type;
-	unsigned long timestamp;
+	yet_timestamp timestamp;
 	char* key;
 	char* value;
 };
+
+/*! Determines the length of a yet_message in string representation. */
+extern yet_msize yet_message_len(yet_message* msg);
 
 
 typedef struct yet_scope yet_scope;
@@ -42,7 +53,7 @@ typedef struct yet_scope yet_scope;
  * When a scope is matched, its handler is called.
  * The handler should return 0 on success.
  */
-typedef uint8_t (*yet_handler)(yet_scope* scope, yet_message *msg, char *fqn);
+typedef yet_error (*yet_handler)(yet_scope* scope, yet_message *msg, char *fqn);
 
 struct yet_scope {
 	yet_scope *parent_scope;
@@ -51,21 +62,12 @@ struct yet_scope {
 	sc_string name;
 	yet_handler handler;
 	void* instance;
-//	unsigned long (*current_timestamp)();
 
 	sc_observer   message_receiver;
 	sc_observable trace_messages;
 
 };
 
-
-/*
- * Functions that need to be implemented by clients
- */
-
-
-/*! Function to retrieve the current timestamp, ideally in milliseconds. */
-extern unsigned long get_current_timestamp();
 
 /*
  * This function is called by tracing state machines.
@@ -91,6 +93,15 @@ extern char* yet_serialize_sc_integer(const void* from, char* to);
 extern char* yet_serialize_sc_real(const void* from, char* to);
 extern char* yet_serialize_sc_boolean(const void* from, char* to);
 extern char* yet_serialize_sc_string(const void* from, char* to);
+
+
+/* ================================================
+ * Functions that need to be implemented by clients
+ */		
+
+/*! Function to retrieve the current timestamp (in milliseconds). */
+extern yet_timestamp yet_current_timestamp();
+
 
 #ifdef __cplusplus
 }

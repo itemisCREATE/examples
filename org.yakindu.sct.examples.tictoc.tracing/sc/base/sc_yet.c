@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <math.h>
 
 /* The minimum message size: start char '%' or '#', a comma, a newline character and a null terminator*/
 #define YET_MIN_MESSAGE_SIZE 4
@@ -87,9 +86,66 @@ yet_msize yet_message_len(yet_message* msg)
 	return 0;
 }
 
-static yet_msize get_char_count_timestamp(yet_timestamp ts)
+#define D2 10ul
+#define D3 100ul
+#define D4 1000ul
+#define D5 10000ul
+#define D6 100000ul
+#define D7 1000000ul
+#define D8 10000000ul
+#define D9 100000000ul
+#define D10 1000000000ul
+#define D11 10000000000ul
+#define D12 100000000000ul
+#define D13 1000000000000ul
+#define D14 10000000000000ul
+#define D15 100000000000000ul
+#define D16 1000000000000000ul
+#define D17 10000000000000000ul
+#define D18 100000000000000000ul
+#define D19 1000000000000000000ul
+#define D20 10000000000000000000ul
+
+static yet_msize get_char_count_timestamp(yet_timestamp n)
 {
-	return (yet_msize)log10((double)ts) + 1;
+	if (n<D11)
+		if (n<D6)
+			if (n<D3)
+				if (n<D2) return 1;
+				else return 2;
+			else
+				if (n<D4) return 3;
+				else
+					if (n<D5) return 4;
+					else return 5;
+		else
+			if (n<D8)
+				if (n<D7) return 6;
+				else return 7;
+		    else
+		        if (n<D9) return 8;
+		        else
+		        	if (n<D10) return 9;
+		        	else return 10;
+	else
+		if (n<D16)
+			if (n<D13)
+				if (n<D12) return 11;
+				else return 12;
+			else
+				if (n<D14) return 13;
+				else
+					if (n<D15) return 14;
+					else return 15;
+		else
+			if (n<D18)
+				if (n<D17) return 16;
+				else return 17;
+			else
+				if (n<D19) return 18;
+				else
+					if (n<D20) return 19;
+					else return 20;
 }
 
 static yet_error read_message(char* text, yet_message* msg)

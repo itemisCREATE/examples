@@ -23,10 +23,10 @@
 static sc_boolean is_enabled(yet_udp_stream* self) {
 
 	if ( self->enabled ) {
-		if ( self->socket_fd == -1 ) {
+		if ( self->transport.socket == -1 ) {
 			yet_udp_stream_connect(self);
 		}
-	} else if ( self->socket_fd != -1 ) {
+	} else if ( self->transport.socket != -1 ) {
 		yet_udp_stream_disconnect(self);
 	}
 
@@ -39,12 +39,12 @@ static void next(yet_udp_stream* self, char* msg)
 	if (! is_enabled(self) ) return;
 
 	int bytes_send =
-			sendto(self->socket_fd,
+			sendto(self->transport.socket,
 					msg,
 					strlen(msg),
 					0,
-					(struct sockaddr *) &self->receiver,
-					self->recvlen);
+					(struct sockaddr *) &self->transport.address,
+					self->transport.len);
 	if (bytes_send <= 0) {
 		fprintf(stderr, "ERRNO %d\n", errno);
 	}
@@ -53,8 +53,8 @@ static void next(yet_udp_stream* self, char* msg)
 
 void yet_udp_stream_init(yet_udp_stream* self, char* ip, uint16_t port)
 {
-	self->ip = ip;
-	self->port = port;
+	self->conf.ip = ip;
+	self->conf.port = port;
 
 	self->message_sender.observer = self;
 	self->message_sender.next = (sc_observer_next_fp) next;
@@ -63,7 +63,7 @@ void yet_udp_stream_init(yet_udp_stream* self, char* ip, uint16_t port)
 	self->received_messages.observers = sc_null;
 
 	self->enabled = true;
-	self->socket_fd = -1;
+	self->transport.socket = -1;
 
 }
 
@@ -86,20 +86,49 @@ static void print_udp_err(int err) {
 	}
 }
 
-static int open_socket(yet_udp_stream* self) {
-	self->recvlen = sizeof(self->receiver);
-	memset(&(self->receiver), 0, self->recvlen);
+static sc_boolean use_broadcast_address(yet_udp_stream* self) {
+	return (ntohl(self->transport.address.sin_addr.s_addr) & 0x000000ff) == 0x000000ff;
+}
 
-	// Open an outgoing socket
-	if ((self->socket_fd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0) {
+static sc_boolean use_multicast_address(yet_udp_stream* self) {
+	return IN_MULTICAST(ntohl(self->transport.address.sin_addr.s_addr));
+}
+
+static int open_socket(yet_udp_stream* self) {
+
+	int broadcast_options;
+	unsigned char multicast_ttl;
+
+	// configure address
+	self->transport.len = sizeof(self->transport.address);
+	memset(&(self->transport.address), 0, self->transport.len);
+	self->transport.address.sin_family = AF_INET;
+	self->transport.address.sin_port = htons(self->conf.port);
+	if (inet_aton(self->conf.ip, &(self->transport.address.sin_addr)) == 0) {
 		return -1;
 	}
 
-	// Set receiver parameters
-	self->receiver.sin_family = AF_INET;
-	self->receiver.sin_port = htons(self->port);
-	if (inet_aton(self->ip, &(self->receiver.sin_addr)) == 0) {
+
+	/* create a socket */
+	if ((self->transport.socket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0) {
 		return -2;
+	}
+
+	/* configure socket options depending on mode */
+	if (use_broadcast_address(self)) {
+		fprintf(stdout, "configure UDP socket for broadcast\n");
+	    broadcast_options = 1;
+	    if (setsockopt(self->transport.socket, SOL_SOCKET, SO_BROADCAST, (void *) &broadcast_options,
+	          sizeof(broadcast_options)) < 0)
+	        return -3;
+	}
+	else if (use_multicast_address(self)){
+		fprintf(stdout, "configure UDP socket for multicast\n");
+		  if (setsockopt(self->transport.socket, IPPROTO_IP, IP_MULTICAST_TTL, (void *) &multicast_ttl,
+		          sizeof(multicast_ttl)) < 0)
+			  return -4;
+	} else {
+		fprintf(stdout, "configure UDP socket for unicast\n");
 	}
 
 	return 0;
@@ -120,11 +149,11 @@ int yet_udp_stream_connect(yet_udp_stream* self) {
 int yet_udp_stream_disconnect(yet_udp_stream* self) {
 
 	int err;
-	if ((err = close(self->socket_fd)) != 0) {
+	if ((err = close(self->transport.socket)) != 0) {
 		print_udp_err(err);
 	}
 
-	self->socket_fd = -1;
+	self->transport.socket = -1;
 
 	return err;
 }
@@ -132,11 +161,11 @@ int yet_udp_stream_disconnect(yet_udp_stream* self) {
 
 static int receive_from_socket(yet_udp_stream* self, char* buf, int len) {
 	struct pollfd pfd;
-	pfd.fd = self->socket_fd;
+	pfd.fd = self->transport.socket;
 	pfd.events = POLLIN;
 	poll(&pfd, 1, 0);
 	if((pfd.revents & POLLIN) != 0) {
-		return recvfrom(self->socket_fd, buf, len, 0, 0, 0);
+		return recvfrom(self->transport.socket, buf, len, 0, 0, 0);
 	}
 	return 0;
 }
@@ -146,9 +175,9 @@ extern void yet_udp_stream_receive(yet_udp_stream* self) {
 
 	if (! is_enabled(self) ) return;
 
-	int rcv_byte_len = receive_from_socket(self, self->receive_buffer, RCV_BUFFER_SIZE);
+	int rcv_byte_len = receive_from_socket(self, self->transport.receive_buffer, RCV_BUFFER_SIZE);
 	if(rcv_byte_len > 0) {
-		SC_OBSERVABLE_NEXT(&(self->received_messages), self->receive_buffer);
+		SC_OBSERVABLE_NEXT(&(self->received_messages), self->transport.receive_buffer);
 	}
 }
 

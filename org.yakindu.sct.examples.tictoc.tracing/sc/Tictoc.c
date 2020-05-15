@@ -614,4 +614,3 @@ static sc_boolean main_Playing_active_Toc_react(Tictoc* handle, const sc_boolean
 	return did_transition;
 }
 
-

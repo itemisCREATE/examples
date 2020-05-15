@@ -129,7 +129,7 @@ static void sendMessage(yet_sc_tracer* tracer, sc_string key, sc_string value, s
 
 	if(tracer->is_running) {
 		msg.type = UPDATE;
-		msg.timestamp = get_current_timestamp();
+		msg.timestamp = yet_current_timestamp();
 	} else {
 		msg.type = INIT;
 	}

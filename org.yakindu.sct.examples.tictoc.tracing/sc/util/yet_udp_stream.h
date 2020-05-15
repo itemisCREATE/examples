@@ -22,15 +22,20 @@ extern "C" {
 
 typedef struct yet_udp_stream yet_udp_stream;
 
+
 struct yet_udp_stream {
-	char* ip;
-	uint16_t port;
 
-	struct sockaddr_in receiver;
-	int socket_fd;
-	int recvlen;
+	struct {
+		char* ip;
+		uint16_t port;
+	} conf;
 
-	char receive_buffer[RCV_BUFFER_SIZE];
+	struct {
+		int socket;
+		struct sockaddr_in address;
+		socklen_t len;
+		char receive_buffer[RCV_BUFFER_SIZE];
+	} transport;
 
 	sc_boolean enabled;
 	sc_observer message_sender;

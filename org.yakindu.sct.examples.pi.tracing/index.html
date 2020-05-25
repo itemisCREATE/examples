@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Raspberry Pi remote control blinky LED</title>
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Debug and remote control state machines using YET</h1>
+		<p>
+			The YAKINDU Execution Trace (YET) infrastructure supports interoperability between 
+			state machines running in a target application and the YAKINDU tooling. 
+			It supports model-level debugging and testing of the state machines based on execution traces. 
+			This example shows how to remote debug a compiled state machine step by step. Please refer to the 
+			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a> for more information.
+		</p>
+
+		<img class= "tiny" alt="Debugging the target using traces" src="images/yet_target_trace_debugging.png" />
+
+		<h2>Raspberry PI blinky LED example</h2>
+		<p>
+			This is a simple blinky LED example, which uses two states. The user can switch between the <i>Idle</i> and <i>Blink</i> by setting the toggle event.
+			Once the Blink state is active, the state machine toggles between the <i>Off</i> and <i>On</i> state. By setting the delay variable, the time for the after
+			trigger can be changed.
+		</p>			
+		<img class= "small" alt="Remote debugging a statechart" src="images/blinky.png" />
+
+		<p>
+			This state machine is executed within an interactive application. This application can be used 
+			from the command line. It reads user input from the standard input and writes to the standard output.
+			It is build to run on a Raspberry PI. The SCT Simulation can be executed on any other machine. 
+			For this setup both are located the same local network.
+		</p>
+			
+		<h2>Building the application</h2>
+		<p>
+			The example contains the generated state machine code, but must not be compiled in Eclipse. The generated <i>.c</i> and <i>.h</i> files must be compiled 
+			to the Raspberry Pi.
+			<ul>
+				<li>Copy the project to the Raspberry Pi.</li>
+				<li>Open the terminal.</li>
+				<li><code>$ cd</code> to the root of your prioject. You  type <code>$ ls</code> and sholid see the <i>main.c</i> file.</li>
+				<li>Compile the application with <code>$ gcc -o blink main.c hmi.c sc/BlinkMeta.c sc/BlinkTracer.c sc/Blink.c sc/base/sc_yet.c sc/base/yet_sc_tracer.c sc/util/sc_timer_service.c sc/util/yet_file.c sc/util/yet_udp_stream.c sc/util/yet_logger.c -lwiringPi</code></li>
+			</ul>
+
+		<h2>Running the application</h2>
+		<p>
+			When everything is built properly then you can run the application. If you want to trace the application in your SCT simulation, you have to run the program with the system's target ip address. 
+		</p>
+		<p>
+			<code>$ sudo ./blink 'Insert your system's IP address here'</code>
+		</p>
+
+		<img class= "small" alt="Raspberry Pi console" src="images/console.png" />
+		<p>
+			The first block includes just some output from the application during start up. 
+			This includes instructions how to interact with the application from the command line.
+			The second block is the log output of trace events which are emitted by the state machine.
+			Simply play around with the different input options. 
+		</p>
+		<p>
+			In addition to what you see on the console the application sends the trace events to the 
+			configured socket using UDP and also writes these to the file <i>trace.yet</i> 
+		</p>
+
+		<h2>Debugging the statemachine trace</h2>
+		<p>
+			Debugging a statechart YET trace is simple. Within a statechart editor or on the model file entry 
+			in the project explorer choose <i>Run As > Statechart Trace Debugging</i> from the context menu. 
+		</p>
+
+		<img class= "small" alt="Starting a trace debug session" src="images/runas.png" />
+		
+		<p>
+			This will launch the trace debugger and by default will try to read the input of socket 4444, which is defined in the application.
+			You can change the port in the <i>Run Configuration</i>.
+
+		</p>
+		<h2>Installing YET support</h2>
+		<p>
+			If you cant find the YET extensions in YAKINDU SCT and if the the code generation for the tracer does not work 
+			then you likely have to install the YET feature. 
+			
+			<ol>
+				<li>Open <i>Help > Install New Software ...</i> from the menu.</li>
+				<li>Select the Yakindu Labs entry from the <i>Work with:</i> pull down list. 
+					If there is no such entry then
+					<ol>
+						<li>Choose <i>Add</i></li>
+						<li>Enter <i>http://updates.yakindu.com/statecharts/labs</i> in the <i>Location</i> 
+							field and optionally choose a name.</li>
+						<li>Press <i>OK</i>.</li>
+					</ol>
+				</li>
+				<li>Unfold the top level node and check the YET feature.</li>
+				<li>Finish the installation wizard by choosing <i>Next ></i> until finished.</li>
+				<li>Restart.</li>
+			</ol>
+		</p>
+
+	</div>
+</body>
+</html>

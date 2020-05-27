@@ -16,6 +16,10 @@
 		{
 			"updateSite": "https://dl.espressif.com/dl/idf-eclipse-plugin/updates/latest/",
 			"features" : ["com.cthing.cmakeed.feature.feature.group", "com.espressif.idf.feature.feature.group"]
+		},
+		{
+			"updateSite": "http://download.eclipse.org/mpc/releases/1.8.2",
+			"features": ["org.eclipse.epp.mpc.feature.group"]
 		}
 	]
 }

@@ -20,6 +20,10 @@
 		{
 			"updateSite": "http://download.eclipse.org/mpc/releases/1.8.2",
 			"features": ["org.eclipse.epp.mpc.feature.group"]
+		},
+		{
+			"updateSite": "http://download.eclipse.org/releases/2019-12",
+			"features": ["org.eclipse.launchbar.feature.group"]
 		}
 	]
 }

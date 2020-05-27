@@ -1,0 +1,10 @@
+GeneratorModel for yakindu::c::yet {
+
+	statechart blink {
+	feature Outlet {
+		targetProject = "org.yakindu.sct.examples.esp32.tracing"
+			targetFolder = "main/sc"
+			libraryTargetFolder = "main/sc/base"
+	}
+}
+} 

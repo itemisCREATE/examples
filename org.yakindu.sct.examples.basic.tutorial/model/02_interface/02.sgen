@@ -7,5 +7,9 @@ GeneratorModel for yakindu::java {
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
 		}
+		
+		feature Naming {
+			basePackage = "org.yakindu.sct.examples.basic.tutorial"
+		}
 	}
 }

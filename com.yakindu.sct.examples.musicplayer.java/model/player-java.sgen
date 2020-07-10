@@ -12,5 +12,10 @@ GeneratorModel for yakindu::java {
 			targetProject = "com.yakindu.sct.examples.musicplayer.java"
 			targetFolder = "src-gen"
 		}
+		
+		feature Naming {
+			basePackage = "com.yakindu.sct.examples.musicplayer.java"
+			typeName = "Player"
+		}
 	}
 }

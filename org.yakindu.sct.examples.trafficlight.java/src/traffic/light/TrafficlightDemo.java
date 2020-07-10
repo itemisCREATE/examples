@@ -1,8 +1,8 @@
 package traffic.light;
 
-import traffic.light.ITimer;
-import traffic.light.trafficlightctrl.ITrafficLightCtrlStatemachine;
-import traffic.light.trafficlightctrl.TrafficLightCtrlStatemachine;
+import org.yakindu.sct.ITimer;
+import org.yakindu.sct.TimerService;
+
 import traffic.light.ui.Counter.Color;
 import traffic.light.ui.TrafficLightFrame;
 
@@ -10,7 +10,7 @@ public class TrafficlightDemo extends TrafficLightFrame {
 
 	private static final long serialVersionUID = -8909693541678814631L;
 
-	protected TrafficLightCtrlStatemachine statemachine;
+	protected TrafficLightCtrl statemachine;
 
 	protected ITimer timer;
 	
@@ -29,52 +29,27 @@ public class TrafficlightDemo extends TrafficLightFrame {
 
 
 	protected void setupStatemachine() {
-		statemachine = new TrafficLightCtrlStatemachine();
+		statemachine = new TrafficLightCtrl();
 		timer = new TimerService();
 		statemachine.setTimer(timer);
 		
-		statemachine.getSCITrafficLight().getListeners().add(new ITrafficLightCtrlStatemachine.SCITrafficLightListener() {			
-			@Override
-			public void onDisplayYellowRaised() {
-				setLights(false, true, false);
-			}
-			
-			@Override
-			public void onDisplayRedRaised() {
-				setLights(true, false, false);
-			}
-			
-			@Override
-			public void onDisplayNoneRaised() {
-				setLights(false, false, false);
-			}
-			
-			@Override
-			public void onDisplayGreenRaised() {
-				setLights(false, false, true);
-			}
+		statemachine.getInterfaceTrafficLight().getDisplayRed().subscribe((e) ->    setLights(true, false, false));
+		statemachine.getInterfaceTrafficLight().getDisplayYellow().subscribe((e) -> setLights(false, true, false));
+		statemachine.getInterfaceTrafficLight().getDisplayGreen().subscribe((e) ->  setLights(false, false, true));
+		statemachine.getInterfaceTrafficLight().getDisplayNone().subscribe((e) ->   setLights(false, false, false));
+		
+		statemachine.getInterfaceTimer().getUpdateTimerValue().subscribe((value) -> {
+			crossing.getCounterVis().setCounterValue(value);
+			repaint();
 		});
-		
-		statemachine.getSCITimer().getListeners().add(new ITrafficLightCtrlStatemachine.SCITimerListener() {
-			
-			@Override
-			public void onUpdateTimerValueRaised(long value) {
-				crossing.getCounterVis().setCounterValue(value);
-				repaint();
-			}
-			
-			@Override
-			public void onUpdateTimerColourRaised(String value) {
-				crossing.getCounterVis().setColor(value == "Red" ? Color.RED : Color.GREEN);
-			}
+		statemachine.getInterfaceTimer().getUpdateTimerColour().subscribe((value) -> {
+			crossing.getCounterVis().setColor(value == "Red" ? Color.RED : Color.GREEN);
 		});
-		
-		buttonPanel.getPoliceInterrupt()
-				.addActionListener(e -> statemachine.getSCInterface().raisePolice_interrupt());
-		
-		buttonPanel.getSwitchOnOff()
-				.addActionListener(e -> statemachine.getSCInterface().raiseToggle());
-		
+
+		buttonPanel.getPoliceInterrupt().addActionListener(e -> statemachine.getInterface().raisePolice_interrupt());
+
+		buttonPanel.getSwitchOnOff().addActionListener(e -> statemachine.getInterface().raiseToggle());
+
 		statemachine.init();
 	}
 	

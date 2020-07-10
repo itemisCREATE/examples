@@ -4,14 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.yakindu.sct.examples.basic.tutorial._03_lightswitch._03_LightSwitchStatemachine;
+import org.yakindu.sct.examples.basic.tutorial._03_LightSwitch;
 
 public class LightSwitch_03 {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		_03_LightSwitchStatemachine sm = new _03_LightSwitchStatemachine();
+		_03_LightSwitch sm = new _03_LightSwitch();
 
 		sm.init();
 		sm.enter();
@@ -21,16 +21,16 @@ public class LightSwitch_03 {
 			String input = br.readLine();
 
 			if (input.equals("On")) {
-				sm.getSCIUser().raiseOn_button();
+				sm.getInterfaceUser().raiseOn_button();
 			} else if (input.equals("Off")) {
-				sm.getSCIUser().raiseOff_button();
+				sm.getInterfaceUser().raiseOff_button();
 			} else if (input.equals("Exit")) {
 				break;
 			} else {
 				System.out.println("Incorrect input: " + input);
 			}
 			sm.runCycle();
-			System.out.printf("Brightness: %d\n", sm.getSCIUser().getBrightness());
+			System.out.printf("Brightness: %d\n", sm.getInterfaceUser().getBrightness());
 		}
 	}
 }

@@ -18,7 +18,7 @@ file, activate `General Feature -> DefaultRuntime` in your SGen file.
 import sys, os
 path_to_statemachine = '../src-gen/traffic/light/TrafficLightCtrl'
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), path_to_statemachine)))
-from trafficlightctrl.trafficlightctrl_statemachine import TrafficLightCtrl
+from trafficlightctrl.traffic_light_ctrl import TrafficLightCtrl
 from trafficlightctrl.timer.sct_timer import Timer 
 
 from traffic_scene import TrafficScene
@@ -45,9 +45,9 @@ class Callback:
         self.scene.tl_ped.set_request(self.sm.sci_pedestrian.request)
         # button actions
         if self.scene.btn_pressed_request():
-            self.sm.sci_interface.raise_pedestrianrequest()
+            self.sm.sci_interface.raise_pedestrian_request()
         if self.scene.is_btn_onoff_pressed:
-            self.sm.sci_interface.raise_onoff()
+            self.sm.sci_interface.raise_on_off()
         if self.scene.is_btn_exit_pressed:
             self.is_btn_exit_pressed = True
         # clear GUI events
@@ -65,7 +65,7 @@ class Main:
 
     def setup(self):
         self.sm.set_timer(self.ti)
-        self.sm.sci_interface.operationCallback = self.cb
+        self.sm.sci_interface.operation_callback = self.cb
         self.sm.init()
         self.sm.enter()
 

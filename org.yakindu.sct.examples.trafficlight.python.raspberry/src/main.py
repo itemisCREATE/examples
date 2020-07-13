@@ -10,7 +10,7 @@ import sys, os
 path_to_package = '../src-gen/traffic/light/TrafficLightCtrl'
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), path_to_package)))
 
-from trafficlightctrl.trafficlightctrl_statemachine import TrafficLightCtrl
+from trafficlightctrl.traffic_light_ctrl import TrafficLightCtrl
 from trafficlightctrl.timer.sct_timer import Timer
 
 # using RPi.GPIO:
@@ -24,13 +24,13 @@ class TrafficLightCtrlRuntime:
 		self.sm = TrafficLightCtrl()
 		self.ti = Timer()
 		self.traffic_system = TrafficLightSystem()
-		self.sm.sci_interface.operationCallback = self.traffic_system
+		self.sm.sci_interface.operation_callback = self.traffic_system
 		self.MAX_DURATION = 40 # seconds
 
 	def setup(self):
 		""" Get statemachine ready and enter it.
 		"""
-		self.traffic_system.set_btn_onoff(self.sm.sci_interface.raise_onoff)
+		self.traffic_system.set_btn_onoff(self.sm.sci_interface.raise_on_off)
 		self.traffic_system.tlSystem(self.sm.sci_interface)
 		self.traffic_system.tlCar(self.sm.sci_trafficlight)
 		self.traffic_system.tlPedestrian(self.sm.sci_pedestrian)

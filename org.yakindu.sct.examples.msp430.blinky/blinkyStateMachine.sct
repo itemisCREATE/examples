@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_AX0bQP_3Eeafl6WsllPgUg" specification="interface:&#xA;&#xA;internal:&#xA;operation init()&#xA;operation redOn()&#xA;operation redOff()" name="blinkyStateMachine">
+  <sgraph:Statechart xmi:id="_AX0bQP_3Eeafl6WsllPgUg" specification="@CycleBased(200)&#xA;@SuperSteps(no)&#xA;&#xA;interface:&#xA;&#xA;internal:&#xA;operation init()&#xA;operation redOn()&#xA;operation redOff()" name="blinkyStateMachine">
     <regions xmi:id="_AX1CVP_3Eeafl6WsllPgUg" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_AX2Qcf_3Eeafl6WsllPgUg">
         <outgoingTransitions xmi:id="_AX4Fpv_3Eeafl6WsllPgUg" specification="" target="_AX23hP_3Eeafl6WsllPgUg"/>
@@ -134,11 +134,11 @@
     <edges xmi:id="_0eoKQP_3Eeafl6WsllPgUg" type="Transition" element="_0em8IP_3Eeafl6WsllPgUg" source="_sP5OQP_3Eeafl6WsllPgUg" target="_miXqwP_3Eeafl6WsllPgUg">
       <children xsi:type="notation:DecorationNode" xmi:id="_0eoxUP_3Eeafl6WsllPgUg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_0eoxUf_3Eeafl6WsllPgUg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_0eoxUv_3Eeafl6WsllPgUg" y="10"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_0eoxUv_3Eeafl6WsllPgUg" x="-5" y="12"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_0eoKQf_3Eeafl6WsllPgUg" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_0eoKQ__3Eeafl6WsllPgUg" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_0eoKQv_3Eeafl6WsllPgUg" points="[0, 9, 128, -2]$[-98, 9, 30, -2]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_0eoKQv_3Eeafl6WsllPgUg" points="[0, 1, 155, -12]$[-128, 1, 27, -12]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_0ep_cP_3Eeafl6WsllPgUg" id="(0.0070921985815602835,0.18867924528301888)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_0ep_cf_3Eeafl6WsllPgUg" id="(0.7785714285714286,0.4339622641509434)"/>
     </edges>

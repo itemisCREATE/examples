@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_KZMvEMOTEeehTcIYV2YaEw" specification="interface:&#xA;var reverse: boolean = false&#xA;operation stateA()&#xA;operation stateB()&#xA;operation stateC()&#xA;" name="SwiftExample">
+  <sgraph:Statechart xmi:id="_KZMvEMOTEeehTcIYV2YaEw" specification="@CycleBased(200)&#xA;interface:&#xA;var reverse: boolean = false&#xA;operation stateA()&#xA;operation stateB()&#xA;operation stateC()&#xA;" name="SwiftExample">
     <regions xmi:id="_KZeb4MOTEeehTcIYV2YaEw" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_KZ0aIMOTEeehTcIYV2YaEw">
         <outgoingTransitions xmi:id="_KZ9kEMOTEeehTcIYV2YaEw" target="_KZ22YMOTEeehTcIYV2YaEw"/>
@@ -127,7 +127,7 @@
     <edges xmi:id="_n8spMMOTEeehTcIYV2YaEw" type="Transition" element="_n8rbEMOTEeehTcIYV2YaEw" source="_RNshsMOTEeehTcIYV2YaEw" target="_RZeT4cOTEeehTcIYV2YaEw">
       <children xsi:type="notation:DecorationNode" xmi:id="_n8tQQcOTEeehTcIYV2YaEw" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_n8tQQsOTEeehTcIYV2YaEw"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_n8tQQ8OTEeehTcIYV2YaEw" y="10"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_n8tQQ8OTEeehTcIYV2YaEw" x="1" y="-21"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_n8spMcOTEeehTcIYV2YaEw" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_n8tQQMOTEeehTcIYV2YaEw" fontName="Verdana"/>
@@ -138,7 +138,7 @@
     <edges xmi:id="_oU5GwMOTEeehTcIYV2YaEw" type="Transition" element="_oU4fsMOTEeehTcIYV2YaEw" source="_RZeT4cOTEeehTcIYV2YaEw" target="_RNshsMOTEeehTcIYV2YaEw">
       <children xsi:type="notation:DecorationNode" xmi:id="_oU5t0cOTEeehTcIYV2YaEw" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_oU5t0sOTEeehTcIYV2YaEw"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_oU5t08OTEeehTcIYV2YaEw" y="10"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_oU5t08OTEeehTcIYV2YaEw" x="1" y="-17"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_oU5GwcOTEeehTcIYV2YaEw" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_oU5t0MOTEeehTcIYV2YaEw" fontName="Verdana"/>

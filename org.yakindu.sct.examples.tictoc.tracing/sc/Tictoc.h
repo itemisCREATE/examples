@@ -36,8 +36,9 @@ typedef struct TictocTimeEvents TictocTimeEvents;
 }
 #endif
 
-#include "base/sc_tracing.h"
-#include "base/sc_types.h"
+#include "base\sc_tracing.h"
+#include "base\sc_types.h"
+#include "base\sc_rxc.h"
 
 #ifdef __cplusplus
 extern "C" { 
@@ -46,6 +47,12 @@ extern "C" {
 /*! \file Header of the state machine 'tictoc'.
 */
 
+#ifndef TICTOC_EVENTQUEUE_BUFFERSIZE
+#define TICTOC_EVENTQUEUE_BUFFERSIZE 20
+#endif
+#ifndef TICTOC_IN_EVENTQUEUE_BUFFERSIZE
+#define TICTOC_IN_EVENTQUEUE_BUFFERSIZE TICTOC_EVENTQUEUE_BUFFERSIZE
+#endif
 #ifndef SC_INVALID_EVENT_VALUE
 #define SC_INVALID_EVENT_VALUE 0
 #endif
@@ -66,7 +73,31 @@ extern "C" {
 #define SCVI_TICTOC_MAIN_PLAYING_ACTIVE_TOC 0
 
 
+/*
+ * Enum of event names in the statechart.
+ */
+typedef enum  {
+	tictoc_invalid_event = SC_INVALID_EVENT_VALUE,
+	tictocIface_toggle
+} tictoc_event_name;
 
+/*
+ * Struct that represents a single event.
+ */
+typedef struct {
+	tictoc_event_name name;
+} tictoc_event;
+
+/*
+ * Queue that holds the raised events.
+ */
+typedef struct tictoc_eventqueue_s {
+	tictoc_event *events;
+	sc_integer capacity;
+	sc_integer pop_index;
+	sc_integer push_index;
+	sc_integer size;
+} tictoc_eventqueue;
 /*! Enumeration of all states */ 
 typedef enum
 {
@@ -96,8 +127,8 @@ typedef enum
 struct TictocIface
 {
 	sc_boolean toggle_raised;
-	sc_boolean tic_raised;
-	sc_boolean toc_raised;
+	sc_observable tic;
+	sc_observable toc;
 	sc_integer count;
 	sc_integer delay;
 	sc_integer x;
@@ -134,6 +165,8 @@ struct TictocTimeEvents
 
 
 
+
+
 /*! 
  * Type declaration of the data structure for the Tictoc state machine.
  * This data structure has to be allocated by the client code. 
@@ -147,6 +180,9 @@ struct Tictoc
 	TictocInternal internal;
 	TictocTimeEvents timeEvents;
 	sc_trace_handler *trace_handler;
+	sc_boolean isExecuting;
+	tictoc_eventqueue in_event_queue;
+	tictoc_event in_buffer[TICTOC_IN_EVENTQUEUE_BUFFERSIZE];
 };
 
 
@@ -159,25 +195,28 @@ extern void tictoc_setTraceHandler(Tictoc* handle, sc_trace_handler* trace_handl
 /*! Initializes the Tictoc state machine data structures. Must be called before first usage.*/
 extern void tictoc_init(Tictoc* handle);
 
-/*! Activates the state machine */
+
+/*! Activates the state machine. */
 extern void tictoc_enter(Tictoc* handle);
 
-/*! Deactivates the state machine */
+/*! Deactivates the state machine. */
 extern void tictoc_exit(Tictoc* handle);
 
 /*! Performs a 'run to completion' step. */
 extern void tictoc_runCycle(Tictoc* handle);
+
+
 
 /*! Raises a time event. */
 extern void tictoc_raiseTimeEvent(Tictoc* handle, sc_eventid evid);
 
 /*! Raises the in event 'toggle' that is defined in the default interface scope. */ 
 extern void tictocIface_raise_toggle(Tictoc* handle);
-/*! Checks if the out event 'tic' that is defined in the default interface scope has been raised. */ 
-extern sc_boolean tictocIface_israised_tic(const Tictoc* handle);
+/*! Returns the observable for the out event 'tic' that is defined in the default interface scope. */ 
+extern sc_observable* tictocIface_get_tic(Tictoc* handle);
 
-/*! Checks if the out event 'toc' that is defined in the default interface scope has been raised. */ 
-extern sc_boolean tictocIface_israised_toc(const Tictoc* handle);
+/*! Returns the observable for the out event 'toc' that is defined in the default interface scope. */ 
+extern sc_observable* tictocIface_get_toc(Tictoc* handle);
 
 /*! Gets the value of the variable 'count' that is defined in the default interface scope. */ 
 extern sc_integer tictocIface_get_count(const Tictoc* handle);

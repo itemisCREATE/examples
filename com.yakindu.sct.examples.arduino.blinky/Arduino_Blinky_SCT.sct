@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_j6o2wK9YEei7VJyblLElYA" specification="import: &#xA;&quot;Arduino.h&quot;&#xA;&#xA;internal:&#xA;const ledPin : uint8_t = 13" name="Arduino_Blinky_SCT" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_j6o2wK9YEei7VJyblLElYA" specification="@CycleBased(200)&#xA;@SuperSteps(no)&#xA;&#xA;import: &#xA;&quot;Arduino.h&quot;&#xA;&#xA;internal:&#xA;const ledPin : uint8_t = 13" name="Arduino_Blinky_SCT" domainID="com.yakindu.domain.c">
     <regions xmi:id="_j7DGcK9YEei7VJyblLElYA" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_j7cIAK9YEei7VJyblLElYA">
         <outgoingTransitions xmi:id="_j7i1sK9YEei7VJyblLElYA" specification="" target="_B7hQcK9ZEei7VJyblLElYA"/>
@@ -34,7 +34,7 @@
           </children>
           <styles xsi:type="notation:ShapeStyle" xmi:id="_j7cvEa9YEei7VJyblLElYA" fontName="Verdana" fillColor="0" lineColor="16777215"/>
           <styles xsi:type="notation:NamedStyle" xmi:id="_j7cvEq9YEei7VJyblLElYA" name="allowColors"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_j7dWI69YEei7VJyblLElYA" x="119" y="23"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_j7dWI69YEei7VJyblLElYA" x="69" y="17" width="15" height="15"/>
         </children>
         <children xmi:id="_j7gZcK9YEei7VJyblLElYA" type="State" element="_j7d9MK9YEei7VJyblLElYA">
           <children xsi:type="notation:DecorationNode" xmi:id="_j7gZdK9YEei7VJyblLElYA" type="StateName">
@@ -97,7 +97,7 @@
       <children xsi:type="notation:Shape" xmi:id="_j7o8U69YEei7VJyblLElYA" type="StatechartTextExpression" fontName="Verdana" lineColor="4210752">
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_j7o8VK9YEei7VJyblLElYA"/>
       </children>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_j7o8Va9YEei7VJyblLElYA" x="10" y="10" width="200" height="400"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_j7o8Va9YEei7VJyblLElYA" x="10" y="10" width="200" height="260"/>
     </children>
     <styles xsi:type="notation:BooleanValueStyle" xmi:id="_j7CfYa9YEei7VJyblLElYA" name="inlineDefinitionSection"/>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_j7CfYq9YEei7VJyblLElYA"/>
@@ -108,7 +108,7 @@
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_j7nuMa9YEei7VJyblLElYA" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_j7nuM69YEei7VJyblLElYA" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_j7nuMq9YEei7VJyblLElYA" points="[0, 7, 61, -23]$[0, 27, 61, -3]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_j7nuMq9YEei7VJyblLElYA" points="[-1, 6, 7, -30]$[-1, 33, 7, -3]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_m4yC4K9YEei7VJyblLElYA" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_E4bGcK9ZEei7VJyblLElYA" id="(0.18518518518518517,0.06349206349206349)"/>
     </edges>

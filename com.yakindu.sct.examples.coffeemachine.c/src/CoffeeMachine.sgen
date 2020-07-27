@@ -1,9 +1,11 @@
 GeneratorModel for yakindu::c {
 
+	var project : string = "com.yakindu.sct.examples.coffeemachine.c"
+
 	statechart CoffeeMachine {
 
 		feature Outlet {
-			targetProject = "com.yakindu.sct.examples.coffeemachine.c"
+			targetProject = project
 			targetFolder = "src/sc"
 			libraryTargetFolder = "src/sc"
 		}

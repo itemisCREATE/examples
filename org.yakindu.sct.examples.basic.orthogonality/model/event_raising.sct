@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_6MJOgOqMEemPGu0xnwriEw" specification="@CycleBased(200)&#xA;&#xA;interface:&#xA;  in event event1&#xA;  &#xA;internal:&#xA;  event event2" name="event_raising">
+  <sgraph:Statechart xmi:id="_6MJOgOqMEemPGu0xnwriEw" specification="@CycleBased(200)&#xA;@SuperSteps(no)&#xA;&#xA;interface:&#xA;  in event event1&#xA;  &#xA;internal:&#xA;  event event2" name="event_raising">
     <regions xmi:id="_6MJ1meqMEemPGu0xnwriEw" name="r1">
       <vertices xsi:type="sgraph:Entry" xmi:id="_6MKcpuqMEemPGu0xnwriEw">
         <outgoingTransitions xmi:id="_6MLqxeqMEemPGu0xnwriEw" target="_6MLDt-qMEemPGu0xnwriEw"/>
@@ -75,7 +75,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6MKcpOqMEemPGu0xnwriEw"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_6MJ1m-qMEemPGu0xnwriEw" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6MKcpeqMEemPGu0xnwriEw" x="12" width="104" height="294"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6MKcpeqMEemPGu0xnwriEw" x="12" width="154" height="294"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_6MLqzeqMEemPGu0xnwriEw" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_6MLqz-qMEemPGu0xnwriEw" type="StatechartName">
@@ -141,7 +141,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_A4l4Z-qNEemPGu0xnwriEw"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_A4l4YeqNEemPGu0xnwriEw" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_A4l4YuqNEemPGu0xnwriEw" x="128" width="181" height="294"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_A4l4YuqNEemPGu0xnwriEw" x="190" y="4" width="236" height="294"/>
     </children>
     <styles xsi:type="notation:BooleanValueStyle" xmi:id="_6MJ1l-qMEemPGu0xnwriEw" name="inlineDefinitionSection"/>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_6MJ1mOqMEemPGu0xnwriEw"/>
@@ -159,7 +159,7 @@
     <edges xmi:id="_EVGbgOqNEemPGu0xnwriEw" type="Transition" element="_EVF0cOqNEemPGu0xnwriEw" source="_6MLDuuqMEemPGu0xnwriEw" target="__ysnUOqMEemPGu0xnwriEw">
       <children xsi:type="notation:DecorationNode" xmi:id="_EVGbhOqNEemPGu0xnwriEw" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_EVGbheqNEemPGu0xnwriEw"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_EVGbhuqNEemPGu0xnwriEw" x="-1" y="23"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_EVGbhuqNEemPGu0xnwriEw" x="-1" y="-32"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_EVGbgeqNEemPGu0xnwriEw" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_EVGbg-qNEemPGu0xnwriEw" fontName="Verdana"/>
@@ -181,7 +181,7 @@
     <edges xmi:id="_KdShwOqNEemPGu0xnwriEw" type="Transition" element="_KdR6sOqNEemPGu0xnwriEw" source="_EpxrAOqNEemPGu0xnwriEw" target="_FQxZkOqNEemPGu0xnwriEw">
       <children xsi:type="notation:DecorationNode" xmi:id="_KdTI0eqNEemPGu0xnwriEw" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_KdTI0uqNEemPGu0xnwriEw"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_KdTI0-qNEemPGu0xnwriEw" x="-2" y="23"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_KdTI0-qNEemPGu0xnwriEw" x="-5" y="-28"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_KdShweqNEemPGu0xnwriEw" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_KdTI0OqNEemPGu0xnwriEw" fontName="Verdana"/>

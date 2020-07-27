@@ -3,6 +3,29 @@
 #ifndef BLINKY_H_
 #define BLINKY_H_
 
+#ifdef __cplusplus
+extern "C" { 
+#endif
+
+/*!
+* Forward declaration for the Blinky state machine.
+*/
+typedef struct Blinky Blinky;
+
+/*!
+* Forward declaration of the data structure for the BlinkyIface interface scope.
+*/
+typedef struct BlinkyIface BlinkyIface;
+
+/*!
+* Forward declaration of the data structure for the BlinkyTimeEvents interface scope.
+*/
+typedef struct BlinkyTimeEvents BlinkyTimeEvents;
+
+#ifdef __cplusplus
+}
+#endif
+
 #include <main.h>
 #include <stm32f4xx_hal_gpio.h>
 #include <stm32f407xx.h>
@@ -15,6 +38,12 @@ extern "C" {
 /*! \file Header of the state machine 'blinky'.
 */
 
+#ifndef BLINKY_EVENTQUEUE_BUFFERSIZE
+#define BLINKY_EVENTQUEUE_BUFFERSIZE 20
+#endif
+#ifndef BLINKY_IN_EVENTQUEUE_BUFFERSIZE
+#define BLINKY_IN_EVENTQUEUE_BUFFERSIZE BLINKY_EVENTQUEUE_BUFFERSIZE
+#endif
 #ifndef SC_INVALID_EVENT_VALUE
 #define SC_INVALID_EVENT_VALUE 0
 #endif
@@ -33,7 +62,30 @@ extern "C" {
 #define SCVI_BLINKY_MAIN_REGION_LEDS_ON 0
 
 
+/*
+ * Enum of event names in the statechart.
+ */
+typedef enum  {
+	blinky_invalid_event = SC_INVALID_EVENT_VALUE
+} blinky_event_name;
 
+/*
+ * Struct that represents a single event.
+ */
+typedef struct {
+	blinky_event_name name;
+} blinky_event;
+
+/*
+ * Queue that holds the raised events.
+ */
+typedef struct blinky_eventqueue_s {
+	blinky_event *events;
+	sc_integer capacity;
+	sc_integer pop_index;
+	sc_integer push_index;
+	sc_integer size;
+} blinky_eventqueue;
 /*! Enumeration of all states */ 
 typedef enum
 {
@@ -41,52 +93,61 @@ typedef enum
 	Blinky_main_region_LEDs_off,
 	Blinky_main_region_LEDs_on
 } BlinkyStates;
+		
 
 
 
-/*! Type definition of the data structure for the BlinkyIface interface scope. */
-typedef struct
+/*! Type declaration of the data structure for the BlinkyIface interface scope. */
+struct BlinkyIface
 {
 	int8_t main;
-} BlinkyIface;
+};
 
 
 
-/*! Type definition of the data structure for the BlinkyTimeEvents interface scope. */
-typedef struct
+/*! Type declaration of the data structure for the BlinkyTimeEvents interface scope. */
+struct BlinkyTimeEvents
 {
 	sc_boolean blinky_main_region_LEDs_off_tev0_raised;
 	sc_boolean blinky_main_region_LEDs_on_tev0_raised;
-} BlinkyTimeEvents;
+};
+
+
 
 
 
 
 /*! 
- * Type definition of the data structure for the Blinky state machine.
+ * Type declaration of the data structure for the Blinky state machine.
  * This data structure has to be allocated by the client code. 
  */
-typedef struct
+struct Blinky
 {
 	BlinkyStates stateConfVector[BLINKY_MAX_ORTHOGONAL_STATES];
 	sc_ushort stateConfVectorPosition; 
 	BlinkyIface iface;
 	BlinkyTimeEvents timeEvents;
-} Blinky;
+	sc_boolean isExecuting;
+	blinky_eventqueue in_event_queue;
+	blinky_event in_buffer[BLINKY_IN_EVENTQUEUE_BUFFERSIZE];
+};
 
 
 
 /*! Initializes the Blinky state machine data structures. Must be called before first usage.*/
 extern void blinky_init(Blinky* handle);
 
-/*! Activates the state machine */
+
+/*! Activates the state machine. */
 extern void blinky_enter(Blinky* handle);
 
-/*! Deactivates the state machine */
+/*! Deactivates the state machine. */
 extern void blinky_exit(Blinky* handle);
 
 /*! Performs a 'run to completion' step. */
 extern void blinky_runCycle(Blinky* handle);
+
+
 
 /*! Raises a time event. */
 extern void blinky_raiseTimeEvent(Blinky* handle, sc_eventid evid);

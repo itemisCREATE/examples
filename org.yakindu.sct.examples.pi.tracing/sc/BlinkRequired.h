@@ -3,7 +3,7 @@
 #ifndef BLINKREQUIRED_H_
 #define BLINKREQUIRED_H_
 
-#include "base/sc_types.h"
+#include "base\sc_types.h"
 #include "Blink.h"
 
 #ifdef __cplusplus
@@ -30,8 +30,8 @@ There are some constraints that have to be considered for the implementation of 
  
 */
 
-extern void blinkIface_digitalWrite(const Blink* handle, const sc_integer pin, const sc_integer value);
-extern void blinkIface_pinMode(const Blink* handle, const sc_integer pin, const sc_integer mode);
+extern void blinkIface_digitalWrite( Blink* handle, const sc_integer pin, const sc_integer value);
+extern void blinkIface_pinMode( Blink* handle, const sc_integer pin, const sc_integer mode);
 
 
 /*!

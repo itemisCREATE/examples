@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_Jv4osC8cEeepRo_YBH1weQ" specification="interface:&#xA;&#xA;var menuState:string&#xA;&#xA;in event onMenuChanged&#xA;&#xA;operation showMenuScreen()&#xA;operation showWeatherScreen()&#xA;operation showMusicScreen()&#xA;operation showPhoneScreen()&#xA;operation waitingMessage()" name="menuService">
+  <sgraph:Statechart xmi:id="_Jv4osC8cEeepRo_YBH1weQ" specification="@EventDriven&#xA;&#xA;interface:&#xA;&#xA;var menuState:string&#xA;&#xA;in event onMenuChanged&#xA;&#xA;operation showMenuScreen()&#xA;operation showWeatherScreen()&#xA;operation showMusicScreen()&#xA;operation showPhoneScreen()&#xA;operation waitingMessage()" name="menuService">
     <regions xmi:id="_Jv5PxC8cEeepRo_YBH1weQ" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_Jv6d4S8cEeepRo_YBH1weQ">
         <outgoingTransitions xmi:id="_Jv7E_y8cEeepRo_YBH1weQ" target="_Jv6d7S8cEeepRo_YBH1weQ"/>

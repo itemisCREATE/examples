@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_nm4VUC8WEeepRo_YBH1weQ" specification="interface:&#xA;&#xA;in event onTurnOff&#xA;in event onTurnOn&#xA;&#xA;operation navigateToWelcomeScreen()&#xA;operation navigateToMainScreen()" name="screenService">
+  <sgraph:Statechart xmi:id="_nm4VUC8WEeepRo_YBH1weQ" specification="@EventDriven&#xA;&#xA;interface:&#xA;&#xA;in event onTurnOff&#xA;in event onTurnOn&#xA;&#xA;operation navigateToWelcomeScreen()&#xA;operation navigateToMainScreen()" name="screenService">
     <regions xmi:id="_nm6Kgi8WEeepRo_YBH1weQ" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_nm-b8S8WEeepRo_YBH1weQ">
         <outgoingTransitions xmi:id="_nnBfQC8WEeepRo_YBH1weQ" target="_nm_qES8WEeepRo_YBH1weQ"/>

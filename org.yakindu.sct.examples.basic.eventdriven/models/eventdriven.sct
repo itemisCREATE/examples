@@ -119,7 +119,7 @@
           <styles xsi:type="notation:BooleanValueStyle" xmi:id="_X3oLoej7EemjseAjs6pgDA" name="isHorizontal" booleanValue="true"/>
           <layoutConstraint xsi:type="notation:Bounds" xmi:id="_X3m9g-j7EemjseAjs6pgDA" x="301" y="318"/>
         </children>
-        <children xsi:type="notation:Shape" xmi:id="_UDxDAOj8EemjseAjs6pgDA" type="Note" fontName="Verdana" description="In event driven mode, events directly trigger statechart processing." fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+        <children xsi:type="notation:Shape" xmi:id="_UDxDAOj8EemjseAjs6pgDA" type="Note" fontName="Verdana" description="In event driven mode, &#xD;&#xA;events directly trigger &#xD;&#xA;statechart processing." fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
           <children xsi:type="notation:BasicDecorationNode" xmi:id="_UDy4MOj8EemjseAjs6pgDA" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
@@ -129,7 +129,7 @@
           <styles xsi:type="notation:TextStyle" xmi:id="_UDxDAej8EemjseAjs6pgDA"/>
           <styles xsi:type="notation:LineTypeStyle" xmi:id="_UDxDAuj8EemjseAjs6pgDA"/>
           <element xsi:nil="true"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_UDxDA-j8EemjseAjs6pgDA" x="32" y="151" width="196" height="41"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_UDxDA-j8EemjseAjs6pgDA" y="162" width="165" height="56"/>
         </children>
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_yoh3wej6EemjseAjs6pgDA"/>
       </children>

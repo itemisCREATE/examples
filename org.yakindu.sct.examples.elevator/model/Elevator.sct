@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_GQZKwE4VEeSulY-Gwg9bCg" specification="interface:&#xA;  var currentFloor:integer = 0&#xA;  var destination: integer = 0&#xA;  in event floor : integer" name="Elevator">
+  <sgraph:Statechart xmi:id="_GQZKwE4VEeSulY-Gwg9bCg" specification="@CycleBased(200)&#xA;@SuperSteps(no)&#xA;&#xA;interface:&#xA;  var currentFloor:integer = 0&#xA;  var destination: integer = 0&#xA;  in event floor : integer" name="Elevator">
     <regions xmi:id="_GQZx0k4VEeSulY-Gwg9bCg" name="main">
       <vertices xsi:type="sgraph:Entry" xmi:id="_GQaY5k4VEeSulY-Gwg9bCg">
         <outgoingTransitions xmi:id="_GQcOFU4VEeSulY-Gwg9bCg" specification="" target="_GQa_904VEeSulY-Gwg9bCg"/>
@@ -143,9 +143,10 @@
       <styles xsi:type="notation:TextStyle" xmi:id="_kG18kYNWEeek0ZRwI9ZVxw"/>
       <styles xsi:type="notation:LineTypeStyle" xmi:id="_kG18koNWEeek0ZRwI9ZVxw"/>
       <element xsi:nil="true"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_kG18k4NWEeek0ZRwI9ZVxw" x="6" y="478" width="535" height="246"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_kG18k4NWEeek0ZRwI9ZVxw" x="125" y="485" width="535" height="246"/>
     </children>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_GQZx0U4VEeSulY-Gwg9bCg"/>
+    <styles xsi:type="notation:BooleanValueStyle" xmi:id="_taSvoM_pEeqyx466HkZZlw" name="inlineDefinitionSection"/>
     <edges xmi:id="_GQc1IE4VEeSulY-Gwg9bCg" type="Transition" element="_GQcOFU4VEeSulY-Gwg9bCg" source="_GQaY504VEeSulY-Gwg9bCg" target="_GQa_-k4VEeSulY-Gwg9bCg">
       <children xsi:type="notation:DecorationNode" xmi:id="_GQc1JE4VEeSulY-Gwg9bCg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_GQc1JU4VEeSulY-Gwg9bCg"/>

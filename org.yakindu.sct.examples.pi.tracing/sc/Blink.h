@@ -3,8 +3,36 @@
 #ifndef BLINK_H_
 #define BLINK_H_
 
-#include "base/sc_tracing.h"
-#include "base/sc_types.h"
+#ifdef __cplusplus
+extern "C" { 
+#endif
+
+/*!
+* Forward declaration for the Blink state machine.
+*/
+typedef struct Blink Blink;
+
+/*!
+* Forward declaration of the data structure for the BlinkInternal interface scope.
+*/
+typedef struct BlinkInternal BlinkInternal;
+
+/*!
+* Forward declaration of the data structure for the BlinkIface interface scope.
+*/
+typedef struct BlinkIface BlinkIface;
+
+/*!
+* Forward declaration of the data structure for the BlinkTimeEvents interface scope.
+*/
+typedef struct BlinkTimeEvents BlinkTimeEvents;
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "base\sc_tracing.h"
+#include "base\sc_types.h"
 
 #ifdef __cplusplus
 extern "C" { 
@@ -13,6 +41,12 @@ extern "C" {
 /*! \file Header of the state machine 'blink'.
 */
 
+#ifndef BLINK_EVENTQUEUE_BUFFERSIZE
+#define BLINK_EVENTQUEUE_BUFFERSIZE 20
+#endif
+#ifndef BLINK_IN_EVENTQUEUE_BUFFERSIZE
+#define BLINK_IN_EVENTQUEUE_BUFFERSIZE BLINK_EVENTQUEUE_BUFFERSIZE
+#endif
 #ifndef SC_INVALID_EVENT_VALUE
 #define SC_INVALID_EVENT_VALUE 0
 #endif
@@ -33,7 +67,31 @@ extern "C" {
 #define SCVI_BLINK_RASPBERRY_PI_IDLE 0
 
 
+/*
+ * Enum of event names in the statechart.
+ */
+typedef enum  {
+	blink_invalid_event = SC_INVALID_EVENT_VALUE,
+	blinkIface_toggle
+} blink_event_name;
 
+/*
+ * Struct that represents a single event.
+ */
+typedef struct {
+	blink_event_name name;
+} blink_event;
+
+/*
+ * Queue that holds the raised events.
+ */
+typedef struct blink_eventqueue_s {
+	blink_event *events;
+	sc_integer capacity;
+	sc_integer pop_index;
+	sc_integer push_index;
+	sc_integer size;
+} blink_eventqueue;
 /*! Enumeration of all states */ 
 typedef enum
 {
@@ -56,41 +114,43 @@ typedef enum
 	blinkIface_toggle
 } BlinkFeature;
 
-/*! Type definition of the data structure for the BlinkInternal interface scope. */
-typedef struct
+/*! Type declaration of the data structure for the BlinkInternal interface scope. */
+struct BlinkInternal
 {
 	sc_integer low;
 	sc_integer high;
 	sc_integer output;
 	sc_integer led_pin;
-} BlinkInternal;
+};
 
 
 
-/*! Type definition of the data structure for the BlinkIface interface scope. */
-typedef struct
+/*! Type declaration of the data structure for the BlinkIface interface scope. */
+struct BlinkIface
 {
 	sc_integer delay;
 	sc_boolean toggle_raised;
-} BlinkIface;
+};
 
 
 
-/*! Type definition of the data structure for the BlinkTimeEvents interface scope. */
-typedef struct
+/*! Type declaration of the data structure for the BlinkTimeEvents interface scope. */
+struct BlinkTimeEvents
 {
 	sc_boolean blink_raspberry_pi_Blink_blinky_On_tev0_raised;
 	sc_boolean blink_raspberry_pi_Blink_blinky_Off_tev0_raised;
-} BlinkTimeEvents;
+};
+
+
 
 
 
 
 /*! 
- * Type definition of the data structure for the Blink state machine.
+ * Type declaration of the data structure for the Blink state machine.
  * This data structure has to be allocated by the client code. 
  */
-typedef struct
+struct Blink
 {
 	BlinkStates stateConfVector[BLINK_MAX_ORTHOGONAL_STATES];
 	sc_ushort stateConfVectorPosition; 
@@ -98,7 +158,10 @@ typedef struct
 	BlinkIface iface;
 	BlinkTimeEvents timeEvents;
 	sc_trace_handler *trace_handler;
-} Blink;
+	sc_boolean isExecuting;
+	blink_eventqueue in_event_queue;
+	blink_event in_buffer[BLINK_IN_EVENTQUEUE_BUFFERSIZE];
+};
 
 
 /*! Initializes the Blink state machine data structures. Must be called before first usage.*/
@@ -110,14 +173,17 @@ extern void blink_setTraceHandler(Blink* handle, sc_trace_handler* trace_handler
 /*! Initializes the Blink state machine data structures. Must be called before first usage.*/
 extern void blink_init(Blink* handle);
 
-/*! Activates the state machine */
+
+/*! Activates the state machine. */
 extern void blink_enter(Blink* handle);
 
-/*! Deactivates the state machine */
+/*! Deactivates the state machine. */
 extern void blink_exit(Blink* handle);
 
 /*! Performs a 'run to completion' step. */
 extern void blink_runCycle(Blink* handle);
+
+
 
 /*! Raises a time event. */
 extern void blink_raiseTimeEvent(Blink* handle, sc_eventid evid);
@@ -128,7 +194,6 @@ extern sc_integer blinkIface_get_delay(const Blink* handle);
 extern void blinkIface_set_delay(Blink* handle, sc_integer value);
 /*! Raises the in event 'toggle' that is defined in the default interface scope. */ 
 extern void blinkIface_raise_toggle(Blink* handle);
-
 
 /*!
  * Checks whether the state machine is active (until 2.4.1 this method was used for states).

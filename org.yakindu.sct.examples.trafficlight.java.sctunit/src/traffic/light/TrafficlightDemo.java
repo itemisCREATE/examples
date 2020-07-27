@@ -15,20 +15,20 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-import traffic.light.trafficlightctrl.ITrafficLightCtrlStatemachine;
-import traffic.light.trafficlightctrl.SynchronizedTrafficLightCtrlStatemachine;
+import org.yakindu.sct.RuntimeService;
+import org.yakindu.sct.TimerService;
+
 
 /**
  * 
  * @author Tesch
  *
  */
-
 public class TrafficlightDemo extends JFrame {
 
 	private static final long serialVersionUID = -8909693541678814631L;
 
-	protected SynchronizedTrafficLightCtrlStatemachine statemachine;
+	protected TrafficLightCtrl statemachine;
 
 	protected TimerService timer;
 
@@ -65,10 +65,10 @@ public class TrafficlightDemo extends JFrame {
 	}
 
 	protected void setupStatemachine() {
-		statemachine = new SynchronizedTrafficLightCtrlStatemachine();
+		statemachine = new TrafficLightCtrl();
 		timer = new TimerService();
 		statemachine.setTimer(timer);
-		statemachine.getSCInterface().setSCInterfaceOperationCallback(new ITrafficLightCtrlStatemachine.SCInterfaceOperationCallback() {
+		statemachine.getInterface().setInterfaceOperationCallback(new ITrafficLightCtrl.InterfaceOperationCallback() {
 			@Override
 			public void synchronize() {
 				checkTrafficLightStates();
@@ -79,19 +79,19 @@ public class TrafficlightDemo extends JFrame {
 		statemachine.init();
 
 		buttonPanel.getPedestrianRequest()
-				.addActionListener(e -> statemachine.getSCInterface().raisePedestrianRequest());
-		buttonPanel.getOnOff().addActionListener(e -> statemachine.getSCInterface().raiseOnOff());
+				.addActionListener(e -> statemachine.getInterface().raisePedestrianRequest());
+		buttonPanel.getOnOff().addActionListener(e -> statemachine.getInterface().raiseOnOff());
 	}
 
 	
 	protected void checkTrafficLightStates() {
 
-		crossing.getTrafficLight().setRed(statemachine.getSCITrafficLight().getRed());
-		crossing.getTrafficLight().setYellow(statemachine.getSCITrafficLight().getYellow());
-		crossing.getTrafficLight().setGreen(statemachine.getSCITrafficLight().getGreen());
+		crossing.getTrafficLight().setRed(statemachine.getInterfaceTrafficLight().getRed());
+		crossing.getTrafficLight().setYellow(statemachine.getInterfaceTrafficLight().getYellow());
+		crossing.getTrafficLight().setGreen(statemachine.getInterfaceTrafficLight().getGreen());
 
-		crossing.getPedLight().setRed(statemachine.getSCIPedestrian().getRed());
-		crossing.getPedLight().setGreen(statemachine.getSCIPedestrian().getGreen());
-		crossing.getPedLight().setWhite(statemachine.getSCIPedestrian().getRequest());
+		crossing.getPedLight().setRed(statemachine.getInterfacePedestrian().getRed());
+		crossing.getPedLight().setGreen(statemachine.getInterfacePedestrian().getGreen());
+		crossing.getPedLight().setWhite(statemachine.getInterfacePedestrian().getRequest());
 	}
 }

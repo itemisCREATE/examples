@@ -7,14 +7,14 @@
 				Contributors:
 				    committers of YAKINDU - initial API and implementation
 				� */
-package traffic.light.trafficlightctrl;
+package traffic.light;
 
-import traffic.light.IStatemachine;
-import traffic.light.ITimerCallback;
+import org.yakindu.sct.IStatemachine;
+import org.yakindu.sct.ITimerCallback;
 
-public interface ITrafficLightCtrlStatemachine extends ITimerCallback,IStatemachine {
-
-	public interface SCITrafficLight {
+public interface ITrafficLightCtrl extends ITimerCallback,IStatemachine {
+	
+	public interface InterfaceTrafficLight {
 	
 		public boolean getRed();
 		
@@ -30,9 +30,10 @@ public interface ITrafficLightCtrlStatemachine extends ITimerCallback,IStatemach
 		
 	}
 	
-	public SCITrafficLight getSCITrafficLight();
+	public InterfaceTrafficLight getInterfaceTrafficLight();
 	
-	public interface SCIPedestrian {
+	
+	public interface InterfacePedestrian {
 	
 		public boolean getRequest();
 		
@@ -48,24 +49,24 @@ public interface ITrafficLightCtrlStatemachine extends ITimerCallback,IStatemach
 		
 	}
 	
-	public SCIPedestrian getSCIPedestrian();
+	public InterfacePedestrian getInterfacePedestrian();
 	
-	public interface SCInterface {
+	
+	public interface Interface {
 	
 		public void raisePedestrianRequest();
 		
 		public void raiseOnOff();
 		
-		public void setSCInterfaceOperationCallback(SCInterfaceOperationCallback operationCallback);
-	
+		public void setInterfaceOperationCallback(InterfaceOperationCallback operationCallback);
 	}
 	
-	public interface SCInterfaceOperationCallback {
+	public interface InterfaceOperationCallback {
 	
 		public void synchronize();
 		
 	}
 	
-	public SCInterface getSCInterface();
+	public Interface getInterface();
 	
 }

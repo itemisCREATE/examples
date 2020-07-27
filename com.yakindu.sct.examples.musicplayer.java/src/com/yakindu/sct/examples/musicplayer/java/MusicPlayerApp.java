@@ -1,8 +1,5 @@
 package com.yakindu.sct.examples.musicplayer.java;
 
-import com.yakindu.sct.examples.musicplayer.java.player.IPlayerStatemachine;
-import com.yakindu.sct.examples.musicplayer.java.player.IPlayerStatemachine.SCInterfaceListener;
-import com.yakindu.sct.examples.musicplayer.java.player.PlayerStatemachine;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -60,56 +57,41 @@ public class MusicPlayerApp extends Application {
 	}
 
 	private void setupBehaviour() {
-		IPlayerStatemachine statemachine = new PlayerStatemachine();
+		IPlayer statemachine = new Player();
 		
 		statemachine.init();
 		
 		// hook up in-events
 		playBtn.setOnAction((e) -> {
-			statemachine.getSCInterface().raisePlayPressed();
+			statemachine.getInterface().raisePlayPressed();
 		});
 		
 		pauseBtn.setOnAction((e) -> {
-			statemachine.getSCInterface().raisePausePressed();
+			statemachine.getInterface().raisePausePressed();
 		});
 		
 		stopBtn.setOnAction((e) -> {
-			statemachine.getSCInterface().raiseStopPressed();
+			statemachine.getInterface().raiseStopPressed();
 		});
 		
 		prevBtn.setOnAction((e) -> {
-			statemachine.getSCInterface().raisePrevPressed();
-			infoLbl.setText(statemachine.getSCInterface().getCurrentSong().getName());
+			statemachine.getInterface().raisePrevPressed();
+			infoLbl.setText(statemachine.getInterface().getCurrentSong().getName());
 		});
 		
 		nextBtn.setOnAction((e) -> {
-			statemachine.getSCInterface().raiseNextPressed();
-			infoLbl.setText(statemachine.getSCInterface().getCurrentSong().getName());
+			statemachine.getInterface().raiseNextPressed();
+			infoLbl.setText(statemachine.getInterface().getCurrentSong().getName());
 		});
 
 		// hook up out-events
-		statemachine.getSCInterface().getListeners().add(new SCInterfaceListener() {
-
-			@Override
-			public void onPlayBtnEnabledRaised(boolean value) {
-				playBtn.setDisable(!value);
-			}
-
-			@Override
-			public void onPauseBtnEnabledRaised(boolean value) {
-				pauseBtn.setDisable(!value);
-			}
-
-			@Override
-			public void onStopBtnEnabledRaised(boolean value) {
-				stopBtn.setDisable(!value);
-			}
-			
-		});
+		statemachine.getInterface().getPlayBtnEnabled().subscribe(value -> playBtn.setDisable(!value));
+		statemachine.getInterface().getPauseBtnEnabled().subscribe(value -> pauseBtn.setDisable(!value));
+		statemachine.getInterface().getStopBtnEnabled().subscribe(value -> stopBtn.setDisable(!value));
 		
 		statemachine.enter();
 		
-		infoLbl.setText(statemachine.getSCInterface().getCurrentSong().getName());
+		infoLbl.setText(statemachine.getInterface().getCurrentSong().getName());
 	}
 
 }

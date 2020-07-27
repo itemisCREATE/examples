@@ -7,7 +7,7 @@
 				Contributors:
 				    committers of YAKINDU - initial API and implementation
 				� */
-package traffic.light;
+package org.yakindu.sct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  */
 public class TimerService implements ITimer {
-
+	
 	private final Timer timer = new Timer();
 	
 	private final List<TimeEventTask> timerTaskList = new ArrayList<TimeEventTask>();
@@ -121,4 +121,3 @@ public class TimerService implements ITimer {
 		lock.unlock();
 	}
 }
-

@@ -86,10 +86,10 @@ class TrafficLightSystem:
 		self.tl_ped.set_request(self.ped.request)
 		# ped request button
 		if GPIO.event_detected(self.tl_ped.btn_req):
-			self.system.raise_pedestrianrequest()
+			self.system.raise_pedestrian_request()
 		# sys onoff button
 		if GPIO.event_detected(self.btn_onoff):
-			self.system.raise_onoff()
+			self.system.raise_on_off()
 		# sys exit button
 		if GPIO.event_detected(self.btn_exit):
 			self.exit()

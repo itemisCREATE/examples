@@ -1,7 +1,7 @@
 import sys, os
 path_to_statemachine = '../src-gen/LightSwitch'
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), path_to_statemachine)))
-from lightswitch.lightswitch_statemachine import LightSwitch
+from lightswitch.light_switch import LightSwitch
 
 class Main:
     def __init__(self):
@@ -17,17 +17,17 @@ class Main:
             self.input = input()
             if self.input == 'On':
                 self.sm.sci_user.raise_on_button()
-                self.printStatus()
+                self.print_status()
             elif self.input == 'Off':
                 self.sm.sci_user.raise_off_button()
-                self.printStatus()
+                self.print_status()
         self.shutdown()
     
     def shutdown(self):
         self.sm.exit()
         print("Bye!")
         
-    def printStatus(self):
+    def print_status(self):
         if(self.sm.is_state_active(self.sm.State.main_region_on)): 
             print("Light Switch is On  [brightness =", self.sm.sci_user.brightness, "]")
         else:

@@ -84,7 +84,7 @@ class TrafficLightSystem:
 		
 	def tlSystem(self, arg):
 		self.system = arg
-		self.set_btn_onoff(self.system.raise_onoff)
+		self.set_btn_onoff(self.system.raise_on_off)
 		
 	def tlPedestrian(self, arg):
 		self.ped = arg
@@ -103,7 +103,7 @@ class TrafficLightSystem:
 		self.tl_ped.set_request(self.ped.request)
 		# ped request button
 		if self.tl_ped.is_req_btn_pressed():
-			self.system.raise_pedestrianrequest()
+			self.system.raise_pedestrian_request()
 			self.tl_ped.clear_events()
 
 	def exit(self):

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_c0m14FGcEeqDys82XUjzwg" specification="@CycleBased(200)&#xA;@SuperSteps(no)&#xA;&#xA;import : &quot;TwoWayTrafficControl2.sct&quot;&#xA;&#xA;interface:&#xA;&#x9;var controller : TwoWayTrafficControl2&#xA;&#x9;in event startAll&#xA;&#x9;in event outageA&#xA;&#x9;in event outageB&#xA;&#xA;internal:&#xA;oncycle /&#xA;&#x9;controller.runCycle;&#xA;&#x9;controller.trafficLightA.runCycle;&#xA;&#x9;controller.trafficLightB.runCycle" name="StreetCrossingSystem">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
+  <sgraph:Statechart xmi:id="_c0m14FGcEeqDys82XUjzwg" specification="@CycleBased(200)&#xA;&#xA;import : &quot;TwoWayTrafficControl2.sct&quot;&#xA;&#xA;interface:&#xA;&#x9;var controller : TwoWayTrafficControl2&#xA;&#x9;in event startAll&#xA;&#x9;in event outageA&#xA;&#x9;in event outageB&#xA;&#xA;internal:&#xA;oncycle /&#xA;&#x9;controller.runCycle;&#xA;&#x9;controller.trafficLightA.runCycle;&#xA;&#x9;controller.trafficLightB.runCycle" name="StreetCrossingSystem">
     <regions xmi:id="_c0nc81GcEeqDys82XUjzwg" name="system">
       <vertices xsi:type="sgraph:Entry" xmi:id="_c0ruYVGcEeqDys82XUjzwg">
         <outgoingTransitions xmi:id="_c0tjllGcEeqDys82XUjzwg" target="_KweFkFGdEeqDys82XUjzwg"/>

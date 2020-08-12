@@ -14,6 +14,7 @@ GeneratorModel for yakindu::java {
 		
 		feature Naming {
 			basePackage = "org.yakindu.sct.examples.basic.tutorial"
+			libraryPackage = "org.yakindu.sct"
 		}
 	}
 }

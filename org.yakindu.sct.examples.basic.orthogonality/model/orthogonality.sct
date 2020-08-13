@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_BNR3gLX7EeWTfOMYDrZNaw" specification="@CycleBased(200)&#xA;@SuperSteps(no)&#xA;&#xA;internal:&#xA;&#x9;event proceed&#xA;&#x9;event pa&#xA;&#x9;event pb" name="Orthogonality">
+  <sgraph:Statechart xmi:id="_BNR3gLX7EeWTfOMYDrZNaw" specification="@CycleBased(200)&#xA;&#xA;internal:&#xA;&#x9;event proceed&#xA;&#x9;event pa&#xA;&#x9;event pb" name="Orthogonality">
     <regions xmi:id="_BNSekrX7EeWTfOMYDrZNaw" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_BNWwAbX7EeWTfOMYDrZNaw">
         <outgoingTransitions xmi:id="_BNZMQ7X7EeWTfOMYDrZNaw" target="_BNXXF7X7EeWTfOMYDrZNaw"/>

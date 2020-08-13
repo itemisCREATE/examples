@@ -9,6 +9,7 @@ GeneratorModel for yakindu::java {
 		
 		feature Naming {
 			basePackage = "org.yakindu.sct.examples.codegen.java"
+			libraryPackage = "org.yakindu.sct"
 		}
 		
 	}

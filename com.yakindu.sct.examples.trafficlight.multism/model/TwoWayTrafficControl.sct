@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_J_-p0EaGEeqaaazg9NGRiA" specification="@CycleBased(200)&#xA;@SuperSteps(no)&#xA;&#xA;import : &quot;TrafficLight.sct&quot;&#xA;&#xA;interface:&#xA;&#xA;var trafficLightA : TrafficLight&#xA;var trafficLightB : TrafficLight&#xA;&#xA;in event on&#xA;in event off&#xA;&#xA;in event operate&#xA;in event standby&#xA;&#xA;var safePeriod : integer = 10&#xA;&#xA;" name="TwoWayTrafficControl">
+  <sgraph:Statechart xmi:id="_J_-p0EaGEeqaaazg9NGRiA" specification="@CycleBased(200)&#xA;&#xA;import : &quot;TrafficLight.sct&quot;&#xA;&#xA;interface:&#xA;&#xA;var trafficLightA : TrafficLight&#xA;var trafficLightB : TrafficLight&#xA;&#xA;in event on&#xA;in event off&#xA;&#xA;in event operate&#xA;in event standby&#xA;&#xA;var safePeriod : integer = 10&#xA;&#xA;" name="TwoWayTrafficControl">
     <regions xmi:id="_J_-p2kaGEeqaaazg9NGRiA" name="main">
       <vertices xsi:type="sgraph:Entry" xmi:id="_J__Q5kaGEeqaaazg9NGRiA">
         <outgoingTransitions xmi:id="_J__4AUaGEeqaaazg9NGRiA" target="_J__38UaGEeqaaazg9NGRiA"/>

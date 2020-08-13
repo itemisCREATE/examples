@@ -13,7 +13,6 @@ public class Main {
 		userInteraction(lightSwitch);
 	}
 
-	@SuppressWarnings("resource")
 	private static void userInteraction(LightSwitch lightSwitch) {
 		System.out.println("Interact with the light switch [On]/[Off]:");
 		Scanner sc = new Scanner(System.in).useDelimiter("\\s");

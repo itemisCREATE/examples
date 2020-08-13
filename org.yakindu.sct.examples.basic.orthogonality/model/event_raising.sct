@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_6MJOgOqMEemPGu0xnwriEw" specification="@CycleBased(200)&#xA;@SuperSteps(no)&#xA;&#xA;interface:&#xA;  in event event1&#xA;  &#xA;internal:&#xA;  event event2" name="event_raising">
+  <sgraph:Statechart xmi:id="_6MJOgOqMEemPGu0xnwriEw" specification="@CycleBased(200)&#xA;&#xA;interface:&#xA;  in event event1&#xA;  &#xA;internal:&#xA;  event event2" name="event_raising">
     <regions xmi:id="_6MJ1meqMEemPGu0xnwriEw" name="r1">
       <vertices xsi:type="sgraph:Entry" xmi:id="_6MKcpuqMEemPGu0xnwriEw">
         <outgoingTransitions xmi:id="_6MLqxeqMEemPGu0xnwriEw" target="_6MLDt-qMEemPGu0xnwriEw"/>

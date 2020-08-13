@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_3AQUYJOAEeWuO-fDDpYHyA" specification="@CycleBased(200)&#xA;@SuperSteps(no)&#xA;&#xA;internal:&#xA;&#x9;var brightness: integer&#xA;&#x9;&#xA;interface user:&#xA;&#x9;in event on_button&#xA;&#x9;in event off_button&#xA;&#x9;in event mode_button&#xA;&#x9;&#xA;interface sensor:&#xA;&#x9;in event motion&#xA;&#x9;&#xA;interface lum_sensor:&#xA; &#x9;in event bright&#xA; &#x9;in event dark" name="LightSwitch">
+  <sgraph:Statechart xmi:id="_3AQUYJOAEeWuO-fDDpYHyA" specification="@CycleBased(200)&#xA;&#xA;internal:&#xA;&#x9;var brightness: integer&#xA;&#x9;&#xA;interface user:&#xA;&#x9;in event on_button&#xA;&#x9;in event off_button&#xA;&#x9;in event mode_button&#xA;&#x9;&#xA;interface sensor:&#xA;&#x9;in event motion&#xA;&#x9;&#xA;interface lum_sensor:&#xA; &#x9;in event bright&#xA; &#x9;in event dark" name="LightSwitch">
     <regions xmi:id="_3AQ7cpOAEeWuO-fDDpYHyA" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_3ASJk5OAEeWuO-fDDpYHyA">
         <outgoingTransitions xmi:id="_Y9ILYOkMEemeGdc82b-fAg" specification="" target="_Rr-5AOkMEemeGdc82b-fAg"/>

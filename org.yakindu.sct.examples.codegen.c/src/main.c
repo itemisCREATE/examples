@@ -58,4 +58,6 @@ int main(int argc, char **argv) {
 					lightSwitchIfaceLight_get_brightness(&lightSwitch));
 		}
 	}
+
+	return 0;
 }

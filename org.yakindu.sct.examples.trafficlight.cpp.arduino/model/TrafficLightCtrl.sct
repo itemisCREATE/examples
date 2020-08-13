@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
   <sgraph:Statechart xmi:id="_NPjBgBA-EeGQ0KsLDV4EFg" specification="@CycleBased(200)&#xD;&#xA;&#xD;&#xA;interface TrafficLight:&#xD;&#xA;&#x9;var red:boolean&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;var yellow:boolean&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;var green:boolean&#xD;&#xA;&#xD;&#xA;interface Pedestrian:&#xD;&#xA;&#x9;var request:boolean&#x9;&#x9;&#xD;&#xA;&#x9;var red:boolean&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;var green:boolean&#xD;&#xA;&#xD;&#xA;interface:&#xD;&#xA;&#x9;in event pedestrianRequest&#x9;&#x9;&#xD;&#xA;&#x9;in event onOff&#xD;&#xA;&#x9;operation synchronize() : void&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#xD;&#xA;internal: &#xD;&#xA;&#x9;every 200ms / synchronize&#xD;&#xA;&#x9;&#xD;&#xA;" name="TrafficLightCtrl">
     <regions xmi:id="_NPjBgxA-EeGQ0KsLDV4EFg" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_NPjBjRA-EeGQ0KsLDV4EFg">

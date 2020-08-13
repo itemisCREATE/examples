@@ -41,6 +41,7 @@ int main(int argc, char **argv) {
 	subscribe_observers(&lightSwitch, &lightOnObserver, &lightOffObserver);
 	/*! Enters the state machine; from this point on the state machine is ready to react on incoming event */
 	lightSwitch_enter(&lightSwitch);
+
 	puts("Type 1 or 0 to switch the light on or off.\n");
 
 	while (1) {

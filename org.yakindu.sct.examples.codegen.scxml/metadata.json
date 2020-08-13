@@ -1,0 +1,13 @@
+{
+	"id": "org.yakindu.sct.examples.codegen.scxml",
+	"title": "SCXML Code Generation",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to generate SCXML code from a statechart.",
+	"previewImage": "watch_gears_thumb.jpg",
+	"category": [
+		"open source",
+		"code-generation"
+	],
+	"rank":40
+}
+ 

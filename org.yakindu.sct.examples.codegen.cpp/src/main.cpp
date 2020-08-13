@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
 			lightSwitch.getSCI_User()->raise_off_button();
 		}
 		/*! Gets the value of the brightness variable */
-		cout << "Light is on, brightness: " << lightSwitch.getSCI_Light()->get_brightness() << endl;
+		cout << "Light is on, brightness: " << lightSwitch.getSCI_Light()->get_brightness() << "." << endl;
 
 	}
 }

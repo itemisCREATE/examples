@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
 		}
 		if (input != '\n') {
 			/*! Gets the value of the brightness variable */
-			printf("Brightness %d\n",
+			printf("Brightness %d.\n",
 					lightSwitchIfaceLight_get_brightness(&lightSwitch));
 		}
 	}

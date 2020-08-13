@@ -1,79 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>C++ Code Generation</title>
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/custom.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title>C++ Code Generation</title>
+	<link href="../css/style.css" rel="stylesheet">
+	<link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
-  <div class="primary">
+	<div class="primary">
 
-    <h1>C++ Code Generation</h1>
+		<h1>C++ Code Generation</h1>
 
-    <p>This example demonstrates how to generate C++ code from a statechart. We will use a simple light switch example and focus on the generator model.</p>
+		<p>This example demonstrates how to generate C++ code from a statechart. We will use a simple light switch example and focus on the generator model.</p>
 
-    <h2>Generator Model</h2>
-    <p>
-    In order to generate code we need to specify which code generator to use and into which folder to generate. For this, we need to create a so-called generator model. To do so, 
-    <ul>
-    <li>Select the models folder in the <em>Project Explorer</em></li>
-    <li>Right-click and choose <em>New -> Code generator model</em></li>
-    <li>Follow the wizard to select the C++ code generator and the state machine for which you want to generate C++ code</li>
-    </ul>
-    </p>
-    
-    <p>
-    The new generator model will look similar to this one:
-    </p>
-    <p>
-	<img class="small" 
-	alt="Simple C++ generator model" title="Simple C++ generator model" border="0" src="images/simple-genmodel.png"/>
-	</p>
-	<p>
-	This is the simplest possible generator model. Line 1 defines which code generator to use. Line 3 refers to the statechart model. Lines 6 and 7 specify the target location for the generated artifacts.
-	</p>
-	<p>
-	Besides setting up the target location, the generator model allows you to adjust several aspects of the generated code like naming, license comments or function inlining. Press [Ctrl]+[Space] to get a list of available features. For more information, please refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/codegen_cpp_code_generator#codegen_cpp_code_generator_features">documentation</a>.
-	</p>
-	<img class="small" 
-	alt="Content assist in generator model" title="Content assist in generator model" border="0" src="images/content-assist.png"/>
+		<h2>Generator Model</h2>
+		<p>
+			In order to generate code we need to specify which code generator to use and into which folder to generate. For this, we need to create a so-called generator model. To do so, 
+			<ul>
+				<li>Select the models folder in the <em>Project Explorer</em></li>
+				<li>Right-click and choose <em>New -> Code generator model</em></li>
+				<li>Follow the wizard to select the C++ code generator and the state machine for which you want to generate C++ code</li>
+			</ul>
+		</p>
+
+		<p>
+			The new generator model will look similar to this one:
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/org.yakindu.sct.examples.codegen.c/models/c.sgen"></script>
+		</p>
+		<p>
+			This is the simplest possible generator model. Besides setting up the target location, the generator model allows you to adjust several aspects of the generated code like naming, license comments or function inlining. Press [CTRL]+[SPACE] to get a list of available features. For more information, please refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/codegen_cpp_code_generator#codegen_cpp_code_generator_features">documentation</a>.
+		</p>
+		<img class="small" 
+		alt="Content assist in generator model" title="Content assist in generator model" border="1" src="images/content-assist.gif"/>
 	</p>
 	
 	<h2>Invoking Code Generation</h2>
 	<p>
-	Code generation is usually invoked each time the statechart model is saved. This behavior can be disabled by unchecking the option <em>Project -> Build Automatically</em>. You can always manually invoke the code generation with <em>Generate Code Artifacts</em> in the context menu of the generator model.
+		Code generation is usually invoked each time the statechart model is saved. This behavior can be disabled by unchecking the option <em>Project -> Build Automatically</em>. You can always manually invoke the code generation with <em>Generate Code Artifacts</em> in the context menu of the generator model.
 	</p>
 	
 	<h2>The Example Application</h2>
 	<p>
-	As an example application we will use the light switch example with brightness adjustment from the <a href="../examples/org-yakindu-sct-examples-basic-tutorial?exampleId=org.yakindu.sct.examples.lightswitch_series">Basic Tutorial</a>.
+		As an example application we will use the light switch example with brightness adjustment from the <a href="../examples/org-yakindu-sct-examples-basic-tutorial?exampleId=org.yakindu.sct.examples.lightswitch_series">Basic Tutorial</a>.
 	</p>
 	<img class="large" 
 	alt="Light switch model" title="Light switch model" border="0" src="images/model.png"/>
-	</p>
-	<p>
+</p>
+<p>
 	Our application is a simple interactive console with which the user can switch the light on or off. The complete application code is implemented in <code>main.cpp</code>:
-	</p>
-	</p>
-	<img class="large" 
-	alt="Application code" title="Application code" border="0" src="images/application-code.png"/>
-	</p>
-	The interesting parts are the following:
+</p>
+<p>
+	<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/org.yakindu.sct.examples.codegen.cpp/src/main.cpp"></script>
+</p>
+<p>
+	The most important parts are commented in the <code>main.cpp</code> file. These are the bullet points:
 	<ul>
-	<li>Line 14 instantiates the state machine</li>
-	<li>Line 17 initializes the state machine, in particular all variables are set to a proper value</li>
-	<li>Line 18 enters the state machine; from this point on the state machine is ready to react on incoming events</li>
-	<li>Line 25 raises the <code>On</code> event in the state machine which causes the corresponding transition to be taken</li>
-	<li>Line 27 raises the <code>Off</code> event in the state machine</li>
+		<li>Instantiate the state machine and the observers</li>
+		<li>Initializes the state machine, in particular all variables are set to a proper value</li>
+		<li>Subscribe observers</li>
+		<li>Enters the state machine; from this point on the state machine is ready to react on incoming event</li>
+		<li>Raise the input events <code>user.on_button</code> and <code>user.off_button</code></li>
+		<li>React on the out events <code>light.on</code> and <code>light.off</code></li>
 	</ul>
-	<p>
+</p>
+<p>
 	You can run the application with <em>Run As -> Local C/C++ Application</em> on the project. A console should open and ask you for input like in the screenshot below.
-	</p>
-	</p>
-	<img class="tiny" 
+</p>
+<p>
+	<img class="small" 
 	alt="Light switch console application" title="Light switch console application" border="0" src="images/console.png"/>
-	</p>
-  </div>
+</p>
+</div>
 </body>
 </html>

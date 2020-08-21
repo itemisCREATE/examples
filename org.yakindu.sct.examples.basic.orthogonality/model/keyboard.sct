@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
   <sgraph:Statechart xmi:id="_kyygwOqLEemPGu0xnwriEw" specification="@CycleBased(200)&#xA;&#xA;interface:&#xA;in event pressCapsLock&#xA;in event pressNumLock&#xA;" name="keyboard">
     <regions xmi:id="_kzSQAOqLEemPGu0xnwriEw" name="CapsLock">
       <vertices xsi:type="sgraph:Entry" xmi:id="_kzpcYOqLEemPGu0xnwriEw">
@@ -156,7 +156,7 @@
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_kz5UAOqLEemPGu0xnwriEw" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_kz5UAuqLEemPGu0xnwriEw" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_kz5UAeqLEemPGu0xnwriEw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_kz5UAeqLEemPGu0xnwriEw" points="[7, 0, -88, -3]$[42, 0, -53, -3]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_6RznEOqLEemPGu0xnwriEw" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_5BnKgOqLEemPGu0xnwriEw" id="(0.5,0.5)"/>
     </edges>
@@ -185,11 +185,11 @@
     <edges xmi:id="_DmLVcOqMEemPGu0xnwriEw" type="Transition" element="_DmKuYOqMEemPGu0xnwriEw" source="_BmFF8OqMEemPGu0xnwriEw" target="_Byvo8OqMEemPGu0xnwriEw">
       <children xsi:type="notation:DecorationNode" xmi:id="_DmL8geqMEemPGu0xnwriEw" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_DmL8guqMEemPGu0xnwriEw"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_DmL8g-qMEemPGu0xnwriEw" y="10"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_DmL8g-qMEemPGu0xnwriEw" x="-2" y="10"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_DmLVceqMEemPGu0xnwriEw" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_DmL8gOqMEemPGu0xnwriEw" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_DmLVcuqMEemPGu0xnwriEw" points="[7, 0, -59, -3]$[51, 0, -15, -3]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_DmLVcuqMEemPGu0xnwriEw" points="[7, 0, -64, -6]$[51, 0, -20, -6]"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_DmNxsOqMEemPGu0xnwriEw" id="(0.1927710843373494,0.5471698113207547)"/>
     </edges>
     <edges xmi:id="_FDlHkOqMEemPGu0xnwriEw" type="Transition" element="_FDkggOqMEemPGu0xnwriEw" source="_Byvo8OqMEemPGu0xnwriEw" target="_CpJFcOqMEemPGu0xnwriEw">

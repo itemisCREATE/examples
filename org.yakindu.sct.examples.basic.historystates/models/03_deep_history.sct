@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
   <sgraph:Statechart xmi:id="_3AQUYJOAEeWuO-fDDpYHyA" specification="@CycleBased(200)&#xA;&#xA;internal:&#xA;&#x9;var brightness: integer&#xA;&#x9;&#xA;interface user:&#xA;&#x9;in event on_button&#xA;&#x9;in event off_button&#xA;&#x9;in event mode_button&#xA;&#x9;&#xA;interface sensor:&#xA;&#x9;in event motion&#xA;&#x9;&#xA;interface lum_sensor:&#xA; &#x9;in event bright&#xA; &#x9;in event dark" name="LightSwitch_Deep_History">
     <regions xmi:id="_3AQ7cpOAEeWuO-fDDpYHyA" name="main region">
       <vertices xsi:type="sgraph:State" xmi:id="_HslsYDekEeaQIqD3TyMHVw" specification="entry / brightness += 1" name="ManualMode" incomingTransitions="_33fKwOkMEemeGdc82b-fAg _2l1qwOkOEemeGdc82b-fAg">
@@ -274,7 +274,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASJkZOAEeWuO-fDDpYHyA"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_3ARigZOAEeWuO-fDDpYHyA" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASJkpOAEeWuO-fDDpYHyA" x="8" y="-88" width="1255" height="625"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASJkpOAEeWuO-fDDpYHyA" width="1255" height="625"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_3AUl05OAEeWuO-fDDpYHyA" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_3AUl1ZOAEeWuO-fDDpYHyA" type="StatechartName">
@@ -313,7 +313,7 @@
     <edges xmi:id="_yUajwOkMEemeGdc82b-fAg" type="Transition" element="_yUYHgOkMEemeGdc82b-fAg" source="_HsovsDekEeaQIqD3TyMHVw" target="_dY2zAOkQEemeGdc82b-fAg">
       <children xsi:type="notation:DecorationNode" xmi:id="_yUbK0OkMEemeGdc82b-fAg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_yUbK0ekMEemeGdc82b-fAg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_yUbK0ukMEemeGdc82b-fAg" x="-11" y="-61"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_yUbK0ukMEemeGdc82b-fAg" x="-1" y="-55"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_yUajwekMEemeGdc82b-fAg" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_yUajw-kMEemeGdc82b-fAg" fontName="Verdana"/>
@@ -379,7 +379,7 @@
     <edges xmi:id="_jCQ9cOkOEemeGdc82b-fAg" type="Transition" element="_jCPvUOkOEemeGdc82b-fAg" source="_3gITUOkPEemeGdc82b-fAg" target="_jgsJYOkPEemeGdc82b-fAg">
       <children xsi:type="notation:DecorationNode" xmi:id="_jCQ9dOkOEemeGdc82b-fAg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_jCQ9dekOEemeGdc82b-fAg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_jCQ9dukOEemeGdc82b-fAg" x="29" y="20"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_jCQ9dukOEemeGdc82b-fAg" x="-2" y="16"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_jCQ9cekOEemeGdc82b-fAg" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_jCQ9c-kOEemeGdc82b-fAg" fontName="Verdana"/>
@@ -390,7 +390,7 @@
     <edges xmi:id="_2l244OkOEemeGdc82b-fAg" type="Transition" element="_2l1qwOkOEemeGdc82b-fAg" source="_dY2zAOkQEemeGdc82b-fAg" target="_HsovsDekEeaQIqD3TyMHVw">
       <children xsi:type="notation:DecorationNode" xmi:id="_2l245OkOEemeGdc82b-fAg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_2l245ekOEemeGdc82b-fAg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_2l245ukOEemeGdc82b-fAg" x="1" y="-63"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_2l245ukOEemeGdc82b-fAg" x="1" y="-56"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_2l244ekOEemeGdc82b-fAg" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_2l244-kOEemeGdc82b-fAg" fontName="Verdana"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
   <sgraph:Statechart xmi:id="_NPjBgBA-EeGQ0KsLDV4EFg" specification="@CycleBased(250)&#xD;&#xA;interface TrafficLight:&#xD;&#xA;  var red:boolean&#x9;&#xD;&#xA;  var yellow:boolean&#xD;&#xA;  var green:boolean&#xD;&#xA;&#xD;&#xA;interface Pedestrian:&#xD;&#xA;  var request:boolean&#x9;&#x9;&#xD;&#xA;  var red:boolean&#x9;&#x9;&#x9;&#xD;&#xA;  var green:boolean&#xD;&#xA;&#xD;&#xA;interface:&#xD;&#xA;  in event pedestrianRequest&#x9;&#x9;&#xD;&#xA;  in event onOff&#xD;&#xA;  operation synchronize() : void&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#xD;&#xA;internal: &#xD;&#xA;  every 250ms / synchronize&#xD;&#xA;&#x9;&#xD;&#xA;" name="TrafficLightCtrl">
     <regions xmi:id="_NPjBgxA-EeGQ0KsLDV4EFg" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_NPjBjRA-EeGQ0KsLDV4EFg">
@@ -526,11 +526,11 @@
     <edges xmi:id="_yY3NwBBPEeGQ0KsLDV4EFg" type="Transition" element="_yYuD0BBPEeGQ0KsLDV4EFg" source="_MsTRefqCEeW6VYxAee_Daw" target="_MsTRgvqCEeW6VYxAee_Daw">
       <children xsi:type="notation:DecorationNode" xmi:id="_yY3NxBBPEeGQ0KsLDV4EFg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_yY3NxRBPEeGQ0KsLDV4EFg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_yY3NxhBPEeGQ0KsLDV4EFg" y="40"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_yY3NxhBPEeGQ0KsLDV4EFg" x="40" y="5"/>
       </children>
-      <styles xsi:type="notation:ConnectorStyle" xmi:id="_yY3NwRBPEeGQ0KsLDV4EFg" lineColor="4210752"/>
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_yY3NwRBPEeGQ0KsLDV4EFg" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_yY3NwxBPEeGQ0KsLDV4EFg" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_yY3NwhBPEeGQ0KsLDV4EFg" points="[7, 0, -124, -1]$[127, 0, -4, -1]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_yY3NwhBPEeGQ0KsLDV4EFg" points="[-7, 0, 99, -12]$[-101, 0, 5, -12]"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_yZT5sBBPEeGQ0KsLDV4EFg" id="(0.9786324786324786,0.46404988994864266)"/>
     </edges>
     <edges xmi:id="__O1aoBBPEeGQ0KsLDV4EFg" type="Transition" element="__OsQsBBPEeGQ0KsLDV4EFg" source="_MGCXkBBFEeGQ0KsLDV4EFg" target="_NPjBmhA-EeGQ0KsLDV4EFg">

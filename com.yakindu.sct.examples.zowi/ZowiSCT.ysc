@@ -287,11 +287,11 @@
     <edges xmi:id="_7jaYEBrdEeiLc73P6eDdCQ" type="Transition" element="_7jM8wBrdEeiLc73P6eDdCQ" source="_7jHdLRrdEeiLc73P6eDdCQ" target="_7jHdORrdEeiLc73P6eDdCQ">
       <children xsi:type="notation:DecorationNode" xmi:id="_7jaYERrdEeiLc73P6eDdCQ" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_7jaYEhrdEeiLc73P6eDdCQ"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_7jaYExrdEeiLc73P6eDdCQ" x="6" y="34"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_7jaYExrdEeiLc73P6eDdCQ" y="-29"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_7jaYFBrdEeiLc73P6eDdCQ" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_7jaYFRrdEeiLc73P6eDdCQ" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_7jaYFhrdEeiLc73P6eDdCQ" points="[5, 7, -14, -125]$[5, 96, -14, -36]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_7jaYFhrdEeiLc73P6eDdCQ" points="[0, 7, -26, -125]$[0, 96, -26, -36]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_7jaYFxrdEeiLc73P6eDdCQ" id="(0.4266666666666667,0.9056603773584906)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_doPIUBreEeiLc73P6eDdCQ" id="(0.5721649484536083,0.4473684210526316)"/>
     </edges>
@@ -353,7 +353,7 @@
     <edges xmi:id="_pY6YsBrsEeiE7fyImEutaQ" type="Transition" element="_pY1gMBrsEeiE7fyImEutaQ" source="_7jHdIBrdEeiLc73P6eDdCQ" target="_knsscBrsEeiE7fyImEutaQ">
       <children xsi:type="notation:DecorationNode" xmi:id="_pY7m0BrsEeiE7fyImEutaQ" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_pY7m0RrsEeiE7fyImEutaQ"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_pY7m0hrsEeiE7fyImEutaQ" x="128" y="29"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_pY7m0hrsEeiE7fyImEutaQ" x="-3" y="120"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_pY6YsRrsEeiE7fyImEutaQ" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_pY6_wBrsEeiE7fyImEutaQ" fontName="Verdana"/>

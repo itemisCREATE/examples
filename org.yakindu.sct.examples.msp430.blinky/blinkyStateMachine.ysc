@@ -104,11 +104,11 @@
     <edges xmi:id="_AX4ssP_3Eeafl6WsllPgUg" type="Transition" element="_AX4Fpv_3Eeafl6WsllPgUg" source="_AX2Qcv_3Eeafl6WsllPgUg" target="_AX3ekv_3Eeafl6WsllPgUg">
       <children xsi:type="notation:DecorationNode" xmi:id="_AX5TwP_3Eeafl6WsllPgUg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_AX5Twf_3Eeafl6WsllPgUg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_AX5Twv_3Eeafl6WsllPgUg" y="10"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_AX5Twv_3Eeafl6WsllPgUg" x="-3" y="10"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_AX4ssf_3Eeafl6WsllPgUg" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_AX4ss__3Eeafl6WsllPgUg" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_AX4ssv_3Eeafl6WsllPgUg" points="[7, 1, -44, -47]$[50, 1, -1, -47]$[50, 24, -1, -24]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_AX4ssv_3Eeafl6WsllPgUg" points="[6, 2, -32, -48]$[37, 2, -1, -48]$[37, 24, -1, -26]"/>
     </edges>
     <edges xmi:id="_ywAsUP_3Eeafl6WsllPgUg" type="Transition" element="_yv_eMP_3Eeafl6WsllPgUg" source="_AX3ekv_3Eeafl6WsllPgUg" target="_miXqwP_3Eeafl6WsllPgUg">
       <children xsi:type="notation:DecorationNode" xmi:id="_ywBTYP_3Eeafl6WsllPgUg" type="TransitionExpression">

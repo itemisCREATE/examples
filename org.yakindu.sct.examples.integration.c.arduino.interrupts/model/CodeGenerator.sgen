@@ -8,5 +8,9 @@ GeneratorModel for yakindu::c {
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
 		}
+
+		feature OutEventAPI {
+			getters = true
+		}
 	}
 }

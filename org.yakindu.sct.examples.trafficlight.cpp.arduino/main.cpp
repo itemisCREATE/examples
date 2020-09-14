@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "src-gen/TrafficLightCtrl.h"
-#include "scutil/CPPTimerinterface.h"
+#include "src/CPPTimerinterface.h"
 #include "src/arduinoPins.h"
 #include "src/TrafficLightOCBs.h"
 #include "src/PushButton.h"
@@ -34,8 +34,7 @@ void setup()
 	pinMode(ped_led_green_pin, OUTPUT);
 	pinMode(ped_led_request_pin, OUTPUT);
 
-	arduino->init();
-	arduino->setTimer(timer_sct);
+	arduino->setTimerService(timer_sct);
 	arduino->setDefaultSCI_OCB(operationCallback);
 	arduino->enter();
 }

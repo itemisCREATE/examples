@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "src/CPPTimerinterface.h"
 #include "src/DisplayHandler.h"
+#include "src-gen/ArduinoHMI.h"
 
 ArduinoHMI* stateMachine = new ArduinoHMI();
 CPPTimerInterface* timer_sct = new CPPTimerInterface();
@@ -78,8 +79,7 @@ static void raiseEvents() {
 
 void setup() {
 	stateMachine->setDefaultSCI_OCB(displayHandler);
-	stateMachine->setTimer(timer_sct);
-	stateMachine->init();
+	stateMachine->setTimerService(timer_sct);
 	stateMachine->enter();
 }
 

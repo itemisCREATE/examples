@@ -5,8 +5,7 @@
 Arduino_Blinky_SCT* arduino = new Arduino_Blinky_SCT();
 CPPTimerInterface* timer_sct = new CPPTimerInterface();
 void setup() {
-	arduino->init();
-	arduino->setTimer(timer_sct);
+	arduino->setTimerService(timer_sct);
 	arduino->enter();
 }
 

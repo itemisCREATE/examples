@@ -1,7 +1,7 @@
 package traffic.light;
 
-import org.yakindu.sct.ITimer;
-import org.yakindu.sct.TimerService;
+import com.yakindu.sct.ITimer;
+import com.yakindu.sct.TimerService;
 
 import traffic.light.ui.Counter.Color;
 import traffic.light.ui.TrafficLightFrame;
@@ -31,7 +31,7 @@ public class TrafficlightDemo extends TrafficLightFrame {
 	protected void setupStatemachine() {
 		statemachine = new TrafficLightCtrl();
 		timer = new TimerService();
-		statemachine.setTimer(timer);
+		statemachine.setTimerService(timer);
 		
 		statemachine.getInterfaceTrafficLight().getDisplayRed().subscribe((e) ->    setLights(true, false, false));
 		statemachine.getInterfaceTrafficLight().getDisplayYellow().subscribe((e) -> setLights(false, true, false));
@@ -49,8 +49,6 @@ public class TrafficlightDemo extends TrafficLightFrame {
 		buttonPanel.getPoliceInterrupt().addActionListener(e -> statemachine.getInterface().raisePolice_interrupt());
 
 		buttonPanel.getSwitchOnOff().addActionListener(e -> statemachine.getInterface().raiseToggle());
-
-		statemachine.init();
 	}
 	
 	private void setLights(boolean red, boolean yellow, boolean green) {

@@ -13,7 +13,6 @@ public class LightSwitch_03 {
 
 		_03_LightSwitch sm = new _03_LightSwitch();
 
-		sm.init();
 		sm.enter();
 
 		while (true) {
@@ -29,7 +28,6 @@ public class LightSwitch_03 {
 			} else {
 				System.out.println("Incorrect input: " + input);
 			}
-			sm.runCycle();
 			System.out.printf("Brightness: %d\n", sm.getInterfaceUser().getBrightness());
 		}
 	}

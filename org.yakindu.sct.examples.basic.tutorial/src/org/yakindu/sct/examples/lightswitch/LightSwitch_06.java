@@ -17,11 +17,10 @@ public class LightSwitch_06 {
 		// Instantiate BufferedReader for command line reading inside of IDE
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		sm.setTimer(new TimerService());
+		sm.setTimerService(new TimerService());
 
 		sm.setInternalOperationCallback(new LightSwitch_06_Callback());
 
-		sm.init();
 		sm.enter();
 
 		long brightness = 0;
@@ -44,8 +43,6 @@ public class LightSwitch_06 {
 			} else if (input.equals("Exit")) {
 				break;
 			}
-
-			sm.runCycle();
 
 			// Output section
 			if (sm.getInterfaceUser().getBrightness() != brightness) {

@@ -16,9 +16,8 @@ public class LightSwitch_04 {
 		// Instantiate BufferedReader for command line reading inside of IDE
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		sm.setTimer(new TimerService());
+		sm.setTimerService(new TimerService());
 
-		sm.init();
 		sm.enter();
 
 		long brightness = 0;
@@ -43,7 +42,6 @@ public class LightSwitch_04 {
 				System.out.println("Motion detected");
 			}
 
-			sm.runCycle();
 			if (sm.getInterfaceUser().getBrightness() != brightness) {
 				brightness = sm.getInterfaceUser().getBrightness();
 				System.out.printf("Brightness %d\n", brightness);

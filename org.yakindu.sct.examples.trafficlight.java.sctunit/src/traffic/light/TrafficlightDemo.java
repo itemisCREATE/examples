@@ -15,8 +15,8 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-import org.yakindu.sct.RuntimeService;
-import org.yakindu.sct.TimerService;
+import com.yakindu.sct.RuntimeService;
+import com.yakindu.sct.TimerService;
 
 
 /**
@@ -67,7 +67,7 @@ public class TrafficlightDemo extends JFrame {
 	protected void setupStatemachine() {
 		statemachine = new TrafficLightCtrl();
 		timer = new TimerService();
-		statemachine.setTimer(timer);
+		statemachine.setTimerService(timer);
 		statemachine.getInterface().setInterfaceOperationCallback(new ITrafficLightCtrl.InterfaceOperationCallback() {
 			@Override
 			public void synchronize() {
@@ -76,8 +76,6 @@ public class TrafficlightDemo extends JFrame {
 			}
 		});
 		
-		statemachine.init();
-
 		buttonPanel.getPedestrianRequest()
 				.addActionListener(e -> statemachine.getInterface().raisePedestrianRequest());
 		buttonPanel.getOnOff().addActionListener(e -> statemachine.getInterface().raiseOnOff());

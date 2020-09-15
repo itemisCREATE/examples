@@ -5,7 +5,7 @@ GeneratorModel for yakindu::python {
 	/* Specify the target location for the generated artifacts. */
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.codegen.python"
-			targetFolder = "src-gen"
+			targetFolder = "src"
 		}
 	}
 }

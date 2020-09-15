@@ -1,6 +1,3 @@
-import sys, os
-path_to_statemachine = '../src-gen/LightSwitch'
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), path_to_statemachine)))
 from lightswitch.light_switch import LightSwitch
 from lightswitch.rx_python import Observer
 

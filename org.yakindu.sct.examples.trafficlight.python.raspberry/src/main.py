@@ -6,10 +6,6 @@ index.html .
 You could choose between two _APIs_: _trafficscene_ and _trafficscene2_.  
 """
 
-import sys, os
-path_to_package = '../src-gen/traffic/light/TrafficLightCtrl'
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), path_to_package)))
-
 from trafficlightctrl.traffic_light_ctrl import TrafficLightCtrl
 from trafficlightctrl.timer.sct_timer import Timer
 
@@ -34,8 +30,7 @@ class TrafficLightCtrlRuntime:
 		self.traffic_system.tlSystem(self.sm.sci_interface)
 		self.traffic_system.tlCar(self.sm.sci_trafficlight)
 		self.traffic_system.tlPedestrian(self.sm.sci_pedestrian)
-		self.sm.set_timer(self.ti)
-		self.sm.init()
+		self.sm.set_timer_service(self.ti)
 		self.sm.enter()
 
 	def run(self):
@@ -49,7 +44,7 @@ class TrafficLightCtrlRuntime:
 		""" Unset timer and exit statemachine.
 		"""
 		print('State machine shuts down.')
-		self.sm.unset_timer()
+		self.sm.unset_timer_service()
 		self.sm.exit()
 		print('Bye!')
 

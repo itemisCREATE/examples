@@ -6,7 +6,11 @@ GeneratorModel for yakindu::c {
 			targetProject =
 			"org.yakindu.sct.examples.integration.c.arduino.interrupts"
 			targetFolder = "src-gen"
-			libraryTargetFolder = "src"
+		}
+		
+		feature OutEventAPI {
+			getters = true
+			observables = false
 		}
 	}
 }

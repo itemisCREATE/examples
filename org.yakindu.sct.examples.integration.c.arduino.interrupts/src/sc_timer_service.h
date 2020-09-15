@@ -8,7 +8,7 @@
 #ifndef SC_TIMER_SERCICE_H_
 #define SC_TIMER_SERCICE_H_
 
-#include "../src/sc_types.h"
+#include "../src-gen/sc_types.h"
 
 #ifdef __cplusplus
 extern "C" {

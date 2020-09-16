@@ -1,7 +1,7 @@
-#ifndef SCUTIL_CPPTIMERINTERFACE_H_
-#define SCUTIL_CPPTIMERINTERFACE_H_
+#ifndef SRC_CPPTIMERINTERFACE_H_
+#define SRC_CPPTIMERINTERFACE_H_
 
-#include "../src-gen/TimerInterface.h"
+#include "../src-gen/sc_timer.h"
 
 #define MAX_TIMER 10
 
@@ -14,12 +14,12 @@ private:
 	sc_boolean periodic;
 	sc_eventid pt_evid;
 	sc_integer elapsed_time_ms = 0;
-	TimedStatemachineInterface* handle;
+	sc::timer::TimedInterface* handle;
 
 public:
 
 	/* Constructor, which creates a new timer task */
-	TimerTask(TimedStatemachineInterface* statemachine, sc_eventid event, sc_integer time, sc_boolean isPeriodic){
+	TimerTask(sc::timer::TimedInterface* statemachine, sc_eventid event, sc_integer time, sc_boolean isPeriodic){
 		this->handle = statemachine;
 		this->pt_evid = event;
 		this->periodic = isPeriodic;
@@ -66,12 +66,12 @@ public:
 		this->periodic = periodic;
 	}
 
-	const TimedStatemachineInterface* getHandle() const {
+	const sc::timer::TimedInterface* getHandle() const {
 		return handle;
 	}
 };
 
-class CPPTimerInterface : public TimerInterface{
+class CPPTimerInterface : public sc::timer::TimerServiceInterface{
 private:
 	TimerTask* tasks[MAX_TIMER];
 public:
@@ -96,23 +96,19 @@ public:
     	\time_ms The time in milli seconds
     	\periodic Indicates the the time event must be raised periodically until the timer is unset
     */
-    virtual void setTimer( TimedStatemachineInterface* statemachine,
-    		sc_eventid event,
-			sc_integer time,
-			sc_boolean isPeriodic );
+    virtual void setTimer(sc::timer::TimedInterface* statemachine, sc_eventid event, sc_integer time_ms, sc_boolean isPeriodic);
 
     /*!
     	This function will be called for each time event that is relevant for a state when a state will be left.
     	\param evid An unique identifier of the event.
     */
-    virtual void unsetTimer(TimedStatemachineInterface* statemachine,
-    		sc_eventid event);
+    virtual void unsetTimer(sc::timer::TimedInterface* statemachine, sc_eventid event);
 
     /*!
     	This function must be called by the user. The elapsed time must be calculated every time, the function gets
     	gets called.
      */
-    void updateActiveTimer(TimedStatemachineInterface* statemachine,
+    void updateActiveTimer(sc::timer::TimedInterface* statemachine,
     		long elapsed_ms);
 
     /* ! Cancel timer service. */
@@ -120,4 +116,4 @@ public:
 };
 
 
-#endif /* SCUTIL_CPPTIMERINTERFACE_H_ */
+#endif /* SRC_CPPTIMERINTERFACE_H_ */

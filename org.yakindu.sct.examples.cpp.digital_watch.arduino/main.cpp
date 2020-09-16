@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "src/CPPTimerinterface.h"
 #include "src/DisplayHandler.h"
+#include "src-gen/DigitalWatch.h"
 
 DigitalWatch* stateMachine = new DigitalWatch();
 CPPTimerInterface* timer_sct = new CPPTimerInterface();
@@ -77,8 +78,7 @@ void setup() {
 	Serial.begin(115200);
 	Serial.println("Start");
 	stateMachine->setSCI_Display_OCB(displayHandler);
-	stateMachine->setTimer(timer_sct);
-	stateMachine->init();
+	stateMachine->setTimerService(timer_sct);
 	stateMachine->enter();
 }
 

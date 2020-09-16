@@ -22,22 +22,21 @@ class LightOffObserver : public sc::rx::SingleSubscriptionObserver<void>{
 int main(int argc, char **argv) {
 	/*! Instantiates the state machine */
 	LightSwitch lightSwitch;
+
 	/*! Instantiates observer for the out events */
 	LightOnObserver lightOnObserver;
 	LightOffObserver lightOffObserver;
 
-	string input;
-
-	/*! Initializes the state machine, in particular all variables are set to a proper value */
-	lightSwitch.init();
 	/*! Subscribes observers to the state machine's observables */
 	lightOnObserver.subscribe(lightSwitch.getSCI_Light()->get_on());
 	lightOffObserver.subscribe(lightSwitch.getSCI_Light()->get_off());
+
 	/*! Enters the state machine; from this point on the state machine is ready to react on incoming event */
 	lightSwitch.enter();
 
 	cout << "Type 'On' or 'Off' to switch the light on or off." << endl;
 
+	string input;
 	while(1) {
 		cin >> input;
 		if(input == "On") {

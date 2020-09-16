@@ -9,8 +9,7 @@ CPPTimerInterface* timer_sct = new CPPTimerInterface();
 
 void setup() {
 	zowi_sct->setSCI_Zowi_OCB(zowi_callbacks);
-	zowi_sct->setTimer(timer_sct);
-	zowi_sct->init();
+	zowi_sct->setTimerService(timer_sct);
 	zowi_sct->enter();
 }
 

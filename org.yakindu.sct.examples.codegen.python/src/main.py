@@ -1,6 +1,3 @@
-import sys, os
-path_to_statemachine = '../src-gen/LightSwitch'
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), path_to_statemachine)))
 from lightswitch.light_switch import LightSwitch
 from lightswitch.rx_python import Observer
 
@@ -25,8 +22,6 @@ class Main:
         self.lightOffObserver = self.LightOffObserver()
         
     def setup(self):
-        # Initializes the state machine, in particular all variables are set to a proper value 
-        self.sm.init()
         # Subscribes observers to the state machine's observables 
         self.sm.sci_light.on_observable.subscribe(self.lightOnObserver)
         self.sm.sci_light.off_observable.subscribe(self.lightOffObserver)

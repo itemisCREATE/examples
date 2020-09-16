@@ -4,7 +4,7 @@ GeneratorModel for yakindu::python {
 
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.trafficlight.python.raspberry"
-			targetFolder = "src-gen"
+			targetFolder = "src"
 		}
 		
 		feature GeneralFeatures {

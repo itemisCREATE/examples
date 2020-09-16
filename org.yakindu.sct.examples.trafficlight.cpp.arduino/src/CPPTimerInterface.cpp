@@ -1,5 +1,5 @@
-#include "../src-gen/TimedStatemachineInterface.h"
-#include "../scutil/CPPTimerinterface.h"
+#include "CPPTimerinterface.h"
+#include "Arduino.h"
 
 /*!
 	This function will be called for each time event that is relevant for a state when a state will be entered.
@@ -7,14 +7,11 @@
 	\time_ms The time in milli seconds
 	\periodic Indicates the the time event must be raised periodically until the timer is unset
 */
-void CPPTimerInterface::setTimer( TimedStatemachineInterface* statemachine,
-		sc_eventid event,
-		sc_integer time,
-		sc_boolean isPeriodic )
+void CPPTimerInterface::setTimer(sc::timer::TimedInterface* statemachine, sc_eventid event, sc_integer time_ms, sc_boolean isPeriodic)
 {
 
 	/* create new task and go through all timers ... */
-	TimerTask* task = new TimerTask(statemachine, event, time, isPeriodic);
+	TimerTask* task = new TimerTask(statemachine, event, time_ms, isPeriodic);
 	for (int i = 0; i < MAX_TIMER; i++)
 	{
 
@@ -33,8 +30,7 @@ void CPPTimerInterface::setTimer( TimedStatemachineInterface* statemachine,
 	This function will be called for each time event that is relevant for a state when a state will be left.
 	\param evid An unique identifier of the event.
 */
-void CPPTimerInterface::unsetTimer(TimedStatemachineInterface* statemachine,
-		sc_eventid event)
+void CPPTimerInterface::unsetTimer(sc::timer::TimedInterface* statemachine, sc_eventid event)
 {
 
 	/* go through all timers ... */
@@ -59,7 +55,7 @@ void CPPTimerInterface::unsetTimer(TimedStatemachineInterface* statemachine,
 	gets called.
  */
 int n = 0;
-void CPPTimerInterface::updateActiveTimer(TimedStatemachineInterface* statemachine,
+void CPPTimerInterface::updateActiveTimer(sc::timer::TimedInterface* statemachine,
 		long elapsed_ms)
 {
 

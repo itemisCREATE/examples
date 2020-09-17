@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.yakindu.sct.examples.integration.c.arduino.interrupts</name>
+	<name>org.yakindu.sct.examples.digitalwatch.cpp.arduino</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -27,11 +27,6 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-		<buildCommand>
-			<name>org.yakindu.sct.builder.SCTBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.cdt.core.cnature</nature>
@@ -40,7 +35,6 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>io.sloeber.arduinonature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
-		<nature>com.yakindu.sct.builder.SCTNature</nature>
 	</natures>
 	<linkedResources>
 		<link>
@@ -54,9 +48,9 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/variants/standard</locationURI>
 		</link>
 		<link>
-			<name>libraries/StateMachine</name>
+			<name>libraries/LiquidCrystal</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/StateMachine/1.0.11</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/LiquidCrystal/1.0.7</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

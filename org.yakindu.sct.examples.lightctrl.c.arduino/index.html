@@ -2,72 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Traffic Light (C) for Arduino</title>
+<title>Basic Finite State Machine for Arduino</title>
 <link href="./css/style.css" rel="stylesheet">
 
 </head>
 <body class="body-container">
   <div class="primary">
 
-    <h1>Traffic Light (C) for Arduino</h1>
+    <h1>Basic Finite State Machine for Arduino</h1>
 
-    <p>Based on the standard traffic light example, this project shows how
-      to use a statechart to develop software for the Arduino platform.</p>
+    <p>A very basic example for the Arduino platform that switches an LED on
+      and off.</p>
 
     <p>
-      <img class="large" alt="The statechart"
-        src="images/TrafficLightCtrl.png" />
+      This example was used in an article on the website <a
+        href="http://www.instructables.com/">instructables.com</a>. You can read
+      the article <a
+        href="http://www.instructables.com/id/Finite-State-Machine-on-an-Arduino/">here</a>.
+      It demonstrates how to get started with YAKINDU Statechart Tools and the
+      Arduino platform and contains a timer service for the Arduino. You need to
+      have an Arduino plugin, as described in the example "Arduino traffic
+      light" and in the linked article.
     </p>
 
-    <p>More information about the statechart itself can be found in the
-      standard traffic light example, which should be considered first. In
-      summary, we have two traffic lights: one for the traffic on the street,
-      and one for pedestrians who want to cross the street. They can push a
-      button to request their traffic light to turn green, which activates a
-      blinking wait-light first. The street's traffic light then goes through
-      the standard procedure, turning on the yellow light, followed by the red
-      light, allowing the pedestrians to cross safely. After some time, the
-      pedestrians' traffic light turns red again, and the cars are allowed to
-      pass until the next request is made by a pedestrian.</p>
-
-    <p>Additionally, the traffic light can be switched off completely. This
-      turns the yellow lights into a blinking mode, signaling that the traffic
-      light is indeed switched off and that the street should be crossed in a
-      careful manner.</p>
-
-    <div>
-      <h2>Building the Hardware</h2>
-
-      <p>
-        <img class="small" alt="The circuit needed for the project"
-          src="images/screenshot_installhardware.png" />
-      </p>
-
-      <p>Get your parts ready! You will need:</p>
-
-      <ul>
-        <li>2 push buttons</li>
-        <li>6 LEDs, ideally:
-          <ul>
-            <li>2x red</li>
-            <li>2x green</li>
-            <li>1x yellow</li>
-            <li>1x white</li>
-          </ul>
-        </li>
-        <li>8 resistors:
-          <ul>
-            <li>2x 10kR or similar</li>
-            <li>6x 220R or similar</li>
-          </ul>
-        </li>
-      </ul>
-
-      <p>Of course you can change the pins, but since this represents the
-        pin numbers in the software, don't forget to change them as well.</p>
-    </div>
-
-       <h2>Addons for compiling and flashing</h2>
+        <h2>Addons for compiling and flashing</h2>
     <p>All Arduino examples can be compiled via command line or be imported into the Arduino IDE. An easier way is using the <a href="https://eclipse.baeyens.it/">Sloeber plugin</a> , which allows you to compile and upload the code directly in Statechart Tools.
     <h2>How to install the Sloeber plugin</h2>
     <p>
@@ -106,7 +64,12 @@
   <p>
   Finally, you can use the green toolbar for compiling and flashing the Arduino. Have fun!
   </p>
-  </div>
 
+    <p>
+      <img class="small" alt="Basic statechart" src="images/image.png" />
+    </p>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  </div>
 </body>
 </html>

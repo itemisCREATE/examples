@@ -19,22 +19,25 @@
 							<builder buildPath="${workspace_loc:/org_yakindu_sct_examples_integration_arduino_interrupts}/Release" id="io.sloeber.sketch.builder.533882414" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
 							<tool id="io.sloeber.tool.sketch.compiler.cpp.1163900440" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.1424459785" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.arduino.interrupts/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.arduino.interrupts/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.c.arduino.interrupts/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.c.arduino.interrupts/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.c.arduino.interrupts/libraries/StateMachine/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.491534281" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
 							<tool id="io.sloeber.tool.compiler.c.1345815426" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.1505489819" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.arduino.interrupts/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.arduino.interrupts/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.c.arduino.interrupts/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.c.arduino.interrupts/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.c.arduino.interrupts/libraries/StateMachine/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.284456464" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
 							<tool id="io.sloeber.tool.sketch.compiler.s.674000640" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.1835504972" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.arduino.interrupts/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.arduino.interrupts/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.c.arduino.interrupts/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.c.arduino.interrupts/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/org.yakindu.sct.examples.integration.c.arduino.interrupts/libraries/StateMachine/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.900311072" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>
@@ -60,5 +63,9 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/org.yakindu.sct.examples.integration.c.arduino.interrupts"/>
+		</configuration>
+	</storageModule>
 </cproject>

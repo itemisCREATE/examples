@@ -36,32 +36,6 @@
       careful manner.</p>
 
     <div>
-      <h2>Installing the Arduino Plugin</h2>
-
-      <p>To compile the generated C code for Arduino, you should install an
-        Eclipse plugin that can handle this and provides the needed libraries.
-        In this example we're using the Sloeber plugin. 
-        On Windows, you should also install the regular Arduino IDE, because
-        Windows is lacking the drivers to use the Arduino without Arduino IDE.</p>
-
-        <p> 
-        	The easiest way to install the plugin is using the example wizard.
-        	Select the 'Traffic Light (C) for Arduino' example, click on 
-        	'Install Dependencies...' and follow the instructions.
-        	Your IDE may restart. SCT will
-        	restart and download the necessary Arduino libraries for you.
-        </p>
-        	Another way is using the update side, which can be found at <a 
-        	href="http://eclipse.baeyens.it/">http://eclipse.baeyens.it/</a>. In
-        	YAKINDU SCT, simply install it by selecting <em>Help → Install New
-        	Software</em> in the main menu, typing or pasting
-        	<code>http://eclipse.baeyens.it/update/V4/stable</code>
-        	into the proper field, and follow the regular procedure. SCT will
-        	restart and download the necessary Arduino libraries for you.
-        </p>
-    </div>
-
-    <div>
       <h2>Building the Hardware</h2>
 
       <p>
@@ -93,37 +67,45 @@
         pin numbers in the software, don't forget to change them as well.</p>
     </div>
 
-    <div>
-      <h2>Building the Project</h2>
-
-      <p>
-        With this example being active in your workspace, with the Arduino
-        plugin installed, the Arduino connected, and the correct port set in <em>Project
-          → Properties → Arduino</em>, you can now build the example and upload it to
-        your Arduino. Also, ensure you have selected the correct arduino and toolchain path.
-        Before building the project, you have to generate the model code.
-      </p>
-
-      <p>You should have seen the new buttons in your SCT installation:</p>
-
-      <p>
-        <img class="inlinemediaobject" alt="Arduino plugin buttons"
-          src="images/arduino_buttons.png" />
-      </p>
-
-      <p>Use the button second from the left to build and upload the code in
-        one step.</p>
-    </div>
-
-    <div>
-      <h2>In-Depth Walk-Through</h2>
-
-      <p>
-        If this short instruction has left you with questions, refer to the <a
-          href="https://blogs.itemis.com/en/developing-software-for-arduino-with-yakindu-statechart-tools">blog
-          post</a> on the itemis website.
-      </p>
-    </div>
+       <h2>Addons for compiling and flashing</h2>
+    <p>All Arduino examples can be compiled via command line or be imported into the Arduino IDE. An easier way is using the <a href="https://eclipse.baeyens.it/">Sloeber plugin</a> , which allows you to compile and upload the code directly in Statechart Tools.
+    <h2>How to install the Sloeber plugin</h2>
+    <p>
+      There are two ways of how to install the plugin. The easiest way is using our example wizard, which allows you installing required plugins. Just follow the built-in instructions. 
+    </p>
+    <p>
+      Another way is installing the plugin manually. You need to follow these steps:
+     <ol>
+      <li>Click on 'Help' -> 'Install New Software..' -> 'Add...'.</li>
+      <li>Define a name and add 'http://eclipse.baeyens.it/update/V4/stable' as location.</li>
+      <li>Choose the plugin - not the IDE.</li>
+      <li>Follow the instructions</li>
+      <li>The installation dialog will ask you for a restart. After this restart is done, the installition it will download some files. Just wait until it's finished</li>
+    </ol>
+    <h2>Configure the Sloeber plugin</h2>
+    <p>
+    After the installation you should notice a new Toolbar, which allows you to compile and flash your Arduino.
+    Initially, the projects are not configured, as you may require to add the toolchain:
+    <ol>
+      <li>Click on Window -> Preferences</li>
+      <li>Open the Arduino window -> Platforms and Boards</li>
+      <li>Depending on your Arduino, choose the board. For the UNO click on arduino -> Arduino AVR -> check out one toolchain</li>
+      <li>Click on Apply and Close and wait until the downlaod has been finished</li>
+    </ol>
+    Some examples may need different libraries. E.g. the LiquidCrystal lib. If so, repeat the steps using the Library Manager and add your required lib.
+  </p>
+  <h2>Configure the example</h2>
+  Once you have installed the toolchain for your Arduino, you can configure the project.
+  <ol>
+    <li>Right click the project and open the Preference page</li>
+    <li>Open the Arduino window</li>
+    <li>Choose your platform and port</li>
+  </ol>
+  There will be a dialog, which warns you that the platform.txt is missing. This is not a problem and will be resolved after the intitial configuration.
+  <h2>Compile and upload</h2>
+  <p>
+  Finally, you can use the green toolbar for compiling and flashing the Arduino. Have fun!
+  </p>
   </div>
 
 </body>

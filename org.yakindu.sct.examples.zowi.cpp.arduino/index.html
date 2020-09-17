@@ -19,56 +19,51 @@
         alt="ZowiStatechart"
         src="images/ZowiSCT_0.png" /> </p>
     </p>
-    <h2>Addons for compiling and flashing</h2>
-    <p>For compiling and flashing the Eclipse C++ IDE for Arduino plugin has been used. This can be found at the <a href="https://marketplace.eclipse.org/content/eclipse-c-ide-arduino">Eclipse Marketplace</a>''.</p>
-  	<h3>How to install the Eclipse C++ IDE for Arduino plugin</h3>
-  	There are the following two ways of installing:
-  	<h4>(Recommended) Auto-Install of all Dependencies</h4>
-  	The following instructions show a simple way of installing the Dependencies via an integrated wizard.
-  	 <ol>
-  	  <li>Click on 'File' -> 'New' -> 'Example...' -> 'YAKINDU SCT' -> 'YAKINDU Statechart Examples' and then 'Next >'.</li>
-  	  <li>Search for 'Embedded Systems' -> 'Zowi (C++)' and click the button on the top right called 'Install Dependencies...'</li>
-  	  <li>Click through the wizard until you are finished.</li>
-  	 </ol>
-  	<h4>(Alternative) Manual installation of all Dependencies</h4>
-  	<p>
-  	This instructions shows step by step of how to install the plugin.</p>
-  	 <ol>
+        <h2>Addons for compiling and flashing</h2>
+    <p>All Arduino examples can be compiled via command line or be imported into the Arduino IDE. An easier way is using the <a href="https://eclipse.baeyens.it/">Sloeber plugin</a> , which allows you to compile and upload the code directly in Statechart Tools.
+    <h2>How to install the Sloeber plugin</h2>
+    <p>
+      There are two ways of how to install the plugin. The easiest way is using our example wizard, which allows you installing required plugins. Just follow the built-in instructions. 
+    </p>
+    <p>
+      Another way is installing the plugin manually. You need to follow these steps:
+     <ol>
       <li>Click on 'Help' -> 'Install New Software..' -> 'Add...'.</li>
-      <li>Define a name and add 'http://download.eclipse.org/tools/cdt/releases/9.3' as location. Notice that this update site could be outdated. The current update site can be found on the <a href="https://marketplace.eclipse.org/content/eclipse-c-ide-arduino">marketplace</a>.</li>
-   	  <li>Use the filter and type 'Arduino C++ Tools'. Choose this feature and click on 'Next..'. Follow installation instructions.</li>
-   	  <li>The installation dialog will ask you for a restart. After this restart is done, the installation has been finished.</li>
+      <li>Define a name and add 'http://eclipse.baeyens.it/update/V4/stable' as location.</li>
+      <li>Choose the plugin - not the IDE.</li>
+      <li>Follow the instructions</li>
+      <li>The installation dialog will ask you for a restart. After this restart is done, the installition it will download some files. Just wait until it's finished</li>
     </ol>
-    <h2>Download the required platform and libraries</h2>
-    <p> At first the required platform and libraries have to be installed: </p>
+    <h2>Configure the Sloeber plugin</h2>
+    <p>
+    After the installation you should notice a new Toolbar, which allows you to compile and flash your Arduino.
+    Initially, the projects are not configured, as you may require to add the toolchain:
     <ol>
-      <li>Click on 'Help' ->'Arduino Download Manager'.</li>
-      <li>In the 'Platforms' tab, install the 'arduino' package named 'Arduino AVR Boards'. In this example version 1.6.23 has been used.</li>
-      <li>In the 'Libraries' tab, install the 'Servo' library, which can be found under 'Device Control'. In this example version 1.1.3 has been used.</li>
+      <li>Click on Window -> Preferences</li>
+      <li>Open the Arduino window -> Platforms and Boards</li>
+      <li>Depending on your Arduino, choose the board. For the UNO click on arduino -> Arduino AVR -> check out one toolchain</li>
+      <li>Click on Apply and Close and wait until the downlaod has been finished</li>
     </ol>
-   <h2>Add the required platform and libraries</h2>
-    <p>Then it's required to add the libraries to the project</p>
-    <ol>
-      <li>Right click the Zowi example propject and click on 'Properties'.</li>
-      <li>Open the libraries tab and add 'Servo' and 'EEPROM'. This is shown on the following figure: </li>
-<p>  <img
-        alt="ZowiStatechart"
-        src="images/ZowiLibraries.png" /></p>
-    </ol>
-   <h2>Compile and flash</h2>
-    <p>At least the 'Launch Configuration' needs to be configured:</p>
-    <ol>
-      <li>Plug in the Zowi and click on 'New Launch Target..'. This can be found in the upper left corner by clicking on the menu 'on:'. </li>
-      <img alt="BuildHammer" src="images/Launch_Configuration.PNG" class="large" />
-      <li>Name: Choose a name</li>
-      <li>Port: Choose the port</li>
-      <li>Board Type: Arduino/Genuino Uno</li>
-      <li>Programmer: AVR ISP</li>
-      <li>Click on 'Finish'</li>
-      <li>Press the button <img alt="BuildHammer" src="images/Build.PNG" class="verytinyinline" /> at the Top left to build the Project.</li>
-      <li>Press the button <img alt="RunArrow" src="images/Run.PNG" class="verytinyinline" /> at the Top left to run the Project on the Zowi.</li>
-    </ol>
-      <p>After this you are done and your Zowi should start moving!</p>
-  </div>
+    Some examples may need different libraries. E.g. the LiquidCrystal lib. If so, repeat the steps using the Library Manager and add your required lib.
+  </p>
+  <h2>Configure the example</h2>
+  Once you have installed the toolchain for your Arduino, you can configure the project.
+  <ol>
+    <li>Right click the project and open the Preference page</li>
+    <li>Open the Arduino window</li>
+    <li>Choose your platform and port</li>
+  </ol>
+  There will be a dialog, which warns you that the platform.txt is missing. This is not a problem and will be resolved after the intitial configuration.
+  <h2>Compile and upload</h2>
+  <p>
+  Finally, you can use the green toolbar for compiling and flashing the Arduino. Have fun!
+  </p>
+  <h2>Required libraries</h2>
+  <p>
+  <ol>
+    <li>Servo</li>
+    <li>EEPROM</li>
+  </ol>
+  </p>
 </body>
 </html>

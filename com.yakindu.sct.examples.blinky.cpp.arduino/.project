@@ -40,12 +40,12 @@
 		<link>
 			<name>core/core</name>
 			<type>2</type>
-			<location>/home/rherrmann/Downloads/yakindu-sctpro/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/cores/arduino</location>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/cores/arduino</locationURI>
 		</link>
 		<link>
 			<name>core/variant</name>
 			<type>2</type>
-			<location>/home/rherrmann/Downloads/yakindu-sctpro/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/variants/standard</location>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/variants/standard</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

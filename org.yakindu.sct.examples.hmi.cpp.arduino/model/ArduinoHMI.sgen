@@ -3,8 +3,8 @@ GeneratorModel for yakindu::cpp {
 	statechart ArduinoHMI {
 
 		feature Outlet {
-			targetProject = "com.yakindu.sct.examples.hmi.cpp.arduino"
+			targetProject = "org.yakindu.sct.examples.hmi.cpp.arduino"
 			targetFolder = "src-gen"
 		}
-	}
+	} 
 }

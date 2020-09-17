@@ -19,8 +19,6 @@
 							<builder buildPath="${workspace_loc:/d}/Release" id="io.sloeber.sketch.builder.1359930870" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
 							<tool id="io.sloeber.tool.sketch.compiler.cpp.1884771101" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.1870684351" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.zowi.cpp.arduino/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.zowi.cpp.arduino/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.zowi.cpp.arduino/libraries/EEPROM/src}&quot;"/>
@@ -30,8 +28,6 @@
 							</tool>
 							<tool id="io.sloeber.tool.compiler.c.1351182672" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.49225651" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.zowi.cpp.arduino/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.zowi.cpp.arduino/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.zowi.cpp.arduino/libraries/EEPROM/src}&quot;"/>
@@ -41,8 +37,6 @@
 							</tool>
 							<tool id="io.sloeber.tool.sketch.compiler.s.850110633" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.1949276318" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.zowi.cpp.arduino/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.zowi.cpp.arduino/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.zowi.cpp.arduino/libraries/EEPROM/src}&quot;"/>

@@ -1,2 +1,0 @@
-eclipse.preferences.version=1
-libraries=[{"package"\:"arduino","platform"\:"avr","library"\:"EEPROM"},{"package"\:"arduino","platform"\:"avr","library"\:"SPI"},{"package"\:"arduino","platform"\:"avr","library"\:"HID"},{"package"\:"arduino","platform"\:"avr","library"\:"Wire"},{"package"\:"arduino","platform"\:"avr","library"\:"SoftwareSerial"},"LiquidCrystal","Servo"]

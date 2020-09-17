@@ -1,7 +1,7 @@
 #ifndef SRC_CPPTIMERINTERFACE_H_
 #define SRC_CPPTIMERINTERFACE_H_
 
-#include "sc_timer.h"
+#include "../src-gen/sc_timer.h"
 
 #define MAX_TIMER 10
 

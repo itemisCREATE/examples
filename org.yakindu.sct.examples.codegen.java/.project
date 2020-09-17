@@ -16,7 +16,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.yakindu.sct.builder.SCTBuilder</name>
+			<name>com.yakindu.sct.builder.SCTBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>

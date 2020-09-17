@@ -35,6 +35,10 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>io.sloeber.arduinonature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
+<<<<<<< HEAD
+=======
+		<nature>com.yakindu.sct.builder.SCTNature</nature>
+>>>>>>> origin/master
 	</natures>
 	<linkedResources>
 		<link>

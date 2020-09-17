@@ -1,0 +1,10 @@
+GeneratorModel for yakindu::cpp {
+
+	statechart DigitalWatch {
+
+		feature Outlet {
+			targetProject = "com.yakindu.sct.examples.digitalwatch.cpp.arduino"
+			targetFolder = "src-gen"
+		}
+	}
+}

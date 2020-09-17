@@ -40,7 +40,7 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>it.baeyens.arduinonature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
-		<nature>org.yakindu.sct.builder.SCTNature</nature>
+		<nature>com.yakindu.sct.builder.SCTNature</nature>
 	</natures>
 	<linkedResources>
 		<link>

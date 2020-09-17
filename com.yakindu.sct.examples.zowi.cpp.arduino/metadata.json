@@ -1,6 +1,6 @@
 {
 	"id": "com.yakindu.sct.examples.zowi.cpp.arduino",
-	"title": "Zowi (Deep C++)",
+	"title": "Arduino - Zowi (Deep C++)",
 	"author": "itemis AG",
 	"description": "This is a example of how to use the C/C++ Domain together with the Zowi by BQ. C++ Timer are integrated",
 	"previewImage": "Zowi.jpg",

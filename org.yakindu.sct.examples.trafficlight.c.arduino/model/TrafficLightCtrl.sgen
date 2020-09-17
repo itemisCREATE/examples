@@ -6,18 +6,5 @@ GeneratorModel for yakindu::c {
 			targetProject = "org.yakindu.sct.examples.trafficlight.c.arduino"
 			targetFolder = "src-gen"
 		}
-		
-		feature FunctionInlining {
-			inlineReactions = true
-			inlineEntryActions = true
-			inlineExitActions = true
-			inlineEnterSequences = true
-			inlineExitSequences = true
-			inlineChoices = true
-			inlineEnterRegion = true
-			inlineExitRegion = true
-			inlineEntries = true
-		}
-		
 	}
 }

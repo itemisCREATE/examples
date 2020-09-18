@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_O39IYAClEea895739UzP5A" specification="@CycleBased(200)&#xA;&#xA;import : &quot;cm_hmi.h&quot;&#xA;import : &quot;coffee_machine.h&quot;&#xA;&#xA;interface:&#xA;&#xA;in event userEvent : UserEvents&#xA;&#xA;internal:&#xA;&#xA;var recipe : cm_recipe_t&#xA;var lastChoice : UserEvents = UserEvents.NONE&#xA;var processing : bool = false&#xA;&#xA;// we store the value of the user event&#xA;var userInput : UserEvents&#xA;always / userInput = UserEvents.NONE&#xA;userEvent / userInput = valueof (userEvent)&#xA;&#xA;&#xA;/* we simulate the heater here */&#xA;every 200ms / updateHeating(2)&#xA;&#xA;/* processing user feedback  */&#xA;every 500ms [processing]/ show(&quot;.&quot;)" name="CoffeeMachine" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_O39IYAClEea895739UzP5A" specification="@CycleBased(200)&#xA;&#xA;import : &quot;../src/cm_hmi.h&quot;&#xA;import : &quot;../src/coffee_machine.h&quot;&#xA;&#xA;interface:&#xA;&#xA;in event userEvent : UserEvents&#xA;&#xA;internal:&#xA;&#xA;var recipe : cm_recipe_t&#xA;var lastChoice : UserEvents = UserEvents.NONE&#xA;var processing : bool = false&#xA;&#xA;// we store the value of the user event&#xA;var userInput : UserEvents&#xA;always / userInput = UserEvents.NONE&#xA;userEvent / userInput = valueof (userEvent)&#xA;&#xA;&#xA;/* we simulate the heater here */&#xA;every 200ms / updateHeating(2)&#xA;&#xA;/* processing user feedback  */&#xA;every 500ms [processing]/ show(&quot;.&quot;)" name="CoffeeMachine" domainID="com.yakindu.domain.c">
     <regions xmi:id="_O4n2wAClEea895739UzP5A" name="main">
       <vertices xsi:type="sgraph:Entry" xmi:id="_O58scAClEea895739UzP5A">
         <outgoingTransitions xmi:id="_O6HrkAClEea895739UzP5A" target="_O5_vwAClEea895739UzP5A"/>
@@ -11,20 +11,20 @@
       <vertices xsi:type="sgraph:State" xmi:id="_b-92YACvEea895739UzP5A" name="On" incomingTransitions="_kd1XgAFcEea895739UzP5A">
         <outgoingTransitions xmi:id="_S9MgYAFeEea895739UzP5A" specification="[userInput == UserEvents.ON_OFF]" target="_O5_vwAClEea895739UzP5A"/>
         <regions xmi:id="_EQQ6cAF1Eea895739UzP5A" name="r">
-          <vertices xsi:type="sgraph:State" xmi:id="_EgqG4AF1Eea895739UzP5A" specification="entry / show(&quot;** Welcome to YAKINDU Coffee Maker **\\n&quot;)" name="Welcome" incomingTransitions="_FZ1xoAF1Eea895739UzP5A">
+          <vertices xsi:type="sgraph:State" xmi:id="_EgqG4AF1Eea895739UzP5A" specification="entry / show(&quot;** Welcome to YAKINDU Coffee Maker **\n&quot;)" name="Welcome" incomingTransitions="_FZ1xoAF1Eea895739UzP5A">
             <outgoingTransitions xmi:id="_vl-yMAHAEealScXSNgVnFg" specification="always" target="_qGqp0AHAEealScXSNgVnFg"/>
           </vertices>
           <vertices xsi:type="sgraph:Entry" xmi:id="_E_xEwAF1Eea895739UzP5A">
             <outgoingTransitions xmi:id="_FZ1xoAF1Eea895739UzP5A" specification="" target="_EgqG4AF1Eea895739UzP5A"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_qGqp0AHAEealScXSNgVnFg" specification="entry / startHeating(); &#xA;&#x9;show(&quot;* heating&quot;);&#xA;&#x9;processing = true&#xA;exit / processing = false" name="Heating Up" incomingTransitions="_vl-yMAHAEealScXSNgVnFg _FE9NgAHHEealScXSNgVnFg">
+          <vertices xsi:type="sgraph:State" xmi:id="_qGqp0AHAEealScXSNgVnFg" specification="entry / startHeating(); &#xA;&#x9;show(&quot;* heating\n&quot;);&#xA;&#x9;processing = true&#xA;exit / processing = false" name="Heating Up" incomingTransitions="_vl-yMAHAEealScXSNgVnFg _FE9NgAHHEealScXSNgVnFg">
             <outgoingTransitions xmi:id="_x071sAHDEealScXSNgVnFg" specification="[heater.temp >= 95]&#xA;// set heater.temp in simulation manually" target="_pB-yUAHDEealScXSNgVnFg"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_pB-yUAHDEealScXSNgVnFg" specification="entry / &#xA;show(&quot;\\n* choose:\\n&quot;);&#xA;show(&quot;(1) coffee\\n&quot;); &#xA;show(&quot;(2) espresso\\n&quot;);&#xA;show(&quot;(3) cappucino\\n&quot;);&#xA;show(&quot;(4) latte macchiato\\n&quot;);&#xA;show(&quot;(5) milk\\n&quot;)" name="Wait For Choice" incomingTransitions="_x071sAHDEealScXSNgVnFg _5WzaIAIPEealScXSNgVnFg">
+          <vertices xsi:type="sgraph:State" xmi:id="_pB-yUAHDEealScXSNgVnFg" specification="entry / &#xA;show(&quot;* choose:\n&quot;);&#xA;show(&quot;(1) coffee\n&quot;); &#xA;show(&quot;(2) espresso\n&quot;);&#xA;show(&quot;(3) cappucino\n&quot;);&#xA;show(&quot;(4) latte macchiato\n&quot;);&#xA;show(&quot;(5) milk\n&quot;)" name="Wait For Choice" incomingTransitions="_x071sAHDEealScXSNgVnFg _5WzaIAIPEealScXSNgVnFg">
             <outgoingTransitions xmi:id="_ANNbcAHHEealScXSNgVnFg" specification="after 30s" target="_8IKRoAHGEealScXSNgVnFg"/>
             <outgoingTransitions xmi:id="_mUQBIAINEealScXSNgVnFg" specification="[ UserEvents.COFFEE &lt;= userInput &amp;&amp; &#xA;  userInput &lt;= UserEvents.MILK ]  &#xA;/ recipe = get_recipe(userInput)&#xA;&#xA;// set recipe in simulation manually &#xA;" target="_YR0O4AISEealScXSNgVnFg"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_8IKRoAHGEealScXSNgVnFg" specification="entry / stopHeating;&#xA; &#x9;show(&quot;\\n* save energy - continue with any command ...\\n&quot;)" name="Save Energy" incomingTransitions="_ANNbcAHHEealScXSNgVnFg">
+          <vertices xsi:type="sgraph:State" xmi:id="_8IKRoAHGEealScXSNgVnFg" specification="entry / stopHeating;&#xA; &#x9;show(&quot;* save energy - continue with any command ...\n&quot;)" name="Save Energy" incomingTransitions="_ANNbcAHHEealScXSNgVnFg">
             <outgoingTransitions xmi:id="_FE9NgAHHEealScXSNgVnFg" specification="[userInput != UserEvents.NONE]" target="_qGqp0AHAEealScXSNgVnFg"/>
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="_EQtfwAIMEealScXSNgVnFg" specification="entry / showPrepare(userInput); lastChoice = userInput; processing = true&#xA;exit / processing = false" name="Process Recipe">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_O39IYAClEea895739UzP5A" specification="@CycleBased(200)&#xA;&#xA;import: &quot;CoffeeMachine.hpp&quot;&#xA;import : &quot;CMHMI.hpp&quot;&#xA; &#xA;interface:&#xA;&#xA;in event userEvent : CM_HMI.UserEvents&#xA;var cm : Coffee_Machine&#xA;var hmi : CM_HMI&#xA; &#xA;internal:&#xA;&#xA;var recipe:Coffee_Machine.cm_recipe_t&#xA;var lastChoice : CM_HMI.UserEvents&#xA;var processing : bool = false&#xA;&#xA;// we store the value of the user event&#xA;var userInput :CM_HMI.UserEvents&#xA;always / userInput =CM_HMI. UserEvents.NONE&#xA;userEvent / userInput = valueof (userEvent)&#xA;&#xA;&#xA;/* we simulate the heater here */&#xA;every 200ms / cm.updateHeating(2)&#xA;&#xA;/* processing user feedback  */&#xA;every 500ms [processing]/ hmi.show(&quot;.&quot;)" name="CoffeeMachineCpp" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_O39IYAClEea895739UzP5A" specification="@EventDriven&#xA;&#xA;import: &quot;../src/CoffeeMachine.hpp&quot;&#xA;import : &quot;../src/CMHMI.hpp&quot;&#xA; &#xA;interface:&#xA;&#xA;in event userEvent : CM_HMI.UserEvents&#xA;var cm : Coffee_Machine&#xA;var hmi : CM_HMI&#xA; &#xA;internal:&#xA;&#xA;var recipe:Coffee_Machine.cm_recipe_t&#xA;var lastChoice : CM_HMI.UserEvents&#xA;var processing : bool = false&#xA;&#xA;// we store the value of the user event&#xA;var userInput :CM_HMI.UserEvents&#xA;always / userInput =CM_HMI. UserEvents.NONE&#xA;userEvent / userInput = valueof (userEvent)&#xA;&#xA;&#xA;/* we simulate the heater here */&#xA;every 200ms / cm.updateHeating(2)&#xA;&#xA;/* processing user feedback  */&#xA;every 500ms [processing]/ hmi.show(&quot;.&quot;)" name="CoffeeMachineCpp" domainID="com.yakindu.domain.c">
     <regions xmi:id="_O4n2wAClEea895739UzP5A" name="main">
       <vertices xsi:type="sgraph:Entry" xmi:id="_O58scAClEea895739UzP5A">
         <outgoingTransitions xmi:id="_O6HrkAClEea895739UzP5A" target="_O5_vwAClEea895739UzP5A"/>
@@ -8,23 +8,20 @@
       <vertices xsi:type="sgraph:State" xmi:id="_O5_vwAClEea895739UzP5A" specification="entry / cm.stopHeating" name="Off" incomingTransitions="_O6HrkAClEea895739UzP5A _S9MgYAFeEea895739UzP5A">
         <outgoingTransitions xmi:id="_kd1XgAFcEea895739UzP5A" specification="[userInput ==  CM_HMI.UserEvents.ON_OFF]" target="_b-92YACvEea895739UzP5A"/>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="_b-92YACvEea895739UzP5A" name="On" incomingTransitions="_kd1XgAFcEea895739UzP5A">
+      <vertices xsi:type="sgraph:State" xmi:id="_b-92YACvEea895739UzP5A" specification="entry / hmi.show(&quot;** Welcome to YAKINDU Coffee Maker **\n&quot;)" name="On" incomingTransitions="_kd1XgAFcEea895739UzP5A">
         <outgoingTransitions xmi:id="_S9MgYAFeEea895739UzP5A" specification="[userInput == CM_HMI.UserEvents.ON_OFF]" target="_O5_vwAClEea895739UzP5A"/>
         <regions xmi:id="_EQQ6cAF1Eea895739UzP5A" name="r">
-          <vertices xsi:type="sgraph:State" xmi:id="_EgqG4AF1Eea895739UzP5A" specification="entry / hmi.show(&quot;** Welcome to YAKINDU Coffee Maker **\\n&quot;)" name="Welcome" incomingTransitions="_FZ1xoAF1Eea895739UzP5A">
-            <outgoingTransitions xmi:id="_vl-yMAHAEealScXSNgVnFg" specification="always" target="_qGqp0AHAEealScXSNgVnFg"/>
-          </vertices>
           <vertices xsi:type="sgraph:Entry" xmi:id="_E_xEwAF1Eea895739UzP5A">
-            <outgoingTransitions xmi:id="_FZ1xoAF1Eea895739UzP5A" specification="" target="_EgqG4AF1Eea895739UzP5A"/>
+            <outgoingTransitions xmi:id="_FZ1xoAF1Eea895739UzP5A" specification="" target="_qGqp0AHAEealScXSNgVnFg"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_qGqp0AHAEealScXSNgVnFg" specification="entry / cm.startHeating(); &#xA;&#x9;hmi.show(&quot;* heating&quot;);&#xA;&#x9;processing = true&#xA;exit / processing = false" name="Heating Up" incomingTransitions="_vl-yMAHAEealScXSNgVnFg _FE9NgAHHEealScXSNgVnFg">
+          <vertices xsi:type="sgraph:State" xmi:id="_qGqp0AHAEealScXSNgVnFg" specification="entry / cm.startHeating(); &#xA;&#x9;hmi.show(&quot;* heating\n&quot;);&#xA;&#x9;processing = true&#xA;exit / processing = false" name="Heating Up" incomingTransitions="_FE9NgAHHEealScXSNgVnFg _FZ1xoAF1Eea895739UzP5A">
             <outgoingTransitions xmi:id="_x071sAHDEealScXSNgVnFg" specification="[cm.heater.temp >= 95]&#xA;// set heater.temp in simulation manually" target="_pB-yUAHDEealScXSNgVnFg"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_pB-yUAHDEealScXSNgVnFg" specification="entry / &#xA;hmi.show(&quot;\\n* choose:\\n&quot;);&#xA;hmi.show(&quot;(1) coffee\\n&quot;); &#xA;hmi.show(&quot;(2) espresso\\n&quot;);&#xA;hmi.show(&quot;(3) cappucino\\n&quot;);&#xA;hmi.show(&quot;(4) latte macchiato\\n&quot;);&#xA;hmi.show(&quot;(5) milk\\n&quot;)" name="Wait For Choice" incomingTransitions="_x071sAHDEealScXSNgVnFg _5WzaIAIPEealScXSNgVnFg">
+          <vertices xsi:type="sgraph:State" xmi:id="_pB-yUAHDEealScXSNgVnFg" specification="entry / &#xA;hmi.show(&quot;* choose:\n&quot;);&#xA;hmi.show(&quot;(1) coffee\n&quot;); &#xA;hmi.show(&quot;(2) espresso\n&quot;);&#xA;hmi.show(&quot;(3) cappucino\n&quot;);&#xA;hmi.show(&quot;(4) latte macchiato\n&quot;);&#xA;hmi.show(&quot;(5) milk\n&quot;)" name="Wait For Choice" incomingTransitions="_x071sAHDEealScXSNgVnFg _5WzaIAIPEealScXSNgVnFg">
             <outgoingTransitions xmi:id="_ANNbcAHHEealScXSNgVnFg" specification="after 30s" target="_8IKRoAHGEealScXSNgVnFg"/>
             <outgoingTransitions xmi:id="_mUQBIAINEealScXSNgVnFg" specification="[ CM_HMI.UserEvents.COFFEE &lt;= userInput &amp;&amp; &#xA;  userInput &lt;= CM_HMI.UserEvents.MILK ] &#xA;  / recipe = cm.get_recipe(userInput)&#xA;&#xA;// set recipe in simulation manually &#xA;" target="_YR0O4AISEealScXSNgVnFg"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_8IKRoAHGEealScXSNgVnFg" specification="entry / cm.stopHeating;&#xA; &#x9;hmi.show(&quot;\\n* save energy - continue with any command ...\\n&quot;)" name="Save Energy" incomingTransitions="_ANNbcAHHEealScXSNgVnFg">
+          <vertices xsi:type="sgraph:State" xmi:id="_8IKRoAHGEealScXSNgVnFg" specification="entry / cm.stopHeating;&#xA; &#x9;hmi.show(&quot;* save energy - continue with any command ...\n&quot;)" name="Save Energy" incomingTransitions="_ANNbcAHHEealScXSNgVnFg">
             <outgoingTransitions xmi:id="_FE9NgAHHEealScXSNgVnFg" specification="[userInput != CM_HMI.UserEvents.NONE]" target="_qGqp0AHAEealScXSNgVnFg"/>
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="_EQtfwAIMEealScXSNgVnFg" specification="entry / hmi.showPrepare(userInput); lastChoice = userInput; processing = true&#xA;exit / processing = false" name="Process Recipe">
@@ -129,22 +126,6 @@
                 <layoutConstraint xsi:type="notation:Location" xmi:id="_STPpkwIQEealScXSNgVnFg"/>
               </children>
               <children xsi:type="notation:Shape" xmi:id="_STPplAIQEealScXSNgVnFg" type="RegionCompartment" fontName="Verdana" lineColor="4210752">
-                <children xmi:id="_STPplQIQEealScXSNgVnFg" type="State" element="_EgqG4AF1Eea895739UzP5A">
-                  <children xsi:type="notation:DecorationNode" xmi:id="_STPplgIQEealScXSNgVnFg" type="StateName">
-                    <styles xsi:type="notation:ShapeStyle" xmi:id="_STPplwIQEealScXSNgVnFg"/>
-                    <layoutConstraint xsi:type="notation:Location" xmi:id="_STPpmAIQEealScXSNgVnFg"/>
-                  </children>
-                  <children xsi:type="notation:Compartment" xmi:id="_STPpmQIQEealScXSNgVnFg" type="StateTextCompartment">
-                    <children xsi:type="notation:Shape" xmi:id="_STPpmgIQEealScXSNgVnFg" type="StateTextCompartmentExpression" fontName="Verdana" lineColor="4210752">
-                      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_STPpmwIQEealScXSNgVnFg"/>
-                    </children>
-                  </children>
-                  <children xsi:type="notation:Compartment" xmi:id="_STPpnAIQEealScXSNgVnFg" type="StateFigureCompartment"/>
-                  <styles xsi:type="notation:ShapeStyle" xmi:id="_STPpnQIQEealScXSNgVnFg" fontName="Verdana" fillColor="15981773" lineColor="12632256"/>
-                  <styles xsi:type="notation:FontStyle" xmi:id="_STPpngIQEealScXSNgVnFg"/>
-                  <styles xsi:type="notation:BooleanValueStyle" xmi:id="_STPpnwIQEealScXSNgVnFg" name="isHorizontal" booleanValue="true"/>
-                  <layoutConstraint xsi:type="notation:Bounds" xmi:id="_STPpoAIQEealScXSNgVnFg" x="53" width="435" height="53"/>
-                </children>
                 <children xmi:id="_STPpoQIQEealScXSNgVnFg" type="Entry" element="_E_xEwAF1Eea895739UzP5A">
                   <children xmi:id="_STPpogIQEealScXSNgVnFg" type="BorderItemLabelContainer">
                     <children xsi:type="notation:DecorationNode" xmi:id="_STPpowIQEealScXSNgVnFg" type="BorderItemLabel">
@@ -156,7 +137,7 @@
                   </children>
                   <styles xsi:type="notation:ShapeStyle" xmi:id="_STPpqAIQEealScXSNgVnFg" fontName="Verdana" fillColor="0" lineColor="16777215"/>
                   <styles xsi:type="notation:NamedStyle" xmi:id="_STPpqQIQEealScXSNgVnFg" name="allowColors"/>
-                  <layoutConstraint xsi:type="notation:Bounds" xmi:id="_STPpqgIQEealScXSNgVnFg" x="13" y="24" width="15" height="15"/>
+                  <layoutConstraint xsi:type="notation:Bounds" xmi:id="_STPpqgIQEealScXSNgVnFg" x="158" y="28" width="15" height="15"/>
                 </children>
                 <children xmi:id="_STPpqwIQEealScXSNgVnFg" type="State" element="_qGqp0AHAEealScXSNgVnFg">
                   <children xsi:type="notation:DecorationNode" xmi:id="_STPprAIQEealScXSNgVnFg" type="StateName">
@@ -303,7 +284,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_O563QQClEea895739UzP5A"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_O4ukcQClEea895739UzP5A" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_O58FYAClEea895739UzP5A" x="12" width="1363" height="859"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_O58FYAClEea895739UzP5A" x="12" width="1363" height="860"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_O6PAUQClEea895739UzP5A" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_O6PnYAClEea895739UzP5A" type="StatechartName">
@@ -349,26 +330,15 @@
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_S9NHcgFeEea895739UzP5A" points="[-493, -138, 231, 198]$[-770, -138, -46, 198]$[-770, -320, -46, 16]"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_S9OVkAFeEea895739UzP5A" id="(0.5190476190476192,0.6981132075471698)"/>
     </edges>
-    <edges xmi:id="_FZ2YsAF1Eea895739UzP5A" type="Transition" element="_FZ1xoAF1Eea895739UzP5A" source="_STPpoQIQEealScXSNgVnFg" target="_STPplQIQEealScXSNgVnFg">
+    <edges xmi:id="_FZ2YsAF1Eea895739UzP5A" type="Transition" element="_FZ1xoAF1Eea895739UzP5A" source="_STPpoQIQEealScXSNgVnFg" target="_STPpqwIQEealScXSNgVnFg">
       <children xsi:type="notation:DecorationNode" xmi:id="_FZ2YtAF1Eea895739UzP5A" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_FZ2YtQF1Eea895739UzP5A"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_FZ2YtgF1Eea895739UzP5A" y="10"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_FZ2YtgF1Eea895739UzP5A" x="-1" y="-10"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_FZ2YsQF1Eea895739UzP5A" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_FZ2YswF1Eea895739UzP5A" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_FZ2YsgF1Eea895739UzP5A" points="[7, 2, -123, -38]$[134, 43, 4, 3]"/>
-      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_FZ3m0AF1Eea895739UzP5A" id="(0.6387329591018444,0.6415094339622641)"/>
-    </edges>
-    <edges xmi:id="_vl_ZQAHAEealScXSNgVnFg" type="Transition" element="_vl-yMAHAEealScXSNgVnFg" source="_STPplQIQEealScXSNgVnFg" target="_STPpqwIQEealScXSNgVnFg">
-      <children xsi:type="notation:DecorationNode" xmi:id="_vmAAUQHAEealScXSNgVnFg" type="TransitionExpression">
-        <styles xsi:type="notation:ShapeStyle" xmi:id="_vmAAUgHAEealScXSNgVnFg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_vmAAUwHAEealScXSNgVnFg" y="38"/>
-      </children>
-      <styles xsi:type="notation:ConnectorStyle" xmi:id="_vl_ZQQHAEealScXSNgVnFg" routing="Rectilinear" lineColor="4210752"/>
-      <styles xsi:type="notation:FontStyle" xmi:id="_vmAAUAHAEealScXSNgVnFg" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_vl_ZQgHAEealScXSNgVnFg" points="[-6, 24, 14, -64]$[-19, 64, 1, -24]"/>
-      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_X_QB0CuNEeiIGeIuy-9ybQ" id="(0.3430232558139535,0.5)"/>
-      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_YpU5kCuNEeiIGeIuy-9ybQ" id="(0.6704545454545454,0.45348837209302323)"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_FZ2YsgF1Eea895739UzP5A" points="[3, 6, 83, -65]$[3, 45, 83, -26]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_FZ3m0AF1Eea895739UzP5A" id="(0.14222222222222222,0.2857142857142857)"/>
     </edges>
     <edges xmi:id="_x09D0AHDEealScXSNgVnFg" type="Transition" element="_x071sAHDEealScXSNgVnFg" source="_STPpqwIQEealScXSNgVnFg" target="_STPptwIQEealScXSNgVnFg">
       <children xsi:type="notation:DecorationNode" xmi:id="_x09D1AHDEealScXSNgVnFg" type="TransitionExpression">

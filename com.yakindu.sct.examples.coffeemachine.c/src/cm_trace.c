@@ -8,8 +8,7 @@
 #include <stdio.h>
 
 #include "cm_trace.h"
-#include "sc/CoffeeMachine.h"
-#include "sc/CoffeeMachineRequired.h"
+#include "../src-gen/CoffeeMachineRequired.h"
 
 static char* stateNames[] = {
 		"InvalidState",

@@ -11,10 +11,10 @@
 #include <unistd.h>
 #include <pthread.h>
 
-#include "cm_hmi.h"
-#include "sc/CoffeeMachine.h"
-#include "scutil/sc_cycle_runner.h"
-#include "scutil/sc_timer_service.h"
+#include "src/cm_hmi.h"
+#include "src-gen/CoffeeMachine.h"
+#include "src/sc_cycle_runner.h"
+#include "src/sc_timer_service.h"
 
 
 

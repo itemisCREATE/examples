@@ -21,14 +21,12 @@ public:
 		NONE
 	} UserEvents;
 
-	UserEvents provideUserEvent();
-	void scanUserInput();
+	UserEvents scanUserInput();
 	void show(char* text);
 	void showPrepare(UserEvents event);
 	void showDone(UserEvents event);
 
 private:
-	UserEvents lastEvent;
 	std::string choice_texts[7];
 };
 

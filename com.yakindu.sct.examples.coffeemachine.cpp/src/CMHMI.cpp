@@ -1,7 +1,7 @@
 #include "CMHMI.hpp"
 #include <iostream>
 
-CM_HMI::CM_HMI() {
+CM_HMI::CM_HMI(){
 	choice_texts[0] = "";
 	choice_texts[1] = "coffee";
 	choice_texts[2] = "espresso";
@@ -40,7 +40,7 @@ CM_HMI::UserEvents CM_HMI::scanUserInput() {
 			return MILK;
 			break;
 		case 't':
-			//	cm_trace_active = !cm_trace_active;
+			return TRACING;
 			break;
 		case 'q':
 			return NONE;

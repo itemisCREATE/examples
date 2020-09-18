@@ -16,9 +16,17 @@ static void* sc_cycle_runner_thread(void *arg) {
 			runner->is_active = false;
 			return NULL;
 		}
-		pthread_mutex_lock(runner->event_mutex);
-		runner->sm->raise_userEvent(lastEvent);
-		pthread_mutex_unlock(runner->event_mutex);
+		if(lastEvent == CM_HMI::TRACING) {
+			if(runner->tracer->cm_trace_active) {
+				runner->tracer->cm_trace_active = false;
+			} else {
+				runner->tracer->cm_trace_active = true;
+			}
+		} else {
+			pthread_mutex_lock(runner->event_mutex);
+			runner->sm->raise_userEvent(lastEvent);
+			pthread_mutex_unlock(runner->event_mutex);
+		}
 	}
 	return NULL;
 }

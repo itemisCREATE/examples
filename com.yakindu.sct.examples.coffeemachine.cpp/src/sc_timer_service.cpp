@@ -8,7 +8,6 @@ static void *sc_timer_thread(void *arguments) {
 
 	pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
 	TimerTask* task = (TimerTask*) arguments;
-//	cout << "Started thread with: " << task->time_ms << "ms." << endl;
 
 	do {
 		usleep((task->time_ms % 999) * 1000);
@@ -16,7 +15,6 @@ static void *sc_timer_thread(void *arguments) {
 			usleep(999000);
 		}
 		pthread_mutex_lock(task->event_mutex);
-//		cout << "raised event after: " << task->time_ms << "ms." << endl;
 		task->statemachine->raiseTimeEvent(task->pt_evid);
 		pthread_mutex_unlock(task->event_mutex);
 

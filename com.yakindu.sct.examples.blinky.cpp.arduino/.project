@@ -35,10 +35,7 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>io.sloeber.arduinonature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
-<<<<<<< HEAD:com.yakindu.sct.examples.blinky.cpp.arduino/.project
-=======
 		<nature>com.yakindu.sct.builder.SCTNature</nature>
->>>>>>> origin/master:org.yakindu.sct.examples.arduino_fsm/.project
 	</natures>
 	<linkedResources>
 		<link>

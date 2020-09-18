@@ -6,6 +6,7 @@
 #include <string.h>
 #include <iostream>
 
+
 class CM_HMI {
 public:
 	CM_HMI();
@@ -18,6 +19,7 @@ public:
 		CAPPUCINO,
 		LATTE_MACCHIATO,
 		MILK,
+		TRACING,
 		NONE
 	} UserEvents;
 

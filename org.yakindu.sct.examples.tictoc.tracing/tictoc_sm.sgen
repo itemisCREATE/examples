@@ -9,7 +9,7 @@ GeneratorModel for yakindu::c {
 		}	
 		
 		feature GeneratorOptions {
-			inEventQueue =  false 
+			//inEventQueue =  false 
 			userAllocatedQueue =  false 
 		}
 		

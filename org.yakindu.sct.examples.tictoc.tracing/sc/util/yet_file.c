@@ -20,6 +20,6 @@ void yet_file_writer_init(yet_file_writer* self, char* filename)
 {
 	self->tracefile = fopen(filename, "w");
 
-	self->message_writer.observer = self;
+	self->message_writer.object = self;
 	self->message_writer.next = (sc_observer_next_fp) next;
 }

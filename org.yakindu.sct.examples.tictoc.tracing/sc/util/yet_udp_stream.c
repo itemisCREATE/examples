@@ -56,11 +56,11 @@ void yet_udp_stream_init(yet_udp_stream* self, char* ip, uint16_t port)
 	self->conf.ip = ip;
 	self->conf.port = port;
 
-	self->message_sender.observer = self;
+	self->message_sender.object = self;
 	self->message_sender.next = (sc_observer_next_fp) next;
 
 	self->received_messages.observer_count = 0;
-	self->received_messages.observers = sc_null;
+	self->received_messages.subscriptions = sc_null;
 
 	self->enabled = true;
 	self->transport.socket = -1;
@@ -177,7 +177,7 @@ extern void yet_udp_stream_receive(yet_udp_stream* self) {
 
 	int rcv_byte_len = receive_from_socket(self, self->transport.receive_buffer, RCV_BUFFER_SIZE);
 	if(rcv_byte_len > 0) {
-		SC_OBSERVABLE_NEXT(&(self->received_messages), self->transport.receive_buffer);
+		sc_observable_next(&(self->received_messages));
 	}
 }
 

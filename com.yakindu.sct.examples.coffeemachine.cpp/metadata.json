@@ -12,8 +12,8 @@
 	"rank":21,
 	"dependencies": [
 		{
-			"updateSite": "http://updates.yakindu.com/statecharts/releases",
-			"features": ["com.yakindu.sct.domain.c.feature.feature.group"]
+			"updateSite": "http://updates.yakindu.com/sct/releases",
+			"features": ["com.yakindu.sct.product.c.feature.feature.group"]
 		}
 	]
 }

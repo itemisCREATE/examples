@@ -25,8 +25,8 @@ int main(int argc, char **argv) {
 	cout << "(o) toggle on/off" << endl;
 	cout << "(t) toggle state trace" << endl;
 	cout << "(q) quit" << endl;
-	sm->set_cm(machine);
-	sm->set_hmi(*hmi);
+	sm->setCm(machine);
+	sm->setHmi(*hmi);
 	sm->setTimerService(timerService);
 	sm->setTraceObserver(tracer);
 	if(!sm->check()) {

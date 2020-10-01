@@ -31,8 +31,8 @@ public class Main {
 		LightOnObserver lightOffObserver = new LightOnObserver();
 		
 		/* Subscribes observers to the state machine's observables */
-		lightSwitch.interfaceLight.getOn().subscribe(lightOnObserver);
-		lightSwitch.interfaceLight.getOff().subscribe(lightOffObserver);
+		lightSwitch.light().getOn().subscribe(lightOnObserver);
+		lightSwitch.light().getOff().subscribe(lightOffObserver);
 		
 		/* Enters the state machine; from this point on the state machine is ready to react on incoming event */
 		lightSwitch.enter();
@@ -48,12 +48,12 @@ public class Main {
 			String action = sc.next();
 			if ("On".equals(action)) {
 				/* Raises the On event in the state machine which causes the corresponding transition to be taken */
-				lightSwitch.getInterfaceUser().raiseOn_button();
+				lightSwitch.user().raiseOn_button();
 				printStatus(lightSwitch);
 				
 			} else if ("Off".equals(action)) {
 				/* Raises the Off event in the state machine */
-				lightSwitch.getInterfaceUser().raiseOff_button();
+				lightSwitch.user().raiseOff_button();
 				printStatus(lightSwitch);
 			}
 		}
@@ -62,7 +62,7 @@ public class Main {
 
 	private static void printStatus(LightSwitch lightSwitch) {
 		/* Gets the value of the brightness variable */
-		long brightness = lightSwitch.getInterfaceLight().getBrightness();
+		long brightness = lightSwitch.light().getBrightness();
 		System.out.println("Light is on, brightness: " + brightness + ".");
 	}
 

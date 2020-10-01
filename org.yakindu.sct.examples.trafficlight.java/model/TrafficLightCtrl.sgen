@@ -14,7 +14,6 @@ GeneratorModel for yakindu::java {
 		feature GeneralFeatures {
 			RuntimeService = false
 			TimerService = true
-			InterfaceObserverSupport = true
 			synchronized = true
 		}
 		

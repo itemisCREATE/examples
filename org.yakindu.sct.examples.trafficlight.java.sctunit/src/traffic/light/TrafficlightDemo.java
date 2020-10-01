@@ -30,7 +30,7 @@ public class TrafficlightDemo extends JFrame {
 
 	protected TrafficLightCtrl statemachine;
 
-	protected TimerService timer;
+	protected TimerService timerService;
 
 	private CrossWalkPanel crossing;
 
@@ -66,9 +66,9 @@ public class TrafficlightDemo extends JFrame {
 
 	protected void setupStatemachine() {
 		statemachine = new TrafficLightCtrl();
-		timer = new TimerService();
-		statemachine.setTimerService(timer);
-		statemachine.getInterface().setInterfaceOperationCallback(new ITrafficLightCtrl.InterfaceOperationCallback() {
+		timerService = new TimerService();
+		statemachine.setTimerService(timerService);
+		statemachine.setOperationCallback(new TrafficLightCtrl.OperationCallback() {
 			@Override
 			public void synchronize() {
 				checkTrafficLightStates();
@@ -77,19 +77,19 @@ public class TrafficlightDemo extends JFrame {
 		});
 		
 		buttonPanel.getPedestrianRequest()
-				.addActionListener(e -> statemachine.getInterface().raisePedestrianRequest());
-		buttonPanel.getOnOff().addActionListener(e -> statemachine.getInterface().raiseOnOff());
+				.addActionListener(e -> statemachine.raisePedestrianRequest());
+		buttonPanel.getOnOff().addActionListener(e -> statemachine.raiseOnOff());
 	}
 
 	
 	protected void checkTrafficLightStates() {
 
-		crossing.getTrafficLight().setRed(statemachine.getInterfaceTrafficLight().getRed());
-		crossing.getTrafficLight().setYellow(statemachine.getInterfaceTrafficLight().getYellow());
-		crossing.getTrafficLight().setGreen(statemachine.getInterfaceTrafficLight().getGreen());
+		crossing.getTrafficLight().setRed(statemachine.trafficLight().getRed());
+		crossing.getTrafficLight().setYellow(statemachine.trafficLight().getYellow());
+		crossing.getTrafficLight().setGreen(statemachine.trafficLight().getGreen());
 
-		crossing.getPedLight().setRed(statemachine.getInterfacePedestrian().getRed());
-		crossing.getPedLight().setGreen(statemachine.getInterfacePedestrian().getGreen());
-		crossing.getPedLight().setWhite(statemachine.getInterfacePedestrian().getRequest());
+		crossing.getPedLight().setRed(statemachine.pedestrian().getRed());
+		crossing.getPedLight().setGreen(statemachine.pedestrian().getGreen());
+		crossing.getPedLight().setWhite(statemachine.pedestrian().getRequest());
 	}
 }

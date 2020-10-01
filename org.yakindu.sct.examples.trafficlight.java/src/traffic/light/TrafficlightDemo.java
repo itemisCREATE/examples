@@ -1,6 +1,6 @@
 package traffic.light;
 
-import com.yakindu.sct.ITimer;
+import com.yakindu.sct.ITimerService;
 import com.yakindu.sct.TimerService;
 
 import traffic.light.ui.Counter.Color;
@@ -12,7 +12,7 @@ public class TrafficlightDemo extends TrafficLightFrame {
 
 	protected TrafficLightCtrl statemachine;
 
-	protected ITimer timer;
+	protected ITimerService timerService;
 	
 	public static void main(String[] args) {
 		TrafficlightDemo application = new TrafficlightDemo();
@@ -30,25 +30,25 @@ public class TrafficlightDemo extends TrafficLightFrame {
 
 	protected void setupStatemachine() {
 		statemachine = new TrafficLightCtrl();
-		timer = new TimerService();
-		statemachine.setTimerService(timer);
+		timerService = new TimerService();
+		statemachine.setTimerService(timerService);
 		
-		statemachine.getInterfaceTrafficLight().getDisplayRed().subscribe((e) ->    setLights(true, false, false));
-		statemachine.getInterfaceTrafficLight().getDisplayYellow().subscribe((e) -> setLights(false, true, false));
-		statemachine.getInterfaceTrafficLight().getDisplayGreen().subscribe((e) ->  setLights(false, false, true));
-		statemachine.getInterfaceTrafficLight().getDisplayNone().subscribe((e) ->   setLights(false, false, false));
+		statemachine.trafficLight().getDisplayRed().subscribe((e) ->    setLights(true, false, false));
+		statemachine.trafficLight().getDisplayYellow().subscribe((e) -> setLights(false, true, false));
+		statemachine.trafficLight().getDisplayGreen().subscribe((e) ->  setLights(false, false, true));
+		statemachine.trafficLight().getDisplayNone().subscribe((e) ->   setLights(false, false, false));
 		
-		statemachine.getInterfaceTimer().getUpdateTimerValue().subscribe((value) -> {
+		statemachine.timer().getUpdateTimerValue().subscribe((value) -> {
 			crossing.getCounterVis().setCounterValue(value);
 			repaint();
 		});
-		statemachine.getInterfaceTimer().getUpdateTimerColour().subscribe((value) -> {
+		statemachine.timer().getUpdateTimerColour().subscribe((value) -> {
 			crossing.getCounterVis().setColor(value == "Red" ? Color.RED : Color.GREEN);
 		});
 
-		buttonPanel.getPoliceInterrupt().addActionListener(e -> statemachine.getInterface().raisePolice_interrupt());
+		buttonPanel.getPoliceInterrupt().addActionListener(e -> statemachine.raisePolice_interrupt());
 
-		buttonPanel.getSwitchOnOff().addActionListener(e -> statemachine.getInterface().raiseToggle());
+		buttonPanel.getSwitchOnOff().addActionListener(e -> statemachine.raiseToggle());
 	}
 	
 	private void setLights(boolean red, boolean yellow, boolean green) {

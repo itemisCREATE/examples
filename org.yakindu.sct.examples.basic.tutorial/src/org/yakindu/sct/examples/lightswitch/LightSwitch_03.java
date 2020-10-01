@@ -20,15 +20,15 @@ public class LightSwitch_03 {
 			String input = br.readLine();
 
 			if (input.equals("On")) {
-				sm.getInterfaceUser().raiseOn_button();
+				sm.user().raiseOn_button();
 			} else if (input.equals("Off")) {
-				sm.getInterfaceUser().raiseOff_button();
+				sm.user().raiseOff_button();
 			} else if (input.equals("Exit")) {
 				break;
 			} else {
 				System.out.println("Incorrect input: " + input);
 			}
-			System.out.printf("Brightness: %d\n", sm.getInterfaceUser().getBrightness());
+			System.out.printf("Brightness: %d\n", sm.user().getBrightness());
 		}
 	}
 }

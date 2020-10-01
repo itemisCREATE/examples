@@ -24,7 +24,7 @@ static void* sc_cycle_runner_thread(void *arg) {
 			}
 		} else {
 			pthread_mutex_lock(runner->event_mutex);
-			runner->sm->raise_userEvent(lastEvent);
+			runner->sm->raiseUserEvent(lastEvent);
 			pthread_mutex_unlock(runner->event_mutex);
 		}
 	}

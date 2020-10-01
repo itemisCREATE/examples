@@ -16,7 +16,7 @@ file, activate `General Feature -> DefaultRuntime` in your SGen file.
 """
 # statemachine
 from trafficlightctrl.traffic_light_ctrl import TrafficLightCtrl
-from trafficlightctrl.timer.sct_timer import Timer 
+from trafficlightctrl.timer.timer_service import TimerService 
 
 from traffic_scene import TrafficScene
 
@@ -33,18 +33,18 @@ class Callback:
 
     def synchronize(self):
         # car lights
-        self.scene.tl_car.set_red(self.sm.sci_trafficlight.red)
-        self.scene.tl_car.set_yellow(self.sm.sci_trafficlight.yellow)
-        self.scene.tl_car.set_green(self.sm.sci_trafficlight.green)
+        self.scene.tl_car.set_red(self.sm.traffic_light.red)
+        self.scene.tl_car.set_yellow(self.sm.traffic_light.yellow)
+        self.scene.tl_car.set_green(self.sm.traffic_light.green)
         # ped lights
-        self.scene.tl_ped.set_red(self.sm.sci_pedestrian.red)
-        self.scene.tl_ped.set_green(self.sm.sci_pedestrian.green)
-        self.scene.tl_ped.set_request(self.sm.sci_pedestrian.request)
+        self.scene.tl_ped.set_red(self.sm.pedestrian.red)
+        self.scene.tl_ped.set_green(self.sm.pedestrian.green)
+        self.scene.tl_ped.set_request(self.sm.pedestrian.request)
         # button actions
         if self.scene.btn_pressed_request():
-            self.sm.sci_interface.raise_pedestrian_request()
+            self.sm.raise_pedestrian_request()
         if self.scene.is_btn_onoff_pressed:
-            self.sm.sci_interface.raise_on_off()
+            self.sm.raise_on_off()
         if self.scene.is_btn_exit_pressed:
             self.is_btn_exit_pressed = True
         # clear GUI events
@@ -55,14 +55,14 @@ class Main:
 
     def __init__(self):
         self.sm = TrafficLightCtrl()
-        self.ti = Timer()
+        self.ti = TimerService()
         self.root = tk.Tk() # init GUI
         self.scene = TrafficScene(self.root) # create GUI
         self.cb = Callback(self.sm, self.scene)
 
     def setup(self):
-        self.sm.set_timer_service(self.ti)
-        self.sm.sci_interface.operation_callback = self.cb
+        self.sm.timer_service = self.ti
+        self.sm.operation_callback = self.cb
         self.sm.enter()
 
     def run(self):
@@ -74,7 +74,6 @@ class Main:
 
     def shutdown(self):
         print('State machine shuts down.')
-        self.sm.unset_timer_service()
         self.sm.exit()
         self.root.destroy()
         print('Bye!')

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_N2f3AH1lEemog9NI6oqwUA" specification="@EventDriven&#xA;@ChildFirstExecution&#xA;&#xA;interface:&#xA;&#xA;&#x9;in event toggle&#xA;&#xA;&#x9;out event tic&#xA;&#x9;out event toc&#xA;&#xA;&#x9;var count: integer&#xA;&#x9;var delay: integer = 2000&#xA;&#xA;&#x9;var x : integer = 5&#x9;&#xA;&#x9;var b : boolean&#xA;&#x9;&#xA;interface foo:&#xA;&#xA;&#x9;var y : integer&#xA;&#xA;internal :&#xA;&#x9;var i : real&#xA;&#xA;&#xA;" name="tictoc">
+  <sgraph:Statechart xmi:id="_N2f3AH1lEemog9NI6oqwUA" specification="@EventDriven&#xA;@ChildFirstExecution&#xA;&#xA;interface:&#xA;&#xA;&#x9;in event toggle&#xA;&#xA;&#x9;out event tic&#xA;&#x9;out event toc&#xA;&#xA;&#x9;var count: integer&#xA;&#x9;var delay: integer = 1000&#xA;&#xA;&#x9;var x : integer = 5&#x9;&#xA;&#x9;var b : boolean&#xA;&#x9;&#xA;interface foo:&#xA;&#xA;&#x9;var y : integer&#xA;&#xA;internal :&#xA;&#x9;var i : real&#xA;&#xA;&#xA;" name="tictoc">
     <regions xmi:id="_N2hFI31lEemog9NI6oqwUA" name="main">
       <vertices xsi:type="sgraph:Entry" xmi:id="_N2ny0X1lEemog9NI6oqwUA">
         <outgoingTransitions xmi:id="_N2qPE31lEemog9NI6oqwUA" target="_N2pA9H1lEemog9NI6oqwUA"/>

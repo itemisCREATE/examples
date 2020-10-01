@@ -36,9 +36,9 @@ typedef struct TictocTimeEvents TictocTimeEvents;
 }
 #endif
 
-#include "base\sc_tracing.h"
-#include "base\sc_types.h"
-#include "base\sc_rxc.h"
+#include "base/sc_tracing.h"
+#include "base/sc_types.h"
+#include "base/sc_rxc.h"
 
 #ifdef __cplusplus
 extern "C" { 

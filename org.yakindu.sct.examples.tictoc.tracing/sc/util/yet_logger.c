@@ -25,8 +25,8 @@ void yet_logger_init(yet_logger* self)
 	self->enabled = true;
 
 	self->receive_logger.object = self;
-	self->receive_logger.next = (sc_observer_next_fp) next_receive;
+	self->receive_logger.next = (sc_observer_next_sc_string_fp) next_receive;
 
 	self->send_logger.object = self;
-	self->send_logger.next = (sc_observer_next_fp) next_send;
+	self->send_logger.next = (sc_observer_next_sc_string_fp) next_send;
 }

@@ -30,7 +30,7 @@ void yet_scope_send(yet_scope* self, struct yet_message * msg)
 	
 	if ( len <= YET_SCOPE_SEND_BUF_LEN) {
 		create_message(buf, msg);	
-		sc_observable_next(&(self->trace_messages));
+		sc_observable_sc_string_next(&(self->trace_messages), buf);
 	}
 }
 
@@ -316,10 +316,11 @@ void yet_scope_init(yet_scope* scope, yet_scope* parent_scope, char *name, yet_h
 	scope->instance = instance;
 
 	scope->message_receiver.object = scope;
-	scope->message_receiver.next = (sc_observer_next_fp) yet_scope_accept_message;
+	scope->message_receiver.next = (sc_observer_next_sc_string_fp) yet_scope_accept_message;
 
-	scope->trace_messages.observer_count = 0;
-	scope->trace_messages.subscriptions = sc_null;
+	sc_observable_sc_string_init(&(scope->trace_messages));
+//	scope->trace_messages.observer_count = 0;
+//	scope->trace_messages.subscriptions = sc_null;
 }
 
 char* yet_serialize_void(const void* from, char* to)

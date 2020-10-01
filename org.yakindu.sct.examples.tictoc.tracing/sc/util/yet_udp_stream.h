@@ -38,8 +38,8 @@ struct yet_udp_stream {
 	} transport;
 
 	sc_boolean enabled;
-	sc_observer message_sender;
-	sc_observable received_messages;
+	sc_observer_sc_string message_sender;
+	sc_observable_sc_string received_messages;
 };
 
 extern void yet_udp_stream_init(yet_udp_stream *self, char* ip, uint16_t port);

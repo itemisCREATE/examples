@@ -8,10 +8,6 @@ GeneratorModel for yakindu::c {
 			libraryTargetFolder = "sc/base"
 		}	
 		
-		feature GeneratorOptions {
-			//inEventQueue =  false 
-			userAllocatedQueue =  false 
-		}
 		
 		feature Tracing {
 			enterState = false

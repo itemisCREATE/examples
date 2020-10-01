@@ -80,11 +80,11 @@ yet_file_writer yet_file;
 yet_udp_stream  yet_stream;
 yet_logger		yet_log;
 
-sc_subscription subscription_yet_log_send;
-sc_subscription subscription_yet_file;
-sc_subscription subscription_yet_stream;
-sc_subscription subscription_yet_log_receive;
-sc_subscription subscription_tictocTracer;
+sc_subscription_sc_string subscription_yet_log_send;
+sc_subscription_sc_string subscription_yet_file;
+sc_subscription_sc_string subscription_yet_stream;
+sc_subscription_sc_string subscription_yet_log_receive;
+sc_subscription_sc_string subscription_tictocTracer;
 
 
 
@@ -137,21 +137,21 @@ void setup(int argc, char **argv) {
 	//SC_OBSERVABLE_SUBSCRIBE(&(tictocTracer.scope.trace_messages), out_trace_observers);
 	/* Connect incoming message from UPD yet stream to the tracer and the logger. */
 
-	sc_subscription_init(&(subscription_yet_log_send), &(yet_log.send_logger));
-	sc_observable_subscribe(&(yet_stream.received_messages), &(subscription_yet_log_send));
+	sc_subscription_sc_string_init(&(subscription_yet_log_send), &(yet_log.send_logger));
+	sc_observable_sc_string_subscribe(&(yet_stream.received_messages), &(subscription_yet_log_send));
 
-	sc_subscription_init(&(subscription_yet_file), &(yet_file.message_writer));
-	sc_observable_subscribe(&(yet_stream.received_messages), &(subscription_yet_file));
+	sc_subscription_sc_string_init(&(subscription_yet_file), &(yet_file.message_writer));
+	sc_observable_sc_string_subscribe(&(yet_stream.received_messages), &(subscription_yet_file));
 
-	sc_subscription_init(&(subscription_yet_stream), &(yet_stream.message_sender));
-	sc_observable_subscribe(&(yet_stream.received_messages), &(subscription_yet_stream));
+	sc_subscription_sc_string_init(&(subscription_yet_stream), &(yet_stream.message_sender));
+	sc_observable_sc_string_subscribe(&(yet_stream.received_messages), &(subscription_yet_stream));
 
 	/* Connect outgoing message stream to all physical channels */
-	sc_subscription_init(&(subscription_yet_log_receive), &(yet_log.receive_logger));
-	sc_observable_subscribe(&(tictocTracer.scope.trace_messages), &(subscription_yet_log_receive));
+	sc_subscription_sc_string_init(&(subscription_yet_log_receive), &(yet_log.receive_logger));
+	sc_observable_sc_string_subscribe(&(tictocTracer.scope.trace_messages), &(subscription_yet_log_receive));
 
-	sc_subscription_init(&(subscription_tictocTracer), &(tictocTracer.scope.message_receiver));
-	sc_observable_subscribe(&(tictocTracer.scope.trace_messages), &(subscription_tictocTracer));
+	sc_subscription_sc_string_init(&(subscription_tictocTracer), &(tictocTracer.scope.message_receiver));
+	sc_observable_sc_string_subscribe(&(tictocTracer.scope.trace_messages), &(subscription_tictocTracer));
 
 	/* start UDP yet stream */
 	yet_udp_stream_connect(&yet_stream);

@@ -20,10 +20,10 @@ static void sendMessage(yet_sc_tracer* tracer, sc_string key, sc_string value, s
 void yet_init_sc_tracer(yet_sc_tracer *self, sc_machine_ptr machine, yet_handler actor)
 {
 	if (self != sc_null) {
-		self->traceEventHandler.trace = (sc_trace_fp) trace;
-		self->traceEventHandler.traceState = (sc_trace_state_fp) traceState;
-		self->traceEventHandler.traceFeature = (sc_trace_feature_fp) traceFeature;
-		self->traceEventHandler.traceTimeEvent = (sc_trace_time_event_fp) traceTimeEvent;
+		self->traceEventHandler.trace = (sc_trace_fp) &trace;
+		self->traceEventHandler.traceState = (sc_trace_state_fp) &traceState;
+		self->traceEventHandler.traceFeature = (sc_trace_feature_fp) &traceFeature;
+		self->traceEventHandler.traceTimeEvent = (sc_trace_time_event_fp) &traceTimeEvent;
 
 		yet_scope_init(&(self->scope), sc_null, default_scope_name, actor, self);
 

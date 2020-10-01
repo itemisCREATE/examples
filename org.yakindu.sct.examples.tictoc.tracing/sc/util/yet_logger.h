@@ -19,8 +19,8 @@ typedef struct yet_logger yet_logger;
 
 struct yet_logger {
 	sc_boolean enabled;
-	sc_observer_sc_string send_logger;
-	sc_observer_sc_string receive_logger;
+	sc_single_subscription_observer_sc_string send_logger;
+	sc_single_subscription_observer_sc_string receive_logger;
 };
 
 extern void yet_logger_init(yet_logger *self);

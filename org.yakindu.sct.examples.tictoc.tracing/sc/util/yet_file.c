@@ -19,7 +19,5 @@ static void next(yet_file_writer* self, char* msg)
 void yet_file_writer_init(yet_file_writer* self, char* filename)
 {
 	self->tracefile = fopen(filename, "w");
-
-	self->message_writer.object = self;
-	self->message_writer.next = (sc_observer_next_sc_string_fp) next;
+	sc_single_subscription_observer_sc_string_init(&(self->message_writer), self, (sc_observer_next_sc_string_fp) &next);
 }

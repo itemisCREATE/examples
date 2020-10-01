@@ -38,7 +38,7 @@ struct yet_udp_stream {
 	} transport;
 
 	sc_boolean enabled;
-	sc_observer_sc_string message_sender;
+	sc_single_subscription_observer_sc_string message_sender;
 	sc_observable_sc_string received_messages;
 };
 

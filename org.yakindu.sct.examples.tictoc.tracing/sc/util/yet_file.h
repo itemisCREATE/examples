@@ -20,7 +20,7 @@ typedef struct yet_file_writer yet_file_writer;
 
 struct yet_file_writer {
 	FILE* tracefile;
-	sc_observer_sc_string message_writer;
+	sc_single_subscription_observer_sc_string message_writer;
 };
 
 extern void yet_file_writer_init(yet_file_writer *self, char* filename);

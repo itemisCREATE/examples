@@ -56,13 +56,8 @@ void yet_udp_stream_init(yet_udp_stream* self, char* ip, uint16_t port)
 	self->conf.ip = ip;
 	self->conf.port = port;
 
-	self->message_sender.object = self;
-	self->message_sender.next = (sc_observer_next_sc_string_fp) next;
-
+	sc_single_subscription_observer_sc_string_init (&(self->message_sender), self, (sc_observer_next_sc_string_fp) &next);
 	sc_observable_sc_string_init(&(self->received_messages));
-
-//	self->received_messages.observer_count = 0;
-//	self->received_messages.subscriptions = sc_null;
 
 	self->enabled = true;
 	self->transport.socket = -1;

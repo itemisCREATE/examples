@@ -315,12 +315,8 @@ void yet_scope_init(yet_scope* scope, yet_scope* parent_scope, char *name, yet_h
 	scope->handler = handler;
 	scope->instance = instance;
 
-	scope->message_receiver.object = scope;
-	scope->message_receiver.next = (sc_observer_next_sc_string_fp) yet_scope_accept_message;
-
+	sc_single_subscription_observer_sc_string_init(&(scope->message_receiver), scope, (sc_observer_next_sc_string_fp) &yet_scope_accept_message);
 	sc_observable_sc_string_init(&(scope->trace_messages));
-//	scope->trace_messages.observer_count = 0;
-//	scope->trace_messages.subscriptions = sc_null;
 }
 
 char* yet_serialize_void(const void* from, char* to)

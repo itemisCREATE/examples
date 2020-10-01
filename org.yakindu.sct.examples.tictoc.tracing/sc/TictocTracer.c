@@ -49,7 +49,7 @@ static yet_error dispatchMessage(yet_scope *scope, yet_message * msg, char *fqn)
 void tictoc_init_sc_tracer(yet_sc_tracer *tracer, Tictoc* machine)
 {
 	if (tracer != sc_null) {
-		yet_init_sc_tracer(tracer, machine, dispatchMessage);
+		yet_init_sc_tracer(tracer, machine, &dispatchMessage);
 
 		tracer->scope.name = default_scope_name;
 		tracer->traceinfoProvider.featureName = featureName;

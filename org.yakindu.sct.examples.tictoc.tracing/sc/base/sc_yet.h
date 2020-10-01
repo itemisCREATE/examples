@@ -63,7 +63,7 @@ struct yet_scope {
 	yet_handler handler;
 	void* instance;
 
-	sc_observer_sc_string   message_receiver;
+	sc_single_subscription_observer_sc_string message_receiver;
 	sc_observable_sc_string trace_messages;
 
 };

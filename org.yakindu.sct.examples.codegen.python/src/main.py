@@ -23,8 +23,8 @@ class Main:
         
     def setup(self):
         # Subscribes observers to the state machine's observables 
-        self.sm.sci_light.on_observable.subscribe(self.lightOnObserver)
-        self.sm.sci_light.off_observable.subscribe(self.lightOffObserver)
+        self.sm.light.on_observable.subscribe(self.lightOnObserver)
+        self.sm.light.off_observable.subscribe(self.lightOffObserver)
         # Enters the state machine; from this point on the state machine is ready to react on incoming event 
         self.sm.enter()
 
@@ -34,11 +34,11 @@ class Main:
             self.input = input()
             if self.input == 'On':
                 # Raises the On event in the state machine which causes the corresponding transition to be taken 
-                self.sm.sci_user.raise_on_button()
+                self.sm.user.raise_on_button()
                 self.print_status()
             elif self.input == 'Off':
                 # Raises the Off event in the state machine 
-                self.sm.sci_user.raise_off_button()
+                self.sm.user.raise_off_button()
                 self.print_status()
         self.shutdown()
     
@@ -47,7 +47,7 @@ class Main:
         
     def print_status(self):
         # Gets the value of the brightness variable 
-        brightness = self.sm.sci_light.brightness
+        brightness = self.sm.light.brightness
         print("Light is on, brightness: ", brightness, ".")
             
 

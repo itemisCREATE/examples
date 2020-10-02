@@ -7,7 +7,7 @@ You could choose between two _APIs_: _trafficscene_ and _trafficscene2_.
 """
 
 from trafficlightctrl.traffic_light_ctrl import TrafficLightCtrl
-from trafficlightctrl.timer.sct_timer import Timer
+from trafficlightctrl.timer.timer_service import TimerService
 
 # using RPi.GPIO:
 from trafficscene import TrafficLightSystem 
@@ -18,19 +18,19 @@ class TrafficLightCtrlRuntime:
 
 	def __init__(self):
 		self.sm = TrafficLightCtrl()
-		self.ti = Timer()
+		self.ti = TimerService()
 		self.traffic_system = TrafficLightSystem()
-		self.sm.sci_interface.operation_callback = self.traffic_system
+		self.sm.operation_callback = self.traffic_system
 		self.MAX_DURATION = 40 # seconds
 
 	def setup(self):
 		""" Get statemachine ready and enter it.
 		"""
-		self.traffic_system.set_btn_onoff(self.sm.sci_interface.raise_on_off)
-		self.traffic_system.tlSystem(self.sm.sci_interface)
-		self.traffic_system.tlCar(self.sm.sci_trafficlight)
-		self.traffic_system.tlPedestrian(self.sm.sci_pedestrian)
-		self.sm.set_timer_service(self.ti)
+		self.traffic_system.set_btn_onoff(self.sm.raise_on_off)
+		self.traffic_system.tlSystem(self.sm)
+		self.traffic_system.tlCar(self.sm.traffic_light)
+		self.traffic_system.tlPedestrian(self.sm.pedestrian)
+		self.sm.timer_service = self.ti
 		self.sm.enter()
 
 	def run(self):
@@ -41,10 +41,9 @@ class TrafficLightCtrlRuntime:
 			self.sm.run_cycle()
 
 	def shutdown(self):
-		""" Unset timer and exit statemachine.
+		""" Exit statemachine.
 		"""
 		print('State machine shuts down.')
-		self.sm.unset_timer_service()
 		self.sm.exit()
 		print('Bye!')
 

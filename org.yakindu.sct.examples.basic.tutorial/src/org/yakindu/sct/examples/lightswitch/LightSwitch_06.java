@@ -37,16 +37,16 @@ public class LightSwitch_06 {
 			}
 
 			if (input.equals("On")) {
-				sm.getInterfaceUser().raiseOn_button();
+				sm.user().raiseOn_button();
 			} else if (input.equals("Off")) {
-				sm.getInterfaceUser().raiseOff_button();
+				sm.user().raiseOff_button();
 			} else if (input.equals("Exit")) {
 				break;
 			}
 
 			// Output section
-			if (sm.getInterfaceUser().getBrightness() != brightness) {
-				brightness = sm.getInterfaceUser().getBrightness();
+			if (sm.user().getBrightness() != brightness) {
+				brightness = sm.user().getBrightness();
 				System.out.printf("Brightness %d\n", brightness);
 			}
 

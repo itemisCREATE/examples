@@ -64,7 +64,7 @@
               </vertices>
             </regions>
           </vertices>
-          <vertices xsi:type="sgraph:Entry" xmi:id="_SnDS4DScEeeAPdsPiQ6GsA">
+          <vertices xsi:type="sgraph:Entry" xmi:id="_SnDS4DScEeeAPdsPiQ6GsA" kind="DEEP_HISTORY">
             <outgoingTransitions xmi:id="_TbQXADScEeeAPdsPiQ6GsA" specification="" target="_Q0XGIDQAEee5PeA_UCoIqQ"/>
           </vertices>
         </regions>

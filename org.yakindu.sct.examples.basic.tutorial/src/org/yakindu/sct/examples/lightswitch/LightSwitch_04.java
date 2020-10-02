@@ -32,18 +32,18 @@ public class LightSwitch_04 {
 			}
 
 			if (input.equals("On")) {
-				sm.getInterfaceUser().raiseOn_button();
+				sm.user().raiseOn_button();
 			} else if (input.equals("Off")) {
-				sm.getInterfaceUser().raiseOff_button();
+				sm.user().raiseOff_button();
 			} else if (input.equals("Exit")) {
 				break;
 			} else if (!input.equals("")) {
-				sm.getInterfaceSensor().raiseMotion();
+				sm.sensor().raiseMotion();
 				System.out.println("Motion detected");
 			}
 
-			if (sm.getInterfaceUser().getBrightness() != brightness) {
-				brightness = sm.getInterfaceUser().getBrightness();
+			if (sm.user().getBrightness() != brightness) {
+				brightness = sm.user().getBrightness();
 				System.out.printf("Brightness %d\n", brightness);
 			}
 

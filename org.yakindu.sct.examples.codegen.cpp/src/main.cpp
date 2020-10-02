@@ -28,8 +28,8 @@ int main(int argc, char **argv) {
 	LightOffObserver lightOffObserver;
 
 	/*! Subscribes observers to the state machine's observables */
-	lightOnObserver.subscribe(lightSwitch.getSCI_Light()->get_on());
-	lightOffObserver.subscribe(lightSwitch.getSCI_Light()->get_off());
+	lightOnObserver.subscribe(lightSwitch.light()->getOn());
+	lightOffObserver.subscribe(lightSwitch.light()->getOff());
 
 	/*! Enters the state machine; from this point on the state machine is ready to react on incoming event */
 	lightSwitch.enter();
@@ -41,13 +41,13 @@ int main(int argc, char **argv) {
 		cin >> input;
 		if(input == "On") {
 			/*! Raises the On event in the state machine which causes the corresponding transition to be taken */
-			lightSwitch.getSCI_User()->raise_on_button();
+			lightSwitch.user()->raiseOn_button();
 		} else if(input == "Off") {
 			/*! Raises the Off event in the state machine */
-			lightSwitch.getSCI_User()->raise_off_button();
+			lightSwitch.user()->raiseOff_button();
 		}
 		/*! Gets the value of the brightness variable */
-		cout << "Light is on, brightness: " << lightSwitch.getSCI_Light()->get_brightness() << "." << endl;
+		cout << "Light is on, brightness: " << lightSwitch.light()->getBrightness() << "." << endl;
 
 	}
 }

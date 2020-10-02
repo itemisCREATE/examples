@@ -10,7 +10,7 @@ public class LightSwitch_02 {
 		sm.enter();
 
 		for (int i = 0; i < 10; i++) {
-			sm.getInterfaceUser().raiseOperate();
+			sm.user().raiseOperate();
 
 			if (sm.isStateActive(_02_LightSwitch.State.MAIN_REGION_ON)) {
 				System.out.println("Light is On");

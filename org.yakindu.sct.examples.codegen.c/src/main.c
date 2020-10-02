@@ -48,15 +48,15 @@ int main(int argc, char **argv) {
 		input = getchar();
 		if (input == '1') {
 			/*! Raises the On event in the state machine which causes the corresponding transition to be taken */
-			lightSwitchIfaceUser_raise_on_button(&lightSwitch);
+			lightSwitch_user_raise_on_button(&lightSwitch);
 		} else if (input == '0') {
 			/*! Raises the Off event in the state machine */
-			lightSwitchIfaceUser_raise_off_button(&lightSwitch);
+			lightSwitch_user_raise_off_button(&lightSwitch);
 		}
 		if (input != '\n') {
 			/*! Gets the value of the brightness variable */
 			printf("Brightness %d.\n",
-					lightSwitchIfaceLight_get_brightness(&lightSwitch));
+					lightSwitch_light_get_brightness(&lightSwitch));
 		}
 	}
 

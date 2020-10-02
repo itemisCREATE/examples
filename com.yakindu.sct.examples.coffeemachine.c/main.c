@@ -43,7 +43,7 @@ static pthread_mutex_t coffe_state_machine_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 
 static void run_cycle(void *handle) {
-	coffeeMachineIface_raise_userEvent(handle, provideUserEvent());
+	coffeeMachine_raise_userEvent(handle, provideUserEvent());
 	coffeeMachine_runCycle(handle);
 }
 

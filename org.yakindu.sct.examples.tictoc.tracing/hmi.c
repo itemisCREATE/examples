@@ -20,7 +20,7 @@ static yet_udp_stream* trace_stream;
 
 static void increaseDelay() {
 	sc_integer increment = 10;
-	sc_integer delay = tictocIface_get_delay(tictoc);
+	sc_integer delay = tictoc_get_delay(tictoc);
 
 	if (delay >= 1000) {
 		increment = 1000;
@@ -28,13 +28,13 @@ static void increaseDelay() {
 		increment = 100;
 	}
 
-	tictocIface_set_delay(tictoc, delay + increment);
+	tictoc_set_delay(tictoc, delay + increment);
 }
 
 
 static void decreaseDelay() {
 	sc_integer increment = -1000;
-	sc_integer delay = tictocIface_get_delay(tictoc);
+	sc_integer delay = tictoc_get_delay(tictoc);
 
 	if (delay <= 10) return;
 
@@ -50,7 +50,7 @@ static void decreaseDelay() {
 		increment = 1000 - delay;
 	}
 
-	tictocIface_set_delay(tictoc, delay + increment);
+	tictoc_set_delay(tictoc, delay + increment);
 }
 
 
@@ -84,7 +84,7 @@ void hmi_proceed()
 
     	switch (c) {
     		case 't':
-    			tictocIface_raise_toggle(tictoc);
+    			tictoc_raise_toggle(tictoc);
     			break;
     		case '+':
     			increaseDelay();

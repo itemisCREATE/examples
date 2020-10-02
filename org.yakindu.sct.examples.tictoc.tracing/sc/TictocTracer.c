@@ -14,16 +14,16 @@
 static sc_string default_scope_name = "tictoc";
 
 static yet_value_serializer feature_value_serializer[] = {
-	&yet_serialize_void,
-	&yet_serialize_void,
-	&yet_serialize_void,
-	&yet_serialize_void,
-	&yet_serialize_sc_integer,
-	&yet_serialize_sc_integer,
-	&yet_serialize_sc_integer,
-	&yet_serialize_sc_boolean,
-	&yet_serialize_sc_integer,
-	&yet_serialize_sc_real
+	yet_serialize_void,
+	yet_serialize_void,
+	yet_serialize_void,
+	yet_serialize_void,
+	yet_serialize_sc_integer,
+	yet_serialize_sc_integer,
+	yet_serialize_sc_integer,
+	yet_serialize_sc_boolean,
+	yet_serialize_sc_integer,
+	yet_serialize_sc_real
 };
 
 
@@ -73,32 +73,32 @@ static yet_error dispatchMessage(yet_scope *scope, yet_message * msg, char *fqn)
 		/* Skip one message; this should not be re-raised on host */
 		/* TODO: this is not optimal check if we can get rid of it */
 		tracer->skip_raised_in_event++; 
-		tictocIface_raise_toggle(tracer->machine);
+		tictoc_raise_toggle(tracer->machine);
 		return 0;
 	}
 	if(strcmp(member, "count") == 0) {
 		sc_integer converted = atoi(msg->value);
-		tictocIface_set_count(tracer->machine, converted);
+		tictoc_set_count(tracer->machine, converted);
 		return 0;
 	}
 	if(strcmp(member, "delay") == 0) {
 		sc_integer converted = atoi(msg->value);
-		tictocIface_set_delay(tracer->machine, converted);
+		tictoc_set_delay(tracer->machine, converted);
 		return 0;
 	}
 	if(strcmp(member, "x") == 0) {
 		sc_integer converted = atoi(msg->value);
-		tictocIface_set_x(tracer->machine, converted);
+		tictoc_set_x(tracer->machine, converted);
 		return 0;
 	}
 	if(strcmp(member, "b") == 0) {
 		sc_boolean converted = (msg->value[0] == 't');
-		tictocIface_set_b(tracer->machine, converted);
+		tictoc_set_b(tracer->machine, converted);
 		return 0;
 	}
 	if(strcmp(member, "y") == 0) {
 		sc_integer converted = atoi(msg->value);
-		tictocIfaceFoo_set_y(tracer->machine, converted);
+		tictoc_foo_set_y(tracer->machine, converted);
 		return 0;
 	}
 	if(strcmp(member, "i") == 0) {

@@ -267,7 +267,7 @@ static void runCycle(Tictoc* handle)
 }
 
 
-void tictocIface_raise_toggle(Tictoc* handle)
+void tictoc_raise_toggle(Tictoc* handle)
 {
 	SC_TRACE_FEATURE(handle, sc_trace_event_raised, tictocIface_toggle, sc_null)
 	tictoc_add_event_to_queue(&(handle->in_event_queue), TictocIface_toggle);
@@ -275,58 +275,58 @@ void tictocIface_raise_toggle(Tictoc* handle)
 }
 
 
-sc_observable* tictocIface_get_tic(Tictoc* handle)
+sc_observable* tictoc_get_tic(Tictoc* handle)
 {
 	return &handle->iface.tic;
 }
-sc_observable* tictocIface_get_toc(Tictoc* handle)
+sc_observable* tictoc_get_toc(Tictoc* handle)
 {
 	return &handle->iface.toc;
 }
 
-sc_integer tictocIface_get_count(const Tictoc* handle)
+sc_integer tictoc_get_count(const Tictoc* handle)
 {
 	return handle->iface.count;
 }
-void tictocIface_set_count(Tictoc* handle, sc_integer value)
+void tictoc_set_count(Tictoc* handle, sc_integer value)
 {
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_count, &value);
 	handle->iface.count = value;
 }
-sc_integer tictocIface_get_delay(const Tictoc* handle)
+sc_integer tictoc_get_delay(const Tictoc* handle)
 {
 	return handle->iface.delay;
 }
-void tictocIface_set_delay(Tictoc* handle, sc_integer value)
+void tictoc_set_delay(Tictoc* handle, sc_integer value)
 {
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_delay, &value);
 	handle->iface.delay = value;
 }
-sc_integer tictocIface_get_x(const Tictoc* handle)
+sc_integer tictoc_get_x(const Tictoc* handle)
 {
 	return handle->iface.x;
 }
-void tictocIface_set_x(Tictoc* handle, sc_integer value)
+void tictoc_set_x(Tictoc* handle, sc_integer value)
 {
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_x, &value);
 	handle->iface.x = value;
 }
-sc_boolean tictocIface_get_b(const Tictoc* handle)
+sc_boolean tictoc_get_b(const Tictoc* handle)
 {
 	return handle->iface.b;
 }
-void tictocIface_set_b(Tictoc* handle, sc_boolean value)
+void tictoc_set_b(Tictoc* handle, sc_boolean value)
 {
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_b, &value);
 	handle->iface.b = value;
 }
 
 
-sc_integer tictocIfaceFoo_get_y(const Tictoc* handle)
+sc_integer tictoc_foo_get_y(const Tictoc* handle)
 {
 	return handle->ifaceFoo.y;
 }
-void tictocIfaceFoo_set_y(Tictoc* handle, sc_integer value)
+void tictoc_foo_set_y(Tictoc* handle, sc_integer value)
 {
 	SC_TRACE_FEATURE(handle, sc_trace_variable_set, tictocIface_y, &value);
 	handle->ifaceFoo.y = value;

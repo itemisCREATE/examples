@@ -213,33 +213,33 @@ extern void tictoc_exit(Tictoc* handle);
 extern void tictoc_raiseTimeEvent(Tictoc* handle, sc_eventid evid);
 
 /*! Raises the in event 'toggle' that is defined in the default interface scope. */ 
-extern void tictocIface_raise_toggle(Tictoc* handle);
+extern void tictoc_raise_toggle(Tictoc* handle);
 /*! Returns the observable for the out event 'tic' that is defined in the default interface scope. */ 
-extern sc_observable* tictocIface_get_tic(Tictoc* handle);
+extern sc_observable* tictoc_get_tic(Tictoc* handle);
 
 /*! Returns the observable for the out event 'toc' that is defined in the default interface scope. */ 
-extern sc_observable* tictocIface_get_toc(Tictoc* handle);
+extern sc_observable* tictoc_get_toc(Tictoc* handle);
 
 /*! Gets the value of the variable 'count' that is defined in the default interface scope. */ 
-extern sc_integer tictocIface_get_count(const Tictoc* handle);
+extern sc_integer tictoc_get_count(const Tictoc* handle);
 /*! Sets the value of the variable 'count' that is defined in the default interface scope. */ 
-extern void tictocIface_set_count(Tictoc* handle, sc_integer value);
+extern void tictoc_set_count(Tictoc* handle, sc_integer value);
 /*! Gets the value of the variable 'delay' that is defined in the default interface scope. */ 
-extern sc_integer tictocIface_get_delay(const Tictoc* handle);
+extern sc_integer tictoc_get_delay(const Tictoc* handle);
 /*! Sets the value of the variable 'delay' that is defined in the default interface scope. */ 
-extern void tictocIface_set_delay(Tictoc* handle, sc_integer value);
+extern void tictoc_set_delay(Tictoc* handle, sc_integer value);
 /*! Gets the value of the variable 'x' that is defined in the default interface scope. */ 
-extern sc_integer tictocIface_get_x(const Tictoc* handle);
+extern sc_integer tictoc_get_x(const Tictoc* handle);
 /*! Sets the value of the variable 'x' that is defined in the default interface scope. */ 
-extern void tictocIface_set_x(Tictoc* handle, sc_integer value);
+extern void tictoc_set_x(Tictoc* handle, sc_integer value);
 /*! Gets the value of the variable 'b' that is defined in the default interface scope. */ 
-extern sc_boolean tictocIface_get_b(const Tictoc* handle);
+extern sc_boolean tictoc_get_b(const Tictoc* handle);
 /*! Sets the value of the variable 'b' that is defined in the default interface scope. */ 
-extern void tictocIface_set_b(Tictoc* handle, sc_boolean value);
+extern void tictoc_set_b(Tictoc* handle, sc_boolean value);
 /*! Gets the value of the variable 'y' that is defined in the interface scope 'foo'. */ 
-extern sc_integer tictocIfaceFoo_get_y(const Tictoc* handle);
+extern sc_integer tictoc_foo_get_y(const Tictoc* handle);
 /*! Sets the value of the variable 'y' that is defined in the interface scope 'foo'. */ 
-extern void tictocIfaceFoo_set_y(Tictoc* handle, sc_integer value);
+extern void tictoc_foo_set_y(Tictoc* handle, sc_integer value);
 
 /*!
  * Checks whether the state machine is active (until 2.4.1 this method was used for states).

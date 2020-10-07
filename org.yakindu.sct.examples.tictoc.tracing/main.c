@@ -11,9 +11,9 @@
 #include <stdlib.h>
 
 #include "sc/base/sc_rxc.h"
-#include "sc/Tictoc.h"
-#include "sc/TictocTracer.h"
-#include "sc/TictocRequired.h"
+#include "sc/tictoc.h"
+#include "sc/tictoc_tracer.h"
+#include "sc/tictoc_required.h"
 #include "sc/util/sc_timer_service.h"
 #include "sc/util/yet_file.h"
 #include "sc/util/yet_udp_stream.h"
@@ -110,7 +110,7 @@ void setup(int argc, char **argv) {
 	sc_timer_service_init(
 				&timer_service,
 				timers, MAX_TIMERS,
-				(sc_raise_time_event_fp) &tictoc_raiseTimeEvent);
+				(sc_raise_time_event_fp) &tictoc_raise_time_event);
 
 	/* initialize the state machine. */
 	tictoc_init(&tictoc);

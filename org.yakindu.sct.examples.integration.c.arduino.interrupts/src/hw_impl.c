@@ -19,10 +19,10 @@ void hw_init() {
 /*! Update your actuators, by checking the
  * out event status */
 void handle_out_events(StateMachine* handle) {
-	if (stateMachineIface_israised_outEvent1(handle)) {
+	if (stateMachineIface_is_raised_outEvent1(handle)) {
 		digitalWrite(13, LOW);
 	}
-	if (stateMachineIface_israised_outEvent2(handle)) {
+	if (stateMachineIface_is_raised_outEvent2(handle)) {
 		digitalWrite(13, HIGH);
 	}
 }

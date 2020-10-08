@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 #include "cm_trace.h"
-#include "../src-gen/CoffeeMachineRequired.h"
+#include "../src-gen/CoffeeMachine_required.h"
 
 static char* stateNames[] = {
 		"InvalidState",
@@ -31,11 +31,11 @@ bool cm_trace_active = true;
 
 
 /*! This function is called when a state is entered. */
-void coffeeMachine_stateEntered(CoffeeMachine* handle, const CoffeeMachineStates state) {
+void coffeeMachine_state_entered(CoffeeMachine* handle, const CoffeeMachineStates state) {
 	if (cm_trace_active) fprintf(stderr, "-> [%s]\n", stateNames[state]);
 }
 
 /*! This function is called when a state is exited. */
-void coffeeMachine_stateExited(CoffeeMachine* handle, const CoffeeMachineStates state) {
+void coffeeMachine_state_exited(CoffeeMachine* handle, const CoffeeMachineStates state) {
 	if (cm_trace_active) fprintf(stderr, "[%s] ->\n", stateNames[state]);
 }

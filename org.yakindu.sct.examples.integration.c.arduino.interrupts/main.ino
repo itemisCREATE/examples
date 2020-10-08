@@ -2,7 +2,7 @@
 
 #include "src/hw_impl.h"
 #include "src/timer_impl.h"
-#include "src-gen/StateMachineRequired.h"
+#include "src-gen/StateMachine_required.h"
 
 /*! Define the state machine object */
 StateMachine stateMachine;
@@ -28,7 +28,7 @@ void setup() {
 void loop() {
 	/*! Runs until the state machine is final.
 	 * Always true, if there is no final state defined */
-	while (!stateMachine_isFinal(&stateMachine)) {
+	while (!stateMachine_is_final(&stateMachine)) {
 		/*! Update timer if WDT interrupt has been occurred,
 		 * which is set to 32 ms.*/
 		handle_timer();
@@ -38,8 +38,8 @@ void loop() {
 		handle_in_events(&stateMachine);
 
 		/*! For @EventDriven state machines, runCycle must not be called.
-		 * Use runCycle for @CycleBased state machines */
-		//stateMachine_runCycle(&stateMachine);
+		 * Use run_cycle for @CycleBased state machines */
+		//stateMachine_run_cycle(&stateMachine);
 
 		/*! Update your actuators */
 		handle_out_events(&stateMachine);

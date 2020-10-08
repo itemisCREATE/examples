@@ -2,7 +2,7 @@
 #define SRC_TIMER_IMPL_H_
 
 #include "sc_timer_service.h"
-#include "../src-gen/StateMachineRequired.h"
+#include "../src-gen/StateMachine_required.h"
 #include "Arduino.h"
 #include "avr/sleep.h"
 

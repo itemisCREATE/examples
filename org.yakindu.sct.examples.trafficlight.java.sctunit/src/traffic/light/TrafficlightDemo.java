@@ -15,8 +15,8 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-import com.yakindu.sct.RuntimeService;
-import com.yakindu.sct.TimerService;
+import com.yakindu.core.RuntimeService;
+import com.yakindu.core.TimerService;
 
 
 /**

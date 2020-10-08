@@ -1,7 +1,7 @@
 package traffic.light;
 
-import com.yakindu.sct.ITimerService;
-import com.yakindu.sct.TimerService;
+import com.yakindu.core.ITimerService;
+import com.yakindu.core.TimerService;
 
 import traffic.light.ui.Counter.Color;
 import traffic.light.ui.TrafficLightFrame;

@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <pthread.h>
 
-#include "../src-gen/Rgb.h"
+#include "../src-gen/rgb.h"
 #include "../scutil/sc_cycle_runner.h"
 
 static Rgb rgb;
@@ -18,7 +18,7 @@ static sc_cycle_runner_t cycle_runner;
 static pthread_mutex_t rgb_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 static void runCycle(void * handle) {
-	rgb_runCycle((Rgb*) handle);
+	rgb_run_cycle((Rgb*) handle);
 }
 
 int main() {
@@ -34,22 +34,22 @@ int main() {
 		pthread_mutex_lock(&rgb_mutex);
 		switch (input) {
 		case 'r':
-			rgbIface_raise_red(&rgb);
+			rgb_raise_red(&rgb);
 			break;
 		case 'g':
-			rgbIface_raise_green(&rgb);
+			rgb_raise_green(&rgb);
 			break;
 		case 'b':
-			rgbIface_raise_blue(&rgb);
+			rgb_raise_blue(&rgb);
 			break;
 		case 'e':
-			rgbIface_raise_end(&rgb);
-			rgb_runCycle(&rgb);
+			rgb_raise_end(&rgb);
+			rgb_run_cycle(&rgb);
 			break;
 		default:
 			break;
 		}
-		if (rgb_isFinal(&rgb)) {
+		if (rgb_is_final(&rgb)) {
 			return 0;
 		}
 		pthread_mutex_unlock(&rgb_mutex);

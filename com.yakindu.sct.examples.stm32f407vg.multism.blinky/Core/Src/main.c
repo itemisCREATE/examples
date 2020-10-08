@@ -23,7 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "ControllerRequired.h"
+#include "Controller_required.h"
 #include "LED.h"
 #include "sc_timer_service.h"
 
@@ -104,7 +104,7 @@ int main(void)
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim5);
-  sc_timer_service_init(&timer_service, timers, MAX_TIMERS, (sc_raise_time_event_fp) &controller_raiseTimeEvent);
+  sc_timer_service_init(&timer_service, timers, MAX_TIMERS, (sc_raise_time_event_fp) &controller_raise_time_event);
 
   lED_init(&green);
   lED_init(&orange);
@@ -251,10 +251,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim) {
 	}
 }
 
-void controller_setTimer(Controller* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
+void controller_set_timer(Controller* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
 	sc_timer_start(&timer_service, (void*) handle, evid, time_ms, periodic);
 }
-void controller_unsetTimer(Controller* handle, const sc_eventid evid){
+void controller_unset_timer(Controller* handle, const sc_eventid evid){
 	sc_timer_cancel(&timer_service, evid);
 	(void) handle;
 }

@@ -14,13 +14,13 @@ static sc_timer_t timers[MAX_TIMERS];
 static sc_timer_service_t timer_service;
 
 //! callback implementation for the setting up time events
-extern void blinkyStateMachine_setTimer(BlinkyStateMachine* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic)
+extern void blinkyStateMachine_set_timer(BlinkyStateMachine* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic)
 {
     sc_timer_start(&timer_service, handle, evid, time_ms, periodic);
 }
 
 //! callback implementation for canceling time events.
-extern void blinkyStateMachine_unsetTimer(BlinkyStateMachine* handle, const sc_eventid evid)
+extern void blinkyStateMachine_unset_timer(BlinkyStateMachine* handle, const sc_eventid evid)
 {
     sc_timer_cancel(&timer_service, evid);
 }
@@ -30,14 +30,14 @@ void main(void) {
 
     // Init timer and state machine
     sc_timer_service_init(&timer_service, timers, MAX_TIMERS,
-                (sc_raise_time_event_fp) & blinkyStateMachine_raiseTimeEvent);
+                (sc_raise_time_event_fp) & blinkyStateMachine_raise_time_event);
     blinkyStateMachine_init(&blinky);
     blinkyStateMachine_enter(&blinky);
 
     while (1)
     {
         // call state machine every 32 ms
-        blinkyStateMachine_runCycle(&blinky);
+        blinkyStateMachine_run_cycle(&blinky);
         __bis_SR_register(LPM0_bits + GIE);
         sc_timer_service_proceed(&timer_service, 32);
     }

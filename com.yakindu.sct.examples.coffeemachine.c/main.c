@@ -44,7 +44,7 @@ static pthread_mutex_t coffe_state_machine_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 static void run_cycle(void *handle) {
 	coffeeMachine_raise_userEvent(handle, provideUserEvent());
-	coffeeMachine_runCycle(handle);
+	coffeeMachine_run_cycle(handle);
 }
 
 
@@ -60,7 +60,7 @@ int main(void) {
 	sc_timer_service_init(
 			&timer_service,
 			timers, MAX_TIMERS,
-			(sc_raise_time_event_fp) &coffeeMachine_raiseTimeEvent,
+			(sc_raise_time_event_fp) &coffeeMachine_raise_time_event,
 			&coffe_state_machine_mutex);
 
 	// then we initialize
@@ -90,7 +90,7 @@ int main(void) {
  \time_ms The time in milli seconds
  \periodic Indicates the the time event must be raised periodically until the timer is unset
  */
-void coffeeMachine_setTimer(CoffeeMachine* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic) {
+void coffeeMachine_set_timer(CoffeeMachine* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic) {
 
 	// simply delegate to the generic timer service implementation.
 	sc_timer_start(&timer_service, handle, evid, time_ms, periodic);
@@ -100,7 +100,7 @@ void coffeeMachine_setTimer(CoffeeMachine* handle, const sc_eventid evid, const 
 	This function will be called for each time event that is relevant for a state when a state will be left.
 	\param evid An unique identifier of the event.
 */
-void coffeeMachine_unsetTimer(CoffeeMachine* handle, const sc_eventid evid) {
+void coffeeMachine_unset_timer(CoffeeMachine* handle, const sc_eventid evid) {
 
 	// simply delegate to the generic timer service implementation.
 	sc_timer_cancel(&timer_service, evid);

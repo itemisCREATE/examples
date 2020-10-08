@@ -2,7 +2,7 @@ package org.yakindu.sct.examples.codegen.java;
 
 import java.util.Scanner;
 
-import com.yakindu.sct.rx.Observer;
+import com.yakindu.core.rx.Observer;
 
 public class Main {
 	

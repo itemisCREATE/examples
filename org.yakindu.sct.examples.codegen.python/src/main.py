@@ -1,5 +1,5 @@
-from lightswitch.light_switch import LightSwitch
-from lightswitch.rx_python import Observer
+from light_switch import LightSwitch
+from rx_python import Observer
 
 class Main:
     

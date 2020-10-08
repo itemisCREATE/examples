@@ -2,7 +2,7 @@
 #include <avr/sleep.h>
 
 #include "src-gen/LightCtrl.h"
-#include "src-gen/LightCtrlRequired.h"
+#include "src-gen/LightCtrl_required.h"
 #include "scutil/sc_timer_service.h"
 
 #define BUTTON_PIN 3
@@ -21,12 +21,12 @@ static sc_timer_service_t timer_service;
 static sc_timer_t timers[MAX_TIMERS];
 
 //! callback implementation for the setting up time events
-void lightCtrl_setTimer(LightCtrl* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
+void lightCtrl_set_timer(LightCtrl* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
 	sc_timer_start(&timer_service, (void*) handle, evid, time_ms, periodic);
 }
 
 //! callback implementation for canceling time events.
-void lightCtrl_unsetTimer(LightCtrl* handle, const sc_eventid evid) {
+void lightCtrl_unset_timer(LightCtrl* handle, const sc_eventid evid) {
 	sc_timer_cancel(&timer_service, evid);
 }
 
@@ -47,7 +47,7 @@ void setup()
 			&timer_service,
 			timers,
 			MAX_TIMERS,
-			(sc_raise_time_event_fp) &lightCtrl_raiseTimeEvent
+			(sc_raise_time_event_fp) &lightCtrl_raise_time_event
 			);
 
 	lightCtrl_init(&lightctrl); //initialize statechart

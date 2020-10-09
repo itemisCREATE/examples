@@ -22,35 +22,34 @@
 
 		<h2>The Tic-Toc example application</h2>
 		<p>
-			The example state machine is simple has no specific sematics. It simply highlights 
+			The example state machine is simple and has no specific semantics. It simply highlights 
 			how to use YET. The state machine is has two states <i>Idle</i> and <i>Playing</i>.
-			The single input event <i>toggle</i> switches between these two events. Within <i>Playing</i> 
+			The single input event <i>toggle</i> switches between these two states. Within <i>Playing</i> 
 			state the state machine automatically switches between the states <i>Tic</i> and <i>Toc</i>
-			and raises out events <i>tic</i> and <i>toc</i> respectivley when entering these states. 
-			The time interval between state changes is defined by the variable <i>delay</i>.
+			and raises out events <i>tic</i> and <i>toc</i> respectively when entering these states. 
+			The time interval between these state changes is defined by the variable <i>delay</i>.
 		</p>			
 		<img class= "small" alt="Remote debugging a statechart" src="images/tictoc_debugging.png" />
 
 		<p>
 			This state machine is executed within an interactive application. This application can be used 
 			from the command line. It reads user input from the standard input and writes to the standard output.
-			It is build to run on the host machine. If you have to integrate YET into your application 
+			It is built to run on the host machine. If you have to integrate YET into your application 
 			then you can use the example code as a template. 
 		</p>
 			
 		<h2>Building the application</h2>
 		<p>
 			The example project is a Eclipse CDT project. Configure your platform specific compiler tool chain 
-			in the project properties. The example comes with generated state machine code. Of course you can 
-			change the statechart. In that case you have to regenerate the state machine and tracing code. 
-			With automted build switched on this happens automatically else you have to generate code from the 
-			two <i>sgen</i> files manually by selecting <i>Generate Code Artefacts</i> from the file entries context menu. 
+			in the project properties. Please note that you have to generate the state machine and tracing code. 
+			With automated build switched on this happens automatically, otherwise you have to generate code from the 
+			two <i>sgen</i> files manually by selecting <i>Generate Code Artifacts</i> from the files' context menus. 
 		</p>
 
 		<h2>Running the application</h2>
 		<p>
 			When everything is built properly then you can simply run the executable from Eclipse 
-			( on project entry select <i>Run As > Local C/C++ Application</i>) or from the terminal. 
+			(on project entry select <i>Run As > Local C/C++ Application</i>) or from the terminal. 
 			You will see this output.
 		</p>
 
@@ -75,7 +74,7 @@ send: #2,tictoc@StateEntered,main.Idle
 
 		<p>
 			The first block includes just some output from the application during start up. 
-			This includes instructions how to interact with teh application from the command line.
+			This includes instructions how to interact with the application from the command line.
 			The second block is the log output of trace events which are emitted by the state machine.
 			Simply play around with the different input options. 
 		</p>
@@ -102,12 +101,12 @@ send: #2,tictoc@StateEntered,main.Idle
 			from the context menu. The <i>Run Configurations</i> dialog pops up and choose the proper entry 
 			in the category <i>Trace Debugging</i>. The tab <i>Statechart Trace</i> provides several configuration options.
 
-			First the instance name is used to distinguish between multiple running instances of the same state machine 
+			First, the instance name is used to distinguish between multiple running instances of the same state machine 
 			if multiple state machines are executed on the target and if they share a common trace channel. 
 			The default is just the name of the statechart model.
 
 			The obviously most important option is how you want to read or receive traces. It is possible to choose one of 
-			three trace provider:
+			three trace providers:
 
 			<ul>
 				<li> <i>Read trace from file</i> - supports to configure what file should be used.</li>
@@ -125,7 +124,7 @@ send: #2,tictoc@StateEntered,main.Idle
 		<img class= "small" alt="Configuration of trace debug session" src="images/yet_configure_trace_debugging.png" />
 
 		<p>
-			After that click <i>Apply</i> and <i>Run</i>. The trace debugger UI will be activated. If UDP or TCP trace provider 
+			After that, click <i>Apply</i> and <i>Run</i>. The trace debugger UI will be activated. If UDP or TCP trace provider 
 			are used then no active statechart state may be highlighted in the Debugger UI. This is always the case if no 
 			remote target is connected or if the statechart is not yet activated on the remote target. 
 		</p>
@@ -135,28 +134,6 @@ send: #2,tictoc@StateEntered,main.Idle
 			As stated before some manual implementation steps are required to enable your application for YET tracing. 
 			Please feel free to reuse the implementation of this example and take a closer look at the 
 			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a>
-		</p>
-
-		<h2>Installing YET support</h2>
-		<p>
-			If you cant find the YET extensions in YAKINDU SCT and if the the code generation for the tracer does not work 
-			then you likely have to install the YET feature. 
-			
-			<ol>
-				<li>Open <i>Help > Install New Software ...</i> from the menu.</li>
-				<li>Select the Yakindu Labs entry from the <i>Work with:</i> pull down list. 
-					If there is no such entry then
-					<ol>
-						<li>Choose <i>Add</i></li>
-						<li>Enter <i>http://updates.yakindu.com/statecharts/labs</i> in the <i>Location</i> 
-							field and optionally choose a name.</li>
-						<li>Press <i>OK</i>.</li>
-					</ol>
-				</li>
-				<li>Unfold the top level node and check the YET feature.</li>
-				<li>Finish the installation wizard by choosing <i>Next ></i> until finished.</li>
-				<li>Restart.</li>
-			</ol>
 		</p>
 
 	</div>

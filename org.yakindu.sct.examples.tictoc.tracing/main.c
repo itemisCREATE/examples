@@ -11,9 +11,9 @@
 #include <stdlib.h>
 
 #include "sc/base/sc_rxc.h"
-#include "sc/Tictoc.h"
-#include "sc/TictocTracer.h"
-#include "sc/TictocRequired.h"
+#include "sc/tictoc.h"
+#include "sc/tictoc_tracer.h"
+#include "sc/tictoc_required.h"
 #include "sc/util/sc_timer_service.h"
 #include "sc/util/yet_file.h"
 #include "sc/util/yet_udp_stream.h"
@@ -37,12 +37,12 @@ static sc_timer_t timers[MAX_TIMERS];
 static sc_timer_service_t timer_service;
 
 /*! callback implementation for the setting up time events. */
-void tictoc_setTimer(Tictoc* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
+void tictoc_set_timer(Tictoc* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
 	sc_timer_start(&timer_service, (void*) handle, evid, time_ms, periodic);
 }
 
 /*! callback implementation for canceling time events. */
-void tictoc_unsetTimer(Tictoc* handle, const sc_eventid evid) {
+void tictoc_unset_timer(Tictoc* handle, const sc_eventid evid) {
 	sc_timer_cancel(&timer_service, evid);
 }
 
@@ -80,18 +80,6 @@ yet_file_writer yet_file;
 yet_udp_stream  yet_stream;
 yet_logger		yet_log;
 
-sc_observer* out_trace_observers[] = {
-		&(yet_log.send_logger),
-		&(yet_file.message_writer),
-		&(yet_stream.message_sender)
-};
-
-sc_observer* in_trace_observers[] = {
-		&(yet_log.receive_logger),
-		&(tictocTracer.scope.message_receiver)
-};
-
-
 
 char * udp_ip(int argc, char **argv) {
 	if(argc > 1) {
@@ -122,7 +110,7 @@ void setup(int argc, char **argv) {
 	sc_timer_service_init(
 				&timer_service,
 				timers, MAX_TIMERS,
-				(sc_raise_time_event_fp) &tictoc_raiseTimeEvent);
+				(sc_raise_time_event_fp) &tictoc_raise_time_event);
 
 	/* initialize the state machine. */
 	tictoc_init(&tictoc);
@@ -138,9 +126,13 @@ void setup(int argc, char **argv) {
 	yet_logger_init(&yet_log);
 
 	/* Connect incoming message from UPD yet stream to the tracer and the logger. */
-	SC_OBSERVABLE_SUBSCRIBE(&(yet_stream.received_messages), in_trace_observers);
+	sc_single_subscription_observer_sc_string_subscribe(&(yet_log.receive_logger), &(yet_stream.received_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(tictocTracer.scope.message_receiver), &(yet_stream.received_messages));
+
 	/* Connect outgoing message stream to all physical channels */
-	SC_OBSERVABLE_SUBSCRIBE(&(tictocTracer.scope.trace_messages), out_trace_observers);
+	sc_single_subscription_observer_sc_string_subscribe(&(yet_log.send_logger), &(tictocTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(yet_file.message_writer), &(tictocTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(yet_stream.message_sender), &(tictocTracer.scope.trace_messages));
 
 	/* start UDP yet stream */
 	yet_udp_stream_connect(&yet_stream);

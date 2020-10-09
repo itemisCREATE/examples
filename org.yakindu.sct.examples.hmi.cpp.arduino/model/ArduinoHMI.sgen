@@ -5,7 +5,6 @@ GeneratorModel for yakindu::cpp {
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.hmi.cpp.arduino"
 			targetFolder = "src-gen"
-			libraryTargetFolder = "src"
 		}
-	}
+	} 
 }

@@ -4,23 +4,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.yakindu.sct.examples.basic.tutorial.TimerService;
-import org.yakindu.sct.examples.basic.tutorial._06_lightswitch_simulation._06_LightSwitch_simulationStatemachine;
+import org.yakindu.sct.TimerService;
+import org.yakindu.sct.examples.basic.tutorial._06_LightSwitch_simulation;
+import org.yakindu.sct.examples.basic.tutorial._06_LightSwitch_simulation.State;
 
 public class LightSwitch_06 {
 
 	public static void main(String[] args) throws IOException {
 		// Instantiate statemachine
-		_06_LightSwitch_simulationStatemachine sm = new _06_LightSwitch_simulationStatemachine();
+		_06_LightSwitch_simulation sm = new _06_LightSwitch_simulation();
 
 		// Instantiate BufferedReader for command line reading inside of IDE
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		sm.setTimer(new TimerService());
+		sm.setTimerService(new TimerService());
 
 		sm.setInternalOperationCallback(new LightSwitch_06_Callback());
 
-		sm.init();
 		sm.enter();
 
 		long brightness = 0;
@@ -37,23 +37,21 @@ public class LightSwitch_06 {
 			}
 
 			if (input.equals("On")) {
-				sm.getSCIUser().raiseOn_button();
+				sm.user().raiseOn_button();
 			} else if (input.equals("Off")) {
-				sm.getSCIUser().raiseOff_button();
+				sm.user().raiseOff_button();
 			} else if (input.equals("Exit")) {
 				break;
 			}
 
-			sm.runCycle();
-
 			// Output section
-			if (sm.getSCIUser().getBrightness() != brightness) {
-				brightness = sm.getSCIUser().getBrightness();
+			if (sm.user().getBrightness() != brightness) {
+				brightness = sm.user().getBrightness();
 				System.out.printf("Brightness %d\n", brightness);
 			}
 
-			if (sm.isStateActive(_06_LightSwitch_simulationStatemachine.State.main_region_Manual) != isManual) {
-				isManual = sm.isStateActive(_06_LightSwitch_simulationStatemachine.State.main_region_Manual);
+			if (sm.isStateActive(State.MAIN_REGION_MANUAL) != isManual) {
+				isManual = sm.isStateActive(State.MAIN_REGION_MANUAL);
 				if (isManual) {
 					System.out.println("Manual mode activated");
 				} else {

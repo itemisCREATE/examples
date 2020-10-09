@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Digital Watch</title>
+<link href="./css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>Digital Watch (C++) for Arduino</h1>
+
+    <p>This digital watch was first designed by Harel, the founder of the
+      Statecharts Theory. He described it in "On Visual Formalisms", published
+      in "Communications of the ACM" in May 1988. 
+      The details of the example can be found in the platform independent example. This example focus on the integration on a Arduino combined with a 16x2 LCD Shield.</p>
+      
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/hGVFFpz9Mgs" frameborder="0" allowfullscreen></iframe>
+      
+      <p>
+        <img class="standard-image"
+          alt="The digital watch statechart in all its details"
+          src="images/DigitalWatch.jpg" />
+      </p>
+          <h2>Addons for compiling and flashing</h2>
+    <p>All Arduino examples can be compiled via command line or be imported into the Arduino IDE. An easier way is using the <a href="https://eclipse.baeyens.it/">Sloeber plugin</a> , which allows you to compile and upload the code directly in Statechart Tools.
+    <h2>How to install the Sloeber plugin</h2>
+    <p>
+      There are two ways of how to install the plugin. The easiest way is using our example wizard, which allows you installing required plugins. Just follow the built-in instructions. 
+    </p>
+    <p>
+      Another way is installing the plugin manually. You need to follow these steps:
+     <ol>
+      <li>Click on 'Help' -> 'Install New Software..' -> 'Add...'.</li>
+      <li>Define a name and add 'http://eclipse.baeyens.it/update/V4/stable' as location.</li>
+      <li>Choose the plugin - not the IDE.</li>
+      <li>Follow the instructions</li>
+      <li>The installation dialog will ask you for a restart. After this restart is done, the installition it will download some files. Just wait until it's finished</li>
+    </ol>
+    <h2>Configure the Sloeber plugin</h2>
+    <p>
+    After the installation you should notice a new Toolbar, which allows you to compile and flash your Arduino.
+    Initially, the projects are not configured, as you may require to add the toolchain:
+    <ol>
+      <li>Click on Window -> Preferences</li>
+      <li>Open the Arduino window -> Platforms and Boards</li>
+      <li>Depending on your Arduino, choose the board. For the UNO click on arduino -> Arduino AVR -> check out one toolchain</li>
+      <li>Click on Apply and Close and wait until the downlaod has been finished</li>
+    </ol>
+    Some examples may need different libraries. E.g. the LiquidCrystal lib. If so, repeat the steps using the Library Manager and add your required lib.
+  </p>
+  <h2>Configure the example</h2>
+  Once you have installed the toolchain for your Arduino, you can configure the project.
+  <ol>
+    <li>Right click the project and open the Preference page</li>
+    <li>Open the Arduino window</li>
+    <li>Choose your platform and port</li>
+  </ol>
+  There will be a dialog, which warns you that the platform.txt is missing. This is not a problem and will be resolved after the intitial configuration.
+  <h2>Compile and upload</h2>
+  <p>
+  Finally, you can use the green toolbar for compiling and flashing the Arduino. Have fun!
+  </p>
+  <h2>Required libraries</h2>
+  <p>
+  <ol>
+    <li>LiquidCrystal</li>
+  </ol>
+  </p>
+  </div>
+  </div>
+</body>
+</html>

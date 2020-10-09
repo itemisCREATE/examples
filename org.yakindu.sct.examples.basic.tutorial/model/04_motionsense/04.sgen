@@ -11,5 +11,10 @@ GeneratorModel for yakindu::java {
 		feature GeneralFeatures {
 			TimerService = true
 		}
+		
+		feature Naming {
+			basePackage = "org.yakindu.sct.examples.basic.tutorial"
+			libraryPackage = "org.yakindu.sct"
+		}
 	}
 }

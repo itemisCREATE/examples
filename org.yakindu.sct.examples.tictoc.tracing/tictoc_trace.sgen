@@ -6,7 +6,7 @@ GeneratorModel for yakindu::c::yet {
 			targetProject = "org.yakindu.sct.examples.tictoc.tracing"
 			targetFolder = "sc"
 			libraryTargetFolder = "sc/base"
-		}	
+		}
 		
 		
 	}

@@ -80,13 +80,13 @@ void show(char* text) {
 
 void showPrepare(UserEvents choice) {
 
-	fprintf(stdout, "Preparing %s", choice_texts[choice]);
+	fprintf(stdout, "Preparing %s\n", choice_texts[choice]);
 	fflush(stdout);
 }
 
 void showDone(UserEvents choice) {
 
-	fprintf(stdout, "\nTake and enjoy your %s\n", choice_texts[choice]);
+	fprintf(stdout, "Take and enjoy your %s\n", choice_texts[choice]);
 	fflush(stdout);
 }
 

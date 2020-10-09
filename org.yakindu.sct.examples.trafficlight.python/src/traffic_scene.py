@@ -36,20 +36,20 @@ class TrafficLightCar:
         self.light_y = self.canvas.create_oval(x,y+30,x+30,y+60,fill=self.col.yellow_passive)
         self.light_g = self.canvas.create_oval(x,y+60,x+30,y+90,fill=self.col.green_passive)
 
-    def set_red(self, bool):
-        if bool:
+    def set_red(self, active):
+        if active:
             self.canvas.itemconfig(self.light_r, fill=self.col.red_active)
         else:
             self.canvas.itemconfig(self.light_r, fill=self.col.red_passive)
 
-    def set_yellow(self, bool):
-        if bool:
+    def set_yellow(self, active):
+        if active:
             self.canvas.itemconfig(self.light_y, fill=self.col.yellow_active)
         else:
             self.canvas.itemconfig(self.light_y, fill=self.col.yellow_passive)
 
-    def set_green(self, bool):
-        if bool:
+    def set_green(self, active):
+        if active:
             self.canvas.itemconfig(self.light_g, fill=self.col.green_active)
         else:
             self.canvas.itemconfig(self.light_g, fill=self.col.green_passive)
@@ -80,20 +80,20 @@ class TrafficLightPedestrian:
     def clear_events(self):
         self.is_btn_request_pressed = False
 
-    def set_red(self, bool):
-        if bool:
+    def set_red(self, active):
+        if active:
             self.canvas.itemconfig(self.light_r, fill=self.col.red_active)
         else:
             self.canvas.itemconfig(self.light_r, fill=self.col.red_passive)
 
-    def set_green(self, bool):
-        if bool:
+    def set_green(self, active):
+        if active:
             self.canvas.itemconfig(self.light_g, fill=self.col.green_active)
         else:
             self.canvas.itemconfig(self.light_g, fill=self.col.green_passive)
 
-    def set_request(self, bool):
-        if bool:
+    def set_request(self, active):
+        if active:
             self.canvas.itemconfig(self.light_req, fill=self.col.req_active)
         else:
             self.canvas.itemconfig(self.light_req, fill=self.col.req_passive)

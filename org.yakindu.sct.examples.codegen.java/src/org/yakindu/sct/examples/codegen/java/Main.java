@@ -2,46 +2,68 @@ package org.yakindu.sct.examples.codegen.java;
 
 import java.util.Scanner;
 
-import org.yakindu.sct.examples.codegen.java.lightswitch.LightSwitchStatemachine;
+import com.yakindu.core.rx.Observer;
 
 public class Main {
-
+	
+	/* Observer with callback for the light.on event */
+	static class LightOnObserver implements Observer<Void>{
+		@Override
+		public void next(Void value) {
+			System.out.println("Light is on.");
+		}
+	}
+	
+	/* Observer with callback for the light.off event */
+	static class LightOffObserver implements Observer<Void>{
+		@Override
+		public void next(Void value) {
+			System.out.println("Light is off.");
+		}
+	}
+	
 	public static void main(String[] args) {
-
-		LightSwitchStatemachine lightSwitch = new LightSwitchStatemachine();
-		lightSwitch.init();
+		/* Instantiates the state machine */
+		LightSwitch lightSwitch = new LightSwitch();
+		
+		/* Instantiates observer for the out events */
+		LightOnObserver lightOnObserver = new LightOnObserver();
+		LightOnObserver lightOffObserver = new LightOnObserver();
+		
+		/* Subscribes observers to the state machine's observables */
+		lightSwitch.light().getOn().subscribe(lightOnObserver);
+		lightSwitch.light().getOff().subscribe(lightOffObserver);
+		
+		/* Enters the state machine; from this point on the state machine is ready to react on incoming event */
 		lightSwitch.enter();
 
 		userInteraction(lightSwitch);
 	}
 
-	@SuppressWarnings("resource")
-	private static void userInteraction(LightSwitchStatemachine lightSwitch) {
-		System.out.println("Interact with the light switch [On]/[Off]:");
-		Scanner sc = new Scanner(System.in).useDelimiter("\\s");
+	private static void userInteraction(LightSwitch lightSwitch) {
+		System.out.println("Type 'On' or 'Off' to switch the light on or off.");
+		Scanner sc = new Scanner(System.in);
+		sc.useDelimiter("\\s");
 		while (!lightSwitch.isFinal()) {
 			String action = sc.next();
 			if ("On".equals(action)) {
-				// raise the "on" event
-				lightSwitch.getSCIUser().raiseOn_button();
+				/* Raises the On event in the state machine which causes the corresponding transition to be taken */
+				lightSwitch.user().raiseOn_button();
 				printStatus(lightSwitch);
 				
 			} else if ("Off".equals(action)) {
-				// raise the "off" event
-				lightSwitch.getSCIUser().raiseOff_button();
+				/* Raises the Off event in the state machine */
+				lightSwitch.user().raiseOff_button();
 				printStatus(lightSwitch);
 			}
 		}
 		sc.close();
 	}
 
-	private static void printStatus(LightSwitchStatemachine lightSwitch) {
-		if (lightSwitch.isStateActive(LightSwitchStatemachine.State.main_region_On)) {
-			long brightness = lightSwitch.getSCIUser().getBrightness();
-			System.out.println("Light Switch is ON [brightness=" + brightness + "]");
-		} else {
-			System.out.println("Light Switch is OFF");
-		}
+	private static void printStatus(LightSwitch lightSwitch) {
+		/* Gets the value of the brightness variable */
+		long brightness = lightSwitch.light().getBrightness();
+		System.out.println("Light is on, brightness: " + brightness + ".");
 	}
 
 }

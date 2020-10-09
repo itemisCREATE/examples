@@ -17,7 +17,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.yakindu.sct.builder.SCTBuilder</name>
+			<name>com.yakindu.sct.builder.SCTBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -27,6 +27,6 @@
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.arduino.core.arduinoNature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
-		<nature>org.yakindu.sct.builder.SCTNature</nature>
+		<nature>com.yakindu.sct.builder.SCTNature</nature>
 	</natures>
 </projectDescription>

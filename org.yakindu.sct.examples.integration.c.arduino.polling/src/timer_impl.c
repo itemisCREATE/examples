@@ -13,13 +13,13 @@ static sc_timer_t timers[MAX_TIMERS];
 static sc_timer_service_t timer_service;
 
 /*! Callback for setTimer. Creates a timer for each time event */
-void stateMachine_setTimer(StateMachine* handle, const sc_eventid evid,
+void stateMachine_set_timer(StateMachine* handle, const sc_eventid evid,
 		const sc_integer time_ms, const sc_boolean periodic) {
 	sc_timer_start(&timer_service, handle, evid, time_ms, periodic);
 }
 
 /*! Callback for unsetTimer. Removes expired timer */
-void stateMachine_unsetTimer(StateMachine* handle, const sc_eventid evid) {
+void stateMachine_unset_timer(StateMachine* handle, const sc_eventid evid) {
 	(void) (handle);
 	sc_timer_cancel(&timer_service, evid);
 }
@@ -27,7 +27,7 @@ void stateMachine_unsetTimer(StateMachine* handle, const sc_eventid evid) {
 /*! Initializes the timer service */
 void timer_init() {
 	sc_timer_service_init(&timer_service, timers, MAX_TIMERS,
-			(sc_raise_time_event_fp) &stateMachine_raiseTimeEvent);
+			(sc_raise_time_event_fp) &stateMachine_raise_time_event);
 }
 
 long current_millis = 0;

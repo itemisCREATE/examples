@@ -1,0 +1,10 @@
+GeneratorModel for yakindu::c {
+
+	statechart LightCtrl {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.lightctrl.c.arduino"
+			targetFolder = "src-gen"
+		}
+	}
+}

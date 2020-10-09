@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Orthogonal States</title>
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/custom.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+
 </head>
 <body class="body-container">
   <div class="primary">
@@ -25,20 +25,6 @@ Let's take the simplified example of a keyboard controller. The user can enable 
           alt="Orthogonal regions on top level."
           src="images/keyboard.png" />
 </p>
-<h2>Execution order and event handling</h2>
-<p>
-Orthogonal regions are executed in a deterministic sequential order and not in parallel as one might expect. The execution order is defined by the regions' priorities. These are indicated in the top left corner of a region. 
-</p>
-<p>
-The defined execution order plays a particular role when orthogonal regions raise and react to the same events. Let's consider the following example. Region <strong>r2</strong> reacts to <strong>event1</strong> which causes a state transition to <strong>StateD</strong> which in turn as a effect raises <strong>event2</strong>. Intuitively, one would expect that rasing <strong>event2</strong> in region <strong>r2</strong> directly causes a state transition in region <strong>r1</strong>. However, this is only the case for the <code>@EventDriven</code> execution scheme, in which raising an event always invokes a new run-to-completion cycle. 
-Using the <code>@CycleBased</code> execution scheme, events are only visible in those regions that have not been processed yet. After all regions have been processed, the event is no more marked as being raised. Hence, the next cycle does not trigger the transition from <strong>StateA</strong> to <strong>StateB</strong>. See also chapter <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_reactions#sclang_raising_and_processing_an_event">Raising and processing an event</a> in our documentation.
-</p>
-<p>
-	<img class="small"
-          alt="Raising internal events in orthgonal regions."
-          src="images/event-raising.png" />
-</p>
-
 <h2>Forks and joins</h2>
 
 <p>

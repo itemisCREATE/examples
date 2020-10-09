@@ -2,7 +2,7 @@
 #include <avr/sleep.h>
 
 #include "pushbutton.h"
-#include "src-gen/TrafficLightCtrlRequired.h"
+#include "src-gen/TrafficLightCtrl_required.h"
 #include "scutil/sc_timer_service.h"
 
 //! As we make use of time triggers (after & every) we make use of a generic timer implementation and need a defined number of timers.
@@ -33,12 +33,12 @@ static sc_timer_t timers[MAX_TIMERS];
 static sc_timer_service_t timer_service;
 
 //! callback implementation for the setting up time events
-void trafficLightCtrl_setTimer(TrafficLightCtrl* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
+void trafficLightCtrl_set_timer(TrafficLightCtrl* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
 	sc_timer_start(&timer_service, (void*) handle, evid, time_ms, periodic);
 }
 
 //! callback implementation for canceling time events.
-void trafficLightCtrl_unsetTimer(TrafficLightCtrl* handle, const sc_eventid evid) {
+void trafficLightCtrl_unset_timer(TrafficLightCtrl* handle, const sc_eventid evid) {
 	sc_timer_cancel(&timer_service, evid);
 }
 
@@ -67,7 +67,7 @@ void setup()
 	sc_timer_service_init(
 				&timer_service,
 				timers, MAX_TIMERS,
-				(sc_raise_time_event_fp) &trafficLightCtrl_raiseTimeEvent);
+				(sc_raise_time_event_fp) &trafficLightCtrl_raise_time_event);
 
 	trafficLightCtrl_init(&trafficLight);
 
@@ -99,7 +99,7 @@ void loop() {
 	}
 }
 
-void trafficLightCtrlIface_synchronize(const TrafficLightCtrl *handle)
+void trafficLightCtrl_synchronize(const TrafficLightCtrl *handle)
 {
 	//synchronize red traffic light
 	if(trafficLightCtrlIfaceTrafficLight_get_red(handle) == true)

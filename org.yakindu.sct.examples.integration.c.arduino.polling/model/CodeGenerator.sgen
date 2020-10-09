@@ -6,7 +6,11 @@ GeneratorModel for yakindu::c {
 			targetProject =
 			"org.yakindu.sct.examples.integration.c.arduino.polling"
 			targetFolder = "src-gen"
-			libraryTargetFolder = "src"
+		}
+		
+		feature OutEventAPI {
+			getters = true
+			observables = false
 		}
 	}
 }

@@ -1,12 +1,12 @@
+/* Defines which code generator to use */ 
 GeneratorModel for yakindu::c {
-
+	/* Refers to the statechart model 'LightSwitch' */
 	statechart LightSwitch {
-
+	/* Specify the target location for the generated artifacts. */
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.codegen.c"
 			targetFolder = "src-gen"
 		}
-		
 	}
 }
 

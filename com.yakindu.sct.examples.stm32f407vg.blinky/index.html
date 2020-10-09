@@ -4,8 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>[Pro] STM32F407 Discovery Board with C integration</title>
-	<link href="../css/style.css" rel="stylesheet">
-	<link href="../css/custom.css" rel="stylesheet">
+	<link href="./css/style.css" rel="stylesheet">
+	
 </head>
 
 <body class="body-container">
@@ -46,7 +46,7 @@
 			/* USER CODE BEGIN 2 */</br>
 			HAL_TIM_Base_Start_IT(&htim5);</br>
 			sc_timer_service_init(&timer_service, timers, MAX_TIMERS, (sc_raise_time_event_fp)
-			&blinky_raiseTimeEvent);</br>
+			&blinky_raise_time_event);</br>
 			blinky_init(&sm);</br>
 			blinky_enter(&sm);</br>
 			/* USER CODE END 2 */</br>
@@ -63,12 +63,12 @@
 			}</br>
 			}</br>
 			</br>
-			void blinky_setTimer(Blinky* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean
+			void blinky_set_timer(Blinky* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean
 			periodic){</br>
 			sc_timer_start(&timer_service, (void*) handle, evid, time_ms, periodic);</br>
 			}</br>
 			</br>
-			void blinky_unsetTimer(Blinky* handle, const sc_eventid evid){</br>
+			void blinky_unset_timer(Blinky* handle, const sc_eventid evid){</br>
 			sc_timer_cancel(&timer_service, evid);</br>
 			(void) handle;</br>
 			}</br>

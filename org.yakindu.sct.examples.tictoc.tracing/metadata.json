@@ -10,8 +10,8 @@
 	],
 	"dependencies": [
 		{
-			"updateSite": "http://updates.yakindu.com/statecharts/labs",
-			"features": ["com.yakindu.sct.yet.feature.feature.group"]
+			"updateSite": "http://updates.yakindu.com/sct/releases",
+			"features": ["com.yakindu.sct.product.c.feature.feature.group"]
 		}
 	]
 }

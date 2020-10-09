@@ -1,7 +1,7 @@
 #include "CMHMI.hpp"
+#include <iostream>
 
-CM_HMI::CM_HMI() {
-	lastEvent = NONE;
+CM_HMI::CM_HMI(){
 	choice_texts[0] = "";
 	choice_texts[1] = "coffee";
 	choice_texts[2] = "espresso";
@@ -14,52 +14,48 @@ CM_HMI::CM_HMI() {
 CM_HMI::~CM_HMI() {
 }
 
-CM_HMI::UserEvents CM_HMI::provideUserEvent() {
-	UserEvents userEvent = lastEvent;
-	lastEvent = CM_HMI::NONE;
-	return userEvent;
-}
 
-void CM_HMI::scanUserInput() {
+CM_HMI::UserEvents CM_HMI::scanUserInput() {
 	while (1) {
 		char c;
-
 		c = getchar();
 
 		switch (c) {
 		case 'o':
-			lastEvent = ON_OFF;
+			return ON_OFF;
 			break;
 		case '1':
-			lastEvent = COFFEE;
+			return COFFEE;
 			break;
 		case '2':
-			lastEvent = ESPRESSO;
+			return ESPRESSO;
 			break;
 		case '3':
-			lastEvent = CAPPUCINO;
+			return CAPPUCINO;
 			break;
 		case '4':
-			lastEvent = LATTE_MACCHIATO;
+			return LATTE_MACCHIATO;
 			break;
 		case '5':
-			lastEvent = MILK;
+			return MILK;
 			break;
 		case 't':
-			//	cm_trace_active = !cm_trace_active;
+			return TRACING;
 			break;
 		case 'q':
-			return;
+			return NONE;
 		case '\n':
 			break;
 		default:
-			lastEvent = NONE;
+			break;
 		}
 	}
 }
 
 void CM_HMI::show(char* text) {
-	std::cout << text << "\n";
+	// avoid newline
+	fprintf(stdout, "%s", text);
+	fflush(stdout);
 }
 
 void CM_HMI::showPrepare(UserEvents choice) {

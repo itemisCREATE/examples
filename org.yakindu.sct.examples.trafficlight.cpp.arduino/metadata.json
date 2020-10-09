@@ -10,8 +10,8 @@
 	],
 	"dependencies": [
 		{
-			"updateSite": "http://download.eclipse.org/tools/cdt/releases/9.3",
-			"features": ["org.eclipse.cdt.arduino.feature.group"]
+			"updateSite": "http://eclipse.baeyens.it/update/V4/stable",
+			"features": ["io.sloeber.feature.feature.group"]
 		}
 	]
 }

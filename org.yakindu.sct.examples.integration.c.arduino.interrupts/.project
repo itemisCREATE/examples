@@ -28,7 +28,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.yakindu.sct.builder.SCTBuilder</name>
+			<name>com.yakindu.sct.builder.SCTBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -40,18 +40,18 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>io.sloeber.arduinonature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
-		<nature>org.yakindu.sct.builder.SCTNature</nature>
+		<nature>com.yakindu.sct.builder.SCTNature</nature>
 	</natures>
 	<linkedResources>
 		<link>
 			<name>core/core</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.1/cores/arduino</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/cores/arduino</locationURI>
 		</link>
 		<link>
 			<name>core/variant</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.1/variants/mega</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/variants/standard</locationURI>
 		</link>
 		<link>
 			<name>libraries/StateMachine</name>

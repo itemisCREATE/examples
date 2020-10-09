@@ -1,6 +1,0 @@
-!.settings/
-src-gen/
-src/sc_types.h
-src/StatemachineInterface.h
-src/TimedStatemachineInterface.h
-src/TimerInterface.h

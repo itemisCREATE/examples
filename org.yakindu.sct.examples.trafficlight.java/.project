@@ -16,14 +16,14 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.yakindu.sct.builder.SCTBuilder</name>
+			<name>com.yakindu.sct.builder.SCTBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-		<nature>org.yakindu.sct.builder.SCTNature</nature>
+		<nature>com.yakindu.sct.builder.SCTNature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 	</natures>
 </projectDescription>

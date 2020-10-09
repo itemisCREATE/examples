@@ -43,11 +43,11 @@ void trafficLightCtrl_unset_timer(TrafficLightCtrl* handle, const sc_eventid evi
 }
 
 static void button_1_changed(pushbutton_t *button) {
-	if (!pushbutton_1.state) trafficLightCtrlIface_raise_pedestrianRequest(&trafficLight);
+	if (!pushbutton_1.state) trafficLightCtrl_raise_pedestrianRequest(&trafficLight);
 }
 
 static void button_2_changed(pushbutton_t *button) {
-	if (!pushbutton_2.state) trafficLightCtrlIface_raise_onOff(&trafficLight);
+	if (!pushbutton_2.state) trafficLightCtrl_raise_onOff(&trafficLight);
 }
 
 //The setup function is called once at startup of the sketch
@@ -91,7 +91,7 @@ void loop() {
 
 		sc_timer_service_proceed(&timer_service, current_millies - last_cycle_time);
 
-		trafficLightCtrl_runCycle(&trafficLight);
+		trafficLightCtrl_run_cycle(&trafficLight);
 
 
 		last_cycle_time = current_millies;
@@ -102,37 +102,37 @@ void loop() {
 void trafficLightCtrl_synchronize(const TrafficLightCtrl *handle)
 {
 	//synchronize red traffic light
-	if(trafficLightCtrlIfaceTrafficLight_get_red(handle) == true)
+	if(trafficLightCtrl_TrafficLight_get_red(handle) == true)
 		digitalWrite(led_red_pin, HIGH);
 	else
 		digitalWrite(led_red_pin, LOW);
 
 	//synchronize yellow traffic light
-	if(trafficLightCtrlIfaceTrafficLight_get_yellow(handle) == true)
+	if(trafficLightCtrl_TrafficLight_get_yellow(handle) == true)
 		digitalWrite(led_yellow_pin, HIGH);
 	else
 		digitalWrite(led_yellow_pin, LOW);
 
 	//synchronize green traffic light
-	if(trafficLightCtrlIfaceTrafficLight_get_green(handle) == true)
+	if(trafficLightCtrl_TrafficLight_get_green(handle) == true)
 		digitalWrite(led_green_pin, HIGH);
 	else
 		digitalWrite(led_green_pin, LOW);
 
 	//synchronize red pedestrian traffic light
-	if(trafficLightCtrlIfacePedestrian_get_red(handle) == true)
+	if(trafficLightCtrl_Pedestrian_get_red(handle) == true)
 		digitalWrite(ped_led_red_pin, HIGH);
 	else
 		digitalWrite(ped_led_red_pin, LOW);
 
 	//synchronize green pedestrian traffic light
-	if(trafficLightCtrlIfacePedestrian_get_green(handle) == true)
+	if(trafficLightCtrl_Pedestrian_get_green(handle) == true)
 		digitalWrite(ped_led_green_pin, HIGH);
 	else
 		digitalWrite(ped_led_green_pin, LOW);
 
 	//synchronize pedestrian waiting light
-	if(trafficLightCtrlIfacePedestrian_get_request(handle) == true)
+	if(trafficLightCtrl_Pedestrian_get_request(handle) == true)
 		digitalWrite(ped_led_request_pin, HIGH);
 	else
 		digitalWrite(ped_led_request_pin, LOW);

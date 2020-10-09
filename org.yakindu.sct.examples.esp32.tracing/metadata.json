@@ -14,10 +14,6 @@
 			"features" : ["com.cthing.cmakeed.feature.feature.group", "com.espressif.idf.feature.feature.group"]
 		},
 		{
-			"updateSite": "http://download.eclipse.org/mpc/releases/1.8.2",
-			"features": ["org.eclipse.epp.mpc.feature.group"]
-		},
-		{
 			"updateSite": "http://download.eclipse.org/releases/2020-09",
 			"features": ["org.eclipse.launchbar.feature.group", "org.eclipse.cdt.sdk.feature.group", "org.eclipse.cdt.debug.gdbjtag.feature.group", "org.eclipse.cdt.launch.remote.feature.group"]
 		}

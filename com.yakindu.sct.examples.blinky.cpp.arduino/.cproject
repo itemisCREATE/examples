@@ -19,8 +19,6 @@
 							<builder buildPath="${workspace_loc:/d}/Release" id="io.sloeber.sketch.builder.1137352707" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
 							<tool id="io.sloeber.tool.sketch.compiler.cpp.79999950" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.593614063" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.blinky.cpp.arduino/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.blinky.cpp.arduino/core/variant}&quot;"/>
 								</option>
@@ -28,8 +26,6 @@
 							</tool>
 							<tool id="io.sloeber.tool.compiler.c.880961411" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.1584201308" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.blinky.cpp.arduino/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.blinky.cpp.arduino/core/variant}&quot;"/>
 								</option>
@@ -37,8 +33,6 @@
 							</tool>
 							<tool id="io.sloeber.tool.sketch.compiler.s.647937819" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.927793021" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/d/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.blinky.cpp.arduino/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com.yakindu.sct.examples.blinky.cpp.arduino/core/variant}&quot;"/>
 								</option>

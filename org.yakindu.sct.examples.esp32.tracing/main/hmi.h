@@ -8,7 +8,7 @@
 #ifndef HMI_H_
 #define HMI_H_
 
-#include "sc/Blink.h"
+#include "sc/sm/blink.h"
 #include "sc/util/yet_logger.h"
 #include "sc/util/yet_udp_stream.h"
 

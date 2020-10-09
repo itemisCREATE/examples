@@ -30,9 +30,9 @@
 #include "driver/gpio.h"
 
 #include "sc/base/sc_rxc.h"
-#include "sc/Blink.h"
-#include "sc/BlinkTracer.h"
-#include "sc/BlinkRequired.h"
+#include "sc/sm/blink.h"
+#include "sc/sm/blink_tracer.h"
+#include "sc/sm/blink_required.h"
 #include "sc/util/sc_timer_service.h"
 #include "sc/util/yet_udp_stream.h"
 #include "sc/util/yet_logger.h"
@@ -42,7 +42,9 @@
 
 
 #define SCT_PORT 4444
-#define SCT_IP "Add your IP here"
+// you can find your local IP using 'ifconfig' on linux/mac
+// or using 'ipconfig' on windwos
+#define SCT_IP "Add your IP "
 #define SCT_IP_LOCAL "127.0.0.1"
 
 
@@ -59,25 +61,25 @@ static sc_timer_t timers[MAX_TIMERS];
 static sc_timer_service_t timer_service;
 
 /*! callback implementation for pinMode. */
-void blinkIface_pinMode(const Blink* handle, const sc_integer pin, const sc_integer mode){
+void blink_pinMode(Blink* handle, const sc_integer pin, const sc_integer mode){
     gpio_pad_select_gpio(pin);
     gpio_set_direction(pin, mode);
 	printf("Configure LED pin %d as %s.\n", pin, mode ? "OUTPUT" : "INPUT");
 }
 
 /*! callback implementation for digitalWrite. */
-void blinkIface_digitalWrite(const Blink* handle, const sc_integer pin, const sc_integer value){
+void blink_digitalWrite(Blink* handle, const sc_integer pin, const sc_integer value){
     gpio_set_level(pin, value);
 	printf("Set LED pin %d %s.\n", pin, value ? "HIGH" : "LOW");
 }
 
 /*! callback implementation for the setting up time events. */
-void blink_setTimer(Blink* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
+void blink_set_timer(Blink* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
 	sc_timer_start(&timer_service, (void*) handle, evid, time_ms, periodic);
 }
 
 /*! callback implementation for canceling time events. */
-void blink_unsetTimer(Blink* handle, const sc_eventid evid) {
+void blink_unset_timer(Blink* handle, const sc_eventid evid) {
 	sc_timer_cancel(&timer_service, evid);
 }
 
@@ -114,17 +116,6 @@ yet_sc_tracer blinkTracer;
 yet_udp_stream  yet_stream;
 yet_logger		yet_log;
 
-sc_observer* out_trace_observers[] = {
-		&(yet_log.send_logger),
-		&(yet_stream.message_sender)
-};
-
-sc_observer* in_trace_observers[] = {
-		&(yet_log.receive_logger),
-		&(blinkTracer.scope.message_receiver)
-};
-
-
 
 char * udp_ip(int argc, char **argv) {
 	if(argc > 1) {
@@ -154,7 +145,7 @@ void setup(int argc, char **argv) {
 	sc_timer_service_init(
 				&timer_service,
 				timers, MAX_TIMERS,
-				(sc_raise_time_event_fp) &blink_raiseTimeEvent);
+				(sc_raise_time_event_fp) &blink_raise_time_event);
 
 	/* initialize the state machine. */
 	blink_init(&blink);
@@ -169,9 +160,13 @@ void setup(int argc, char **argv) {
 	yet_logger_init(&yet_log);
 
 	/* Connect incoming message from UPD yet stream to the tracer and the logger. */
-	SC_OBSERVABLE_SUBSCRIBE(&(yet_stream.received_messages), in_trace_observers);
+	sc_single_subscription_observer_sc_string_subscribe(&(yet_log.receive_logger), &(yet_stream.received_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(blinkTracer.scope.message_receiver), &(yet_stream.received_messages));
+	
+	
 	/* Connect outgoing message stream to all physical channels */
-	SC_OBSERVABLE_SUBSCRIBE(&(blinkTracer.scope.trace_messages), out_trace_observers);
+	sc_single_subscription_observer_sc_string_subscribe(&(yet_log.send_logger), &(blinkTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(yet_stream.message_sender), &(blinkTracer.scope.trace_messages));
 
 	/* start UDP yet stream */
 	yet_udp_stream_connect(&yet_stream);

@@ -41,9 +41,8 @@
 		The project requires the <a href="https://github.com/espressif/idf-eclipse-plugin/blob/master/README.md">Espressif IDF Eclipse Plugin</a>. Just follow the detailed instructions. If you've already installed the required dependencies
 		using our example wizard, you can start skip the first part and start with <a href="https://github.com/espressif/idf-eclipse-plugin/blob/master/README.md#installing-esp-idf-tools">Installing ESP-IDF Tools</a>.
 		<p>
-			The instructions contain detailed explanations of how to set up the environment, compile the program and flash the binary on the ESP32. It also shows how a terminal can be added. Your WiFi access can be set in the sdkconfig file. If you're running the application via UDP you must set the IP of the machine, which runs the debug SCT YET session: <br>
-			<code>#define SCT_IP "Add your IP here"</code>
-		</p>
+			The instructions contain detailed explanations of how to set up the environment, compile the program and flash the binary on the ESP32. It also shows how a terminal can be added. Your WiFi SSID and password must be set in the sdkconfig file. <img class= "small" alt="WiFi settings" src="images/wifi_settings.png" /></p>
+		</p>If you're running the application via UDP you must set the IP of the machine, which runs the debug SCT YET session:<code>#define SCT_IP "Add your IP here"</code>. The simplest way finding your ip address using <code>ifconfing</code> on linux or mac and <code>ipconfing</code> on windows. It should be something like 192.168.0.42</p>
 
 
 		<h2>Debugging the statemachine trace</h2>

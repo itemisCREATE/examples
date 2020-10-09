@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_kadHQJm5EeqPmOTpxenUpw" specification="@EventDriven&#xA;&#xA;internal:&#xA;var low : integer = 0&#xA;var high : integer = 1&#xA;var output : integer = 2&#xA;// var input : integer = 1// unused&#xA;var led_pin : integer = 5&#xA;&#xA;entry / &#xA;pinMode(led_pin, output)&#xA;&#xA;interface:&#xA;var delay : integer = 2000&#xA;&#xA;in event toggle&#xA;&#xA;operation digitalWrite(pin: integer, value : integer)&#xA;operation pinMode(pin: integer, mode: integer)" name="blink">
-    <regions xmi:id="_kaeVY5m5EeqPmOTpxenUpw" name="raspberry pi">
+  <sgraph:Statechart xmi:id="_kadHQJm5EeqPmOTpxenUpw" specification="@EventDriven&#xA;&#xA;internal:&#xA;var low : integer = 0&#xA;var high : integer = 1&#xA;var output : integer = 2&#xA;// var input : integer = 1// unused&#xA;var led_pin : integer = 5&#xA;&#xA;entry / &#xA;pinMode(led_pin, output)&#xA;&#xA;interface:&#xA;var delay : integer = 2000&#xA;&#xA;out event tic&#xA;&#xA;&#xA;in event toggle&#xA;&#xA;operation digitalWrite(pin: integer, value : integer)&#xA;operation pinMode(pin: integer, mode: integer)" name="blink">
+    <regions xmi:id="_kaeVY5m5EeqPmOTpxenUpw" name="esp">
       <vertices xsi:type="sgraph:State" xmi:id="_uPB3gJnsEeqIb8t7gi27hw" name="Blink" incomingTransitions="_izqyAJntEeqIb8t7gi27hw">
         <outgoingTransitions xmi:id="_kVwP0JntEeqIb8t7gi27hw" specification="toggle" target="_5MwJUJnsEeqIb8t7gi27hw"/>
         <regions xmi:id="_uPDssJnsEeqIb8t7gi27hw" name="blinky">
@@ -11,7 +11,7 @@
           <vertices xsi:type="sgraph:Entry" xmi:id="_kagKlpm5EeqPmOTpxenUpw">
             <outgoingTransitions xmi:id="_kah_xZm5EeqPmOTpxenUpw" specification="" target="_kagxq5m5EeqPmOTpxenUpw"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_kagxq5m5EeqPmOTpxenUpw" specification="entry / digitalWrite(led_pin, low)" name="Off" incomingTransitions="_kah_xZm5EeqPmOTpxenUpw _PuAbcJm7EeqPmOTpxenUpw">
+          <vertices xsi:type="sgraph:State" xmi:id="_kagxq5m5EeqPmOTpxenUpw" specification="entry / digitalWrite(led_pin, low);&#xA;raise tic" name="Off" incomingTransitions="_kah_xZm5EeqPmOTpxenUpw _PuAbcJm7EeqPmOTpxenUpw">
             <outgoingTransitions xmi:id="_OcBPIJm7EeqPmOTpxenUpw" specification="after delay ms" target="_JRjVYJm7EeqPmOTpxenUpw"/>
           </vertices>
         </regions>

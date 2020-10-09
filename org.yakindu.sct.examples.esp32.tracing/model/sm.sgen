@@ -4,11 +4,13 @@ GeneratorModel for yakindu::c {
 
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.esp32.tracing"
-			targetFolder = "main/sc"
+			targetFolder = "main/sc/sm"
 			libraryTargetFolder = "main/sc/base"
 		}
 		
 		feature Tracing {
+			enterState = false
+			exitState = false
 			generic = true
 		}
 	}

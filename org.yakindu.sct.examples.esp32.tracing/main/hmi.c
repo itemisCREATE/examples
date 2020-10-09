@@ -20,7 +20,7 @@ static yet_udp_stream* trace_stream;
 
 static void increaseDelay() {
 	sc_integer increment = 10;
-	sc_integer delay = blinkIface_get_delay(blink);
+	sc_integer delay = blink_get_delay(blink);
 
 	if (delay >= 1000) {
 		increment = 1000;
@@ -28,13 +28,13 @@ static void increaseDelay() {
 		increment = 100;
 	}
 
-	blinkIface_set_delay(blink, delay + increment);
+	blink_set_delay(blink, delay + increment);
 }
 
 
 static void decreaseDelay() {
 	sc_integer increment = -1000;
-	sc_integer delay = blinkIface_get_delay(blink);
+	sc_integer delay = blink_get_delay(blink);
 
 	if (delay <= 10) return;
 
@@ -50,7 +50,7 @@ static void decreaseDelay() {
 		increment = 1000 - delay;
 	}
 
-	blinkIface_set_delay(blink, delay + increment);
+	blink_set_delay(blink, delay + increment);
 }
 
 
@@ -84,7 +84,7 @@ void hmi_proceed()
 
     	switch (c) {
     		case 't':
-    			blinkIface_raise_toggle(blink);
+    			blink_raise_toggle(blink);
     			break;
     		case '+':
     			increaseDelay();

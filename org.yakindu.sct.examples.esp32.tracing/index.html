@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Raspberry Pi remote control blinky LED</title>
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Debug and remote control state machines using YET</h1>
+		<p>
+			<iframe width="960" height="540" src="https://www.youtube.com/embed/A4qGZ1E2mEM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+			<p>
+			The YAKINDU Execution Trace (YET) infrastructure supports interoperability between 
+			state machines running in a target application and the YAKINDU tooling. 
+			It supports model-level debugging and testing of the state machines based on execution traces. 
+			This example shows how to remote debug a compiled state machine step by step. Please refer to the 
+			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a> for more information.
+		</p>
+
+		<img class= "tiny" alt="Debugging the target using traces" src="images/yet_target_trace_debugging.png" />
+
+		<h2>ESP32 blinky LED example</h2>
+		<p>
+			This is a simple blinky LED example, which uses two states. The user can switch between the <i>Idle</i> and <i>Blink</i> by setting the toggle event.
+			Once the Blink state is active, the state machine toggles between the <i>Off</i> and <i>On</i> state. By setting the delay variable, the time for the after
+			trigger can be changed.
+		</p>			
+		<img class= "small" alt="Remote debugging a statechart" src="images/blinky.png" />
+
+		<p>
+			This state machine is executed within an interactive application. This application can be used 
+			from the command line. It reads user input from the standard input and writes to the standard output.
+			It is build to run on a Raspberry PI. The SCT Simulation can be executed on any other machine. 
+			For this setup both are located the same local network.
+		</p>
+			
+		<h2>Building, flashing and running the application</h2>
+		The project requires the <a href="https://github.com/espressif/idf-eclipse-plugin/blob/master/README.md">Espressif IDF Eclipse Plugin</a>. Just follow the detailed instructions. If you've already installed the required dependencies
+		using our example wizard, you can start skip the first part and start with <a href="https://github.com/espressif/idf-eclipse-plugin/blob/master/README.md#installing-esp-idf-tools">Installing ESP-IDF Tools</a>.
+		<p>
+			The instructions contain detailed explanations of how to set up the environment, compile the program and flash the binary on the ESP32. It also shows how a terminal can be added. Your WiFi SSID and password must be set in the sdkconfig file. <img class= "small" alt="WiFi settings" src="images/wifi_settings.png" /></p>
+		</p>If you're running the application via UDP you must set the IP of the machine, which runs the debug SCT YET session:<code>#define SCT_IP "Add your IP here"</code>. The simplest way finding your ip address using <code>ifconfing</code> on linux or mac and <code>ipconfing</code> on windows. It should be something like 192.168.0.42</p>
+
+
+		<h2>Debugging the statemachine trace</h2>
+		<p>
+			Debugging a statechart YET trace is simple. Within a statechart editor or on the model file entry 
+			in the project explorer choose <i>Run As > Statechart Trace Debugging</i> from the context menu. 
+		</p>
+
+		<img class= "small" alt="Starting a trace debug session" src="images/runas.png" />
+		
+		<p>
+			This will launch the trace debugger and by default will try to read the input of socket 4444, which is defined in the application.
+			You can change the port in the <i>Run Configuration</i>.
+
+		</p>
+		<h2>Troubleshooting</h2>
+			Currently, there is a bug in the esp idf eclipse plugin using 2020-09. However, there is a prebuild version, which can be installed via update site: <a href="https://github.com/espressif/idf-eclipse-plugin/issues/127">https://github.com/espressif/idf-eclipse-plugin/issues/127</a>
+		<p>
+		</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+	"id": "org.yakindu.sct.examples.esp32.tracing",
+	"title": "ESP32 - Tracing & Remote Control (C)",
+	"description": "YAKINDU provides infrastructure for debugging and remote controlling the state machines using execution traces (YET).",
+	"previewImage": "yet_target_trace_debugging.png",
+    "author": "itemis AG",
+    "license": "GNU Free Documentation License version 1.3",
+	"category": ["labs",
+				"embedded"
+	],
+	"dependencies": [
+		{
+			"updateSite": "https://dl.espressif.com/dl/idf-eclipse-plugin/updates/latest/",
+			"features" : ["com.cthing.cmakeed.feature.feature.group", "com.espressif.idf.feature.feature.group"]
+		},
+		{
+			"updateSite": "http://download.eclipse.org/releases/2020-09",
+			"features": ["org.eclipse.launchbar.feature.group", "org.eclipse.cdt.sdk.feature.group", "org.eclipse.cdt.debug.gdbjtag.feature.group", "org.eclipse.cdt.launch.remote.feature.group"]
+		}
+	]
+}

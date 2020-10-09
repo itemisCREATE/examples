@@ -27,16 +27,16 @@
 		</p>
 		<h2>Importing State Machines</h2>
 		<p>
-			State machines can be imported using the <code>import: ""</code> statement. Except for cyclic dependencies, there are no restrictions, whereby models can be imported over more than one hierarchy.
+			State machines can be imported using the <code>import: ""</code> statement. There are no restrictions importing state machines. Combining different execution styles, e.g. <code>@CycleBased(200)</code> and <code>@EventDriven</code>, is supported, as well as cyclic dependencies.
 		</p>
 		<p>
-			Imagine three different state machines: <b>A</b>, <b>B</b>, <b>C</b>:
+			Imagine three different state machines: <b>A</b>, <b>B</b>, <b>C</b>, where <b>A</b> is <code>@CycleBased</code> and <b>B</b> and <b>C</b> is <code>@EventDriven</code>
 		</p>
 		<p> 
 			The following dependency chain is allowed: <b>A</b> -> <b>B</b> -> <b>C</b> or <b>A</b> -> <b>C</b>
 		</p>
 		<p> 
-			The following dependency chain is <b>not</b> allowed: <b>A</b> -> <b>A</b> or <b>A</b> -> <b>B</b> -> <b>A</b>
+			Cyclic dependencies are also allowed: <b>A</b> -> <b>A</b> or <b>A</b> -> <b>B</b> -> <b>A</b>
 		</p>
 
 		<h2>Using State Machine Types</h2>

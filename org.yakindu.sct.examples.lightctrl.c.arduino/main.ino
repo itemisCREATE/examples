@@ -30,7 +30,7 @@ void lightCtrl_unset_timer(LightCtrl* handle, const sc_eventid evid) {
 	sc_timer_cancel(&timer_service, evid);
 }
 
-void lightCtrlIface_setLight(const LightCtrl* handle, const sc_boolean lightOn) {
+void lightCtrl_setLight(const LightCtrl* handle, const sc_boolean lightOn) {
 	if(lightOn)
 		digitalWrite(LED_PIN, HIGH);
 	else
@@ -61,13 +61,13 @@ void loop()
 	unsigned long current_millies = millis();
 
 	if(digitalRead(BUTTON_PIN))
-		lightCtrlIface_raise_button(&lightctrl);
+		lightCtrl_raise_button(&lightctrl);
 
 	if ( cycle_count == 0L || (current_millies >= last_cycle_time + CYCLE_PERIOD) ) {
 
 			sc_timer_service_proceed(&timer_service, current_millies - last_cycle_time);
 
-			lightCtrl_runCycle(&lightctrl);
+			lightCtrl_run_cycle(&lightctrl);
 
 			last_cycle_time = current_millies;
 			cycle_count++;

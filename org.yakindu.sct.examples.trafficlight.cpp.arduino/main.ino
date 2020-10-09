@@ -13,11 +13,11 @@ PushButton* pushButton_1;
 PushButton* pushButton_2;
 
 static void button_1_changed() {
-	if (!pushButton_1->state) arduino->raise_pedestrianRequest();
+	if (!pushButton_1->state) arduino->raisePedestrianRequest();
 }
 
 static void button_2_changed() {
-	if (!pushButton_2->state) arduino->raise_onOff();
+	if (!pushButton_2->state) arduino->raiseOnOff();
 }
 
 //The setup function is called once at startup of the sketch
@@ -35,7 +35,7 @@ void setup()
 	pinMode(ped_led_request_pin, OUTPUT);
 
 	arduino->setTimerService(timer_sct);
-	arduino->setDefaultSCI_OCB(operationCallback);
+	arduino->setOperationCallback(operationCallback);
 	arduino->enter();
 }
 

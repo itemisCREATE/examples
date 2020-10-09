@@ -4,7 +4,7 @@
 
 #include "../src-gen/TrafficLightCtrl.h"
 
-class TrafficLightOCBs : public TrafficLightCtrl::DefaultSCI_OCB {
+class TrafficLightOCBs : public TrafficLightCtrl::OperationCallback {
 public:
 	TrafficLightOCBs(TrafficLightCtrl* machine) : arduino(machine){}
 	virtual ~TrafficLightOCBs();

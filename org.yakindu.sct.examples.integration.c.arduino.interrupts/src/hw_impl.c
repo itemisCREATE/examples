@@ -19,10 +19,10 @@ void hw_init() {
 /*! Update your actuators, by checking the
  * out event status */
 void handle_out_events(StateMachine* handle) {
-	if (stateMachineIface_is_raised_outEvent1(handle)) {
+	if (stateMachine_is_raised_outEvent1(handle)) {
 		digitalWrite(13, LOW);
 	}
-	if (stateMachineIface_is_raised_outEvent2(handle)) {
+	if (stateMachine_is_raised_outEvent2(handle)) {
 		digitalWrite(13, HIGH);
 	}
 }
@@ -34,11 +34,11 @@ static volatile sc_boolean inEvent1Flag = false;
 static volatile sc_boolean inEvent2Flag = false;
 void handle_in_events(StateMachine* handle) {
 	if (inEvent1Flag) {
-		stateMachineIface_raise_inEvent1(handle);
+		stateMachine_raise_inEvent1(handle);
 		inEvent1Flag = false;
 	}
 	if (inEvent2Flag) {
-		stateMachineIface_raise_inEvent2(handle);
+		stateMachine_raise_inEvent2(handle);
 		inEvent2Flag = false;
 	}
 }

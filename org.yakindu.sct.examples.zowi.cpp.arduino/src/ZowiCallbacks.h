@@ -3,7 +3,7 @@
 #ifndef SRC_ZOWICALLBACKS_H_
 #define SRC_ZOWICALLBACKS_H_
 
-class ZowiCallbacks : public ZowiSCT::SCI_Zowi_OCB{
+class ZowiCallbacks : public ZowiSCT::Zowi::OperationCallback{
 public:
 	ZowiCallbacks();
 	virtual ~ZowiCallbacks();

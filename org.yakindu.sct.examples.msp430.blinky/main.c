@@ -26,19 +26,19 @@ extern void blinkyStateMachine_unset_timer(BlinkyStateMachine* handle, const sc_
 }
 
 //! defining operations
-extern void blinkyStateMachineInternal_init(const BlinkyStateMachine* handle)
+extern void blinkyStateMachine_internal_init(const BlinkyStateMachine* handle)
 {
     WDTCTL = WDT_MDLY_32;
     IE1 |= WDTIE;
     P1DIR |= BIT0;
 }
 
-extern void blinkyStateMachineInternal_redOn(const BlinkyStateMachine* handle)
+extern void blinkyStateMachine_internal_redOn(const BlinkyStateMachine* handle)
 {
     P1OUT |= BIT0;
 }
 
-extern void blinkyStateMachineInternal_redOff(const BlinkyStateMachine* handle)
+extern void blinkyStateMachine_internal_redOff(const BlinkyStateMachine* handle)
 {
     P1OUT &= ~BIT0;
 }

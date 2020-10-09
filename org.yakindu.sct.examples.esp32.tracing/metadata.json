@@ -18,8 +18,8 @@
 			"features": ["org.eclipse.epp.mpc.feature.group"]
 		},
 		{
-			"updateSite": "http://download.eclipse.org/releases/2019-12",
-			"features": ["org.eclipse.launchbar.feature.group"]
+			"updateSite": "http://download.eclipse.org/releases/2020-09",
+			"features": ["org.eclipse.launchbar.feature.group", "org.eclipse.cdt.sdk.feature.group", "org.eclipse.cdt.debug.gdbjtag.feature.group", "org.eclipse.cdt.launch.remote.feature.group"]
 		}
 	]
 }

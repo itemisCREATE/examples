@@ -1,5 +1,5 @@
 from light_switch import LightSwitch
-from rx_python import Observer
+from yakindu.rx import Observer
 
 class Main:
     

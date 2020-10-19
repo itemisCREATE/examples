@@ -46,6 +46,9 @@
     <p>
     When event buffering is disabled, events that are raised are only visible downstream within the same RTC step. Transitions that were already evaluated earlier in the same RTC step will not fire, even if they declare this event as a trigger.
     </p>
+    <p>
+    In most cases it is best to enable event buffering. Hence, it is already enabled per default. The downside is a higher memory consumption of the generated state machine code. In environments with restricted memory capacity it can be useful to disable event buffering. For more information, please refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_definition_section#sclang_eventbuffering">documentation</a>.
+    </p>
   </div>
 </body>
 </html>

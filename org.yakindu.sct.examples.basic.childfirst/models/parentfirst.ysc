@@ -104,7 +104,7 @@
                 </children>
                 <layoutConstraint xsi:type="notation:Bounds" xmi:id="_JsfXIekFEem3_u5FoLfZVA"/>
               </children>
-              <styles xsi:type="notation:ShapeStyle" xmi:id="_JsfXIukFEem3_u5FoLfZVA" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_JsfXIukFEem3_u5FoLfZVA" fontName="Verdana" fillColor="16448250" lineColor="12632256"/>
               <layoutConstraint xsi:type="notation:Bounds" xmi:id="_JsfXI-kFEem3_u5FoLfZVA"/>
             </children>
           </children>
@@ -131,7 +131,7 @@
         </children>
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Eo4TQekFEem3_u5FoLfZVA"/>
       </children>
-      <styles xsi:type="notation:ShapeStyle" xmi:id="_EoppwekFEem3_u5FoLfZVA" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_EoppwekFEem3_u5FoLfZVA" fontName="Verdana" fillColor="16448250" lineColor="12632256"/>
       <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Eo46UOkFEem3_u5FoLfZVA" x="4" width="397" height="429"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_EpLOM-kFEem3_u5FoLfZVA" type="StatechartText" fontName="Verdana" lineColor="4210752">

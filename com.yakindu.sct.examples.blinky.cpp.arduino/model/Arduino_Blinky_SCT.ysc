@@ -86,7 +86,7 @@
         </children>
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_j7a54a9YEei7VJyblLElYA"/>
       </children>
-      <styles xsi:type="notation:ShapeStyle" xmi:id="_j7H-8a9YEei7VJyblLElYA" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_j7H-8a9YEei7VJyblLElYA" fontName="Verdana" fillColor="16448250" lineColor="12632256"/>
       <layoutConstraint xsi:type="notation:Bounds" xmi:id="_j7bg8K9YEei7VJyblLElYA" x="5" y="10" width="539" height="260"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_j7oVQ69YEei7VJyblLElYA" type="StatechartText" fontName="Verdana" lineColor="4210752">

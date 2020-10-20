@@ -132,7 +132,7 @@
         </children>
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_khNm8Rq0EeeiYZHSiHgXFQ"/>
       </children>
-      <styles xsi:type="notation:ShapeStyle" xmi:id="_kgz-UBq0EeeiYZHSiHgXFQ" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_kgz-UBq0EeeiYZHSiHgXFQ" fontName="Verdana" fillColor="16448250" lineColor="12632256"/>
       <layoutConstraint xsi:type="notation:Bounds" xmi:id="_khO1EBq0EeeiYZHSiHgXFQ" x="16" y="4" width="657" height="416"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_khhwABq0EeeiYZHSiHgXFQ" type="StatechartText" fontName="Verdana" lineColor="4210752">

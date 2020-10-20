@@ -31,12 +31,10 @@ Without the superstep semantic, an incoming event <code>e</code> causes only one
 You can think of the superstep semantic as a loop which performs a regular step until no new state is entered anymore. See the following pseudo-code (a regular step is called <code>microStep</code> here):
 </p>
 <pre>
-<code> 
-do {
+<code>do {
     stateEntered = false
     microStep()
-} while (stateEntered)
-</code>
+} while (stateEntered)</code>
 </pre>
 <p>
 Please note, the flag <code>stateEntered</code> is set to <code>true</code> inside a </code>microStep</code> whenever a state is entered. During the execution of a superstep all activated events remain active. The choice of superstep semantics has no impact on the semantic variants specified by other annotations like event-driven or cycle-based state machines, event buffering or parent-first / child-first execution order.

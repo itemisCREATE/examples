@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Superstep Semantic</title>
+<link href="./css/style.css" rel="stylesheet">
+
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>Superstep Semantic</h1>
+
+    <p>This example demonstrates the usage of superstep semantic and its impact on the state machine execution. For more details, please also refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_definition_section#sclang_supersteps">documentation</a>.</p>
+    
+<p>
+The <code>@SuperSteps(yes | no)</code> annotation enables or disables the superstep semantic for a run-to-completion step. In contrast to a regular step, a superstep executes all valid subsequent state transitions. Supersteps are <b>disabled per default</b>.
+</p>
+<p>
+Take a look at the example model below:
+</p>
+<p>
+<img class="small"
+      alt="Example model for superstep semantic"
+      src="images/SuperStepsSimple.png" />
+</p>
+<p>
+Without the superstep semantic, an incoming event <code>e</code> causes only one state transition, e.g. from state <code>A</code> to state <code>B</code>. However, when superstep semantic is enabled, raising event <code>e</code> causes a state transition from <code>A</code> over <code>B</code> to <code>C</code>. As there is no other outgoing transition from <code>C</code>, the local reaction is also executed, hence <code>x</code> is set to 42.
+</p>
+<p>
+You can think of the superstep semantic as a loop which performs a regular step until no new state is entered anymore. See the following pseudo-code (a regular step is called <code>microStep</code> here):
+</p>
+<pre>
+<code>do {
+    stateEntered = false
+    microStep()
+} while (stateEntered)</code>
+</pre>
+<p>
+Please note, the flag <code>stateEntered</code> is set to <code>true</code> inside a </code>microStep</code> whenever a state is entered. During the execution of a superstep all activated events remain active. The choice of superstep semantics has no impact on the semantic variants specified by other annotations like event-driven or cycle-based state machines, event buffering or parent-first / child-first execution order.
+</p>
+<p>
+Local events can also lead to a multi-step execution of a state machine. The execution of these multiple steps are a result of the iterative processing of the local event buffer. Supersteps are applied to each of these local event processing steps. So event loops are executed on a higher execution level than supersteps. To sum up, let's take a look at a slightly more complicated example:
+</p>
+<p>
+	<img
+          alt="Example model for superstep semantic in event-driven statechart"
+          src="images/SuperSteps1.png" />
+</p>
+<p>
+What happens when state <code>A</code> is active and event <code>e</code> is raised? First, event <code>e</code> invokes a superstep like in the previous example. While taking the state transition to <code>B</code> and <code>C</code>, the local events <code>local1</code> and <code>local2</code> are put into the internal event buffer (queue or vector). However, they are not visible until the processing of event <code>e</code> is finished. That means that the local reaction in state <code>C</code> is executed because no outgoing transition can be taken. Hence, <code>x</code> is set to 42. Afterwards, the local events are processed, event by event in the event-driven case or all at once if cycle-based. This again invokes a superstep and state <code>L</code> is entered. As with each self-transition, state <code>L</code> is exited and re-entered again, the superstep loop continues until <code>x</code> equals to 17. Next, internal event <code>local2</code> is considered and state <code>C</code> is entered. The local reaction in state <code>C</code> is not executed, as event <code>e</code> is no more raised.
+</p>
+<p>
+	<img
+          alt="Example model for superstep semantic in event-driven statechart"
+          src="images/SuperSteps2.png" />
+</p>
+
+       
+  </div>
+</body>
+</html>

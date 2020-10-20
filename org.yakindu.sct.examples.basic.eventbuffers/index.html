@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Event Buffering</title>
+<link href="./css/style.css" rel="stylesheet">
+
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>Event Buffering</h1>
+
+    <p>This example demonstrates the usage of event buffers and their impact on the event processing of a state machine. For more details, please also refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_definition_section#sclang_eventbuffering">documentation</a>.</p>
+    
+	<img
+      alt="Event buffering enabled, step 1"
+      src="images/EventBuffersEnabled1.png" />
+    
+    <h2>Event buffers in general</h2>
+    <p>
+    Event buffering can be enabled or disabled with the <code>@EventBuffering(inEvents, localEvents)</code> annotation. Event buffering can be enabled/disabled separately for incoming and local (internal) events. Event buffering is <b>enabled per default</b> for incoming and local events.
+    </p>
+    <p>
+    The kind of buffers are different for event-driven and cycle-based state machines. An event-driven state machine will use a queue for buffering events, while a cycle-based state machine will use an event vector. Queued events are processed one by one, each starting a new run-to-completion (RTC) step, until the queue is empty. Events buffered in a vector are all activated at once and consumed in the same RTC step.
+    </p>
+    <h2>Event buffers in action</h2>
+    <p>
+    Let's consider the example as shown above. It demonstrates event buffering on the example of local events in a cycle-based statechart. The two orthogonal regions amplify the difference between <i>downstream</i> and <i>upstream</i> visibility as both regions are processed in a determined order (first <code>r1</code>, then <code>r2</code>).
+    </p>
+    <p>
+    When event buffers are enabled (or nothing different is declared), events that are raised in one run-to-completion step will be stored and processed in the next step. In contrast to that, with disabled event buffering, events that are raised are only visible in the same RTC step which can lead to counter intuitive behavior.    
+    </p>
+    <p>
+    When incoming event <code>e</code> is raised, state <code>A</code> raises local event <code>l1</code>. This event is stored in a buffer for the next RTC step. However, as in the same RTC step, region <code>r2</code> is processed next, the event <code>l1</code> will be directly consumed, leading to a state switch from <code>C</code> to <code>D</code>. This state switch is also performed with disabled event buffering.
+    </p>
+    <img
+      alt="Event buffering enabled, step 2"
+      src="images/EventBuffersEnabled2.png" />
+    <p>
+    When incoming event <code>f</code> is raised, the transition from <code>D</code> to <code>C</code> raises local event <code>l2</code>. This event is stored in a buffer and not processed as this RTC step is finished. In the next RTC step, the buffered event is activated, leading to a state switch from <code>A</code> to <code>B</code>. This state switch would not happen if event buffers were disabled.
+    </p>
+    <img
+      alt="Event buffering enabled, step 3"
+      src="images/EventBuffersEnabled3.png" />
+    <p>
+    When event buffering is disabled, events that are raised are only visible downstream within the same RTC step. Transitions that were already evaluated earlier in the same RTC step will not fire, even if they declare this event as a trigger.
+    </p>
+    <p>
+    In most cases it is best to enable event buffering. Hence, it is already enabled per default. The downside is a higher memory consumption of the generated state machine code. In environments with restricted memory capacity it can be useful to disable event buffering. For more information, please refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_definition_section#sclang_eventbuffering">documentation</a>.
+    </p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+	"id": "org.yakindu.sct.examples.eventbuffers",
+	"title": "Event Buffering",
+	"author": "itemis AG",
+	"description": "This example demonstrates the usage of event buffers and their impact on the event processing of a state machine.",
+	"previewImage": "lights_thumb.jpg",
+	"category": [
+		"basic",
+		"modeling"
+	],
+	"rank":30
+}

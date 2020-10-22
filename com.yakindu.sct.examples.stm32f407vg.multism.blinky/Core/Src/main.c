@@ -113,10 +113,10 @@ int main(void)
 
   controller_init(&sm);
 
-  controllerIface_set_green(&sm, &green);
-  controllerIface_set_orange(&sm, &orange);
-  controllerIface_set_red(&sm, &red);
-  controllerIface_set_blue(&sm, &blue);
+  controller_set_green(&sm, &green);
+  controller_set_orange(&sm, &orange);
+  controller_set_red(&sm, &red);
+  controller_set_blue(&sm, &blue);
 
   controller_enter(&sm);
   /* USER CODE END 2 */

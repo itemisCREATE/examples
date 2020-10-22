@@ -39,6 +39,9 @@ void TimerService::unsetTimer(TimedInterface *statemachine, sc_eventid event) {
 	for (it = this->timer_tasks.begin(); it != timer_tasks.end(); ++it){
 		if(it->pt_evid == event){
 			pthread_cancel(it->pt);
+			if(pthread_cancel(it->pt) != ESRCH) {
+				pthread_join(it->pt, NULL);
+			}
 			timer_tasks.erase(it);
 			return;
 		}

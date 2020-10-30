@@ -2,7 +2,9 @@
 #include "Zowi/Zowi.h"
 #include "Zowi/ZowiPinOut.h"
 #include "src-gen/ZowiSCT.h"
-#include "src/CPPTimerinterface.h"
+#include "src-gen/sc_timer_service.h"
+
+using namespace sc::timer;
 
 ZowiSCT* zowi_sct = new ZowiSCT();
 CPPTimerInterface* timer_sct = new CPPTimerInterface();

@@ -6,5 +6,9 @@ GeneratorModel for yakindu::cpp {
 			targetProject = "com.yakindu.sct.examples.zowi.cpp.arduino"
 			targetFolder = "src-gen"
 		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
 	}
-}      
+}

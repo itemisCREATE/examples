@@ -11,10 +11,10 @@
 #include <stdlib.h>
 
 #include "sc/base/sc_rxc.h"
+#include "sc/base/sc_timer_service.h"
 #include "sc/tictoc.h"
 #include "sc/tictoc_tracer.h"
 #include "sc/tictoc_required.h"
-#include "sc/util/sc_timer_service.h"
 #include "sc/util/yet_file.h"
 #include "sc/util/yet_udp_stream.h"
 #include "sc/util/yet_logger.h"

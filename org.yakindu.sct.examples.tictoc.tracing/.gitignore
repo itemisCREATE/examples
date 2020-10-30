@@ -1,3 +1,10 @@
 Release/
 Debug/
 sc/base
+sc/tictoc.c
+sc/tictoc.h
+sc/tictoc_meta.c
+sc/tictoc_meta.h
+sc/tictoc_required.h
+sc/tictoc_tracer.c
+sc/tictoc_tracer.h

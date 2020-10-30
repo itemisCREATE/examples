@@ -3,8 +3,14 @@
 #include "src/DisplayHandler.h"
 #include "src-gen/DigitalWatch.h"
 
+using namespace sc::timer;
+
+#define MAX_TIMERS 10
+TimerTask tasks[MAX_TIMERS];
+
+
 DigitalWatch* stateMachine = new DigitalWatch();
-CPPTimerInterface* timer_sct = new CPPTimerInterface();
+TimerService* timer_sct = new TimerService(tasks, MAX_TIMERS);
 DisplayHandler* displayHandler = new DisplayHandler();
 
 #define NONE 0

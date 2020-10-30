@@ -2,3 +2,4 @@
 /Release
 /target/
 /src-gen
+/src/sc_types.h

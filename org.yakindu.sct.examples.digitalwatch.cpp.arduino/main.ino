@@ -94,6 +94,6 @@ void loop() {
 	raiseEvents();
 	last_cycle_time = current_time;
 	current_time = millis();
-	timer_sct->updateActiveTimer(stateMachine, current_time - last_cycle_time);
+	timer_sct->proceed(stateMachine, current_time - last_cycle_time);
 	stateMachine->runCycle();
 }

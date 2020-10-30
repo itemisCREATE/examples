@@ -21,6 +21,6 @@ long last_cycle_time = 0;
 void loop() {
 	last_cycle_time = current_time;
 	current_time = millis();
-	timer_sct->updateActiveTimer(zowi_sct, current_time - last_cycle_time);
+	timer_sct->proceed(zowi_sct, current_time - last_cycle_time);
 	zowi_sct->runCycle();
 }

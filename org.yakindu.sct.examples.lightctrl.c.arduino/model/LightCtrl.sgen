@@ -6,5 +6,9 @@ GeneratorModel for yakindu::c {
 			targetProject = "org.yakindu.sct.examples.lightctrl.c.arduino"
 			targetFolder = "src-gen"
 		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
 	}
 }

@@ -1,12 +1,17 @@
 #include <Arduino.h>
 #include "src-gen/TrafficLightCtrl.h"
-#include "src/CPPTimerinterface.h"
+#include "src-gen/sc_timer_service.h"
 #include "src/arduinoPins.h"
 #include "src/TrafficLightOCBs.h"
 #include "src/PushButton.h"
 
+using namespace sc::timer;
+
+#define MAX_TIMERS 10
+TimerTask tasks[MAX_TIMERS];
+
 TrafficLightCtrl* arduino = new TrafficLightCtrl();
-CPPTimerInterface* timer_sct = new CPPTimerInterface();
+TimerService* timer_sct = new TimerService(tasks, MAX_TIMERS);
 TrafficLightOCBs* operationCallback = new TrafficLightOCBs(arduino);
 
 PushButton* pushButton_1;
@@ -52,7 +57,7 @@ void loop() {
 
 	if ( cycle_count == 0L || (current_millies >= last_cycle_time + CYCLE_PERIOD) ) {
 
-		timer_sct->updateActiveTimer(arduino, current_millies - last_cycle_time);
+		timer_sct->proceed(current_millies - last_cycle_time);
 		arduino->runCycle();
 
 		last_cycle_time = current_millies;

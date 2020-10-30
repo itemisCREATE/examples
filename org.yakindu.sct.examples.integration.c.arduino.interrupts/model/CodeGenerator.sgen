@@ -12,5 +12,9 @@ GeneratorModel for yakindu::c {
 			getters = true
 			observables = false
 		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
 	}
 }

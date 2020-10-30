@@ -6,8 +6,11 @@
 
 using namespace sc::timer;
 
+#define MAX_TIMERS 4
+TimerTask tasks[MAX_TIMERS];
+
 ZowiSCT* zowi_sct = new ZowiSCT();
-CPPTimerInterface* timer_sct = new CPPTimerInterface();
+TimerService* timer_sct = new TimerService(tasks, MAX_TIMERS);
 void setup() {
 	zowi_sct->setTimerService(timer_sct);
 	zowi_sct->enter();

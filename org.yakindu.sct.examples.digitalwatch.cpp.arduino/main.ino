@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "src/CPPTimerinterface.h"
+#include "src-gen/sc_timer_service.h"
 #include "src/DisplayHandler.h"
 #include "src-gen/DigitalWatch.h"
 

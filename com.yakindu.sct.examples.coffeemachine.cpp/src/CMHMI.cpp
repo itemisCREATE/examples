@@ -1,7 +1,11 @@
 #include "CMHMI.hpp"
 #include <iostream>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/select.h>
+#include <termios.h>
 
-CM_HMI::CM_HMI(){
+CM_HMI::CM_HMI() {
 	choice_texts[0] = "";
 	choice_texts[1] = "coffee";
 	choice_texts[2] = "espresso";
@@ -14,9 +18,49 @@ CM_HMI::CM_HMI(){
 CM_HMI::~CM_HMI() {
 }
 
+/*!
+ * Implementation for non blocking getchar()
+ * https://stackoverflow.com/questions/448944/c-non-blocking-keyboard-input
+ */
+struct termios orig_termios;
 
-CM_HMI::UserEvents CM_HMI::scanUserInput() {
-	while (1) {
+void reset_terminal_mode() {
+	tcsetattr(0, TCSANOW, &orig_termios);
+}
+
+void set_conio_terminal_mode() {
+	struct termios new_termios;
+
+	/* take two copies - one for now, one for later */
+	tcgetattr(0, &orig_termios);
+	memcpy(&new_termios, &orig_termios, sizeof(new_termios));
+
+	/* register cleanup handler, and set the new terminal mode */
+	atexit(reset_terminal_mode);
+	cfmakeraw(&new_termios);
+	tcsetattr(0, TCSANOW, &new_termios);
+}
+
+int kbhit() {
+	struct timeval tv = { 0L, 0L };
+	fd_set fds;
+	FD_ZERO(&fds);
+	FD_SET(0, &fds);
+	return select(1, &fds, NULL, NULL, &tv);
+}
+
+int getch() {
+	int r;
+	unsigned char c;
+	if ((r = read(0, &c, sizeof(c))) < 0) {
+		return r;
+	} else {
+		return c;
+	}
+}
+
+CM_HMI::UserEvents CM_HMI::getUserInput() {
+	if (kbhit()) {
 		char c;
 		c = getchar();
 
@@ -43,16 +87,15 @@ CM_HMI::UserEvents CM_HMI::scanUserInput() {
 			return TRACING;
 			break;
 		case 'q':
-			return NONE;
-		case '\n':
-			break;
+			return QUIT;
 		default:
 			break;
 		}
 	}
+	return NONE;
 }
 
-void CM_HMI::show(char* text) {
+void CM_HMI::show(char *text) {
 	// avoid newline
 	fprintf(stdout, "%s", text);
 	fflush(stdout);

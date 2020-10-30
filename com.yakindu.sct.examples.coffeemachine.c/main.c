@@ -81,7 +81,9 @@ void loop() {
 			puts("Bye ...");
 			exit(EXIT_SUCCESS);
 		}
-		coffeeMachine_raise_userEvent(&coffee_state_machine, userInput);
+		if (userInput != NONE) {
+			coffeeMachine_raise_userEvent(&coffee_state_machine, userInput);
+		}
 		coffeeMachine_run_cycle(&coffee_state_machine);
 		last_time = current_time;
 	}

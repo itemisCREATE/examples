@@ -1,10 +1,12 @@
 #ifndef SCR_CMHMI_HPP_
 #define SCR_CMHMI_HPP_
 
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
+
 
 
 class CM_HMI {
@@ -12,18 +14,19 @@ public:
 	CM_HMI();
 	virtual ~CM_HMI();
 
-	typedef enum {
-		ON_OFF,
-		COFFEE,
-		ESPRESSO,
-		CAPPUCINO,
-		LATTE_MACCHIATO,
-		MILK,
-		TRACING,
-		NONE
-	} UserEvents;
+	typedef enum { //
+		ON_OFF, //
+		COFFEE, //
+		ESPRESSO, //
+		CAPPUCINO, //
+		LATTE_MACCHIATO, //
+		MILK, //
+		QUIT, //
+		TRACING, //
+		NONE //
+	} UserEvents; //
 
-	UserEvents scanUserInput();
+	UserEvents getUserInput();
 	void show(char* text);
 	void showPrepare(UserEvents event);
 	void showDone(UserEvents event);

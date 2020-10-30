@@ -27,9 +27,16 @@ static sc_timer_t timers[MAX_TIMERS];
 //! The timers are managed by a timer service. */
 static sc_timer_service_t timer_service;
 
+// Start point of the execution.
 unsigned long time_offset = 0;
+
+// Last execution time.
 unsigned long last_time = 0;
+
+// Current time.
 unsigned long current_time = 0;
+
+// Stores the time to sleep.
 struct timespec sleep_time;
 
 unsigned long get_ms() {
@@ -43,6 +50,9 @@ unsigned long get_ms() {
 /*! Set up the timer. Init and enter the state machine. */
 void setUp() {
 	time_offset = get_ms();
+	sleep_time.tv_sec = 0;
+	sleep_time.tv_nsec = 100;
+
 	puts("!!!Hello Coffee!!!");
 	puts("general commands are:");
 	puts("(o) toggle on/off");
@@ -86,7 +96,6 @@ void loop() {
  */
 void coffeeMachine_set_timer(CoffeeMachine *handle, const sc_eventid evid,
 		const sc_integer time_ms, const sc_boolean periodic) {
-
 	// simply delegate to the generic timer service implementation.
 	sc_timer_start(&timer_service, handle, evid, time_ms, periodic);
 }

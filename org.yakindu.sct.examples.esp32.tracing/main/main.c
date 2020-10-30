@@ -33,7 +33,7 @@
 #include "sc/sm/blink.h"
 #include "sc/sm/blink_tracer.h"
 #include "sc/sm/blink_required.h"
-#include "sc/util/sc_timer_service.h"
+#include "sc/base/sc_timer_service.h"
 #include "sc/util/yet_udp_stream.h"
 #include "sc/util/yet_logger.h"
 

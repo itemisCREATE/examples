@@ -1,10 +1,15 @@
 #include <Arduino.h>
-#include "src/CPPTimerinterface.h"
+#include "src-gen/sc_timer_service.h"
 #include "src/DisplayHandler.h"
 #include "src-gen/ArduinoHMI.h"
 
+using namespace sc::timer;
+
+#define MAX_TIMERS 10
+TimerTask tasks[MAX_TIMERS];
+
 ArduinoHMI* stateMachine = new ArduinoHMI();
-CPPTimerInterface* timer_sct = new CPPTimerInterface();
+TimerService* timer_sct = new TimerService(tasks, MAX_TIMERS);
 DisplayHandler* displayHandler = new DisplayHandler();
 /*
  * None : 1023
@@ -89,6 +94,6 @@ void loop() {
 	raiseEvents();
 	last_cycle_time = current_time;
 	current_time = millis();
-	timer_sct->updateActiveTimer(stateMachine, current_time - last_cycle_time);
+	timer_sct->proceed(stateMachine, current_time - last_cycle_time);
 	stateMachine->runCycle();
 }

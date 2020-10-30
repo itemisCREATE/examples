@@ -50,27 +50,27 @@ static void raiseEvents() {
 		switch (oldState) {
 		case SELECT: {
 			Serial.println("mode");
-			stateMachine->getSCI_Button()->raise_mode();
+			stateMachine->button()->raiseMode();
 			break;
 		}
 		case LEFT: {
 			Serial.println("set");
-			stateMachine->getSCI_Button()->raise_set();
+			stateMachine->button()->raiseSet();
 			break;
 		}
 		case DOWN: {
 			Serial.println("light");
-			stateMachine->getSCI_Button()->raise_light();
+			stateMachine->button()->raiseLight();
 			break;
 		}
 		case UP: {
 			Serial.println("light_r");
-			stateMachine->getSCI_Button()->raise_light_r();
+			stateMachine->button()->raiseLight_r();
 			break;
 		}
 		case RIGHT: {
 			Serial.println("onoff");
-			stateMachine->getSCI_Button()->raise_onoff();
+			stateMachine->button()->raiseOnoff();
 			break;
 		}
 		default: {
@@ -83,7 +83,7 @@ static void raiseEvents() {
 void setup() {
 	Serial.begin(115200);
 	Serial.println("Start");
-	stateMachine->setSCI_Display_OCB(displayHandler);
+	stateMachine->display()->setOperationCallback(displayHandler);
 	stateMachine->setTimerService(timer_sct);
 	stateMachine->enter();
 }

@@ -4,7 +4,7 @@
 #include <LiquidCrystal.h>
 #include "../src-gen/DigitalWatch.h"
 
-class DisplayHandler: public DigitalWatch::SCI_Display_OCB {
+class DisplayHandler: public DigitalWatch::Display::OperationCallback {
 public:
 	DisplayHandler();
 	~DisplayHandler();
@@ -13,4 +13,5 @@ public:
 };
 
 #endif /* SRC_DISPLAYHANDLER_H_ */
+
 

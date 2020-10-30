@@ -56,23 +56,24 @@ static void raiseEvents() {
 	if (oldState != NONE && readButton() == NONE) {
 		switch (oldState) {
 		case SELECT: {
-			stateMachine->raise_select();
+			stateMachine->raiseSelect();
+			stateMachine->raiseSelect();
 			break;
 		}
 		case LEFT: {
-			stateMachine->raise_left();
+			stateMachine->raiseLeft();
 			break;
 		}
 		case DOWN: {
-			stateMachine->raise_down();
+			stateMachine->raiseDown();
 			break;
 		}
 		case UP: {
-			stateMachine->raise_up();
+			stateMachine->raiseUp();
 			break;
 		}
 		case RIGHT: {
-			stateMachine->raise_right();
+			stateMachine->raiseRight();
 			break;
 		}
 		default: {
@@ -83,7 +84,7 @@ static void raiseEvents() {
 }
 
 void setup() {
-	stateMachine->setDefaultSCI_OCB(displayHandler);
+	stateMachine->setOperationCallback(displayHandler);
 	stateMachine->setTimerService(timer_sct);
 	stateMachine->enter();
 }

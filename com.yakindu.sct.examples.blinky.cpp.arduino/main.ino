@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#include "src/sc_timer_service.h"
+#include "src-gen/sc_timer_service.h"
 #include "src-gen/Arduino_Blinky_SCT.h"
 
 #define MAX_TIMER 3
@@ -18,6 +18,6 @@ long last_cycle_time = 0;
 void loop() {
 	last_cycle_time = current_time;
 	current_time = millis();
-	timer_sct->updateActiveTimer(current_time - last_cycle_time);
+	timer_sct->proceed(current_time - last_cycle_time);
 	arduino->runCycle();
 }

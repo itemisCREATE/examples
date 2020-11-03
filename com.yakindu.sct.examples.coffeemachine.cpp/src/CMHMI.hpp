@@ -33,6 +33,7 @@ public:
 
 private:
 	std::string choice_texts[7];
+	char buf[20];
 };
 
 #endif /* SCR_CMHMI_HPP_ */

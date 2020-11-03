@@ -99,7 +99,7 @@ void loop() {
 void coffeeMachine_set_timer(CoffeeMachine *handle, const sc_eventid evid,
 		const sc_integer time_ms, const sc_boolean periodic) {
 	// simply delegate to the generic timer service implementation.
-	sc_timer_start(&timer_service, handle, evid, time_ms, periodic);
+	sc_timer_set(&timer_service, handle, evid, time_ms, periodic);
 }
 
 /*!
@@ -108,7 +108,7 @@ void coffeeMachine_set_timer(CoffeeMachine *handle, const sc_eventid evid,
  */
 void coffeeMachine_unset_timer(CoffeeMachine *handle, const sc_eventid evid) {
 	// simply delegate to the generic timer service implementation.
-	sc_timer_cancel(&timer_service, evid);
+	sc_timer_unset(&timer_service, evid);
 }
 
 int main(void) {

@@ -53,6 +53,7 @@ void setUp() {
 	sleep_time.tv_sec = 0;
 	sleep_time.tv_nsec = 100;
 
+	hmi_init();
 	puts("!!!Hello Coffee!!!");
 	puts("general commands are:");
 	puts("(o) toggle on/off");

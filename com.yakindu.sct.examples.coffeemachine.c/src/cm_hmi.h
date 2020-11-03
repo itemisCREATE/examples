@@ -19,6 +19,8 @@ typedef enum { //
 	NONE //
 } UserEvents; //
 
+extern void hmi_init();
+
 extern UserEvents getUserInput();
 
 extern void show(char *text);

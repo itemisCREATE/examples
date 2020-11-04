@@ -4,7 +4,7 @@
 #include <LiquidCrystal.h>
 #include "../src-gen/ArduinoHMI.h"
 
-class DisplayHandler: public ArduinoHMI::DefaultSCI_OCB {
+class DisplayHandler: public ArduinoHMI::OperationCallback {
 public:
 	DisplayHandler();
 	~DisplayHandler();
@@ -15,4 +15,5 @@ public:
 };
 
 #endif /* SRC_DISPLAYHANDLER_H_ */
+
 

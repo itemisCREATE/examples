@@ -14,5 +14,9 @@ GeneratorModel for yakindu::c {
 			exitState = true
 		}
 		
+		feature GeneralFeatures {
+			timerService = true
+		}
+		
 	}
 }

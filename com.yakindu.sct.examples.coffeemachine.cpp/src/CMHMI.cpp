@@ -1,7 +1,10 @@
 #include "CMHMI.hpp"
 #include <iostream>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 
-CM_HMI::CM_HMI(){
+CM_HMI::CM_HMI() {
 	choice_texts[0] = "";
 	choice_texts[1] = "coffee";
 	choice_texts[2] = "espresso";
@@ -9,16 +12,18 @@ CM_HMI::CM_HMI(){
 	choice_texts[4] = "latte macchiato";
 	choice_texts[5] = "milk";
 	choice_texts[6] = "";
+
+    fcntl(STDIN_FILENO, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
 }
 
 CM_HMI::~CM_HMI() {
 }
 
+CM_HMI::UserEvents CM_HMI::getUserInput() {
+	int numRead = read(STDIN_FILENO, buf, 1);
 
-CM_HMI::UserEvents CM_HMI::scanUserInput() {
-	while (1) {
-		char c;
-		c = getchar();
+	if (numRead > 0) {
+		char c = buf[0];
 
 		switch (c) {
 		case 'o':
@@ -43,16 +48,15 @@ CM_HMI::UserEvents CM_HMI::scanUserInput() {
 			return TRACING;
 			break;
 		case 'q':
-			return NONE;
-		case '\n':
-			break;
+			return QUIT;
 		default:
 			break;
 		}
 	}
+	return NONE;
 }
 
-void CM_HMI::show(char* text) {
+void CM_HMI::show(char *text) {
 	// avoid newline
 	fprintf(stdout, "%s", text);
 	fflush(stdout);

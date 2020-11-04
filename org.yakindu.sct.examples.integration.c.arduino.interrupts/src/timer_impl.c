@@ -14,13 +14,13 @@ static sc_timer_service_t timer_service;
 /*! Callback for setTimer. Creates a timer for each time event */
 void stateMachine_set_timer(StateMachine* handle, const sc_eventid evid,
 		const sc_integer time_ms, const sc_boolean periodic) {
-	sc_timer_start(&timer_service, (void*) handle, evid, time_ms, periodic);
+	sc_timer_set(&timer_service, (void*) handle, evid, time_ms, periodic);
 }
 
 /*! Callback for unsetTimer. Removes expired timer */
 void stateMachine_unset_timer(StateMachine* handle, const sc_eventid evid) {
 	(void) (handle);
-	sc_timer_cancel(&timer_service, evid);
+	sc_timer_unset(&timer_service, evid);
 }
 
 /*! Initializes the Watch Dog Timer with interrupts every 32 ms.

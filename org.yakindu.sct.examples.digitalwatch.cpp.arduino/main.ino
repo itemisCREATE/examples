@@ -1,10 +1,16 @@
 #include <Arduino.h>
-#include "src/CPPTimerinterface.h"
+#include "src-gen/sc_timer_service.h"
 #include "src/DisplayHandler.h"
 #include "src-gen/DigitalWatch.h"
 
+using namespace sc::timer;
+
+#define MAX_TIMERS 10
+TimerTask tasks[MAX_TIMERS];
+
+
 DigitalWatch* stateMachine = new DigitalWatch();
-CPPTimerInterface* timer_sct = new CPPTimerInterface();
+TimerService* timer_sct = new TimerService(tasks, MAX_TIMERS);
 DisplayHandler* displayHandler = new DisplayHandler();
 
 #define NONE 0
@@ -44,27 +50,27 @@ static void raiseEvents() {
 		switch (oldState) {
 		case SELECT: {
 			Serial.println("mode");
-			stateMachine->getSCI_Button()->raise_mode();
+			stateMachine->button()->raiseMode();
 			break;
 		}
 		case LEFT: {
 			Serial.println("set");
-			stateMachine->getSCI_Button()->raise_set();
+			stateMachine->button()->raiseSet();
 			break;
 		}
 		case DOWN: {
 			Serial.println("light");
-			stateMachine->getSCI_Button()->raise_light();
+			stateMachine->button()->raiseLight();
 			break;
 		}
 		case UP: {
 			Serial.println("light_r");
-			stateMachine->getSCI_Button()->raise_light_r();
+			stateMachine->button()->raiseLight_r();
 			break;
 		}
 		case RIGHT: {
 			Serial.println("onoff");
-			stateMachine->getSCI_Button()->raise_onoff();
+			stateMachine->button()->raiseOnoff();
 			break;
 		}
 		default: {
@@ -77,7 +83,7 @@ static void raiseEvents() {
 void setup() {
 	Serial.begin(115200);
 	Serial.println("Start");
-	stateMachine->setSCI_Display_OCB(displayHandler);
+	stateMachine->display()->setOperationCallback(displayHandler);
 	stateMachine->setTimerService(timer_sct);
 	stateMachine->enter();
 }
@@ -88,6 +94,6 @@ void loop() {
 	raiseEvents();
 	last_cycle_time = current_time;
 	current_time = millis();
-	timer_sct->updateActiveTimer(stateMachine, current_time - last_cycle_time);
+	timer_sct->proceed(current_time - last_cycle_time);
 	stateMachine->runCycle();
 }

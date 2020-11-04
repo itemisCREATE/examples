@@ -56,6 +56,8 @@ Coffee_Machine::cm_recipe_t Coffee_Machine::get_recipe(CM_HMI::UserEvents choice
 	case CM_HMI::MILK:
 		return recipe_MILK;
 	case CM_HMI::ON_OFF:
+	case CM_HMI::QUIT:
+	case CM_HMI::TRACING:
 	case CM_HMI::NONE:
 		break;
 	}

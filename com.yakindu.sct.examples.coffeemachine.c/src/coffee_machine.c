@@ -73,6 +73,7 @@ cm_recipe_t get_recipe(UserEvents choice) {
 	case MILK:
 		return recipe_MILK;
 	case ON_OFF:
+	case QUIT:
 	case NONE:
 		break;
 	}

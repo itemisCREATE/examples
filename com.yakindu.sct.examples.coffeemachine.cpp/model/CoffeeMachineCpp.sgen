@@ -11,5 +11,9 @@ GeneratorModel for yakindu::cpp {
 			enterState = true
 			exitState = true
 		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
 	}
 }

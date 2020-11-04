@@ -15,5 +15,9 @@ GeneratorModel for yakindu::c {
 			generic = true
 		}
 		
+		feature GeneralFeatures {
+			timerService = true
+		}
+		
 	}
 }

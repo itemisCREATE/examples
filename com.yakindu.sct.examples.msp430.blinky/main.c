@@ -16,13 +16,13 @@ static sc_timer_service_t timer_service;
 //! callback implementation for the setting up time events
 extern void blinkyStateMachine_set_timer(BlinkyStateMachine* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic)
 {
-    sc_timer_start(&timer_service, handle, evid, time_ms, periodic);
+    sc_timer_set(&timer_service, handle, evid, time_ms, periodic);
 }
 
 //! callback implementation for canceling time events.
 extern void blinkyStateMachine_unset_timer(BlinkyStateMachine* handle, const sc_eventid evid)
 {
-    sc_timer_cancel(&timer_service, evid);
+    sc_timer_unset(&timer_service, evid);
 }
 
 void main(void) {

@@ -1,35 +1,24 @@
-/*
- * cm_main.c
- *
- *  Created on: 13.04.2016
- *      Author: terfloth
- */
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <pthread.h>
+#include <time.h>
+#include <sys/time.h>
 
 #include "src/cm_hmi.h"
 #include "src-gen/CoffeeMachine.h"
-#include "src/sc_cycle_runner.h"
-#include "src/sc_timer_service.h"
-
-
+#include "src-gen/sc_timer_service.h"
 
 /*! \file Implementation of the main function and setup of the virtual YAKINDU Coffee Maker.
- * It includes everything to setup and run the example. The example applies a cycle based execution
- * model and makes use of POSIX threads.
+ * It includes everything to setup and run the example.
+ * The example applies a cycle based execution model.
  */
 
-//! First we create our coffee state machine.
+/* ! First we create our coffee state machine. */
 static CoffeeMachine coffee_state_machine;
 
-//! We additionally make use of a generic cycle runner that invokes the state machines runCycle function at a fixed frequency.
-static sc_cycle_runner_t cycle_runner;
-
-//! As we make use of time triggers (after & every) we make use of a generic timer implementation and need a defined number of timers.
+/* ! As we make use of time triggers (after & every)
+ * we make use of a generic timer implementation
+ * and need a defined number of timers. */
 #define MAX_TIMERS 4
 
 //! We allocate the desired array of timers.
@@ -38,18 +27,33 @@ static sc_timer_t timers[MAX_TIMERS];
 //! The timers are managed by a timer service. */
 static sc_timer_service_t timer_service;
 
-//! For synchronizing the various threads (cycle runner, timers) we create a mutex.
-static pthread_mutex_t coffe_state_machine_mutex = PTHREAD_MUTEX_INITIALIZER;
+// Start point of the execution.
+unsigned long time_offset = 0;
 
+// Last execution time.
+unsigned long last_time = 0;
 
-static void run_cycle(void *handle) {
-	coffeeMachine_raise_userEvent(handle, provideUserEvent());
-	coffeeMachine_run_cycle(handle);
+// Current time.
+unsigned long current_time = 0;
+
+// Stores the time to sleep.
+struct timespec sleep_time;
+
+unsigned long get_ms() {
+	struct timeval tv;
+	unsigned long ms;
+	gettimeofday(&tv, 0);
+	ms = tv.tv_sec * 1000 + (tv.tv_usec / 1000);
+	return ms;
 }
 
+/*! Set up the timer. Init and enter the state machine. */
+void setUp() {
+	time_offset = get_ms();
+	sleep_time.tv_sec = 0;
+	sleep_time.tv_nsec = 100;
 
-int main(void) {
-
+	hmi_init();
 	puts("!!!Hello Coffee!!!");
 	puts("general commands are:");
 	puts("(o) toggle on/off");
@@ -57,32 +61,35 @@ int main(void) {
 	puts("(q) quit");
 
 	// We initialize the timer service with everything it requires.
-	sc_timer_service_init(
-			&timer_service,
-			timers, MAX_TIMERS,
-			(sc_raise_time_event_fp) &coffeeMachine_raise_time_event,
-			&coffe_state_machine_mutex);
+	sc_timer_service_init(&timer_service, timers, MAX_TIMERS,
+			(sc_raise_time_event_fp) &coffeeMachine_raise_time_event);
 
 	// then we initialize
 	coffeeMachine_init(&coffee_state_machine);
 	// ... and enter the state machine
 	coffeeMachine_enter(&coffee_state_machine);
 
-	// ... start up the cycle runner
-	sc_cycle_runner_start(
-			&cycle_runner,
-			&run_cycle,
-			&coffee_state_machine,
-			100, &coffe_state_machine_mutex);
-
-	// ... and finally process user input.
-	scanUserInput();
-
-	puts("Bye ...");
-
-	return EXIT_SUCCESS;
 }
 
+/*! Loop forever. The run_cycle should be called every 200 ms
+ * depending on the @CycleBased() definition. */
+void loop() {
+	current_time = get_ms() - time_offset;
+	if (current_time >= last_time + 200) {
+		sc_timer_service_proceed(&timer_service, current_time - last_time);
+		UserEvents userInput = getUserInput();
+		if (userInput == QUIT) {
+			puts("Bye ...");
+			exit(EXIT_SUCCESS);
+		}
+		if (userInput != NONE) {
+			coffeeMachine_raise_userEvent(&coffee_state_machine, userInput);
+		}
+		coffeeMachine_run_cycle(&coffee_state_machine);
+		last_time = current_time;
+	}
+	nanosleep(&sleep_time, 0);
+}
 
 /*!
  This function will be called for each time event that is relevant for a state when a state will be entered.
@@ -90,18 +97,24 @@ int main(void) {
  \time_ms The time in milli seconds
  \periodic Indicates the the time event must be raised periodically until the timer is unset
  */
-void coffeeMachine_set_timer(CoffeeMachine* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic) {
-
+void coffeeMachine_set_timer(CoffeeMachine *handle, const sc_eventid evid,
+		const sc_integer time_ms, const sc_boolean periodic) {
 	// simply delegate to the generic timer service implementation.
-	sc_timer_start(&timer_service, handle, evid, time_ms, periodic);
+	sc_timer_set(&timer_service, handle, evid, time_ms, periodic);
 }
 
 /*!
-	This function will be called for each time event that is relevant for a state when a state will be left.
-	\param evid An unique identifier of the event.
-*/
-void coffeeMachine_unset_timer(CoffeeMachine* handle, const sc_eventid evid) {
-
+ This function will be called for each time event that is relevant for a state when a state will be left.
+ \param evid An unique identifier of the event.
+ */
+void coffeeMachine_unset_timer(CoffeeMachine *handle, const sc_eventid evid) {
 	// simply delegate to the generic timer service implementation.
-	sc_timer_cancel(&timer_service, evid);
+	sc_timer_unset(&timer_service, evid);
+}
+
+int main(void) {
+	setUp();
+	for (;;) {
+		loop();
+	}
 }

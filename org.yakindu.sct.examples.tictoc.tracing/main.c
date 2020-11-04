@@ -11,10 +11,10 @@
 #include <stdlib.h>
 
 #include "sc/base/sc_rxc.h"
+#include "sc/base/sc_timer_service.h"
 #include "sc/tictoc.h"
 #include "sc/tictoc_tracer.h"
 #include "sc/tictoc_required.h"
-#include "sc/util/sc_timer_service.h"
 #include "sc/util/yet_file.h"
 #include "sc/util/yet_udp_stream.h"
 #include "sc/util/yet_logger.h"
@@ -38,12 +38,12 @@ static sc_timer_service_t timer_service;
 
 /*! callback implementation for the setting up time events. */
 void tictoc_set_timer(Tictoc* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
-	sc_timer_start(&timer_service, (void*) handle, evid, time_ms, periodic);
+	sc_timer_set(&timer_service, (void*) handle, evid, time_ms, periodic);
 }
 
 /*! callback implementation for canceling time events. */
 void tictoc_unset_timer(Tictoc* handle, const sc_eventid evid) {
-	sc_timer_cancel(&timer_service, evid);
+	sc_timer_unset(&timer_service, evid);
 }
 
 unsigned long timestamp_offset = 0;

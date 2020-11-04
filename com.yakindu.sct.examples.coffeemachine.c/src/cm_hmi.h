@@ -8,27 +8,24 @@
 #ifndef CM_HMI_H_
 #define CM_HMI_H_
 
+typedef enum { //
+	ON_OFF, //
+	COFFEE, //
+	ESPRESSO, //
+	CAPPUCINO, //
+	LATTE_MACCHIATO, //
+	MILK, //
+	QUIT, //
+	NONE //
+} UserEvents; //
 
-typedef enum {
-	ON_OFF,
-	COFFEE,
-	ESPRESSO,
-	CAPPUCINO,
-	LATTE_MACCHIATO,
-	MILK,
-	NONE
-} UserEvents;
+extern void hmi_init();
 
+extern UserEvents getUserInput();
 
-
-extern UserEvents provideUserEvent();
-
-extern void scanUserInput();
-
-extern void show(char* text);
+extern void show(char *text);
 
 extern void showPrepare(UserEvents event);
 extern void showDone(UserEvents event);
-
 
 #endif /* CM_HMI_H_ */

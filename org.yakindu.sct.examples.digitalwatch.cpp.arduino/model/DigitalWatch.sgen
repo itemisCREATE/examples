@@ -6,5 +6,9 @@ GeneratorModel for yakindu::cpp {
 			targetProject = "org.yakindu.sct.examples.digitalwatch.cpp.arduino"
 			targetFolder = "src-gen"
 		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
 	}
-} 
+}

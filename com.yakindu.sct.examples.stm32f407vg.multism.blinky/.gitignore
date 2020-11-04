@@ -1,3 +1,9 @@
 /Debug
 /Release
 /target/
+/Core/Inc/LED.h
+/Core/Inc/controller.h
+/Core/Inc/controller_required.h
+/Core/Inc/sc_types.h
+/Core/Src/LED.c
+/Core/Src/controller.c

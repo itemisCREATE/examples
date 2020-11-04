@@ -1,3 +1,7 @@
 /Debug
 /Release
 /target/
+/Core/Inc/blinky.h
+/Core/Inc/blinky_required.h
+/Core/Inc/sc_types.h
+/Core/Src/blinky.c

@@ -1,10 +1,15 @@
 #include <Arduino.h>
-#include "src/CPPTimerinterface.h"
+#include "src-gen/sc_timer_service.h"
 #include "src/DisplayHandler.h"
 #include "src-gen/ArduinoHMI.h"
 
+using namespace sc::timer;
+
+#define MAX_TIMERS 10
+TimerTask tasks[MAX_TIMERS];
+
 ArduinoHMI* stateMachine = new ArduinoHMI();
-CPPTimerInterface* timer_sct = new CPPTimerInterface();
+TimerService* timer_sct = new TimerService(tasks, MAX_TIMERS);
 DisplayHandler* displayHandler = new DisplayHandler();
 /*
  * None : 1023
@@ -51,23 +56,24 @@ static void raiseEvents() {
 	if (oldState != NONE && readButton() == NONE) {
 		switch (oldState) {
 		case SELECT: {
-			stateMachine->raise_select();
+			stateMachine->raiseSelect();
+			stateMachine->raiseSelect();
 			break;
 		}
 		case LEFT: {
-			stateMachine->raise_left();
+			stateMachine->raiseLeft();
 			break;
 		}
 		case DOWN: {
-			stateMachine->raise_down();
+			stateMachine->raiseDown();
 			break;
 		}
 		case UP: {
-			stateMachine->raise_up();
+			stateMachine->raiseUp();
 			break;
 		}
 		case RIGHT: {
-			stateMachine->raise_right();
+			stateMachine->raiseRight();
 			break;
 		}
 		default: {
@@ -78,7 +84,7 @@ static void raiseEvents() {
 }
 
 void setup() {
-	stateMachine->setDefaultSCI_OCB(displayHandler);
+	stateMachine->setOperationCallback(displayHandler);
 	stateMachine->setTimerService(timer_sct);
 	stateMachine->enter();
 }
@@ -89,6 +95,6 @@ void loop() {
 	raiseEvents();
 	last_cycle_time = current_time;
 	current_time = millis();
-	timer_sct->updateActiveTimer(stateMachine, current_time - last_cycle_time);
+	timer_sct->proceed(current_time - last_cycle_time);
 	stateMachine->runCycle();
 }

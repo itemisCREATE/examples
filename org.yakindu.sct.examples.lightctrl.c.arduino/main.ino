@@ -3,7 +3,7 @@
 
 #include "src-gen/LightCtrl.h"
 #include "src-gen/LightCtrl_required.h"
-#include "scutil/sc_timer_service.h"
+#include "src-gen/sc_timer_service.h"
 
 #define BUTTON_PIN 3
 #define LED_PIN 6
@@ -22,12 +22,12 @@ static sc_timer_t timers[MAX_TIMERS];
 
 //! callback implementation for the setting up time events
 void lightCtrl_set_timer(LightCtrl* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean periodic){
-	sc_timer_start(&timer_service, (void*) handle, evid, time_ms, periodic);
+	sc_timer_set(&timer_service, (void*) handle, evid, time_ms, periodic);
 }
 
 //! callback implementation for canceling time events.
 void lightCtrl_unset_timer(LightCtrl* handle, const sc_eventid evid) {
-	sc_timer_cancel(&timer_service, evid);
+	sc_timer_unset(&timer_service, evid);
 }
 
 void lightCtrl_setLight(const LightCtrl* handle, const sc_boolean lightOn) {

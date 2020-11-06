@@ -1,0 +1,13 @@
+GeneratorModel for yakindu::cpp::yet {
+
+	statechart tictoc {
+
+		feature Outlet {
+			targetProject = "tictoc-cpp"
+			targetFolder = "sc"
+			libraryTargetFolder = "sc/base"
+		}
+		
+		
+	}
+}

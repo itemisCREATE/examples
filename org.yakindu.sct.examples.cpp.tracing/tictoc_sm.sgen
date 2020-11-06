@@ -1,0 +1,22 @@
+GeneratorModel for yakindu::cpp {
+
+//	statechart tictoc {
+//
+//		feature Outlet {
+//			targetProject = "tictoc-cpp"
+//			targetFolder = "sc"
+//			libraryTargetFolder = "sc/base"
+//		}	
+//		
+//		feature GeneralFeatures {
+//			timerService = true
+//		}
+//				
+//		feature Tracing {
+//			enterState = false
+//			exitState = false
+//			generic = true
+//		}
+//		
+//	}
+}

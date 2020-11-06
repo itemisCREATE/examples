@@ -11,7 +11,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "cm_hmi.h"
+#include "../src/cm_hmi.h"
 
 
 typedef struct {

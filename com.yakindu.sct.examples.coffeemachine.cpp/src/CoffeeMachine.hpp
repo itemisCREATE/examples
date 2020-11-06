@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "CMHMI.hpp"
+#include "../src/CMHMI.hpp"
 
 #define MAX_TEMP 95
 #define MIN_TEMP 20

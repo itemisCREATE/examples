@@ -5,7 +5,6 @@
 	"description": "This example demonstrates how to generate C++ code from a statechart.",
 	"previewImage": "watch_gears_thumb.jpg",
 	"category": [
-		"open source",
 		"code-generation"
 	],
 	"rank":20

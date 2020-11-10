@@ -1,0 +1,33 @@
+GeneratorModel for yakindu::java {
+
+	const PROJECT : string = "com.yakindu.sct.examples.codegen.multism.java"
+
+	const FOLDER : string = "src-gen"
+
+	statechart LightController {
+
+		feature Outlet {
+			targetProject = PROJECT
+			targetFolder = FOLDER
+			libraryTargetFolder = FOLDER
+		}
+		feature Naming {
+			basePackage = "com.yakindu.sct.examples.codegen.multism.java.controller"
+		}
+		feature GeneralFeatures {
+			TimerService = true
+		}
+	}
+
+	statechart Light {
+
+		feature Outlet {
+			targetProject = PROJECT
+			targetFolder = FOLDER
+			libraryTargetFolder = FOLDER
+		}
+		feature Naming {
+			basePackage = "com.yakindu.sct.examples.codegen.multism.java.light"
+		}
+	}
+}

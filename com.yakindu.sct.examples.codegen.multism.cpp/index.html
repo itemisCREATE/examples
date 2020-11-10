@@ -9,7 +9,7 @@
 <body class="body-container">
 	<div class="primary">
 
-		<h1>C Code Generation for Multi State Machines</h1>
+		<h1>C++ Code Generation for Multi State Machines</h1>
 
 		<p>This example demonstrates how to generate C++ code for a multi state machine scenario and how to set everything up in the application code. As example, we will use a light controller that controls two lights. The controller as well as the lights are defined by state machines that communicate with each other by the means of events.</p>
 		<p>
@@ -56,13 +56,13 @@
 		
 		<h2>Application Code</h2>
 		<p>
-		Our application is a simple interactive console with which the user can switch the lights on or off as well as toggle the blink mode. The complete application code is implemented in <code>main.c</code>:
+		Our application is a simple interactive console with which the user can switch the lights on or off as well as toggle the blink mode. The complete application code is implemented in <code>main.cpp</code>:
 		</p>
 		<p>
 		<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/org.yakindu.sct.examples.codegen.multism.cpp/src/main.cpp"></script>
 		</p>
 		<p>
-		The most important parts are commented in the <code>main.c</code> file. These are the bullet points:
+		The most important parts are commented in the <code>main.cpp</code> file. These are the bullet points:
 		<ul>
 			<li>Instantiate the state machines</li>
 			<li>Set the timer service for each state machine</li>

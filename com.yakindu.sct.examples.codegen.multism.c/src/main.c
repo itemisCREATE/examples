@@ -103,6 +103,7 @@ int main(int argc, char **argv) {
 	sleep_time.tv_nsec = 100;
 	time_offset = get_ms();
 
+	/*! Ensures non-blocking read() call. */
 	fcntl(STDIN_FILENO, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
 	printf("Type 1 or 0 to switch the lights on or off.\n");
 	printf("Type 2 to toggle the blink mode.\n");
@@ -150,4 +151,3 @@ void light_set_timer(Light *handle, const sc_eventid evid,
 void light_unset_timer(Light *handle, const sc_eventid evid) {
 	sc_timer_unset(&timer_service, evid);
 }
-

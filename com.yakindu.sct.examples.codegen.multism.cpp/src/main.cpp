@@ -88,6 +88,7 @@ int main(int argc, char **argv) {
 
 	printf("Type '1' or '0' to switch the lights on or off.\n");
 	printf("Type '2' to toggle the blink mode.\n");
+	/*! Ensures non-blocking read() call. */
 	fcntl(STDIN_FILENO, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
 	while (1) {
 		current_time = get_ms() - time_offset;

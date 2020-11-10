@@ -8,7 +8,7 @@
       <vertices xsi:type="sgraph:State" xmi:id="_3ASwp5OAEeWuO-fDDpYHyA" specification="entry / &#xA;&#x9;brightness = 0;&#xA;&#x9;raise brightness_changed : brightness &#x9;" name="Off" incomingTransitions="_3AT-w5OAEeWuO-fDDpYHyA _QwgAQJQ6EeWuO-fDDpYHyA">
         <outgoingTransitions xmi:id="_Er2m0JQzEeWuO-fDDpYHyA" specification="on" target="_Muq1cJQtEeWuO-fDDpYHyA"/>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="_Muq1cJQtEeWuO-fDDpYHyA" specification="entry / &#xA;&#x9;brightness += 1;&#xA;&#x9;raise brightness_changed : brightness&#xA;&#xA;on [brightness &lt; max_brightness] / &#xA;&#x9;brightness += 1;&#xA;&#x9;raise brightness_changed : brightness" name="On" incomingTransitions="_Er2m0JQzEeWuO-fDDpYHyA">
+      <vertices xsi:type="sgraph:State" xmi:id="_Muq1cJQtEeWuO-fDDpYHyA" specification="entry / &#xA;&#x9;brightness += 1;&#xA;&#x9;raise brightness_changed : brightness &#xA;&#xA;on [brightness &lt; max_brightness] / &#xA;&#x9;brightness += 1;&#xA;&#x9;raise brightness_changed : brightness " name="On" incomingTransitions="_Er2m0JQzEeWuO-fDDpYHyA">
         <outgoingTransitions xmi:id="_QwgAQJQ6EeWuO-fDDpYHyA" specification="off, after 10 s" target="_3ASwp5OAEeWuO-fDDpYHyA"/>
       </vertices>
     </regions>
@@ -30,7 +30,7 @@
             <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASwopOAEeWuO-fDDpYHyA"/>
           </children>
           <styles xsi:type="notation:ShapeStyle" xmi:id="_3ASJlZOAEeWuO-fDDpYHyA" fontName="Verdana" fontHeight="11" lineColor="4210752"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASwppOAEeWuO-fDDpYHyA" x="169" y="4" width="15" height="15"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASwppOAEeWuO-fDDpYHyA" x="182" y="5" width="15" height="15"/>
         </children>
         <children xmi:id="_3ATXspOAEeWuO-fDDpYHyA" type="State" element="_3ASwp5OAEeWuO-fDDpYHyA">
           <children xsi:type="notation:DecorationNode" xmi:id="_3ATXtpOAEeWuO-fDDpYHyA" type="StateName">
@@ -68,7 +68,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASJkZOAEeWuO-fDDpYHyA"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_3ARigZOAEeWuO-fDDpYHyA" fontName="Verdana" fontHeight="11" fillColor="16448250" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASJkpOAEeWuO-fDDpYHyA" x="24" y="12" width="461" height="421"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_3ASJkpOAEeWuO-fDDpYHyA" x="8" y="8" width="405" height="421"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_3AUl05OAEeWuO-fDDpYHyA" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_3AUl1ZOAEeWuO-fDDpYHyA" type="StatechartName">
@@ -89,7 +89,7 @@
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_3AT-xZOAEeWuO-fDDpYHyA" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_3AT-x5OAEeWuO-fDDpYHyA" fontName="Verdana" fontHeight="11"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_3AT-xpOAEeWuO-fDDpYHyA" points="[7, 0, -51, -70]$[36, 0, -22, -70]$[36, 29, -22, -41]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_3AT-xpOAEeWuO-fDDpYHyA" points="[1, 6, 1, -60]$[1, 28, 1, -38]"/>
     </edges>
     <edges xmi:id="_Er308JQzEeWuO-fDDpYHyA" type="Transition" element="_Er2m0JQzEeWuO-fDDpYHyA" source="_3ATXspOAEeWuO-fDDpYHyA" target="_MurcgJQtEeWuO-fDDpYHyA">
       <children xsi:type="notation:DecorationNode" xmi:id="_Er309JQzEeWuO-fDDpYHyA" type="TransitionExpression">
@@ -104,7 +104,7 @@
     <edges xmi:id="_QwhOYJQ6EeWuO-fDDpYHyA" type="Transition" element="_QwgAQJQ6EeWuO-fDDpYHyA" source="_MurcgJQtEeWuO-fDDpYHyA" target="_3ATXspOAEeWuO-fDDpYHyA">
       <children xsi:type="notation:DecorationNode" xmi:id="_QwhOZJQ6EeWuO-fDDpYHyA" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_QwhOZZQ6EeWuO-fDDpYHyA"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_QwhOZpQ6EeWuO-fDDpYHyA" y="47"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_QwhOZpQ6EeWuO-fDDpYHyA" y="49"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_QwhOYZQ6EeWuO-fDDpYHyA" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_QwhOY5Q6EeWuO-fDDpYHyA" fontName="Verdana" fontHeight="11"/>

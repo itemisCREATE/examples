@@ -19,7 +19,7 @@ public class Main {
 		light1.setTimerService(new TimerService());
 		light2.setTimerService(new TimerService());
 
-		/* Instantiates and sets the sub machines */
+		/* Sets the sub machines */
 		controller.setLight1(light1);
 		controller.setLight2(light2);
 

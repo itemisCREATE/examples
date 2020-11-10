@@ -5,9 +5,8 @@
 	"description": "This example demonstrates how to generate C code from a multi state machine scenario.",
 	"previewImage": "watch_gears_thumb.jpg",
 	"category": [
-		"open source",
 		"code-generation"
 	],
-	"rank":60
+	"rank":13
 }
  

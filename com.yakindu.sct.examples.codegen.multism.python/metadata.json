@@ -8,6 +8,11 @@
 		"open source",
 		"code-generation"
 	],
-	"rank":60
+	"rank":43,
+	"dependencies": [
+		{	"updateSite": "http://www.pydev.org/updates/",
+			"features": ["org.python.pydev.feature.feature.group"]
+		}
+	]
 }
  

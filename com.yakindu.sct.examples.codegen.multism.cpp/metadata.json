@@ -5,6 +5,7 @@
 	"description": "This example demonstrates how to generate C++ code from a multi state machine scenario.",
 	"previewImage": "watch_gears_thumb.jpg",
 	"category": [
+		"professional",
 		"code-generation"
 	],
 	"rank":23

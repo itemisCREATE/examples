@@ -9,7 +9,7 @@
         <outgoingTransitions xmi:id="_Er2m0JQzEeWuO-fDDpYHyA" specification="on" target="_Muq1cJQtEeWuO-fDDpYHyA"/>
       </vertices>
       <vertices xsi:type="sgraph:State" xmi:id="_Muq1cJQtEeWuO-fDDpYHyA" specification="entry / &#xA;&#x9;brightness += 1;&#xA;&#x9;raise brightness_changed : brightness&#xA;&#xA;on [brightness &lt; max_brightness] / &#xA;&#x9;brightness += 1;&#xA;&#x9;raise brightness_changed : brightness" name="On" incomingTransitions="_Er2m0JQzEeWuO-fDDpYHyA">
-        <outgoingTransitions xmi:id="_QwgAQJQ6EeWuO-fDDpYHyA" specification="off" target="_3ASwp5OAEeWuO-fDDpYHyA"/>
+        <outgoingTransitions xmi:id="_QwgAQJQ6EeWuO-fDDpYHyA" specification="off, after 10 s" target="_3ASwp5OAEeWuO-fDDpYHyA"/>
       </vertices>
     </regions>
   </sgraph:Statechart>
@@ -104,7 +104,7 @@
     <edges xmi:id="_QwhOYJQ6EeWuO-fDDpYHyA" type="Transition" element="_QwgAQJQ6EeWuO-fDDpYHyA" source="_MurcgJQtEeWuO-fDDpYHyA" target="_3ATXspOAEeWuO-fDDpYHyA">
       <children xsi:type="notation:DecorationNode" xmi:id="_QwhOZJQ6EeWuO-fDDpYHyA" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_QwhOZZQ6EeWuO-fDDpYHyA"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_QwhOZpQ6EeWuO-fDDpYHyA" y="26"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_QwhOZpQ6EeWuO-fDDpYHyA" y="47"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_QwhOYZQ6EeWuO-fDDpYHyA" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_QwhOY5Q6EeWuO-fDDpYHyA" fontName="Verdana" fontHeight="11"/>

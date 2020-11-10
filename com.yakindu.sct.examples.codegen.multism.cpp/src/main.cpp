@@ -1,5 +1,9 @@
-#include <iostream>
-#include <string>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <time.h>
+#include <sys/time.h>
 
 #include "../src-gen/LightController.h"
 #include "../src-gen/sc_rxcpp.h"
@@ -8,60 +12,101 @@
 using namespace std;
 using namespace sc::timer;
 
-#define MAX_TIMERS 4
+/* ! As we make use of time triggers (after & every)
+ * we make use of a generic timer implementation
+ * and need a defined number of timers. */
+#define MAX_TIMERS 10
+
+//! We allocate the desired array of timer tasks.
+TimerTask tasks[MAX_TIMERS];
+
+//! The timer tasks are managed by a timer service. */
+TimerService *timerService = new TimerService(tasks, MAX_TIMERS);
+
+// Start point of the execution.
+unsigned long time_offset = 0;
+
+// Last execution time.
+unsigned long last_time = 0;
+
+// Current time.
+unsigned long current_time = 0;
+
+// Stores the time to sleep.
+struct timespec sleep_time;
+
+static char buf[20];
 
 /*! Observer with callback for the brightness_changed event */
-class LightOneObserver : public sc::rx::SingleSubscriptionObserver<int>{
+class LightOneObserver: public sc::rx::SingleSubscriptionObserver<int> {
 	virtual void next(int value) {
-		cout << "Light 1 Brightness: " + value << endl;
+		printf("Light 1 Brightness: %d.\n", value);
 	}
 };
 
 /*! Observer with callback for the brightness_changed event */
-class LightTwoObserver : public sc::rx::SingleSubscriptionObserver<int>{
+class LightTwoObserver: public sc::rx::SingleSubscriptionObserver<int> {
 	virtual void next(int value) {
-		cout << "Light 2 Brightness: " + value << endl;
+		printf("Light 2 Brightness: %d.\n", value);
 	}
 };
+
+unsigned long get_ms() {
+	struct timeval tv;
+	unsigned long ms;
+	gettimeofday(&tv, 0);
+	ms = tv.tv_sec * 1000 + (tv.tv_usec / 1000);
+	return ms;
+}
 
 int main(int argc, char **argv) {
-	/*! Instantiates the state machine */
-	LightController controller;
-
-	/* Sets the timer service */
-	TimerTask tasks[MAX_TIMERS];
-	TimerService *timerService = new TimerService(tasks, MAX_TIMERS);
-	controller.setTimerService(timerService);
-
-	/* Instantiates and sets the sub machines */
+	/*! Instantiates the state machines */
+	LightController *controller = new LightController();
 	Light *light1 = new Light();
 	Light *light2 = new Light();
-	controller.setLight1(light1);
-	controller.setLight2(light2);
 
-	/* Subscribes reaction on out event observables */
-	LightOneObserver light1Observer;
-	LightTwoObserver light2Observer;
-	light1Observer.subscribe(light1->getBrightness_changed());
-	light2Observer.subscribe(light2->getBrightness_changed());
+	controller->setTimerService(timerService);
+	light1->setTimerService(timerService);
+	light2->setTimerService(timerService);
+
+	/* Sets the sub machines */
+	controller->setLight1(light1);
+	controller->setLight2(light2);
+
+	/*! Subscribes observers to the lights' brightness_changed events */
+	LightOneObserver *light1Observer = new LightOneObserver();
+	LightTwoObserver *light2Observer = new LightTwoObserver();
+	light1Observer->subscribe(light1->getBrightness_changed());
+	light2Observer->subscribe(light2->getBrightness_changed());
 
 	/*! Enters the state machine; from this point on the state machine is ready to react on incoming event */
-	controller.enter();
+	controller->enter();
 
-	cout << "Type 'On' or 'Off' to switch the light on or off." << endl;
-	cout << "Type 'Blink' to toggle the blink mode." << endl;
-	string input;
-	while(1) {
-		cin >> input;
-		if(input == "On") {
-			/*! Raises the On event in the state machine which causes the corresponding transition to be taken */
-			controller.user()->raiseSwitch_on();
-		} else if(input == "Off") {
-			/*! Raises the Off event in the state machine */
-			controller.user()->raiseSwitch_off();
-		} else if(input == "Blink") {
-			/*! Raises the Off event in the state machine */
-			controller.user()->raiseBlink_mode();
+	sleep_time.tv_sec = 0;
+	sleep_time.tv_nsec = 100;
+	time_offset = get_ms();
+
+	printf("Type '1' or '0' to switch the lights on or off.\n");
+	printf("Type '2' to toggle the blink mode.\n");
+	fcntl(STDIN_FILENO, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
+	while (1) {
+		current_time = get_ms() - time_offset;
+		timerService->proceed(current_time - last_time);
+		int numRead = read(STDIN_FILENO, buf, 1);
+		if (numRead > 0) {
+			char input = buf[0];
+			if (input == '1') {
+				/*! Raises the switch_on event in the state machine which causes the corresponding transition to be taken */
+				controller->user()->raiseSwitch_on();
+			} else if (input == '0') {
+				/*! Raises the switch_off event in the state machine */
+				controller->user()->raiseSwitch_off();
+			} else if (input == '2') {
+				/*! Raises the blink event in the state machine */
+				controller->user()->raiseBlink_mode();
+			}
 		}
+		last_time = current_time;
+		nanosleep(&sleep_time, 0);
 	}
 }

@@ -2,6 +2,7 @@ package org.yakindu.sct.examples.codegen.java;
 
 import java.util.Scanner;
 
+import com.yakindu.core.TimerService;
 import com.yakindu.core.rx.Observer;
 
 public class Main {
@@ -26,13 +27,12 @@ public class Main {
 		/* Instantiates the state machine */
 		LightSwitch lightSwitch = new LightSwitch();
 		
-		/* Instantiates observer for the out events */
-		LightOnObserver lightOnObserver = new LightOnObserver();
-		LightOnObserver lightOffObserver = new LightOnObserver();
+		/* Set the timer service */
+		lightSwitch.setTimerService(new TimerService());
 		
 		/* Subscribes observers to the state machine's observables */
-		lightSwitch.light().getOn().subscribe(lightOnObserver);
-		lightSwitch.light().getOff().subscribe(lightOffObserver);
+		lightSwitch.light().getOn().subscribe(new LightOnObserver());
+		lightSwitch.light().getOff().subscribe(new LightOffObserver());
 		
 		/* Enters the state machine; from this point on the state machine is ready to react on incoming event */
 		lightSwitch.enter();
@@ -63,7 +63,7 @@ public class Main {
 	private static void printStatus(LightSwitch lightSwitch) {
 		/* Gets the value of the brightness variable */
 		long brightness = lightSwitch.light().getBrightness();
-		System.out.println("Light is on, brightness: " + brightness + ".");
+		System.out.println("Brightness: " + brightness + ".");
 	}
 
 }

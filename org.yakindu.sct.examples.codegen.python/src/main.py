@@ -51,7 +51,7 @@ class Main:
     def print_status(self):
         # Gets the value of the brightness variable 
         brightness = self.sm.light.brightness
-        print("Light brightness: ", brightness, ".")
+        print("Brightness: ", brightness, ".")
             
 
 if __name__ == '__main__':

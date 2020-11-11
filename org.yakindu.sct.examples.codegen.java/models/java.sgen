@@ -11,6 +11,10 @@ GeneratorModel for yakindu::java {
 		feature Naming {
 			basePackage = "org.yakindu.sct.examples.codegen.java"
 		}
+		/* Generate a default timer service implementation */
+		feature GeneralFeatures {
+			TimerService = true
+		}
 	}
 }
 

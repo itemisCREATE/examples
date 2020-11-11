@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -40,14 +41,14 @@ static char buf[20];
 /*! Observer with callback for the brightness_changed event */
 class LightOneObserver: public sc::rx::SingleSubscriptionObserver<int> {
 	virtual void next(int value) {
-		printf("Light 1 Brightness: %d.\n", value);
+		cout << "Light 1 Brightness: " << value << "." << endl;
 	}
 };
 
 /*! Observer with callback for the brightness_changed event */
 class LightTwoObserver: public sc::rx::SingleSubscriptionObserver<int> {
 	virtual void next(int value) {
-		printf("Light 2 Brightness: %d.\n", value);
+		cout << "Light 2 Brightness: " << value << "." << endl;
 	}
 };
 
@@ -65,11 +66,12 @@ int main(int argc, char **argv) {
 	Light *light1 = new Light();
 	Light *light2 = new Light();
 
+	/*! Sets the timer service to each state machine */
 	controller->setTimerService(timerService);
 	light1->setTimerService(timerService);
 	light2->setTimerService(timerService);
 
-	/* Sets the sub machines */
+	/*! Sets the sub machines */
 	controller->setLight1(light1);
 	controller->setLight2(light2);
 
@@ -82,14 +84,13 @@ int main(int argc, char **argv) {
 	/*! Enters the state machine; from this point on the state machine is ready to react on incoming event */
 	controller->enter();
 
+	/*! Ensures non-blocking read() call. */
+	fcntl(STDIN_FILENO, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
+	cout << "Type '1' or '0' to switch the light on or off." << endl;
+	cout << "Type '2' to toggle the blink mode." << endl;
 	sleep_time.tv_sec = 0;
 	sleep_time.tv_nsec = 100;
 	time_offset = get_ms();
-
-	printf("Type '1' or '0' to switch the lights on or off.\n");
-	printf("Type '2' to toggle the blink mode.\n");
-	/*! Ensures non-blocking read() call. */
-	fcntl(STDIN_FILENO, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
 	while (1) {
 		current_time = get_ms() - time_offset;
 		timerService->proceed(current_time - last_time);

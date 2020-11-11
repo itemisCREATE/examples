@@ -1,5 +1,6 @@
 from light_switch import LightSwitch
 from yakindu.rx import Observer
+from yakindu.timer.timer_service import TimerService
 
 class Main:
     
@@ -22,6 +23,8 @@ class Main:
         self.lightOffObserver = self.LightOffObserver()
         
     def setup(self):
+        # Set the timer service
+        self.sm.timer_service = TimerService()
         # Subscribes observers to the state machine's observables 
         self.sm.light.on_observable.subscribe(self.lightOnObserver)
         self.sm.light.off_observable.subscribe(self.lightOffObserver)
@@ -48,7 +51,7 @@ class Main:
     def print_status(self):
         # Gets the value of the brightness variable 
         brightness = self.sm.light.brightness
-        print("Light is on, brightness: ", brightness, ".")
+        print("Light brightness: ", brightness, ".")
             
 
 if __name__ == '__main__':

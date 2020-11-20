@@ -65,7 +65,18 @@
 		</p>
 		<h2>Coverage</h2>
 		<p>
-			Another feature, which supports testing your state machine, is the coverage feature.
+			YAKINDU Statechart Tools supports another feature to improve the testing quality: Coverage. Each time a test is executed, a coverage analysis will be started. The coverage score coverage indicates how much of the state machine paths have been tested.
+		</p>
+		<p>
+			Let's take the TrafficLightTest and remove every test except the very first one - <code>testInitiallyTurnedOff</code>. Executing the test will also run a coverage analysis, as mentioned before. The result of the coverage analysis is 25%:
+			<img class="small" 
+			alt="Coverage report" title="Coverage report" border="0" src="images/coverage_report_1.png"/>
+			Because only the initial state has been entered. The <code>On</code> state has not covered. The <code>Off</code> state only in parts, as there was no outgoing transition. this is also shown in the model:
+			<img class="small" 
+			alt="Coverage model" title="Coverage model" border="0" src="images/coverage_model_1.png"/>
+		</p>
+		<p>
+			Adding more and more test cases will increase the coverage to 100%.
 		</p>
 	</div>
 </body>

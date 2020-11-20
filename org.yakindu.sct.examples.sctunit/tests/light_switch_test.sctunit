@@ -1,4 +1,4 @@
-testclass light_switch_test_2 for statechart LightSwitch {
+testclass LightSwitchTest for statechart LightSwitch {
 
 	const ON : boolean = true
 	const OFF : boolean = false

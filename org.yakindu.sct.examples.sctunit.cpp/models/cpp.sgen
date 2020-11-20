@@ -1,0 +1,17 @@
+/* Defines which code generator to use */ 
+GeneratorModel for yakindu::cpp {
+	/* Refers to the statechart model 'LightSwitch' */
+	statechart LightSwitch {
+		/* Specify the target location for the generated artifacts. */
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.sctunit.cpp"
+			targetFolder = "src-gen"
+		}
+		/* TODO: Should be possible using observables only. */
+		feature OutEventAPI {
+			getters = true
+			observables = false
+		}
+	}
+}
+

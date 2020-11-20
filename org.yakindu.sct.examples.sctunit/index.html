@@ -35,9 +35,9 @@
 		<p>
 			There are differnt ways of how to write tests. For this example series we're using the <a href="https://en.wikipedia.org/wiki/Given-When-Then">Given-When-Then (GWT)</a> way to write the tests:
 			<ul>
-				<li>The given part describes the state of the world before you begin the behavior you're specifying in this scenario. You can think of it as the pre-conditions to the test.</li>
-				<li>The when section is that behavior that you're specifying.</li>
-				<li>Finally the then section describes the changes you expect due to the specified behavior.</li>
+				<li><i>"The given part describes the state of the world before you begin the behavior you're specifying in this scenario. You can think of it as the pre-conditions to the test."</i></li>
+				<li><i>"The when section is that behavior that you're specifying."</i></li>
+				<li><i>"Finally the then section describes the changes you expect due to the specified behavior."</i></li>
 			</ul>
 			See: <a href="https://martinfowler.com/bliki/GivenWhenThen.html">https://martinfowler.com/bliki/GivenWhenThen.html</a>
 		</p>
@@ -58,7 +58,14 @@
 				<li>A <code>pressUserButton</code> operation, to raise events (When).</li>
 				<li>Helper functions that does the assertions (Then).</li>
 			</ul>
+			The test can be executed with <i>Right click</i> -> <i>Run As</i> -> <i>SCT Unit</i>. Further informations of how to use the SCTUnit language can be found in our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sctunit_the_sctunit_language#sctunit_the_sctunit_language">documentation</a>.
+			<h3>Test implementation</h3>
+			This is the complete test implementation:
 			<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/issue-214-sctunit-examples/org.yakindu.sct.examples.sctunit/tests/light_switch_test.sctunit"></script>
+		</p>
+		<h2>Coverage</h2>
+		<p>
+			Another feature, which supports testing your state machine, is the coverage feature.
 		</p>
 	</div>
 </body>

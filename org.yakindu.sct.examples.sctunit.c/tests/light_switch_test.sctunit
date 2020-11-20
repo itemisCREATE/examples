@@ -1,58 +1,24 @@
 testclass LightSwitchTest for statechart LightSwitch {
-
+	
+	/* Constants for testing purpose. */
 	const ON : boolean = true
 	const OFF : boolean = false
 	const EVENT_RAISED : boolean = true
 	const EVENT_NOT_RAISED : boolean = false
 	
+	/*
+	 * The LightSwitchTest contains different test cases:
+	 * - turn light on
+	 * - stays turned off by pressing off in 'Off' state
+	 * - raise brightness with default mock
+	 * - raise brightness to an expected value
+	 * - raise brightness to its maximum
+	 * - brightness does not exceed the maximum
+	 * - turn light off using the off button
+	 * - turn light off after 30 s
+	 * - not the light off after 29.999 s
+	 */
 	
-	operation lightIsOff() {
-		enter
-
-		assert active (main_region.Off)
-		assert light.brightness == 0
-		assert light.off
-		assert !light.on
-		assert called light.computeMaxBrightness 0 times
-	}
-
-	operation lightIsOn() {
-		enter
-
-		raise user.on_button
-
-		assert active (main_region.On)
-		assert light.brightness == 1
-		assert !light.off
-		assert light.on
-		assert called light.computeMaxBrightness() 0 times
-	}
-	
-	operation assertLightIsOn(brightness : integer, onIsRaised : boolean) {
-		assert light.brightness == brightness
-		assert light.on == onIsRaised
-		assert light.off == false
-	}
-	
-	operation assertLightIsOff(offIsRaised : boolean) {
-		assert light.brightness == 0
-		assert light.on == false
-		assert light.off == offIsRaised
-	}
-
-	operation pressUserButton (button : boolean , value : integer) {
-		var cnt = value
-		while (cnt > 0) {
-			if (button == ON) {
-				raise user.on_button
-			}
-			else {
-				raise user.off_button
-			}
-			cnt -= 1
-		}
-	}
-
 	@Test
 	operation testTurnOn() { 
 		// given
@@ -164,4 +130,77 @@ testclass LightSwitchTest for statechart LightSwitch {
 		assertLightIsOn(1, EVENT_RAISED)
 	}
 	
+	/* Setup for light off (given):
+	 * - State Off is active
+	 * - Brightness is 0
+	 * - Light off is raised
+	 * - Light on is not raised
+	 * - computeMaxBrightness has not been called
+	 */
+	operation lightIsOff() {
+		enter
+
+		assert active (main_region.Off)
+		assert light.brightness == 0
+		assert light.off
+		assert !light.on
+		assert called light.computeMaxBrightness 0 times
+	}
+	
+	/* Setup for light on (given):
+	 * - State On is active
+	 * - Brightness is 1
+	 * - Light off is not raised
+	 * - Light on is raised
+	 * - computeMaxBrightness has not been called
+	 */
+	operation lightIsOn() {
+		enter
+		raise user.on_button
+
+		assert active (main_region.On)
+		assert light.brightness == 1
+		assert !light.off
+		assert light.on
+		assert called light.computeMaxBrightness() 0 times
+	}
+	
+	/* Press the on or off button (when):
+	 * - raise the 'on' or 'off' event several times
+	 */
+	operation pressUserButton (button : boolean , value : integer) {
+		while (value > 0) {
+			if (button == ON) {
+				raise user.on_button
+			}
+			else {
+				raise user.off_button
+			}
+			value -= 1
+		}
+	}
+	
+	/*
+	 * Assertions for light is on (then):
+	 * - brightness is set to the expected value
+	 * - out event 'on' is raised (or not)
+	 * - out event 'off' is not raised
+	 */
+	operation assertLightIsOn(brightness : integer, onIsRaised : boolean) {
+		assert light.brightness == brightness
+		assert light.on == onIsRaised
+		assert light.off == false
+	}
+	
+	/*
+	 * Assertions for light is off (then):
+	 * - brightness is 0
+	 * - out event 'on' is not raised
+	 * - out event 'off' is raised (or not)
+	 */	
+	operation assertLightIsOff(offIsRaised : boolean) {
+		assert light.brightness == 0
+		assert light.on == false
+		assert light.off == offIsRaised
+	}
 }

@@ -1,6 +1,6 @@
 {
 	"id": "org.yakindu.sct.examples.sctunit",
-	"title": "Testing Statecharts with SCTUnit",
+	"title": "Testing State Machines with SCTUnit",
 	"author": "itemis AG",
 	"description": "This example demonstrates how to write tests for statecharts using SCTUnit.",
 	"previewImage": "watch_gears_thumb.jpg",

@@ -2,80 +2,63 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>C Code Generation for Multi State Machines</title>
+	<title>Testing State Machines with SCTUnit</title>
 	<link href="./css/style.css" rel="stylesheet">
 	
 </head>
 <body class="body-container">
 	<div class="primary">
 
-		<h1>C Code Generation for Multi State Machines</h1>
-
-		<p>This example demonstrates how to generate C code for a multi state machine scenario and how to set everything up in the application code. As example, we will use a light controller that controls two lights. The controller as well as the lights are defined by state machines that communicate with each other by the means of events.</p>
+		<h1>Testing State Machines with SCTUnit</h1>
 		<p>
-			You can find more information on using the multi state machine feature in the <a
-				href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/multi_state_machine_modelling">online
-				documentation</a>.
+			This example demonstrates how to write tests for statecharts using SCTUnit.
+			It demonstrates how to write tests effectively, how to run them and using a coverage analysis to check if the model has been tested completly.
 		</p>
+
 		<h2>Example Application</h2>
 		<p>
-		The example application consists of two state machines, one for the controller, and one that describes a simple light switch.
+			As an example application we will use the light switch example with brightness adjustment from the <a href="../examples/org-yakindu-sct-examples-basic-tutorial?exampleId=org.yakindu.sct.examples.lightswitch_series">Basic Tutorial</a>.
 		</p>
+		<img class="large" 
+		alt="Light switch model" title="Light switch model" border="0" src="images/model.png"/>
 		<p>
-		<img class="full" alt="Light switch model" title="Light switch model" border="0" src="images/light.png"/>
+			The light switch model simply consists of two states, <code>On</code> and <code>Off</code>, and respectively two incoming events <code>on_button</code> and <code>off_button</code>. Each time the event <code>on</code> is received, the brightness is increased until a maximum brightness is reached. The maximum of the brightness will be calculated by the operation <code>computeMaxBrightness</code>, which returns an integer. This operation will be mocked later on in the test. Additionally, the light will automatically turn off after 30 seconds. Thus, all available modelling components are used that are testable:
+			<ul>
+				<li>In Events</li>
+				<li>Out Events</li>
+				<li>Timed Events</li>
+				<li>Variables</li>
+				<li>Operations</li>
+			</ul>
 		</p>
+		<h2>Test Strategy</h2>
 		<p>
-		The light switch model simply consists of two states, <code>On</code> and <code>Off</code>, and respectively two incoming events <code>on</code> and <code>off</code>. Each time the event <code>on</code> is received, the brightness is increased until a maximum brightness is reached. Whenever the brightness changes, the outgoing event <code>brightness_changed</code> is raised with the new brightness value. Both, the incoming and outgoing events, are used in the controller machine to control two different lights.
+			There are differnt ways of how to write tests. For this example series we're using the <a href="https://en.wikipedia.org/wiki/Given-When-Then">Given-When-Then (GWT)</a> way to write the tests:
+			<ul>
+				<li>The given part describes the state of the world before you begin the behavior you're specifying in this scenario. You can think of it as the pre-conditions to the test.</li>
+				<li>The when section is that behavior that you're specifying.</li>
+				<li>Finally the then section describes the changes you expect due to the specified behavior.</li>
+			</ul>
+			See: <a href="https://martinfowler.com/bliki/GivenWhenThen.html">https://martinfowler.com/bliki/GivenWhenThen.html</a>
 		</p>
+		<p> Let's transfer this to our example, where we want to test the behavior of the model.
+			For example we want to test if the light will be turned off, when its on by pressing the off button:
+			<ol>
+				<li><b>Given</b> is a predefined state machine. Let's say the statechart is in the<code>On</code> state.</li>
+				<li><b>When</b> pressing the off button by raising the <code>off_button</code> event...</li>
+				<li><b>Then</b> the state machine should be in the <code>Off</code> State. So we assert this.</li>
+			</ol>
+			Using this way of testing, we can test the model step by step in small, seperated pieces. Thus, later extensiosn of the model can be adapted easily and ensure that the functionalities, which may be mapped to requirements, are fullfilled.
+		</p>
+		<h2>SCTUnit Test</h2>
 		<p>
-		<img class="tiny" alt="Light controller model" title="Light controller model" border="0" src="images/light_controller_defsection.png"/>
-		</p>
-		<p>
-		Let's first take a look at the definition section. The controller machine declares two variables <code>light1</code> and <code>light2</code> of type <code>Light</code> which represents the light state machine above. When the controller machine is entered, also these two light machines are entered. In addition, they get initialized with different maximum brightness values.
-		</p>
-		<p>
-		<img class="full" alt="Light controller model" title="Light controller model" border="0" src="images/light_controller_machine.png"/>
-		</p>
-		<p>
-		The state machine basically describes two modes, a regular one in which the <code>switch_on</code> event is just passed on to both light machines, and a blink mode in which the lights' <code>on</code> events are raised periodically. In this mode, both lights' brightness will be automatically increased until its maximum where it starts from zero again. In order to notice when the maximum brightness of a light is reached, the <code>BlinkMode</code> state reacts to the light machines' <code>brightness_changed</code> events and reads the transmitted value.
-		</p>
-		
-		<h2>Generator Model</h2>
-		<p>
-		The generator model simply defines the configuration for both state machines. As the state machines use time events, we ensure that a timer service implementation is generated with the <code>TimerService</code> parameter.
-		</p>
-		<p>
-		<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/org.yakindu.sct.examples.codegen.multism.c/models/c.sgen"></script>
-		</p>
-		</p>
-		
-		<h2>Invoking Code Generation</h2>
-		<p>
-		Code generation is usually invoked each time the statechart model is saved. This behavior can be disabled by unchecking the option <em>Project -> Build Automatically</em>. You can always manually invoke the code generation with <em>Generate Code Artifacts</em> in the context menu of the generator model.
-		</p>
-		
-		<h2>Application Code</h2>
-		<p>
-		Our application is a simple interactive console with which the user can switch the lights on or off as well as toggle the blink mode. The complete application code is implemented in <code>main.c</code>:
-		</p>
-		<p>
-		<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/org.yakindu.sct.examples.codegen.multism.c/src/main.c"></script>
-		</p>
-		<p>
-		The most important parts are commented in the <code>main.c</code> file. These are the bullet points:
-		<ul>
-			<li>Initialize the timer service with a dispatch function</li>
-			<li>Initialize the state machines and set the sub machines</li>
-			<li>Subscribe observers to get notified whenever the brightness of a light changes</li>
-			<li>Enter the controller machine; from this point on the state machine is ready to react on incoming event</li>
-			<li>Hook up the console input to raise events on the controller machine</li>
-		</ul>
-		</p>
-		<p>
-		You can run the application with <em>Run As -> Local C/C++ Application</em> on the <code>main.c</code> file. A console should open and ask you for input like in the screenshot below.
-		</p>
-		<p>
-		<img class="tiny" alt="Light switch console application" title="Light switch console application" border="0" src="images/console.png"/>
+			The SCTUnit test itself contains three different parts. The main part obviously are the tests, which are operations annotated with <code>@Test</code>. Additionally, there are other operations, which do two things:
+			<ul>
+				<li>Set the state machine to a predefined state (Given).</li>
+				<li>A <code>pressUserButton</code> operation, to raise events (When).</li>
+				<li>Helper functions that does the assertions (Then).</li>
+			</ul>
+			<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/issue-214-sctunit-examples/org.yakindu.sct.examples.sctunit/tests/light_switch_test.sctunit"></script>
 		</p>
 	</div>
 </body>

@@ -1,0 +1,11 @@
+{
+	"id": "org.yakindu.sct.examples.trafficlight.java.sctunit",
+	"title": "Traffic Light (Java) with SCTUnit",
+	"author": "itemis AG",
+	"description": "Demonstrates how to use SCTUnit by using the Traffic Light model.",
+	"previewImage": "traffic_light_thumb.jpg",
+	"category": [
+		"open source",
+		"testing"
+	]
+}

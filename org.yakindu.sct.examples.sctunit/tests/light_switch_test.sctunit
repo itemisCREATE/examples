@@ -1,0 +1,167 @@
+testclass light_switch_test_2 for statechart LightSwitch {
+
+	const ON : boolean = true
+	const OFF : boolean = false
+	const EVENT_RAISED : boolean = true
+	const EVENT_NOT_RAISED : boolean = false
+	
+	
+	operation lightIsOff() {
+		enter
+
+		assert active (main_region.Off)
+		assert light.brightness == 0
+		assert light.off
+		assert !light.on
+		assert called light.computeMaxBrightness 0 times
+	}
+
+	operation lightIsOn() {
+		enter
+
+		raise user.on_button
+
+		assert active (main_region.On)
+		assert light.brightness == 1
+		assert !light.off
+		assert light.on
+		assert called light.computeMaxBrightness() 0 times
+	}
+	
+	operation assertLightIsOn(brightness : integer, onIsRaised : boolean) {
+		assert light.brightness == brightness
+		assert light.on == onIsRaised
+		assert light.off == false
+	}
+	
+	operation assertLightIsOff(offIsRaised : boolean) {
+		assert light.brightness == 0
+		assert light.on == false
+		assert light.off == offIsRaised
+	}
+
+	operation pressUserButton (button : boolean , value : integer) {
+		var cnt = value
+		while (cnt > 0) {
+			if (button == ON) {
+				raise user.on_button
+			}
+			else {
+				raise user.off_button
+			}
+			cnt -= 1
+		}
+	}
+
+	@Test
+	operation testTurnOn() { 
+		// given
+		lightIsOff()
+		
+		// when
+		pressUserButton(ON, 1)
+		
+		// then
+		assertLightIsOn(1, EVENT_RAISED)
+	}
+	
+	@Test
+	operation testStaysTurnedOff() {
+		// given
+		lightIsOff()
+		
+		// when
+		pressUserButton(OFF, 10)
+		
+		//then
+		assertLightIsOff(EVENT_NOT_RAISED)
+	}
+	
+	@Test
+	operation testRaiseBrightnessWithDefaultMock() {
+		// given
+		lightIsOn()
+		
+		// when
+		pressUserButton(ON, 10)
+		
+		// then
+		assertLightIsOn(1, EVENT_NOT_RAISED)
+	}
+	
+	@Test
+	operation testRaiseBrightness() {
+		// given
+		mock light.computeMaxBrightness returns (5)
+		lightIsOn()
+		
+		// when
+		pressUserButton(ON, 1)
+		
+		// then
+		assertLightIsOn(2, EVENT_NOT_RAISED)		
+	}
+
+	@Test
+	operation testRaiseToMaxBrightness() {
+		// given
+		mock light.computeMaxBrightness returns (5)
+		lightIsOn()
+		
+		// when
+		pressUserButton(ON, 5)
+		
+		// then
+		assertLightIsOn(5, EVENT_NOT_RAISED)
+	}
+	
+	@Test
+	operation testRaiseToMaxBrightnessDoesNotExceedMaximum() {
+		// given
+		mock light.computeMaxBrightness returns (5)
+		lightIsOn()
+		
+		// when
+		pressUserButton(ON, 10)
+		
+		// then
+		assertLightIsOn(5, EVENT_NOT_RAISED)
+	}
+	
+	@Test
+	operation testTurnOff() {
+		// given
+		lightIsOn()
+		
+		// when
+		pressUserButton(OFF, 1)
+		
+		// then
+		assertLightIsOff(EVENT_RAISED)
+	}
+	
+	@Test
+	operation testTurnOffAfter30Seconds() {
+		// given
+		lightIsOn()
+		
+		// when
+		proceed 30 s
+		
+		// then
+		assertLightIsOff(EVENT_RAISED)
+	}
+	
+	@Test
+	operation testNotTurnOffAfterLessThan30Seconds() {
+		// given
+		lightIsOn()
+		
+		// when
+		proceed 29999 ms
+		
+		// then
+		assertLightIsOn(1, EVENT_RAISED)
+	}
+	
+}

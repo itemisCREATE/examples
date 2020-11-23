@@ -12,7 +12,7 @@
 		<h1>Testing State Machines with SCTUnit</h1>
 		<p>
 			This example demonstrates how to write tests for statecharts using SCTUnit.
-			It demonstrates how to write tests effectively, how to run them and using a coverage analysis to check if the model has been tested completly.
+			It demonstrates how to write tests effectively, how to run them and use a coverage analysis to check if the model has been tested completely.
 		</p>
 
 		<h2>Example Application</h2>
@@ -22,7 +22,7 @@
 		<img class="large" 
 		alt="Light switch model" title="Light switch model" border="0" src="images/model.png"/>
 		<p>
-			The light switch model simply consists of two states, <code>On</code> and <code>Off</code>, and respectively two incoming events <code>on_button</code> and <code>off_button</code>. Each time the event <code>on</code> is received, the brightness is increased until a maximum brightness is reached. The maximum of the brightness will be calculated by the operation <code>computeMaxBrightness</code>, which returns an integer. This operation will be mocked later on in the test. Additionally, the light will automatically turn off after 30 seconds. Thus, all available modelling components are used that are testable:
+			The light switch model simply consists of two states, <code>On</code> and <code>Off</code>, and respectively two incoming events <code>on_button</code> and <code>off_button</code>. Each time the event <code>on</code> is received, the brightness is increased until a maximum brightness is reached. The maximum of the brightness will be calculated by the operation <code>computeMaxBrightness()</code>, which returns an integer. This operation will be mocked later on in the test. Additionally, the light will automatically turn off after 30 seconds. Thus, all testable modeling components are used:
 			<ul>
 				<li>In Events</li>
 				<li>Out Events</li>
@@ -33,7 +33,7 @@
 		</p>
 		<h2>Test Strategy</h2>
 		<p>
-			There are differnt ways of how to write tests. For this example series we're using the <a href="https://en.wikipedia.org/wiki/Given-When-Then">Given-When-Then (GWT)</a> way to write the tests:
+			There are different ways of how to write tests. For this example series we are using the <a href="https://en.wikipedia.org/wiki/Given-When-Then">Given-When-Then (GWT)</a> way to write the tests:
 			<ul>
 				<li><i>"The given part describes the state of the world before you begin the behavior you're specifying in this scenario. You can think of it as the pre-conditions to the test."</i></li>
 				<li><i>"The when section is that behavior that you're specifying."</i></li>
@@ -42,13 +42,13 @@
 			See: <a href="https://martinfowler.com/bliki/GivenWhenThen.html">https://martinfowler.com/bliki/GivenWhenThen.html</a>
 		</p>
 		<p> Let's transfer this to our example, where we want to test the behavior of the model.
-			For example we want to test if the light will be turned off, when its on by pressing the off button:
+			For example we want to test if the light will be turned off while it is on and the off button is pressed:
 			<ol>
-				<li><b>Given</b> is a predefined state machine. Let's say the statechart is in the<code>On</code> state.</li>
+				<li><b>Given</b> is a predefined state machine. In this case, the statechart shall be in the<code>On</code> state.</li>
 				<li><b>When</b> pressing the off button by raising the <code>off_button</code> event...</li>
 				<li><b>Then</b> the state machine should be in the <code>Off</code> State. So we assert this.</li>
 			</ol>
-			Using this way of testing, we can test the model step by step in small, seperated pieces. Thus, later extensiosn of the model can be adapted easily and ensure that the functionalities, which may be mapped to requirements, are fullfilled.
+			Using this way of testing, we can test the model step by step in small, separated pieces. Thus, later extensions of the model can be adapted easily while ensuring that the functionalities, which may be mapped to requirements, are fullfilled.
 		</p>
 		<h2>SCTUnit Test</h2>
 		<p>
@@ -56,27 +56,27 @@
 			<ul>
 				<li>Set the state machine to a predefined state (Given).</li>
 				<li>A <code>pressUserButton</code> operation, to raise events (When).</li>
-				<li>Helper functions that does the assertions (Then).</li>
+				<li>Helper functions that do the assertions (Then).</li>
 			</ul>
-			The test can be executed with <i>Right click</i> -> <i>Run As</i> -> <i>SCT Unit</i>. Further informations of how to use the SCTUnit language can be found in our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sctunit_the_sctunit_language#sctunit_the_sctunit_language">documentation</a>.
+			The test can be executed with <i>Right click</i> -> <i>Run As</i> -> <i>SCT Unit</i>. Further informations on how to use the SCTUnit language can be found in our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sctunit_the_sctunit_language#sctunit_the_sctunit_language">documentation</a>.
 			<h3>Test implementation</h3>
 			This is the complete test implementation:
 			<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/issue-214-sctunit-examples/org.yakindu.sct.examples.sctunit/tests/light_switch_test.sctunit"></script>
 		</p>
 		<h2>Coverage</h2>
 		<p>
-			YAKINDU Statechart Tools supports another feature to improve the testing quality: Coverage. Each time a test is executed, a coverage analysis will be started. The coverage score coverage indicates how much of the state machine paths have been tested.
+			YAKINDU Statechart Tools supports another feature to improve the testing quality: Coverage. Each time a test is executed, a coverage analysis is started. The coverage score indicates how many of the state machine paths have been tested.
 		</p>
 		<p>
-			Let's take the TrafficLightTest and remove every test except the very first one - <code>testInitiallyTurnedOff</code>. Executing the test will also run a coverage analysis, as mentioned before. The result of the coverage analysis is 25%:
+			Let's take the LightSwitchTest and remove every test except for the very first one - <code>testInitiallyTurnedOff</code>. Executing the test will also run a coverage analysis, as mentioned before. The result of the coverage analysis is displayed in the coverage view:
 			<img class="small" 
 			alt="Coverage report" title="Coverage report" border="0" src="images/coverage_report_1.png"/>
-			Because only the initial state has been entered. The <code>On</code> state has not covered. The <code>Off</code> state only in parts, as there was no outgoing transition. this is also shown in the model:
+			As only the initial state has been entered, the <code>On</code> state is not covered at all by the test. The <code>Off</code> state is only covered in parts, as no outgoing transition is taken. The coverage state is visualized in the model when you select an element from the coverage view:
 			<img class="small" 
 			alt="Coverage model" title="Coverage model" border="0" src="images/coverage_model_1.png"/>
 		</p>
 		<p>
-			Adding more and more test cases will increase the coverage to 100%.
+			Adding more and more test cases will increase the coverage up to 100%.
 		</p>
 	</div>
 </body>

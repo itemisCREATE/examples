@@ -17,7 +17,7 @@ testclass LightSwitchTest for statechart LightSwitch {
 	 * - brightness does not exceed the maximum
 	 * - turn light off using the off button
 	 * - turn light off after 30 s
-	 * - not the light off after 29.999 s
+	 * - light stays on after 29.999 s
 	 */
 	
 	@Test

@@ -57,18 +57,6 @@ testclass LightSwitchTest for statechart LightSwitch {
 	}
 	
 	@Test
-	operation testRaiseBrightnessWithDefaultMock() {
-		// given
-		lightIsOn()
-		
-		// when
-		pressUserButton(ON, 10)
-		
-		// then
-		assertLightIsOn(1, EVENT_NOT_RAISED)
-	}
-	
-	@Test
 	operation testRaiseBrightness() {
 		// given
 		mock light.computeMaxBrightness returns (5)

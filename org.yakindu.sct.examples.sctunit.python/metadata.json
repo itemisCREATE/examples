@@ -1,6 +1,6 @@
 {
 	"id": "org.yakindu.sct.examples.sctunit.python",
-	"title": "Python Test Code Generation with unittest",
+	"title": "Python Code Generation for SCTUnit with unittest",
 	"author": "itemis AG",
 	"description": "This example demonstrates how to generate unittests for SCTUnit tests.",
 	"previewImage": "watch_gears_thumb.jpg",

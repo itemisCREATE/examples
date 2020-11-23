@@ -2,80 +2,52 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>C Code Generation for SCTUnit (GTest)</title>
+	<title>C Code Generation for SCTUnit with GTest</title>
 	<link href="./css/style.css" rel="stylesheet">
 	
 </head>
 <body class="body-container">
 	<div class="primary">
 
-		<h1>C Code Generation for SCTUnit (GTest)</h1>
+		<h1>C Code Generation for SCTUnit with GTest</h1>
+		<p>This example demonstrates how to generate GTest code from SCTUnit tests and how to set everything up. The test program can be compiled, executed and integrated in your build process easily.
+		</p>
 
-		<p>This example demonstrates how to generate C code for state machine and how to set everything up in the application code. As example, we will use a light controller that controls two lights. The controller as well as the lights are defined by state machines that communicate with each other by the means of events.</p>
+		<h2>Example application</h2>
 		<p>
-			You can find more information on using the multi state machine feature in the <a
-				href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/multi_state_machine_modelling">online
-				documentation</a>.
-		</p>
-		<h2>Example Application</h2>
-		<p>
-		The example application consists of two state machines, one for the controller, and one that describes a simple light switch.
+			The example application and SCTUnit test is based on the previous example <i>Testing State Machines with SCTUnit</i>. You can check it out in the example wizard or visit on our homepage: <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/examples/org-yakindu-sct-examples-sctunit">Testing State Machines with SCTUnit</a>.
 		</p>
 		<p>
-		<img class="full" alt="Light switch model" title="Light switch model" border="0" src="images/light.png"/>
+			<img class="large" 
+			alt="Light switch model" title="Light switch model" border="0" src="images/model.png"/>
+		</p>
+		<h2>GoogleTest - GTest</h2>
+		<p>
+			GTest is a multi-platform testing framework written in C++ by Google. It allows writing tests for C and C++. You can find the repository here: <a href="https://github.com/google/googletest">https://github.com/google/googletest</a>.
+		</p>
+
+		<h3>Installing GTest</h3>
+		<p>
+			The installation of GTest is based on your operating system. Google provides generic installation instructions: <a href="https://github.com/google/googletest/blob/master/googletest/README.md">https://github.com/google/googletest/blob/master/googletest/README.md</a>.
+		</p>
+		<h3>Setup Projects Properties</h3>
+		<p>
+			For compiling a C++ project in Eclipse is required. Additionnally, the <code>gmock_main</code> and <code>pthread</code> library must be added to the C++ Linker is required. For this test project, the project has already been configured. However, if you want to create your own projects executing tests, you need to add the libraries them. Note: The including order of the library is important!
 		</p>
 		<p>
-		The light switch model simply consists of two states, <code>On</code> and <code>Off</code>, and respectively two incoming events <code>on</code> and <code>off</code>. Each time the event <code>on</code> is received, the brightness is increased until a maximum brightness is reached. Whenever the brightness changes, the outgoing event <code>brightness_changed</code> is raised with the new brightness value. Both, the incoming and outgoing events, are used in the controller machine to control two different lights.
+			<img class="large" alt="C++ Linker" title="C++ Linker" border="0" src="images/linker_libraries.png"/>
+		</p>
+
+		<h2>Test Code Generation</h2>
+		<p>
+			Code generation for C code has already shown step by step in the previous example <i>C Code Generation</i>. You can check it out in the example wizard or visit on our homepage: <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/examples/org-yakindu-sct-examples-codegen-c">C Code Generation</a>. This example contains a code generator <code>c.sgen</code> file for generating the state machine code, which is required. Additionally to that, the <code>tests</code> folder contains a code generator file for the SCTUnit file: <code>c_test.sgen</code>. The generator ID for this example is <code>sctunit::c</code>. You can right click the generator file and generate the code artifacts. This will generate a GTest file (.cc), which can be compiled and executed. You can change the test file and regenerate the test.
+		</p>
+		<h2>Compiling and execution</h2>
+		<p>
+			After generating the code, the project can be compiled: <i>Right click</i>-><i>Build project</i>. After this you can run the created binary. This is the test output:
 		</p>
 		<p>
-		<img class="tiny" alt="Light controller model" title="Light controller model" border="0" src="images/light_controller_defsection.png"/>
-		</p>
-		<p>
-		Let's first take a look at the definition section. The controller machine declares two variables <code>light1</code> and <code>light2</code> of type <code>Light</code> which represents the light state machine above. When the controller machine is entered, also these two light machines are entered. In addition, they get initialized with different maximum brightness values.
-		</p>
-		<p>
-		<img class="full" alt="Light controller model" title="Light controller model" border="0" src="images/light_controller_machine.png"/>
-		</p>
-		<p>
-		The state machine basically describes two modes, a regular one in which the <code>switch_on</code> event is just passed on to both light machines, and a blink mode in which the lights' <code>on</code> events are raised periodically. In this mode, both lights' brightness will be automatically increased until its maximum where it starts from zero again. In order to notice when the maximum brightness of a light is reached, the <code>BlinkMode</code> state reacts to the light machines' <code>brightness_changed</code> events and reads the transmitted value.
-		</p>
-		
-		<h2>Generator Model</h2>
-		<p>
-		The generator model simply defines the configuration for both state machines. As the state machines use time events, we ensure that a timer service implementation is generated with the <code>TimerService</code> parameter.
-		</p>
-		<p>
-		<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/org.yakindu.sct.examples.codegen.multism.c/models/c.sgen"></script>
-		</p>
-		</p>
-		
-		<h2>Invoking Code Generation</h2>
-		<p>
-		Code generation is usually invoked each time the statechart model is saved. This behavior can be disabled by unchecking the option <em>Project -> Build Automatically</em>. You can always manually invoke the code generation with <em>Generate Code Artifacts</em> in the context menu of the generator model.
-		</p>
-		
-		<h2>Application Code</h2>
-		<p>
-		Our application is a simple interactive console with which the user can switch the lights on or off as well as toggle the blink mode. The complete application code is implemented in <code>main.c</code>:
-		</p>
-		<p>
-		<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/org.yakindu.sct.examples.codegen.multism.c/src/main.c"></script>
-		</p>
-		<p>
-		The most important parts are commented in the <code>main.c</code> file. These are the bullet points:
-		<ul>
-			<li>Initialize the timer service with a dispatch function</li>
-			<li>Initialize the state machines and set the sub machines</li>
-			<li>Subscribe observers to get notified whenever the brightness of a light changes</li>
-			<li>Enter the controller machine; from this point on the state machine is ready to react on incoming event</li>
-			<li>Hook up the console input to raise events on the controller machine</li>
-		</ul>
-		</p>
-		<p>
-		You can run the application with <em>Run As -> Local C/C++ Application</em> on the <code>main.c</code> file. A console should open and ask you for input like in the screenshot below.
-		</p>
-		<p>
-		<img class="tiny" alt="Light switch console application" title="Light switch console application" border="0" src="images/console.png"/>
+			<img class="large" alt="GTest output" title="GTest output" border="0" src="images/testoutput.png"/>
 		</p>
 	</div>
 </body>

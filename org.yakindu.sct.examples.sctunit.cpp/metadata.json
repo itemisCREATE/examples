@@ -1,0 +1,13 @@
+{
+	"id": "org.yakindu.sct.examples.sctunit.cpp",
+	"title": "C++ Code Generation for SCTUnit with GTest",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to generate GTests for SCTUnit tests.",
+	"previewImage": "watch_gears_thumb.jpg",
+	"category": [
+		"open source",
+		"testing"
+	],
+	"rank":15
+}
+ 

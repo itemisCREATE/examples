@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Python Code Generation for SCTUnit with unittest</title>
+	<link href="./css/style.css" rel="stylesheet">
+	
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Python Code Generation for SCTUnit with unittest</h1>
+		<p>This example demonstrates how to generate unittests from SCTUnit and how to set everything up. The test program can be executed and integrated in your build process easily.
+		</p>
+
+		<h2>Example application</h2>
+		<p>
+			The example application and SCTUnit test is based on the previous example <a href="../examples/org-yakindu-sct-examples-sctunit?exampleId=org.yakindu.sct.examples.sctunit">Testing State Machines with SCTUnit</a>. 
+		</p>
+		<p>
+			<img class="large" 
+			alt="Light switch model" title="Light switch model" border="0" src="images/model.png"/>
+		</p>
+		<h2>Test Code Generation</h2>
+		<p>
+			Code generation for Python code has already shown step by step in the previous example <a href="../examples/org-yakindu-sct-examples-codegen-python?exampleId=org.yakindu.sct.examples.codegen.python">Python Code Generation</a>. This example contains a code generator <code>python.sgen</code> file for generating the state machine code, which is required. Additionally to that, the <code>tests</code> folder contains a code generator file for the SCTUnit file: <code>python_test.sgen</code>. The generator ID for this example is <code>sctunit::python</code>. You can right click the generator file and generate the code artifacts. This will generate the unittest, which can be executed as unittest test. If you don't use pydev, you can run the test via console:
+		</p>
+		<p>
+			<code>python3 -m unittest test_lightswitchtest.py</code>
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/issue-214-sctunit-examples/org.yakindu.sct.examples.sctunit.python/tests/python_test.sgen"></script>
+		</p>
+		<h2>Test execution</h2>
+		<p>
+			After generating the code, the test file <code>test_lightswitchtest.py</code> can be executed as unittest.
+		</p>
+		<p>
+			<img class="large" alt="JUnit output" title="JUnit output" border="0" src="images/testoutput.png"/>
+		</p>
+	</div>
+</body>
+</html>

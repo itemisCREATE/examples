@@ -1,6 +1,6 @@
 /* Defines which code generator to use */ 
 GeneratorModel for sctunit::java {
-	/* Refers to the sctunit testl 'LightSwitchTest' */
+	/* Refers to the sctunit test 'LightSwitchTest' */
 	test LightSwitchTest {
 		/* Specify the target location for the generated artifacts. */
 		feature Outlet {

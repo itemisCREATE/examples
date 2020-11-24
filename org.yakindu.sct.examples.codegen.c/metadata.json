@@ -5,8 +5,9 @@
 	"description": "This example demonstrates how to generate C code from a statechart.",
 	"previewImage": "watch_gears_thumb.jpg",
 	"category": [
-		"My Category -with something"
+		"code-generation"
 	],
-	"rank":10
+	"rank":10,
+	"topic": "Some Topic"
 }
  

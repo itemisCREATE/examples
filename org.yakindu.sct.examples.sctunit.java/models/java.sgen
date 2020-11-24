@@ -12,7 +12,7 @@ GeneratorModel for yakindu::java {
 			getters = true
 			observables = false
 		}
-			feature Naming {
+		feature Naming {
 			basePackage = "light"
 		}
 		

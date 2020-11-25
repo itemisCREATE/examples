@@ -70,5 +70,4 @@ void subscribe_observers(StateMachine *handle,
 			(sc_observer_next_fp) on_outEvent2);
 	sc_single_subscription_observer_subscribe(outEvent2Observer,
 			&handle->iface.outEvent2);
-
 }

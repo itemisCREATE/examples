@@ -46,7 +46,7 @@ void loop() {
 		 * occurred. Status has been stored in flags. */
 		handle_in_events(&stateMachine);
 
-		/*! For @EventDriven state machines, runCycle must not be called.
+		/*! For @EventDriven state machines runCycle must not be called.
 		 * Use run_cycle for @CycleBased state machines */
 		//stateMachine_run_cycle(&stateMachine);
 

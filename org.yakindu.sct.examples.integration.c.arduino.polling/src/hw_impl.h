@@ -20,6 +20,20 @@ void handle_in_events(StateMachine* handle);
  * out event status */
 void handle_out_events(StateMachine* handle);
 
+
+/*! Callback for outEvent1. Setting actuator. */
+void on_outEvent1(StateMachine* handle);
+
+/*! Callback for outEvent2. Setting actuator. */
+void on_outEvent2(StateMachine* handle);
+
+/*! Subscribe observer to state machine observables.
+ * Thus, every time they will be raised,
+ * the registered callback will be called. */
+void subscribe_observers(StateMachine *handle,
+		sc_single_subscription_observer *outEvent1Observer,
+		sc_single_subscription_observer *outEvent2Observer);
+
 #ifdef __cplusplus
 }
 #endif

@@ -7,6 +7,10 @@
 /*! Define the state machine object */
 StateMachine stateMachine;
 
+/*! Instantiates observer for the out events */
+sc_single_subscription_observer outEvent1Observer;
+sc_single_subscription_observer outEvent2Observer;
+
 /*! Setup the Arduino */
 void setup() {
 	/*! Setup the hardware you're using. Activate the interrupts.
@@ -21,6 +25,11 @@ void setup() {
 
 	/*! Initialize and enter the state machine */
 	stateMachine_init(&stateMachine);
+
+	/*! Subscribes observers to the state machine's observables */
+	subscribe_observers(&stateMachine, &outEvent1Observer, &outEvent2Observer);
+
+	/*! Enter the state machine */
 	stateMachine_enter(&stateMachine);
 }
 
@@ -41,8 +50,6 @@ void loop() {
 		 * Use run_cycle for @CycleBased state machines */
 		//stateMachine_run_cycle(&stateMachine);
 
-		/*! Update your actuators */
-		handle_out_events(&stateMachine);
 		/*! Set Arduino in sleep mode. Can be commented out,
 		 * especially if Serial is used. Won't work together. */
 		sleep_mode();

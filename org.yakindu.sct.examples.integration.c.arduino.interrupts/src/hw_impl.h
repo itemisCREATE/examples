@@ -12,9 +12,6 @@ extern "C" {
  * Digital/Analog Ports, Sensors, Actuators, Communication */
 void hw_init();
 
-/*! Update your actuators, by checking the
- * out event status */
-void handle_out_events(StateMachine* handle);
 
 /*! Occurred interrupts are stored in bool flags.
  * Handles the in events, by using these flags and
@@ -27,6 +24,20 @@ void ISR_in_event_one();
 
 /*! Interrupt Service Routine to store the pin 3 interrupt */
 void ISR_in_event_two();
+
+
+/*! Callback for outEvent1. Setting actuator. */
+void on_outEvent1(StateMachine* handle);
+
+/*! Callback for outEvent2. Setting actuator. */
+void on_outEvent2(StateMachine* handle);
+
+/*! Subscribe observer to state machine observables.
+ * Thus, every time they will be raised,
+ * the registered callback will be called. */
+void subscribe_observers(StateMachine *handle,
+		sc_single_subscription_observer *outEvent1Observer,
+		sc_single_subscription_observer *outEvent2Observer);
 
 
 #ifdef __cplusplus

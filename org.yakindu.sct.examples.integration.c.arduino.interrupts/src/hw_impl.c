@@ -16,17 +16,6 @@ void hw_init() {
 	sleep_enable();
 }
 
-/*! Update your actuators, by checking the
- * out event status */
-void handle_out_events(StateMachine* handle) {
-	if (stateMachine_is_raised_outEvent1(handle)) {
-		digitalWrite(13, LOW);
-	}
-	if (stateMachine_is_raised_outEvent2(handle)) {
-		digitalWrite(13, HIGH);
-	}
-}
-
 /*! Occurred interrupts are stored in bool flags.
  * Handles the in events, by using these flags and
  * set them back to false for the next interrupt.*/
@@ -53,3 +42,32 @@ void ISR_in_event_two() {
 	inEvent2Flag = true;
 }
 
+/*! Callback for outEvent1. Setting actuator. */
+void on_outEvent1(StateMachine* handle) {
+	(void) handle;
+	digitalWrite(13, LOW);
+}
+
+/*! Callback for outEvent2. Setting actuator. */
+void on_outEvent2(StateMachine* handle) {
+	(void) handle;
+	digitalWrite(13, HIGH);
+}
+
+/*! Subscribe observer to state machine observables.
+ * Thus, every time they will be raised,
+ * the registered callback will be called. */
+void subscribe_observers(StateMachine *handle,
+		sc_single_subscription_observer *outEvent1Observer,
+		sc_single_subscription_observer *outEvent2Observer) {
+
+	sc_single_subscription_observer_init(outEvent1Observer, handle,
+			(sc_observer_next_fp) on_outEvent1);
+	sc_single_subscription_observer_subscribe(outEvent1Observer,
+			&handle->iface.outEvent1);
+
+	sc_single_subscription_observer_init(outEvent2Observer, handle,
+			(sc_observer_next_fp) on_outEvent2);
+	sc_single_subscription_observer_subscribe(outEvent2Observer,
+			&handle->iface.outEvent2);
+}

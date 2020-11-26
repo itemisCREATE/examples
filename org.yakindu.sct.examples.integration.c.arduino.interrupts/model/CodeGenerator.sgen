@@ -8,11 +8,6 @@ GeneratorModel for yakindu::c {
 			targetFolder = "src-gen"
 		}
 		
-		feature OutEventAPI {
-			getters = true
-			observables = false
-		}
-		
 		feature GeneralFeatures {
 			timerService = true
 		}

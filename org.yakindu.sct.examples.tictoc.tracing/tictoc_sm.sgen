@@ -19,5 +19,8 @@ GeneratorModel for yakindu::c {
 			timerService = true
 		}
 		
+		feature GeneratorOptions {
+			metaSource = true
+		}
 	}
 }

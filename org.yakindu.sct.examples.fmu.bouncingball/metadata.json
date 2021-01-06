@@ -3,6 +3,9 @@
 	"title": "FMU Code Generation",
 	"author": "itemis AG",
 	"description": "This example demonstrates how to generate an FMU from a statechart.",
+	"category": [
+		"others"
+	],
 	"rank":10,
 	"dependencies": [
 		{	"updateSite": "https://updates.yakindu.com/statecharts/labs",

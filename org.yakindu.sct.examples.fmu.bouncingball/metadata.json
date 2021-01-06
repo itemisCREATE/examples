@@ -1,0 +1,13 @@
+{
+	"id": "org.yakindu.sct.examples.fmu.bouncingball",
+	"title": "FMU Code Generation",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to generate an FMU from a statechart.",
+	"rank":10,
+	"dependencies": [
+		{	"updateSite": "https://updates.yakindu.com/statecharts/labs",
+			"features": ["com.yakindu.sct.fmi.generator.fmu.feature.feature.group"]
+		}
+	]
+}
+ 

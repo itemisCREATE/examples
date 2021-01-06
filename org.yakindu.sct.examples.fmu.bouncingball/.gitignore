@@ -1,0 +1,5 @@
+/src-gen/
+/src/
+/Debug/
+/fmi/
+/makefile.targets

@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>YAKINDU FMU Code generator</title>
+<title>YAKINDU FMU Code Generator</title>
 </head>
 
 <body>
 <h1>YAKINDU FMU Generator</h1>
 	
 <p>YAKINDU Statechart Tools supports the FMI (Functional Mockup Interfaces) standard by exporting FMUs (Fubctional Muckup Units) for YAKINDU statecharts. 
-	Concretely the export of FMUs for FMI Co-Simulation version 2.0 is supported. The FMU export is implemented by a YAKINDU code generator. The generator 
+	Concretely, the export of FMUs for FMI Co-Simulation version 2.0 is supported. The FMU export is implemented by a YAKINDU code generator. The generator 
 	supports building FMUs for Windows, Linux and MacOS 64Bit platforms.</p>
 
 <h2>Preconditions</h2>
-	<p>The generator build a complete FMU and relies on Eclipse C development infrastructure. So as a precondition you have to make sure that CDT features are installed. For the Windows platform the Cygwin toolchain must be installed and include the <i>zip</i> command line tool. If not present use cygwin to install <i>zip</i>.
+	<p>The generator builds a complete FMU and relies on Eclipse C development infrastructure. So as a precondition you have to make sure that CDT features are installed. For the Windows platform the Cygwin toolchain must be installed and include the <i>zip</i> command line tool. If not present use Cygwin to install <i>zip</i>.
 
 <h2>Creating a FMU</h2>
-	If everything is in place a FMU can be created in a few simple steps: 
+	Once everything is in place, a FMU can be created in a few simple steps: 
 
 <ul>
 <li>Create a C project within your workspace. Ensure the C nature is set for the project.</li>
 <li>Choose an existing or create a new statechart. To create a new one:. 
 <ul>
-<li>Right-click on you project, Select <i>New -> Other -> YAKINDU SCT -> Statechart Model</i>.</li>
+<li>Right-click on you project, select <i>New -> Other -> YAKINDU SCT -> Statechart Model</i>.</li>
 <li>Choose between <b>Default Domain</b> or <b>C/C++ Domain</b>.</li>
 </ul>
 </li> 
 
-<li>Create a Code generator model
+<li>Create a code generator model
 <ul>
-<li>Right-click on your project, Select <i>New -> Other -> YAKINDU SCT -> Code generator model</i>.</li>
+<li>Right-click on your project, select <i>New -> Other -> YAKINDU SCT -> Code generator model</i>.</li>
 <li>Enter a filename for the <i>.sgen</i> file and select <i>Next</i>.</li>
-<li>Choose YAKINDU SCT FMU Code Generator from the dropdown and the top and tick the statechart you previously created.</li>
-<li>The generated <i>.sgen</i> file should have the follwing content. If not modify it accordingly. Replace <i>machine</i> by the name of your statechaert and replace <i>example</i> by the name of your target project. The target project may be different from the project in which the statechart is located.</li>
+<li>Choose YAKINDU SCT FMU Code Generator from the dropdown at the top and tick the statechart you previously created.</li>
+<li>The generated <i>.sgen</i> file should have the following content. If not, modify it accordingly. Replace <i>machine</i> by the name of your statechaert and replace <i>example</i> by the name of your target project. The target project may be different from the project in which the statechart is located.</li>
 <pre><code>GeneratorModel for yakindu::c::fmu {
 
 	statechart machine {
@@ -44,13 +44,12 @@
 	
 }
 </code></pre>
-<li>If the content is different then modify it accordingly. Replace <i>machine</i> by the name of your statechart and replace <i>example</i> by the name of your target project. The target project may be different from the project in which the statechart is located.</li>
 </ul>
 </li>
 
-<li>Now generate the <i>.fmu</i> file by right-click on the <i>.sgen</i> file and select <i>Generate Code Artifacts</i>
+<li>Now generate the <i>.fmu</i> file by right-click on the <i>.sgen</i> file and select <i>Generate Code Artifacts</i>.
 <ul>
-<li>The internal Build of your project should be triggered, indicating that the target FMU has been built successfully into the <b>Debug/Release</b> folder of your project.</li>
+<li>The internal build of your project should be triggered, indicating that the target FMU has been built successfully into the <b>Debug/Release</b> folder of your project.</li>
 <li>Due to convention the <i>.fmu</i> file will always be named as your project name.</li>
 </ul>
 </li>

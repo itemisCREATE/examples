@@ -30,7 +30,7 @@
 			<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/org.yakindu.sct.examples.fmu.bouncingball/models/BouncingBall.sgen"></script>
 		</p>
 		<p>
-			The generator model defines where the code should be generated into, and enables the generation of a default timer service. Besides setting up the target location, the generator model allows you to adjust several aspects of the generated code. Press [CTRL]+[SPACE] to get a list of available features. For more information, please refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/codegen_python_code_generator#codegen_python_code_generator_features">documentation</a>.
+			The generator model defines where the code should be generated into by specifying the target project and target folders.
 		</p>
 		<img class="small" 
 		alt="Content assist in generator model" title="Content assist in generator model" border="1" src="images/content-assist.gif"/>
@@ -42,13 +42,13 @@
 
 		<h2>The Example Application</h2>
 		<p>
-			As an example application we will use the 'BouncingBall' statechart to calculate the height of an Ball which is dropped to the ground an then continues bouncing until a certain point in time.
+			As an example application we will use the 'BouncingBall' statechart to calculate the height of a ball which is dropped to the ground and then continues to bounce until a certain point in time.
 		</p>
 		<img class="large" 
 		alt="Bouncing ball model" title="Bouncing ball model" border="0" src="images/model.png"/>
 	</p>
 	<p>
-		Our statechart determines the height of the ball by taking the velocity of the ball and the gravitation into consideration. Also with every bounce to the ground the velocity of the ball is reduced by a constant factor.
+		Our statechart determines the height of the ball by taking the velocity of the ball and the gravitation into consideration. Also, with every bounce to the ground the velocity of the ball is reduced by a constant factor.
 	</p>
 </p>
 </div>

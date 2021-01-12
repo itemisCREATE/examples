@@ -52,12 +52,12 @@ static void subscribe_observers(LightSwitch *lightSwitch,
 	sc_single_subscription_observer_init(lightOnObserver, lightSwitch,
 			(sc_observer_next_fp) on_light_on);
 	sc_single_subscription_observer_subscribe(lightOnObserver,
-			&lightSwitch->ifaceLight.on);
+			lightSwitch_light_get_on(lightSwitch));
 
 	sc_single_subscription_observer_init(lightOffObserver, lightSwitch,
 			(sc_observer_next_fp) on_light_off);
 	sc_single_subscription_observer_subscribe(lightOffObserver,
-			&lightSwitch->ifaceLight.off);
+			lightSwitch_light_get_off(lightSwitch));
 }
 
 unsigned long get_ms() {

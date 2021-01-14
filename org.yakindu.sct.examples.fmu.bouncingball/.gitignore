@@ -1,0 +1,6 @@
+/src-gen/
+/src/
+/Debug/
+/fmi/
+/makefile.targets
+README.html

@@ -116,7 +116,7 @@ void setup(int argc, char **argv) {
 	tictoc_init(&tictoc);
 
 	/* initialize the state machine specific tracer. */
-	tictoc_init_sc_tracer(&tictocTracer, &tictoc);
+	tictoc_init_sc_tracer(&tictocTracer, &tictoc, sc_null);
 
 	/* initialize different physical channels for the execution trace.
 	 * These imclude a yet file, a UDP based yet stream, and a stdout logger.

@@ -151,7 +151,7 @@ void setup(int argc, char **argv) {
 	blink_init(&blink);
 
 	/* initialize the state machine specific tracer. */
-	blink_init_sc_tracer(&blinkTracer, &blink);
+	blink_init_sc_tracer(&blinkTracer, &blink, sc_null);
 
 	/* initialize different physical channels for the execution trace.
 	 * These imclude a yet file, a UDP based yet stream, and a stdout logger.

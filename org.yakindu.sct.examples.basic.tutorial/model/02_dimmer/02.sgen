@@ -1,6 +1,6 @@
 GeneratorModel for yakindu::java {
 
-	statechart _03_LightSwitch {
+	statechart _02_DimmableLightSwitch {
 
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.basic.tutorial"

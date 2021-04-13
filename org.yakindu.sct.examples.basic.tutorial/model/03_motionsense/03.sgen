@@ -1,11 +1,15 @@
 GeneratorModel for yakindu::java {
 
-	statechart _02_LightSwitch {
+	statechart _03_MotionLightSwitch {
 
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.basic.tutorial"
 			targetFolder = "src-gen"
 			libraryTargetFolder = "src"
+		}
+
+		feature GeneralFeatures {
+			TimerService = true
 		}
 		
 		feature Naming {

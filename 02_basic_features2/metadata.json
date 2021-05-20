@@ -1,0 +1,12 @@
+{
+  "id": "com.yakindu.sct.examples.training.exercise01",
+  "title": "Exercise 1 - Basic features",
+  "description": "Creating and simulating a first statechart. The example is a simple light controller.",
+  "previewImage": "preview.jpg",
+  "author": "itemis AG",
+  "organization": "itemis AG",
+  "license": "YAKINDU End User Licence",
+  "category": [
+    "training"
+  ]
+}

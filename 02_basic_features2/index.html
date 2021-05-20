@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Exercise 1 – Basic features</title>
+<link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+
+  <h1>Exercise 1 – Basic features</h1>
+
+  <p>By doing this exercise you will get familiar with the basic features of the statechart editor and the
+    simulator.</p>
+
+  <p>You will create a statechart for a simple light controller. In the first step it is nothing else than a plain
+    switch. You can disregard everything (even the bulb) except for the button that provides the input events. The
+    behavior for the switch functionality is very simple:</p>
+
+  <ul>
+    <li>Initially the light control is off, i.e. it is in its <b>Off</b> state.
+    </li>
+    <li>If the button is pressed while being in the <b>Off</b> state, it changes to its <b>On</b> state.
+    </li>
+    <li>If the button is pressed while being in its <b>On</b> state, it changes to its <b>Off</b> state.
+    </li>
+  </ul>
+
+
+  <div>
+    <h2>Creating a statechart model for the light switch</h2>
+
+    <ul>
+      <li>Right-click on project <i>Training_lesson1</i> and choose <i>New → Statechart Model</i>.
+      </li>
+      <li>Give it a name e.g., <i>Lesson1.sct</i> or <i>switch.sct</i>.
+      </li>
+    </ul>
+
+    <p>
+      <img class="standard-image" alt="The statechart" src="./images/preview.jpg" />
+    </p>
+
+
+
+    <h2>Adding states and transitions to the light control</h2>
+
+    <p>To define this behavior described above you should:</p>
+
+    <ol>
+      <li>Rename <b>StateA</b> to <b>Off</b>.
+      </li>
+      <li>Add a new state with name <b>On</b> to the statechart.
+      </li>
+      <li>Connect both states with transitions. One transition from <b>Off</b> to <b>On</b> and another transition
+        in the opposite direction.
+      </li>
+    </ol>
+
+    <p>When you are ready, then the model should look like this:</p>
+
+    <p>
+      <img class="standard-image" alt="The statechart with two states and transitions."
+        src="./images/exercise01_step2.png" />
+    </p>
+
+    <p>You'll notice two warning signs.</p>
+
+    <ul>
+      <li>Place the mouse cursor above the warning markers! What do you see?</li>
+    </ul>
+
+    <p>The editor gives a hint that no trigger is specified for the transition. You will have to add events as the
+      next step …</p>
+
+
+
+
+    <h2>Adding events</h2>
+
+    <p>
+      To define and use events you will modify the <i>definition section</i>, i.e. the textual part of the model.
+    </p>
+
+    <ol>
+      <li>Double-click into the definition section on the left side. A text editor will open.</li>
+      <li>Place the caret below the comment and define an incoming event with the name <i>button_down</i>. Hint:
+        use <span style="font-family: monospace">[Ctrl]+[Space]</span> to get proposals.
+      </li>
+      <li>Now you have to specify that the transition should be taken if the <i>button_down</i> event occurs.
+        Select a transition and start typing the event name <i>button_down</i>. As soon as the text editor opens you can
+        once again use <span style="font-family: monospace">[Ctrl]+[Space]</span> to see proposals and complete the
+        input.
+    </ol>
+
+    <p>When you are done, the model should look like this:</p>
+    <p>
+      <img class="standard-image" alt="The statechart with event definitions." src="./images/exercise01_step3.png" />
+    </p>
+
+    <p>There shouldn't be any warning or error markers.</p>
+
+
+
+
+    <h2>Simulating the statechart</h2>
+
+    <p>Now it is time to check the light control statechart using the simulator.</p>
+
+    <ol>
+      <li>Right-click on the statechart model file in the project explorer on the left.</li>
+      <li>Choose <i>Run As → Statechart Simulation</i> from the context menu.
+      </li>
+      <li>The <b>Off</b> state should get a red background colour.
+      </li>
+      <li>Use the simulation view to raise the <i>button_down</i> event.
+      </li>
+    </ol>
+
+    <p>You will be able to switch between both states, and you have used the basic and most commonly used features
+      of the editor and the simulator.</p>
+    <p>
+      <img class="standard-image" alt="The statechart simulation." src="./images/exercise01_step4.png" />
+    </p>
+
+  </div>
+</body>
+</html>

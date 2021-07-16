@@ -1,23 +1,35 @@
 package org.yakindu.sct.examples.lightswitch;
 
-import org.yakindu.sct.examples.basic.tutorial._02_LightSwitch;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import org.yakindu.sct.examples.basic.tutorial._02_DimmableLightSwitch;
 
 public class LightSwitch_02 {
 
-	public static void main(String[] args) throws InterruptedException {
-		_02_LightSwitch sm = new _02_LightSwitch();
+	public static void main(String[] args) throws InterruptedException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		_02_DimmableLightSwitch sm = new _02_DimmableLightSwitch();
 
 		sm.enter();
 
-		for (int i = 0; i < 10; i++) {
-			sm.user().raiseOperate();
+		while (true) {
+			System.out.println("Choose '(s)witch', 'change (b)rightness' or '(e)xit'");
+			String input = br.readLine();
 
-			if (sm.isStateActive(_02_LightSwitch.State.MAIN_REGION_ON)) {
-				System.out.println("Light is On");
-			} else if (sm.isStateActive(_02_LightSwitch.State.MAIN_REGION_OFF)) {
-				System.out.println("Light is Off");
+			if (input.equals("s")) {
+				sm.raiseSwitch();
+			} else if (input.equals("b")) {
+				sm.raiseChangeBrightness();
+			} else if (input.equals("e")) {
+				System.out.println("bye... ");
+				break;
+			} else {
+				System.out.println("Incorrect input: " + input);
 			}
-
+			System.out.printf("Brightness: %d\n", sm.getBrightness());
 		}
 	}
 }

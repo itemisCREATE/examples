@@ -1,6 +1,6 @@
 GeneratorModel for yakindu::java {
 	
-	statechart _06_LightSwitch_simulation {
+	statechart _05_PresenceSimulationLightSwitch {
 		
 		feature Outlet {
 			targetProject = "org.yakindu.sct.examples.basic.tutorial"

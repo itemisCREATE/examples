@@ -284,7 +284,7 @@
       <children xsi:type="notation:Shape" xmi:id="_4y_ZA0dIEeaiPfQH0_D2xw" type="StatechartTextExpression" fontName="Verdana" lineColor="4210752">
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4y_ZBEdIEeaiPfQH0_D2xw"/>
       </children>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4y_ZBUdIEeaiPfQH0_D2xw" x="10" y="10" width="183" height="493"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4y_ZBUdIEeaiPfQH0_D2xw" x="10" y="10" width="183" height="538"/>
     </children>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_4y7uo0dIEeaiPfQH0_D2xw"/>
     <styles xsi:type="notation:BooleanValueStyle" xmi:id="_ACCd8GsLEeirP8RuxWOw5g" name="inlineDefinitionSection" booleanValue="true"/>

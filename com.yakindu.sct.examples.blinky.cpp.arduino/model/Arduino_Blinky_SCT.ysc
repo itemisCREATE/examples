@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_j6o2wK9YEei7VJyblLElYA" specification="@CycleBased(200)&#xA;&#xA;import: &#xA;&quot;Arduino.h&quot;&#xA;&#xA;internal:&#xA;const ledPin : uint8_t = 13" name="Arduino_Blinky_SCT" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_j6o2wK9YEei7VJyblLElYA" specification="@CycleBased(200)&#xA;&#xA;import: &quot;../core/core/Arduino.h&quot;&#xA;&#xA;internal:&#xA;const ledPin : uint8_t = 13" name="Arduino_Blinky_SCT" domainID="com.yakindu.domain.c">
     <regions xmi:id="_j7DGcK9YEei7VJyblLElYA" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_j7cIAK9YEei7VJyblLElYA">
         <outgoingTransitions xmi:id="_j7i1sK9YEei7VJyblLElYA" specification="" target="_B7hQcK9ZEei7VJyblLElYA"/>

@@ -1,5 +1,5 @@
 {
-	"id": "org.yakindu.sct.examples.integration.arduino.polling",
+	"id": "org.yakindu.sct.examples.integration.c.arduino.polling",
 	"title": "Arduino - Bare-Metal Polling (C)",
 	"author": "itemis AG",
 	"description": "Embedded Systems Integration Guide - Arduino with @CycleBased or @EventDriven execution using Polling.",

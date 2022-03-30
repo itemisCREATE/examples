@@ -1,5 +1,5 @@
 {
-	"id": "org.yakindu.sct.examples.lightswitch_series",
+	"id": "org.yakindu.sct.examples.basic.tutorial",
 	"title": "Basic Tutorial",
 	"author": "itemis AG",
 	"description": "This is a series of examples demonstrating multiple features of YAKINDU SCT. With each iteration, more features are shown. This example is a good starting point to dive into SCT headfirst.",

@@ -1,5 +1,5 @@
 {
-	"id": "org.yakindu.sct.examples.historystates",
+	"id": "org.yakindu.sct.examples.basic.historystates",
 	"title": "History States",
 	"author": "itemis AG",
 	"description": "This example demonstrates the usage of history states and explains the difference between a shallow and a deep history.",

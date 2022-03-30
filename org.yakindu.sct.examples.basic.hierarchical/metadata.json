@@ -1,5 +1,5 @@
 {
-	"id": "org.yakindu.sct.examples.hierarchical",
+	"id": "org.yakindu.sct.examples.basic.hierarchical",
 	"title": "Hierarchical Statecharts",
 	"author": "itemis AG",
 	"description": "This example demonstrates the usage of hierarchies in statecharts. It explains the concepts of composite states and subdiagrams.",

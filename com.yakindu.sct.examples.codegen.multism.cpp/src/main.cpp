@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <sys/time.h>
+#include <thread>
 
 #include "../src-gen/LightController.h"
 #include "../src-gen/sc_rxcpp.h"
@@ -23,6 +24,8 @@ TimerTask tasks[MAX_TIMERS];
 
 //! The timer tasks are managed by a timer service. */
 TimerService *timerService = new TimerService(tasks, MAX_TIMERS);
+
+int numRead = 0;
 
 // Start point of the execution.
 unsigned long time_offset = 0;
@@ -60,6 +63,11 @@ unsigned long get_ms() {
 	return ms;
 }
 
+void readConsole()
+{
+	numRead = read(STDIN_FILENO, buf, 1);
+}
+
 int main(int argc, char **argv) {
 	/*! Instantiates the state machines */
 	LightController *controller = new LightController();
@@ -84,17 +92,18 @@ int main(int argc, char **argv) {
 	/*! Enters the state machine; from this point on the state machine is ready to react on incoming event */
 	controller->enter();
 
-	/*! Ensures non-blocking read() call. */
-	fcntl(STDIN_FILENO, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
 	cout << "Type '1' or '0' to switch the light on or off." << endl;
 	cout << "Type '2' to toggle the blink mode." << endl;
 	sleep_time.tv_sec = 0;
 	sleep_time.tv_nsec = 100;
 	time_offset = get_ms();
+	thread readThread(readConsole);
+	readThread.detach();
 	while (1) {
+
 		current_time = get_ms() - time_offset;
 		timerService->proceed(current_time - last_time);
-		int numRead = read(STDIN_FILENO, buf, 1);
+		//int numRead = read(STDIN_FILENO, buf, 1);
 		if (numRead > 0) {
 			char input = buf[0];
 			if (input == '1') {
@@ -107,7 +116,11 @@ int main(int argc, char **argv) {
 				/*! Raises the blink event in the state machine */
 				controller->user()->raiseBlink_mode();
 			}
+			numRead = 0;
+			thread readThread(readConsole);
+			readThread.detach();
 		}
+
 		last_time = current_time;
 		nanosleep(&sleep_time, 0);
 	}

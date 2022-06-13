@@ -103,7 +103,6 @@ int main(int argc, char **argv) {
 
 		current_time = get_ms() - time_offset;
 		timerService->proceed(current_time - last_time);
-		//int numRead = read(STDIN_FILENO, buf, 1);
 		if (numRead > 0) {
 			char input = buf[0];
 			if (input == '1') {

@@ -1,5 +1,5 @@
 {
-	"id": "org.yakindu.sct.examples.orthogonality",
+	"id": "org.yakindu.sct.examples.basic.orthogonality",
 	"title": "Orthogonal States",
 	"author": "itemis AG",
 	"description": "This example demonstrates the usage of orthogonal states as well as of forking and joining synchronization nodes.",

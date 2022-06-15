@@ -1,5 +1,5 @@
 {
-	"id": "com.yakindu.sct.examples.digitalwatch.cpp.arduino",
+	"id": "org.yakindu.sct.examples.digitalwatch.cpp.arduino",
 	"title": "Arduino - Digital Watch (C++)",
 	"author": "itemis AG",
 	"description": "This digital watch was first designed by David Harel, the founder of the Statecharts Theory. This example shows how to integrate it on an Arduino.",

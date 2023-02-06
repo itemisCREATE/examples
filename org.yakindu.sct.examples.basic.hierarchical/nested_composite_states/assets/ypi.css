@@ -1,0 +1,113 @@
+/*!
+ * YAKINDU Player Styles
+ * Copyright 2021 itemis AG
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+
+ /*!
+  * Style definitions follow BEM pattern using and additional 'y' namespace (for YAKINDU).
+  */
+.y-declaration {
+    padding: 3px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    background-color: #eee;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.y-entry {
+    padding: 3px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+.y-entry:after {
+    content: ' \25CF ';
+    font-size: larger;
+}
+
+.y-state {
+    background-color: rgb(209, 223, 238);
+    padding: 3px;
+    border: 0.5pt;;
+    border: 0.5pt;
+    border-radius: 4px;
+    border-color: #bbb;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.y-state--active {
+    background-color: rgb(244, 215, 66);
+}
+
+.y-state--inactive {
+    background-color: rgb(209, 223, 238);
+}
+
+.y-variable{
+    background-color: #eee;
+    border-color: #aaa;
+    border: 0.5pt;
+    border: 0.5pt;
+    border-radius: 2px;
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+.y-variable::after {
+    color: #aaa;
+    content: attr(value);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.y-do-enter {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.y-do-enter:before {
+    content: ' \2192  ';
+}
+
+.y-do-exit {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: pointer
+}
+
+.y-do-exit:before {
+    content: ' \2192  ';
+}
+
+.y-do-raise {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.y-do-raise:before {
+    content: ' \2192  ';
+}
+
+button.y-do-raise:before {
+    content: '';
+}
+
+button.y-do-raise {
+    cursor: pointer;
+}
+
+.y-do--over {
+    color: blue;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.y-player {
+    border-style: solid;
+    border-width: 1px;
+    border-color: ;
+}

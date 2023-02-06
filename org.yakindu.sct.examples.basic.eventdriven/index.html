@@ -35,9 +35,9 @@ In the following, the difference between the two execution schemes will be expla
 In the cycle-based execution scheme, a run-to-completion step is processed in regular time intervals. For example, the annotation <code>@CycleBased(2000)</code> means that a cycle is invoked every 2000 milliseconds. In the example below, this means that it might take up to two seconds after the <code>input</code> event has been raised for the statechart to process it and activate <strong>StateB</strong>. Same holds for time events. To illustrate this, <strong>StateC</strong> has two outgoing transitions with different time triggers. With a cycle period of 2 seconds, both time triggers are valid. The state machine will then take the higher prioritized transition, which in this case is the one to <strong>StateE</strong>. Changing the cycle period from 2000 to 200 milliseconds will cause <strong>StateD</strong> to be activated as the run-to-completion cycle is executed before the 500ms trigger is raised. 
 </p>
 <p>
-    <img class="large"
-      alt="Example model to explain cycle based execution."
-      src="images/cyclebased.png" />
+      <img class="large"
+        alt="Example model to explain cycle based execution."
+        src="images/cyclebased.png" />
  </p>
 <p>
 Please note that it is the responsibility of the client code to implement the cycle loop. The generated state machine code provides a <code>runCycle()</code> method that needs to be called periodically.

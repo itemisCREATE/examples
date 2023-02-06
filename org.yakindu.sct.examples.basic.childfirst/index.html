@@ -28,7 +28,7 @@ In the <em>child-first execution scheme</em>, the active substate (child) is pro
 <h2>Example</h2>
 We will use the following example model to explain the two different execution schemes:
 <p>
-	<img class="small" alt="Example model to explain parent-first vs. child-first execution" border="0" src="images/model.png"/>
+	<iframe src="./childfirst-player/player.html" width="100%" height="800px"></iframe>
 </p>
 <p>
 The question that we want to answer is: What happens if event <code>e</code> is raised, i.e. which state gets activated, <strong>C</strong> or <strong>D</strong>; and what are the values of the statechart variables <code>m</code>, <code>n</code> and <code>o</code> afterwards?
@@ -37,7 +37,7 @@ The question that we want to answer is: What happens if event <code>e</code> is 
 Let's first answer which state gets active. When the event <code>e</code> is raised, the specified execution scheme defines which of the currently active states', <strong>A</strong>'s or <strong>B</strong>'s, outgoing transitions are evaluated first. In the child-first execution scheme, state <strong>B</strong>, the active child of the composite state, is processed first. Hence, the transition to state <strong>C</strong> is evaluated and taken. In contrast to that, in the parent-first execution scheme, the outer state <strong>A</strong> is processed first and state <strong>D</strong> gets activated:
 </p>
 <p>
-	<img alt="Example model after parent-first execution" border="0" src="images/parentfirst.png"/>
+	<iframe src="./parentfirst-player/player.html" width="100%" height="800px"></iframe>
 </p>
 <p>
 Now let's take a look at the variable values. When starting the simulation (or when entering the statechart), the outer state <strong>A</strong> is activated first, independent of the used execution scheme. Afterwards, the entry action of state <strong>B</strong> sets <code>m</code> to 2. After event <code>e</code> is raised, the inner state <strong>B</strong> is exited first, before <strong>A</strong> is exited which sets the value of <code>o</code> to 1.

@@ -27,7 +27,7 @@
 	As each mode may be reflected in multiple states, switching between the different modes requires the modeling of many transitions. The following example shows one possible solution without using any means of hierarchies:
 	</p>
 	<p>
-	<img alt="Light switch without using hierarchies" title="Light switch without using hierarchies" border="0" src="images/01_no_hierarchy.png"/>
+	<iframe src="./no_hierarchy/lightswitch-player/player.html?start=false" style="width: 100%; height: 500px;"></iframe>
 	</p>
 	<p>Although the statechart consists of only five states, it is difficult to understand the underlying behavior because of the relatively high number of transitions. Consider the states <strong>TwilightDetectionMode</strong> and <strong>TwilightDetected</strong>. Both states have an outgoing transition to <strong>MotionDetectionMode</strong> with the same trigger. Same holds for all four automatic mode states, which have an identical transition to the <strong>ManualMode</strong> state.</p>
 	<p>Having multiple states with an identical transition to the same target state is an indicator for the potential to group these states into one composite state.</p>
@@ -41,7 +41,7 @@
 	Let's introduce composite states to our light switch example:
 	</p>
 	<p>
-	<img alt="Light switch with composite states" title="Light switch with composite states" border="0" src="images/02_composite_states.png"/>
+		<iframe src="./composite_states/lightswitch-player/player.html?start=false" style="width: 100%; height: 500px;"></iframe>
 	</p>
 	<p>
 	Compare the model with the one above. We introduced two composite states to logically group the states by the respective light switch modes. In that way we could reduce a number of transitions without changing the model's behavior.
@@ -58,7 +58,7 @@
 	We can go one step further and create a further layer of hierarchy by grouping the two composite states into another composite state. In that way we can create multiple layers of hierarchy.
 	</p>
 	<p>
-	<img alt="Light switch with nested composite states" title="Light switch with nested composite states" border="0" src="images/03_nested_composite_states.png"/>
+		<iframe src="./nested_composite_states/player.html?start=false" style="width: 100%; height: 500px;"></iframe>
 	</p>
 	<h2>Using Subdiagrams</h2>
 	<p>

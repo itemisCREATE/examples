@@ -1,0 +1,1 @@
+const contextJson = {"elements":[{"elements":[{"kind":"event","name":"switch","fqName":"switch","featureId":"SWITCH","writable":true}],"kind":"composite","name":"default","featureId":"","writable":true}]}

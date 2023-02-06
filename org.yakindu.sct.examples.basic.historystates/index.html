@@ -26,7 +26,7 @@
 	<p>
 	The following statechart reflects these requirements:
 	<p>
-	<img alt="Light switch without history state" title="Light switch without history state" border="0" src="images/no_history.png"/>
+	<iframe src="./lightswitch_no_history-player/player.html" style="width: 100%; height: 600px;"></iframe>
 	</p>
 	
 	<h2>Shallow history states</h2>
@@ -60,7 +60,7 @@ However, the shallow history does not store the inner state of the respective mo
 A <em>deep history state</em> is similar to a shallow history state, but more complex. With a deep history state, the latest status of all nested states is remembered.
 </p>
 <p>
-	<img alt="Deep history state" title="Deep history state" border="0" src="images/deep_history.png"/>
+	<iframe src="./lightswitch_deep_history-player/player.html" style="width: 100%; height: 600px;"></iframe>
 </p>
 <p>
 Let's take a look at our light switch example again. When the light switch is in <strong>TwilightDetected</strong> state, and the user presses the <strong>On</strong> button, this state is stored by the deep history and will be activated again when the user switches back to automatic mode. Please note, that already passed time in time triggers is not stored by a history state. When the light switch is in <strong>MotionDetected</strong> state and stays there for 20 seconds without any motion being registered, switching to manual mode and back, will start the timer at 0 again, i.e. it will take another 30 seconds for the state being switched to <strong>Idle</strong>.

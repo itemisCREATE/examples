@@ -66,7 +66,7 @@
           <span id="switch" class="y-do-raise">switch</span>.
         </p>
         <p>
-          <iframe src="./_01_lightswitch-player/player.html" style="width: 100%; height: 400px;"></iframe>
+          <div id="lightswitch"></div>
         </p>
         <p>State machines as a whole can be active or inactive. If a state machine is inactive then no state is active
           and it won’t react on any event. If a state machine is active then is has at least one active state and it is
@@ -158,7 +158,7 @@
 
 
           <p>
-            <iframe src="./_02_dimmablelightswitch-player/player.html" style="width: 100%; height: 400px;"></iframe>
+            <div id="dimmableLight"></div>
           </p>
         </div>
 
@@ -174,7 +174,8 @@
             <strong>motion sensing mode</strong> which automatically switches the light on and off depending on the
             input of a motion sensor. Initially, the light is off, but whenever the motion sensor senses a motion, it
             turns the light on. After 30 seconds without any motion the light is turned off again. As manually switching
-            and dimming the light should still be supported the existing statechart must be extended.</p>
+            and dimming the light should still be supported the existing statechart must be extended.
+          </p>
           <p>First, an additional event
             <span id="toggleMode" class="y-do-raise">toggleMode</span> is defined. This is used to toggle between the
             already existing manual and the automated motion sensing mode. To model these modes two additional states
@@ -220,7 +221,7 @@
               states</a> in our documentation.</p>
 
           <p>
-            <iframe src="./_03_motionlightswitch-player/player.html" style="width: 100%; height: 400px;"></iframe>
+            <div id="motionLight"></div>
           </p>
 
           <div>
@@ -245,7 +246,7 @@
 
 
             <p>
-              <iframe src="./_04_lightandmotionsensinglightswitch-player/player.html" style="width: 100%; height: 500px;"></iframe>
+              <div id="lightAndMotion"></div>
             </p>
 
             <p>As we added a couple of additional declarations we now use named interfaces to group the different events
@@ -301,7 +302,8 @@
             </p>
             <p>That’s what <strong>history entries</strong> are good for. The statechart contains a couple of
               <em>shallow history entries</em>. A shallow history state, contained in a composite state with a set of
-              sub states, remembers which of these sub states was active when that composite state was left.</p>
+              sub states, remembers which of these sub states was active when that composite state was left.
+            </p>
             <p>The shallow history state in
               <span id="MODES_AUTOMATIC" class="y-state">Automatic</span> remembers whether
               <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING" class="y-state">Light Sensing</span> or
@@ -403,7 +405,7 @@
             </ol>
 
             <p>
-              <iframe src="./_05_presencesimulationlightswitch-player/player.html" style="width: 100%; height: 550px;"></iframe>
+              <div id="prescenceSimulation"></div>
             </p>
 
 
@@ -411,6 +413,46 @@
 
 
         </div>
+        <script>
+          const browserIsModern = getBrowser();
+
+          var lightswitch = document.getElementById("lightswitch");
+          var dimmableLight = document.getElementById("dimmableLight");
+          var motionLight = document.getElementById("motionLight");
+          var lightAndMotion = document.getElementById("lightAndMotion");
+          var presenceSimulationLight = document.getElementById("prescenceSimulation");
+
+
+          if (browserIsModern) {
+            lightswitch.innerHTML = "<iframe src='./_01_lightswitch-player/player.html?start=false' style='width: 100%; height: 400px;'></iframe>"
+            dimmableLight.innerHTML = "<iframe src='./_02_dimmablelightswitch-player/player.html?start=false' style='width: 100%; height: 400px;'></iframe>"
+            motionLight.innerHTML = "<iframe src='./_03_motionlightswitch-player/player.html?start=false' style='width: 100%; height: 400px;'></iframe>"
+            lightAndMotion.innerHTML = "<iframe src='./_04_lightandmotionsensinglightswitch-player/player.html?start=false' style='width: 100%; height: 500px;'></iframe>"
+            presenceSimulationLight.innerHTML = "<iframe src='./_05_presencesimulationlightswitch-player/player.html?start=false' style='width: 100%; height: 550px;'></iframe>"
+          } else {
+            lightswitch.innerHTML = "<img src='./images/01_light_switch.png'>"
+            dimmableLight.innerHTML = "<img src='./images/02_light_switch.png'>"
+            motionLight.innerHTML = "<img src='./images/03_light_switch.png'>"
+            lightAndMotion.innerHTML = "<img src='./images/04_light_switch.png'>"
+            presenceSimulationLight.innerHTML = "<img src='./images/05_light_switch.png'>"
+          }
+
+
+          function getBrowser() {
+            var userAgent = navigator.userAgent;
+            var supportedBrowsers = ["Chrome", "Firefox", "Safari", "Edge"];
+            var foundSupported = false
+
+            for (var i = 0; i < supportedBrowsers.length; i++) {
+              if (userAgent.indexOf(supportedBrowsers[i]) != -1) {
+                foundSupported = true;
+                break;
+              }
+            }
+
+            return foundSupported;
+          }
+        </script>
 </body>
 
 </html>

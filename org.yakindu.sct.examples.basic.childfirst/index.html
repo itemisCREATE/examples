@@ -1,57 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Parent-first vs. Child-first Execution</title>
-<link href="./css/style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Parent-first vs. Child-first Execution</title>
+  <link href="./css/style.css" rel="stylesheet">
 
 </head>
+
 <body class="body-container">
   <div class="primary">
 
     <h1>Parent-first vs. Child-first Execution</h1>
 
-    <p>This example demonstrates the two different execution schemes of composite states: child-first and parent-first execution. For more information, please also refer to chapter <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_parent-first_and_child-first_execution#sclang_parent-first_and_child-first_execution">Parent-first and child-first execution</a>.</p>
+    <p>This example demonstrates the two different execution schemes of composite states: child-first and parent-first
+      execution. For more information, please also refer to chapter <a
+        href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_parent-first_and_child-first_execution#sclang_parent-first_and_child-first_execution">Parent-first
+        and child-first execution</a>.</p>
 
-<h2>Composite state execution schemes</h2>
-<p>
-The parent-first and child-first execution schemes define in which order a composite state and its substates are processed:
-<ul>
-<li>
-In the <em>parent-first execution scheme</em>, the composite state (parent) is processed first, before its substates are processed.
-</li>
-<li>
-In the <em>child-first execution scheme</em>, the active substate (child) is processed first, before its parent composite state is processed.
-</li>
-</ul>
-</p>
-<h2>Example</h2>
-We will use the following example model to explain the two different execution schemes:
-<p>
-	<iframe src="./childfirst-player/player.html" width="100%" height="800px"></iframe>
-</p>
-<p>
-The question that we want to answer is: What happens if event <code>e</code> is raised, i.e. which state gets activated, <strong>C</strong> or <strong>D</strong>; and what are the values of the statechart variables <code>m</code>, <code>n</code> and <code>o</code> afterwards?
-</p>
-<p>
-Let's first answer which state gets active. When the event <code>e</code> is raised, the specified execution scheme defines which of the currently active states', <strong>A</strong>'s or <strong>B</strong>'s, outgoing transitions are evaluated first. In the child-first execution scheme, state <strong>B</strong>, the active child of the composite state, is processed first. Hence, the transition to state <strong>C</strong> is evaluated and taken. In contrast to that, in the parent-first execution scheme, the outer state <strong>A</strong> is processed first and state <strong>D</strong> gets activated:
-</p>
-<p>
-	<iframe src="./parentfirst-player/player.html" width="100%" height="800px"></iframe>
-</p>
-<p>
-Now let's take a look at the variable values. When starting the simulation (or when entering the statechart), the outer state <strong>A</strong> is activated first, independent of the used execution scheme. Afterwards, the entry action of state <strong>B</strong> sets <code>m</code> to 2. After event <code>e</code> is raised, the inner state <strong>B</strong> is exited first, before <strong>A</strong> is exited which sets the value of <code>o</code> to 1.
-</p>
-<p>
-Notice the difference when child-first execution is used:
-</p>
-<p>
-	<img alt="Example model after child-first execution" border="0" src="images/childfirst.png"/>
-</p>
-<p>
-When event <code>e</code> is raised, state <strong>B</strong> is exited, setting variable <code>o</code> to 2. Furthermore, the outer state <strong>A</strong> stays active in this run-to-completion step and hence its local reaction is executed, setting <code>n</code> to 1.
-</p>
+    <h2>Composite state execution schemes</h2>
+    <p>
+      The parent-first and child-first execution schemes define in which order a composite state and its substates are
+      processed:
+    <ul>
+      <li>
+        In the <em>parent-first execution scheme</em>, the composite state (parent) is processed first, before its
+        substates are processed.
+      </li>
+      <li>
+        In the <em>child-first execution scheme</em>, the active substate (child) is processed first, before its parent
+        composite state is processed.
+      </li>
+    </ul>
+    </p>
+    <h2>Example</h2>
+    We will use the following example model to explain the two different execution schemes:
+    <p>
+    <div id="childFirst"></div>
+    </p>
+    <p>
+      The question that we want to answer is: What happens if event <code>e</code> is raised, i.e. which state gets
+      activated, <strong>C</strong> or <strong>D</strong>; and what are the values of the statechart variables
+      <code>m</code>, <code>n</code> and <code>o</code> afterwards?
+    </p>
+    <p>
+      Let's first answer which state gets active. When the event <code>e</code> is raised, the specified execution
+      scheme defines which of the currently active states', <strong>A</strong>'s or <strong>B</strong>'s, outgoing
+      transitions are evaluated first. In the child-first execution scheme, state <strong>B</strong>, the active child
+      of the composite state, is processed first. Hence, the transition to state <strong>C</strong> is evaluated and
+      taken. In contrast to that, in the parent-first execution scheme, the outer state <strong>A</strong> is processed
+      first and state <strong>D</strong> gets activated:
+    </p>
+    <p>
+    <div id="parentFirst"></div>
+    </p>
+    <p>
+      Now let's take a look at the variable values. When starting the simulation (or when entering the statechart), the
+      outer state <strong>A</strong> is activated first, independent of the used execution scheme. Afterwards, the entry
+      action of state <strong>B</strong> sets <code>m</code> to 2. After event <code>e</code> is raised, the inner state
+      <strong>B</strong> is exited first, before <strong>A</strong> is exited which sets the value of <code>o</code> to
+      1.
+    </p>
+    <p>
+      Notice the difference when child-first execution is used:
+    </p>
+    <p>
+      <img alt="Example model after child-first execution" border="0" src="images/childfirst.png" />
+    </p>
+    <p>
+      When event <code>e</code> is raised, state <strong>B</strong> is exited, setting variable <code>o</code> to 2.
+      Furthermore, the outer state <strong>A</strong> stays active in this run-to-completion step and hence its local
+      reaction is executed, setting <code>n</code> to 1.
+    </p>
 
   </div>
+  <script>
+    const browserIsModern = getBrowser();
+
+    var childFirst = document.getElementById("childFirst");
+    var parentFirst = document.getElementById("parentFirst");
+
+    if (browserIsModern) {
+      childFirst.innerHTML = "<iframe src='./childfirst-player/player.html?start=false' style='width: 100%; height: 800px;'></iframe>"
+      parentFirst.innerHTML = "<iframe src='./parentfirst-player/player.html?start=false' style='width: 100%; height: 800px;'></iframe>"
+    } else {
+      childFirst.innerHTML = "<img src='./images/childfirst.png'>"
+      parentFirst.innerHTML = "<img src='./images/parentfirst.png'>"
+    }
+
+
+    function getBrowser() {
+      var userAgent = navigator.userAgent;
+      var supportedBrowsers = ["Chrome", "Firefox", "Safari", "Edge"];
+      var foundSupported = false
+
+      for (var i = 0; i < supportedBrowsers.length; i++) {
+        if (userAgent.indexOf(supportedBrowsers[i]) != -1) {
+          foundSupported = true;
+          break;
+        }
+      }
+
+      return foundSupported;
+    }
+  </script>
 </body>
+
 </html>

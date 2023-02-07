@@ -1,78 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Light Switch Series</title>
-<link href="./css/style.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title>Light Switch Series</title>
+	<link href="./css/style.css" rel="stylesheet">
 
 </head>
+
 <body class="body-container">
-  <div class="primary">
+	<div class="primary">
 
-    <h1>Hierarchical Statecharts</h1>
+		<h1>Hierarchical Statecharts</h1>
 
-    <p>This example demonstrates the usage of hierarchies in statecharts. It explains the concepts of <em>composite states</em> and <em>subdiagrams</em>.</p>
-    
-    <h2>Starting Point</h2>
-    
-    <p>Let's revisit the light switch example of the <a href="../examples/org-yakindu-sct-examples-basic-tutorial?exampleId=org.yakindu.sct.examples.lightswitch_series">Basic Tutorial</a>. To be more concrete, let's start at the point where our light switch can be in one of three possible modes: 
-    <ol>
-      <li>a <strong>twilight / luminosity mode</strong> in which the light automatically turns on when it is dark, </li>
-      <li>a <strong>motion sensing mode</strong> in which the light automatically turns on when motion is detected, and</li>
-      <li>a <strong>manual mode</strong> in which the user can change the brightness manually.</li> 
-	</ol>
-	The user can enable the manual mode by pressing the <strong>On</strong> button. Pressing the <strong>Off</strong> button enables the motion sensing mode. With a <strong>Mode</strong> button the user can switch between the motion sensing and the twilight mode.
-	</p>
-	<p>
-	As each mode may be reflected in multiple states, switching between the different modes requires the modeling of many transitions. The following example shows one possible solution without using any means of hierarchies:
-	</p>
-	<p>
-	<iframe src="./no_hierarchy/lightswitch-player/player.html?start=false" style="width: 100%; height: 500px;"></iframe>
-	</p>
-	<p>Although the statechart consists of only five states, it is difficult to understand the underlying behavior because of the relatively high number of transitions. Consider the states <strong>TwilightDetectionMode</strong> and <strong>TwilightDetected</strong>. Both states have an outgoing transition to <strong>MotionDetectionMode</strong> with the same trigger. Same holds for all four automatic mode states, which have an identical transition to the <strong>ManualMode</strong> state.</p>
-	<p>Having multiple states with an identical transition to the same target state is an indicator for the potential to group these states into one composite state.</p>
-	
-	<h2>Using Composite States</h2>
-	
-	<p>
-	A composite state is a state that contains one or more other substates. It can be used to group states into logical compounds and thus make the statechart more comprehensible. Having one outgoing transition from a composite state is semantically the same as having outgoing transitions from each of the composite's substates. In that way, a composite stay can drastically reduce the number of transitions in the statechart and hence improve readability.
-	</p>
-	<p>
-	Let's introduce composite states to our light switch example:
-	</p>
-	<p>
-		<iframe src="./composite_states/lightswitch-player/player.html?start=false" style="width: 100%; height: 500px;"></iframe>
-	</p>
-	<p>
-	Compare the model with the one above. We introduced two composite states to logically group the states by the respective light switch modes. In that way we could reduce a number of transitions without changing the model's behavior.
-	</p>
-	<p>
-	There are multiple ways to create a composite state:
-	<ul>
-	<li>Use the statechart element palette on the right to create a composite state.</li>
-	<li>Select a normal state, press [Ctrl]+[Space] and choose <em>Add subregion</em>.</li>
-	<li>Select a number of states (by holding [Ctrl]), right-click and choose <em>Refactor -> Group States Into Composite</em>.</li>
-	</ul>
-	</p>
-	<p>
-	We can go one step further and create a further layer of hierarchy by grouping the two composite states into another composite state. In that way we can create multiple layers of hierarchy.
-	</p>
-	<p>
-		<iframe src="./nested_composite_states/player.html?start=false" style="width: 100%; height: 500px;"></iframe>
-	</p>
-	<h2>Using Subdiagrams</h2>
-	<p>
-	Using composite states is a great way to make your statechart more comprehensible. However, as your statechart becomes bigger you might want to hide the details and only focus on the higher level relationships without loosing the semantic of your statechart. Subdiagrams come as a solution here.
-	</p>
-	<p>
-	When the <em>Extract Subdiagram</em> refactoring is executed on a composite state, all containing regions are extracted into a separate diagram. The composite state no longer clutters the diagram with all its internal details, but instead appears almost like a normal state. The only difference is a small decorator icon in the lower-right corner of the state, indicating the existence of a subdiagram. When you hover over this decorator with the mouse cursor, you’ll see a small preview of the subdiagram’s content.
-	</p>
-	<p>
-	<img alt="Light switch with subdiagrams" title="Light switch with subdiagrams" border="0" src="images/04_subdiagrams.png"/>
-	</p>
-	<p>
-	By introducing subdiagrams, we have hidden the details of the two light switch automatic light switch modes. In that way, you can directly understand which modes the light switch has and how to switch between them. If you are interested in the details, you can hover or click on the decorator to open the respective subdiagrams. You can revert these changes again by using the <em>Inline Subdiagram</em> refactoring.
-	</p>
-  </div>
+		<p>This example demonstrates the usage of hierarchies in statecharts. It explains the concepts of <em>composite
+				states</em> and <em>subdiagrams</em>.</p>
+
+		<h2>Starting Point</h2>
+
+		<p>Let's revisit the light switch example of the <a
+				href="../examples/org-yakindu-sct-examples-basic-tutorial?exampleId=org.yakindu.sct.examples.lightswitch_series">Basic
+				Tutorial</a>. To be more concrete, let's start at the point where our light switch can be in one of
+			three possible modes:
+		<ol>
+			<li>a <strong>twilight / luminosity mode</strong> in which the light automatically turns on when it is dark,
+			</li>
+			<li>a <strong>motion sensing mode</strong> in which the light automatically turns on when motion is
+				detected, and</li>
+			<li>a <strong>manual mode</strong> in which the user can change the brightness manually.</li>
+		</ol>
+		The user can enable the manual mode by pressing the <strong>On</strong> button. Pressing the
+		<strong>Off</strong> button enables the motion sensing mode. With a <strong>Mode</strong> button the user can
+		switch between the motion sensing and the twilight mode.
+		</p>
+		<p>
+			As each mode may be reflected in multiple states, switching between the different modes requires the
+			modeling of many transitions. The following example shows one possible solution without using any means of
+			hierarchies:
+		</p>
+		<p>
+		<div id="noHierarchy"></div>
+		</p>
+		<p>Although the statechart consists of only five states, it is difficult to understand the underlying behavior
+			because of the relatively high number of transitions. Consider the states
+			<strong>TwilightDetectionMode</strong> and <strong>TwilightDetected</strong>. Both states have an outgoing
+			transition to <strong>MotionDetectionMode</strong> with the same trigger. Same holds for all four automatic
+			mode states, which have an identical transition to the <strong>ManualMode</strong> state.
+		</p>
+		<p>Having multiple states with an identical transition to the same target state is an indicator for the
+			potential to group these states into one composite state.</p>
+
+		<h2>Using Composite States</h2>
+
+		<p>
+			A composite state is a state that contains one or more other substates. It can be used to group states into
+			logical compounds and thus make the statechart more comprehensible. Having one outgoing transition from a
+			composite state is semantically the same as having outgoing transitions from each of the composite's
+			substates. In that way, a composite stay can drastically reduce the number of transitions in the statechart
+			and hence improve readability.
+		</p>
+		<p>
+			Let's introduce composite states to our light switch example:
+		</p>
+		<p>
+			<div id="compositeStates"></div>
+		</p>
+		<p>
+			Compare the model with the one above. We introduced two composite states to logically group the states by
+			the respective light switch modes. In that way we could reduce a number of transitions without changing the
+			model's behavior.
+		</p>
+		<p>
+			There are multiple ways to create a composite state:
+		<ul>
+			<li>Use the statechart element palette on the right to create a composite state.</li>
+			<li>Select a normal state, press [Ctrl]+[Space] and choose <em>Add subregion</em>.</li>
+			<li>Select a number of states (by holding [Ctrl]), right-click and choose <em>Refactor -> Group States Into
+					Composite</em>.</li>
+		</ul>
+		</p>
+		<p>
+			We can go one step further and create a further layer of hierarchy by grouping the two composite states into
+			another composite state. In that way we can create multiple layers of hierarchy.
+		</p>
+		<p>
+			<div id="nestedCompositeStates"></div>
+		</p>
+		<h2>Using Subdiagrams</h2>
+		<p>
+			Using composite states is a great way to make your statechart more comprehensible. However, as your
+			statechart becomes bigger you might want to hide the details and only focus on the higher level
+			relationships without loosing the semantic of your statechart. Subdiagrams come as a solution here.
+		</p>
+		<p>
+			When the <em>Extract Subdiagram</em> refactoring is executed on a composite state, all containing regions
+			are extracted into a separate diagram. The composite state no longer clutters the diagram with all its
+			internal details, but instead appears almost like a normal state. The only difference is a small decorator
+			icon in the lower-right corner of the state, indicating the existence of a subdiagram. When you hover over
+			this decorator with the mouse cursor, you’ll see a small preview of the subdiagram’s content.
+		</p>
+		<p>
+			<img alt="Light switch with subdiagrams" title="Light switch with subdiagrams" border="0"
+				src="images/04_subdiagrams.png" />
+		</p>
+		<p>
+			By introducing subdiagrams, we have hidden the details of the two light switch automatic light switch modes.
+			In that way, you can directly understand which modes the light switch has and how to switch between them. If
+			you are interested in the details, you can hover or click on the decorator to open the respective
+			subdiagrams. You can revert these changes again by using the <em>Inline Subdiagram</em> refactoring.
+		</p>
+	</div>
+	<script>
+		const browserIsModern = getBrowser();
+
+		var noHierarchy = document.getElementById("noHierarchy");
+		var compositeStates = document.getElementById("compositeStates");
+		var nestedCompositeStates = document.getElementById("nestedCompositeStates");
+
+		if (browserIsModern) {
+			noHierarchy.innerHTML = "<iframe src='./no_hierarchy/lightswitch-player/player.html?start=false' style='width: 100%; height: 500px;'></iframe>"
+			compositeStates.innerHTML = "<iframe src='./composite_states/lightswitch-player/player.html?start=false' style='width: 100%; height: 500px;'></iframe>"
+			nestedCompositeStates.innerHTML = "<iframe src='./nested_composite_states/player.html?start=false' style='width: 100%; height: 500px;'></iframe>"
+		} else {
+			noHierarchy.innerHTML = "<img src='./images/01_no_hierarchy.png'>"
+			compositeStates.innerHTML = "<img src='./images/02_composite_states.png'>"
+			nestedCompositeStates.innerHTML = "<img src='./images/03_nested_composite_states.png'>"
+		}
+
+
+		function getBrowser() {
+			var userAgent = navigator.userAgent;
+			var supportedBrowsers = ["Chrome", "Firefox", "Safari", "Edge"];
+			var foundSupported = false
+
+			for (var i = 0; i < supportedBrowsers.length; i++) {
+				if (userAgent.indexOf(supportedBrowsers[i]) != -1) {
+					foundSupported = true;
+					break;
+				}
+			}
+
+			return foundSupported;
+		}
+	</script>
 </body>
 </html>

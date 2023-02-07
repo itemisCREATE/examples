@@ -1,71 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>History States</title>
-<link href="./css/style.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title>History States</title>
+	<link href="./css/style.css" rel="stylesheet">
 
 </head>
+
 <body class="body-container">
-  <div class="primary">
+	<div class="primary">
 
-    <h1>History States</h1>
+		<h1>History States</h1>
 
-    <p>This example demonstrates the usage of history states and explains the difference between a shallow and a deep history.</p>
+		<p>This example demonstrates the usage of history states and explains the difference between a shallow and a
+			deep history.</p>
 
-	<h2>Starting Point</h2>
+		<h2>Starting Point</h2>
 
-<p>Let's revisit the light switch example of the <a href="../examples/org-yakindu-sct-examples-basic-tutorial?exampleId=org.yakindu.sct.examples.lightswitch_series">Basic Tutorial</a>. To be more concrete, let's start at the point where our light switch can be in one of three possible modes:
-<ol>
-      <li>a <strong>twilight / luminosity mode</strong> in which the light automatically turns on when it is dark, </li>
-      <li>a <strong>motion sensing mode</strong> in which the light automatically turns on when motion is detected, and</li>
-      <li>a <strong>manual mode</strong> in which the user can change the brightness manually.</li> 
-	</ol>
-	The user can enable the manual mode by pressing the <strong>On</strong> button. Pressing the <strong>Off</strong> button enables the motion sensing mode. With a <strong>Mode</strong> button the user can switch between the motion sensing and the twilight mode.
-	</p>
-	<p>
-	The following statechart reflects these requirements:
-	<p>
-	<iframe src="./lightswitch_no_history-player/player.html" style="width: 100%; height: 600px;"></iframe>
-	</p>
-	
-	<h2>Shallow history states</h2>
-	<p>
-	Consider the following additional requirement: When the user switches from manual to automatic mode, the last active mode shall be activated.
-	</p>
-	<p>
-	In order to fulfill this requirement, we need to store which state was active before the user switched to manual mode. And this is exactly where history states come in handy.
-	</p>
-<p>
-A <em>shallow history state</em> is a pseudo state that is placed inside the region of a composite state. It is used to remember the last active state inside a composite state. This makes it possible to jump back to the remembered state instead of starting at the inner initial state again.
-</p>
-<p>
-A history state saves the current state exactly when its containing region is left. A shallow history state saves the state of the current level only. If you need to save the status of multiple nested composite states, use a <em>deep history state</em> instead.
-</p>
-<p>
-Let's go back to our light switch example. You can easily change the initial state that points to the <strong>MotionDetectionMode</strong> state into a history node:
-</p>
-<p>
-	<img class="small" alt="Switch entry kind" title="Switch entry kind" border="0" src="images/change_entry_kind.png"/>
-</p>
-<p>
-Using a shallow history node changes the behavior of the light switch to the following: Whenever the <strong>AutomaticMode</strong> is entered, the last active state will be activated. For example, if the light switch was in twilight mode when the user pressed the <strong>On</strong> button, pressing the <strong>Off</strong> button will set it again into twilight mode, instead of the motion detection mode.
-</p>
-<p>
-However, the shallow history does not store the inner state of the respective mode state. As the name already says, it only stores the active state on one level, namely the region in which the shallow history node is placed. Regarding our light switch example, this means that switching back to automatic mode will always activate one of the <strong>Idle</strong> states.
-</p>
+		<p>Let's revisit the light switch example of the <a
+				href="../examples/org-yakindu-sct-examples-basic-tutorial?exampleId=org.yakindu.sct.examples.lightswitch_series">Basic
+				Tutorial</a>. To be more concrete, let's start at the point where our light switch can be in one of
+			three possible modes:
+		<ol>
+			<li>a <strong>twilight / luminosity mode</strong> in which the light automatically turns on when it is dark,
+			</li>
+			<li>a <strong>motion sensing mode</strong> in which the light automatically turns on when motion is
+				detected, and</li>
+			<li>a <strong>manual mode</strong> in which the user can change the brightness manually.</li>
+		</ol>
+		The user can enable the manual mode by pressing the <strong>On</strong> button. Pressing the
+		<strong>Off</strong> button enables the motion sensing mode. With a <strong>Mode</strong> button the user can
+		switch between the motion sensing and the twilight mode.
+		</p>
+		<p>
+			The following statechart reflects these requirements:
+		<p>
+			<div id="noHistory"></div>
+		</p>
 
-<h2>Deep history states</h2>
-<p>
-A <em>deep history state</em> is similar to a shallow history state, but more complex. With a deep history state, the latest status of all nested states is remembered.
-</p>
-<p>
-	<iframe src="./lightswitch_deep_history-player/player.html" style="width: 100%; height: 600px;"></iframe>
-</p>
-<p>
-Let's take a look at our light switch example again. When the light switch is in <strong>TwilightDetected</strong> state, and the user presses the <strong>On</strong> button, this state is stored by the deep history and will be activated again when the user switches back to automatic mode. Please note, that already passed time in time triggers is not stored by a history state. When the light switch is in <strong>MotionDetected</strong> state and stays there for 20 seconds without any motion being registered, switching to manual mode and back, will start the timer at 0 again, i.e. it will take another 30 seconds for the state being switched to <strong>Idle</strong>.
-</p>
+		<h2>Shallow history states</h2>
+		<p>
+			Consider the following additional requirement: When the user switches from manual to automatic mode, the
+			last active mode shall be activated.
+		</p>
+		<p>
+			In order to fulfill this requirement, we need to store which state was active before the user switched to
+			manual mode. And this is exactly where history states come in handy.
+		</p>
+		<p>
+			A <em>shallow history state</em> is a pseudo state that is placed inside the region of a composite state. It
+			is used to remember the last active state inside a composite state. This makes it possible to jump back to
+			the remembered state instead of starting at the inner initial state again.
+		</p>
+		<p>
+			A history state saves the current state exactly when its containing region is left. A shallow history state
+			saves the state of the current level only. If you need to save the status of multiple nested composite
+			states, use a <em>deep history state</em> instead.
+		</p>
+		<p>
+			Let's go back to our light switch example. You can easily change the initial state that points to the
+			<strong>MotionDetectionMode</strong> state into a history node:
+		</p>
+		<p>
+			<img class="small" alt="Switch entry kind" title="Switch entry kind" border="0"
+				src="images/change_entry_kind.png" />
+		</p>
+		<p>
+			Using a shallow history node changes the behavior of the light switch to the following: Whenever the
+			<strong>AutomaticMode</strong> is entered, the last active state will be activated. For example, if the
+			light switch was in twilight mode when the user pressed the <strong>On</strong> button, pressing the
+			<strong>Off</strong> button will set it again into twilight mode, instead of the motion detection mode.
+		</p>
+		<p>
+			However, the shallow history does not store the inner state of the respective mode state. As the name
+			already says, it only stores the active state on one level, namely the region in which the shallow history
+			node is placed. Regarding our light switch example, this means that switching back to automatic mode will
+			always activate one of the <strong>Idle</strong> states.
+		</p>
 
-  </div>
+		<h2>Deep history states</h2>
+		<p>
+			A <em>deep history state</em> is similar to a shallow history state, but more complex. With a deep history
+			state, the latest status of all nested states is remembered.
+		</p>
+		<p>
+			<div id="deepHistory"></div>
+		</p>
+		<p>
+			Let's take a look at our light switch example again. When the light switch is in
+			<strong>TwilightDetected</strong> state, and the user presses the <strong>On</strong> button, this state is
+			stored by the deep history and will be activated again when the user switches back to automatic mode. Please
+			note, that already passed time in time triggers is not stored by a history state. When the light switch is
+			in <strong>MotionDetected</strong> state and stays there for 20 seconds without any motion being registered,
+			switching to manual mode and back, will start the timer at 0 again, i.e. it will take another 30 seconds for
+			the state being switched to <strong>Idle</strong>.
+		</p>
+
+	</div>
+	<script>
+		const browserIsModern = getBrowser();
+
+		var noHistory = document.getElementById("noHistory");
+		var deepHistory = document.getElementById("deepHistory");
+
+		if (browserIsModern) {
+			noHistory.innerHTML = "<iframe src='./lightswitch_no_history-player/player.html?start=false' style='width: 100%; height: 600px;'></iframe>"
+			deepHistory.innerHTML = "<iframe src='./lightswitch_deep_history-player/player.html?start=false' style='width: 100%; height: 600px;'></iframe>"
+		} else {
+			noHistory.innerHTML.innerHTML = "<img src='./images/01_no_hierarchy.png'>"
+			deepHistory.innerHTML = "<img src='./images/02_composite_states.png'>"
+		}
+
+
+		function getBrowser() {
+			var userAgent = navigator.userAgent;
+			var supportedBrowsers = ["Chrome", "Firefox", "Safari", "Edge"];
+			var foundSupported = false
+
+			for (var i = 0; i < supportedBrowsers.length; i++) {
+				if (userAgent.indexOf(supportedBrowsers[i]) != -1) {
+					foundSupported = true;
+					break;
+				}
+			}
+
+			return foundSupported;
+		}
+	</script>
 </body>
+
 </html>

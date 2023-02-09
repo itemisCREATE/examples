@@ -14,7 +14,7 @@
 extern "C" {
 #endif
 
-/*! \file Defines the cycle runner interface for YAKINDU state machines.
+/*! \file Defines the cycle runner interface for itemis CREATE state machines.
  *  A cycle runner performs a cyclic execution of the state machines runCycle function
  *  with a fixed time interval. The implementation is based on  POSIX threads and makes
  *  use of a mutex for thread synchronization.

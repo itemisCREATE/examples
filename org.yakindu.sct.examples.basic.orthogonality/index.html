@@ -1,45 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Orthogonal States</title>
-<link href="./css/style.css" rel="stylesheet">
 
+<head>
+  <meta charset="UTF-8">
+  <title>Orthogonal States</title>
+  <link href="./css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css" />
 </head>
+
 <body class="body-container">
   <div class="primary">
-
     <h1>Orthogonality</h1>
 
-    <p>This example demonstrates the usage of orthogonal states as well as of forking and joining synchronization nodes. For more details, please also refer to our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_synchronizations">documentation</a>.</p>
-    
+    <p>This example demonstrates the usage of orthogonal states as well as of forking and joining synchronization nodes.
+      For more details, please also refer to our <a
+        href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_synchronizations">documentation</a>.
+    </p>
+    <p class="h5">The player toolbar</p>
+    <p>
+      The embedded statechart's below can be controlled by the player's bottom toolbar. This toolbar allows to
+      start and stop the statechart with the play and stop buttons. The button to the right opens the
+      execution context which allows to raise events and set variables.
+    </p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Buttons</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><i class="mdi mdi-play-circle"></i><i class="mdi mdi-stop-circle"></i></td>
+          <td>Start/stop the statechart execution.</td>
+        </tr>
+        <tr>
+          <td><i class="mdi mdi-magnify-plus"></i><i class="mdi mdi-magnify-minus"></i><i
+              class="mdi mdi-arrow-expand-all"></i><i class="mdi mdi-fullscreen"></i></td>
+          <td>Control the zoom level and open the statechart in fullscreen mode.</td>
+        </tr>
+        <tr>
+          <td><i class="mdi mdi-table-of-contents mdi-rotate-180"></i></td>
+          <td>Open the execution context to watch/set variable values and to raise events.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br><br>
     <h2>Orthogonal regions</h2>
-<p>
-YAKINDU Statechart Tools allows to specify orthogonal regions that are executed virtually concurrently. Orthogonal regions can be modeled either on top level, or within a composite state (or subdiagram). They allow to describe that the modeled system can be in multiple states simultaneously.
-</p> 
-<p>
-Let's take the simplified example of a keyboard controller. The user can enable caps lock and num lock. These are two independent functionalities, and the keyboard can have both enabled at the same time.
-</p>
-<p>
-	<img class="small"
-          alt="Orthogonal regions on top level."
-          src="images/keyboard.png" />
-</p>
-<h2>Forks and joins</h2>
+    <p>
+      itemis CREATE allows you to specify orthogonal regions that are executed virtually concurrently. Orthogonal
+      regions
+      can be modeled either on top level, or within a composite state (or subdiagram). They allow to describe that the
+      modeled system can be in multiple states simultaneously.
+    </p>
+    <p>
+      Let's take the simplified example of a keyboard controller. The user can enable caps lock and num lock. These are
+      two independent functionalities, and the keyboard can have both enabled at the same time.
+    </p>
+    <p>
+    <div id="keyboardContent"></div>
+    </p>
+    <h2>Forks and joins</h2>
 
-<p>
-Orthogonal regions can not only be defined on top level but also within composite states. The semantics explained above are the same. 
-The following example model uses a synchronization node to fork the execution flow into both orthogonal regions. After both regions have executed their state transitions, the execution flow is joined again by a synchronization node. A joining synchronization is only executed when all incoming transitions can be taken within the same run-to-completion cycle. For more details, please refer to our documentation on <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_synchronizations">Synchronizations</a>.
-</p>
-<p>
+    <p>
+      Orthogonal regions can not only be defined on top level but also within composite states. The semantics explained
+      above are the same.
+      The following example model uses a synchronization node to fork the execution flow into both orthogonal regions.
+      After both regions have executed their state transitions, the execution flow is joined again by a synchronization
+      node. A joining synchronization is only executed when all incoming transitions can be taken within the same
+      run-to-completion cycle. For more details, please refer to our documentation on <a
+        href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_synchronizations">Synchronizations</a>.
+    </p>
+    <p>
 
-</p>
-<p>
-	<img
-          alt="Orthogonal states, forks and joins"
-          src="images/orthogonality.png" />
-</p>
-       
+    </p>
+    <p>
+    <div id="orthogonalityContent"></div>
+    </p>
   </div>
+  
+  <script>
+    keyboardContent = document.getElementById("keyboardContent");
+    const keyboardOutput = getContent("keyboard");
+    keyboardContent.innerHTML = keyboardOutput;
+
+    var orthogonalityContent = document.getElementById("orthogonalityContent");
+    const orthogonalityOutput = getContent("orthogonality");
+    orthogonalityContent.innerHTML = orthogonalityOutput;
+
+    function getContent(input) {
+      var userAgent = navigator.userAgent;
+      var supportedBrowsers = ["Chrome", "Firefox", "Safari", "Edge"];
+      var foundSupported = false
+
+      for (var i = 0; i < supportedBrowsers.length; i++) {
+        if (userAgent.indexOf(supportedBrowsers[i]) != -1) {
+          foundSupported = true;
+          break;
+        }
+      }
+      if (foundSupported) {
+        return "<iframe src='./" + input + "-player/player.html' alt='Orthogonal regions on top level.' width='100%' height='600px'></iframe>";
+      } else {
+        return "<img src='./images/" + input + ".png'>"
+      }
+    }
+  </script>
 </body>
 </html>

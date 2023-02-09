@@ -1,0 +1,52 @@
+<meta charset="utf-8">
+<title>sct-web-player demo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+<script src="https://unpkg.com/vue@2.6.12"></script>
+<script src="https://unpkg.com/vuetify@2.4.6"></script>
+<script src="https://unpkg.com/@yakindu/sct-web-player@^0.3.0"></script>
+<script src="./assets/statemachine.svg.js"></script>
+<script src="./assets/context.json.js"></script>
+<script src="./assets/hashes.json.js"></script>
+<script src="./assets/bundle.js"></script>
+
+<style>
+    html {
+        overflow-y: auto;
+    }
+    body {
+		background-color: white;
+	}
+</style>
+
+<html>
+
+<body>
+    <div id="app">
+        <player  id="player" />
+    </div>
+</body>
+
+</html>
+
+<script>
+    const player = new window["sct-web-player"].default({
+        vuetify: new Vuetify(),
+        propsData: { 
+            svg: svg,
+            contextJson : contextJson,
+            hashesJson : hashesJson,
+            statemachine: sct.yakindu.io.Statemachine,
+            states : sct.yakindu.io.Statemachine.State,
+            features: sct.yakindu.io.Statemachine.Feature,
+            toolbarConfig: {
+                toolbar: true,
+                playStop: true,
+                zoom: true,
+                fullScreen: true,
+                declarations: true,
+            },
+         }
+    })
+    player.$mount("#player");
+</script>

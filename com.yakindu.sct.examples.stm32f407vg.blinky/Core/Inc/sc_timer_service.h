@@ -14,7 +14,7 @@
 extern "C" {
 #endif
 
-/*! file/ Interface definition of a POSIX thread based timer service for YAKINDU SCT state machines. */
+/*! file/ Interface definition of a POSIX thread based timer service for itemis CREATE  state machines. */
 
 struct sc_timer_service;
 

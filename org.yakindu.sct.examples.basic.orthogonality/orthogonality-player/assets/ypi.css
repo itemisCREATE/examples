@@ -1,12 +1,12 @@
 /*!
- * YAKINDU Player Styles
+ * itemis CREATE Player Styles
  * Copyright 2021 itemis AG
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
 
  /*!
-  * Style definitions follow BEM pattern using and additional 'y' namespace (for YAKINDU).
+  * Style definitions follow BEM pattern using and additional 'y' namespace (for itemis CREATE).
   */
 .y-declaration {
     padding: 3px;

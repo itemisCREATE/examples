@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Traffic Light (XState)</title>
+<link href="./css/style.css" rel="stylesheet">
+
+</head>
+<body class="body-container">
+  <div class="primary">
+  
+    <h1>Traffic Light (XState)</h1>
+
+    <p>Demonstrates how to to generate XState source code from a statechart.
+    </p>
+
+    <p>
+      <img class="full" alt="Statechart"
+        src="images/TrafficLightCtrl.png" />
+    </p>
+    
+    <h2>How it works</h2>
+    
+    <p>In summary, there are two traffic lights: one for the traffic on the
+      street, and one for pedestrians who want to cross the street. They can
+      push a button to request their traffic light to turn green, which
+      activates a blinking wait-light first. The street's traffic light then
+      goes through the standard procedure, turning on the yellow light, followed
+      by the red light, allowing the pedestrians to cross safely. After some
+      time, the pedestrians' traffic light turns red again, and the cars are
+      allowed to pass until the next request is made by a pedestrian.</p>
+
+    <p>Additionally, the traffic light can be switched off completely. This
+      turns the yellow lights into a blinking mode, signaling that the traffic
+      light is indeed switched off and that the street should be crossed in a
+      careful manner.</p>
+
+	<h2>Run the program</h2>
+    <p>The traffic light example is based on XState and contains a small GUI
+      that demonstrate the state machine behaviour modelled in
+      /model/TrafficLightCtrl.sct. This example combines generated XState code
+      with a manual Typescript React implementation (the GUI). To generate the state machine
+      code, right-click on /model/TrafficLightCtrl.sgen and select 'Generate
+      Code Artifacts'. To start the application run
+      npm install and npm start.</p>
+    
+    <p>
+      <img class="tiny" alt="Application"
+        src="images/trafficLightGui.png" />
+    </p>
+
+
+	<h2>Using the GUI:</h2>
+	<ol>
+	  <li>Press the 'ON/OFF' Button to activate the traffic light system.</li>
+	  <li>Press the 'Request' button to send a request.</li>
+	  <li>There is also an interactive representation of the statechart showing the current state.</li>
+	</ol>
+
+    <h2>Troubleshooting</h2>
+
+    <ol>
+      <li>Please make sure that npm and nodejs are installed correctly on your system.</li>
+    </ol>
+
+  </div>
+</body>
+</html>

@@ -38,23 +38,19 @@ function setPedestrianLights(pedestrian1 : boolean, pedestrian2 : boolean){
   }
 }
 
-document.getElementById("app").innerHTML = `
-<div class="divClass">
-    <div class="flexRowHere">
-        <div class="scene">
-            <img src="./images/road.png" id="roadImage"></img>
-            <img src="./images/trafficLightAllOff.png" id="trafficLight"></img>
-            <img src="./images/red.png" id="redLight" class="lamp"></img>
-            <img src="./images/yellow.png" id="yellowLight" class="lamp"></img>
-            <img src="./images/green.png" id="greenLight" class="lamp"></img>
-            <img src="./images/yellow.png" class="yellowPedestrianLight pedestrianLight1 lamp" id="pedestrianLight1"></img>
-            <img src="./images/yellow.png" class="yellowPedestrianLight pedestrianLight2 lamp" id="pedestrianLight2"></img>
-            <img src="./images/French-Pedestrian-Silhouette.svg" id="pedestrianImage"></img>
-            <div class="buttons">
-                <button id="button1" class="button1" type="button" onClick="functionOnOff()">ON/OFF</button>
-                <button id="button2" class="button2" type="button" onClick="functionRequest()">Request</button>
-            </div>
-        </div>
+document.getElementById("scene-container").innerHTML = `
+<div class="scene">
+    <img src="./images/road.png" id="roadImage"></img>
+    <img src="./images/trafficLightAllOff.png" id="trafficLight"></img>
+    <img src="./images/red.png" id="redLight" class="lamp"></img>
+    <img src="./images/yellow.png" id="yellowLight" class="lamp"></img>
+    <img src="./images/green.png" id="greenLight" class="lamp"></img>
+    <img src="./images/yellow.png" class="yellowPedestrianLight pedestrianLight1 lamp" id="pedestrianLight1"></img>
+    <img src="./images/yellow.png" class="yellowPedestrianLight pedestrianLight2 lamp" id="pedestrianLight2"></img>
+    <img src="./images/French-Pedestrian-Silhouette.svg" id="pedestrianImage"></img>
+    <div class="buttons">
+        <button id="button1" class="button1" type="button" onClick="functionOnOff()">ON/OFF</button>
+        <button id="button2" class="button2" type="button" onClick="functionRequest()">Request</button>
     </div>
 </div>
 `;
@@ -66,11 +62,7 @@ document.getElementById("button2").onclick = function(){
   service.send("pedestrianRequest")
 }
 
-const service = interpret(TrafficLightCtrl, { devTools: true }).onTransition(
-  (state) => {
-    console.log(state.value);
-  }
-);
+const service = interpret(TrafficLightCtrl, { devTools: true })
 
 service.machine.context.TrafficLight.off$.subscribe(() => setTrafficLights(false, false, false))
 service.machine.context.TrafficLight.red$.subscribe(() => setTrafficLights(true, false, false))

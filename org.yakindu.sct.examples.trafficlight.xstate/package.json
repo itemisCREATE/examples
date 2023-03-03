@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "main": "src/index.tsx",
+  "main": "index.html",
   "dependencies": {
     "@xstate/inspect": "^0.7.1",
     "@xstate/react": "3.0.2",

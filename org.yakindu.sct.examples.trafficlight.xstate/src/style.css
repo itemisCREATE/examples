@@ -1,15 +1,15 @@
-.scene {
-    height: 350px;
-    width: 400px;
-    display: flex;
-    align-items: flex-end;
-    border: 1px solid black;
-    position: relative;
+body {
     background-color: #ffffff;
 }
 
-body {
-    background-color: #ffffff;
+iframe {
+    width: 100%;
+    height: 500pt;
+}
+
+.App {
+    font-family: sans-serif;
+    text-align: center;
 }
 
 .buttons{
@@ -24,6 +24,32 @@ body {
     align-items: center;
     justify-content: center;
     height: 600px;
+}
+
+.flexrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.flexcolumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+}
+
+.scene {
+    height: 350px;
+    width: 400px;
+    display: flex;
+    align-items: flex-end;
+    border: 1px solid black;
+    position: relative;
+    background-color: #ffffff;
 }
 
 #roadImage {
@@ -57,10 +83,6 @@ body {
     margin-bottom: 107px;
 }
 
-.active {
-    filter: brightness(110%);
-}
-
 #pedestrianImage {
     width: 25px;
     border: 1px solid black;
@@ -87,43 +109,33 @@ body {
     margin-bottom: 88px;
 }
 
-.App {
-    font-family: sans-serif;
-    text-align: center;
-  }
-  .image1 {
+.image1 {
     position: relative;
     top: 0px;
     left: 0px;
-  }
-  .lights {
+}
+.lights {
     position: relative;
     top: -250px;
     left: 0px;
-  }
-  .image2 {
+}
+.image2 {
     position: relative;
     top: -103.5px;
     left: 175px;
-  }
-  .image3 {
+}
+.image3 {
     position: relative;
     top: -6px;
     left: -2px;
-  }
-  .image4 {
+}
+.image4 {
     position: relative;
     top: 91px;
     left: -180px;
-  }
-  .divider {
-    position: relative;
-    top: 10px;
-    left: 0px;
-  }
-  .divClass {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
+}
+
+.active {
+    filter: brightness(110%);
+}
+

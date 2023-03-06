@@ -1,0 +1,30 @@
+{
+  "name": "Traffic Light (XState)",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "index.html",
+  "dependencies": {
+    "@xstate/inspect": "^0.7.1",
+    "copyfiles": "^2.4.1",
+    "react-scripts": "^2.1.3",
+    "xstate": "4.35.3"
+  },
+  "devDependencies": {
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.2",
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && copyfiles images/*.png build/",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

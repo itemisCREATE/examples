@@ -268,11 +268,19 @@ impl TimerTaskMatcher {
 pub struct TimerService {
     next_active_task: usize,
     next_free_task: usize,
-    tasks: Box<[RefCell<TimerTask>]>, //maybe derive sized type
+    tasks: Vec<RefCell<TimerTask>>, //maybe derive sized type
 }
 
 impl TimerService {
-    pub fn with_tasks(tasks: Box<[RefCell<TimerTask>]>) -> TimerService {
+    pub fn new() -> TimerService {
+        TimerService {
+            next_active_task: 0,
+            next_free_task: 0,
+            tasks: Vec::new(),
+        }
+    }
+
+    pub fn with_tasks(tasks: Vec<RefCell<TimerTask>>) -> TimerService {
         //todo tasks should be owned and consumed by this function
 
         for (i, task) in tasks.deref().iter().enumerate() {

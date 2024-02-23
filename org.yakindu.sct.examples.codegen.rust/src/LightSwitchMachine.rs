@@ -11,48 +11,73 @@ pub mod LightSwitch {
 	
 	use std::collections::VecDeque;
 	
+	use crate::timerservice::TimerService;
 	use crate::statemachine::{Statemachine, CycleBasedStatemachine};
+	use std::rc::{Rc, Weak};
+	use std::cell::{RefCell};
 	
 	pub struct LightSwitch {
 		pub brightness : usize,
 		pub isExecuting : bool,
 		pub // the maximum number of orthogonal states defines the dimension of the state configuration vector.
 		MaxOrthogonalStates : usize,
-		pub On_button : On_buttonHandlerHandler,
-		pub Off_button : Off_buttonHandlerHandler,
-		pub On : OnHandlerHandler,
-		pub Off : OffHandlerHandler,
 		pub // The number of states.
 		numStates : usize,
 		pub scvi_LightSwitch_main_region_Off : usize,
 		pub scvi_LightSwitch_main_region_On : usize,
-		pub IncomingEventQueue : VecDeque<&'a dyn Fn(&mut Self) -> ()>,
-		pub InternalEventQueue : VecDeque<&'a dyn Fn(&mut Self) -> ()>,
+		IncomingEventQueue : VecDeque<&'static dyn Fn(&mut Self) -> ()>,
+		InternalEventQueue : VecDeque<&'static dyn Fn(&mut Self) -> ()>,
+		pub timerService : TimerService,
+		pub timeEvents : [bool; 2],
+		pub On_button : bool,
+		pub Off_button : bool,
+		pub On: bool,
+		pub Off: bool,
+		pub instance: Weak<RefCell<dyn CycleBasedStatemachine>>,
 		pub StateConfVector : [State; 1]
 	}
 	
 	impl LightSwitch{
+
+		pub fn RaiseOn(&mut self) {
+			self.IncomingEventQueue.push_front(
+				&|x : &mut LightSwitch| {
+					x.On_button = true
+				}
+			);
+			self.run_cycle();
+		}
+
+		pub fn RaiseOff(&mut self) {
+			self.IncomingEventQueue.push_front(
+				&|x : &mut LightSwitch| {
+					x.Off_button = true
+				}
+			);
+			self.run_cycle();
+		}
+
 		/* Entry action for state 'Off'. */
 		fn LightSwitch_enact_main_region_Off(&mut self) -> ()
 		{
 			/* Entry action for state 'Off'. */
-			self.brightness = Some(0);
-			RaiseOff();
+			self.brightness = 0;
+			self.RaiseOff();
 		}
 		
 		/* Entry action for state 'On'. */
 		fn LightSwitch_enact_main_region_On(&mut self) -> ()
 		{
 			/* Entry action for state 'On'. */
-			timerService.setTimer(this, 0, (Some(30) * Some(1000)), false);
-			RaiseOn();
+			self.timerService.set_runcycle_timer_for((Weak::clone(&(self.instance))), 30 * 1000);
+			self.RaiseOn();
 		}
 		
 		/* Exit action for state 'On'. */
 		fn LightSwitch_exact_main_region_On(&mut self) -> ()
 		{
 			/* Exit action for state 'On'. */
-			timerService.unsetTimer(this, 0);
+			self.timerService.unset_runcycle_time_for((Weak::clone(&(self.instance))));
 		}
 		
 		/* 'default' enter sequence for state Off */
@@ -115,17 +140,17 @@ pub mod LightSwitch {
 			self.LightSwitch_enseq_main_region_Off_default();
 		}
 		
-		fn react(self : &mut Self, transitioned_before : Option<usize>) -> Option<usize>{
+		/*A*/fn react(self : &Self, transitioned_before : Option<usize>) -> Option<usize>{
 					/* State machine reactions. */
 					return transitioned_before;
 		}
-		fn main_region_off_react(self : &mut Self, transitioned_before : Option<usize>) -> Option<usize>{
+		/*A*/fn main_region_off_react(self : &mut Self, transitioned_before : Option<usize>) -> Option<usize>{
 					/* The reactions of state Off. */
 					let mut transitioned_after : Option<usize> = transitioned_before;
-					if transitioned_after.is_none() {
+					if transitioned_before.is_none() {
 						if self.On_button {
 							self.LightSwitch_exseq_main_region_Off();
-							self.brightness = Some(1);
+							self.brightness = 1;
 							self.LightSwitch_enseq_main_region_On_default();
 							self.react(Some(0));
 							transitioned_after = Some(0);
@@ -138,7 +163,7 @@ pub mod LightSwitch {
 					}
 					return transitioned_after;
 		}
-		fn main_region_on_react(self : &mut Self, transitioned_before : Option<usize>) -> Option<usize>{
+		/*A*/fn main_region_on_react(self : &mut Self, transitioned_before : Option<usize>) -> Option<usize>{
 					/* The reactions of state On. */
 					let mut transitioned_after : Option<usize> = transitioned_before;
 					if transitioned_after.is_none() {
@@ -153,23 +178,23 @@ pub mod LightSwitch {
 					/* If no transition was taken */
 					if transitioned_after==transitioned_before {
 						/* then execute local reactions. */
-						if ((self.On_button) && (self.brightness<Some(10))) {
-							self.brightness += Some(1);
+						if ((self.On_button) && (self.brightness<(10))) {
+							self.brightness += (1);
 						}
 						transitioned_after = self.react(transitioned_before);
 					}
 					return transitioned_after;
 		}
-		fn clear_in_events(self : &mut Self) -> (){
+		/*A*/fn clear_in_events(self : &mut Self) -> (){
 					self.timeEvents[0] = false;
 		}
-		fn clear_internal_events(self : &mut Self) -> (){
+		/*A*/fn clear_internal_events(self : &mut Self) -> (){
 					self.On_button = false;
 					self.Off_button = false;
 					self.On = false;
 					self.Off = false;
 		}
-		fn micro_step(self : &mut Self) -> (){
+		/*A*/fn micro_step(self : &mut Self) -> (){
 					match self.StateConfVector[0] {
 						State::main_region_Off => {
 							self.main_region_off_react(None);
@@ -180,8 +205,8 @@ pub mod LightSwitch {
 						_ => {}
 					}
 		}
-		fn is_state_active(self : &mut Self) -> bool{
-			match self.StateConfVector[0] {
+		/*B*/pub fn is_state_active(self : &Self, state : State) -> bool{
+			match state {
 				State::main_region_Off =>
 				{
 					return self.StateConfVector[self.scvi_LightSwitch_main_region_Off] == State::main_region_Off;
@@ -198,7 +223,8 @@ pub mod LightSwitch {
 			}
 		}
 		// Can be used by the client code to trigger a run to completion step without raising an event.
-		fn trigger_without_event(self : &mut Self) -> () {
+		//methodSelfDefinitionCode
+		/*B*/pub fn trigger_without_event(self : &mut Self) -> () {
 			self.run_cycle();
 		}
 		fn get_next_event(&mut self) -> bool{
@@ -214,34 +240,43 @@ pub mod LightSwitch {
 			}
 			false
 		}
-		fn New() -> LightSwitch{
+		
+		pub fn New() -> Rc<RefCell<LightSwitch>>{
 			let mut machine = LightSwitch {
 				brightness: 0,
 				isExecuting: false,
 				MaxOrthogonalStates: 1,
-				On_button: ,
-				Off_button: ,
-				On: ,
-				Off: ,
 				numStates: 2,
 				scvi_LightSwitch_main_region_Off: 0,
 				scvi_LightSwitch_main_region_On: 0,
 				IncomingEventQueue: VecDeque::new(),
 				InternalEventQueue: VecDeque::new(),
+				timerService: TimerService::new(),
+				timeEvents: [false, false],
+				On_button: false,
+				Off_button: false,
+				On: false,
+				Off: false,
+				instance: Weak::<RefCell<Self>>::new(),
 				StateConfVector: [State::NO_STATE; 1]
 			};
-			
+
 			for state_vec_pos in 0..machine.MaxOrthogonalStates {
 				machine.StateConfVector[state_vec_pos] = State::NO_STATE;
 			}
 			
 			machine.clear_in_events();
-			machine
+
+
+			let current_machine = Rc::new(RefCell::new(machine));
+			let cloned_machine = Rc::clone(&current_machine) as Rc<RefCell<dyn CycleBasedStatemachine>>;
+			current_machine.borrow_mut().instance = Rc::downgrade(&cloned_machine);
+			current_machine
 		}
 	}
 	
 	impl Statemachine for LightSwitch{
-		fn enter(self : &mut Self) -> (){
+		/*A*/fn enter(self : &mut Self) -> (){
 					/* Activates the state machine. */
 					if self.isExecuting {
 						return;
@@ -251,7 +286,7 @@ pub mod LightSwitch {
 					self.LightSwitch_enseq_main_region_default();
 					self.isExecuting = false;
 		}
-		fn exit(self : &mut Self) -> (){
+		/*A*/fn exit(self : &mut Self) -> (){
 					/* Deactivates the state machine. */
 					if self.isExecuting {
 						return;
@@ -261,16 +296,16 @@ pub mod LightSwitch {
 					self.LightSwitch_exseq_main_region();
 					self.isExecuting = false;
 		}
-		fn is_active(self : &Self) -> bool{
+		/*B*/fn is_active(self : &Self) -> bool{
 			self.StateConfVector[0] != State::NO_STATE
 		}
-		fn is_final(self : &Self) -> bool{
+		/*B*/fn is_final(self : &Self) -> bool{
 			false
 		}
 	}
 	
 	impl CycleBasedStatemachine for LightSwitch{
-		fn run_cycle(self : &mut Self) -> (){
+		/*A*/fn run_cycle(self : &mut Self) -> (){
 					/* Performs a 'run to completion' step. */
 					if self.isExecuting {
 						return;

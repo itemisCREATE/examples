@@ -1,0 +1,19 @@
+{
+	"id": "itemis.create.examples.trafficlight.python.raspberry",
+	"title": "Raspberry Pi - Traffic Light (Python)",
+	"description": "Demonstrates how to generate Python source code from a statechart.",
+	"previewImage": "traffic_light_python_rasp.jpg",
+	"author": "Norbert Lang",
+	"organization": "itemis AG",
+	"license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+	"category": [
+		"open source",
+		"embedded"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://updates.yakindu.com/statecharts/labs",
+			"features": ["itemis.create.generator.python.feature.feature.group"]
+		}
+	]
+}

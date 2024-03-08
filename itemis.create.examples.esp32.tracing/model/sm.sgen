@@ -1,0 +1,21 @@
+GeneratorModel for create::c {
+
+	statechart blink {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.esp32.tracing"
+			targetFolder = "main/sc/sm"
+			libraryTargetFolder = "main/sc/base"
+		}
+		
+		feature Tracing {
+			enterState = false
+			exitState = false
+			generic = true
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}

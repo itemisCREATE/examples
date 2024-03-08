@@ -1,0 +1,17 @@
+{
+	"id": "itemis.create.examples.trafficlight.cpp.arduino",
+	"title": "Arduino - Traffic Light (C++)",
+	"author": "itemis AG",
+	"description": "Wondering how to execute your state machine on the Arduino platform? This example demonstrates the necessary steps, like installing the Arduino plugin, building the hardware, turning your statechart into code and uploading it to the Arduino. It does so by means of the standard traffic light example.",
+	"previewImage": "arduino-traffic-light.png",
+	"category": [
+		"open source",
+		"embedded"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://eclipse.baeyens.it/update/V4/stable",
+			"features": ["io.sloeber.feature.feature.group"]
+		}
+	]
+}

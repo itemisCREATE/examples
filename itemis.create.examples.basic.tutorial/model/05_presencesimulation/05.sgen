@@ -1,0 +1,16 @@
+GeneratorModel for create::java {
+	
+	statechart _05_PresenceSimulationLightSwitch {
+		
+		feature Outlet {
+			targetProject = "itemis.create.examples.basic.tutorial"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+		
+		feature Naming {
+			basePackage = "itemis.create.examples.basic.tutorial"
+			libraryPackage = "itemis.create"
+		}
+	}
+}

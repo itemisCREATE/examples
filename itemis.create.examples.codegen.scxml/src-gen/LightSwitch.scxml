@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" datamodel="ecmascript" name="LightSwitch">
+	<datamodel>
+		<data expr="0" id="light_brightness" />
+	</datamodel>
+	<state id="main_region">
+		<initial>
+			<transition target="Off" type="internal">
+			</transition>
+		</initial>
+		<state id="Off">
+			<onentry>
+				 <assign location="light_brightness" expr="0"/>
+				<send event="light.off">
+				</send>
+			</onentry>
+			<transition event="user.on_button"  target="On">
+				 <assign location="light_brightness" expr="1"/>
+			</transition>
+		</state>
+		<state id="On">
+			<onentry>
+				<send event="light.on">
+				</send>
+			</onentry>
+			<transition event ="user.on_button" cond="light_brightness &lt; 10" type="internal" >
+				 <assign location="light_brightness" expr="light_brightness + 1"/>
+			</transition>
+			<transition event="user.off_button"  target="Off">
+			</transition>
+		</state>
+	</state>
+</scxml>

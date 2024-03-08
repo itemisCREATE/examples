@@ -1,0 +1,16 @@
+/* Defines which code generator to use */ 
+GeneratorModel for create::cpp {
+	/* Refers to the statechart model 'LightSwitch' */
+	statechart LightSwitch {
+		/* Specify the target location for the generated artifacts. */
+		feature Outlet {
+			targetProject = "itemis.create.examples.codegen.cpp"
+			targetFolder = "src-gen"
+		}
+		/* Generate a default timer service implementation */
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}
+

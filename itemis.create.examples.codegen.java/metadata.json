@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.codegen.java",
+	"title": "Java Code Generation",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to generate Java code from a statechart.",
+	"previewImage": "watch_gears_thumb.jpg",
+	"category": [
+		"code-generation"
+	],
+	"rank":30
+}
+ 

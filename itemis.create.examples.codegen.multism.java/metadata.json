@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.codegen.multism.java",
+	"title": "Java Code Generation for Multi State Machines",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to generate Java code from a multi state machine scenario.",
+	"previewImage": "watch_gears_thumb.jpg",
+	"category": [
+		"professional",
+		"multi-sm"
+	],
+	"rank":33
+}

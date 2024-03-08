@@ -1,0 +1,14 @@
+GeneratorModel for yakindu::c {
+
+	statechart TrafficLightCtrl {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.trafficlight.c.arduino"
+			targetFolder = "src-gen"
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}

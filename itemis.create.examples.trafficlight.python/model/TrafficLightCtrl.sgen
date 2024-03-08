@@ -1,0 +1,14 @@
+GeneratorModel for yakindu::python {
+
+	statechart TrafficLightCtrl {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.trafficlight.python"
+			targetFolder = "src"
+		}
+		
+		feature GeneralFeatures {
+			DefaultTimer = true
+		}
+	}
+}

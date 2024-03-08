@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Java Code Generation for Multi State Machines</title>
+	<link href="./css/style.css" rel="stylesheet">
+	
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Java Code Generation for Multi State Machines</h1>
+
+		<p>This example demonstrates how to generate Java code for a multi state machine scenario and how to set everything up in the application code. As example, we will use a light controller that controls two lights. The controller as well as the lights are defined by state machines that communicate with each other by the means of events.</p>
+		<p>
+			You can find more information on using the multi state machine feature in the <a
+				href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/multi_state_machine_modelling">online
+				documentation</a>.
+		</p>
+		<h2>Example Application</h2>
+		<p>
+		The example application consists of two state machines, one for the controller, and one that describes a simple light switch.
+		</p>
+		<p>
+		<img class="full" alt="Light switch model" title="Light switch model" border="0" src="images/light.png"/>
+		</p>
+		<p>
+		The light switch model simply consists of two states, <code>On</code> and <code>Off</code>, and respectively two incoming events <code>on</code> and <code>off</code>. Each time the event <code>on</code> is received, the brightness is increased until a maximum brightness is reached. Whenever the brightness changes, the outgoing event <code>brightness_changed</code> is raised with the new brightness value. Both, the incoming and outgoing events, are used in the controller machine to control two different lights.
+		</p>
+		<p>
+		<img class="tiny" alt="Light controller model" title="Light controller model" border="0" src="images/light_controller_defsection.png"/>
+		</p>
+		<p>
+		Let's first take a look at the definition section. The controller machine declares two variables <code>light1</code> and <code>light2</code> of type <code>Light</code> which represents the light state machine above. When the controller machine is entered, also these two light machines are entered. In addition, they get initialized with different maximum brightness values.
+		</p>
+		<p>
+		<img class="full" alt="Light controller model" title="Light controller model" border="0" src="images/light_controller_machine.png"/>
+		</p>
+		<p>
+		The state machine basically describes two modes, a regular one in which the <code>switch_on</code> event is just passed on to both light machines, and a blink mode in which the lights' <code>on</code> events are raised periodically. In this mode, both lights' brightness will be automatically increased until its maximum where it starts from zero again. In order to notice when the maximum brightness of a light is reached, the <code>BlinkMode</code> state reacts to the light machines' <code>brightness_changed</code> events and reads the transmitted value.
+		</p>
+		
+		<h2>Generator Model</h2>
+		<p>
+		The generator model simply defines the configuration for both state machines. As the state machines use time events, we ensure that a timer service implementation is generated with the <code>TimerService</code> parameter.
+		</p>
+		<p>
+		<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/itemis.create.examples.codegen.multism.java/models/java.sgen"></script>
+		</p>
+		</p>
+		
+		<h2>Invoking Code Generation</h2>
+		<p>
+		Code generation is usually invoked each time the statechart model is saved. This behavior can be disabled by unchecking the option <em>Project -> Build Automatically</em>. You can always manually invoke the code generation with <em>Generate Code Artifacts</em> in the context menu of the generator model.
+		</p>
+		
+		<h2>Application Code</h2>
+		<p>
+		Our application is a simple interactive console with which the user can switch the lights on or off as well as toggle the blink mode. The complete application code is implemented in <code>Main.java</code>:
+		</p>
+		<p>
+		<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/itemis.create.examples.codegen.multism.java/src/org/yakindu/sct/examples/codegen/multism/java/Main.java"></script>
+		</p>
+		<p>
+		The most important parts are commented in the <code>Main.java</code> file. These are the bullet points:
+		<ul>
+			<li>Instantiate the controller state machine and the two light state machines</li>
+			<li>Set a timer service for each state machine</li>
+			<li>Set the sub machines</li>
+			<li>Subscribe observers to get notified whenever the brightness of a light changes</li>
+			<li>Enter the controller machine; from this point on the state machine is ready to react on incoming event</li>
+			<li>Hook up the console input to raise events on the controller machine</li>
+		</ul>
+		</p>
+		<p>
+		You can run the application with <em>Run As -> Java Application</em> on the <code>Main.java</code> file. A console should open and ask you for input like in the screenshot below.
+		</p>
+		<p>
+		<img class="tiny" alt="Light switch console application" title="Light switch console application" border="0" src="images/console.png"/>
+		</p>
+	</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-testclass TwoWayTrafficControl for statechart TwoWayTrafficControl {
+testclass TwoWayTrafficControlTest for statechart TwoWayTrafficControl {
 	
 	@Test operation testStartUp() {
 		
@@ -7,8 +7,8 @@ testclass TwoWayTrafficControl for statechart TwoWayTrafficControl {
 		trafficLightB.^enter
 		
 		assert active (main.Off)
-		assert trafficLightA.isStateActive(TrafficLightStates.Off)
-		assert trafficLightB.isStateActive(TrafficLightStates.Off)
+		assert trafficLightA.isStateActive(TrafficLightStates.main_On)
+		assert trafficLightB.isStateActive(TrafficLightStates.main_Off)
 						
 	}
 }

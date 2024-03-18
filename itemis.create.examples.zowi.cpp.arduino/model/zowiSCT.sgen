@@ -1,9 +1,9 @@
-GeneratorModel for yakindu::cpp {
+GeneratorModel for create::cpp {
 
 	statechart ZowiSCT {
 
 		feature Outlet {
-			targetProject = "com.yakindu.sct.examples.zowi.cpp.arduino"
+			targetProject = "itemis.create.examples.zowi.cpp.arduino"
 			targetFolder = "src-gen"
 		}
 		

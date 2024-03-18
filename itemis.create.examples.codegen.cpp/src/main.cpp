@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
 	lightSwitch->enter();
 
 	/*! Ensures non-blocking read() call. */
-	fcntl(STDIN_FILENO, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
+	//fcntl(STDIN_FILENO, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
 	cout << "Type 1 or 0 to switch the light on or off." << endl;
 	sleep_time.tv_sec = 0;
 	sleep_time.tv_nsec = 100;

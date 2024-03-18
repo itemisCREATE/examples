@@ -1,5 +1,5 @@
 /* Defines which code generator to use */ 
-GeneratorModel for create::cpp {
+GeneratorModel for create::cpp98 {
 	/* Refers to the statechart model 'LightSwitch' */
 	statechart LightSwitch {
 		/* Specify the target location for the generated artifacts. */
@@ -11,6 +11,12 @@ GeneratorModel for create::cpp {
 		feature GeneralFeatures {
 			timerService = true
 		}
+		
+		feature OutEventAPI {
+			observables = true
+			getters = true
+		}
+		
 	}
 }
 

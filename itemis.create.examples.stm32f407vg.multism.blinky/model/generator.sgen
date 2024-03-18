@@ -1,9 +1,9 @@
-GeneratorModel for yakindu::c {
+GeneratorModel for create::c {
 
 	statechart controller {
 
 		feature Outlet {
-			targetProject = "com.yakindu.sct.examples.stm32f407vg.multism.blinky"
+			targetProject = "itemis.create.examples.stm32f407vg.multism.blinky"
 			targetFolder = "Core/Src"
 			libraryTargetFolder = "Core/Inc"
 			apiTargetFolder = "Core/Inc"
@@ -13,7 +13,7 @@ GeneratorModel for yakindu::c {
 	statechart LED {
 
 		feature Outlet {
-			targetProject = "com.yakindu.sct.examples.stm32f407vg.multism.blinky"
+			targetProject = "itemis.create.examples.stm32f407vg.multism.blinky"
 			targetFolder = "Core/Src"
 			libraryTargetFolder = "Core/Inc"
 			apiTargetFolder = "Core/Inc"

@@ -1,4 +1,4 @@
-GeneratorModel for sctunit::scxml::qt {
+GeneratorModel for create::sctunit::scxml::qt {
 	
 	test TrafficLightStateMachineTests {
 

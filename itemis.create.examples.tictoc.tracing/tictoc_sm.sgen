@@ -1,0 +1,23 @@
+GeneratorModel for create::c {
+
+	statechart tictoc {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.tictoc.tracing"
+			targetFolder = "sc"
+			libraryTargetFolder = "sc/base"
+		}	
+		
+		
+		feature Tracing {
+			enterState = false
+			exitState = false
+			generic = true
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+		
+	}
+}

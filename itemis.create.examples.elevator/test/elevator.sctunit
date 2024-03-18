@@ -1,0 +1,156 @@
+testclass elevator for statechart Elevator {
+	
+	//Req 1: After initialisation, statechart is in Idle state,
+	// elevator is on ground floor, and no destination floor is selected
+	@Test
+	operation initiallyIdle() {
+		enter
+		assert(active(Elevator.main.Idle))
+		assert(currentFloor == 0)
+		assert(destination == 0)
+		exit
+	}
+	
+	//Req 2: When new destination floor is requested,
+	// elevator should start moving
+	@Test
+	operation startMovingWhenFloorRequested() {
+		enter
+		// raise a "floor" request to another floor than the currentFloor
+	    raise floor: currentFloor+5
+        proceed 1 cycle
+        // The elevator will start moving
+		assert(active(Elevator.main.Moving))
+		exit
+	}
+	
+	//Req 3: When requested floor is the same as current floor,
+	// elevator should remain idle.
+	@Test
+	operation dontMoveWhenRequestedFloorIsCurrentFloor() {
+		enter
+		// raise a "floor" event to make the elevator move to the currentFloor
+		raise floor:currentFloor
+		proceed 1 cycle
+		// The elevator will remain in its Idle state
+		assert(active(Elevator.main.Idle))
+	}
+
+    //Req 4: When requested floor is higher than current floor,
+    // elevator should start moving up
+	@Test
+	operation moveUpOneFloor() {
+		enter
+		var i:integer = currentFloor
+		raise floor:(currentFloor+1)
+	    proceed 1 cycle
+        assert(active(Elevator.main.Moving.r1.MovingUp))
+	    assert(currentFloor == i+1)
+	    //proceed 1 cycle
+	    //assert(active(Elevator.main.Idle))
+		exit
+	}
+   
+    //Req 4bis: When requested floor is lower than current floor,
+    // elevator should start moving down
+    @Test
+	operation moveDownOneFloor() {
+		enter
+		currentFloor = 5
+		var i:integer = currentFloor
+		raise floor:(currentFloor-1)
+	    proceed 1 cycle
+        assert(active(Elevator.main.Moving.r1.MovingDown))
+	    assert(currentFloor == i-1)
+		exit
+	}
+	
+	//Req 5: When moving UP to a requested floor, 
+	// elevator should eventually reach the destination floor and become idle.
+	@Test
+	operation moveUpToRequestedFloorAboveCurrentFloor() {
+		enter
+		// raise a "floor" event to make the elevator move up 5 floors
+		raise floor:(currentFloor+5)
+		var i:integer = currentFloor
+		proceed 1 cycle
+		// check that elevator actually moves up one floor at a time
+		while(i < destination) {
+			i=i+1
+		    assert(active(Elevator.main.Moving.r1.MovingUp))
+		    assert(currentFloor == i)
+		    proceed 1 cycle
+	    	    }
+	    assert(currentFloor == destination)
+	    // after having reached destination, statechart should be in Idle state again
+	    assert(active(Elevator.main.Idle))
+	}
+
+ 	//Req 5: When moving DOWN to a requested floor, 
+	// elevator should eventually reach the destination floor and become idle.
+	@Test
+	operation moveDownToRequestedFloorBelowCurrentFloor() {
+		enter
+		// start by setting the current floor high enough to be able to move down
+		currentFloor = 10
+		// raise a "floor" event to make the elevator move down 5 floors
+		raise floor:(currentFloor-5)
+		var i:integer = currentFloor
+		proceed 1 cycle
+		// check that elevator actually moves up one floor at a time
+		while(i > destination) {
+		  i = i-1
+		  assert(active(Elevator.main.Moving.r1.MovingDown))
+		  assert(currentFloor == i)
+		  proceed 1 cycle
+	    	}	    
+	    	assert(currentFloor==destination)
+	    // after having reached destination, statechart should be in Idle state again
+		assert(active(Elevator.main.Idle))
+	}
+
+ 	//Req 6: If an idle elevator is not on the ground floor and does not receive a request,
+ 	// after 5 seconds it will start moving to the ground floor.
+ 	@Test
+	operation returnToGroundFloorAfterTimeout() {
+		// Here we should test the behaviour that,
+		// if the elevator is above the ground floor,
+		// and no floor event is received,
+		// we return to the ground floor after a delay of x seconds
+		enter
+		currentFloor = 10
+		var i: integer = currentFloor
+		assert(active(Elevator.main.Idle))
+		// after a timeout of 5 seconds, the elevator
+		// is automatically instructed to move to ground floor again:
+		proceed 5 s
+		assert(destination == 0)
+		proceed 10 cycle
+		// The following works as well instead of the 10 cycles,
+		// but is not really needed since this corresponds to testing
+		// the basic behaviour of moving the elevator down...
+		//while (i>0) {
+		//  i = i - 1
+		//  assert(active(Elevator.main.Moving.r1.MovingDown))
+		//  assert(currentFloor ==i)
+		//  proceed 1 cycle
+		//  }
+		assert(active(Elevator.main.Idle))
+		exit
+	}
+
+	//Req 7: The elevator cannot move to a floor below ground level.
+	@Test
+	operation cannotMoveBeyondGroundLevel() {
+		enter
+		// try to make the elevator move below ground level
+		assert(active(Elevator.main.Idle))
+		raise floor:-5
+		proceed 1 cycle
+		// elevator simply stays in idle state, and destination remains unchanged
+		assert(active(Elevator.main.Idle))
+		assert(destination == 0)
+		exit
+	}
+	
+}

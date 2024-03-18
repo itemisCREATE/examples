@@ -1,0 +1,22 @@
+GeneratorModel for create::c {
+
+	var project : string = "itemis.create.examples.coffeemachine.c"
+
+	statechart CoffeeMachine {
+
+		feature Outlet {
+			targetProject = project
+			targetFolder = "src-gen"
+		}
+		
+		feature Tracing {
+			enterState = true
+			exitState = true
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+		
+	}
+}

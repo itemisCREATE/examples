@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Light Switch Series</title>
+<link href="./css/style.css" rel="stylesheet">
+<link href="./css/ypi.css" rel="stylesheet">
+
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>Basic Tutorial - Light Switch Example Series</h1>
+
+    <p>
+    In this example series we will develop a lamp control from scratch. Starting from a simple On/Off switch, we will add further features like brightness adjustment and motion detection step-by-step while introducing new statechart elements with each iteration. In that way you will learn how to use:
+    <ul>
+    <li><strong>States</strong> and <strong>transitions</strong></li>
+    <li>Transition <strong>triggers</strong>, <strong>guards</strong>, and <strong>actions</strong></li>
+    <li>Statechart <strong>interfaces</strong>, and where to declare events, variables and operations</li>
+    <li><strong>Composite states</strong>, and how they help structuring your statechart</li>
+    <li><strong>History states</strong>, and the difference between shallow and deep history</li>
+    </ul>
+    
+    This example is a good starting point to dive into Itemis CREATE headfirst.</p>
+
+	<p>
+        <img class="large" src="images/lights.jpg" />
+      </p>
+
+    <div>
+      <h2>The First Iteration: States, Transitions and Events</h2>
+
+      <p>A statechart is a graphical model which describes the behavior of some thing or entity. It describes how such an entity reacts to changes and events in its environment. Due to it’s graphical nature, lucid concepts, and well defined semantics it provides a comprehensive and executable basis for system specification and implementation which can be shared between stakeholders without demanding too many technical skills. </p>
+<p>The most basic element of a statechart are states, transitions, and events. To introduce these basic concepts we take a look at the simple light switch example below. States represent the modes of a system or entity and in the case of this very simple light switch two states 
+  <span id="MAIN_OFF" class="y-state">Off</span> and 
+  <span id="MAIN_ON" class="y-state">On</span> exist. States have a name, are visualized as rounded rectangles. At any point of time states are either active or inactive. Active state are highlighted using a 
+  <span class="y-state--active">yellow background color</span> while inactive states have a 
+  <span class="y-state--inactive">blue background color</span>. 
+</p>
+<p>If something happens then the statechart may change its state. Each state can have outgoing transitions. These transitions connect two states and have a direction which is indicated by the arrow head. Our light switch states are mutually connected by transitions. These transitions are directed and define how state changes (state transitions) can occur under which conditions. Here, the light switch simply defines that 
+  <span id="MAIN_OFF" class="y-state">Off</span> and 
+  <span id="MAIN_ON" class="y-state">On</span> are toggled whenever a 
+  <span id="switch" class="y-do-raise">switch</span> event occurs. As the state machine only reacts in response to events, it is called 
+  <em>event driven</em>.
+</p>
+<p></p><div class="info"><p></p>
+<p>Events typically occur in the environment of the statechart’s entity. To simulate this environment and to play with the light switch you can interactively trigger events e.g. by clicking on interactive elements like  
+  <span id="switch" class="y-do-raise">switch</span>.
+</p>
+      <p>
+        <img class="small"
+          alt="The First Iteration: States, Transitions and Events"
+          src="images/01_light_switch.png" />
+      </p>
+      <p>State machines as a whole can be active or inactive. If a state machine is inactive then no state is active and it won’t react on any event. If a state machine is active then is has at least one active state and it is ready to react on events. 
+  <span class="y-do-enter">Entering</span> a state machine activates it 
+  <span class="y-do-exit">exiting</span> deactivates it. If you 
+  <span class="y-do-enter">enter</span> the light switch state machine then 
+  <span id="MAIN_OFF" class="y-state">Off</span> is the first active state. The first active state is called 
+  <em>initial state</em> and is defined by the 
+  <span class="entry">entry node</span> whose single outgoing transition points to 
+  <span id="MAIN_OFF" class="y-state">Off</span>.
+</p>
+      <p>
+        The statechart can be simulated in Itemis CREATE via <i>right-click -> Run As -> Statechart Simulation</i>.
+      </p>
+    </div>
+
+    <div>
+      <h2>The Second Iteration: Variables</h2>
+
+      <p>While the classic theory of <a href="https://en.wikipedia.org/wiki/Input/output_automaton">input/output automata</a> is only aware of events, <a href="https://en.wikipedia.org/wiki/State_diagram#Harel_statechart">Harel statecharts</a> and as such CREATE statecharts have many more features, including variables. Variables allow to use quantitative values in statecharts and are very comparable to variables in programming languages. </p>
+<p></p><div y-player="lightSwitch02"><p></p>
+<p>To explain the use of variables we extend the light switch by adding 
+  <strong>dimming</strong> functionality. The light switch supports ten different dimming levels. It still defines the states 
+  <span id="MAIN_OFF" class="y-state">Off</span> and 
+  <span id="MAIN_ON" class="y-state">On</span> with mutual transitions which are triggered by 
+  <span id="switch" class="y-do-raise">switch</span> events.
+</p>
+<p>To handle the dimming functionality the light switch statechart defines two additional elements:</p>
+<ul>
+  <li>The variable 
+    <span id="brightness" class="y-variable">brightness</span> holds the dimming level of the light. Changing this variable’s value corresponds to changing the lamp’s brightness.
+  </li>
+  <li>The additional event 
+    <span id="changeBrightness" class="y-do-raise">changeBrightness</span> increases changes the dimming level incrementally. 
+  </li>
+</ul>
+<p>To handle the 
+  <span id="brightness" class="y-variable">brightness</span> level correctly the statechart must maintain its value depending on the active state and the occurring events. As such it defines the following rules:
+</p>
+<ul>
+  <li>Whenever 
+    <span id="MAIN_OFF" class="y-state">Off</span> is active 
+    <span id="brightness" class="y-variable">brightness</span> must be 0. This is enforced by the 
+    <span id="MAIN_OFF" class="y-state">Off</span> state’s 
+    <em>entry action</em> which is defined as <code>entry / brightness = 0</code>. This action assigns 0 and is executed whenever state 
+    <span id="MAIN_OFF" class="y-state">Off</span> is entered. 
+  </li>
+  <li>When the light 
+    <span id="switch" class="y-do-raise">switches</span> from 
+    <span id="MAIN_OFF" class="y-state">Off</span> to 
+    <span id="MAIN_ON" class="y-state">On</span> then the 
+    <span id="brightness" class="y-variable">brightness</span> must be set to the maximum value of 10.
+  </li>
+  <li>If 
+    <span id="MAIN_ON" class="y-state">On</span> is active and 
+    <span id="changeBrightness" class="y-do-raise">changeBrightness</span> is requested and 
+    <span id="brightness" class="y-variable">brightness</span> is larger 1 then the brightness value is decremented. This rule is specified by an additional transition which reacts on the 
+    <span id="changeBrightness" class="y-do-raise">changeBrightness</span> event and uses a 
+    <em>guard condition</em> which must become true for taking the transition. The proper variable assignment is specified as a transition action. The target of the transition is the state itself as the switch should remain in the 
+    <span id="MAIN_ON" class="y-state">On</span> state. Such transitions are called 
+    <em>self transition</em>.
+  </li>
+  <li>If 
+    <span id="MAIN_ON" class="y-state">On</span> is active and 
+    <span id="changeBrightness" class="y-do-raise">changeBrightness</span> is requested and 
+    <span id="brightness" class="y-variable">brightness</span> equals 1 then the value is reset to 10. Here again an additional transition with guard and action is defined to cover the desired condition and effect. 
+  </li>
+</ul>
+<p>This example shows how variables can be used in conjunction with more complex conditions. Variables can be assigned and can also be used in conditions and calculation expressions. Actions can be specified as part of a transition as well as part of states. </p>
+
+
+      <p>
+        <img class="small"
+          alt="The Second Iteration: Variables"
+          src="images/02_light_switch.png" />
+      </p>
+    </div>
+
+    <div>
+      <h2>The Third Iteration: Composite States</h2>
+
+      <p>Normally, a statechart does not only consist of two states. The specification of even simple systems require tens and more complex systems hundreds of states and transitions. To cope with large number of states the base concept of 
+  <em>composite states</em> can be used. 
+</p>
+<p>Let’s enhance our light switch to explain this in more detail. The light switch now provides an additional <strong>motion sensing mode</strong> which automatically switches the light on and off depending on the input of a motion sensor. Initially, the light is off, but whenever the motion sensor senses a motion, it turns the light on. After 30 seconds without any motion the light is turned off again. As manually switching and dimming the light should still be supported the existing statechart must be extended.</p>
+<p>First, an additional event 
+  <span id="toggleMode" class="y-do-raise">toggleMode</span> is defined. This is used to toggle between the already existing manual and the automated motion sensing mode. To model these modes two additional states are introduced. 
+</p>
+<ol>
+  <li>The composite state 
+    <span id="MAIN_MANUAL" class="y-state">Manual</span> contains the existing behavior. These are the 
+    <span id="MAIN_MANUAL_R1_ON" class="y-state">On</span> and 
+    <span id="MAIN_MANUAL_R1_OFF" class="y-state">Off</span> states of previous statechart. Here only the dimming transitions were replaced by 
+    <em>local state reactions</em>. 
+  </li>
+  <li>The composite state 
+    <span id="MAIN_MOTIONSENSING" class="y-state">MotionSensing</span> is completely new and contains the states 
+    <span id="MAIN_MOTIONSENSING_R1_ON" class="y-state">MotionSensing.On</span> and 
+    <span id="MAIN_MOTIONSENSING_R1_OFF" class="y-state">MotionSensing.Off</span>. These handle the 
+    <span id="motionDetected" class="y-do-raise">motionDetected</span> event. The required timeout is specified using the time trigger <code>after 30s</code>. If the state does not change for 30 seconds then a time event is raised which will cause to switch the light off. 
+  </li>
+</ol>
+<p>A 
+  <strong>composite state</strong> is a state that contains one or more other states (sub states). One of the advantages is the possibility to group states into logical compounds and thus make the statechart more comprehensible. Another advantage is the option to exit a composite state by transitions that have the composite state as their source states, not any substate. If such a transition is executed, the composite state is left regardless of which of its sub states are active at the moment. You could achieve the same without composite states, but it would be cumbersome since you would need a transition from each of the plain states in the group to the „outside”.
+</p>
+<p>The transitions which toggles between 
+  <span id="MAIN_MOTIONSENSING" class="y-state">MotionSensing</span> and 
+  <span id="MAIN_MANUAL" class="y-state">Manual</span> state are defined for the composite states. This implies that the transitions will be taken independent of the concrete active sub state. So all sub states share the behavior of their parent states.
+</p>
+<p>If you want to learn more about composite states, you can check out our <a href="../examples/org-yakindu-sct-examples-basic-hierarchical?exampleId=itemis.create.examples.hierarchical">Hierarchical tatecharts</a> example or the chapter <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements?hsLang=de#sclang_composite_states">Composite states</a> in our documentation.</p>
+
+      <p>
+        <img alt="The Third Iteration: Composite States"
+          src="images/03_light_switch.png" />
+      </p>
+
+    <div>
+      <h2>The Fourth Iteration: History Entries and Named Interfaces</h2>
+
+      <p>We already discussed the default entry behavior for regions and how sub states are activated. Histories provide an extension to this mechanism and this section clarifies how history entries work, what they do, and especially what they don’t do. To illustrate this, we introduce another mode to our light switch: <strong>light sensing</strong>. When operating in light sensing mode, the light control automatically turns on the light when it is dark and turns it off when it is bright. For this purpose a <em>luminosity sensor</em> is used. It permanently senses the ambient brightness and fires 
+  <span id="luminosity.bright" class="y-do-raise">luminosity.bright</span> or 
+  <span id="luminosity.dark" class="y-do-raise">luminosity.dark</span> events all the time. It is out of scope how „dark” and „bright” are defined and how they are configured in the luminosity sensor. Suffice to say that the sensor is always raising events – say, multiple times per second.
+</p>
+<p>As before the light switch is either operated manually or operates automatically. When in automatic mode, the light switch functions either as a twilight switch as explained above or as the already introduced motion sense switch (see the previous iteration). The user interface gets another button to toggle between the two modes via the <em>user.mode_button</em> event. The light switch is starting to change into a full light control module.</p>
+
+
+      <p>
+        <img class="standard-image"
+          alt="The Fourth Iteration: History Entries and Named Interfaces"
+          src="images/04_light_switch.png" />
+      </p>
+
+<p>As we added a couple of additional declarations we now use named interfaces to group the different events and variables. This grouping makes the design more clear and provides a better overview. The usage is not different except for the fact that the interface name must be used when referencing its declarations.</p>
+
+<p>The automatic modes are grouped into the 
+  <span id="MODES_AUTOMATIC" class="y-state">Automatic</span> composite state. That state is subdivided into a composite state for the twilight functionality and another one for motion sensing. We have discussed motion sensing before, but the 
+  <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING" class="y-state">Light Sensing</span> composite state deserves some explanation. When the ambient brightness is changing from day to night or from night to day, the luminosity sensor doesn’t deliver consistent values. Rather small fluctuations are causing a succession of quickly alternating 
+  <span id="luminosity.dark" class="y-do-raise">luminosity.dark</span> and 
+  <span id="luminosity.bright" class="y-do-raise">luminosity.bright</span> events. Having each of these events turn the light on or off, respectively, would result in a flickering lamp for some time during twilight. To avoid this, the state machine requires a certain permanence in the luminosity sensor’s results before actually toggling the light’s state.
+</p>
+<p>This is done like this: During the day the 
+  <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING" class="y-state">Light Sensing</span> composite state’s 
+  <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING_R1_BRIGHT" class="y-state">Bright</span> sub state is active. In this state the state machine listens for 
+  <span id="luminosity.dark" class="y-do-raise">luminosity.dark</span> events. These events are starting to be raised when it is about to get dark. First they come in spuriously, later there are more 
+  <span id="luminosity.dark" class="y-do-raise">luminosity.dark</span> than 
+  <span id="luminosity.bright" class="y-do-raise">luminosity.bright</span> events within a given period of time, until only 
+  <span id="luminosity.dark" class="y-do-raise">luminosity.dark</span> events are raised. The first 
+  <span id="luminosity.dark" class="y-do-raise">luminosity.dark</span> changes the state from 
+  <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING_R1_BRIGHT" class="y-state">Bright</span> to 
+  <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING_R1_GETTING_DARK" class="y-state">Getting Dark</span>. In this state we are waiting until a certain time has passed, e.&nbsp;g. 10 seconds, to be configured as constant <em>luminosity.wait_time</em>. However, each 
+  <span id="luminosity.bright" class="y-do-raise">luminosity.bright</span> event brings the state machine back to the <strong>Off</strong>. Only if the waiting time has passed without any 
+  <span id="lum_sensor.bright" class="y-do-raise">lum_sensor.bright</span> interfering, the 
+  <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING_R1_DARK" class="y-state">Dark</span> state is reached and the light is turned on. The analogous happens in the morning when the first light of the day is close. The twilight switch is also robust against short disruptions like overshadowing the sensor during the day or illuminating it briefly by a car’s headlamps during the night.
+</p>
+<p>An important requirement is that any of the automatic modes can be interrupted at any time by manually operating the light switch via <button class="y-do-raise" id="hmi.switch" type="button">switch</button>. When the user later raises a <button class="y-do-raise" id="hmi.toggleMode" type="button">mode</button> event, the state machine should return to that particular sub state somewhere down in the 
+  <span id="MODES_AUTOMATIC" class="y-state">Automatic</span> composite state that was active before the manual intervention. Similarly, when toggling between 
+  <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING" class="y-state">Light Sensing</span> and 
+  <span id="MODES_AUTOMATIC_MODES_MOTION_SENSING" class="y-state">Motion Sensing</span> the state machine should remember the respective active sub state and return there when control is turned back.
+</p>
+<p>That’s what <strong>history entries</strong> are good for. The statechart contains a couple of <em>shallow history entries</em>. A shallow history state, contained in a composite state with a set of sub states, remembers which of these sub states was active when that composite state was left.</p>
+<p>The shallow history state in 
+  <span id="MODES_AUTOMATIC" class="y-state">Automatic</span> remembers whether 
+  <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING" class="y-state">Light Sensing</span> or 
+  <span id="MODES_AUTOMATIC_MODES_MOTION_SENSING" class="y-state">Motion_Sensing</span> was active when 
+  <span id="MODES_AUTOMATIC" class="y-state">Automatic</span> was left, but it doesn’t remember which state was active within the active one of these two. On re-entry, the history state would activate either 
+  <span id="MODES_AUTOMATIC_MODES_TWILIGHT" class="y-state">Twilight</span> or 
+  <span id="MODES_AUTOMATIC_MODES_MOTIONSENSING" class="y-state">MotionSensing</span>, but these would use their respective entries. This is why there is a history state in each of them as well.
+</p>
+<p>If you have worked with history states before, you might be inclined now to say: "A <em>deep</em> history state would have been the correct thing here." However, you would only be partially right. A deep history state remembers the active state in its own region and everything that was active inside of this state, recursively down to the lowest level. We might spare the two shallow history states in 
+  <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING" class="y-state">Light Sensing</span> and 
+  <span id="MODES_AUTOMATIC_MODES_MOTION_SENSING" class="y-state">Motion Sensing</span>. But it would not behave in the same way – a history state is activated only when its containing region is actually left. Using one deep history state would not allow to remember the active state in 
+  <span id="MODES_AUTOMATIC_MODES_MOTION_SENSING" class="y-state">MotionSensing</span> when switching to 
+  <span id="MODES_AUTOMATIC_MODES_LIGHT_SENSING" class="y-state">Light Sensing</span>, and vice versa. The deep history state would be activated only if we left the whole 
+  <span id="MODES_AUTOMATIC" class="y-state">Automatic</span> composite state – and when switching between automatic modes this won’t happen.
+</p>
+<p>More information on history states can also be found in the <a href="../examples/org-yakindu-sct-examples-basic-historystates?exampleId=itemis.create.examples.historystates">History States</a> example or the corresponding <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/sclang_graphical_elements#sclang_shallow_history_states">chapter</a> in our documentation.</p>
+
+
+
+    </div>
+
+    <div>
+      <h2>The Fifth Iteration: Orthogonal States, Internal Events and Operations</h2>
+
+      <p>The different versions of light switches which we discussed so far define a couple of states but are quite simple in that respect that at any time at most one single state is active. You may object that hierarchy made up of composite states features a set of active states. This is not really true. Composite states just group a set of states but are not independent of their sub states. 
+  <em>Leaf states</em> are the 
+  <em>real</em> active states and the activation of a leaf state implies that also all its parent states are active. The leaf states also 
+  <em>inherit</em> the parent states behavior. There are scenarios which require 
+  <strong>orthogonal states</strong> (sometimes also called 
+  <em>parallel states</em> or 
+  <em>and states</em>).
+</p>
+<p>Additionally, there are also scenarios where calculation become so complex that you don’t want to maintain them within a statechart. In these cases 
+  <strong>operations</strong> can be applied.
+</p>
+<p>To illustrate these concepts we define a variant of the light switch which includes a 
+  <strong>presence simulation</strong>. It behaves as if a person operated the light at sensible and irregular intervals although nobody is present. The presence simulation is active on certain hours of the day only, namely from 17:00 to midnight and from 06:00 to 10:00. Here the motion detection and the twilight detection are left out for clarity.
+</p>
+<p>To define the presence simulation the 
+  <em>orthogonal state</em> 
+  <span id="MAIN_PRESENCE_SIMULATION_MODE_ACTIVE" class="y-state">Active</span> is defined. It contains two sub regions which are independent of each other and are executed virtually in parallel (their order is relevant, though). Each region can contain one active state. Each region is caring about different aspects. The region 
+  <em>schedule</em> includes a single state which cares about scheduling the next 
+  <span id="changePresence" class="y-do-raise">changePresence</span> event. This event in turn is consumed by the 
+  <em>presence</em> region which switches the light on and off. 
+</p>
+<p>The events 
+  <em>changePresence</em>, 
+  <em>startSimulation</em>, and 
+  <em>stopSimulation</em> are 
+  <em>internal events</em> (also called 
+  <em>local events</em>) which are raised by the statechart itself when a certain condition is fulfilled. They can’t be raised by the environment and are not visible externally. These internal events will be processed directly after the current event. So 
+  <em>interbnal events</em> can be used to chain multiple processing steps. The states 
+  <span id="MAIN_PRESENCE_SIMULATION_MODE_IDLE" class="y-state">Idle</span> and 
+  <span id="MAIN_PRESENCE_SIMULATION_MODE_ACTIVE_SCHEDULE_WAITING" class="y-state">Waiting</span> raise these internal events.
+</p>
+<p>The definition of 
+  <span id="MAIN_PRESENCE_SIMULATION" class="y-state">Presence Simulation</span> get quite complex. There are especially a couple of textual rules and expressions which include calculations. Additionally, a modeler may require functions which are not directly available within the statechart. However, CREATE SCT allows you to implement your own <em>operations</em> to overcome these limitations. An operation is called from the state machine itself, so you don’t have to care about when and how they will be called. Operations can receive arguments from the state machine and return a value, exactly like a normal function or method call. Operations are declared by the statechart but are not defined within the statechart and must be implemented externally. The presence simulation uses two operations:
+</p>
+<ol>
+  <li><code>get_hour</code> to ask for the current time of day to decide if the presence simulation must be activated.</li>
+  <li><code>get_rand</code> to ask for a random float to calculate a random waiting interval in minutes between WAIT_MIN and WAIT_MAX.</li>
+</ol>
+
+      <p>
+        <img class="standard-image"
+          alt="The Fifth Iteration: Orthogonal States, Internal Events and Operations"
+          src="images/05_light_switch.png" />
+      </p>
+
+     
+    </div>
+
+
+  </div>
+</body>
+</html>

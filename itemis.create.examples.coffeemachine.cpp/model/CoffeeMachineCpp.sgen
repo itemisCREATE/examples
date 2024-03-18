@@ -1,0 +1,19 @@
+GeneratorModel for create::cpp {
+
+	statechart CoffeeMachineCpp {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.coffeemachine.cpp"
+			targetFolder = "src-gen"
+		}
+		
+		feature Tracing {
+			enterState = true
+			exitState = true
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}

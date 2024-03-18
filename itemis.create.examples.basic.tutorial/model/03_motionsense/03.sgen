@@ -1,0 +1,20 @@
+GeneratorModel for create::java {
+
+	statechart _03_MotionLightSwitch {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.basic.tutorial"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src"
+		}
+
+		feature GeneralFeatures {
+			TimerService = true
+		}
+		
+		feature Naming {
+			basePackage = "itemis.create.examples.basic.tutorial"
+			libraryPackage = "itemis.create"
+		}
+	}
+}

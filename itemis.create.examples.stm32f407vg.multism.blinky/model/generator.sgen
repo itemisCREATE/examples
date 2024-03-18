@@ -1,0 +1,22 @@
+GeneratorModel for create::c {
+
+	statechart controller {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.stm32f407vg.multism.blinky"
+			targetFolder = "Core/Src"
+			libraryTargetFolder = "Core/Inc"
+			apiTargetFolder = "Core/Inc"
+		}
+	}
+	
+	statechart LED {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.stm32f407vg.multism.blinky"
+			targetFolder = "Core/Src"
+			libraryTargetFolder = "Core/Inc"
+			apiTargetFolder = "Core/Inc"
+		}
+	}
+}

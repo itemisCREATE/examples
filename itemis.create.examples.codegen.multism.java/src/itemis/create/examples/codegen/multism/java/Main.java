@@ -2,7 +2,7 @@ package itemis.create.examples.codegen.multism.java;
 
 import java.util.Scanner;
 
-import itemis.create.core.TimerService;
+import com.yakindu.core.TimerService;
 import itemis.create.examples.codegen.multism.java.controller.LightController;
 import itemis.create.examples.codegen.multism.java.light.Light;
 

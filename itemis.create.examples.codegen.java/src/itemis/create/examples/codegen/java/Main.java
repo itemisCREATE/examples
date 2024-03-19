@@ -2,8 +2,8 @@ package itemis.create.examples.codegen.java;
 
 import java.util.Scanner;
 
-import itemis.create.core.TimerService;
-import itemis.create.core.rx.Observer;
+import com.yakindu.core.TimerService;
+import com.yakindu.core.rx.Observer;
 
 public class Main {
 	

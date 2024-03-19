@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.codegen.scxml",
+	"title": "SCXML Code Generation",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to generate SCXML code from a statechart.",
+	"previewImage": "watch_gears_thumb.jpg",
+	"category": [
+		"code-generation"
+	],
+	"rank":50
+}
+ 

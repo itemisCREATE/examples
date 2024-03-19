@@ -1,0 +1,14 @@
+GeneratorModel for create::cpp {
+
+	statechart Arduino_Blinky_SCT {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.blinky.cpp.arduino"
+			targetFolder = "src-gen"
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}

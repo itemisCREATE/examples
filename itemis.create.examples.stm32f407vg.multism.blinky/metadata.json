@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.stm32f407vg.multism.blinky",
+	"title": "STM32F407 Discovery - Blinky LED (Deep C, Multi SM)",
+	"author": "itemis AG",
+	"description": "This is a simple example of how to use multi state machines in the C domain together with an STM32F407 Discovery board. C timers are integrated.",
+	"previewImage": "stm_preview.jpg",
+	"category": [
+		"professional",
+		"c-domain",
+		"embedded"
+	]
+}

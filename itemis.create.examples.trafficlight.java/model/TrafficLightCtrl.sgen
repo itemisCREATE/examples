@@ -1,0 +1,23 @@
+GeneratorModel for create::java {
+
+	statechart TrafficLightCtrl {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.trafficlight.java"
+			targetFolder = "src-gen"
+		}
+		
+		feature Naming {
+			basePackage =  "traffic.light" 
+		}
+		
+		feature GeneralFeatures {
+			RuntimeService = false
+			TimerService = true
+			synchronized = true
+		}
+		
+	}
+}
+
+

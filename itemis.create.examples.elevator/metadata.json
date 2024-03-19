@@ -1,0 +1,13 @@
+{
+	"id": "itemis.create.examples.elevator",
+	"title": "Elevator with SCTUnit",
+	"description": "This video tutorial is presented by Prof. Tom Mens (Software Engineering Lab, University of Mons). It provides a hands-on demonstration, on the basis of a simulation of an elevator statechart, on how to write and run unit tests for statecharts with Itemis CREATE.",
+	"previewImage": "elevator.jpg",
+    "author": "Prof. Tom Mens",
+    "organization": "Software Engineering Lab, University of Mons",
+    "license": "",
+	"category": [
+		"open source",
+		"testing"
+	]
+}

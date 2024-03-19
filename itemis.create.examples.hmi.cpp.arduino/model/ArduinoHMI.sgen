@@ -1,0 +1,14 @@
+GeneratorModel for create::cpp {
+
+	statechart ArduinoHMI {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.hmi.cpp.arduino"
+			targetFolder = "src-gen"
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}

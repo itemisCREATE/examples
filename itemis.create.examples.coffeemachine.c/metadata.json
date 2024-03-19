@@ -1,0 +1,19 @@
+{
+	"id": "itemis.create.examples.coffeemachine.c",
+	"title": "Coffee Machine (Deep C)",
+	"author": "itemis AG",
+	"description": "This is a comprehensive example for the deep integration of CREATE statecharts with manually written C code. The example is implemented as a simple command line tool.",
+	"previewImage": "coffee_machine_thumb.jpg",
+	"category": [
+		"professional",
+		"c-domain",
+		"advanced"
+	],
+	"rank":20,
+	"dependencies": [
+		{
+			"updateSite": "http://updates.yakindu.com/sct/releases",
+			"features": ["com.yakindu.sct.product.c.feature.feature.group"]
+		}
+	]
+}

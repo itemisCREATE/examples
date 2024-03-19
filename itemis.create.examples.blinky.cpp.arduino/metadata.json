@@ -1,0 +1,18 @@
+{
+	"id": "itemis.create.examples.blinky.cpp.arduino",
+	"title": "Arduino - Blinky LED (Deep C++)",
+	"author": "itemis AG",
+	"description": "This is a simple example of how to use the C/C++ Domain together with an Arduino. C++ Timer are integrated",
+	"previewImage": "arduino.jpg",
+	"category": [
+		"professional",
+		"c-domain",
+		"embedded"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://eclipse.baeyens.it/update/V4/stable",
+			"features": ["io.sloeber.feature.feature.group"]
+		}
+	]
+}

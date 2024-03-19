@@ -6,4 +6,4 @@
 *.settings*
 */target/*
 */.gradle/*
-org.yakindu.sct.examples.tictoc.tracing/Debug
+itemis.create.examples.tictoc.tracing/Debug

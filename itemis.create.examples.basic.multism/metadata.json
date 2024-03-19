@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.basic.multism",
+	"title": "Multi State Machines",
+	"author": "itemis AG",
+	"description": "This example demonstrates the usage of multi state machines.",
+	"previewImage": "lights_thumb.jpg",
+	"category": [
+		"professional",
+		"multi-sm"
+	],
+	"rank":3
+}

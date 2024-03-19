@@ -1,0 +1,14 @@
+GeneratorModel for create::python {
+
+	statechart TrafficLightCtrl {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.trafficlight.python.raspberry"
+			targetFolder = "src"
+		}
+		
+		feature GeneralFeatures {
+			DefaultTimer = true
+		}
+	}
+}

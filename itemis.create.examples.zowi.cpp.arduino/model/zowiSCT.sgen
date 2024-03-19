@@ -1,0 +1,14 @@
+GeneratorModel for create::cpp {
+
+	statechart ZowiSCT {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.zowi.cpp.arduino"
+			targetFolder = "src-gen"
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}

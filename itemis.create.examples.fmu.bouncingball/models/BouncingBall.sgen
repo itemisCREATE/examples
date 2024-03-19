@@ -1,0 +1,15 @@
+GeneratorModel for create::c::fmu {
+
+	const PROJECT : string = "itemis.create.examples.fmu.bouncingball"
+
+	const FOLDER : string = "src-gen"
+
+	statechart BouncingBall {
+
+		feature Outlet {
+			targetProject = PROJECT
+			targetFolder = FOLDER
+			libraryTargetFolder = "src"
+		}
+	}
+}

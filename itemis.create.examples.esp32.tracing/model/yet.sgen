@@ -1,0 +1,10 @@
+GeneratorModel for create::c::yet {
+
+	statechart blink {
+	feature Outlet {
+		targetProject = "itemis.create.examples.esp32.tracing"
+			targetFolder = "main/sc/sm"
+			libraryTargetFolder = "main/sc/base"
+	}
+}
+} 

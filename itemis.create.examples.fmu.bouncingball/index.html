@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FMU Code Generation</title>
+	<link href="./css/style.css" rel="stylesheet">
+	
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>FMU Code Generation</h1>
+
+		<p>This example demonstrates how to generate a Functional Mock-up Unit (FMU) from a statechart. For this we will use the example of a bouncing ball and calculate the height of the ball over time with the statechart.</p>
+
+		<p>
+			The <a href="https://fmi-standard.org">Functional Mock-up Interface (FMI)</a> standard addresses the exchange and joint execution of models for co-simulation. It mainly is applied for system level simulation of complex systems. 
+			CREATE statecharts can be exported as *Functional Mock-up Units (FMUs)* and as such can participate in FMI based simulations. As FMUs provide binary executables and only bundle source code or models as an option FMUs can be 
+			provided to other parties without exposing intellectual property. Concretely, Itemis CREATE supports FMI 2.0 for Co-Simulation FMU export. By the support of the FMI standard CREATE statecharts are interoperable with 
+			a wide range of <a href="https://fmi-standard.org/tools/">simulation tools</a>.
+		</p>
+				
+		<p>
+		<img class="small" 
+		alt="Bouncing ball example" title="Bouncing ball example" border="1" src="images/results.png"/>
+		</p>
+
+		<h2>Generator Model</h2>
+		<p>
+			The FMU generator supports building FMUs for Windows, Linux and MacOS 64Bit platforms. The generator builds a complete FMU and relies on Eclipse C development infrastructure. 
+			So as a precondition you have to make sure that CDT features are installed. For Windows platform the Cygwin toolchain must be installed. 
+		</p>
+		<p>
+			In order to generate code we need to specify which code generator to use and into which folder to generate. For this, we need to create a so-called generator model, which is already done for this project. To do so by yourself, 
+			<ul>
+				<li>Select the models folder in the <em>Project Explorer</em></li>
+				<li>Right-click and choose <em>New -> Code generator model</em></li>
+				<li>Follow the wizard to select the FMU code generator and the state machine for which you want to generate the FMU</li>
+			</ul>
+			In case you cannot find the FMU code generator in the generator list, select the option <em>Install more..</em> in order to install the FMU code generator feature.
+		</p>
+
+		<p>
+			The new generator model will look similar to this one:
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/itemis.create.examples.fmu.bouncingball/models/BouncingBall.sgen"></script>
+		</p>
+		<p>
+			The generator model defines where the code should be generated into by specifying the target project and target folders.
+		</p>
+
+		<h2>Invoking Code Generation</h2>
+		<p>
+			Code generation is usually invoked each time the statechart model is saved. This behavior can be disabled by unchecking the option <em>Project -> Build Automatically</em>. You can always manually invoke the code generation with <em>Generate Code Artifacts</em> in the context menu of the generator model.
+		</p>
+		<p>
+			Each time the FMU code is generated, CDT will build the project and create an FMU for you under the <em>Debug</em> folder. Copy this FMU file to deploy it to your FMI compatible simulation environment. 
+		</p>
+		<p>
+			You can find more information on the FMU feature in our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/lab_projects_fmu_codegen#lab_projects_fmu_codegen">documentation</a>.
+		</p>
+
+		<h2>The Example Application</h2>
+		<p>
+			As an example application we will use the 'BouncingBall' statechart to calculate the height of a ball which is dropped to the ground and then continues to bounce until a certain point in time.
+		</p>
+		<img class="small" 
+		alt="Bouncing ball model" title="Bouncing ball model" border="0" src="images/model.png"/>
+	</p>
+	<p>
+		Our statechart determines the height of the ball by taking the velocity of the ball and the gravitation into consideration. Also, with every bounce to the ground the velocity of the ball is reduced by a constant factor.
+	</p>
+</p>
+</div>
+</body>
+</html>

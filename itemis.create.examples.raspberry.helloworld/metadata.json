@@ -1,0 +1,14 @@
+{
+	"id": "itemis.create.examples.raspberry.helloworld",
+	"title": "Raspberry Pi - Hello World (C)",
+	"description": "This example shows how to use a statechart and some C code to control a RGB LED attached to the Raspberry Pi.",
+	"previewImage": "header.jpg",
+    "author": "itemis AG",
+    "organization": "statecharts.org",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+	"category": [
+		"open source",
+		"basic",
+		"embedded"
+	]
+}

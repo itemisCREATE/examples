@@ -1,0 +1,25 @@
+GeneratorModel for create::cpp {
+
+	const PROJECT : string = "itemis.create.examples.codegen.multism.cpp"
+
+	const FOLDER : string = "src-gen"
+
+	statechart LightController {
+
+		feature Outlet {
+			targetProject = PROJECT
+			targetFolder = FOLDER
+		}
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+
+	statechart Light {
+
+		feature Outlet {
+			targetProject = PROJECT
+			targetFolder = FOLDER
+		}
+	}
+}

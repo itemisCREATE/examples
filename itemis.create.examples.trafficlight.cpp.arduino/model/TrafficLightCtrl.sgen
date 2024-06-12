@@ -1,0 +1,14 @@
+GeneratorModel for create::cpp {
+
+	statechart TrafficLightCtrl {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.trafficlight.cpp.arduino"
+			targetFolder = "src-gen"
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}

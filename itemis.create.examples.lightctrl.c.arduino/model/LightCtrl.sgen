@@ -1,0 +1,14 @@
+GeneratorModel for create::c {
+
+	statechart LightCtrl {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.lightctrl.c.arduino"
+			targetFolder = "src-gen"
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}

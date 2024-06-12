@@ -1,0 +1,13 @@
+{
+	"id": "itemis.create.examples.basic.hierarchical",
+	"title": "Hierarchical Statecharts",
+	"author": "itemis AG",
+	"description": "This example demonstrates the usage of hierarchies in statecharts. It explains the concepts of composite states and subdiagrams.",
+	"previewImage": "lights_thumb.jpg",
+	"category": [
+		"open source",
+		"basic",
+		"modeling"
+	],
+	"rank":20
+}

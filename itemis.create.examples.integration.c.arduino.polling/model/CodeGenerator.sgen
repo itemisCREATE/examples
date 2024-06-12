@@ -1,0 +1,15 @@
+GeneratorModel for create::c {
+
+	statechart StateMachine {
+
+		feature Outlet {
+			targetProject =
+			"itemis.create.examples.integration.c.arduino.polling"
+			targetFolder = "src-gen"
+		}
+		
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}

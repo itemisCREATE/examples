@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.trafficlight.java",
+	"title": "Traffic Light (Java)",
+	"author": "itemis AG",
+	"description": "Demonstrates how to to generate Java source code from a statechart. The procedure is actually explained in the Itemis CREATE documentation, section \"Java code generator\".",
+	"previewImage": "traffic_light_thumb.jpg",
+	"category": [
+		"open source",
+		"advanced"
+	],
+	"rank":40
+}

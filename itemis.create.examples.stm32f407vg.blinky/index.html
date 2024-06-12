@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>[Pro] STM32F407 Discovery Board with C integration</title>
+	<link href="./css/style.css" rel="stylesheet">
+	
+</head>
+
+<body class="body-container">
+	<div class="primary">
+		<h1>[Pro] STM32F407 Discovery Board With Deep C Integration</h1>
+		<p>
+			This is an example for the integration of Itemis CREATE with another IDE, here the STM32CubeIDE.
+			The example model makes use of the deep C integration to directly call functions from the HAL headers in the
+			statechart model:
+		</p>
+		<p><img alt="Model" src="images/stm.png" /></p>
+		<p>
+			This simple state machine consists of two states in which the LEDs are controlled. The initialization has
+			been done with the integrated CubeMX tool.
+		</p>
+
+		<h2>Getting started</h2>
+		<p>
+			As already mentioned, the configuration of the STM32F407VG has been realized with the CubeMX tool. The
+			configuration can be adapted in the '.ioc' file. For this, a full installation of the STM32CubeIDE is
+			required. You can find it <a href="https://www.st.com/en/development-tools/stm32cubeide.html">HERE</a>.
+		</p>
+		<p>
+			After downloading and installing the STM32CubeIDE, Itemis CREATE Professional Edition must
+			installed via the update
+			site. You can follow these <a
+				href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/inst_installing_to_an_existing_eclipse_instance">STEPS</a>.
+		</p>
+		<h2>Configuration</h2>
+		<p>
+			In this example the configuration is quite simple. Four pins, which are connected to the four mounted LEDs,
+			are configured as ouputs. The clock is set to it's maximum of 168 MHz and the timer TIM5 works in interrupt
+			mode, creating an interrupt every 1 ms, which is later on used for the timer.
+			<p><img alt="Model" src="images/stm_configuration.png" /></p>
+			Beside the generated initialization, some user code is required to set up the timer and the LED:
+		</p>
+		<code>
+			/* USER CODE BEGIN 2 */</br>
+			HAL_TIM_Base_Start_IT(&htim5);</br>
+			sc_timer_service_init(&timer_service, timers, MAX_TIMERS, (sc_raise_time_event_fp)
+			&blinky_raise_time_event);</br>
+			blinky_init(&sm);</br>
+			blinky_enter(&sm);</br>
+			/* USER CODE END 2 */</br>
+		</code>
+		<p>
+			Additionally, the callback for the interrupt must be implemented, which is used to trigger the timer
+			periodically:
+		</p>
+		<code>
+			/* USER CODE BEGIN 4 */</br>
+			void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim) {</br>
+			if(htim->Instance == htim5.Instance) {</br>
+			sc_timer_service_proceed(&timer_service, TICK_MS);</br>
+			}</br>
+			}</br>
+			</br>
+			void blinky_set_timer(Blinky* handle, const sc_eventid evid, const sc_integer time_ms, const sc_boolean
+			periodic){</br>
+			sc_timer_start(&timer_service, (void*) handle, evid, time_ms, periodic);</br>
+			}</br>
+			</br>
+			void blinky_unset_timer(Blinky* handle, const sc_eventid evid){</br>
+			sc_timer_cancel(&timer_service, evid);</br>
+			(void) handle;</br>
+			}</br>
+			</br>
+			/* USER CODE END 4 */</br>
+		</code>
+	</div>
+</body>
+
+</html>

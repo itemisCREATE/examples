@@ -1,0 +1,16 @@
+/* Defines which code generator to use */ 
+GeneratorModel for create::python {
+	/* Refers to the statechart model 'LightSwitch' */
+	statechart LightSwitch {
+		/* Specify the target location for the generated artifacts. */
+		feature Outlet {
+			targetProject = "itemis.create.examples.codegen.python"
+			targetFolder = "src"
+		}
+		/* Generate a default timer service implementation */
+		feature GeneralFeatures {
+			DefaultTimer = true
+		}
+	}
+}
+

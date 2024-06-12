@@ -1,0 +1,19 @@
+{
+	"id": "itemis.create.examples.coffeemachine.cpp",
+	"title": "Coffee Machine (Deep C++)",
+	"author": "itemis AG",
+	"description": "This is a comprehensive example for the deep C++ integration of CREATE statecharts.",
+	"previewImage": "coffee_machine_thumb.jpg",
+	"category": [
+		"professional",
+		"c-domain",
+		"advanced"
+	],
+	"rank":21,
+	"dependencies": [
+		{
+			"updateSite": "http://updates.yakindu.com/sct/releases",
+			"features": ["com.yakindu.sct.product.c.feature.feature.group"]
+		}
+	]
+}

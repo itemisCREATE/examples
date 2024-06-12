@@ -1,0 +1,31 @@
+GeneratorModel for create::python {
+
+	const PROJECT : string = "itemis.create.examples.codegen.multism.python"
+
+	const FOLDER : string = "src"
+
+	statechart LightController {
+
+		feature Outlet {
+			targetProject = PROJECT
+			targetFolder = FOLDER
+		}
+		feature GeneralFeatures {
+			DefaultTimer = true
+		}
+		feature Naming {
+			basePackage = "controller"
+		}
+	}
+
+	statechart Light {
+
+		feature Outlet {
+			targetProject = PROJECT
+			targetFolder = FOLDER
+		}
+		feature Naming {
+			basePackage = "light"
+		}
+	}
+}

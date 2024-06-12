@@ -1,0 +1,19 @@
+{
+	"id": "itemis.create.examples.lightctrl.c.arduino",
+	"title": "Arduino - Basic Finite State Machine (C)",
+	"author": "itemis AG",
+	"description": "A very basic state machine example for the Arduino platform that switches an LED on and off. It demonstrates how to get started with Itemis CREATE and the Arduino platform and contains a timer service for the Arduino. You need to have an Arduino plugin, as described in the \"Traffic Light Ported to Arduino\" example.",
+	"previewImage": "CREATE-Statecharts-Arduino_thumb.jpg",
+	"category": [
+		"open source",
+		"arduino",
+		"basic",
+		"embedded"
+	],
+	"dependencies": [
+		{
+			"updateSite": "http://eclipse.baeyens.it/update/V4/stable",
+			"features": ["io.sloeber.feature.feature.group"]
+		}
+	]
+}

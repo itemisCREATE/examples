@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 
@@ -25,14 +24,21 @@ static sc_timer_service_t timer_service;
 
 static char buf[20];
 
-/*! Stores the input events */
-static QueueHandle_t eventQueue = NULL;
+/*! Instantiates the state machine */
+LightSwitch lightSwitch;
+
+/*! Instantiates observer for the out events */
+sc_single_subscription_observer lightOnObserver;
+sc_single_subscription_observer lightOffObserver;
 
 /*! Input event IDs*/
 const uint32_t updateTimerServiceID = 0;
 const uint32_t raiseOnButtonID = 1;
 const uint32_t raiseOffButtonID = 2;
 const uint32_t displayBrightnessID = 3;
+
+/*! Stores the input events */
+static QueueHandle_t eventQueue = NULL;
 
 /*! This function will be called by raising the out event light.on */
 static void on_light_on(LightSwitch *o)
@@ -130,20 +136,17 @@ static void eventDelegater(void *parameters)
 		else if (receivedTaskID == displayBrightnessID)
 		{
 			/*! Prints the value of the brightness variable */
-			printf("Brightness: %d.\n",
-				   lightSwitch_light_get_brightness(lightSwitch));
+			printf("Brightness: %d.\n", lightSwitch_light_get_brightness(lightSwitch));
 		}
 	}
 }
 
-/*! Instantiates the state machine */
 int main(void)
 {
-	/*! Instantiates the state machine */
-	LightSwitch lightSwitch;
+	/*! Initialize the event queue */
+	eventQueue = xQueueCreate(2, sizeof(uint32_t));
 
 	/*! Create a task, which delegates the events to the state machine */
-	eventQueue = xQueueCreate(2, sizeof(uint32_t));
 	xTaskCreate(eventDelegater,
 				"TaskReceiver",
 				configMINIMAL_STACK_SIZE,
@@ -157,10 +160,6 @@ int main(void)
 										pdTRUE,
 										NULL,
 										timerCallback);
-
-	/*! Instantiates observer for the out events */
-	sc_single_subscription_observer lightOnObserver;
-	sc_single_subscription_observer lightOffObserver;
 
 	/*! Initializes the timer service */
 	sc_timer_service_init(&timer_service, timers, MAX_TIMERS,

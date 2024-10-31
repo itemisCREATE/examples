@@ -77,8 +77,7 @@ void timer_service_callback(struct k_timer *dummy)
 	k_msgq_put(&event_queue, &event_id, K_NO_WAIT);
 }
 
-void keyboard_poll_thread(void *lightSwitch, void *unused1, void *unused2)
-{
+void keyboard_poll_thread(void *lightSwitch, void *unused1, void *unused2) {
 	/*! Ensures non-blocking read() call. */
 	fcntl(STDIN_FILENO, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
 	while (1) {
@@ -96,10 +95,10 @@ void keyboard_poll_thread(void *lightSwitch, void *unused1, void *unused2)
 					k_msgq_put(&event_queue, &displayBrightnessID, K_NO_WAIT);
 				}
 			}
-		}
 		} else {
 			k_sleep(K_MSEC(100));
 		}
+	}
 }
 
 void event_delegater_thread(void *lightSwitch, void *unused1, void *unused2)

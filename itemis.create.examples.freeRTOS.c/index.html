@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FreeRTOS C</title>
+	<link href="./css/style.css" rel="stylesheet">
+	
+</head>
+<body class="body-container">
+	<div class="primary">
+		<b style='color:red;font-size: 2em;'>DISCLAIMER: This example requires CMake and can not be build with Eclipse</b>
+		<h1>FreeRTOS C</h1>
+		
+		<p>This example demonstrates how to integrate a state machine into FreeRTOS. It's based on the <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/codegen_c_code_generator">C Code Generation</a> example.</p>
+
+		<h2>Zephyr Installation</h2>
+		<p>
+			In order to run the example, FreeRTOS must be cloned. Clone FreeRTOS from <a href="https://github.com/FreeRTOS/FreeRTOS">https://github.com/FreeRTOS/FreeRTOS</a></p>
+		<h2>Compile and run the example</h2>
+		<p>
+			Open a terminal and cd to the root of this project, call cmake, make the project and run the binary. Ensure that the state machines code has been generated.
+			<pre><code>
+cd "path to your project"
+cmake -B build -DCOMPILER=GCC_POSIX -DFREE_RTOS_PATH="path to your cloned FreeRTOS"
+./create_freeRTOS</code></pre>
+		</p>
+</div>
+</body>
+</html>

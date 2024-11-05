@@ -39,7 +39,7 @@ class Main:
         
         # Subscribes observers the lights' brightness_changed events
         self.light1.brightness_changed_observable.subscribe(self.light1Observer)
-        self.light2.brightness_changed_observable.subscribe(self.light1Observer)
+        self.light2.brightness_changed_observable.subscribe(self.light2Observer)
          
         # Enters the state machine; from this point on the state machine is ready to react on incoming event 
         self.controller.enter()

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FreeRTOS - RTOS Integration (C)</title>
+<link href="./css/style.css" rel="stylesheet">
+
+</head>
+<body class="body-container">
+  <div class="primary">
+    <h1>FreeRTOS - RTOS Integration (C)</h1>
+
+    <p>
+   Embedded Systems Integration Guide - Arduino with @CycleBased or @EventDriven execution using Polling.
+    </p>
+    <p>
+    This example has been created to illustrate how an Arduino can be programmed using @CycleBased or @EventDriven execution and polling.
+    You can find a detailed description in our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/embedded_systems_integration_guide">documentation</a>.
+	</p>
+	<h2>The state machine</h2>
+	<p>
+	The state machine contains the following parts:
+	<ul>
+	<li>Two regular states</li>
+	<li>One final state</li>
+	<li>Two incoming events</li>
+	<li>Two outgoing events</li>
+	<li>One timed event</li>
+	</ul>
+	The main idea is to use every component, 
+	which has an effect on the integration of the state machine code.
+	A detailed description can be found in our <a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/embedded_systems_integration_guide">documentation</a>.
+	</p>   
+		<p>
+	<img class="standard-image" alt="The statechart" src="images/platform_integration_example.jpeg" />
+	</p>     
+<div>
+  <h2>Zephyr Installation</h2>
+  <p>
+    In order to run the example, FreeRTOS must be cloned. Clone FreeRTOS from <a href="https://github.com/FreeRTOS/FreeRTOS">https://github.com/FreeRTOS/FreeRTOS</a></p>
+  <h2>Compile and run the example</h2>
+  <p>
+    Open a terminal and cd to the root of this project, call cmake, make the project and run the binary. Ensure that the state machines code has been generated.
+    <pre><code>
+cd "path to your project"
+cmake -B build -DCOMPILER=GCC_POSIX -DFREE_RTOS_PATH="path to your cloned FreeRTOS"
+./create_freeRTOS</code></pre>
+  </p>
+
+</body>
+</html>

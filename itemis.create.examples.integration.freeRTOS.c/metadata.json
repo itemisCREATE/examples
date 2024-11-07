@@ -1,0 +1,10 @@
+{
+	"id": "itemis.create.examples.integration.freeRTOS.c",
+	"title": "FreeRTOS - RTOS Integration (C)",
+	"author": "itemis AG",
+	"description": "Embedded Systems Integration Guide - FreeRTOS Integration.",
+	"previewImage": "embedded_system.jpg",
+	"category": [
+		"integration"
+	]
+}

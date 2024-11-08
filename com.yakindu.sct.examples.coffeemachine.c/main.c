@@ -8,7 +8,7 @@
 #include "src-gen/CoffeeMachine.h"
 #include "src-gen/sc_timer_service.h"
 
-/*! \file Implementation of the main function and setup of the virtual YAKINDU Coffee Maker.
+/*! \file Implementation of the main function and setup of the virtual itemis CREATE Coffee Maker.
  * It includes everything to setup and run the example.
  * The example applies a cycle based execution model.
  */

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <style>
+        .scene {
+            height: 350px;
+            width: 400px;
+            display: flex;
+            align-items: flex-end;
+            border: 1px solid black;
+        }
+
+        #roadImage {
+            width: 100%;
+        }
+
+        #trafficLight {
+            position: absolute;
+            width: 70px;
+            left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .lamp {
+            width: 19px;
+            height: 19px;
+            position: absolute;
+            left: 45px;
+            filter: brightness(50%);
+        }
+
+        #redLight {
+            margin-bottom: 128px;
+        }
+
+        #greenLight {
+            margin-bottom: 85px;
+        }
+
+        #yellowLight {
+            margin-bottom: 107px;
+        }
+
+        .active {
+            filter: brightness(110%);
+        }
+
+        #pedestrianImage {
+            width: 25px;
+            border: 1px solid black;
+            position: absolute;
+            left: 42px;
+            margin-bottom: 155px;
+        }
+
+        .yellowPedestrianLight {
+            position: absolute;
+        }
+
+        .pedestrianLight1 {
+            width: 8px;
+            height: 8px;
+            left: 118px;
+            margin-bottom: 85px;
+        }
+
+        .pedestrianLight2 {
+            width: 12px;
+            height: 12px;
+            left: 325px;
+            margin-bottom: 88px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scene">
+        <img src="./images/road.png" id="roadImage">
+        <img src="./images/trafficLightAllOff.png" id="trafficLight">
+        <img src="./images/red.png" id="redLight" class="lamp">
+        <img src="./images/yellow.png" id="yellowLight" class="lamp">
+        <img src="./images/green.png" id="greenLight" class="lamp">
+        <img src="./images/yellow.png" class="yellowPedestrianLight pedestrianLight1 lamp">
+        <img src="./images/yellow.png" class="yellowPedestrianLight pedestrianLight2 lamp">
+        <img src="./images/French-Pedestrian-Silhouette.svg" id="pedestrianImage">
+    </div>
+
+</body>
+
+</html>

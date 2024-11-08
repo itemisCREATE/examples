@@ -206,7 +206,7 @@ void app_main(int argc, char **argv)
 
     ESP_ERROR_CHECK(example_connect());
 
-    printf("Hello YAKINDU Statechart Tools!\n");
+    printf("Hello itemis CREATE!\n");
 
 	timestamp_offset = get_ms();
 

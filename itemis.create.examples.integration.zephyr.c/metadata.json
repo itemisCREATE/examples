@@ -1,0 +1,10 @@
+{
+	"id": "itemis.create.examples.integration.zephyr.c",
+	"title": "Zephyr - RTOS Integration (C)",
+	"author": "itemis AG",
+	"description": "Embedded Systems Integration Guide - Zephyr Integration.",
+	"previewImage": "embedded_system.jpg",
+	"category": [
+		"integration"
+	]
+}

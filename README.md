@@ -7,8 +7,8 @@ With YAKINDU Statechart Tools, you can easily create complex systems in a visual
 For each major release a separate branch is maintained for the released examples. These branches are:
 
 - [release5](https://github.com/itemisCREATE/examples/tree/release5?tab=readme-ov-file) - the current release
-- [release4](https://github.com/itemisCREATE/examples/tree/release3?tab=readme-ov-file)
-- [release](https://github.com/itemisCREATE/examples/tree/release3?tab=readme-ov-file) - for pre v4 examples 
+- [release4](https://github.com/itemisCREATE/examples/tree/release3)
+- [release](https://github.com/itemisCREATE/examples/tree/release3) - for pre v4 examples 
 
 You can browse [all examples on our website.](https://www.itemis.com/en/yakindu/statechart-tools/documentation/examples/)
 

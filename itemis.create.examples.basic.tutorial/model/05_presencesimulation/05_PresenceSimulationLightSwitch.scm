@@ -1173,6 +1173,80 @@
       "z": 223,
       "parent": "19e941b6-1719-4c37-a00b-227b02e3c38c",
       "attrs": {}
+    },
+    {
+      "type": "Entry",
+      "position": {
+        "x": 691,
+        "y": 320
+      },
+      "size": {
+        "height": 15,
+        "width": 15
+      },
+      "angle": 0,
+      "fixedRatio": true,
+      "embedable": false,
+      "linkable": true,
+      "entryKind": "Entry",
+      "id": "14a9a50c-4a27-44fb-84c0-b6e437502d70",
+      "markup": "\n    <g class=\"scalable default-outline\" stroke-linejoin=\"round\">\n      <circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"#000000\"/>\n      <text font-family=\"FontAwesome\" font-size=\"13\" x=\"-5\" y=\"0\" opacity=\"0\" fill=\"#00ff00\" text=\"\"/>\n    </g>\n  ",
+      "z": 226,
+      "attrs": {
+        "name": {
+          "fill": "#CFD8DC"
+        }
+      }
+    },
+    {
+      "type": "Transition",
+      "source": {
+        "id": "14a9a50c-4a27-44fb-84c0-b6e437502d70"
+      },
+      "target": {
+        "x": 611,
+        "y": 371,
+        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
+        "anchor": {
+          "name": "topLeft",
+          "args": {
+            "dx": 703.0000152587891,
+            "dy": 107.40621948242188,
+            "rotate": true
+          }
+        },
+        "priority": true
+      },
+      "router": {
+        "name": "orthogonal",
+        "args": {
+          "padding": 8
+        }
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "labels": [
+        {
+          "attrs": {},
+          "position": {}
+        },
+        {
+          "attrs": {
+            "label": {
+              "text": "1",
+              "fill": "#555555"
+            },
+            "circleBody": {
+              "fill": "#F0F0F0",
+              "stroke": "#555555"
+            }
+          }
+        }
+      ],
+      "id": "7c677995-e5c0-4420-a0d5-26c694db9eee",
+      "z": 227,
+      "attrs": {}
     }
   ]
 }

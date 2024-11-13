@@ -417,8 +417,8 @@
         "y": 568
       },
       "size": {
-        "width": 1655,
-        "height": 379
+        "height": 379,
+        "width": 1655
       },
       "angle": 0,
       "fixedRatio": false,
@@ -444,8 +444,8 @@
         "y": 606.59375
       },
       "size": {
-        "width": 1653,
-        "height": 339.40625
+        "height": 339.40625,
+        "width": 1653
       },
       "angle": 0,
       "fixedRatio": false,

@@ -11,8 +11,12 @@
                         "targetProject": ".",
                         "targetFolder": "src-gen"
                     },
+                    "Naming": {
+                        "basePackage" :"itemis.create.examples.codegen.java",
+                        "libraryPackage": "itemis.create"
+                    },
                     "GeneralFeatures": {
-                        "timerService": true
+                        "TimerService": true
                     }
                 },
                 "type": "create::java"

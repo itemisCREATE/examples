@@ -33,7 +33,7 @@
 			"targetFolder": "src-gen"
 		}
 	}
-	"type": "create::c"
+	"type": "create::cpp"
 },
 "group": "build"</code></pre>
 		</p>
@@ -71,13 +71,13 @@
 <p>
 	The easiest way running the example is by installing the <em>C/C++</em> extension. Open the <em>main.c</em> file and click on <em>Run C/C++ File</em>. Ensure that all <em>.c</em> files are added to the build task. This is a example build task for linux:
 	<pre><code>"type": "cppbuild",
-"label": "C/C++: gcc build active file",
-"command": "/usr/bin/gcc",
+"label": "C/C++: g++ build active file",
+"command": "/usr/bin/g++",
 "args": [
 	"-fdiagnostics-color=always",
 	"-g",
-	"${fileDirname}/*.c",
-	"${fileDirname}/../src-gen/*.c",
+	"${fileDirname}/*.cpp",
+	"${fileDirname}/../src-gen/*.cpp",
 	"-o",
 	"${fileDirname}/${fileBasenameNoExtension}"
 ],

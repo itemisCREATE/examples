@@ -6,7 +6,8 @@
 	"previewImage": "lights_thumb.jpg",
 	"category": [
 		"basic",
-		"execution-variants"
+		"execution-variants",
+		"vscode"
 	],
 	"rank":20
 }

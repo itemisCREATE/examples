@@ -6,7 +6,8 @@
 	"previewImage": "lights_thumb.jpg",
 	"category": [
 		"open source",
-		"execution-variants"
+		"execution-variants",
+		"vscode"
 	],
 	"rank":40
 }

@@ -34,9 +34,7 @@
       <p>A statechart is a graphical model which describes the behavior of some thing or entity. It describes how such an entity reacts to changes and events in its environment. Due to it’s graphical nature, lucid concepts, and well defined semantics it provides a comprehensive and executable basis for system specification and implementation which can be shared between stakeholders without demanding too many technical skills. </p>
 <p>The most basic element of a statechart are states, transitions, and events. To introduce these basic concepts we take a look at the simple light switch example below. States represent the modes of a system or entity and in the case of this very simple light switch two states 
   <span id="MAIN_OFF" class="y-state">Off</span> and 
-  <span id="MAIN_ON" class="y-state">On</span> exist. States have a name, are visualized as rounded rectangles. At any point of time states are either active or inactive. Active state are highlighted using a 
-  <span class="y-state--active">yellow background color</span> while inactive states have a 
-  <span class="y-state--inactive">blue background color</span>. 
+  <span id="MAIN_ON" class="y-state">On</span> exist. States have a name, are visualized as rounded rectangles. At any point of time states are either active or inactive. Active state are highlighted based on the vscode theme you are using.
 </p>
 <p>If something happens then the statechart may change its state. Each state can have outgoing transitions. These transitions connect two states and have a direction which is indicated by the arrow head. Our light switch states are mutually connected by transitions. These transitions are directed and define how state changes (state transitions) can occur under which conditions. Here, the light switch simply defines that 
   <span id="MAIN_OFF" class="y-state">Off</span> and 
@@ -63,7 +61,7 @@
   <span id="MAIN_OFF" class="y-state">Off</span>.
 </p>
       <p>
-        The statechart can be simulated in Itemis CREATE via <i>right-click -> Run As -> Statechart Simulation</i>.
+        The statechart can be simulated in Itemis CREATE via <i>right-click -> Run Simulation</i>.
       </p>
     </div>
 

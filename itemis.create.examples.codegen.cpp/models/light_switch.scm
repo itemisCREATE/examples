@@ -1,0 +1,277 @@
+{
+  "cells": [
+    {
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 10,
+        "width": 10
+      },
+      "angle": 0,
+      "type": "Statechart",
+      "id": "78749915-0da0-40a2-862f-9e8d94c7c68e",
+      "linkable": false,
+      "z": 1,
+      "attrs": {
+        "name": {
+          "text": "LightSwitch"
+        },
+        "specification": {
+          "text": "@EventDriven\n\ninterface user:\n\tin event on_button\n\tin event off_button\n\t\ninterface light:\n\tvar brightness: integer\n\tout event on\n\tout event off"
+        }
+      }
+    },
+    {
+      "type": "State",
+      "position": {
+        "x": 200,
+        "y": 200
+      },
+      "size": {
+        "height": 72,
+        "width": 331
+      },
+      "angle": 0,
+      "fixedRatio": false,
+      "embedable": true,
+      "linkable": true,
+      "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
+      "z": 4,
+      "attrs": {
+        "name": {
+          "text": "Off",
+          "fill": "#CFD8DC",
+          "fontSize": 12
+        },
+        "specification": {
+          "text": "entry / \nlight.brightness = 0;\nraise light.off"
+        }
+      }
+    },
+    {
+      "type": "State",
+      "position": {
+        "x": 200,
+        "y": 398
+      },
+      "size": {
+        "height": 105,
+        "width": 331
+      },
+      "angle": 0,
+      "fixedRatio": false,
+      "embedable": true,
+      "linkable": true,
+      "id": "db372094-acc6-467b-b44d-495606208445",
+      "z": 9,
+      "attrs": {
+        "name": {
+          "text": "On",
+          "fill": "#CFD8DC",
+          "fontSize": 12
+        },
+        "specification": {
+          "text": "entry / \nraise light.on\n\nuser.on_button [light.brightness < 10] / \nlight.brightness += 1"
+        }
+      }
+    },
+    {
+      "type": "Entry",
+      "position": {
+        "x": 332.5,
+        "y": 133
+      },
+      "size": {
+        "height": 15,
+        "width": 15
+      },
+      "angle": 0,
+      "fixedRatio": true,
+      "embedable": false,
+      "linkable": true,
+      "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
+      "z": 10,
+      "embeds": [
+        "f70f632c-e54d-4002-9ec5-7baec620de10"
+      ],
+      "markup": "\n    <g class=\"scalable default-outline\" stroke-linejoin=\"round\">\n      <circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"#000000\"/>\n      <text font-family=\"FontAwesome\" font-size=\"13\" x=\"-5\" y=\"0\" opacity=\"0\" fill=\"#00ff00\" text=\"\"/>\n    </g>\n  ",
+      "attrs": {
+        "name": {
+          "fill": "#CFD8DC"
+        }
+      }
+    },
+    {
+      "type": "NodeLabel",
+      "label": true,
+      "size": {
+        "width": 15,
+        "height": 15
+      },
+      "position": {
+        "x": 332.5,
+        "y": 148
+      },
+      "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
+      "z": 11,
+      "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
+      "attrs": {
+        "label": {
+          "refX": "50%",
+          "textAnchor": "middle",
+          "refY": "50%",
+          "textVerticalAnchor": "middle"
+        }
+      }
+    },
+    {
+      "type": "Transition",
+      "source": {
+        "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
+      },
+      "target": {
+        "id": "36b8548a-74b1-4925-ae23-291c03231ee6"
+      },
+      "router": {
+        "name": "orthogonal",
+        "args": {
+          "padding": 8
+        }
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "labels": [
+        {
+          "attrs": {},
+          "position": {}
+        },
+        {
+          "attrs": {
+            "label": {
+              "text": "1"
+            }
+          }
+        }
+      ],
+      "id": "9b5ce41b-0116-46a8-a603-ea4119c6e5d7",
+      "z": 12,
+      "attrs": {}
+    },
+    {
+      "type": "Transition",
+      "source": {
+        "id": "db372094-acc6-467b-b44d-495606208445"
+      },
+      "target": {
+        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
+        "anchor": {
+          "name": "topLeft",
+          "args": {
+            "dx": 214,
+            "dy": 68,
+            "rotate": true
+          }
+        },
+        "priority": true
+      },
+      "router": {
+        "name": "orthogonal",
+        "args": {
+          "padding": 8
+        }
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "labels": [
+        {
+          "attrs": {
+            "text": {
+              "text": "user.off_button,\nafter 30 s"
+            }
+          },
+          "position": {
+            "distance": 0.516,
+            "offset": 69,
+            "angle": 0
+          }
+        },
+        {
+          "attrs": {
+            "label": {
+              "text": "1",
+              "fill": "#555555"
+            },
+            "circleBody": {
+              "fill": "#F0F0F0",
+              "stroke": "#555555"
+            }
+          }
+        }
+      ],
+      "id": "6a32811d-b2a7-461d-9c9f-2f3f9bbbc74f",
+      "z": 18,
+      "vertices": [],
+      "attrs": {}
+    },
+    {
+      "type": "Transition",
+      "source": {
+        "id": "36b8548a-74b1-4925-ae23-291c03231ee6"
+      },
+      "target": {
+        "id": "db372094-acc6-467b-b44d-495606208445",
+        "anchor": {
+          "name": "topLeft",
+          "args": {
+            "dx": 125,
+            "dy": 8.111114501953125,
+            "rotate": true
+          }
+        },
+        "priority": true
+      },
+      "router": {
+        "name": "orthogonal",
+        "args": {
+          "padding": 8
+        }
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "labels": [
+        {
+          "attrs": {
+            "text": {
+              "text": "user.on_button / \nlight.brightness = 1"
+            }
+          },
+          "position": {
+            "distance": 0.46,
+            "offset": 83.00000000000003,
+            "angle": 0
+          }
+        },
+        {
+          "attrs": {
+            "label": {
+              "text": "1",
+              "fill": "#555555"
+            },
+            "circleBody": {
+              "fill": "#F0F0F0",
+              "stroke": "#555555"
+            }
+          }
+        }
+      ],
+      "id": "e9bb0bd8-bf23-43bd-b9c6-533343c47258",
+      "z": 19,
+      "attrs": {}
+    }
+  ]
+}

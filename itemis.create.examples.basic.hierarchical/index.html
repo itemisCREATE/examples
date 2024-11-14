@@ -47,11 +47,9 @@
 	Compare the model with the one above. We introduced two composite states to logically group the states by the respective light switch modes. In that way we could reduce a number of transitions without changing the model's behavior.
 	</p>
 	<p>
-	There are multiple ways to create a composite state:
+	There is one way to create a composite state:
 	<ul>
 	<li>Use the statechart element palette on the right to create a composite state.</li>
-	<li>Select a normal state, press [Ctrl]+[Space] and choose <em>Add subregion</em>.</li>
-	<li>Select a number of states (by holding [Ctrl]), right-click and choose <em>Refactor -> Group States Into Composite</em>.</li>
 	</ul>
 	</p>
 	<p>
@@ -59,19 +57,6 @@
 	</p>
 	<p>
 	<img alt="Light switch with nested composite states" title="Light switch with nested composite states" border="0" src="images/03_nested_composite_states.png"/>
-	</p>
-	<h2>Using Subdiagrams</h2>
-	<p>
-	Using composite states is a great way to make your statechart more comprehensible. However, as your statechart becomes bigger you might want to hide the details and only focus on the higher level relationships without loosing the semantic of your statechart. Subdiagrams come as a solution here.
-	</p>
-	<p>
-	When the <em>Extract Subdiagram</em> refactoring is executed on a composite state, all containing regions are extracted into a separate diagram. The composite state no longer clutters the diagram with all its internal details, but instead appears almost like a normal state. The only difference is a small decorator icon in the lower-right corner of the state, indicating the existence of a subdiagram. When you hover over this decorator with the mouse cursor, you’ll see a small preview of the subdiagram’s content.
-	</p>
-	<p>
-	<img alt="Light switch with subdiagrams" title="Light switch with subdiagrams" border="0" src="images/04_subdiagrams.png"/>
-	</p>
-	<p>
-	By introducing subdiagrams, we have hidden the details of the two light switch automatic light switch modes. In that way, you can directly understand which modes the light switch has and how to switch between them. If you are interested in the details, you can hover or click on the decorator to open the respective subdiagrams. You can revert these changes again by using the <em>Inline Subdiagram</em> refactoring.
 	</p>
   </div>
 </body>

@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+
+ws_dir = Path(__file__).parent.parent
+sys.path.append(str(ws_dir / 'src-gen'))
+
 from light_switch import LightSwitch
 from yakindu.rx import Observer
 from yakindu.timer.timer_service import TimerService
@@ -58,3 +64,4 @@ if __name__ == '__main__':
     m = Main()
     m.setup()
     m.run()
+

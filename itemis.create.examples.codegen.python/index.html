@@ -55,7 +55,20 @@
 	Our application is a simple interactive console with which the user can switch the light on or off. The complete application code is implemented in <code>main.py</code>:
 </p>
 <p>
-	<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/itemis.create.examples.codegen.c/src/main.py"></script>
+	<pre id="code-content"></pre>
+	<script>
+		const url = "https://raw.githubusercontent.com/itemisCREATE/examples/refs/heads/vscode-release5/itemis.create.examples.codegen.python/src/main.py";
+	
+		fetch(url)
+		  .then(response => response.text())
+		  .then(data => {
+			document.getElementById('code-content').textContent = data;
+		  })
+		  .catch(error => {
+			console.error("Error fetching code:", error);
+			document.getElementById('code-content').textContent = "Failed to load code.";
+		  });
+	  </script>
 </p>
 <p>
 	The most important parts are commented in the <code>main.py</code> file. These are the bullet points:

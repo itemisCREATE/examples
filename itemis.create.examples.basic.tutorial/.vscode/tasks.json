@@ -1,0 +1,84 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Generate Statechart 01_LightSwitch",
+            "type": "codegenerator",
+            "generator": {
+                "statechart": "model/01_basic/01_LightSwitch.scm",
+                "features": {
+                    "Outlet": {
+                        "targetProject": ".",
+                        "targetFolder": "src-gen"
+                    },
+                    "Naming": {
+                        "basePackage": "itemis.create.examples.basic.tutorial",
+                        "libraryPackage": "itemis.create"
+                    }
+                },
+                "type": "create::java"
+            },
+            "group": "build"
+        },
+        {
+            "label": "Generate Statechart 02_DimmableLightSwitch",
+            "type": "codegenerator",
+            "generator": {
+                "statechart": "model/02_dimmer/02_DimmableLightSwitch.scm",
+                "features": {
+                    "Outlet": {
+                        "targetProject": ".",
+                        "targetFolder": "src-gen"
+                    },
+                    "Naming": {
+                        "basePackage": "itemis.create.examples.basic.tutorial",
+                        "libraryPackage": "itemis.create"
+                    }
+                },
+                "type": "create::java"
+            },
+            "group": "build"
+        },
+        {
+            "label": "Generate Statechart 03_MotionLightSwitch",
+            "type": "codegenerator",
+            "generator": {
+                "statechart": "model/03_motionsense/03_MotionLightSwitch.scm",
+                "features": {
+                    "Outlet": {
+                        "targetProject": ".",
+                        "targetFolder": "src-gen"
+                    },
+                    "Naming": {
+                        "basePackage": "itemis.create.examples.basic.tutorial",
+                        "libraryPackage": "itemis.create"
+                    },
+                    "GeneralFeatures": {
+                        "TimerService": true
+                    }
+                },
+                "type": "create::java"
+            },
+            "group": "build"
+        },
+        {
+            "label": "Generate Statechart 05_PresenceSimulationLightSwitch",
+            "type": "codegenerator",
+            "generator": {
+                "statechart": "model/05_presencesimulation/05_PresenceSimulationLightSwitch.scm",
+                "features": {
+                    "Outlet": {
+                        "targetProject": ".",
+                        "targetFolder": "src-gen"
+                    },
+                    "Naming": {
+                        "basePackage": "itemis.create.examples.basic.tutorial",
+                        "libraryPackage": "itemis.create"
+                    }
+                },
+                "type": "create::java"
+            },
+            "group": "build"
+        }
+    ]
+}

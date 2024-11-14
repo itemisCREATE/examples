@@ -18,7 +18,7 @@
       "z": 0,
       "attrs": {
         "name": {
-          "text": "_02_DimmableLightSwitch Export"
+          "text": "_02_DimmableLightSwitch"
         },
         "specification": {
           "text": "@EventDriven\n\ninterface:\n\tin event switch\n\tin event changeBrightness\n\tvar brightness: integer"

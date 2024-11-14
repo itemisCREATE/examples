@@ -18,7 +18,7 @@
       "z": 0,
       "attrs": {
         "name": {
-          "text": "_03_MotionLightSwitch Export"
+          "text": "_03_MotionLightSwitch"
         },
         "specification": {
           "text": "@EventDriven\n\ninterface:\n\tin event switch\n\tin event changeBrightness\n\tin event toggleMode\n\tin event motionDetected\n\t\n\tvar brightness: integer"

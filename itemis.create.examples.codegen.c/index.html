@@ -22,9 +22,8 @@
 		</p>
 
 		<p>
-			This will create a default <em>codegenerator</em> task in the <em>.vscode/tasks.json</em>.
-		<code><pre>
-"label": "Generate Statechart Code",
+			This will create a default <em>codegenerator</em> task in the <em>.vscode/tasks.json</em>:
+		<code><pre>"label": "Generate Statechart Code",
 "type": "codegenerator",
 "generator": {
 	"statechart": "models/light_switch.scm",
@@ -72,8 +71,7 @@
 </p>
 <p>
 	The easiest way running the example is by installing the <em>C/C++</em> extension. Open the <em>main.c</em> file and click on <em>Run C/C++ File</em>. Ensure that all <em>.c</em> files are added to the build task. This is a example build task for linux:
-	<pre><code>
-"type": "cppbuild",
+	<pre><code>"type": "cppbuild",
 "label": "C/C++: gcc build active file",
 "command": "/usr/bin/gcc",
 "args": [
@@ -99,8 +97,7 @@
 </p>
 	<p>A console should open and ask you for input like:</p>
 		
-	<pre><code>
-Light is off.
+	<pre><code>Light is off.
 Type 1 or 0 to switch the light on or off.
 
 1

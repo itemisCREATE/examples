@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [ 
+        {
+            "type": "simulation",
+            "request": "launch",
+            "name": "Simulate 01_LightSwitch",
+            "statechart": "model/01_basic/01_LightSwitch.scm"
+        },
+        {
+            "type": "simulation",
+            "request": "launch",
+            "name": "Simulate 02_DimmableLightSwitch",
+            "statechart": "model/02_dimmer/02_DimmableLightSwitch.scm"
+        },
+        {
+            "type": "simulation",
+            "request": "launch",
+            "name": "Simulate 03_MotionLightSwitch",
+            "statechart": "model/03_motionsense/03_MotionLightSwitch.scm"
+        },
+        {
+            "type": "simulation",
+            "request": "launch",
+            "name": "Simulate 04_LightAndMotionSensingLightSwitch",
+            "statechart": "model/04_lightsense/04_LightAndMotionSensingLightSwitch.scm"
+        },
+        {
+            "type": "simulation",
+            "request": "launch",
+            "name": "Simulate 05_PresenceSimulationLightSwitch",
+            "statechart": "model/05_presencesimulation/05_PresenceSimulationLightSwitch.scm"
+        }
+    ]
+}

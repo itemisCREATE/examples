@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Generate Statechart Code",
+            "type": "codegenerator",
+            "generator": {
+                "statechart": "model/LightCtrl.scm",
+                "features": {
+                    "Outlet": {
+                        "targetProject": ".",
+                        "targetFolder": "lib/LightCtrl/src"
+                    },
+                    "GeneralFeatures": {
+                        "timerService": true
+                    }
+                },
+                "type": "create::c"
+            },
+            "group": "build"
+        }
+    ]
+}

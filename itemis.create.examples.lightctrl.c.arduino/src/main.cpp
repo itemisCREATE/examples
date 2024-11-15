@@ -1,9 +1,8 @@
 #include "Arduino.h"
-#include <avr/sleep.h>
 
-#include "src-gen/LightCtrl.h"
-#include "src-gen/LightCtrl_required.h"
-#include "src-gen/sc_timer_service.h"
+#include <LightCtrl.h>
+#include <LightCtrl_required.h>
+#include <sc_timer_service.h>
 
 #define BUTTON_PIN 3
 #define LED_PIN 6

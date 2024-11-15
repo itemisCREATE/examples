@@ -1,4 +1,4 @@
-#include "timer_impl.h"
+#include <timer_impl.h>
 #include <avr/wdt.h>
 
 /*! Define the max amount of used time events.

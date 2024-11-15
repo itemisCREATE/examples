@@ -1,4 +1,2 @@
-/sloeber.ino.cpp
-/spec.d
-src-gen/
-Release/
+/lib/StateMachine/src/
+/.pio/

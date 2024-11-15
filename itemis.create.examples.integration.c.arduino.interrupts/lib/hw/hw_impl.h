@@ -2,7 +2,7 @@
 #define SRC_HW_IMPL_H_
 
 #include "Arduino.h"
-#include "../src-gen/StateMachine.h"
+#include <StateMachine.h>
 
 #ifdef __cplusplus
 extern "C" {

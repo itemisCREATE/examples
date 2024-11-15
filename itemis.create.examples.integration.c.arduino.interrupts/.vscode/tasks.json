@@ -9,7 +9,7 @@
                 "features": {
                     "Outlet": {
                         "targetProject": ".",
-                        "targetFolder": "src-gen"
+                        "targetFolder": "lib/StateMachine/src"
                     },
                     "GeneralFeatures": {
                         "timerService": true

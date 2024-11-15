@@ -10,5 +10,8 @@
 		"modeling",
 		"vscode"
 	],
+	"dependencies": [
+		"vscjava.vscode-java-pack"
+	],
 	"rank":10
 }

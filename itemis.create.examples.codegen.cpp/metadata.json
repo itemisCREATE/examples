@@ -8,6 +8,9 @@
 		"code-generation",
 		"vscode"
 	],
+	"dependencies": [
+		"ms-vscode.cpptools"
+	],
 	"rank":20
 }
  

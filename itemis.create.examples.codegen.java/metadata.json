@@ -8,6 +8,10 @@
 		"code-generation",
 		"vscode"
 	],
+	"dependencies": [
+		"vscjava.vscode-java-pack"
+	],
 	"rank":30
+	
 }
  

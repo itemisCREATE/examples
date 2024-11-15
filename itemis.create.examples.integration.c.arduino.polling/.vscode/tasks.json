@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Generate Statechart Code",
+            "type": "codegenerator",
+            "generator": {
+                "statechart": "model/StateMachine.scm",
+                "features": {
+                    "Outlet": {
+                        "targetProject": ".",
+                        "targetFolder": "lib/StateMachine/src"
+                    },
+                    "GeneralFeatures": {
+                        "timerService": true
+                    }
+                },
+                "type": "create::c"
+            },
+            "group": "build"
+        }
+    ]
+}

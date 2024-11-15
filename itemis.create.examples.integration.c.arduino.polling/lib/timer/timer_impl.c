@@ -1,6 +1,5 @@
-#include "timer_impl.h"
-
-#include "Arduino.h"
+#include <timer_impl.h>
+#include <avr/wdt.h>
 
 /*! Define the max amount of used time events.
  * This depends on the statechart and must be set by user! */
@@ -15,7 +14,7 @@ static sc_timer_service_t timer_service;
 /*! Callback for setTimer. Creates a timer for each time event */
 void stateMachine_set_timer(StateMachine* handle, const sc_eventid evid,
 		const sc_integer time_ms, const sc_boolean periodic) {
-	sc_timer_set(&timer_service, handle, evid, time_ms, periodic);
+	sc_timer_set(&timer_service, (void*) handle, evid, time_ms, periodic);
 }
 
 /*! Callback for unsetTimer. Removes expired timer */
@@ -24,17 +23,31 @@ void stateMachine_unset_timer(StateMachine* handle, const sc_eventid evid) {
 	sc_timer_unset(&timer_service, evid);
 }
 
-/*! Initializes the timer service */
+/*! Initializes the Watch Dog Timer with interrupts every 32 ms.
+ * Additionally, initializes the timer service */
 void timer_init() {
+	WDTCSR |= (_BV(WDCE) | _BV(WDE));	// enable WDT
+	WDTCSR = _BV(WDP0); 				// cycle time 32 ms
+	WDTCSR |= _BV(WDIE);				// enable interrupt
+	sei();
+
 	sc_timer_service_init(&timer_service, timers, MAX_TIMERS,
 			(sc_raise_time_event_fp) &stateMachine_raise_time_event);
 }
 
-long current_millis = 0;
-long last_cycle_time = 0;
-/*! Updates all timer with a elapsed time calculated by millis(). */
-void handle_timer(unsigned long millis) {
-	last_cycle_time = current_millis;
-	current_millis = millis;
-	sc_timer_service_proceed(&timer_service, current_millis - last_cycle_time);
+/*! Updates all timer with a elapsed time of 32 ms,
+ * as set by the 32 ms interrupt by the WDT */
+volatile sc_boolean updateTimerFlag = false;
+void handle_timer() {
+	if (updateTimerFlag) {
+		wdt_reset();
+		sc_timer_service_proceed(&timer_service, TIMER_TICK_MS);
+		updateTimerFlag = false;
+	}
 }
+
+/*! Interrupt Service Routine to store the WDT interrupt */
+ISR(WDT_vect) {
+	updateTimerFlag = true;
+}
+

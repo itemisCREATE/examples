@@ -1,8 +1,8 @@
 #include "Arduino.h"
 
-#include "src/hw_impl.h"
-#include "src/timer_impl.h"
-#include "src-gen/StateMachine_required.h"
+#include <hw_impl.h>
+#include <timer_impl.h>
+#include <StateMachine_required.h>
 
 /*! Define the state machine object */
 StateMachine stateMachine;

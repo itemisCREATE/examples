@@ -1,24 +1,45 @@
-#include "hw_impl.h"
 #include "avr/sleep.h"
+#include "hw_impl.h"
 
-/*! Setup the hardware you're using.
+/*! Setup the hardware you're using. Activate the interrupts.
  * Digital/Analog Ports, Sensors, Actuators, Communication */
-void hw_init(){
+void hw_init() {
+	pinMode(2, INPUT_PULLUP);
+	pinMode(3, INPUT_PULLUP);
+	attachInterrupt(digitalPinToInterrupt(2), ISR_in_event_one, CHANGE);
+	attachInterrupt(digitalPinToInterrupt(3), ISR_in_event_two, CHANGE);
+
 	pinMode(13, OUTPUT);
-	pinMode(2, INPUT);
-	pinMode(3, INPUT);
 	digitalWrite(13, LOW);
+
+	set_sleep_mode(SLEEP_MODE_ADC);
+	sleep_enable();
 }
 
-/*! Poll the inputs/sensors.
- * Wire inputs to the according event.*/
+/*! Occurred interrupts are stored in bool flags.
+ * Handles the in events, by using these flags and
+ * set them back to false for the next interrupt.*/
+static volatile sc_boolean inEvent1Flag = false;
+static volatile sc_boolean inEvent2Flag = false;
 void handle_in_events(StateMachine* handle) {
-	if(digitalRead(2) == HIGH) {
+	if (inEvent1Flag) {
 		stateMachine_raise_inEvent1(handle);
+		inEvent1Flag = false;
 	}
-	if(digitalRead(3) == HIGH) {
+	if (inEvent2Flag) {
 		stateMachine_raise_inEvent2(handle);
+		inEvent2Flag = false;
 	}
+}
+
+/*! Interrupt Service Routine to store the pin 2 interrupt */
+void ISR_in_event_one() {
+	inEvent1Flag = true;
+}
+
+/*! Interrupt Service Routine to store the pin 3 interrupt */
+void ISR_in_event_two() {
+	inEvent2Flag = true;
 }
 
 /*! Callback for outEvent1. Setting actuator. */

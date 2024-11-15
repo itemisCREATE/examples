@@ -5,6 +5,7 @@
 	"description": "Embedded Systems Integration Guide - FreeRTOS Integration.",
 	"previewImage": "embedded_system.jpg",
 	"category": [
-		"integration"
+		"integration",
+		"vscode"
 	]
 }

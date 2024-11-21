@@ -7,7 +7,7 @@ HEADERS = trafficlight.h
 # install
 target.path = .
 INSTALLS += target
-TARGET = "YAKINDU Statechart Tools SCXML Example"
+TARGET = "itemis CREATE SCXML Example"
 
 RESOURCES += \
     trafficlight-project.qrc

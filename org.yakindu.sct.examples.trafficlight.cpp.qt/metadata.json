@@ -1,7 +1,7 @@
 {
 	"id": "org.yakindu.sct.examples.trafficlight.cpp.qt",
 	"title": "Traffic Light (Qt/C++)",
-	"description": "YAKINDU provides a Qt specific C++ code generator for statecharts. This example project shows how easy YAKINDU Qt/C++ state machines can be integrated into Qt applications.",
+	"description": "itemis CREATE provides a Qt specific C++ code generator for statecharts. This example project shows how easy itemis CREATE Qt/C++ state machines can be integrated into Qt applications.",
 	"previewImage": "traffic_light.jpg",
     "author": "itemis AG",
     "license": "GNU Free Documentation License version 1.3",

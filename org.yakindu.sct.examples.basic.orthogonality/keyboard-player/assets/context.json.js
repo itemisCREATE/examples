@@ -1,0 +1,1 @@
+const contextJson = {"elements":[{"elements":[{"kind":"event","name":"pressCapsLock","fqName":"pressCapsLock","featureId":"PRESSCAPSLOCK","writable":true},{"kind":"event","name":"pressNumLock","fqName":"pressNumLock","featureId":"PRESSNUMLOCK","writable":true}],"kind":"composite","name":"default","featureId":"","writable":true}]}

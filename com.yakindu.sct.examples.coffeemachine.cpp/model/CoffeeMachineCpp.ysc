@@ -8,7 +8,7 @@
       <vertices xsi:type="sgraph:State" xmi:id="_O5_vwAClEea895739UzP5A" specification="entry / cm.stopHeating" name="Off" incomingTransitions="_O6HrkAClEea895739UzP5A _S9MgYAFeEea895739UzP5A">
         <outgoingTransitions xmi:id="_kd1XgAFcEea895739UzP5A" specification="[userInput ==  CM_HMI.UserEvents.ON_OFF]" target="_b-92YACvEea895739UzP5A"/>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="_b-92YACvEea895739UzP5A" specification="entry / hmi.show(&quot;** Welcome to YAKINDU Coffee Maker **\n&quot;)" name="On" incomingTransitions="_kd1XgAFcEea895739UzP5A">
+      <vertices xsi:type="sgraph:State" xmi:id="_b-92YACvEea895739UzP5A" specification="entry / hmi.show(&quot;** Welcome to itemis CREATE Coffee Maker **\n&quot;)" name="On" incomingTransitions="_kd1XgAFcEea895739UzP5A">
         <outgoingTransitions xmi:id="_S9MgYAFeEea895739UzP5A" specification="[userInput == CM_HMI.UserEvents.ON_OFF]" target="_O5_vwAClEea895739UzP5A"/>
         <regions xmi:id="_EQQ6cAF1Eea895739UzP5A" name="r">
           <vertices xsi:type="sgraph:Entry" xmi:id="_E_xEwAF1Eea895739UzP5A">

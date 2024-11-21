@@ -2,7 +2,7 @@
 	"id": "org.yakindu.sct.examples.basic.tutorial",
 	"title": "Basic Tutorial",
 	"author": "itemis AG",
-	"description": "This is a series of examples demonstrating multiple features of YAKINDU SCT. With each iteration, more features are shown. This example is a good starting point to dive into SCT headfirst.",
+	"description": "This is a series of examples demonstrating multiple features of itemis CREATE . With each iteration, more features are shown. This example is a good starting point to dive into  headfirst.",
 	"previewImage": "lights_thumb.jpg",
 	"category": [
 		"open source",

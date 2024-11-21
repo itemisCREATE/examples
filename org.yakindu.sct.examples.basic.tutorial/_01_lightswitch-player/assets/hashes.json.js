@@ -1,0 +1,1 @@
+const hashesJson = {"MAIN_ON":"2ad91e83-e1fe-4487-b9d4-8716da4b4fa5","MAIN_OFF":"4e674d9c-6ca5-4e0a-87d7-f66267594232","MAIN_ON_tr0":"b1bb7086-fc46-42f4-a6c9-ea27940d431a","MAIN_OFF_tr0":"3867482f-5f79-4406-b9d0-fb2236618d12"}

@@ -1,0 +1,251 @@
+
+<meta charset="utf-8" />
+<title>sct-web-player demo</title>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
+/>
+<link rel="stylesheet" href="./assets/ypi.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+  crossorigin="anonymous"
+/>
+<style>
+  html {
+    overflow-y: auto;
+  }
+  body {
+    background-color: #F2F2F2;
+  }
+</style>
+<html>
+  <body>
+    <div class="container">
+          <h1>How to embed your statechart player</h1>
+          <p>
+          This document describes how to embed your statechart player into an arbitrary HTML document. 
+          The statechart player itself is encapsulated in <em>player.html</em> file. This HTML file can 
+          be embedded into another document as an HTML <code>iframe</code>. Furthermore, it is possible 
+          to communicate with the embedded statechart by sending and receiving messages in a well-defined 
+          format.  
+          </p>
+          
+          <div class="mb-3">
+          <iframe width="100%" height="500px" src="player.html?start=true" id="statechart"></iframe>
+          </div>
+          <h2>The player toolbar</h2>
+          <p>
+            The embedded statechart can be controlled by the player's bottom toolbar. This toolbar allows to 
+            start and stop the statechart with the play and stop buttons. The button to the right opens the 
+            execution context which allows to raise events and set variables.
+          </p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Buttons</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+           <tbody>
+            <tr>
+              <td><i class="mdi mdi-play-circle"></i><i class="mdi mdi-stop-circle"></i></td>
+              <td>Start/stop the statechart execution.</td>
+            </tr>
+            <tr>
+              <td><i class="mdi mdi-magnify-plus"></i><i class="mdi mdi-magnify-minus"></i><i class="mdi mdi-arrow-expand-all"></i><i class="mdi mdi-fullscreen"></i></td>
+              <td>Control the zoom level and open the statechart in fullscreen mode.</td>
+            </tr>
+            <tr>
+              <td><i class="mdi mdi-table-of-contents mdi-rotate-180"></i></td>
+              <td>Open the execution context to watch/set variable values and to raise events.</td>
+            </tr>
+           </tbody>
+          </table>
+          <h2>Custom control elements</h2>
+          <p>
+            In addition to the functionality of the player toolbar, it is possible to create custom UI elements 
+            to control the statechart. The chapters below show the various possibilities for the embedded statechart. 
+            Play around with the statechart and see how these values and colors change.
+          </p>
+          <h5>Enter / exit statechart</h5>
+          <p>
+          <div>
+              Click on <span class="y-do-raise mx-1 px-1" onclick="enter()">enter</span> to enter the statechart. This is equivalent to clicking the play button.
+          </div>
+          <div>
+              Click on <span class="y-do-raise mx-1 px-1" onclick="exit()">exit</span> to exit the statechart. This is equivalent to clicking the stop button.
+          </div>
+          </p>
+          <h5>Raise events</h5>
+          <p>
+            This is a list of all events defined in the statechart's interfaces (if none events are defined, this list is empty). You can click on the events to raise them on the statechart:
+            <div>
+            <span class="y-do-raise mx-1 px-1" onclick="raise('pressCapsLock')">pressCapsLock</span>
+            <span class="y-do-raise mx-1 px-1" onclick="raise('pressNumLock')">pressNumLock</span>
+            </div>
+          </p>
+          <h5>Detect state changes</h5>
+          <p>
+            This is a list of all states with their corresponding activity status:
+            <div class="m-1">
+            <span id="CAPSLOCK_CAPSLOCK_OFF" class="y-state mx-1 px-1">CapsLock_OFF</span>
+            <span id="CAPSLOCK_CAPSLOCK_ON" class="y-state mx-1 px-1">CapsLock_ON</span>
+            <span id="NUMLOCK_NUMLOCK_OFF" class="y-state mx-1 px-1">NumLock_OFF</span>
+            <span id="NUMLOCK_NUMLOCK_ON" class="y-state mx-1 px-1">NumLock_ON</span>
+            </div>
+          </p>
+          <h5>Setting variable values</h5>
+          <p>
+            This is a list of all variables defined in the statechart's interfaces (if none variables are defined, this list is empty). You can change the values and thereby directly set them on the statechart:
+          </p>
+          <h2>Embedding the player</h2>
+          <p>
+          In order to embed the statechart player into a document use the HTML <code>iframe</code> tag like the following:
+          <pre>
+            <code>
+            &lt;iframe src="player.html?start=true" width="100%" height="500px" id="statechart"&gt;&lt;/iframe&gt;
+            </code>
+          </pre>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Attribute</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+           <tbody>
+            <tr>
+              <td>src</td>
+              <td>Defines the link to the player file. The parameter <code>start</code> allows to define whether the statechart should be entered when the page is loaded. The default value is <code>false</code>.</td>
+            </tr>
+            <tr>
+              <td>width / height</td>
+              <td>Defines the dimensions of the <code>iframe</code>. For a list of all available attributes, see also <a href="https://www.w3schools.com/tags/tag_iframe.ASP" target="blank">here</a>.</td>
+            </tr>
+            <tr>
+              <td>id</td>
+              <td>This is required in order to access the embedded statechart for sending messages (see next chapter).</td>
+            </tr>
+           </tbody>
+          </table>
+          </p>
+          
+          <h2>Sending messages to the statechart</h2>
+          <p>
+            In order to control the statechart with your custom UI elements you need to send corresponding messages to it. Messages are sent with the <code>postMessage</code> function on the <code>iframe</code>'s content window. The example below demonstrates how to raise the artificial event <em>myEvent</em>:
+            <pre>
+              <code>
+                var remoteframe = document.getElementById("statechart");
+                remoteframe.contentWindow.postMessage(
+                  {
+                    cmd: "raiseEvent",
+                    eventId: "myEvent",
+                  },
+                  "*"
+                );
+              </code>
+            </pre>
+            The message transmitted via <code>postMessage</code> has a well-defined structure which is parsed by the statechart player. The <code>cmd</code> property defines the type of the message. It can be <code>raiseEvent</code>, <code>enter</code>, <code>exit</code> or <code>changeValue</code>. Depending on the command used, further properties are required. For example, in order to raise an event, we also need to specify the event's ID. 
+          </p>
+          <h2>Receiving messages from the statechart</h2>
+          <p>
+            Besides sending messages to the embedded statechart, the statechart itself sends messages back when its state or one of its values changes. These messages are transported by the <code>message</code> event one can subscribe to as the following code snippet shows:
+            <pre>
+              <code>
+                window.addEventListener("message", (event) => {
+                  var data = event.data;
+                  switch (data.cmd) {
+                    case "stateEntered":
+                      console.log("State entered " + data.stateId);
+                      break;
+                    case "stateExited":
+                      console.log("State exited " + data.stateId);
+                      break;
+                    case "valueChanged":
+                      console.log("Value changed  " + data.varId + " " + data.value);
+                      break;
+                  }
+                });
+              </code>
+            </pre>
+            Every message sent by the statechart contains a <code>cmd</code> property that defines the type of change that is reported. It can be <code>stateEntered</code>, <code>stateExited</code> or <code>valueChanged</code>. Depending on the <code>cmd</code> value, the message holds furter properties to track the affected state or variable. Please check the source code of this file for more information.
+          </p>
+        </div>
+      </body>
+</html>
+
+<script>
+  function raise(event) {
+    var remoteframe = document.getElementById("statechart");
+    remoteframe.contentWindow.postMessage(
+      {
+        cmd: "raiseEvent",
+        eventId: event,
+      },
+      "*"
+    );
+  }
+  function enter() {
+    var remoteframe = document.getElementById("statechart");
+    remoteframe.contentWindow.postMessage(
+      {
+        cmd: "enter",
+      },
+      "*"
+    );
+  }
+  function exit() {
+    var remoteframe = document.getElementById("statechart");
+    remoteframe.contentWindow.postMessage(
+      {
+        cmd: "exit",
+      },
+      "*"
+    );
+  }
+  function changeValue(variable, value) {
+    var remoteframe = document.getElementById("statechart");
+    remoteframe.contentWindow.postMessage(
+      {
+        cmd: "changeValue",
+        varName: variable,
+        value: value,
+      },
+      "*"
+    );
+  }
+
+  window.addEventListener("message", (event) => {
+    var data = event.data;
+    switch (data.cmd) {
+      case "stateEntered":
+        console.log("State entered " + data.stateId);
+        var stateElement = document.getElementById(data.stateId);
+        if (stateElement) stateElement.classList.add("y-state--active");
+        break;
+      case "stateExited":
+        console.log("State exited " + data.stateId);
+        var stateElement = document.getElementById(data.stateId);
+        if (stateElement) stateElement.classList.remove("y-state--active");
+        break;
+      case "valueChanged":
+        console.log("Value changed  " + data.varId + " " + data.value);
+        var valueElements = document.getElementsByName(data.varId);
+        for (let e of valueElements) {
+          if (e.tagName == "INPUT") {
+            e.value = data.value;
+          } else {
+            e.setAttribute("value", "=" + data.value);
+          }
+        }
+        break;
+    }
+  });
+</script>
+

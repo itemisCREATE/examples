@@ -5,7 +5,7 @@ Window {
     visible: true
     width: 400
     height: 400
-    title: qsTr("YAKINDU Qt/C++ Traffic Light State Machine")
+    title: qsTr("itemis CREATE Qt/C++ Traffic Light State Machine")
 
     Image {
         id: trafficLight

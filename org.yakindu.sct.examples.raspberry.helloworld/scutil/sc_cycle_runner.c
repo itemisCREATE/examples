@@ -12,7 +12,7 @@
 
 
 /*!
- * POSIX thread that periodically runs the SCT's internal 'run to completion'.
+ * POSIX thread that periodically runs the 's internal 'run to completion'.
  * (State machine evaluates rising events and computes possible state changes)
  */
 static void *sc_cycle_runner_thread(void *arg) {

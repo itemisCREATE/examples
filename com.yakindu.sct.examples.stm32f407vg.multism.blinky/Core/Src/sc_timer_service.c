@@ -10,7 +10,7 @@
 
 #include "sc_timer_service.h"
 
-/*! \file Implementation of YAKINDU SCT timer functionality based on POSIX threads. */
+/*! \file Implementation of itemis CREATE  timer functionality based on POSIX threads. */
 
 
 /*! Callback that is called when a timer fires. */

@@ -13,8 +13,8 @@
 		<p>
 			<iframe width="960" height="540" src="https://www.youtube.com/embed/A4qGZ1E2mEM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 			<p>
-			The YAKINDU Execution Trace (YET) infrastructure supports interoperability between 
-			state machines running in a target application and the YAKINDU tooling. 
+			The itemis CREATE Execution Trace (YET) infrastructure supports interoperability between 
+			state machines running in a target application and the itemis CREATE tooling. 
 			It supports model-level debugging and testing of the state machines based on execution traces. 
 			This example shows how to remote debug a compiled state machine step by step. Please refer to the 
 			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a> for more information.
@@ -33,7 +33,7 @@
 		<p>
 			This state machine is executed within an interactive application. This application can be used 
 			from the command line. It reads user input from the standard input and writes to the standard output.
-			It is build to run on a Raspberry PI. The SCT Simulation can be executed on any other machine. 
+			It is build to run on a Raspberry PI. The  Simulation can be executed on any other machine. 
 			For this setup both are located the same local network.
 		</p>
 			
@@ -42,7 +42,7 @@
 		using our example wizard, you can start skip the first part and start with <a href="https://github.com/espressif/idf-eclipse-plugin/blob/master/README.md#installing-esp-idf-tools">Installing ESP-IDF Tools</a>.
 		<p>
 			The instructions contain detailed explanations of how to set up the environment, compile the program and flash the binary on the ESP32. It also shows how a terminal can be added. Your WiFi SSID and password must be set in the sdkconfig file. <img class= "small" alt="WiFi settings" src="images/wifi_settings.png" /></p>
-		</p>If you're running the application via UDP you must set the IP of the machine, which runs the debug SCT YET session:<code>#define SCT_IP "Add your IP here"</code>. The simplest way finding your ip address using <code>ifconfing</code> on linux or mac and <code>ipconfing</code> on windows. It should be something like 192.168.0.42</p>
+		</p>If you're running the application via UDP you must set the IP of the machine, which runs the debug  YET session:<code>#define _IP "Add your IP here"</code>. The simplest way finding your ip address using <code>ifconfing</code> on linux or mac and <code>ipconfing</code> on windows. It should be something like 192.168.0.42</p>
 
 
 		<h2>Debugging the statemachine trace</h2>

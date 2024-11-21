@@ -1,0 +1,10 @@
+GeneratorModel for create::xstate {
+
+	statechart TrafficLightCtrl {
+
+		feature Outlet {
+			targetProject = "org.yakindu.sct.examples.trafficlight.xstate"
+			targetFolder = "src"
+		}
+	}
+}

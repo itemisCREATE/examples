@@ -1,0 +1,13 @@
+{
+	"id": "org.yakindu.sct.examples.trafficlight.xstate",
+	"title": "Traffic Light (XState)",
+	"description": "Demonstrates how to generate XState source code from a statechart.",
+	"previewImage": "traffic_light_xstate.jpg",
+	"author": "Mathias Schulte",
+	"organization": "itemis AG",
+	"license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+	"category": [
+		"professional",
+		"advanced"
+	]
+}

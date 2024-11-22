@@ -1,9 +1,10 @@
 #include <Arduino.h>
-#include "src-gen/TrafficLightCtrl.h"
-#include "src-gen/sc_timer_service.h"
-#include "src/arduinoPins.h"
-#include "src/TrafficLightOCBs.h"
-#include "src/PushButton.h"
+#include <TrafficLightCtrl.h>
+#include <sc_timer_service.hpp>
+#include <arduinoPins.h>
+#include <TrafficLightOCBs.h>
+#include <PushButton.h>
+
 
 using namespace sc::timer;
 

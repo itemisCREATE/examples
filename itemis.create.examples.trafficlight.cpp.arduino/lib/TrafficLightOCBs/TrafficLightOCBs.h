@@ -2,7 +2,7 @@
 #ifndef TRAFFICLIGHTOCBS_H_
 #define TRAFFICLIGHTOCBS_H_
 
-#include "../src-gen/TrafficLightCtrl.h"
+#include <TrafficLightCtrl.h>
 
 class TrafficLightOCBs : public TrafficLightCtrl::OperationCallback {
 public:

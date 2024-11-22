@@ -1,7 +1,6 @@
-
-#include "TrafficLightOCBs.h"
-#include "Arduino.h"
-#include "arduinoPins.h"
+#include <TrafficLightOCBs.h>
+#include <Arduino.h>
+#include <arduinoPins.h>
 
 
 TrafficLightOCBs::~TrafficLightOCBs() {

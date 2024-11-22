@@ -6,7 +6,6 @@
 	"previewImage": "arduino-traffic-light.png",
 	"category": [
 		"open source",
-		"embedded",
-		"vscode"
+		"embedded"
 	]
 }

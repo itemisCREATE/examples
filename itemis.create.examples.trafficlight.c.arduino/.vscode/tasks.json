@@ -15,7 +15,7 @@
                         "timerService": true
                     }
                 },
-                "type": "create::cpp"
+                "type": "create::c"
             },
             "group": "build"
         }

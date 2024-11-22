@@ -1,9 +1,9 @@
 #include "Arduino.h"
 #include <avr/sleep.h>
 
-#include "pushbutton.h"
-#include "src-gen/TrafficLightCtrl_required.h"
-#include "src-gen/sc_timer_service.h"
+#include <pushbutton.h>
+#include <TrafficLightCtrl_required.h>
+#include <sc_timer_service.h>
 
 //! As we make use of time triggers (after & every) we make use of a generic timer implementation and need a defined number of timers.
 #define MAX_TIMERS 20

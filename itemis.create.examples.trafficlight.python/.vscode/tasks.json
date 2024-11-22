@@ -5,7 +5,7 @@
             "label": "Generate Statechart Code",
             "type": "codegenerator",
             "generator": {
-                "statechart": "models/TrafficLightCtrl.scm",
+                "statechart": "model/TrafficLightCtrl.scm",
                 "features": {
                     "Outlet": {
                         "targetProject": ".",

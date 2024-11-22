@@ -16,7 +16,7 @@
       "z": 1,
       "attrs": {
         "name": {
-          "text": "MyStatechart"
+          "text": "TrafficLightCtrl"
         },
         "specification": {
           "text": "@CycleBased(200)\r\n\r\ninterface TrafficLight:\r\n  var red:boolean\t\r\n  var yellow:boolean\r\n  var green:boolean\r\n\r\ninterface Pedestrian:\r\n  var request:boolean\t\t\r\n  var red:boolean\t\t\t\r\n  var green:boolean\r\n\r\ninterface:\r\n  in event pedestrianRequest\t\t\r\n  in event onOff\r\n  operation synchronize() : void\r\n\t\r\n\t\r\ninternal: \r\n  every 200ms / synchronize\r\n\t\r\n"

@@ -6,7 +6,8 @@
 	"previewImage": "digital_watch_thumb.jpg",
 	"category": [
 		"open source",
-		"advanced"
+		"advanced",
+		"vscode"
 	],
 	"rank":10
 }

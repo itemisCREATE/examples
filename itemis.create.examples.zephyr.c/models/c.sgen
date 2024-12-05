@@ -4,7 +4,7 @@ GeneratorModel for create::c {
 	statechart LightSwitch {
 		/* Specify the target location for the generated artifacts. */
 		feature Outlet {
-			targetProject = "itemis.create.examples.codegen.c"
+			targetProject = "itemis.create.examples.zephyr.c"
 			targetFolder = "src-gen"
 		}
 		/* Generate a default timer service implementation */

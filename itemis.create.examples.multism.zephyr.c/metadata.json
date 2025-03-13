@@ -1,0 +1,14 @@
+{
+	"id": "itemis.create.examples.multism.zephyr.c",
+	"title": "Zephyr Multi State Machines (C)",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to generate C code from a multi state machine scenario and shows how to integrate Zephyr.",
+	"previewImage": "watch_gears_thumb.jpg",
+	"category": [
+		"embedded",
+		"professional",
+		"multi-sm"
+	],
+	"rank":13
+}
+ 

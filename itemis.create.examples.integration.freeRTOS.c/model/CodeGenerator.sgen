@@ -1,6 +1,6 @@
 GeneratorModel for create::c {
 
-	statechart LightCtrl {
+	statechart StateMachine {
 
 		feature Outlet {
 			targetProject = "itemis.create.examples.integration.zephyr.c"

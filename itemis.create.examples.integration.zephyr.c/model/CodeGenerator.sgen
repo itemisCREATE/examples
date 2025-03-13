@@ -1,9 +1,9 @@
 GeneratorModel for create::c {
 
-	statechart LightCtrl {
+	statechart StateMachine {
 
 		feature Outlet {
-			targetProject = "itemis.create.examples.integration.freeRTOS.c"
+			targetProject = "itemis.create.examples.integration.zephyr.c"
 			targetFolder = "src-gen"
 		}
 		

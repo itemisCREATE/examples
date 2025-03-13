@@ -1,6 +1,6 @@
 GeneratorModel for create::c {
 
-	const PROJECT : string = "itemis.create.examples.codegen.multism.c"
+	const PROJECT : string = "itemis.create.examples.multism.zephyr.c"
 
 	const FOLDER : string = "src-gen"
 

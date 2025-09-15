@@ -10,11 +10,8 @@
           "height": 10,
           "width": 10
         },
-        "angle": 0,
         "type": "Statechart",
         "id": "78749915-0da0-40a2-862f-9e8d94c7c68e",
-        "linkable": false,
-        "z": 1,
         "attrs": {
           "name": {
             "text": "StateMachine"
@@ -22,10 +19,10 @@
           "specification": {
             "text": "@EventDriven\n\ninterface:\nin event inEvent1\nin event inEvent2\n\nout event outEvent1\nout event outEvent2\n"
           }
-        }
+        },
+        "z": 1
       },
       {
-        "type": "Region",
         "position": {
           "x": 108,
           "y": 303
@@ -34,10 +31,15 @@
           "height": 258,
           "width": 505
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
+        "type": "Region",
+        "attrs": {
+          "priority": {
+            "text": 1
+          },
+          "name": {
+            "text": "main region"
+          }
+        },
         "id": "de3daeaa-361b-42fb-95e9-b5eede80ef1d",
         "z": 55,
         "embeds": [
@@ -49,18 +51,9 @@
           "36b8548a-74b1-4925-ae23-291c03231ee6",
           "db372094-acc6-467b-b44d-495606208445",
           "ee49942f-ccc9-4d2c-9e3b-67d7d2d2f11f"
-        ],
-        "attrs": {
-          "priority": {
-            "text": 1
-          },
-          "name": {
-            "text": "main region"
-          }
-        }
+        ]
       },
       {
-        "type": "Entry",
         "position": {
           "x": 177,
           "y": 348
@@ -69,21 +62,17 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Entry",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
+        "attrs": {},
         "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
         "z": 56,
         "embeds": [
           "f70f632c-e54d-4002-9ec5-7baec620de10"
         ],
-        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d",
-        "attrs": {}
+        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d"
       },
       {
-        "type": "State",
         "position": {
           "x": 150,
           "y": 398
@@ -92,13 +81,7 @@
           "height": 60.390625,
           "width": 143.2790756225586
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
-        "z": 57,
-        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StateA",
@@ -107,10 +90,12 @@
           "specification": {
             "text": "entry /\nraise outEvent1"
           }
-        }
+        },
+        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
+        "z": 57,
+        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d"
       },
       {
-        "type": "State",
         "position": {
           "x": 430,
           "y": 398
@@ -119,13 +104,7 @@
           "height": 60.390625,
           "width": 143.2790756225586
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "db372094-acc6-467b-b44d-495606208445",
-        "z": 58,
-        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StateB",
@@ -134,10 +113,12 @@
           "specification": {
             "text": "entry /\nraise outEvent2"
           }
-        }
+        },
+        "id": "db372094-acc6-467b-b44d-495606208445",
+        "z": 58,
+        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d"
       },
       {
-        "type": "Final",
         "position": {
           "x": 215,
           "y": 503
@@ -146,14 +127,11 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
+        "type": "Final",
+        "attrs": {},
         "id": "ee49942f-ccc9-4d2c-9e3b-67d7d2d2f11f",
         "z": 59,
-        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d",
-        "attrs": {}
+        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d"
       },
       {
         "type": "NodeLabel",
@@ -166,9 +144,6 @@
           "x": 177,
           "y": 363
         },
-        "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
-        "z": 64,
-        "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
         "attrs": {
           "label": {
             "refX": "50%",
@@ -176,10 +151,14 @@
             "refY": "50%",
             "textVerticalAnchor": "middle"
           }
-        }
+        },
+        "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
+        "z": 64,
+        "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "db372094-acc6-467b-b44d-495606208445",
           "anchor": {
@@ -229,11 +208,11 @@
         ],
         "id": "7197094a-c890-4098-9170-1701f27ac3cb",
         "z": 65,
-        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d",
-        "attrs": {}
+        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "36b8548a-74b1-4925-ae23-291c03231ee6"
         },
@@ -278,11 +257,11 @@
         ],
         "id": "f141a0ef-2107-43c9-afb7-33c792eaf165",
         "z": 65,
-        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d",
-        "attrs": {}
+        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
           "anchor": {
@@ -333,11 +312,11 @@
         "id": "f4fdd1fd-fc69-42a9-a51b-34aeb2fd7fe4",
         "z": 65,
         "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d",
-        "vertices": [],
-        "attrs": {}
+        "vertices": []
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
         },
@@ -374,8 +353,7 @@
         ],
         "id": "9b5ce41b-0116-46a8-a603-ea4119c6e5d7",
         "z": 65,
-        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d",
-        "attrs": {}
+        "parent": "de3daeaa-361b-42fb-95e9-b5eede80ef1d"
       }
     ]
   }

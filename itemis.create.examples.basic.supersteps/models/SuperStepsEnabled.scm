@@ -10,11 +10,8 @@
           "height": 10,
           "width": 10
         },
-        "angle": 0,
         "type": "Statechart",
         "id": "78749915-0da0-40a2-862f-9e8d94c7c68e",
-        "linkable": false,
-        "z": 1,
         "attrs": {
           "name": {
             "text": "MyStatechart"
@@ -22,10 +19,10 @@
           "specification": {
             "text": "@EventDriven\n\n// super steps enabled\n@SuperSteps(yes)\n\ninterface:\n\tin event e\n\ninternal:\n\tevent local1\n\tevent local2\n\tvar x : integer = 0\n"
           }
-        }
+        },
+        "z": 1
       },
       {
-        "type": "Region",
         "position": {
           "x": -21,
           "y": 198
@@ -34,10 +31,12 @@
           "height": 298,
           "width": 680
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
+        "type": "Region",
+        "attrs": {
+          "name": {
+            "text": "main region"
+          }
+        },
         "id": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
         "z": 73,
         "embeds": [
@@ -51,15 +50,9 @@
           "db372094-acc6-467b-b44d-495606208445",
           "b0acff06-b063-4fa9-b9f3-73bdb91fd240",
           "7043399f-42e3-418a-827d-e3c6f80635f7"
-        ],
-        "attrs": {
-          "name": {
-            "text": "main region"
-          }
-        }
+        ]
       },
       {
-        "type": "Entry",
         "position": {
           "x": 50.64279556274414,
           "y": 288
@@ -68,25 +61,21 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Initial",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
+        "attrs": {
+          "name": {
+            "fill": "#CFD8DC"
+          }
+        },
         "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
         "z": 74,
         "embeds": [
           "f70f632c-e54d-4002-9ec5-7baec620de10"
         ],
-        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
-        "attrs": {
-          "name": {
-            "fill": "#CFD8DC"
-          }
-        }
+        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229"
       },
       {
-        "type": "State",
         "position": {
           "x": 22.32139778137207,
           "y": 385
@@ -95,23 +84,19 @@
           "height": 60,
           "width": 71.64279556274414
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
-        "z": 75,
-        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "A",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
+        "z": 75,
+        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229"
       },
       {
-        "type": "State",
         "position": {
           "x": 237,
           "y": 385
@@ -120,23 +105,19 @@
           "height": 60,
           "width": 71.64279556274414
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "db372094-acc6-467b-b44d-495606208445",
-        "z": 76,
-        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "B",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "db372094-acc6-467b-b44d-495606208445",
+        "z": 76,
+        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229"
       },
       {
-        "type": "State",
         "position": {
           "x": 446,
           "y": 385
@@ -145,23 +126,19 @@
           "height": 60,
           "width": 71.64279556274414
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "b0acff06-b063-4fa9-b9f3-73bdb91fd240",
-        "z": 77,
-        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "C",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "b0acff06-b063-4fa9-b9f3-73bdb91fd240",
+        "z": 77,
+        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229"
       },
       {
-        "type": "State",
         "position": {
           "x": 446,
           "y": 258
@@ -170,23 +147,20 @@
           "height": 60,
           "width": 71.64279556274414
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "7043399f-42e3-418a-827d-e3c6f80635f7",
-        "z": 78,
-        "embeds": [
-          "bf77dc0a-fbbc-4856-89c2-aa9777a6a9db"
-        ],
-        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "L",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "7043399f-42e3-418a-827d-e3c6f80635f7",
+        "z": 78,
+        "embeds": [
+          "bf77dc0a-fbbc-4856-89c2-aa9777a6a9db"
+        ],
+        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229"
       },
       {
         "type": "NodeLabel",
@@ -199,9 +173,6 @@
           "x": 50.64279556274414,
           "y": 303
         },
-        "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
-        "z": 84,
-        "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
         "attrs": {
           "label": {
             "refX": "50%",
@@ -209,10 +180,14 @@
             "refY": "50%",
             "textVerticalAnchor": "middle"
           }
-        }
+        },
+        "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
+        "z": 84,
+        "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "7043399f-42e3-418a-827d-e3c6f80635f7"
         },
@@ -270,11 +245,11 @@
         ],
         "id": "c415df08-9dab-4474-9eee-0942698c2d31",
         "z": 85,
-        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
-        "attrs": {}
+        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "b0acff06-b063-4fa9-b9f3-73bdb91fd240"
         },
@@ -333,11 +308,11 @@
         ],
         "id": "65ce9085-aed4-4478-9dad-5e2ae298a2a3",
         "z": 85,
-        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
-        "attrs": {}
+        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "db372094-acc6-467b-b44d-495606208445"
         },
@@ -393,11 +368,11 @@
         "id": "0319e44b-577c-42b5-b62e-2bd9bb33d683",
         "z": 85,
         "vertices": [],
-        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
-        "attrs": {}
+        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "36b8548a-74b1-4925-ae23-291c03231ee6"
         },
@@ -438,11 +413,11 @@
         ],
         "id": "f4fdd1fd-fc69-42a9-a51b-34aeb2fd7fe4",
         "z": 85,
-        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
-        "attrs": {}
+        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
         },
@@ -479,11 +454,11 @@
         ],
         "id": "9b5ce41b-0116-46a8-a603-ea4119c6e5d7",
         "z": 85,
-        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229",
-        "attrs": {}
+        "parent": "50adef0d-3e5b-4d38-a6db-581abdb0c229"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "7043399f-42e3-418a-827d-e3c6f80635f7"
         },
@@ -552,8 +527,7 @@
             "x": 392.17860221862793,
             "y": 269
           }
-        ],
-        "attrs": {}
+        ]
       }
     ]
   }

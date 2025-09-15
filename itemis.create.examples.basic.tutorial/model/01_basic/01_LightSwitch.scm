@@ -10,13 +10,8 @@
           "height": 10,
           "width": 10
         },
-        "angle": 0,
         "type": "Statechart",
         "id": "_3AQUYJOAEeWuO-fDDpYHyA",
-        "linkable": true,
-        "fixedRatio": false,
-        "embedable": true,
-        "z": 0,
         "attrs": {
           "name": {
             "text": "_01_LightSwitch"
@@ -24,10 +19,10 @@
           "specification": {
             "text": "@EventDriven\n\ninterface:\n\tin event switch"
           }
-        }
+        },
+        "z": 0
       },
       {
-        "type": "Region",
         "position": {
           "x": 154,
           "y": 268
@@ -36,10 +31,12 @@
           "height": 200,
           "width": 241
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": false,
+        "type": "Region",
+        "attrs": {
+          "name": {
+            "text": "main"
+          }
+        },
         "embeds": [
           "5fcd9884-4765-4b87-bb28-8bcd97546e56",
           "_QwgAQJQ6EeWuO-fDDpYHyA",
@@ -49,15 +46,9 @@
           "_3ASJk5OAEeWuO-fDDpYHyA"
         ],
         "id": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "z": 29,
-        "attrs": {
-          "name": {
-            "text": "main"
-          }
-        }
+        "z": 29
       },
       {
-        "type": "State",
         "position": {
           "x": 246,
           "y": 276
@@ -66,24 +57,20 @@
           "height": 53,
           "width": 40
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [],
-        "id": "_3ASwp5OAEeWuO-fDDpYHyA",
-        "z": 30,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "Off",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "embeds": [],
+        "id": "_3ASwp5OAEeWuO-fDDpYHyA",
+        "z": 30,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
-        "type": "State",
         "position": {
           "x": 251.5,
           "y": 399
@@ -92,24 +79,20 @@
           "height": 53,
           "width": 40
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [],
-        "id": "_Muq1cJQtEeWuO-fDDpYHyA",
-        "z": 31,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "On",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "embeds": [],
+        "id": "_Muq1cJQtEeWuO-fDDpYHyA",
+        "z": 31,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
-        "type": "Entry",
         "position": {
           "x": 204,
           "y": 278
@@ -118,22 +101,20 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Initial",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
-        "id": "_3ASJk5OAEeWuO-fDDpYHyA",
-        "z": 32,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
         "attrs": {
           "name": {
             "fill": "#CFD8DC"
           }
-        }
+        },
+        "id": "_3ASJk5OAEeWuO-fDDpYHyA",
+        "z": 32,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_3ASJk5OAEeWuO-fDDpYHyA"
         },
@@ -174,11 +155,11 @@
         "vertices": [],
         "id": "_3AT-w5OAEeWuO-fDDpYHyA",
         "z": 33,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {}
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_Muq1cJQtEeWuO-fDDpYHyA"
         },
@@ -244,11 +225,11 @@
         ],
         "id": "_QwgAQJQ6EeWuO-fDDpYHyA",
         "z": 34,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {}
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_3ASwp5OAEeWuO-fDDpYHyA"
         },
@@ -317,8 +298,7 @@
             "x": 216,
             "y": 435.11
           }
-        ],
-        "attrs": {}
+        ]
       }
     ]
   }

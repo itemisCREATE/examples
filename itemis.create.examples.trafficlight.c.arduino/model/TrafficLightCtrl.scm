@@ -10,11 +10,8 @@
           "height": 10,
           "width": 10
         },
-        "angle": 0,
         "type": "Statechart",
         "id": "78749915-0da0-40a2-862f-9e8d94c7c68e",
-        "linkable": false,
-        "z": 1,
         "attrs": {
           "name": {
             "text": "TrafficLightCtrl"
@@ -22,10 +19,10 @@
           "specification": {
             "text": "@CycleBased(200)\r\n\r\ninterface TrafficLight:\r\n  var red:boolean\t\r\n  var yellow:boolean\r\n  var green:boolean\r\n\r\ninterface Pedestrian:\r\n  var request:boolean\t\t\r\n  var red:boolean\t\t\t\r\n  var green:boolean\r\n\r\ninterface:\r\n  in event pedestrianRequest\t\t\r\n  in event onOff\r\n  operation synchronize() : void\r\n\t\r\n\t\r\ninternal: \r\n  every 200ms / synchronize\r\n\t\r\n"
           }
-        }
+        },
+        "z": 1
       },
       {
-        "type": "Region",
         "position": {
           "x": -226,
           "y": -40
@@ -34,10 +31,15 @@
           "height": 854,
           "width": 1226
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
+        "type": "Region",
+        "attrs": {
+          "priority": {
+            "text": 1
+          },
+          "name": {
+            "text": "main region"
+          }
+        },
         "id": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7",
         "z": 391,
         "embeds": [
@@ -47,18 +49,9 @@
           "ad675501-5973-454f-987f-3417f01a7cdf",
           "67f24081-2616-4145-8f0b-53d931d95f95",
           "86d34923-6a4a-45b3-9310-678d7c112747"
-        ],
-        "attrs": {
-          "priority": {
-            "text": 1
-          },
-          "name": {
-            "text": "main region"
-          }
-        }
+        ]
       },
       {
-        "type": "State",
         "position": {
           "x": -204,
           "y": 14
@@ -67,26 +60,22 @@
           "height": 776,
           "width": 760
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "ad675501-5973-454f-987f-3417f01a7cdf",
-        "z": 392,
-        "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7",
-        "embeds": [
-          "b4628b9f-d3d6-4768-a7cc-e734a985b575"
-        ],
+        "type": "State",
         "attrs": {
           "name": {
             "text": "on",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "ad675501-5973-454f-987f-3417f01a7cdf",
+        "z": 392,
+        "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7",
+        "embeds": [
+          "b4628b9f-d3d6-4768-a7cc-e734a985b575"
+        ]
       },
       {
-        "type": "State",
         "position": {
           "x": 616,
           "y": 14
@@ -95,16 +84,7 @@
           "height": 403.1953125,
           "width": 340
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "67f24081-2616-4145-8f0b-53d931d95f95",
-        "z": 393,
-        "embeds": [
-          "df971682-5471-4130-954c-32bda3774907"
-        ],
-        "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "off",
@@ -114,10 +94,15 @@
           "specification": {
             "text": "entry / TrafficLight.red = false;\r\n  TrafficLight.green = false;\r\n  TrafficLight.yellow = false;\r\n  Pedestrian.red = false;\r\n  Pedestrian.green = false"
           }
-        }
+        },
+        "id": "67f24081-2616-4145-8f0b-53d931d95f95",
+        "z": 393,
+        "embeds": [
+          "df971682-5471-4130-954c-32bda3774907"
+        ],
+        "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7"
       },
       {
-        "type": "Entry",
         "position": {
           "x": 778.5,
           "y": -23
@@ -126,25 +111,21 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Entry",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
+        "attrs": {
+          "name": {
+            "fill": "#CFD8DC"
+          }
+        },
         "id": "86d34923-6a4a-45b3-9310-678d7c112747",
         "z": 394,
         "embeds": [
           "7c857c67-00b8-4fa4-96b2-4c02b6d62f02"
         ],
-        "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7",
-        "attrs": {
-          "name": {
-            "fill": "#CFD8DC"
-          }
-        }
+        "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7"
       },
       {
-        "type": "Region",
         "position": {
           "x": -203,
           "y": 52.59375
@@ -153,10 +134,8 @@
           "height": 736.40625,
           "width": 758
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
+        "type": "Region",
+        "attrs": {},
         "id": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
         "z": 398,
         "parent": "ad675501-5973-454f-987f-3417f01a7cdf",
@@ -179,11 +158,9 @@
           "c90de27d-94aa-4d4c-bcd8-1caefe44c015",
           "e35e2d5d-ffc0-425c-a999-50877a7c4fdc",
           "503cabac-0de3-4624-9bae-a0677b69d4e5"
-        ],
-        "attrs": {}
+        ]
       },
       {
-        "type": "Region",
         "position": {
           "x": 617,
           "y": 119.78125
@@ -192,10 +169,8 @@
           "height": 296.4140625,
           "width": 338
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
+        "type": "Region",
+        "attrs": {},
         "id": "df971682-5471-4130-954c-32bda3774907",
         "z": 399,
         "parent": "67f24081-2616-4145-8f0b-53d931d95f95",
@@ -206,8 +181,7 @@
           "18d5f90f-e553-462b-8994-e5cf28988973",
           "318f68bf-c070-43e4-b4bd-fcd08f9d0b4a",
           "2f9bd32e-20c4-4a4f-9ed2-e2149c40e5cb"
-        ],
-        "attrs": {}
+        ]
       },
       {
         "type": "NodeLabel",
@@ -220,9 +194,6 @@
           "x": 778.5,
           "y": -8
         },
-        "id": "7c857c67-00b8-4fa4-96b2-4c02b6d62f02",
-        "z": 400,
-        "parent": "86d34923-6a4a-45b3-9310-678d7c112747",
         "attrs": {
           "label": {
             "refX": "50%",
@@ -230,10 +201,12 @@
             "refY": "50%",
             "textVerticalAnchor": "middle"
           }
-        }
+        },
+        "id": "7c857c67-00b8-4fa4-96b2-4c02b6d62f02",
+        "z": 400,
+        "parent": "86d34923-6a4a-45b3-9310-678d7c112747"
       },
       {
-        "type": "State",
         "position": {
           "x": -184.00000762939453,
           "y": 74
@@ -242,13 +215,7 @@
           "height": 127.57811737060547,
           "width": 272.64105224609375
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "68ac87d0-41ac-4efe-876e-a9be95b2754c",
-        "z": 401,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "Safe",
@@ -258,10 +225,12 @@
           "specification": {
             "text": "entry / TrafficLight.red = true; \r\n  TrafficLight.yellow = false;\r\n  TrafficLight.green = false;\r\n  Pedestrian.red = true;\r\n  Pedestrian.green = false;\r\n  Pedestrian.request = false"
           }
-        }
+        },
+        "id": "68ac87d0-41ac-4efe-876e-a9be95b2754c",
+        "z": 401,
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
-        "type": "State",
         "position": {
           "x": -183.00000762939453,
           "y": 685
@@ -270,13 +239,7 @@
           "height": 77.18749618530273,
           "width": 272.64105224609375
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "54bc7b6f-baab-4cfc-8786-07da7853b7d2",
-        "z": 402,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StreetAttention",
@@ -286,10 +249,12 @@
           "specification": {
             "text": "entry / TrafficLight.red = false;\r\n  TrafficLight.yellow = true;\r\n  TrafficLight.green = false"
           }
-        }
+        },
+        "id": "54bc7b6f-baab-4cfc-8786-07da7853b7d2",
+        "z": 402,
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
-        "type": "Entry",
         "position": {
           "x": 153.5,
           "y": 119.78125
@@ -298,25 +263,21 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Entry",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
+        "attrs": {
+          "name": {
+            "fill": "#CFD8DC"
+          }
+        },
         "id": "56f25d98-210d-417b-be54-eaebb6c40f4b",
         "z": 403,
         "embeds": [
           "7e605e31-cfe2-4731-b59b-0383c50477fb"
         ],
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
-        "attrs": {
-          "name": {
-            "fill": "#CFD8DC"
-          }
-        }
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
-        "type": "State",
         "position": {
           "x": 168.64104461669922,
           "y": 468
@@ -325,16 +286,7 @@
           "height": 298,
           "width": 342
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "f9169c54-3ad6-4acc-9eb8-a9d26716bff9",
-        "z": 404,
-        "embeds": [
-          "9b6c23a8-decf-4b7b-ac68-616c8859037f"
-        ],
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "PedWaiting",
@@ -344,10 +296,15 @@
           "specification": {
             "text": "exit / Pedestrian.request = false"
           }
-        }
+        },
+        "id": "f9169c54-3ad6-4acc-9eb8-a9d26716bff9",
+        "z": 404,
+        "embeds": [
+          "9b6c23a8-decf-4b7b-ac68-616c8859037f"
+        ],
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
-        "type": "State",
         "position": {
           "x": -184.00000762939453,
           "y": 245.99999237060547
@@ -356,13 +313,7 @@
           "height": 75,
           "width": 272.64105224609375
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "082f49f1-dbf0-4460-b27e-d6a903f2b481",
-        "z": 405,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StreetPrepare",
@@ -372,10 +323,12 @@
           "specification": {
             "text": "entry / TrafficLight.red = true;\r\n  TrafficLight.yellow = true;\r\n  TrafficLight.green = false"
           }
-        }
+        },
+        "id": "082f49f1-dbf0-4460-b27e-d6a903f2b481",
+        "z": 405,
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
-        "type": "State",
         "position": {
           "x": 201.71808624267578,
           "y": 212.42188262939453
@@ -384,13 +337,7 @@
           "height": 127.57811737060547,
           "width": 279.8459167480469
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "bedb1257-4662-4895-83b0-0a0182a25162",
-        "z": 406,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StreetGreen",
@@ -400,10 +347,12 @@
           "specification": {
             "text": "entry / TrafficLight.red = false; \r\n  TrafficLight.yellow = false;\r\n  TrafficLight.green = true;\r\n  Pedestrian.red = true;\r\n  Pedestrian.green = false;\r\n  Pedestrian.request = false"
           }
-        }
+        },
+        "id": "bedb1257-4662-4895-83b0-0a0182a25162",
+        "z": 406,
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
-        "type": "State",
         "position": {
           "x": -184.00000762939453,
           "y": 567.59375
@@ -412,13 +361,7 @@
           "height": 77.18749618530273,
           "width": 272.64105224609375
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "c90de27d-94aa-4d4c-bcd8-1caefe44c015",
-        "z": 407,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StreetRed",
@@ -428,10 +371,12 @@
           "specification": {
             "text": "entry / TrafficLight.red = true;\r\n  TrafficLight.yellow = false;\r\n  TrafficLight.green = false"
           }
-        }
+        },
+        "id": "c90de27d-94aa-4d4c-bcd8-1caefe44c015",
+        "z": 407,
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
-        "type": "State",
         "position": {
           "x": -182.20150184631348,
           "y": 468
@@ -440,13 +385,7 @@
           "height": 60.390625,
           "width": 269.04404067993164
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "e35e2d5d-ffc0-425c-a999-50877a7c4fdc",
-        "z": 408,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "PedestrianGreen",
@@ -456,10 +395,12 @@
           "specification": {
             "text": "entry / Pedestrian.red = false;\r\n  Pedestrian.green = true"
           }
-        }
+        },
+        "id": "e35e2d5d-ffc0-425c-a999-50877a7c4fdc",
+        "z": 408,
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
-        "type": "State",
         "position": {
           "x": -182.20150184631348,
           "y": 371.8046875
@@ -468,13 +409,7 @@
           "height": 60.390625,
           "width": 269.04404067993164
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "503cabac-0de3-4624-9bae-a0677b69d4e5",
-        "z": 409,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "PedestrianRed",
@@ -484,10 +419,12 @@
           "specification": {
             "text": "entry / Pedestrian.red = true;\r\n  Pedestrian.green = false"
           }
-        }
+        },
+        "id": "503cabac-0de3-4624-9bae-a0677b69d4e5",
+        "z": 409,
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
-        "type": "State",
         "position": {
           "x": 660.4813385009766,
           "y": 308
@@ -496,13 +433,7 @@
           "height": 77.18749618530273,
           "width": 251.03732299804688
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "18d5f90f-e553-462b-8994-e5cf28988973",
-        "z": 419,
-        "parent": "df971682-5471-4130-954c-32bda3774907",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "YellowOff",
@@ -512,10 +443,12 @@
           "specification": {
             "text": "entry /\r\n  TrafficLight.yellow = false;\r\n  Pedestrian.request = false"
           }
-        }
+        },
+        "id": "18d5f90f-e553-462b-8994-e5cf28988973",
+        "z": 419,
+        "parent": "df971682-5471-4130-954c-32bda3774907"
       },
       {
-        "type": "State",
         "position": {
           "x": 664.0783462524414,
           "y": 188.81250381469727
@@ -524,13 +457,7 @@
           "height": 77.18749618530273,
           "width": 243.8433074951172
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "318f68bf-c070-43e4-b4bd-fcd08f9d0b4a",
-        "z": 420,
-        "parent": "df971682-5471-4130-954c-32bda3774907",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "YellowOn",
@@ -540,10 +467,12 @@
           "specification": {
             "text": "entry / \r\n  TrafficLight.yellow = true;\r\n  Pedestrian.request = true"
           }
-        }
+        },
+        "id": "318f68bf-c070-43e4-b4bd-fcd08f9d0b4a",
+        "z": 420,
+        "parent": "df971682-5471-4130-954c-32bda3774907"
       },
       {
-        "type": "Entry",
         "position": {
           "x": 778.5,
           "y": 134.78125
@@ -552,22 +481,19 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Entry",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
+        "attrs": {
+          "name": {
+            "fill": "#CFD8DC"
+          }
+        },
         "id": "2f9bd32e-20c4-4a4f-9ed2-e2149c40e5cb",
         "z": 421,
         "embeds": [
           "6285844d-e094-4ef9-87fe-76c5dd61d6b1"
         ],
-        "parent": "df971682-5471-4130-954c-32bda3774907",
-        "attrs": {
-          "name": {
-            "fill": "#CFD8DC"
-          }
-        }
+        "parent": "df971682-5471-4130-954c-32bda3774907"
       },
       {
         "type": "NodeLabel",
@@ -580,9 +506,6 @@
           "x": 153.5,
           "y": 134.78125
         },
-        "id": "7e605e31-cfe2-4731-b59b-0383c50477fb",
-        "z": 425,
-        "parent": "56f25d98-210d-417b-be54-eaebb6c40f4b",
         "attrs": {
           "label": {
             "refX": "50%",
@@ -590,10 +513,12 @@
             "refY": "50%",
             "textVerticalAnchor": "middle"
           }
-        }
+        },
+        "id": "7e605e31-cfe2-4731-b59b-0383c50477fb",
+        "z": 425,
+        "parent": "56f25d98-210d-417b-be54-eaebb6c40f4b"
       },
       {
-        "type": "Region",
         "position": {
           "x": 169.64104461669922,
           "y": 506.59375
@@ -602,10 +527,8 @@
           "height": 258.40625,
           "width": 340
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
+        "type": "Region",
+        "attrs": {},
         "id": "9b6c23a8-decf-4b7b-ac68-616c8859037f",
         "z": 426,
         "parent": "f9169c54-3ad6-4acc-9eb8-a9d26716bff9",
@@ -616,8 +539,7 @@
           "72bb3638-8c37-4d48-8ca8-c44e299ca3f6",
           "ea3870a3-6887-4147-9040-ed979e7892cd",
           "9f207ad2-6979-4d2a-b2e8-778b1bd30c0f"
-        ],
-        "attrs": {}
+        ]
       },
       {
         "type": "NodeLabel",
@@ -630,9 +552,6 @@
           "x": 778.5,
           "y": 149.78125
         },
-        "id": "6285844d-e094-4ef9-87fe-76c5dd61d6b1",
-        "z": 427,
-        "parent": "2f9bd32e-20c4-4a4f-9ed2-e2149c40e5cb",
         "attrs": {
           "label": {
             "refX": "50%",
@@ -640,10 +559,12 @@
             "refY": "50%",
             "textVerticalAnchor": "middle"
           }
-        }
+        },
+        "id": "6285844d-e094-4ef9-87fe-76c5dd61d6b1",
+        "z": 427,
+        "parent": "2f9bd32e-20c4-4a4f-9ed2-e2149c40e5cb"
       },
       {
-        "type": "State",
         "position": {
           "x": 228.52125549316406,
           "y": 684
@@ -652,13 +573,7 @@
           "height": 60.390625,
           "width": 222.2395782470703
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "72bb3638-8c37-4d48-8ca8-c44e299ca3f6",
-        "z": 428,
-        "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "waitOff",
@@ -668,10 +583,12 @@
           "specification": {
             "text": "entry / \r\nPedestrian.request = false"
           }
-        }
+        },
+        "id": "72bb3638-8c37-4d48-8ca8-c44e299ca3f6",
+        "z": 428,
+        "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f"
       },
       {
-        "type": "State",
         "position": {
           "x": 228.52125549316406,
           "y": 574.9921855926514
@@ -680,13 +597,7 @@
           "height": 69.78906059265137,
           "width": 222.2395782470703
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "ea3870a3-6887-4147-9040-ed979e7892cd",
-        "z": 429,
-        "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "waitOn",
@@ -696,10 +607,12 @@
           "specification": {
             "text": "entry / \r\nPedestrian.request = true"
           }
-        }
+        },
+        "id": "ea3870a3-6887-4147-9040-ed979e7892cd",
+        "z": 429,
+        "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f"
       },
       {
-        "type": "Entry",
         "position": {
           "x": 332.1410140991211,
           "y": 527.390625
@@ -708,22 +621,19 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Entry",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
+        "attrs": {
+          "name": {
+            "fill": "#CFD8DC"
+          }
+        },
         "id": "9f207ad2-6979-4d2a-b2e8-778b1bd30c0f",
         "z": 430,
         "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f",
         "embeds": [
           "7b459b7a-a3da-49d0-9398-bc45c3f68f6c"
-        ],
-        "attrs": {
-          "name": {
-            "fill": "#CFD8DC"
-          }
-        }
+        ]
       },
       {
         "type": "NodeLabel",
@@ -736,9 +646,6 @@
           "x": 332.1410140991211,
           "y": 542.390625
         },
-        "id": "7b459b7a-a3da-49d0-9398-bc45c3f68f6c",
-        "z": 434,
-        "parent": "9f207ad2-6979-4d2a-b2e8-778b1bd30c0f",
         "attrs": {
           "label": {
             "refX": "50%",
@@ -746,10 +653,14 @@
             "refY": "50%",
             "textVerticalAnchor": "middle"
           }
-        }
+        },
+        "id": "7b459b7a-a3da-49d0-9398-bc45c3f68f6c",
+        "z": 434,
+        "parent": "9f207ad2-6979-4d2a-b2e8-778b1bd30c0f"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "2f9bd32e-20c4-4a4f-9ed2-e2149c40e5cb"
         },
@@ -803,11 +714,11 @@
         ],
         "id": "8bac0b46-6acd-44e7-9db6-1bd7afe46fb0",
         "z": 435,
-        "parent": "df971682-5471-4130-954c-32bda3774907",
-        "attrs": {}
+        "parent": "df971682-5471-4130-954c-32bda3774907"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "318f68bf-c070-43e4-b4bd-fcd08f9d0b4a"
         },
@@ -869,11 +780,11 @@
         ],
         "id": "d2520e29-e6a8-4b57-b21d-ac7eaaaf8e00",
         "z": 435,
-        "parent": "df971682-5471-4130-954c-32bda3774907",
-        "attrs": {}
+        "parent": "df971682-5471-4130-954c-32bda3774907"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "18d5f90f-e553-462b-8994-e5cf28988973"
         },
@@ -935,11 +846,11 @@
         ],
         "id": "9ec21c70-61b7-4c1a-87cc-d14f393858ea",
         "z": 435,
-        "parent": "df971682-5471-4130-954c-32bda3774907",
-        "attrs": {}
+        "parent": "df971682-5471-4130-954c-32bda3774907"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "86d34923-6a4a-45b3-9310-678d7c112747"
         },
@@ -993,11 +904,11 @@
         ],
         "id": "a8e62702-c971-44a6-ac8f-5956572c3b35",
         "z": 435,
-        "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7",
-        "attrs": {}
+        "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "e35e2d5d-ffc0-425c-a999-50877a7c4fdc"
         },
@@ -1059,11 +970,11 @@
         ],
         "id": "c7274043-6125-4ea3-835f-78956a332205",
         "z": 435,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
-        "attrs": {}
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "c90de27d-94aa-4d4c-bcd8-1caefe44c015"
         },
@@ -1125,11 +1036,11 @@
         ],
         "id": "d255a90a-09f7-439d-a754-757493f5f20c",
         "z": 435,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
-        "attrs": {}
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "503cabac-0de3-4624-9bae-a0677b69d4e5"
         },
@@ -1191,11 +1102,11 @@
         ],
         "id": "9a84551f-3e02-42e0-b7e7-a43cdb228225",
         "z": 435,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
-        "attrs": {}
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "082f49f1-dbf0-4460-b27e-d6a903f2b481"
         },
@@ -1258,11 +1169,11 @@
         "id": "9b81e9a5-2209-4307-ab3a-448d39d39598",
         "z": 435,
         "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
-        "vertices": [],
-        "attrs": {}
+        "vertices": []
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "9f207ad2-6979-4d2a-b2e8-778b1bd30c0f"
         },
@@ -1316,11 +1227,11 @@
         ],
         "id": "5c7b7624-205a-42bd-b150-e6955a2b2656",
         "z": 435,
-        "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f",
-        "attrs": {}
+        "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "ea3870a3-6887-4147-9040-ed979e7892cd"
         },
@@ -1382,11 +1293,11 @@
         ],
         "id": "54375982-c287-42ed-8979-9481d713ea26",
         "z": 435,
-        "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f",
-        "attrs": {}
+        "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "72bb3638-8c37-4d48-8ca8-c44e299ca3f6"
         },
@@ -1448,11 +1359,11 @@
         ],
         "id": "d63d86f5-602d-4845-a638-4456296b3f29",
         "z": 435,
-        "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f",
-        "attrs": {}
+        "parent": "9b6c23a8-decf-4b7b-ac68-616c8859037f"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "bedb1257-4662-4895-83b0-0a0182a25162"
         },
@@ -1505,11 +1416,11 @@
         ],
         "id": "c8dc836a-c181-4264-9100-2003f54bedea",
         "z": 435,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
-        "attrs": {}
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "f9169c54-3ad6-4acc-9eb8-a9d26716bff9"
         },
@@ -1562,11 +1473,11 @@
         ],
         "id": "0493cb98-9aff-434b-ba81-0deffe557187",
         "z": 435,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
-        "attrs": {}
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "54bc7b6f-baab-4cfc-8786-07da7853b7d2"
         },
@@ -1628,11 +1539,11 @@
         ],
         "id": "37bdcaa2-b900-4bd1-9e4f-b52aef712da0",
         "z": 435,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
-        "attrs": {}
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "56f25d98-210d-417b-be54-eaebb6c40f4b"
         },
@@ -1687,11 +1598,11 @@
         "id": "3d0fe935-3044-4b10-8df7-eb274aa93c55",
         "z": 435,
         "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
-        "vertices": [],
-        "attrs": {}
+        "vertices": []
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "68ac87d0-41ac-4efe-876e-a9be95b2754c"
         },
@@ -1753,11 +1664,11 @@
         ],
         "id": "748566d7-b1e6-4f9a-ad20-f07acb1bf2a5",
         "z": 435,
-        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575",
-        "attrs": {}
+        "parent": "b4628b9f-d3d6-4768-a7cc-e734a985b575"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "67f24081-2616-4145-8f0b-53d931d95f95"
         },
@@ -1818,11 +1729,11 @@
         ],
         "id": "45e156cb-7780-4f06-a224-824a3bd40016",
         "z": 435,
-        "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7",
-        "attrs": {}
+        "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "ad675501-5973-454f-987f-3417f01a7cdf"
         },
@@ -1881,8 +1792,7 @@
         "id": "2841bd8e-da87-47b4-a2a2-6f2a22271e00",
         "z": 435,
         "parent": "df9504d9-6318-4b9e-8ac4-99eb9eaeddc7",
-        "vertices": [],
-        "attrs": {}
+        "vertices": []
       }
     ]
   }

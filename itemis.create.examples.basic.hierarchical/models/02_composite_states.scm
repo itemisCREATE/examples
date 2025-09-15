@@ -10,13 +10,8 @@
           "height": 10,
           "width": 10
         },
-        "angle": 0,
         "type": "Statechart",
         "id": "_3AQUYJOAEeWuO-fDDpYHyA",
-        "linkable": true,
-        "fixedRatio": false,
-        "embedable": true,
-        "z": 0,
         "attrs": {
           "name": {
             "text": "LightSwitch Export"
@@ -24,22 +19,27 @@
           "specification": {
             "text": "@CycleBased(200)\n\ninternal:\n\tvar brightness: integer\n\t\ninterface user:\n\tin event on_button\n\tin event off_button\n\tin event mode_button\n\t\ninterface sensor:\n\tin event motion\n\t\ninterface lum_sensor:\n \tin event bright\n \tin event dark"
           }
-        }
+        },
+        "z": 0
       },
       {
-        "type": "Region",
         "position": {
-          "x": -382,
+          "x": -384,
           "y": 72
         },
         "size": {
           "height": 632,
           "width": 1538
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": false,
+        "type": "Region",
+        "attrs": {
+          "priority": {
+            "text": 1
+          },
+          "name": {
+            "text": "main region"
+          }
+        },
         "embeds": [
           "_jCPvUOkOEemeGdc82b-fAg",
           "_cD4PAOkOEemeGdc82b-fAg",
@@ -54,64 +54,42 @@
           "_jgptIOkPEemeGdc82b-fAg"
         ],
         "id": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "z": 224,
-        "attrs": {
-          "priority": {
-            "text": 1
-          },
-          "name": {
-            "text": "main region"
-          }
-        }
+        "z": 296
       },
       {
-        "type": "State",
         "position": {
-          "x": 423,
+          "x": 421,
           "y": 171
         },
         "size": {
           "height": 201,
           "width": 699
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [
-          "_3gHsQOkPEemeGdc82b-fAg"
-        ],
-        "id": "_3gF3EOkPEemeGdc82b-fAg",
-        "z": 225,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "MotionDetectionMode",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "embeds": [
+          "_3gHsQOkPEemeGdc82b-fAg"
+        ],
+        "id": "_3gF3EOkPEemeGdc82b-fAg",
+        "z": 297,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
-        "type": "State",
         "position": {
-          "x": 502,
+          "x": 500,
           "y": 506
         },
         "size": {
           "height": 60,
           "width": 312
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [
-          "_33fKwOkMEemeGdc82b-fAg"
-        ],
-        "id": "_HslsYDekEeaQIqD3TyMHVw",
-        "z": 227,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "ManualMode",
@@ -121,48 +99,45 @@
           "specification": {
             "text": "entry / brightness += 1"
           }
-        }
+        },
+        "embeds": [
+          "_33fKwOkMEemeGdc82b-fAg"
+        ],
+        "id": "_HslsYDekEeaQIqD3TyMHVw",
+        "z": 298,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
-        "type": "Entry",
         "position": {
-          "x": 676,
+          "x": 674,
           "y": 100
         },
         "size": {
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Initial",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
-        "id": "_3ASJk5OAEeWuO-fDDpYHyA",
-        "z": 228,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
         "attrs": {
           "name": {
             "fill": "#CFD8DC"
           }
-        }
+        },
+        "id": "_3ASJk5OAEeWuO-fDDpYHyA",
+        "z": 299,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
         "type": "Note",
-        "position": {
-          "x": -269,
-          "y": 430
-        },
-        "size": {
-          "width": 255.4817657470703,
-          "height": 59.999996185302734
-        },
-        "angle": 0,
-        "linkable": false,
-        "id": "542ac681-10df-4490-b6b7-475e3c5c56ce",
-        "z": 229,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
         "attrs": {
+          "root": {
+            "display": ""
+          },
+          "body": {
+            "filter": {
+              "args": {}
+            }
+          },
           "label": {
             "text": "An outgoing transition from a \ncomposite state is taken \nregardless of the active substate.",
             "annotations": [
@@ -180,22 +155,60 @@
               }
             ]
           }
-        }
+        },
+        "position": {
+          "x": -271,
+          "y": 430
+        },
+        "size": {
+          "width": 255.4817657470703,
+          "height": 59.999996185302734
+        },
+        "angle": 0,
+        "linkable": false,
+        "id": "542ac681-10df-4490-b6b7-475e3c5c56ce",
+        "z": 300,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
-        "type": "Region",
         "position": {
-          "x": 424,
+          "x": -362,
+          "y": 175
+        },
+        "size": {
+          "height": 201,
+          "width": 599
+        },
+        "type": "State",
+        "attrs": {
+          "name": {
+            "text": "TwilightDetectionMode",
+            "fill": "#CFD8DC",
+            "fontSize": 12
+          }
+        },
+        "embeds": [
+          "_jgriUOkPEemeGdc82b-fAg"
+        ],
+        "id": "_jgptIOkPEemeGdc82b-fAg",
+        "z": 301,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
+      },
+      {
+        "position": {
+          "x": 422,
           "y": 209.59375
         },
         "size": {
           "height": 161.40625,
           "width": 697
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": false,
+        "type": "Region",
+        "attrs": {
+          "name": {
+            "text": "r1"
+          }
+        },
         "embeds": [
           "_bbJtAOkMEemeGdc82b-fAg",
           "_fEekIOkMEemeGdc82b-fAg",
@@ -205,32 +218,46 @@
           "_QYhGAOkMEemeGdc82b-fAg"
         ],
         "id": "_3gHsQOkPEemeGdc82b-fAg",
-        "z": 236,
-        "parent": "_3gF3EOkPEemeGdc82b-fAg",
+        "z": 308,
+        "parent": "_3gF3EOkPEemeGdc82b-fAg"
+      },
+      {
+        "position": {
+          "x": -361,
+          "y": 213.59375
+        },
+        "size": {
+          "height": 161.40625,
+          "width": 597
+        },
+        "type": "Region",
         "attrs": {
           "name": {
             "text": "r1"
           }
-        }
+        },
+        "embeds": [
+          "_P0LX8OkOEemeGdc82b-fAg",
+          "_IpmAkOkOEemeGdc82b-fAg",
+          "_p_A3sOkPEemeGdc82b-fAg",
+          "_plI_IOkPEemeGdc82b-fAg",
+          "__1CasOkNEemeGdc82b-fAg",
+          "_CrZj0OkOEemeGdc82b-fAg"
+        ],
+        "id": "_jgriUOkPEemeGdc82b-fAg",
+        "z": 310,
+        "parent": "_jgptIOkPEemeGdc82b-fAg"
       },
       {
-        "type": "State",
         "position": {
-          "x": 472,
+          "x": 470,
           "y": 230.59375
         },
         "size": {
           "height": 60,
           "width": 185
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [],
-        "id": "_Rr-5AOkMEemeGdc82b-fAg",
-        "z": 239,
-        "parent": "_3gHsQOkPEemeGdc82b-fAg",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "Idle",
@@ -240,52 +267,42 @@
           "specification": {
             "text": "entry / brightness = 0"
           }
-        }
+        },
+        "embeds": [],
+        "id": "_Rr-5AOkMEemeGdc82b-fAg",
+        "z": 311,
+        "parent": "_3gHsQOkPEemeGdc82b-fAg"
       },
       {
-        "type": "Entry",
         "position": {
-          "x": 433,
+          "x": 431,
           "y": 243.59375
         },
         "size": {
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Initial",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
-        "id": "_--jMsOkPEemeGdc82b-fAg",
-        "z": 240,
-        "parent": "_3gHsQOkPEemeGdc82b-fAg",
         "attrs": {
           "name": {
             "fill": "#CFD8DC"
           }
-        }
+        },
+        "id": "_--jMsOkPEemeGdc82b-fAg",
+        "z": 312,
+        "parent": "_3gHsQOkPEemeGdc82b-fAg"
       },
       {
-        "type": "State",
         "position": {
-          "x": 784,
+          "x": 782,
           "y": 230.59375
         },
         "size": {
           "height": 60,
           "width": 223
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [
-          "_EabG4OkNEemeGdc82b-fAg"
-        ],
-        "id": "_QYhGAOkMEemeGdc82b-fAg",
-        "z": 241,
-        "parent": "_3gHsQOkPEemeGdc82b-fAg",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "MotionDetected",
@@ -295,10 +312,141 @@
           "specification": {
             "text": "entry / brightness = 1"
           }
-        }
+        },
+        "embeds": [
+          "_EabG4OkNEemeGdc82b-fAg"
+        ],
+        "id": "_QYhGAOkMEemeGdc82b-fAg",
+        "z": 313,
+        "parent": "_3gHsQOkPEemeGdc82b-fAg"
+      },
+      {
+        "position": {
+          "x": -361,
+          "y": 253.59375
+        },
+        "size": {
+          "height": 15,
+          "width": 15
+        },
+        "type": "Entry",
+        "entryKind": "Initial",
+        "attrs": {
+          "name": {
+            "fill": "#CFD8DC"
+          }
+        },
+        "id": "_plI_IOkPEemeGdc82b-fAg",
+        "z": 317,
+        "parent": "_jgriUOkPEemeGdc82b-fAg"
+      },
+      {
+        "position": {
+          "x": -306,
+          "y": 238.09375
+        },
+        "size": {
+          "height": 60,
+          "width": 183
+        },
+        "type": "State",
+        "attrs": {
+          "name": {
+            "text": "Idle",
+            "fill": "#CFD8DC",
+            "fontSize": 12
+          },
+          "specification": {
+            "text": "entry / brightness = 0"
+          }
+        },
+        "embeds": [],
+        "id": "__1CasOkNEemeGdc82b-fAg",
+        "z": 318,
+        "parent": "_jgriUOkPEemeGdc82b-fAg"
+      },
+      {
+        "position": {
+          "x": 21,
+          "y": 245.5
+        },
+        "size": {
+          "height": 60,
+          "width": 190
+        },
+        "type": "State",
+        "attrs": {
+          "name": {
+            "text": "TwilightDetected",
+            "fill": "#CFD8DC",
+            "fontSize": 12
+          },
+          "specification": {
+            "text": "entry / brightness = 1"
+          }
+        },
+        "embeds": [],
+        "id": "_CrZj0OkOEemeGdc82b-fAg",
+        "z": 319,
+        "parent": "_jgriUOkPEemeGdc82b-fAg"
       },
       {
         "type": "Transition",
+        "attrs": {},
+        "source": {
+          "id": "_jgptIOkPEemeGdc82b-fAg"
+        },
+        "target": {
+          "id": "_HslsYDekEeaQIqD3TyMHVw"
+        },
+        "router": {
+          "name": "orthogonal",
+          "args": {
+            "padding": 8
+          }
+        },
+        "connector": {
+          "name": "rounded"
+        },
+        "labels": [
+          {
+            "attrs": {
+              "text": {
+                "text": "user.on_button"
+              }
+            },
+            "position": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "attrs": {
+              "label": {
+                "text": 2
+              }
+            }
+          },
+          {
+            "attrs": {}
+          },
+          {
+            "attrs": {}
+          }
+        ],
+        "vertices": [
+          {
+            "x": 173,
+            "y": 471
+          }
+        ],
+        "id": "_2l1qwOkOEemeGdc82b-fAg",
+        "z": 320,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
+      },
+      {
+        "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_HslsYDekEeaQIqD3TyMHVw"
         },
@@ -351,21 +499,66 @@
         ],
         "vertices": [
           {
-            "x": 747,
+            "x": 745,
             "y": 613
           },
           {
-            "x": 678,
+            "x": 676,
             "y": 613
           }
         ],
         "id": "_33fKwOkMEemeGdc82b-fAg",
-        "z": 248,
-        "parent": "_HslsYDekEeaQIqD3TyMHVw",
-        "attrs": {}
+        "z": 320,
+        "parent": "_HslsYDekEeaQIqD3TyMHVw"
       },
       {
         "type": "Transition",
+        "attrs": {},
+        "source": {
+          "id": "_--jMsOkPEemeGdc82b-fAg"
+        },
+        "target": {
+          "id": "_Rr-5AOkMEemeGdc82b-fAg"
+        },
+        "router": {
+          "name": "orthogonal",
+          "args": {
+            "padding": 8
+          }
+        },
+        "connector": {
+          "name": "rounded"
+        },
+        "labels": [
+          {
+            "attrs": {},
+            "position": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "attrs": {
+              "label": {
+                "text": 1
+              }
+            }
+          },
+          {
+            "attrs": {}
+          },
+          {
+            "attrs": {}
+          }
+        ],
+        "vertices": [],
+        "id": "__ZZ8sOkPEemeGdc82b-fAg",
+        "z": 320,
+        "parent": "_3gHsQOkPEemeGdc82b-fAg"
+      },
+      {
+        "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_QYhGAOkMEemeGdc82b-fAg"
         },
@@ -418,57 +611,12 @@
         ],
         "vertices": [],
         "id": "_fEekIOkMEemeGdc82b-fAg",
-        "z": 248,
-        "parent": "_3gHsQOkPEemeGdc82b-fAg",
-        "attrs": {}
+        "z": 320,
+        "parent": "_3gHsQOkPEemeGdc82b-fAg"
       },
       {
         "type": "Transition",
-        "source": {
-          "id": "_--jMsOkPEemeGdc82b-fAg"
-        },
-        "target": {
-          "id": "_Rr-5AOkMEemeGdc82b-fAg"
-        },
-        "router": {
-          "name": "orthogonal",
-          "args": {
-            "padding": 8
-          }
-        },
-        "connector": {
-          "name": "rounded"
-        },
-        "labels": [
-          {
-            "attrs": {},
-            "position": {
-              "x": 0,
-              "y": 0
-            }
-          },
-          {
-            "attrs": {
-              "label": {
-                "text": 1
-              }
-            }
-          },
-          {
-            "attrs": {}
-          },
-          {
-            "attrs": {}
-          }
-        ],
-        "vertices": [],
-        "id": "__ZZ8sOkPEemeGdc82b-fAg",
-        "z": 248,
-        "parent": "_3gHsQOkPEemeGdc82b-fAg",
-        "attrs": {}
-      },
-      {
-        "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_Rr-5AOkMEemeGdc82b-fAg"
         },
@@ -521,424 +669,12 @@
         ],
         "vertices": [],
         "id": "_bbJtAOkMEemeGdc82b-fAg",
-        "z": 248,
-        "parent": "_3gHsQOkPEemeGdc82b-fAg",
-        "attrs": {}
+        "z": 320,
+        "parent": "_3gHsQOkPEemeGdc82b-fAg"
       },
       {
         "type": "Transition",
-        "source": {
-          "id": "_3ASJk5OAEeWuO-fDDpYHyA"
-        },
-        "target": {
-          "id": "_3gF3EOkPEemeGdc82b-fAg"
-        },
-        "router": {
-          "name": "orthogonal",
-          "args": {
-            "padding": 8
-          }
-        },
-        "connector": {
-          "name": "rounded"
-        },
-        "labels": [
-          {
-            "attrs": {},
-            "position": {
-              "x": 0,
-              "y": 0
-            }
-          },
-          {
-            "attrs": {
-              "label": {
-                "text": 1
-              }
-            }
-          },
-          {
-            "attrs": {}
-          },
-          {
-            "attrs": {}
-          }
-        ],
-        "vertices": [],
-        "id": "_Y9ILYOkMEemeGdc82b-fAg",
-        "z": 248,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {}
-      },
-      {
-        "type": "Transition",
-        "source": {
-          "id": "_HslsYDekEeaQIqD3TyMHVw"
-        },
-        "target": {
-          "id": "_3gF3EOkPEemeGdc82b-fAg",
-          "anchor": {
-            "name": "topLeft",
-            "args": {
-              "dx": 321,
-              "dy": 200,
-              "rotate": true
-            }
-          },
-          "priority": true
-        },
-        "router": {
-          "name": "orthogonal",
-          "args": {
-            "padding": 8
-          }
-        },
-        "connector": {
-          "name": "rounded"
-        },
-        "labels": [
-          {
-            "attrs": {
-              "text": {
-                "text": "user.off_button"
-              }
-            },
-            "position": {
-              "x": 0,
-              "y": 0
-            }
-          },
-          {
-            "attrs": {
-              "label": {
-                "text": 1
-              }
-            }
-          },
-          {
-            "attrs": {}
-          },
-          {
-            "attrs": {}
-          }
-        ],
-        "vertices": [],
-        "id": "_yUYHgOkMEemeGdc82b-fAg",
-        "z": 248,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {}
-      },
-      {
-        "type": "Transition",
-        "source": {
-          "id": "_3gF3EOkPEemeGdc82b-fAg"
-        },
-        "target": {
-          "id": "_HslsYDekEeaQIqD3TyMHVw",
-          "anchor": {
-            "name": "topLeft",
-            "args": {
-              "dx": 74,
-              "dy": 11,
-              "rotate": true
-            }
-          },
-          "priority": true
-        },
-        "router": {
-          "name": "orthogonal",
-          "args": {
-            "padding": 8
-          }
-        },
-        "connector": {
-          "name": "rounded"
-        },
-        "labels": [
-          {
-            "attrs": {
-              "text": {
-                "text": "user.on_button"
-              }
-            },
-            "position": {
-              "x": 0,
-              "y": 0
-            }
-          },
-          {
-            "attrs": {
-              "label": {
-                "text": 2
-              }
-            }
-          },
-          {
-            "attrs": {}
-          },
-          {
-            "attrs": {}
-          }
-        ],
-        "vertices": [],
-        "id": "_o8a5oOkMEemeGdc82b-fAg",
-        "z": 248,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {}
-      },
-      {
-        "type": "Transition",
-        "source": {
-          "id": "_QYhGAOkMEemeGdc82b-fAg"
-        },
-        "target": {
-          "id": "_QYhGAOkMEemeGdc82b-fAg"
-        },
-        "router": {
-          "name": "orthogonal",
-          "args": {
-            "padding": 8
-          }
-        },
-        "connector": {
-          "name": "rounded"
-        },
-        "labels": [
-          {
-            "attrs": {
-              "text": {
-                "text": "sensor.motion"
-              }
-            },
-            "position": {
-              "distance": 0.5731345536639924,
-              "offset": -17,
-              "x": 0,
-              "y": 0,
-              "angle": 0
-            }
-          },
-          {
-            "attrs": {
-              "label": {
-                "text": 2
-              }
-            }
-          },
-          {
-            "attrs": {}
-          },
-          {
-            "attrs": {}
-          }
-        ],
-        "vertices": [
-          {
-            "x": 1037,
-            "y": 272
-          },
-          {
-            "x": 961,
-            "y": 313
-          }
-        ],
-        "id": "_EabG4OkNEemeGdc82b-fAg",
-        "z": 251,
-        "parent": "_QYhGAOkMEemeGdc82b-fAg",
-        "attrs": {}
-      },
-      {
-        "type": "State",
-        "position": {
-          "x": -360,
-          "y": 175
-        },
-        "size": {
-          "height": 201,
-          "width": 599
-        },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [
-          "_jgriUOkPEemeGdc82b-fAg"
-        ],
-        "id": "_jgptIOkPEemeGdc82b-fAg",
-        "z": 260,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {
-          "name": {
-            "text": "TwilightDetectionMode",
-            "fill": "#CFD8DC",
-            "fontSize": 12
-          }
-        }
-      },
-      {
-        "type": "Region",
-        "position": {
-          "x": -359,
-          "y": 213.59375
-        },
-        "size": {
-          "height": 161.40625,
-          "width": 597
-        },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": false,
-        "embeds": [
-          "_P0LX8OkOEemeGdc82b-fAg",
-          "_IpmAkOkOEemeGdc82b-fAg",
-          "_p_A3sOkPEemeGdc82b-fAg",
-          "_plI_IOkPEemeGdc82b-fAg",
-          "__1CasOkNEemeGdc82b-fAg",
-          "_CrZj0OkOEemeGdc82b-fAg"
-        ],
-        "id": "_jgriUOkPEemeGdc82b-fAg",
-        "z": 261,
-        "parent": "_jgptIOkPEemeGdc82b-fAg",
-        "attrs": {
-          "name": {
-            "text": "r1"
-          }
-        }
-      },
-      {
-        "type": "Entry",
-        "position": {
-          "x": -359,
-          "y": 253.59375
-        },
-        "size": {
-          "height": 15,
-          "width": 15
-        },
-        "angle": 0,
-        "entryKind": "Initial",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
-        "id": "_plI_IOkPEemeGdc82b-fAg",
-        "z": 262,
-        "parent": "_jgriUOkPEemeGdc82b-fAg",
-        "attrs": {
-          "name": {
-            "fill": "#CFD8DC"
-          }
-        }
-      },
-      {
-        "type": "State",
-        "position": {
-          "x": -304,
-          "y": 238.09375
-        },
-        "size": {
-          "height": 60,
-          "width": 183
-        },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [],
-        "id": "__1CasOkNEemeGdc82b-fAg",
-        "z": 263,
-        "parent": "_jgriUOkPEemeGdc82b-fAg",
-        "attrs": {
-          "name": {
-            "text": "Idle",
-            "fill": "#CFD8DC",
-            "fontSize": 12
-          },
-          "specification": {
-            "text": "entry / brightness = 0"
-          }
-        }
-      },
-      {
-        "type": "State",
-        "position": {
-          "x": 23,
-          "y": 245.5
-        },
-        "size": {
-          "height": 60,
-          "width": 190
-        },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [],
-        "id": "_CrZj0OkOEemeGdc82b-fAg",
-        "z": 264,
-        "parent": "_jgriUOkPEemeGdc82b-fAg",
-        "attrs": {
-          "name": {
-            "text": "TwilightDetected",
-            "fill": "#CFD8DC",
-            "fontSize": 12
-          },
-          "specification": {
-            "text": "entry / brightness = 1"
-          }
-        }
-      },
-      {
-        "type": "Transition",
-        "source": {
-          "id": "_3gF3EOkPEemeGdc82b-fAg"
-        },
-        "target": {
-          "id": "_jgptIOkPEemeGdc82b-fAg"
-        },
-        "router": {
-          "name": "orthogonal",
-          "args": {
-            "padding": 8
-          }
-        },
-        "connector": {
-          "name": "rounded"
-        },
-        "labels": [
-          {
-            "attrs": {
-              "text": {
-                "text": "user.mode_button"
-              }
-            },
-            "position": {
-              "x": 0,
-              "y": 0
-            }
-          },
-          {
-            "attrs": {
-              "label": {
-                "text": 1
-              }
-            }
-          },
-          {
-            "attrs": {}
-          },
-          {
-            "attrs": {}
-          }
-        ],
-        "vertices": [],
-        "id": "_jCPvUOkOEemeGdc82b-fAg",
-        "z": 265,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {}
-      },
-      {
-        "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_jgptIOkPEemeGdc82b-fAg"
         },
@@ -991,17 +727,178 @@
         ],
         "vertices": [],
         "id": "_cD4PAOkOEemeGdc82b-fAg",
-        "z": 265,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {}
+        "z": 320,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
-          "id": "_jgptIOkPEemeGdc82b-fAg"
+          "id": "_HslsYDekEeaQIqD3TyMHVw"
         },
         "target": {
-          "id": "_HslsYDekEeaQIqD3TyMHVw"
+          "id": "_3gF3EOkPEemeGdc82b-fAg",
+          "anchor": {
+            "name": "topLeft",
+            "args": {
+              "dx": 321,
+              "dy": 200,
+              "rotate": true
+            }
+          },
+          "priority": true
+        },
+        "router": {
+          "name": "orthogonal",
+          "args": {
+            "padding": 8
+          }
+        },
+        "connector": {
+          "name": "rounded"
+        },
+        "labels": [
+          {
+            "attrs": {
+              "text": {
+                "text": "user.off_button"
+              }
+            },
+            "position": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "attrs": {
+              "label": {
+                "text": 1
+              }
+            }
+          },
+          {
+            "attrs": {}
+          },
+          {
+            "attrs": {}
+          }
+        ],
+        "vertices": [],
+        "id": "_yUYHgOkMEemeGdc82b-fAg",
+        "z": 320,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
+      },
+      {
+        "type": "Transition",
+        "attrs": {},
+        "source": {
+          "id": "_3ASJk5OAEeWuO-fDDpYHyA"
+        },
+        "target": {
+          "id": "_3gF3EOkPEemeGdc82b-fAg"
+        },
+        "router": {
+          "name": "orthogonal",
+          "args": {
+            "padding": 8
+          }
+        },
+        "connector": {
+          "name": "rounded"
+        },
+        "labels": [
+          {
+            "attrs": {},
+            "position": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "attrs": {
+              "label": {
+                "text": 1
+              }
+            }
+          },
+          {
+            "attrs": {}
+          },
+          {
+            "attrs": {}
+          }
+        ],
+        "vertices": [],
+        "id": "_Y9ILYOkMEemeGdc82b-fAg",
+        "z": 320,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
+      },
+      {
+        "type": "Transition",
+        "attrs": {},
+        "source": {
+          "id": "_3gF3EOkPEemeGdc82b-fAg"
+        },
+        "target": {
+          "id": "_jgptIOkPEemeGdc82b-fAg"
+        },
+        "router": {
+          "name": "orthogonal",
+          "args": {
+            "padding": 8
+          }
+        },
+        "connector": {
+          "name": "rounded"
+        },
+        "labels": [
+          {
+            "attrs": {
+              "text": {
+                "text": "user.mode_button"
+              }
+            },
+            "position": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "attrs": {
+              "label": {
+                "text": 1
+              }
+            }
+          },
+          {
+            "attrs": {}
+          },
+          {
+            "attrs": {}
+          }
+        ],
+        "vertices": [],
+        "id": "_jCPvUOkOEemeGdc82b-fAg",
+        "z": 320,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
+      },
+      {
+        "type": "Transition",
+        "attrs": {},
+        "source": {
+          "id": "_3gF3EOkPEemeGdc82b-fAg"
+        },
+        "target": {
+          "id": "_HslsYDekEeaQIqD3TyMHVw",
+          "anchor": {
+            "name": "topLeft",
+            "args": {
+              "dx": 74,
+              "dy": 11,
+              "rotate": true
+            }
+          },
+          "priority": true
         },
         "router": {
           "name": "orthogonal",
@@ -1038,19 +935,14 @@
             "attrs": {}
           }
         ],
-        "vertices": [
-          {
-            "x": 175,
-            "y": 471
-          }
-        ],
-        "id": "_2l1qwOkOEemeGdc82b-fAg",
-        "z": 265,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {}
+        "vertices": [],
+        "id": "_o8a5oOkMEemeGdc82b-fAg",
+        "z": 320,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "__1CasOkNEemeGdc82b-fAg"
         },
@@ -1103,12 +995,12 @@
         ],
         "vertices": [],
         "id": "_IpmAkOkOEemeGdc82b-fAg",
-        "z": 265,
-        "parent": "_jgriUOkPEemeGdc82b-fAg",
-        "attrs": {}
+        "z": 320,
+        "parent": "_jgriUOkPEemeGdc82b-fAg"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_plI_IOkPEemeGdc82b-fAg"
         },
@@ -1148,12 +1040,12 @@
         ],
         "vertices": [],
         "id": "_p_A3sOkPEemeGdc82b-fAg",
-        "z": 266,
-        "parent": "_jgriUOkPEemeGdc82b-fAg",
-        "attrs": {}
+        "z": 321,
+        "parent": "_jgriUOkPEemeGdc82b-fAg"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_CrZj0OkOEemeGdc82b-fAg"
         },
@@ -1206,9 +1098,69 @@
         ],
         "vertices": [],
         "id": "_P0LX8OkOEemeGdc82b-fAg",
-        "z": 267,
-        "parent": "_jgriUOkPEemeGdc82b-fAg",
-        "attrs": {}
+        "z": 322,
+        "parent": "_jgriUOkPEemeGdc82b-fAg"
+      },
+      {
+        "type": "Transition",
+        "attrs": {},
+        "source": {
+          "id": "_QYhGAOkMEemeGdc82b-fAg"
+        },
+        "target": {
+          "id": "_QYhGAOkMEemeGdc82b-fAg"
+        },
+        "router": {
+          "name": "orthogonal",
+          "args": {
+            "padding": 8
+          }
+        },
+        "connector": {
+          "name": "rounded"
+        },
+        "labels": [
+          {
+            "attrs": {
+              "text": {
+                "text": "sensor.motion"
+              }
+            },
+            "position": {
+              "distance": 0.5731345536639924,
+              "offset": -17,
+              "x": 0,
+              "y": 0,
+              "angle": 0
+            }
+          },
+          {
+            "attrs": {
+              "label": {
+                "text": 2
+              }
+            }
+          },
+          {
+            "attrs": {}
+          },
+          {
+            "attrs": {}
+          }
+        ],
+        "vertices": [
+          {
+            "x": 1035,
+            "y": 272
+          },
+          {
+            "x": 959,
+            "y": 313
+          }
+        ],
+        "id": "_EabG4OkNEemeGdc82b-fAg",
+        "z": 323,
+        "parent": "_QYhGAOkMEemeGdc82b-fAg"
       }
     ]
   }

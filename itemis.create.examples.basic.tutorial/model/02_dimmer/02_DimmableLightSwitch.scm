@@ -10,13 +10,8 @@
           "height": 10,
           "width": 10
         },
-        "angle": 0,
         "type": "Statechart",
         "id": "_3AQUYJOAEeWuO-fDDpYHyA",
-        "linkable": true,
-        "fixedRatio": false,
-        "embedable": true,
-        "z": 0,
         "attrs": {
           "name": {
             "text": "_02_DimmableLightSwitch"
@@ -24,10 +19,10 @@
           "specification": {
             "text": "@EventDriven\n\ninterface:\n\tin event switch\n\tin event changeBrightness\n\tvar brightness: integer"
           }
-        }
+        },
+        "z": 0
       },
       {
-        "type": "Region",
         "position": {
           "x": 40,
           "y": 204
@@ -36,10 +31,12 @@
           "height": 353,
           "width": 589
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": false,
+        "type": "Region",
+        "attrs": {
+          "name": {
+            "text": "main"
+          }
+        },
         "embeds": [
           "_QwgAQJQ6EeWuO-fDDpYHyA",
           "74f403f7-b611-4010-91b4-a299c2e10f90",
@@ -49,15 +46,9 @@
           "_3ASwp5OAEeWuO-fDDpYHyA"
         ],
         "id": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "z": 21,
-        "attrs": {
-          "name": {
-            "text": "main"
-          }
-        }
+        "z": 21
       },
       {
-        "type": "Entry",
         "position": {
           "x": 172,
           "y": 233
@@ -66,22 +57,18 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Initial",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
-        "id": "_3ASJk5OAEeWuO-fDDpYHyA",
-        "z": 22,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
         "attrs": {
           "name": {
             "fill": "#CFD8DC"
           }
-        }
+        },
+        "id": "_3ASJk5OAEeWuO-fDDpYHyA",
+        "z": 22,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
-        "type": "State",
         "position": {
           "x": 245.5,
           "y": 394
@@ -90,27 +77,23 @@
           "height": 60,
           "width": 181
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [
-          "_qexnsJxjEeuu4YMPqKybnQ",
-          "_CdIbYDeYEeaQIqD3TyMHVw"
-        ],
-        "id": "_Muq1cJQtEeWuO-fDDpYHyA",
-        "z": 23,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "On",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "embeds": [
+          "_qexnsJxjEeuu4YMPqKybnQ",
+          "_CdIbYDeYEeaQIqD3TyMHVw"
+        ],
+        "id": "_Muq1cJQtEeWuO-fDDpYHyA",
+        "z": 23,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
-        "type": "State",
         "position": {
           "x": 240,
           "y": 222
@@ -119,14 +102,7 @@
           "height": 60,
           "width": 193.39999389648438
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "embeds": [],
-        "id": "_3ASwp5OAEeWuO-fDDpYHyA",
-        "z": 24,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "Off",
@@ -136,10 +112,15 @@
           "specification": {
             "text": "entry / brightness = 0"
           }
-        }
+        },
+        "embeds": [],
+        "id": "_3ASwp5OAEeWuO-fDDpYHyA",
+        "z": 24,
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_3ASJk5OAEeWuO-fDDpYHyA"
         },
@@ -180,11 +161,11 @@
         "vertices": [],
         "id": "_3AT-w5OAEeWuO-fDDpYHyA",
         "z": 25,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {}
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_3ASwp5OAEeWuO-fDDpYHyA"
         },
@@ -239,11 +220,11 @@
         "id": "74f403f7-b611-4010-91b4-a299c2e10f90",
         "z": 26,
         "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "vertices": [],
-        "attrs": {}
+        "vertices": []
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_Muq1cJQtEeWuO-fDDpYHyA"
         },
@@ -300,11 +281,11 @@
         "vertices": [],
         "id": "_QwgAQJQ6EeWuO-fDDpYHyA",
         "z": 27,
-        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA",
-        "attrs": {}
+        "parent": "_3AQ7cpOAEeWuO-fDDpYHyA"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_Muq1cJQtEeWuO-fDDpYHyA"
         },
@@ -361,11 +342,11 @@
         ],
         "id": "_CdIbYDeYEeaQIqD3TyMHVw",
         "z": 28,
-        "parent": "_Muq1cJQtEeWuO-fDDpYHyA",
-        "attrs": {}
+        "parent": "_Muq1cJQtEeWuO-fDDpYHyA"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "_Muq1cJQtEeWuO-fDDpYHyA"
         },
@@ -431,8 +412,7 @@
         ],
         "id": "_qexnsJxjEeuu4YMPqKybnQ",
         "z": 29,
-        "parent": "_Muq1cJQtEeWuO-fDDpYHyA",
-        "attrs": {}
+        "parent": "_Muq1cJQtEeWuO-fDDpYHyA"
       }
     ]
   }

@@ -10,11 +10,8 @@
           "height": 10,
           "width": 10
         },
-        "angle": 0,
         "type": "Statechart",
         "id": "78749915-0da0-40a2-862f-9e8d94c7c68e",
-        "linkable": false,
-        "z": 1,
         "attrs": {
           "name": {
             "text": "LightCtrl"
@@ -22,10 +19,10 @@
           "specification": {
             "text": "@CycleBased(200)\n\ninterface:\n\tin event button\n\toperation setLight(lightOn: boolean): void"
           }
-        }
+        },
+        "z": 1
       },
       {
-        "type": "State",
         "position": {
           "x": 128,
           "y": 351
@@ -34,22 +31,18 @@
           "height": 60,
           "width": 71.65876770019531
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
-        "z": 24,
+        "type": "State",
         "attrs": {
           "name": {
             "text": "Light Off",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
+        "z": 24
       },
       {
-        "type": "State",
         "position": {
           "x": 495,
           "y": 357
@@ -58,25 +51,23 @@
           "height": 60,
           "width": 71.65876770019531
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "db372094-acc6-467b-b44d-495606208445",
-        "z": 26,
-        "embeds": [
-          "0630eafe-d798-43d5-828d-6d176fa4a808"
-        ],
+        "type": "State",
         "attrs": {
           "name": {
             "text": "Light On",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "db372094-acc6-467b-b44d-495606208445",
+        "z": 26,
+        "embeds": [
+          "0630eafe-d798-43d5-828d-6d176fa4a808"
+        ]
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "36b8548a-74b1-4925-ae23-291c03231ee6"
         },
@@ -125,11 +116,11 @@
           }
         ],
         "id": "f4fdd1fd-fc69-42a9-a51b-34aeb2fd7fe4",
-        "z": 27,
-        "attrs": {}
+        "z": 27
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "db372094-acc6-467b-b44d-495606208445"
         },
@@ -178,11 +169,11 @@
           }
         ],
         "id": "7197094a-c890-4098-9170-1701f27ac3cb",
-        "z": 27,
-        "attrs": {}
+        "z": 27
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "db372094-acc6-467b-b44d-495606208445"
         },
@@ -247,11 +238,9 @@
             "x": 608,
             "y": 445
           }
-        ],
-        "attrs": {}
+        ]
       },
       {
-        "type": "Entry",
         "position": {
           "x": 156,
           "y": 283
@@ -260,21 +249,18 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Initial",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
-        "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
-        "z": 28,
-        "embeds": [
-          "f70f632c-e54d-4002-9ec5-7baec620de10"
-        ],
         "attrs": {
           "name": {
             "fill": "#CFD8DC"
           }
-        }
+        },
+        "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
+        "z": 28,
+        "embeds": [
+          "f70f632c-e54d-4002-9ec5-7baec620de10"
+        ]
       },
       {
         "type": "NodeLabel",
@@ -287,9 +273,6 @@
           "x": 156,
           "y": 298
         },
-        "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
-        "z": 29,
-        "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
         "attrs": {
           "label": {
             "refX": "50%",
@@ -297,10 +280,14 @@
             "refY": "50%",
             "textVerticalAnchor": "middle"
           }
-        }
+        },
+        "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
+        "z": 29,
+        "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
         },
@@ -336,8 +323,7 @@
           }
         ],
         "id": "9b5ce41b-0116-46a8-a603-ea4119c6e5d7",
-        "z": 30,
-        "attrs": {}
+        "z": 30
       }
     ]
   }

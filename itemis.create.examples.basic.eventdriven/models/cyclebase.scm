@@ -10,11 +10,8 @@
           "height": 10,
           "width": 10
         },
-        "angle": 0,
         "type": "Statechart",
         "id": "78749915-0da0-40a2-862f-9e8d94c7c68e",
-        "linkable": false,
-        "z": 1,
         "attrs": {
           "name": {
             "text": "MyStatechart"
@@ -22,10 +19,10 @@
           "specification": {
             "text": "@CycleBased(2000)\n// Runs a run-to-completion step\n// every 2 seconds. Change\n// the period time and observe the \n// effect when running the simulation.\n\ninterface:\n\n  in event input"
           }
-        }
+        },
+        "z": 1
       },
       {
-        "type": "Region",
         "position": {
           "x": -26,
           "y": 118
@@ -34,10 +31,12 @@
           "height": 496,
           "width": 770
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
+        "type": "Region",
+        "attrs": {
+          "name": {
+            "text": "main region"
+          }
+        },
         "id": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
         "z": 188,
         "embeds": [
@@ -54,15 +53,9 @@
           "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
           "2ca3462c-2c84-4378-ada3-e5b1b31c40fb",
           "2aafda74-29f1-497d-b878-515024c84571"
-        ],
-        "attrs": {
-          "name": {
-            "text": "main region"
-          }
-        }
+        ]
       },
       {
-        "type": "State",
         "position": {
           "x": -4.642795562744141,
           "y": 188
@@ -71,23 +64,19 @@
           "height": 60,
           "width": 71.64279556274414
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
-        "z": 189,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StateA",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
+        "z": 189,
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
-        "type": "State",
         "position": {
           "x": 184.43163871765137,
           "y": 347
@@ -96,23 +85,19 @@
           "height": 60,
           "width": 71.64279556274414
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "39872f6a-0676-4364-b0bb-30a307edc59b",
-        "z": 190,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StateC",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "39872f6a-0676-4364-b0bb-30a307edc59b",
+        "z": 190,
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
-        "type": "State",
         "position": {
           "x": 184.43163871765137,
           "y": 188
@@ -121,23 +106,19 @@
           "height": 60,
           "width": 71.64279556274414
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "db372094-acc6-467b-b44d-495606208445",
-        "z": 191,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StateB",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "db372094-acc6-467b-b44d-495606208445",
+        "z": 191,
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
-        "type": "State",
         "position": {
           "x": 112.78884315490723,
           "y": 445
@@ -146,23 +127,19 @@
           "height": 60,
           "width": 71.64279556274414
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "4064ebbe-5dad-4272-9c67-6601360e8479",
-        "z": 192,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StateD",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "4064ebbe-5dad-4272-9c67-6601360e8479",
+        "z": 192,
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
-        "type": "State",
         "position": {
           "x": 256.0744342803955,
           "y": 445
@@ -171,23 +148,19 @@
           "height": 60,
           "width": 71.64279556274414
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "3d115638-c1d1-4bf8-9c57-f037b66d703c",
-        "z": 193,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
+        "type": "State",
         "attrs": {
           "name": {
             "text": "StateE",
             "fill": "#CFD8DC",
             "fontSize": 12
           }
-        }
+        },
+        "id": "3d115638-c1d1-4bf8-9c57-f037b66d703c",
+        "z": 193,
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
-        "type": "Entry",
         "position": {
           "x": 23.67860221862793,
           "y": 143
@@ -196,39 +169,31 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Initial",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
+        "attrs": {
+          "name": {
+            "fill": "#CFD8DC"
+          }
+        },
         "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
         "z": 194,
         "embeds": [
           "f70f632c-e54d-4002-9ec5-7baec620de10"
         ],
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
-        "attrs": {
-          "name": {
-            "fill": "#CFD8DC"
-          }
-        }
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
         "type": "Note",
-        "position": {
-          "x": -4.642795562744141,
-          "y": 259
-        },
-        "size": {
-          "width": 201,
-          "height": 75
-        },
-        "angle": 0,
-        "linkable": false,
-        "id": "2ca3462c-2c84-4378-ada3-e5b1b31c40fb",
-        "z": 195,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
         "attrs": {
+          "root": {
+            "display": ""
+          },
+          "body": {
+            "filter": {
+              "args": {}
+            }
+          },
           "label": {
             "text": "In cycle based mode, \nevents are only processed \nwhen a cycle is triggered, \nhere every 2 seconds.",
             "annotations": [
@@ -246,24 +211,32 @@
               }
             ]
           }
-        }
-      },
-      {
-        "type": "Note",
+        },
         "position": {
-          "x": 365.71722984313965,
-          "y": 445
+          "x": -4.642795562744141,
+          "y": 259
         },
         "size": {
-          "width": 313,
-          "height": 99
+          "width": 201,
+          "height": 75
         },
         "angle": 0,
         "linkable": false,
-        "id": "2aafda74-29f1-497d-b878-515024c84571",
-        "z": 196,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
+        "id": "2ca3462c-2c84-4378-ada3-e5b1b31c40fb",
+        "z": 195,
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
+      },
+      {
+        "type": "Note",
         "attrs": {
+          "root": {
+            "display": ""
+          },
+          "body": {
+            "filter": {
+              "args": {}
+            }
+          },
           "label": {
             "text": "Since after 2 seconds, both time events\nare raised, the transition with the higher\npriority is taken, here StateC -> StateE.\nYou can fix this by changing the cycle\nperiod from 2000 to 200 in the definition\nsection.",
             "annotations": [
@@ -281,7 +254,20 @@
               }
             ]
           }
-        }
+        },
+        "position": {
+          "x": 365.71722984313965,
+          "y": 445
+        },
+        "size": {
+          "width": 313,
+          "height": 99
+        },
+        "angle": 0,
+        "linkable": false,
+        "id": "2aafda74-29f1-497d-b878-515024c84571",
+        "z": 196,
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
         "type": "NodeLabel",
@@ -294,9 +280,6 @@
           "x": 23.67860221862793,
           "y": 158
         },
-        "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
-        "z": 202,
-        "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
         "attrs": {
           "label": {
             "refX": "50%",
@@ -304,10 +287,14 @@
             "refY": "50%",
             "textVerticalAnchor": "middle"
           }
-        }
+        },
+        "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
+        "z": 202,
+        "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "db372094-acc6-467b-b44d-495606208445"
         },
@@ -358,11 +345,11 @@
         ],
         "id": "bb99b7a7-c3d4-4631-b4b0-93d6eb7e35a9",
         "z": 203,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
-        "attrs": {}
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "39872f6a-0676-4364-b0bb-30a307edc59b"
         },
@@ -421,11 +408,11 @@
         ],
         "id": "131ffbc1-e415-4ddb-aff1-b42c17fd2877",
         "z": 203,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
-        "attrs": {}
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "39872f6a-0676-4364-b0bb-30a307edc59b"
         },
@@ -484,11 +471,11 @@
         ],
         "id": "74ea675d-0170-450e-a8ad-bdf5cc9107a2",
         "z": 203,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
-        "attrs": {}
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
         },
@@ -539,11 +526,11 @@
         ],
         "id": "ad0307d5-75e1-485d-97fa-cbae48bf73c1",
         "z": 203,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
-        "attrs": {}
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "36b8548a-74b1-4925-ae23-291c03231ee6"
         },
@@ -584,8 +571,7 @@
         ],
         "id": "f4fdd1fd-fc69-42a9-a51b-34aeb2fd7fe4",
         "z": 203,
-        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e",
-        "attrs": {}
+        "parent": "5b9a71fa-41d7-4eba-ba2f-8058733fa23e"
       }
     ]
   }

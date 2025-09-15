@@ -10,11 +10,8 @@
           "height": 10,
           "width": 10
         },
-        "angle": 0,
         "type": "Statechart",
         "id": "78749915-0da0-40a2-862f-9e8d94c7c68e",
-        "linkable": false,
-        "z": 1,
         "attrs": {
           "name": {
             "text": "LightSwitch"
@@ -22,10 +19,10 @@
           "specification": {
             "text": "@EventDriven\n\ninterface user:\n\tin event on_button\n\tin event off_button\n\t\ninterface light:\n\tvar brightness: integer\n\tout event on\n\tout event off"
           }
-        }
+        },
+        "z": 1
       },
       {
-        "type": "State",
         "position": {
           "x": 132,
           "y": 234
@@ -34,12 +31,7 @@
           "height": 72,
           "width": 331
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
-        "z": 4,
+        "type": "State",
         "attrs": {
           "name": {
             "text": "Off",
@@ -49,10 +41,11 @@
           "specification": {
             "text": "entry / \nlight.brightness = 0;\nraise light.off"
           }
-        }
+        },
+        "id": "36b8548a-74b1-4925-ae23-291c03231ee6",
+        "z": 4
       },
       {
-        "type": "Entry",
         "position": {
           "x": 264.5,
           "y": 167
@@ -61,21 +54,18 @@
           "height": 15,
           "width": 15
         },
-        "angle": 0,
+        "type": "Entry",
         "entryKind": "Initial",
-        "fixedRatio": true,
-        "embedable": false,
-        "linkable": true,
-        "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
-        "z": 10,
-        "embeds": [
-          "f70f632c-e54d-4002-9ec5-7baec620de10"
-        ],
         "attrs": {
           "name": {
             "fill": "#CFD8DC"
           }
-        }
+        },
+        "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
+        "z": 10,
+        "embeds": [
+          "f70f632c-e54d-4002-9ec5-7baec620de10"
+        ]
       },
       {
         "type": "NodeLabel",
@@ -88,9 +78,6 @@
           "x": 264.5,
           "y": 182
         },
-        "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
-        "z": 11,
-        "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb",
         "attrs": {
           "label": {
             "refX": "50%",
@@ -98,10 +85,14 @@
             "refY": "50%",
             "textVerticalAnchor": "middle"
           }
-        }
+        },
+        "id": "f70f632c-e54d-4002-9ec5-7baec620de10",
+        "z": 11,
+        "parent": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "a4d257fe-72cb-4334-9a1f-b5a8b4f886fb"
         },
@@ -137,11 +128,9 @@
           }
         ],
         "id": "9b5ce41b-0116-46a8-a603-ea4119c6e5d7",
-        "z": 12,
-        "attrs": {}
+        "z": 12
       },
       {
-        "type": "State",
         "position": {
           "x": 125,
           "y": 427
@@ -150,12 +139,7 @@
           "height": 105,
           "width": 331
         },
-        "angle": 0,
-        "fixedRatio": false,
-        "embedable": true,
-        "linkable": true,
-        "id": "db372094-acc6-467b-b44d-495606208445",
-        "z": 22,
+        "type": "State",
         "attrs": {
           "name": {
             "text": "On",
@@ -165,10 +149,13 @@
           "specification": {
             "text": "entry / \nraise light.on\n\nuser.on_button [light.brightness < 10] / \nlight.brightness += 1"
           }
-        }
+        },
+        "id": "db372094-acc6-467b-b44d-495606208445",
+        "z": 22
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "36b8548a-74b1-4925-ae23-291c03231ee6"
         },
@@ -226,11 +213,11 @@
           }
         ],
         "id": "e9bb0bd8-bf23-43bd-b9c6-533343c47258",
-        "z": 23,
-        "attrs": {}
+        "z": 23
       },
       {
         "type": "Transition",
+        "attrs": {},
         "source": {
           "id": "db372094-acc6-467b-b44d-495606208445"
         },
@@ -289,8 +276,7 @@
         ],
         "id": "6a32811d-b2a7-461d-9c9f-2f3f9bbbc74f",
         "z": 23,
-        "vertices": [],
-        "attrs": {}
+        "vertices": []
       }
     ]
   }

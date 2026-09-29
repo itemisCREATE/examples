@@ -58,7 +58,7 @@ CM_HMI::UserEvents CM_HMI::getUserInput() {
 	return NONE;
 }
 
-void CM_HMI::show(char *text) {
+void CM_HMI::show(const char *text) {
 	// avoid newline
 	fprintf(stdout, "%s", text);
 	fflush(stdout);

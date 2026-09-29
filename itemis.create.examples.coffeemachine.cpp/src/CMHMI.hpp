@@ -28,7 +28,7 @@ public:
 	} UserEvents; //
 
 	UserEvents getUserInput();
-	void show(char* text);
+	void show(const char* text);
 	void showPrepare(UserEvents event);
 	void showDone(UserEvents event);
 

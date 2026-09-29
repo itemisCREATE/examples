@@ -2,6 +2,10 @@
 /src-gen/
 /target/
 
+# Generated into /src by the Python code generator
+/src/traffic_light_ctrl.py
+/src/create/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

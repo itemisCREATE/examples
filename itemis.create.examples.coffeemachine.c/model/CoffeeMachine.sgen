@@ -10,8 +10,7 @@ GeneratorModel for create::c {
 		}
 		
 		feature Tracing {
-			enterState = true
-			exitState = true
+			generic = true
 		}
 		
 		feature GeneralFeatures {

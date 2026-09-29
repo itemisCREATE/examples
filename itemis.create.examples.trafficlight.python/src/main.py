@@ -16,7 +16,7 @@ file, activate `General Feature -> DefaultRuntime` in your SGen file.
 """
 # statemachine
 from traffic_light_ctrl import TrafficLightCtrl
-from yakindu.timer.timer_service import TimerService 
+from create.timer.timer_service import TimerService 
 
 from traffic_scene import TrafficScene
 

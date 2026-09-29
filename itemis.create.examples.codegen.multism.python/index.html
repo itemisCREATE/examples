@@ -17,6 +17,26 @@
 				href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/multi_state_machine_modelling">online
 				documentation</a>.
 		</p>
+
+		<h2>Prerequisites: Installing PyDev</h2>
+        <p>
+            This example project requires the <strong>PyDev</strong> plugin. PyDev is a fully featured Python IDE for Eclipse that provides syntax highlighting, code completion, and the ability to run and debug Python scripts directly within your workspace. 
+        </p>
+        <p>
+            If you import this project without PyDev installed, your IDE will raise an <code>Unknown referenced nature: org.python.pydev.pythonNature</code> warning. To resolve this and successfully run the example, please install PyDev using one of the following methods:
+        </p>
+        <ul>
+            <li>
+                <strong>Via Eclipse Marketplace (Recommended):</strong> Go to <em>Help -> Eclipse Marketplace...</em>, search for <strong>PyDev</strong>, and click <em>Install</em> next to "PyDev - Python IDE for Eclipse".
+            </li>
+            <li>
+                <strong>Via Install New Software:</strong> Go to <em>Help -> Install New Software...</em>, click <em>Add...</em>, and enter the PyDev update site URL: <code>http://www.pydev.org/updates/</code>. Select the PyDev feature and complete the installation wizard.
+            </li>
+        </ul>
+        <p>
+            <em>Note: After restarting the IDE, you may also need to configure your local Python interpreter by navigating to Window -> Preferences -> PyDev -> Interpreters -> Python Interpreter.</em>
+        </p>
+
 		<h2>Example Application</h2>
 		<p>
 		The example application consists of two state machines, one for the controller, and one that describes a simple light switch.
@@ -45,7 +65,7 @@
 		The generator model simply defines the configuration for both state machines. As the state machines use time events, we ensure that a timer service implementation is generated with the <code>TimerService</code> parameter.
 		</p>
 		<p>
-		<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/itemis.create.examples.codegen.multism.python/models/python.sgen"></script>
+		<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.codegen.multism.python/models/python.sgen"></script>
 		</p>
 		</p>
 		
@@ -59,7 +79,7 @@
 		Our application is a simple interactive console with which the user can switch the lights on or off as well as toggle the blink mode. The complete application code is implemented in <code>main.py</code>:
 		</p>
 		<p>
-		<script src="https://gist-it.appspot.com/github/Yakindu/examples/blob/release4/itemis.create.examples.codegen.multism.python/src/main.py"></script>
+		<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.codegen.multism.python/src/main.py"></script>
 		</p>
 		<p>
 		The most important parts are commented in the <code>main.py</code> file. These are the bullet points:

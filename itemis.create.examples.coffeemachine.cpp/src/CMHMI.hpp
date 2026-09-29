@@ -23,6 +23,7 @@ public:
 		MILK, //
 		QUIT, //
 		TRACING, //
+		VERBOSE_TRACING, //
 		NONE //
 	} UserEvents; //
 

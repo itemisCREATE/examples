@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.basic.completion",
+	"title": "Completion Transitions",
+	"author": "itemis AG",
+	"description": "This example demonstrates completion transitions - transitions without a trigger, which fire once the state they leave has completed, including states that own a sub machine.",
+	"previewImage": "completion_thumb.jpg",
+	"category": [
+		"professional",
+		"multi-sm"
+	],
+	"rank":5
+}

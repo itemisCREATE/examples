@@ -4,6 +4,16 @@
 */build*/
 */classes*/
 *.settings*
+# ...but ship the project encoding, or Eclipse warns on every imported example
+!*/.settings
+*/.settings/*
+!*/.settings/org.eclipse.core.resources.prefs
 */target/*
 */.gradle/*
 itemis.create.examples.tictoc.tracing/Debug
+
+# Eclipse workspace state, created when the examples are opened as a workspace
+.metadata/
+
+# macOS Finder metadata
+.DS_Store

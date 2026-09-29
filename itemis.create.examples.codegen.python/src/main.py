@@ -1,6 +1,6 @@
 from light_switch import LightSwitch
-from yakindu.rx import Observer
-from yakindu.timer.timer_service import TimerService
+from create.rx import Observer
+from create.timer.timer_service import TimerService
 
 class Main:
     

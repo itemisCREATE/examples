@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.tracing.python",
+	"title": "Generic Tracing in Python",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to observe everything a generated Python state machine does through one trace observable.",
+	"previewImage": "watch_gears_thumb.jpg",
+	"category": [
+		"open source",
+		"advanced"
+	],
+	"rank":13
+}

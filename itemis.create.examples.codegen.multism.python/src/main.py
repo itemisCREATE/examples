@@ -1,7 +1,7 @@
 from light.light import Light
 from controller.light_controller import LightController
-from yakindu.rx import Observer
-from yakindu.timer.timer_service import TimerService
+from create.rx import Observer
+from create.timer.timer_service import TimerService
 
 
 class Main:

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Completion Transitions</title>
+	<link href="./css/style.css" rel="stylesheet">
+
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Completion Transitions</h1>
+
+		<p>This example demonstrates <b>completion transitions</b>: transitions that carry neither a trigger nor a guard, and fire when the state they leave has <i>completed</i>. The interesting case is a state that owns a sub machine - it completes when the sub machine does, so the owner can wait for a piece of work to finish without any event being exchanged.</p>
+
+		<p>For more details, please also refer to the <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/statechart-language-reference/#sclang_transitions">Transitions</a> and <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/statechart-language-reference/#sclang_final_state">Final state</a> sections of the statechart language reference, and to <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/multi-state-machine-modeling/">Multi state machine modeling</a> for sub machines.</p>
+
+		<h2>Writing One</h2>
+		<p>
+			A completion transition is simply a transition with an empty specification. There is no keyword: what makes it a completion transition is the <b>absence</b> of a trigger and of a guard. The <code>Working</code> state of the <b>worker</b> machine is left by one.
+		</p>
+
+		<h2>When Does a State Complete?</h2>
+		<p>
+			It depends on what the state contains:
+			<ul>
+				<li>A <b>simple state</b> completes as soon as its entry behavior has run - a completion transition leaving it fires immediately.</li>
+				<li>A <b>composite state</b> completes once <i>every</i> one of its regions has reached a final state.</li>
+				<li>A state that owns <b>sub machines</b> completes once every sub machine it owns has completed. A sub machine has completed when each of its top level regions is in a final state.</li>
+				<li>A state that has <b>both</b> completes when both are true: its own regions are final <i>and</i> its sub machines have completed.</li>
+			</ul>
+		</p>
+		<p>
+			A sub machine that cannot complete at all - one whose regions contain no final state - is ignored rather than blocking the owner forever. The statechart editor reports that case as a warning.
+		</p>
+
+		<h2>The Example Model</h2>
+		<p>
+			<b>job</b> is the sub machine that does the work. It walks <code>Prepare</code>, <code>Run</code> and <code>Verify</code>, one <code>step</code> event at a time, and then reaches its final state. Counting the steps in <code>stepsDone</code> makes the progress visible.
+		</p>
+		<p>
+			<b>worker</b> owns it. <code>start</code> moves it from <code>Idle</code> into <code>Working</code>, which embeds the job with <code>submachine task</code>. Nothing leaves <code>Working</code> on an event: the transition to <code>Done</code> is the completion transition, and it fires on the <code>step</code> that takes the job into its final state - not on the two before it.
+		</p>
+		<p>
+			<b>worker</b> itself ends in a final state, so it is completable too. Were it owned by a third machine, that machine's state would complete when <code>ack</code> arrives here.
+		</p>
+
+		<h2>Simulating Completion</h2>
+		<p>
+			Simulate the <b>worker</b> machine and raise <code>start</code>, then <code>task.step</code> three times. The first two steps advance the job only; the third one completes it, and the worker leaves <code>Working</code> in the same run-to-completion step.
+		</p>
+	</div>
+</body>
+</html>

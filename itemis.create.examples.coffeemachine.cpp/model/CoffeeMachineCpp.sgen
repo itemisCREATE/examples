@@ -8,8 +8,7 @@ GeneratorModel for create::cpp {
 		}
 		
 		feature Tracing {
-			enterState = true
-			exitState = true
+			generic = true
 		}
 		
 		feature GeneralFeatures {

@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.basic.submachine",
+	"title": "Embedded Sub Machines",
+	"author": "itemis AG",
+	"description": "This example demonstrates embedded sub machines - a state machine that a state of another state machine owns and runs.",
+	"previewImage": "submachine_thumb.jpg",
+	"category": [
+		"professional",
+		"multi-sm"
+	],
+	"rank":4
+}

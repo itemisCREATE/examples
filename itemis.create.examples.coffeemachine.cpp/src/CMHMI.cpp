@@ -46,6 +46,8 @@ CM_HMI::UserEvents CM_HMI::getUserInput() {
 			break;
 		case 't':
 			return TRACING;
+		case 'v':
+			return VERBOSE_TRACING;
 			break;
 		case 'q':
 			return QUIT;

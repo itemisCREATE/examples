@@ -49,6 +49,9 @@ UserEvents getUserInput() {
 		case 't':
 			cm_trace_active = !cm_trace_active;
 			return NONE;
+		case 'v':
+			cm_trace_verbose = !cm_trace_verbose;
+			return NONE;
 		case 'q':
 			return QUIT;
 		default:

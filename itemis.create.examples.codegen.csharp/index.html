@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>C# Code Generation</title>
+	<link href="./css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>C# Code Generation</h1>
+
+		<p>This example demonstrates how to generate C# code from a statechart. We will use a simple light switch example and focus on the generator model and on the small amount of application code a generated state machine needs around it.</p>
+
+		<p>For more details, please also refer to the <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/code-generation/csharp/">C# code generator</a> section of the user guide.</p>
+
+		<h2>Generator Model</h2>
+		<p>
+			In order to generate code we need to specify which code generator to use and into which folder to generate. For this, we need to create a so-called generator model. To do so,
+			<ul>
+				<li>Select the models folder in the <em>Project Explorer</em></li>
+				<li>Right-click and choose <em>New -&gt; Code generator model</em></li>
+				<li>Follow the wizard to select the C# code generator and the state machine for which you want to generate C# code</li>
+			</ul>
+		</p>
+
+		<p>
+			The new generator model will look similar to this one:
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.codegen.csharp/models/csharp.sgen"></script>
+		</p>
+		<p>
+			<code>Naming.baseNamespace</code> decides the namespace of the generated state machine class; the runtime interfaces go into <code>Itemis.Create.Statemachines</code> and <code>Itemis.Create.Timer</code>, which <code>Naming.libraryNamespace</code> can change. Press [CTRL]+[SPACE] in the generator model to get a list of available features.
+		</p>
+
+		<h2>What the generator produces</h2>
+		<p>
+			Generating writes into <code>src-gen</code>:
+			<ul>
+				<li><code>LightSwitch.cs</code> &ndash; the state machine. Every interface scope of the statechart becomes a nested interface (<code>IUser</code>, <code>ILight</code>) with a property on the machine, so the application talks to <code>statemachine.User</code> and <code>statemachine.Light</code>.</li>
+				<li>Each <em>in</em> event becomes a <code>Raise&lt;Event&gt;()</code> method, each <em>out</em> event a C# <code>event</code>, and each variable a property.</li>
+				<li><code>IStatemachine.cs</code>, <code>IEventDrivenStatemachine.cs</code>, <code>ITimed.cs</code>, <code>ITimerService.cs</code> &ndash; the runtime contracts.</li>
+				<li><code>VirtualTimer.cs</code> &ndash; a virtual clock for tests, which is what the generated SCTUnit tests drive.</li>
+			</ul>
+		</p>
+
+		<h2>Providing a timer service</h2>
+		<p>
+			The statechart uses <code>after 30 s</code>, so it is a timed state machine and needs an <code>ITimerService</code> before <code>Enter()</code> is called. The generator deliberately ships no wall-clock implementation &mdash; what "real time" means belongs to the application &mdash; so this example contains a small one in <code>src/TimerService.cs</code>, built on <code>System.Threading.Timer</code>:
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.codegen.csharp/src/TimerService.cs"></script>
+		</p>
+		<p>
+			Two details are worth copying into your own code. A time event arrives on a timer thread while the console thread may be raising a user event, so every call into the state machine is serialized on one monitor. And because the runtime namespace ends in <code>Timer</code>, the plain name <code>Timer</code> resolves to that namespace rather than to <code>System.Threading.Timer</code> &mdash; hence the <code>using SystemTimer = System.Threading.Timer;</code> alias.
+		</p>
+
+		<h2>The Example Application</h2>
+		<p>
+			The application is an interactive console with which the user can switch the light on or off. The complete application code is in <code>src/Program.cs</code>:
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.codegen.csharp/src/Program.cs"></script>
+		</p>
+		<p>
+			The bullet points are the same as in the Java and Python variants of this example:
+			<ul>
+				<li>Instantiate the state machine</li>
+				<li>Set the timer service</li>
+				<li>Subscribe to the out events of the <code>light</code> interface</li>
+				<li>Enter the state machine; from this point on it is ready to react to incoming events</li>
+				<li>Raise the input events <code>user.on_button</code> and <code>user.off_button</code></li>
+			</ul>
+		</p>
+
+		<h2>Building and running</h2>
+		<p>
+			The project carries a plain SDK-style <code>.csproj</code> that compiles both <code>src</code> and <code>src-gen</code>, so the generated code is part of the build without any further setup:
+		</p>
+		<pre><code>dotnet build
+dotnet run</code></pre>
+		<p>
+			Type <code>On</code> and <code>Off</code> to operate the light; leave it on for 30 seconds to watch the time event switch it off again.
+		</p>
+	</div>
+</body>
+</html>

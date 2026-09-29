@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.tracing.cpp",
+	"title": "Generic Tracing in C++",
+	"author": "itemis AG",
+	"description": "This example demonstrates how to observe everything a generated C++ state machine does through one trace observer.",
+	"previewImage": "watch_gears_thumb.jpg",
+	"category": [
+		"open source",
+		"advanced"
+	],
+	"rank":11
+}

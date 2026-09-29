@@ -1,7 +1,7 @@
 package traffic.light;
 
-import com.yakindu.core.ITimerService;
-import com.yakindu.core.TimerService;
+import itemis.create.core.ITimerService;
+import itemis.create.core.TimerService;
 
 import traffic.light.ui.Counter.Color;
 import traffic.light.ui.TrafficLightFrame;
@@ -43,7 +43,7 @@ public class TrafficlightDemo extends TrafficLightFrame {
 			repaint();
 		});
 		statemachine.timer().getUpdateTimerColour().subscribe((value) -> {
-			crossing.getCounterVis().setColor(value == "Red" ? Color.RED : Color.GREEN);
+			crossing.getCounterVis().setColor("Red".equals(value) ? Color.RED : Color.GREEN);
 		});
 
 		buttonPanel.getPoliceInterrupt().addActionListener(e -> statemachine.raisePolice_interrupt());

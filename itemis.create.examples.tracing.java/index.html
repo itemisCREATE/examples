@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Generic Tracing in Java</title>
+	<link href="./css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Generic Tracing in Java</h1>
+
+		<p>
+			Generic tracing gives a generated state machine one notification channel that reports
+			<em>everything</em> it does: entering and leaving the machine, the start and the end of every
+			run-to-completion step, every state entry, exit and transition, every raised event (incoming
+			and outgoing), every variable write and every time event being set or unset. A single observer
+			receives them all and picks what it is interested in.
+		</p>
+
+		<p>For more details, please also refer to the <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/code-generation/java/#codegen_java_tracing_feature">Tracing feature</a> of the Java code generator.</p>
+		<p>
+			It replaces the <code>enterState</code> / <code>exitState</code> pair of earlier releases,
+			which only reported the first two of those kinds. An existing generator model that still names
+			those parameters keeps validating but produces no tracing code at all, so it has to be
+			migrated:
+		</p>
+		<pre><code>feature Tracing {
+    generic = true
+}</code></pre>
+
+		<h2>The statechart</h2>
+		<p>
+			The model is the light switch used throughout the code generation examples: an event driven
+			state machine with two states, two incoming events, two outgoing events, a
+			<code>brightness</code> variable and a 30&nbsp;second timeout. It is small enough that the
+			whole trace of a session fits on one screen, and it still exercises every kind of trace event
+			but the machine's own exit.
+		</p>
+		<p>
+			The generator model differs from the plain code generation example in exactly one feature:
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.tracing.java/model/tracing.sgen"></script>
+		</p>
+
+		<h2>The observer</h2>
+		<p>
+			The generator adds a <code>getTrace()</code> observable to the machine. A client subscribes an
+			<code>Observer&lt;TraceEvent&lt;LightSwitch, LightSwitch.State, LightSwitch.Feature&gt;&gt;</code>
+			to it and switches on <code>event.getType()</code>. State and feature come back as literals of
+			the machine's own <code>State</code> and <code>Feature</code> enumerations, so nothing has to be
+			parsed out of strings.
+		</p>
+		<p>
+			Subscribe before calling <code>enter()</code> if entering the machine should be traced too.
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.tracing.java/src/itemis/create/examples/tracing/Main.java"></script>
+		</p>
+
+		<h2>Running it</h2>
+		<p>
+			Run <code>Main</code> with <em>Run As &rarr; Java Application</em>, or from the command line:
+		</p>
+		<pre><code>javac -d bin $(find src src-gen -name "*.java")
+java -cp bin itemis.create.examples.tracing.Main</code></pre>
+
+		<p>
+			Operating the light prints the machine's whole behaviour, with the run-to-completion steps
+			visible as blocks:
+		</p>
+		<pre><code>machine entered
+set      BRIGHTNESS = 0
+raised   OFF
+entered  MAIN_REGION_OFF
+
+Type 'on' or 'off' to operate the light, 'quit' to leave.
+on
+raised   ON_BUTTON
+step {
+    leaving  MAIN_REGION_OFF by a transition
+    exited   MAIN_REGION_OFF
+    set      BRIGHTNESS = 1
+    timer    started (0)
+    raised   ON
+    entered  MAIN_REGION_ON
+}</code></pre>
+	</div>
+</body>
+</html>

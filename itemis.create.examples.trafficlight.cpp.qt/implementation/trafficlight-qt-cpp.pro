@@ -31,11 +31,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    machine/sc_cyclebased.h \
+    machine/sc_eventdriven.h \
     machine/sc_qt_timerservice.h \
     machine/sc_rxcpp.h \
     machine/sc_statemachine.h \
     machine/sc_timer.h \
     machine/sc_types.h \
-    machine/StatemachineInterface.h \
-    machine/TimedStatemachineInterface.h \
     machine/TrafficLightStateMachine.h

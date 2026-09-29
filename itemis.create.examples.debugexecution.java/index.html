@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Execution Logging with @DebugExecution</title>
+	<link href="./css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Execution Logging with @DebugExecution</h1>
+
+		<p>
+			<code>@DebugExecution</code> is a statechart annotation. Where it is present, the generator
+			emits a log call for every expression the state machine evaluates: each assignment, each
+			guard and each time event is reported with the source text it came from, with the value of
+			every variable it read, and with the value it produced. It is print debugging for a
+			statechart, without adding a single action to the model.
+		</p>
+
+		<p>For more details on the generator model this example uses, please also refer to the <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/code-generation/java/">Java code generator</a> section of the user guide.</p>
+		<p>
+			Nothing about the generator model changes, and removing the annotation removes the calls
+			again &mdash; the logging is <em>generated</em>, not switched on at run time. That also
+			means it costs nothing in a build that does not carry the annotation.
+		</p>
+
+		<h2>The statechart</h2>
+		<p>
+			A light switch that brightens by one step per press and dims itself again after a while.
+			Each part of it is there to produce one kind of log entry:
+		</p>
+		<pre><code>@EventDriven
+
+// Report every expression the statechart evaluates.
+@DebugExecution
+
+interface:
+	in event on_button
+	in event off_button
+
+	var brightness : integer = 0
+	var step : integer = 1
+	var maxBrightness : integer = 3
+	var timeout : integer = 30
+
+	out event on
+	out event off</code></pre>
+		<p>
+			<ul>
+				<li><b>A guarded transition</b> leaves <code>Off</code>:
+					<code>on_button [brightness &lt; maxBrightness] / brightness = brightness + step</code>.
+					A guard is reported with its own source, whether it held (<code>: true</code> or
+					<code>: false</code>), and the value of each variable it read.</li>
+				<li><b>An assignment that reads other variables</b> is its effect. Every variable read is
+					reported before the write, the result after it.</li>
+				<li><b>A guarded local reaction</b> in <code>On</code> brightens on every further press:
+					<code>on_button [brightness &lt; maxBrightness] / brightness = brightness + step</code>.
+					Its guard is reported exactly like a transition's; at full brightness it reports
+					<code>: false</code> and nothing else happens.</li>
+				<li><b>A time event scheduled from a variable</b> leaves <code>On</code>:
+					<code>off_button, after timeout s / brightness = 0</code>. The trigger is reported together
+					with the value the timer was actually scheduled with, in the unit the statechart wrote.
+					It shares the transition with <code>off_button</code>, and the time event is reported
+					only when it was the timer that fired &mdash; switching off by hand logs the assignment
+					alone.</li>
+			</ul>
+		</p>
+		<p>
+			The last one is worth spelling out: <code>timeout</code> is handed to the timer service in
+			milliseconds, and what the log reports is the value converted back into seconds. That is the
+			number to check when a timer fires at the wrong moment.
+		</p>
+
+		<h2>The generated logger</h2>
+		<p>
+			The generator writes an <code>itemis.create.core.Logger</code> next to the machine and gives
+			the machine a <code>setDebugLog()</code>. The application decides where the entries go: the
+			default logger prints to the console, and the constructor taking a <code>List</code> also
+			appends every entry to it, which is how a test reads back what the machine reported.
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.debugexecution.java/src/itemis/create/examples/debugexecution/Main.java"></script>
+		</p>
+
+		<h2>Running it</h2>
+		<p>
+			Run <code>Main</code> with <em>Run As &rarr; Java Application</em>, or from the command line:
+		</p>
+		<pre><code>javac -d bin $(find src src-gen -name "*.java")
+java -cp bin itemis.create.examples.debugexecution.Main</code></pre>
+		<p>
+			Entering the machine runs the entry action of <code>Off</code>. The first press takes the
+			guarded transition into <code>On</code>, the second is handled by the local reaction, and a
+			press at full brightness only reports the guard that failed. Typing <code>off</code> leaves
+			<code>On</code> by hand, so the entry action of <code>Off</code> runs again:
+		</p>
+		<pre><code>brightness = 0
+  &lt; brightness = 0
+
+Press enter to push the button, type 'off' to switch off, 'quit' to leave.
+The light dims itself 30 seconds after it came on.
+
+(brightness &lt; maxBrightness) : true
+  &gt; brightness = 0
+  &gt; maxBrightness = 3
+brightness = (brightness + step)
+  &gt; brightness = 0
+  &gt; step = 1
+  &lt; brightness = 1
+
+(brightness &lt; maxBrightness) : true
+  &gt; brightness = 1
+  &gt; maxBrightness = 3
+brightness = (brightness + step)
+  &gt; brightness = 1
+  &gt; step = 1
+  &lt; brightness = 2
+
+...
+
+(brightness &lt; maxBrightness) : false
+  &gt; brightness = 3
+  &gt; maxBrightness = 3
+
+off
+brightness = 0
+  &lt; brightness = 0
+brightness = 0
+  &lt; brightness = 0</code></pre>
+		<p>
+			Letting the timeout expire instead reports the time event first, with the value it was
+			scheduled with:
+		</p>
+		<pre><code>after timeout second
+  &lt; timeout = 30
+brightness = 0
+  &lt; brightness = 0
+brightness = 0
+  &lt; brightness = 0</code></pre>
+
+		<h2>@DebugExecution or generic tracing?</h2>
+		<p>
+			They answer different questions. <code>@DebugExecution</code> shows the
+			<em>expressions</em>, as written in the statechart, in the order they were evaluated; it is
+			meant to be read by a person who is debugging a model. Generic tracing
+			(see the <em>Generic Tracing</em> examples) reports the <em>state machine's behaviour</em>
+			&mdash; states, transitions, events, variable writes, time events &mdash; as typed events
+			that a program can react to. Both can be switched on at the same time.
+		</p>
+	</div>
+</body>
+</html>

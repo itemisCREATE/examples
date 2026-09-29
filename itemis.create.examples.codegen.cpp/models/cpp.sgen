@@ -1,5 +1,5 @@
 /* Defines which code generator to use */ 
-GeneratorModel for create::cpp98 {
+GeneratorModel for create::cpp {
 	/* Refers to the statechart model 'LightSwitch' */
 	statechart LightSwitch {
 		/* Specify the target location for the generated artifacts. */

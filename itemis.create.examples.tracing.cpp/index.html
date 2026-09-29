@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Generic Tracing in C++</title>
+	<link href="./css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Generic Tracing in C++</h1>
+
+		<p>
+			Generic tracing gives a generated state machine one notification channel that reports
+			<em>everything</em> it does: entering and leaving the machine, the start and the end of every
+			run-to-completion step, every state entry, exit and transition, every raised event (incoming
+			and outgoing), every variable write and every time event being set or unset. A single observer
+			receives them all and picks what it is interested in.
+		</p>
+
+		<p>For more details, please also refer to the <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/code-generation/cpp/#codegen_cpp_tracing_feature">Tracing feature</a> of the C++ code generator.</p>
+		<p>
+			It replaces the <code>enterState</code> / <code>exitState</code> pair of earlier releases,
+			which only reported the first two of those kinds. An existing generator model that still names
+			those parameters keeps validating but produces no tracing code at all, so it has to be
+			migrated:
+		</p>
+		<pre><code>feature Tracing {
+    generic = true
+}</code></pre>
+
+		<h2>The statechart</h2>
+		<p>
+			The model is the light switch used throughout the code generation examples: an event driven
+			state machine with two states, two incoming events, two outgoing events, a
+			<code>brightness</code> variable and a 30&nbsp;second timeout. It is small enough that the
+			whole trace of a session fits on one screen, and it still exercises every kind of trace event
+			but the machine's own exit.
+		</p>
+		<p>
+			The generator model differs from the plain code generation example in exactly one feature:
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.tracing.cpp/model/tracing.sgen"></script>
+		</p>
+
+		<h2>The observer</h2>
+		<p>
+			The generator adds <code>setTraceObserver()</code> to the machine. The observer implements the
+			single method <code>traceEvent()</code> and switches on <code>event.getType()</code>. The state
+			comes back as a typed <code>LightSwitch::State</code> literal and the declared element as a
+			<code>LightSwitch::LightSwitchFeature</code> literal, so nothing has to be parsed out of strings.
+		</p>
+		<p>
+			One C++ specific detail: <code>getValue()</code> is a <code>const void*</code>, because C++11
+			has no <code>std::any</code>. The static type of the payload follows from the feature it is
+			reported for &mdash; <code>sc::integer</code> for the <code>brightness</code> variable. For an
+			<code>EVENT_RAISED</code> it points at the raiser's own parameter, so read it inside
+			<code>traceEvent()</code> and do not keep the pointer.
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.tracing.cpp/src/main.cpp"></script>
+		</p>
+
+		<h2>Running it</h2>
+		<pre><code>clang++ -std=c++11 -Isrc-gen -o tracing src/main.cpp src-gen/LightSwitch.cpp src-gen/sc_timer_service.cpp
+./tracing</code></pre>
+
+		<p>
+			Operating the light prints the machine's whole behaviour, with the run-to-completion steps
+			visible as blocks:
+		</p>
+		<pre><code>machine entered
+set      brightness = 0
+raised   off
+entered  main_region_Off
+
+Type 'on' or 'off' to operate the light, 'quit' to leave.
+on
+raised   on_button
+step {
+    leaving  main_region_Off by a transition
+    exited   main_region_Off
+    set      brightness = 1
+    timer    started
+    raised   on
+    entered  main_region_On
+}</code></pre>
+	</div>
+</body>
+</html>

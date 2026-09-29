@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Embedded Sub Machines</title>
+	<link href="./css/style.css" rel="stylesheet">
+
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>Embedded Sub Machines</h1>
+
+		<p>This example demonstrates <b>embedded sub machines</b>: a state machine that a state of another state machine owns, enters, runs and exits. It is the counterpart of the <b>Multi State Machines</b> example, which uses the same import mechanism but keeps every machine's life cycle in the hands of the client.</p>
+
+		<p>For more details, please also refer to the <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/multi-state-machine-modeling/">Multi state machine modeling</a> section of the user guide.</p>
+
+		<h2>Declaring a Sub Machine</h2>
+		<p>
+			A state machine becomes embeddable by annotating it with <code>@SubMachine</code>. In this example the <b>dimmer</b> machine carries that annotation:
+		</p>
+		<p>
+			<code>@SubMachine</code><br/>
+		</p>
+		<p>
+			The annotation changes what is generated for it: an embedded sub machine has <b>no run cycle of its own</b>. It is never stepped by a client and never by a timer - only by the owner it is embedded in.
+		</p>
+
+		<h2>Embedding it in a State</h2>
+		<p>
+			The owner imports the machine and declares a variable of that type, exactly as for any other imported state machine:
+		</p>
+		<p>
+			<code>import: "dimmer.ysc"</code><br/>
+			<code>var ceiling : dimmer</code>
+		</p>
+		<p>
+			What makes it <i>embedded</i> is the <code>submachine</code> keyword in a state's specification. The <b>On</b> state of the <b>lamp</b> machine embeds two dimmers:
+		</p>
+		<p>
+			<code>submachine ceiling</code><br/>
+			<code>submachine reading</code>
+		</p>
+
+		<h2>What the Owner Takes Over</h2>
+		<p>
+			Embedding hands three responsibilities to the owning state:
+			<ul>
+				<li><b>Life cycle.</b> Entering the state enters the sub machine, leaving it exits the sub machine. Nobody calls <code>enter</code> or <code>exit</code> on it. Exiting the owner exits every sub machine it has active.</li>
+				<li><b>Execution.</b> The sub machine runs inside the owner's run-to-completion step. There is no separate cycle to schedule and no ordering to get right between the two.</li>
+				<li><b>Multiplicity.</b> A state may embed several sub machines, as <b>On</b> does here. All of them are entered, cycled and exited together.</li>
+			</ul>
+		</p>
+
+		<h2>Talking to a Sub Machine</h2>
+		<p>
+			A sub machine keeps its own interface, and the variable that holds it is how the owner reaches it. The <code>On</code> state forwards the lamp's <code>brighten</code> event to both dimmers:
+		</p>
+		<p>
+			<code>brighten /</code><br/>
+			<code>raise ceiling.step;</code><br/>
+			<code>raise reading.step</code>
+		</p>
+		<p>
+			The other direction works as well: a sub machine's <b>out events</b> and variables are visible to the owner. Here the <code>ceiling</code> dimmer raises <code>maxReached</code> when it reaches full brightness, and the lamp treats that as a reason to switch off - the transition leaving <code>On</code> triggers on either the client's <code>toggle</code> or the sub machine's event:
+		</p>
+		<p>
+			<code>toggle,</code><br/>
+			<code>ceiling.maxReached</code>
+		</p>
+		<p>
+			Raising an event on a sub machine also drives the owner: the raise starts the owner's run-to-completion step, and the sub machine is stepped as part of it. If the embedding state is not active the step still happens, but the sub machine is not running and does not consume the event.
+		</p>
+
+		<h2>The Example Model</h2>
+		<p>
+			<b>lamp</b> is the owner. It is <code>Off</code> until <code>toggle</code> switches it <code>On</code>, and the <code>On</code> state embeds the two <b>dimmer</b> sub machines <code>ceiling</code> and <code>reading</code>.
+		</p>
+		<p>
+			<b>dimmer</b> is the sub machine. It alternates between <code>Dim</code> and <code>Bright</code> on every <code>step</code> event, reports its level in the <code>brightness</code> variable and raises <code>maxReached</code> when it reaches the top. Switching the lamp off exits both dimmers; switching it on again starts them from their entry state.
+		</p>
+
+		<h2>Simulating Embedded Sub Machines</h2>
+		<p>
+			Simulate the owner, in this example the <b>lamp</b> machine. Its sub machines are simulated with it and can be selected in the simulation view - they become active when <code>On</code> is entered and inactive again when it is left.
+		</p>
+	</div>
+</body>
+</html>

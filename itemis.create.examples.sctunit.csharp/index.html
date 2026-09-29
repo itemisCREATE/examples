@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>C# Code Generation for SCTUnit with NUnit</title>
+	<link href="./css/style.css" rel="stylesheet">
+</head>
+<body class="body-container">
+	<div class="primary">
+
+		<h1>C# Code Generation for SCTUnit with NUnit</h1>
+
+		<p>
+			SCTUnit lets you write tests for a statechart in terms of the statechart: enter the machine,
+			raise events, let virtual time pass, and assert which states are active and which events
+			were raised. This example generates those tests as an <a href="https://nunit.org">NUnit</a>
+			fixture, with <a href="https://github.com/devlooped/moq">Moq</a> standing in for the
+			statechart's operations.
+		</p>
+
+		<p>For more details, please also refer to <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/testing-state-machines/#sctunit_the_sctunit_language">The SCTUnit language</a> and to the <a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/code-generation/csharp/">C# code generator</a> section of the user guide.</p>
+
+		<h2>The test</h2>
+		<p>
+			The test class is the same one the C, C++, Java and Python SCTUnit examples use, so the
+			four generated fixtures can be compared side by side:
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.sctunit.csharp/tests/light_switch_test.sctunit"></script>
+		</p>
+
+		<h2>Two generator models</h2>
+		<p>
+			One generates the state machine under test, the other the NUnit fixture. Both write into
+			<code>src-gen</code>, so the test project compiles one folder:
+		</p>
+		<p>
+			<script src="https://gist-it.appspot.com/github/itemisCREATE/examples/blob/release6/itemis.create.examples.sctunit.csharp/tests/csharp_test.sgen"></script>
+		</p>
+		<p>
+			Two settings are worth pointing out. The statechart's generator model switches
+			<code>OutEventAPI { getters = true }</code> on, because the fixture asserts about out events
+			by reading the machine's own <code>&lt;Event&gt;Raised</code> members &mdash; the machine
+			clears those when a run cycle starts, which is what makes an assertion after
+			<code>proceed</code> mean the right thing. And the test's generator model names both
+			namespaces: its own in <code>Naming</code>, and the machine's in
+			<code>StatechartNaming</code>, since the machine is produced by the other generator model.
+		</p>
+
+		<h2>What the generator produces</h2>
+		<p>
+			The fixture carries a <code>[SetUp]</code> that builds a fresh state machine, a
+			<code>VirtualTimer</code> and a <code>Mock</code> per operation callback, one
+			<code>[Test]</code> per <code>@Test</code> operation of the test class, and a private
+			method per helper operation. Assertions about out events read the machine's own
+			<code>&lt;Event&gt;Raised</code> members, exactly as the C, C++, Java and Python fixtures read
+			theirs; <code>proceed</code> becomes a leap of the virtual timer, so no test ever waits for
+			real time.
+		</p>
+
+		<h2>Running the tests</h2>
+		<pre><code>dotnet test</code></pre>
+	</div>
+</body>
+</html>

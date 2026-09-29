@@ -1,0 +1,21 @@
+/* Defines which code generator to use */ 
+GeneratorModel for create::csharp {
+	/* Refers to the statechart model 'LightSwitch' */
+	statechart LightSwitch {
+		/* Specify the target location for the generated artifacts. */
+		feature Outlet {
+			targetProject = "itemis.create.examples.sctunit.csharp"
+			targetFolder = "src-gen"
+		}
+		/* Specify namespaces */
+		feature Naming {
+			baseNamespace = "Itemis.Create.Examples.Sctunit.Csharp"
+		}
+		/* The generated NUnit fixture asserts about out events by reading the machine's own
+		   '<Event>Raised' members, which the machine clears when a run cycle starts - so the
+		   machine has to expose them. */
+		feature OutEventAPI {
+			getters = true
+		}
+	}
+}

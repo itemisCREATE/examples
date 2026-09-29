@@ -42,6 +42,7 @@ void setup() {
 	cout << "general commands are:" << endl;
 	cout << "(o) toggle on/off" << endl;
 	cout << "(t) toggle state trace" << endl;
+	cout << "(v) toggle verbose trace" << endl;
 	cout << "(q) quit" << endl;
 
 	sm->setCm(machine);
@@ -68,6 +69,9 @@ void loop() {
 	}
 	if (userInput == CM_HMI::TRACING) {
 		tracer->cm_trace_active = !tracer->cm_trace_active;
+	}
+	if (userInput == CM_HMI::VERBOSE_TRACING) {
+		tracer->cm_trace_verbose = !tracer->cm_trace_verbose;
 	}
 	last_time = current_time;
 	nanosleep(&sleep_time, 0);

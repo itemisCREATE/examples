@@ -1,0 +1,12 @@
+{
+	"id": "itemis.create.examples.debugexecution.java",
+	"title": "Execution Logging with @DebugExecution",
+	"author": "itemis AG",
+	"description": "This example demonstrates how @DebugExecution makes a generated state machine report every expression it evaluates.",
+	"previewImage": "watch_gears_thumb.jpg",
+	"category": [
+		"open source",
+		"advanced"
+	],
+	"rank":14
+}

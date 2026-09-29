@@ -7,7 +7,7 @@ You could choose between two _APIs_: _trafficscene_ and _trafficscene2_.
 """
 
 from traffic_light_ctrl import TrafficLightCtrl
-from yakindu.timer.timer_service import TimerService
+from create.timer.timer_service import TimerService
 
 # using RPi.GPIO:
 from trafficscene import TrafficLightSystem 

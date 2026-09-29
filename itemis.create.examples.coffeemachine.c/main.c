@@ -5,6 +5,7 @@
 #include <sys/time.h>
 
 #include "src/cm_hmi.h"
+#include "src/cm_trace.h"
 #include "src-gen/CoffeeMachine.h"
 #include "src-gen/sc_timer_service.h"
 
@@ -58,6 +59,7 @@ void setUp() {
 	puts("general commands are:");
 	puts("(o) toggle on/off");
 	puts("(t) toggle state trace");
+	puts("(v) toggle verbose trace");
 	puts("(q) quit");
 
 	// We initialize the timer service with everything it requires.
@@ -65,7 +67,7 @@ void setUp() {
 			(sc_raise_time_event_fp) &coffeeMachine_raise_time_event);
 
 	// then we initialize
-	coffeeMachine_init(&coffee_state_machine);
+	coffeeMachine_init_with_tracing(&coffee_state_machine, cm_trace_handler());
 	// ... and enter the state machine
 	coffeeMachine_enter(&coffee_state_machine);
 

@@ -15,7 +15,6 @@ static const char *stateNames[] = { //
 		"InvalidState", //
 				"Off", //
 				"On", //
-				"On.Welcome", //
 				"On.HeatingUp", //
 				"On.WaitForChoice", //
 				"On.SaveEnergy", //
@@ -33,8 +32,7 @@ static const char *featureNames[] = { //
 				"userEvent", //
 				"internal.recipe", //
 				"internal.lastChoice", //
-				"internal.processing", //
-				"internal.userInput" //
+				"internal.processing" //
 		};//
 
 bool cm_trace_active = true;

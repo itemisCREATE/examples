@@ -59,7 +59,7 @@ private:
 			};
 
 	/*! Indexed by CoffeeMachineCpp::CoffeeMachineCppFeature. */
-	std::string featureNames[13] = { //
+	std::string featureNames[12] = { //
 			"userEvent",
 			"Wait_For_Choice.time_event_0",
 			"Milling_Beans.time_event_0",
@@ -71,8 +71,7 @@ private:
 			"hmi",
 			"internal.recipe",
 			"internal.lastChoice",
-			"internal.processing",
-			"internal.userInput"
+			"internal.processing"
 			};
 };
 

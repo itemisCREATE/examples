@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_O39IYAClEea895739UzP5A" specification="@EventDriven&#xA;@ParentFirstExecution&#xA;&#xA;import: &quot;../src/CoffeeMachine.hpp&quot;&#xA;import : &quot;../src/CMHMI.hpp&quot;&#xA; &#xA;interface:&#xA;&#xA;in event userEvent : CM_HMI.UserEvents&#xA;var cm : Coffee_Machine&#xA;var hmi : CM_HMI&#xA; &#xA;internal:&#xA;&#xA;var recipe:Coffee_Machine.cm_recipe_t&#xA;var lastChoice : CM_HMI.UserEvents&#xA;var processing : bool = false&#xA;&#xA;// we store the value of the user event&#xA;var userInput :CM_HMI.UserEvents&#xA;always / userInput =CM_HMI. UserEvents.NONE&#xA;userEvent / userInput = valueof (userEvent)&#xA;&#xA;&#xA;/* we simulate the heater here */&#xA;every 200ms / cm.updateHeating(2)&#xA;&#xA;/* processing user feedback  */&#xA;every 500ms [processing]/ hmi.show(&quot;.&quot;)" name="CoffeeMachineCpp" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_O39IYAClEea895739UzP5A" specification="@EventDriven&#xA;&#xA;import: &quot;../src/CoffeeMachine.hpp&quot;&#xA;import : &quot;../src/CMHMI.hpp&quot;&#xA; &#xA;interface:&#xA;&#xA;in event userEvent : CM_HMI.UserEvents&#xA;var cm : Coffee_Machine&#xA;var hmi : CM_HMI&#xA; &#xA;internal:&#xA;&#xA;var recipe:Coffee_Machine.cm_recipe_t&#xA;var lastChoice : CM_HMI.UserEvents&#xA;var processing : bool = false&#xA;&#xA;/* we simulate the heater here */&#xA;every 200ms / cm.updateHeating(2)&#xA;&#xA;/* processing user feedback  */&#xA;every 500ms [processing]/ hmi.show(&quot;.&quot;)" name="CoffeeMachineCpp" domainID="com.yakindu.domain.c">
     <regions xmi:id="_O4n2wAClEea895739UzP5A" name="main">
       <vertices xsi:type="sgraph:Entry" xmi:id="_O58scAClEea895739UzP5A">
         <outgoingTransitions xmi:id="_O6HrkAClEea895739UzP5A" target="_O5_vwAClEea895739UzP5A"/>
       </vertices>
       <vertices xsi:type="sgraph:State" xmi:id="_O5_vwAClEea895739UzP5A" specification="entry / cm.stopHeating" name="Off" incomingTransitions="_O6HrkAClEea895739UzP5A _S9MgYAFeEea895739UzP5A">
-        <outgoingTransitions xmi:id="_kd1XgAFcEea895739UzP5A" specification="[userInput ==  CM_HMI.UserEvents.ON_OFF]" target="_b-92YACvEea895739UzP5A"/>
+        <outgoingTransitions xmi:id="_kd1XgAFcEea895739UzP5A" specification="userEvent [userEvent.value == CM_HMI.UserEvents.ON_OFF]" target="_b-92YACvEea895739UzP5A"/>
       </vertices>
       <vertices xsi:type="sgraph:State" xmi:id="_b-92YACvEea895739UzP5A" specification="entry / hmi.show(&quot;** Welcome to CREATE Coffee Maker **\n&quot;)" name="On" incomingTransitions="_kd1XgAFcEea895739UzP5A">
-        <outgoingTransitions xmi:id="_S9MgYAFeEea895739UzP5A" specification="[userInput == CM_HMI.UserEvents.ON_OFF]" target="_O5_vwAClEea895739UzP5A"/>
+        <outgoingTransitions xmi:id="_S9MgYAFeEea895739UzP5A" specification="userEvent [userEvent.value == CM_HMI.UserEvents.ON_OFF]" target="_O5_vwAClEea895739UzP5A"/>
         <regions xmi:id="_EQQ6cAF1Eea895739UzP5A" name="r">
           <vertices xsi:type="sgraph:Entry" xmi:id="_E_xEwAF1Eea895739UzP5A">
             <outgoingTransitions xmi:id="_FZ1xoAF1Eea895739UzP5A" specification="" target="_qGqp0AHAEealScXSNgVnFg"/>
@@ -19,12 +19,12 @@
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="_pB-yUAHDEealScXSNgVnFg" specification="entry / &#xA;hmi.show(&quot;* choose:\n&quot;);&#xA;hmi.show(&quot;(1) coffee\n&quot;); &#xA;hmi.show(&quot;(2) espresso\n&quot;);&#xA;hmi.show(&quot;(3) cappucino\n&quot;);&#xA;hmi.show(&quot;(4) latte macchiato\n&quot;);&#xA;hmi.show(&quot;(5) milk\n&quot;)" name="Wait For Choice" incomingTransitions="_x071sAHDEealScXSNgVnFg _5WzaIAIPEealScXSNgVnFg">
             <outgoingTransitions xmi:id="_ANNbcAHHEealScXSNgVnFg" specification="after 30s" target="_8IKRoAHGEealScXSNgVnFg"/>
-            <outgoingTransitions xmi:id="_mUQBIAINEealScXSNgVnFg" specification="[ CM_HMI.UserEvents.COFFEE &lt;= userInput &amp;&amp; &#xA;  userInput &lt;= CM_HMI.UserEvents.MILK ] &#xA;  / recipe = cm.get_recipe(userInput)&#xA;&#xA;// set recipe in simulation manually &#xA;" target="_YR0O4AISEealScXSNgVnFg"/>
+            <outgoingTransitions xmi:id="_mUQBIAINEealScXSNgVnFg" specification="userEvent [ CM_HMI.UserEvents.COFFEE &lt;= userEvent.value &amp;&amp; &#xA;  userEvent.value &lt;= CM_HMI.UserEvents.MILK ]  &#xA;/ lastChoice = userEvent.value;&#xA;  recipe = cm.get_recipe(lastChoice)&#xA;&#xA;// set recipe in simulation manually &#xA;" target="_YR0O4AISEealScXSNgVnFg"/>
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="_8IKRoAHGEealScXSNgVnFg" specification="entry / cm.stopHeating;&#xA; &#x9;hmi.show(&quot;* save energy - continue with any command ...\n&quot;)" name="Save Energy" incomingTransitions="_ANNbcAHHEealScXSNgVnFg">
-            <outgoingTransitions xmi:id="_FE9NgAHHEealScXSNgVnFg" specification="[userInput != CM_HMI.UserEvents.NONE]" target="_qGqp0AHAEealScXSNgVnFg"/>
+            <outgoingTransitions xmi:id="_FE9NgAHHEealScXSNgVnFg" specification="userEvent [userEvent.value != CM_HMI.UserEvents.ON_OFF]" target="_qGqp0AHAEealScXSNgVnFg"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_EQtfwAIMEealScXSNgVnFg" specification="entry / hmi.showPrepare(userInput); lastChoice = userInput; processing = true&#xA;exit / processing = false" name="Process Recipe">
+          <vertices xsi:type="sgraph:State" xmi:id="_EQtfwAIMEealScXSNgVnFg" specification="entry / hmi.showPrepare(lastChoice); processing = true&#xA;exit / processing = false" name="Process Recipe">
             <outgoingTransitions xmi:id="_5WzaIAIPEealScXSNgVnFg" specification="/ hmi.showDone(lastChoice)" target="_pB-yUAHDEealScXSNgVnFg"/>
             <regions xmi:id="_dEXmoAIMEealScXSNgVnFg" name="r">
               <vertices xsi:type="sgraph:Choice" xmi:id="_YR0O4AISEealScXSNgVnFg" incomingTransitions="_mUQBIAINEealScXSNgVnFg">

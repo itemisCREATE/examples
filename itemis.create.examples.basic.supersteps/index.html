@@ -37,7 +37,7 @@ You can think of the superstep semantic as a loop which performs a regular step 
 } while (stateEntered)</code>
 </pre>
 <p>
-Please note, the flag <code>stateEntered</code> is set to <code>true</code> inside a </code>microStep</code> whenever a state is entered. During the execution of a superstep all activated events remain active. The choice of superstep semantics has no impact on the semantic variants specified by other annotations like event-driven or cycle-based state machines, event buffering or parent-first / child-first execution order.
+Please note, the flag <code>stateEntered</code> is set to <code>true</code> inside a </code>microStep</code> whenever a state is entered. During the execution of a superstep all activated events remain active. The choice of superstep semantics has no impact on the semantic variants specified by other annotations like event-driven or cycle-based state machines or event buffering.
 </p>
 <p>
 Local events can also lead to a multi-step execution of a state machine. The execution of these multiple steps are a result of the iterative processing of the local event buffer. Supersteps are applied to each of these local event processing steps. So event loops are executed on a higher execution level than supersteps. To sum up, let's take a look at a slightly more complicated example:

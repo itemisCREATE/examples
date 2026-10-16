@@ -2,27 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ESP32 - Target Execution Debugging (C)</title>
+<title>ESP32 - Target Animation &amp; Supervision (C)</title>
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
 	<div class="primary">
 		<b style='color:red;font-size: 2em;'>DISCLAIMER: This example only work with UNIX based systems due to the nature of Eclipse console</b>
-		<h1>Debug and remote control an ESP32 state machine with TED</h1>
+		<h1>Animate and supervise an ESP32 state machine with TAS</h1>
 		<p>
 			<iframe width="960" height="540" src="https://www.youtube.com/embed/A4qGZ1E2mEM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 			<p>
-			Target Execution Debugging (TED) shows a state machine that runs on your target at model level:
+			Target Animation &amp; Supervision (TAS) shows a state machine that runs on your target at model level:
 			the target reports each execution step, and itemis CREATE shows the active states, the raised
 			events and the variable values in the statechart diagram. While the target is connected, you can
-			also raise events and change variables from the simulation view. This example debugs a state
+			also raise events and change variables from the simulation view. This example animates and supervises a state
 			machine running on an ESP32. Please refer to the
-			<a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/target-execution-debugging">TED documentation</a>
+			<a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/target-animation-supervision">TAS documentation</a>
 			for more information.
 		</p>
 
-		<img class="tiny" alt="Debugging the target using TED" src="images/ted_target_execution_debugging.png" />
+		<img class="tiny" alt="Animating and supervising the target with TAS" src="images/tas_target_animation_supervision.png" />
 
 		<h2>ESP32 blinky LED example</h2>
 		<p>
@@ -30,14 +30,14 @@
 			Once the Blink state is active, the state machine toggles between the <i>Off</i> and <i>On</i> state. By setting the delay variable, the time for the after
 			trigger can be changed.
 		</p>			
-		<img class= "small" alt="Remote debugging a statechart" src="images/blinky.png" />
+		<img class= "small" alt="Supervising a statechart remotely" src="images/blinky.png" />
 
 		<p>
 			This state machine is executed within an interactive application. This application can be used 
 			from the command line. It reads user input from the standard input and writes to the standard output.
-			It is built to run on an ESP32. The debugger runs on any other machine; both have to be in the same
-			local network. The state machine is generated with generic tracing from <i>model/sm.sgen</i>, its TED
-			tracer with <code>create::c::ted</code> from <i>model/ted.sgen</i>.
+			It is built to run on an ESP32. itemis CREATE runs on any other machine; both have to be in the same
+			local network. The state machine is generated with generic tracing from <i>model/sm.sgen</i>, its TAS
+			tracer with <code>create::c::tas</code> from <i>model/tas.sgen</i>.
 		</p>
 			
 		<h2>Building, flashing and running the application</h2>
@@ -45,16 +45,16 @@
 		using our example wizard, you can start skip the first part and start with <a href="https://github.com/espressif/idf-eclipse-plugin/blob/master/README.md#installing-esp-idf-tools">Installing ESP-IDF Tools</a>.
 		<p>
 			The instructions contain detailed explanations of how to set up the environment, compile the program and flash the binary on the ESP32. It also shows how a terminal can be added. Your WiFi SSID and password must be set in the sdkconfig file. <img class= "small" alt="WiFi settings" src="images/wifi_settings.png" /></p>
-		</p>If you're running the application via UDP you must set the IP of the machine, which runs the debugger:<code>#define SCT_IP "Add your IP here"</code>. The simplest way finding your ip address using <code>ifconfing</code> on linux or mac and <code>ipconfing</code> on windows. It should be something like 192.168.0.42</p>
+		</p>If you're running the application via UDP you must set the IP of the machine, which runs itemis CREATE:<code>#define SCT_IP "Add your IP here"</code>. The simplest way finding your ip address using <code>ifconfing</code> on linux or mac and <code>ipconfing</code> on windows. It should be something like 192.168.0.42</p>
 
 
-		<h2>Debugging the state machine</h2>
+		<h2>Animating and supervising the state machine</h2>
 		<p>
-			Choose <i>Run As > Target Execution Debugging (Beta)</i> from the context menu of <i>model/blink.ysc</i>
+			Choose <i>Run As > Target Animation &amp; Supervision (Beta)</i> from the context menu of <i>model/blink.ysc</i>
 			in the statechart editor or the project explorer.
 		</p>
 
-		<img class= "small" alt="Starting a trace debug session" src="images/ted_launch_trace_debugging.png" />
+		<img class= "small" alt="Starting a TAS session" src="images/tas_launch.png" />
 		
 		<p>
 			In its run configuration, choose <i>Read trace from UDP socket</i> on the tab <i>Statechart Trace</i>, with port 4444,

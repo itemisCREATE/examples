@@ -9,10 +9,10 @@
 #define HMI_H_
 
 #include "sc/sm/blink.h"
-#include "sc/util/ted_logger.h"
-#include "sc/util/ted_udp_stream.h"
+#include "sc/util/tas_logger.h"
+#include "sc/util/tas_udp_stream.h"
 
-extern void hmi_init(Blink* machine, ted_logger* logger, ted_udp_stream* udp_trace);
+extern void hmi_init(Blink* machine, tas_logger* logger, tas_udp_stream* udp_trace);
 
 extern void hmi_proceed();
 

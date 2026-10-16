@@ -9,10 +9,10 @@
 #define HMI_H_
 
 #include "sc/tictoc.h"
-#include "sc/util/ted_logger.h"
-#include "sc/util/ted_udp_stream.h"
+#include "sc/util/tas_logger.h"
+#include "sc/util/tas_udp_stream.h"
 
-extern void hmi_init(Tictoc* machine, ted_logger* logger, ted_udp_stream* udp_trace);
+extern void hmi_init(Tictoc* machine, tas_logger* logger, tas_udp_stream* udp_trace);
 
 extern void hmi_proceed();
 

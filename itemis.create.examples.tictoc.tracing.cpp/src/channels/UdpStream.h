@@ -8,7 +8,7 @@
 
 namespace channels {
 
-/*! Sends TED messages to the debugger over UDP, one message per datagram, and receives its stimuli. */
+/*! Sends TAS messages to the debugger over UDP, one message per datagram, and receives its stimuli. */
 class UdpStream
 {
 public:

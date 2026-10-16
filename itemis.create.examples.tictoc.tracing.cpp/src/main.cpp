@@ -18,10 +18,10 @@ const std::size_t MAX_TIMERS = 3;
 const std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
 }
 
-/* The TED runtime asks the application for the time of every update, in milliseconds. */
-sc::ted::Timestamp sc::ted::currentTimestamp()
+/* The TAS runtime asks the application for the time of every update, in milliseconds. */
+sc::tas::Timestamp sc::tas::currentTimestamp()
 {
-	return static_cast<sc::ted::Timestamp>(
+	return static_cast<sc::tas::Timestamp>(
 		std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start).count());
 }
 
@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 	/* The tracer registers itself with the state machine. */
 	TictocTracer tracer(machine);
 
-	channels::FileWriter file("trace.ted");
+	channels::FileWriter file("trace.tas");
 	channels::UdpStream stream(ip, port);
 	channels::Logger log;
 
@@ -58,10 +58,10 @@ int main(int argc, char** argv)
 
 	machine.enter();
 
-	sc::ted::Timestamp last = sc::ted::currentTimestamp();
+	sc::tas::Timestamp last = sc::tas::currentTimestamp();
 	while (true) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
-		sc::ted::Timestamp now = sc::ted::currentTimestamp();
+		sc::tas::Timestamp now = sc::tas::currentTimestamp();
 		timerService.proceed(static_cast<sc::time>(now - last));
 		last = now;
 		hmi.proceed();

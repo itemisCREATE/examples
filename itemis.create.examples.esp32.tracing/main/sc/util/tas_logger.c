@@ -1,26 +1,26 @@
 /*
- * ted_logger.c
+ * tas_logger.c
  *
  *  Created on: 31.03.2020
  *      Author: terfloth
  */
 
 
-#include "ted_logger.h"
+#include "tas_logger.h"
 #include <stdio.h>
 
-static void next_receive(ted_logger* self, char* msg)
+static void next_receive(tas_logger* self, char* msg)
 {
 	if (self->enabled) printf("receive: %s", msg);
 }
 
-static void next_send(ted_logger* self, char* msg)
+static void next_send(tas_logger* self, char* msg)
 {
 	if (self->enabled) printf("send: %s", msg);
 }
 
 
-void ted_logger_init(ted_logger* self)
+void tas_logger_init(tas_logger* self)
 {
 	self->enabled = true;
 

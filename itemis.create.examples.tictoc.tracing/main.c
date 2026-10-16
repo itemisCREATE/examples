@@ -15,9 +15,9 @@
 #include "sc/tictoc.h"
 #include "sc/tictoc_tracer.h"
 #include "sc/tictoc_required.h"
-#include "sc/util/ted_file.h"
-#include "sc/util/ted_udp_stream.h"
-#include "sc/util/ted_logger.h"
+#include "sc/util/tas_file.h"
+#include "sc/util/tas_udp_stream.h"
+#include "sc/util/tas_logger.h"
 
 #include "hmi.h"
 
@@ -60,7 +60,7 @@ unsigned long get_ms() {
 
 
 /*! Function to retrieve the current timestamp, ideally in milliseconds. */
-ted_timestamp ted_current_timestamp() {
+tas_timestamp tas_current_timestamp() {
 	unsigned long ms = get_ms();
 	unsigned long timestamp =  ms - timestamp_offset;
 	return timestamp;
@@ -74,12 +74,12 @@ ted_timestamp ted_current_timestamp() {
 /* The state machine is allocated statically. */
 Tictoc tictoc;
 
-/* Also the TED tracer is allocated statically. */
-ted_sc_tracer tictocTracer;
+/* Also the TAS tracer is allocated statically. */
+tas_sc_tracer tictocTracer;
 
-ted_file_writer ted_file;
-ted_udp_stream  ted_stream;
-ted_logger		ted_log;
+tas_file_writer tas_file;
+tas_udp_stream  tas_stream;
+tas_logger		tas_log;
 
 
 char * udp_ip(int argc, char **argv) {
@@ -120,26 +120,26 @@ void setup(int argc, char **argv) {
 	tictoc_init_sc_tracer(&tictocTracer, &tictoc, sc_null);
 
 	/* initialize different physical channels for the execution trace.
-	 * These include a TED trace file, a UDP based TED stream, and a stdout logger.
+	 * These include a TAS trace file, a UDP based TAS stream, and a stdout logger.
 	 * Custom channels could be added. */
-	ted_file_writer_init(&ted_file, "trace.ted");
-	ted_udp_stream_init(&ted_stream, ip, port);
-	ted_logger_init(&ted_log);
+	tas_file_writer_init(&tas_file, "trace.tas");
+	tas_udp_stream_init(&tas_stream, ip, port);
+	tas_logger_init(&tas_log);
 
-	/* Connect incoming messages from the UDP TED stream to the tracer and the logger. */
-	sc_single_subscription_observer_sc_string_subscribe(&(ted_log.receive_logger), &(ted_stream.received_messages));
-	sc_single_subscription_observer_sc_string_subscribe(&(tictocTracer.scope.message_receiver), &(ted_stream.received_messages));
+	/* Connect incoming messages from the UDP TAS stream to the tracer and the logger. */
+	sc_single_subscription_observer_sc_string_subscribe(&(tas_log.receive_logger), &(tas_stream.received_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(tictocTracer.scope.message_receiver), &(tas_stream.received_messages));
 
 	/* Connect outgoing message stream to all physical channels */
-	sc_single_subscription_observer_sc_string_subscribe(&(ted_log.send_logger), &(tictocTracer.scope.trace_messages));
-	sc_single_subscription_observer_sc_string_subscribe(&(ted_file.message_writer), &(tictocTracer.scope.trace_messages));
-	sc_single_subscription_observer_sc_string_subscribe(&(ted_stream.message_sender), &(tictocTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(tas_log.send_logger), &(tictocTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(tas_file.message_writer), &(tictocTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(tas_stream.message_sender), &(tictocTracer.scope.trace_messages));
 
-	/* start the UDP TED stream */
-	ted_udp_stream_connect(&ted_stream);
+	/* start the UDP TAS stream */
+	tas_udp_stream_connect(&tas_stream);
 
 	/* init the hmi */
-	hmi_init(&tictoc, &ted_log, &ted_stream);
+	hmi_init(&tictoc, &tas_log, &tas_stream);
 	hmi_help();
 
 	/* activate the state machine */
@@ -158,12 +158,12 @@ void loop() {
 	while(bool_true) {
 		nanosleep(&sleep, 0);
 
-		ted_timestamp time = ted_current_timestamp();
+		tas_timestamp time = tas_current_timestamp();
 		sc_timer_service_proceed(&timer_service, time - last_time);
 		last_time = time;
 
 		hmi_proceed();
-		ted_udp_stream_receive(&ted_stream);
+		tas_udp_stream_receive(&tas_stream);
 
 	}
 }

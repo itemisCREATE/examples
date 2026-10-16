@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>TicToc - Target Execution Debugging (C)</title>
+<title>TicToc - Target Animation &amp; Supervision (C)</title>
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
 	<div class="primary">
 		<b style='color:red;font-size: 2em;'>DISCLAIMER: This example only works on UNIX based systems due to the nature of the Eclipse console</b>
-		<h1>Debug and remote control a C state machine with TED</h1>
+		<h1>Animate and supervise a C state machine with TAS</h1>
 		<p>
-			Target Execution Debugging (TED) shows a state machine that runs in your application at model level:
+			Target Animation &amp; Supervision (TAS) shows a state machine that runs in your application at model level:
 			the application reports each execution step, and itemis CREATE shows the active states, the raised
 			events and the variable values in the statechart diagram. While the application is connected, you
 			can also raise events and change variables from the simulation view. Please refer to the
-			<a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/target-execution-debugging">TED documentation</a>
+			<a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/target-animation-supervision">TAS documentation</a>
 			for more information.
 		</p>
 
-		<img class="tiny" alt="Debugging the target using TED" src="images/ted_target_execution_debugging.png" />
+		<img class="tiny" alt="Animating and supervising the target with TAS" src="images/tas_target_animation_supervision.png" />
 
 		<h2>The Tic-Toc example application</h2>
 		<p>
@@ -28,32 +28,32 @@
 			states <i>Tic</i> and <i>Toc</i> and raises the out events <i>tic</i> and <i>toc</i> when entering them.
 			The time between these state changes is defined by the variable <i>delay</i>.
 		</p>
-		<img class="small" alt="Remote debugging a statechart" src="images/tictoc_debugging.png" />
+		<img class="small" alt="Supervising a statechart remotely" src="images/tictoc_debugging.png" />
 
 		<p>
 			The state machine runs within an interactive command line application, which reads commands from the
-			standard input and writes to the standard output. It runs on the host machine. To use TED in your own
+			standard input and writes to the standard output. It runs on the host machine. To use TAS in your own
 			application, you can take this example as a template.
 		</p>
 
 		<h2>Building the application</h2>
 		<p>
 			The example project is an Eclipse CDT project; configure the compiler tool chain of your platform in the
-			project properties. The state machine and its TED tracer are generated from the two generator models:
-			<i>tictoc_sm.sgen</i> enables generic tracing for the state machine, <i>tictoc_ted.sgen</i> generates the
-			TED tracer with <code>create::c::ted</code>. With automatic build switched on this happens automatically,
+			project properties. The state machine and its TAS tracer are generated from the two generator models:
+			<i>tictoc_sm.sgen</i> enables generic tracing for the state machine, <i>tictoc_tas.sgen</i> generates the
+			TAS tracer with <code>create::c::tas</code>. With automatic build switched on this happens automatically,
 			otherwise select <i>Generate Code Artifacts</i> from the context menu of both files.
 		</p>
 		<p>
-			The trace channels are part of the example, in <i>sc/util</i>: <code>ted_file_writer</code> writes the
-			messages to a trace file, <code>ted_udp_stream</code> sends and receives them over UDP, and
-			<code>ted_logger</code> prints them to the console.
+			The trace channels are part of the example, in <i>sc/util</i>: <code>tas_file_writer</code> writes the
+			messages to a trace file, <code>tas_udp_stream</code> sends and receives them over UDP, and
+			<code>tas_logger</code> prints them to the console.
 		</p>
 
 		<h2>Running the application</h2>
 		<p>
 			Run the executable from Eclipse (<i>Run As > Local C/C++ Application</i> on the project) or from a
-			terminal. Optionally pass the IP address and the port of the debugger, by default <i>127.0.0.1</i> and
+			terminal. Optionally pass the IP address and the port of itemis CREATE, by default <i>127.0.0.1</i> and
 			<i>4444</i>. You will see this output:
 		</p>
 
@@ -78,24 +78,24 @@ send: #1,tictoc@StateEntered,main.Idle
 
 		<p>
 			The first block is the application's start-up output, with the commands it understands. The second
-			block logs the TED messages the state machine sends. Besides the console, the messages go to the UDP
-			socket and to the file <i>trace.ted</i>.
+			block logs the TAS messages the state machine sends. Besides the console, the messages go to the UDP
+			socket and to the file <i>trace.tas</i>.
 		</p>
 
-		<h2>Debugging the state machine</h2>
+		<h2>Animating and supervising the state machine</h2>
 		<p>
-			Choose <i>Run As > Target Execution Debugging (Beta)</i> from the context menu of <i>tictoc.sct</i>.
-			The debugger uses the regular simulation view. By default, it replays the trace file <i>trace.ted</i>
+			Choose <i>Run As > Target Animation &amp; Supervision (Beta)</i> from the context menu of <i>tictoc.sct</i>.
+			The execution is shown in the regular simulation view. By default, it replays the trace file <i>trace.tas</i>
 			in the root of the project.
 		</p>
-		<img class="small" alt="Starting a debug session" src="images/ted_launch_trace_debugging.png" />
+		<img class="small" alt="Starting a TAS session" src="images/tas_launch.png" />
 		<p>
-			To debug the running application instead, open <i>Run As > Run Configurations…</i>, select the
-			configuration in the category <i>Target Execution Debugging</i>, and choose <i>Read trace from UDP socket</i>
-			on the tab <i>Statechart Trace</i>, with port 4444. Run the debugger first, then start the application. While it is
+			To supervise the running application instead, open <i>Run As > Run Configurations…</i>, select the
+			configuration in the category <i>Target Animation &amp; Supervision</i>, and choose <i>Read trace from UDP socket</i>
+			on the tab <i>Statechart Trace</i>, with port 4444. Start the TAS run configuration first, then start the application. While it is
 			connected, you can raise <i>toggle</i> and change <i>delay</i> from the simulation view.
 		</p>
-		<img class="small" alt="Configuring a debug session" src="images/ted_configure_trace_debugging.png" />
+		<img class="small" alt="Configuring a TAS session" src="images/tas_run_configuration.png" />
 	</div>
 </body>
 </html>

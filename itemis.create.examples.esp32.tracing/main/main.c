@@ -34,8 +34,8 @@
 #include "sc/sm/blink_tracer.h"
 #include "sc/sm/blink_required.h"
 #include "sc/base/sc_timer_service.h"
-#include "sc/util/ted_udp_stream.h"
-#include "sc/util/ted_logger.h"
+#include "sc/util/tas_udp_stream.h"
+#include "sc/util/tas_logger.h"
 
 #include "hmi.h"
 
@@ -96,7 +96,7 @@ unsigned long get_ms() {
 
 
 /*! Function to retrieve the current timestamp, ideally in milliseconds. */
-ted_timestamp ted_current_timestamp() {
+tas_timestamp tas_current_timestamp() {
 	unsigned long ms = get_ms();
 	unsigned long timestamp =  ms - timestamp_offset;
 	return timestamp;
@@ -110,11 +110,11 @@ ted_timestamp ted_current_timestamp() {
 /* The state machine is allocated statically. */
 Blink blink;
 
-/* Also the TED tracer is allocated statically. */
-ted_sc_tracer blinkTracer;
+/* Also the TAS tracer is allocated statically. */
+tas_sc_tracer blinkTracer;
 
-ted_udp_stream  ted_stream;
-ted_logger		ted_log;
+tas_udp_stream  tas_stream;
+tas_logger		tas_log;
 
 
 char * udp_ip(int argc, char **argv) {
@@ -154,25 +154,25 @@ void setup(int argc, char **argv) {
 	blink_init_sc_tracer(&blinkTracer, &blink, sc_null);
 
 	/* initialize different physical channels for the execution trace.
-	 * These include a UDP based TED stream and a stdout logger.
+	 * These include a UDP based TAS stream and a stdout logger.
 	 * Custom channels could be added. */
-	ted_udp_stream_init(&ted_stream, ip, port);
-	ted_logger_init(&ted_log);
+	tas_udp_stream_init(&tas_stream, ip, port);
+	tas_logger_init(&tas_log);
 
-	/* Connect incoming messages from the UDP TED stream to the tracer and the logger. */
-	sc_single_subscription_observer_sc_string_subscribe(&(ted_log.receive_logger), &(ted_stream.received_messages));
-	sc_single_subscription_observer_sc_string_subscribe(&(blinkTracer.scope.message_receiver), &(ted_stream.received_messages));
+	/* Connect incoming messages from the UDP TAS stream to the tracer and the logger. */
+	sc_single_subscription_observer_sc_string_subscribe(&(tas_log.receive_logger), &(tas_stream.received_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(blinkTracer.scope.message_receiver), &(tas_stream.received_messages));
 	
 	
 	/* Connect outgoing message stream to all physical channels */
-	sc_single_subscription_observer_sc_string_subscribe(&(ted_log.send_logger), &(blinkTracer.scope.trace_messages));
-	sc_single_subscription_observer_sc_string_subscribe(&(ted_stream.message_sender), &(blinkTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(tas_log.send_logger), &(blinkTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(tas_stream.message_sender), &(blinkTracer.scope.trace_messages));
 
-	/* start the UDP TED stream */
-	ted_udp_stream_connect(&ted_stream);
+	/* start the UDP TAS stream */
+	tas_udp_stream_connect(&tas_stream);
 
 	/* init the hmi */
-	hmi_init(&blink, &ted_log, &ted_stream);
+	hmi_init(&blink, &tas_log, &tas_stream);
 	hmi_help();
 
 	/* activate the state machine */
@@ -187,12 +187,12 @@ void loop(void *pvParameters) {
 	while(1) {
 		vTaskDelay(1/portTICK_PERIOD_MS);
 
-		ted_timestamp time = ted_current_timestamp();
+		tas_timestamp time = tas_current_timestamp();
 		sc_timer_service_proceed(&timer_service, time - last_time);
 		last_time = time;
 
 		hmi_proceed();
-		ted_udp_stream_receive(&ted_stream);
+		tas_udp_stream_receive(&tas_stream);
 
 	}
 }

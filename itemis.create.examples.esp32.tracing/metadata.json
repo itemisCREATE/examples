@@ -1,8 +1,8 @@
 {
 	"id": "itemis.create.examples.esp32.tracing",
-	"title": "ESP32 - Tracing & Remote Control (C)",
-	"description": "CREATE provides infrastructure for debugging and remote controlling the state machines using execution traces (YET).",
-	"previewImage": "yet_target_trace_debugging.png",
+	"title": "ESP32 - Target Execution Debugging (C)",
+	"description": "Debug and remote control a state machine running on an ESP32 at model level, using Target Execution Debugging (TED).",
+	"previewImage": "ted_target_execution_debugging.png",
     "author": "itemis AG",
     "license": "GNU Free Documentation License version 1.3",
 	"category": ["labs",

@@ -1,12 +1,12 @@
 /*
- * yet_file.h
+ * ted_file.h
  *
  *  Created on: 30.03.2020
  *      Author: terfloth
  */
 
-#ifndef YET_FILE_H_
-#define YET_FILE_H_
+#ifndef TED_FILE_H_
+#define TED_FILE_H_
 
 #include <stdio.h>
 #include "../base/sc_rxc.h"
@@ -16,17 +16,17 @@ extern "C" {
 #endif
 
 
-typedef struct yet_file_writer yet_file_writer;
+typedef struct ted_file_writer ted_file_writer;
 
-struct yet_file_writer {
+struct ted_file_writer {
 	FILE* tracefile;
 	sc_single_subscription_observer_sc_string message_writer;
 };
 
-extern void yet_file_writer_init(yet_file_writer *self, char* filename);
+extern void ted_file_writer_init(ted_file_writer *self, char* filename);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* YET_FILE_H_ */
+#endif /* TED_FILE_H_ */

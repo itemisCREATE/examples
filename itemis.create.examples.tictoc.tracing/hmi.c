@@ -14,8 +14,8 @@
 
 static char buf[20];
 static Tictoc* tictoc;
-static yet_logger* trace_logger;
-static yet_udp_stream* trace_stream;
+static ted_logger* trace_logger;
+static ted_udp_stream* trace_stream;
 
 
 static void increaseDelay() {
@@ -65,7 +65,7 @@ void hmi_help() {
     printf("... followed by ENTER.\n\n\n");
 }
 
-void hmi_init(Tictoc* machine, yet_logger* logger, yet_udp_stream* udp_trace)
+void hmi_init(Tictoc* machine, ted_logger* logger, ted_udp_stream* udp_trace)
 {
 	tictoc = machine;
 	trace_logger = logger;

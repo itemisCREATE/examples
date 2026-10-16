@@ -1,26 +1,26 @@
 /*
- * yet_logger.c
+ * ted_logger.c
  *
  *  Created on: 31.03.2020
  *      Author: terfloth
  */
 
 
-#include "yet_logger.h"
+#include "ted_logger.h"
 #include <stdio.h>
 
-static void next_receive(yet_logger* self, char* msg)
+static void next_receive(ted_logger* self, char* msg)
 {
 	if (self->enabled) printf("receive: %s", msg);
 }
 
-static void next_send(yet_logger* self, char* msg)
+static void next_send(ted_logger* self, char* msg)
 {
 	if (self->enabled) printf("send: %s", msg);
 }
 
 
-void yet_logger_init(yet_logger* self)
+void ted_logger_init(ted_logger* self)
 {
 	self->enabled = true;
 

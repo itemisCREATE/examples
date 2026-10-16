@@ -2,140 +2,100 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Qt/C++ State Machine of a Traffic Light</title>
+<title>TicToc - Target Execution Debugging (C)</title>
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
 	<div class="primary">
-		<b style='color:red;font-size: 2em;'>DISCLAIMER: This example only work with UNIX based systems due to the nature of Eclipse console</b>
-		<h1>Debug and remote control state machines using YET</h1>
+		<b style='color:red;font-size: 2em;'>DISCLAIMER: This example only works on UNIX based systems due to the nature of the Eclipse console</b>
+		<h1>Debug and remote control a C state machine with TED</h1>
 		<p>
-			The CREATE Execution Trace (YET) infrastructure supports interoperability between 
-			state machines running in a target application and the CREATE tooling. 
-			It supports model-level debugging and testing of the state machines based on execution traces. 
-			This example shows how to remote debug a compiled state machine step by step. Please refer to the 
-			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a> for more information.
+			Target Execution Debugging (TED) shows a state machine that runs in your application at model level:
+			the application reports each execution step, and itemis CREATE shows the active states, the raised
+			events and the variable values in the statechart diagram. While the application is connected, you
+			can also raise events and change variables from the simulation view. Please refer to the
+			<a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/target-execution-debugging">TED documentation</a>
+			for more information.
 		</p>
 
-		<img class= "tiny" alt="Debugging the target using traces" src="images/yet_target_trace_debugging.png" />
+		<img class="tiny" alt="Debugging the target using TED" src="images/ted_target_execution_debugging.png" />
 
 		<h2>The Tic-Toc example application</h2>
 		<p>
-			The example state machine is simple and has no specific semantics. It simply highlights 
-			how to use YET. The state machine is has two states <i>Idle</i> and <i>Playing</i>.
-			The single input event <i>toggle</i> switches between these two states. Within <i>Playing</i> 
-			state the state machine automatically switches between the states <i>Tic</i> and <i>Toc</i>
-			and raises out events <i>tic</i> and <i>toc</i> respectively when entering these states. 
-			The time interval between these state changes is defined by the variable <i>delay</i>.
-		</p>			
-		<img class= "small" alt="Remote debugging a statechart" src="images/tictoc_debugging.png" />
+			The example state machine has two states, <i>Idle</i> and <i>Playing</i>. The input event
+			<i>toggle</i> switches between them. Within <i>Playing</i> the state machine alternates between the
+			states <i>Tic</i> and <i>Toc</i> and raises the out events <i>tic</i> and <i>toc</i> when entering them.
+			The time between these state changes is defined by the variable <i>delay</i>.
+		</p>
+		<img class="small" alt="Remote debugging a statechart" src="images/tictoc_debugging.png" />
 
 		<p>
-			This state machine is executed within an interactive application. This application can be used 
-			from the command line. It reads user input from the standard input and writes to the standard output.
-			It is built to run on the host machine. If you have to integrate YET into your application 
-			then you can use the example code as a template. 
+			The state machine runs within an interactive command line application, which reads commands from the
+			standard input and writes to the standard output. It runs on the host machine. To use TED in your own
+			application, you can take this example as a template.
 		</p>
-			
+
 		<h2>Building the application</h2>
 		<p>
-			The example project is a Eclipse CDT project. Configure your platform specific compiler tool chain 
-			in the project properties. Please note that you have to generate the state machine and tracing code. 
-			With automated build switched on this happens automatically, otherwise you have to generate code from the 
-			two <i>sgen</i> files manually by selecting <i>Generate Code Artifacts</i> from the files' context menus. 
+			The example project is an Eclipse CDT project; configure the compiler tool chain of your platform in the
+			project properties. The state machine and its TED tracer are generated from the two generator models:
+			<i>tictoc_sm.sgen</i> enables generic tracing for the state machine, <i>tictoc_ted.sgen</i> generates the
+			TED tracer with <code>create::c::ted</code>. With automatic build switched on this happens automatically,
+			otherwise select <i>Generate Code Artifacts</i> from the context menu of both files.
+		</p>
+		<p>
+			The trace channels are part of the example, in <i>sc/util</i>: <code>ted_file_writer</code> writes the
+			messages to a trace file, <code>ted_udp_stream</code> sends and receives them over UDP, and
+			<code>ted_logger</code> prints them to the console.
 		</p>
 
 		<h2>Running the application</h2>
 		<p>
-			When everything is built properly then you can simply run the executable from Eclipse 
-			(on project entry select <i>Run As > Local C/C++ Application</i>) or from the terminal. 
-			You will see this output.
+			Run the executable from Eclipse (<i>Run As > Local C/C++ Application</i> on the project) or from a
+			terminal. Optionally pass the IP address and the port of the debugger, by default <i>127.0.0.1</i> and
+			<i>4444</i>. You will see this output:
 		</p>
 
 		<pre>
 Sending to 127.0.0.1:4444
+configure UDP socket for unicast
 Welcome to Tictoc! Press:
-'t' to toggle tictoc idle state
-'+' to increase tictoc delay
-'-' to decrease tictoc delay
-'l' to enable or disable log
-'u' to disable or enable udp tracing
-'h' for this help
+&gt;t&lt; to toggle tictoc idle state
+&gt;+&lt; to increase tictoc delay
+&gt;-&lt; to decrease tictoc delay
+&gt;l&lt; to enable or disable log
+&gt;u&lt; to disable or enable udp tracing
+&gt;h&lt; for this help
 ... followed by ENTER.
 
-
 send: %tictoc@Enter,1
-send: #2,tictoc@tev.0.Set
-send: #2,tictoc.b,t
-send: #2,tictoc.i,42.000000
-send: #2,tictoc@StateEntered,main.Idle
+send: #0,tictoc@tev.0.Set
+send: #1,tictoc.b,t
+send: #1,tictoc.i,42.000000
+send: #1,tictoc@StateEntered,main.Idle
 		</pre>
 
 		<p>
-			The first block includes just some output from the application during start up. 
-			This includes instructions how to interact with the application from the command line.
-			The second block is the log output of trace events which are emitted by the state machine.
-			Simply play around with the different input options. 
+			The first block is the application's start-up output, with the commands it understands. The second
+			block logs the TED messages the state machine sends. Besides the console, the messages go to the UDP
+			socket and to the file <i>trace.ted</i>.
 		</p>
+
+		<h2>Debugging the state machine</h2>
 		<p>
-			In addition to what you see on the console the application sends the trace events to the 
-			configured socket using UDP and also writes these to the file <i>trace.yet</i> 
+			Choose <i>Run As > Target Execution Debugging (Beta)</i> from the context menu of <i>tictoc.sct</i>.
+			The debugger uses the regular simulation view. By default, it replays the trace file <i>trace.ted</i>
+			in the root of the project.
 		</p>
-
-		<h2>Debugging the statemachine trace</h2>
+		<img class="small" alt="Starting a debug session" src="images/ted_launch_trace_debugging.png" />
 		<p>
-			Debugging a statechart YET trace is simple. Within a statechart editor or on the model file entry 
-			in the project explorer choose <i>Run As > Statechart Trace Debugging</i> from the context menu. 
+			To debug the running application instead, open <i>Run As > Run Configurations…</i>, select the
+			configuration in the category <i>Target Execution Debugging</i>, and choose <i>Read trace from UDP socket</i>
+			on the tab <i>Statechart Trace</i>, with port 4444. Run the debugger first, then start the application. While it is
+			connected, you can raise <i>toggle</i> and change <i>delay</i> from the simulation view.
 		</p>
-
-		<img class= "small" alt="Starting a trace debug session" src="images/yet_launch_trace_debugging.png" />
-		
-		<p>
-			This will launch the trace debugger and by default will try to read the execution trace from the 
-			file <i>trace.yet</i> from the root of the project folder. If it is not already in place then create 
-			this trace file e.g. by starting the application with enabled YET file tracing. 
-			The UI of the trace debugger is identical to the regular simulation UI. 
-			If you want to choose a different trace file you have to reconfigure the run configuration which was 
-			created by the <i>Run As > Statechart Trace Debugging</i> action. To do this choose <i>Run As > Run Configurations…</i> 
-			from the context menu. The <i>Run Configurations</i> dialog pops up and choose the proper entry 
-			in the category <i>Trace Debugging</i>. The tab <i>Statechart Trace</i> provides several configuration options.
-
-			First, the instance name is used to distinguish between multiple running instances of the same state machine 
-			if multiple state machines are executed on the target and if they share a common trace channel. 
-			The default is just the name of the statechart model.
-
-			The obviously most important option is how you want to read or receive traces. It is possible to choose one of 
-			three trace providers:
-
-			<ul>
-				<li> <i>Read trace from file</i> - supports to configure what file should be used.</li>
-				<li> <i>Read trace from UDP socket</i> - opens a UDP socket on the local machine with a configurable 
-					port (default 444). The physical trace channel on the embedded target can connect to this port to 
-					setup a bidirectional communication channel.</li>
-				<li> <i>Read trace from TCP socket</i> - uses TCP instead of UDP to setup a bidirectional 
-					communication channel and can be configured in the same way.The default port is 8444.</li>
-			</ul>
-
-			If UDP or TCP based YET streams are used then the debugging UI supports raising events and modifying statechart 
-			variables. 
-		</p>
-
-		<img class= "small" alt="Configuration of trace debug session" src="images/yet_configure_trace_debugging.png" />
-
-		<p>
-			After that, click <i>Apply</i> and <i>Run</i>. The trace debugger UI will be activated. If UDP or TCP trace provider 
-			are used then no active statechart state may be highlighted in the Debugger UI. This is always the case if no 
-			remote target is connected or if the statechart is not yet activated on the remote target. 
-		</p>
-
-		<h2>Integrating YET into your application</h2>
-		<p>
-			As stated before some manual implementation steps are required to enable your application for YET tracing. 
-			Please feel free to reuse the implementation of this example and take a closer look at the 
-			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a>
-		</p>
-
+		<img class="small" alt="Configuring a debug session" src="images/ted_configure_trace_debugging.png" />
 	</div>
 </body>
 </html>

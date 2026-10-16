@@ -15,9 +15,9 @@
 #include "sc/tictoc.h"
 #include "sc/tictoc_tracer.h"
 #include "sc/tictoc_required.h"
-#include "sc/util/yet_file.h"
-#include "sc/util/yet_udp_stream.h"
-#include "sc/util/yet_logger.h"
+#include "sc/util/ted_file.h"
+#include "sc/util/ted_udp_stream.h"
+#include "sc/util/ted_logger.h"
 
 #include "hmi.h"
 
@@ -43,6 +43,7 @@ void tictoc_set_timer(Tictoc* handle, const sc_eventid evid, const sc_integer ti
 
 /*! callback implementation for canceling time events. */
 void tictoc_unset_timer(Tictoc* handle, const sc_eventid evid) {
+	(void) handle;
 	sc_timer_unset(&timer_service, evid);
 }
 
@@ -59,7 +60,7 @@ unsigned long get_ms() {
 
 
 /*! Function to retrieve the current timestamp, ideally in milliseconds. */
-yet_timestamp yet_current_timestamp() {
+ted_timestamp ted_current_timestamp() {
 	unsigned long ms = get_ms();
 	unsigned long timestamp =  ms - timestamp_offset;
 	return timestamp;
@@ -73,12 +74,12 @@ yet_timestamp yet_current_timestamp() {
 /* The state machine is allocated statically. */
 Tictoc tictoc;
 
-/* Also the YET tracer is allocated statically. */
-yet_sc_tracer tictocTracer;
+/* Also the TED tracer is allocated statically. */
+ted_sc_tracer tictocTracer;
 
-yet_file_writer yet_file;
-yet_udp_stream  yet_stream;
-yet_logger		yet_log;
+ted_file_writer ted_file;
+ted_udp_stream  ted_stream;
+ted_logger		ted_log;
 
 
 char * udp_ip(int argc, char **argv) {
@@ -119,26 +120,26 @@ void setup(int argc, char **argv) {
 	tictoc_init_sc_tracer(&tictocTracer, &tictoc, sc_null);
 
 	/* initialize different physical channels for the execution trace.
-	 * These imclude a yet file, a UDP based yet stream, and a stdout logger.
+	 * These include a TED trace file, a UDP based TED stream, and a stdout logger.
 	 * Custom channels could be added. */
-	yet_file_writer_init(&yet_file, "trace.yet");
-	yet_udp_stream_init(&yet_stream, ip, port);
-	yet_logger_init(&yet_log);
+	ted_file_writer_init(&ted_file, "trace.ted");
+	ted_udp_stream_init(&ted_stream, ip, port);
+	ted_logger_init(&ted_log);
 
-	/* Connect incoming message from UPD yet stream to the tracer and the logger. */
-	sc_single_subscription_observer_sc_string_subscribe(&(yet_log.receive_logger), &(yet_stream.received_messages));
-	sc_single_subscription_observer_sc_string_subscribe(&(tictocTracer.scope.message_receiver), &(yet_stream.received_messages));
+	/* Connect incoming messages from the UDP TED stream to the tracer and the logger. */
+	sc_single_subscription_observer_sc_string_subscribe(&(ted_log.receive_logger), &(ted_stream.received_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(tictocTracer.scope.message_receiver), &(ted_stream.received_messages));
 
 	/* Connect outgoing message stream to all physical channels */
-	sc_single_subscription_observer_sc_string_subscribe(&(yet_log.send_logger), &(tictocTracer.scope.trace_messages));
-	sc_single_subscription_observer_sc_string_subscribe(&(yet_file.message_writer), &(tictocTracer.scope.trace_messages));
-	sc_single_subscription_observer_sc_string_subscribe(&(yet_stream.message_sender), &(tictocTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(ted_log.send_logger), &(tictocTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(ted_file.message_writer), &(tictocTracer.scope.trace_messages));
+	sc_single_subscription_observer_sc_string_subscribe(&(ted_stream.message_sender), &(tictocTracer.scope.trace_messages));
 
-	/* start UDP yet stream */
-	yet_udp_stream_connect(&yet_stream);
+	/* start the UDP TED stream */
+	ted_udp_stream_connect(&ted_stream);
 
 	/* init the hmi */
-	hmi_init(&tictoc, &yet_log, &yet_stream);
+	hmi_init(&tictoc, &ted_log, &ted_stream);
 	hmi_help();
 
 	/* activate the state machine */
@@ -157,12 +158,12 @@ void loop() {
 	while(bool_true) {
 		nanosleep(&sleep, 0);
 
-		yet_timestamp time = yet_current_timestamp();
+		ted_timestamp time = ted_current_timestamp();
 		sc_timer_service_proceed(&timer_service, time - last_time);
 		last_time = time;
 
 		hmi_proceed();
-		yet_udp_stream_receive(&yet_stream);
+		ted_udp_stream_receive(&ted_stream);
 
 	}
 }

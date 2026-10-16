@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Raspberry Pi remote control blinky LED</title>
+<title>ESP32 - Target Execution Debugging (C)</title>
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
 	<div class="primary">
 		<b style='color:red;font-size: 2em;'>DISCLAIMER: This example only work with UNIX based systems due to the nature of Eclipse console</b>
-		<h1>Debug and remote control state machines using YET</h1>
+		<h1>Debug and remote control an ESP32 state machine with TED</h1>
 		<p>
 			<iframe width="960" height="540" src="https://www.youtube.com/embed/A4qGZ1E2mEM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 			<p>
-			The CREATE Execution Trace (YET) infrastructure supports interoperability between 
-			state machines running in a target application and the CREATE tooling. 
-			It supports model-level debugging and testing of the state machines based on execution traces. 
-			This example shows how to remote debug a compiled state machine step by step. Please refer to the 
-			<a href="https://www.itemis.com/en/yakindu/state-machine/documentation/user-guide/yakindu_execution_tracing">YET documentation</a> for more information.
+			Target Execution Debugging (TED) shows a state machine that runs on your target at model level:
+			the target reports each execution step, and itemis CREATE shows the active states, the raised
+			events and the variable values in the statechart diagram. While the target is connected, you can
+			also raise events and change variables from the simulation view. This example debugs a state
+			machine running on an ESP32. Please refer to the
+			<a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/target-execution-debugging">TED documentation</a>
+			for more information.
 		</p>
 
-		<img class= "tiny" alt="Debugging the target using traces" src="images/yet_target_trace_debugging.png" />
+		<img class="tiny" alt="Debugging the target using TED" src="images/ted_target_execution_debugging.png" />
 
 		<h2>ESP32 blinky LED example</h2>
 		<p>
@@ -33,8 +35,9 @@
 		<p>
 			This state machine is executed within an interactive application. This application can be used 
 			from the command line. It reads user input from the standard input and writes to the standard output.
-			It is build to run on a Raspberry PI. The SCT Simulation can be executed on any other machine. 
-			For this setup both are located the same local network.
+			It is built to run on an ESP32. The debugger runs on any other machine; both have to be in the same
+			local network. The state machine is generated with generic tracing from <i>model/sm.sgen</i>, its TED
+			tracer with <code>create::c::ted</code> from <i>model/ted.sgen</i>.
 		</p>
 			
 		<h2>Building, flashing and running the application</h2>
@@ -42,20 +45,21 @@
 		using our example wizard, you can start skip the first part and start with <a href="https://github.com/espressif/idf-eclipse-plugin/blob/master/README.md#installing-esp-idf-tools">Installing ESP-IDF Tools</a>.
 		<p>
 			The instructions contain detailed explanations of how to set up the environment, compile the program and flash the binary on the ESP32. It also shows how a terminal can be added. Your WiFi SSID and password must be set in the sdkconfig file. <img class= "small" alt="WiFi settings" src="images/wifi_settings.png" /></p>
-		</p>If you're running the application via UDP you must set the IP of the machine, which runs the debug SCT YET session:<code>#define SCT_IP "Add your IP here"</code>. The simplest way finding your ip address using <code>ifconfing</code> on linux or mac and <code>ipconfing</code> on windows. It should be something like 192.168.0.42</p>
+		</p>If you're running the application via UDP you must set the IP of the machine, which runs the debugger:<code>#define SCT_IP "Add your IP here"</code>. The simplest way finding your ip address using <code>ifconfing</code> on linux or mac and <code>ipconfing</code> on windows. It should be something like 192.168.0.42</p>
 
 
-		<h2>Debugging the statemachine trace</h2>
+		<h2>Debugging the state machine</h2>
 		<p>
-			Debugging a statechart YET trace is simple. Within a statechart editor or on the model file entry 
-			in the project explorer choose <i>Run As > Statechart Trace Debugging</i> from the context menu. 
+			Choose <i>Run As > Target Execution Debugging (Beta)</i> from the context menu of <i>model/blink.ysc</i>
+			in the statechart editor or the project explorer.
 		</p>
 
-		<img class= "small" alt="Starting a trace debug session" src="images/runas.png" />
+		<img class= "small" alt="Starting a trace debug session" src="images/ted_launch_trace_debugging.png" />
 		
 		<p>
-			This will launch the trace debugger and by default will try to read the input of socket 4444, which is defined in the application.
-			You can change the port in the <i>Run Configuration</i>.
+			In its run configuration, choose <i>Read trace from UDP socket</i> on the tab <i>Statechart Trace</i>, with port 4444,
+			which is the port the application sends to. While the ESP32 is connected, you can raise <i>toggle</i>
+			and change <i>delay</i> from the simulation view.
 
 		</p>
 		<h2>Troubleshooting</h2>

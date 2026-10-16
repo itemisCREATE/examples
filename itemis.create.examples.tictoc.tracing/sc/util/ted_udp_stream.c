@@ -1,39 +1,40 @@
 /*
- * yet_udp_stream.c
+ * ted_udp_stream.c
  *
  *  Created on: 30.03.2020
  *      Author: terfloth
  */
 
+#include <sys/socket.h>
 #include <arpa/inet.h>
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
-//#include <poll.h>
+#include <poll.h>
 #include <unistd.h>
 
 
 #include "../base/sc_types.h"
 #include "../base/sc_rxc.h"
-#include "yet_udp_stream.h"
+#include "ted_udp_stream.h"
 
 
 
-static sc_boolean is_enabled(yet_udp_stream* self) {
+static sc_boolean is_enabled(ted_udp_stream* self) {
 
 	if ( self->enabled ) {
 		if ( self->transport.socket == -1 ) {
-			yet_udp_stream_connect(self);
+			ted_udp_stream_connect(self);
 		}
 	} else if ( self->transport.socket != -1 ) {
-		yet_udp_stream_disconnect(self);
+		ted_udp_stream_disconnect(self);
 	}
 
 	return self->enabled;
 }
 
 
-static void next(yet_udp_stream* self, char* msg)
+static void next(ted_udp_stream* self, char* msg)
 {
 	if (! is_enabled(self) ) return;
 
@@ -50,7 +51,7 @@ static void next(yet_udp_stream* self, char* msg)
 }
 
 
-void yet_udp_stream_init(yet_udp_stream* self, char* ip, uint16_t port)
+void ted_udp_stream_init(ted_udp_stream* self, char* ip, uint16_t port)
 {
 	self->conf.ip = ip;
 	self->conf.port = port;
@@ -82,18 +83,18 @@ static void print_udp_err(int err) {
 	}
 }
 
-static sc_boolean use_broadcast_address(yet_udp_stream* self) {
+static sc_boolean use_broadcast_address(ted_udp_stream* self) {
 	return (ntohl(self->transport.address.sin_addr.s_addr) & 0x000000ff) == 0x000000ff;
 }
 
-static sc_boolean use_multicast_address(yet_udp_stream* self) {
+static sc_boolean use_multicast_address(ted_udp_stream* self) {
 	return IN_MULTICAST(ntohl(self->transport.address.sin_addr.s_addr));
 }
 
-static int open_socket(yet_udp_stream* self) {
+static int open_socket(ted_udp_stream* self) {
 
 	int broadcast_options;
-	unsigned char multicast_ttl;
+	unsigned char multicast_ttl = 1;
 
 	// configure address
 	self->transport.len = sizeof(self->transport.address);
@@ -131,7 +132,7 @@ static int open_socket(yet_udp_stream* self) {
 }
 
 
-int yet_udp_stream_connect(yet_udp_stream* self) {
+int ted_udp_stream_connect(ted_udp_stream* self) {
 
 	int err;
 	if((err = open_socket(self)) != 0) {
@@ -142,7 +143,7 @@ int yet_udp_stream_connect(yet_udp_stream* self) {
 	return 0;
 }
 
-int yet_udp_stream_disconnect(yet_udp_stream* self) {
+int ted_udp_stream_disconnect(ted_udp_stream* self) {
 
 	int err;
 	if ((err = close(self->transport.socket)) != 0) {
@@ -155,7 +156,7 @@ int yet_udp_stream_disconnect(yet_udp_stream* self) {
 }
 
 
-static int receive_from_socket(yet_udp_stream* self, char* buf, int len) {
+static int receive_from_socket(ted_udp_stream* self, char* buf, int len) {
 	struct pollfd pfd;
 	pfd.fd = self->transport.socket;
 	pfd.events = POLLIN;
@@ -167,7 +168,7 @@ static int receive_from_socket(yet_udp_stream* self, char* buf, int len) {
 }
 
 
-extern void yet_udp_stream_receive(yet_udp_stream* self) {
+extern void ted_udp_stream_receive(ted_udp_stream* self) {
 
 	if (! is_enabled(self) ) return;
 

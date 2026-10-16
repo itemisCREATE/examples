@@ -1,0 +1,19 @@
+/* Generates the TED tracer; its options have to match those of the state machine. */
+GeneratorModel for create::cpp::ted {
+
+	statechart tictoc {
+
+		feature Outlet {
+			targetProject = "itemis.create.examples.tictoc.tracing.cpp"
+			targetFolder = "src-gen"
+		}
+
+		feature Tracing {
+			generic = true
+		}
+
+		feature GeneralFeatures {
+			timerService = true
+		}
+	}
+}

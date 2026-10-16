@@ -1,12 +1,12 @@
 /*
- * yet_logger.h
+ * ted_logger.h
  *
  *  Created on: 31.03.2020
  *      Author: terfloth
  */
 
-#ifndef YET_LOGGER_H_
-#define YET_LOGGER_H_
+#ifndef TED_LOGGER_H_
+#define TED_LOGGER_H_
 
 #include "../base/sc_rxc.h"
 
@@ -15,15 +15,15 @@ extern "C" {
 #endif
 
 
-typedef struct yet_logger yet_logger;
+typedef struct ted_logger ted_logger;
 
-struct yet_logger {
+struct ted_logger {
 	sc_boolean enabled;
 	sc_single_subscription_observer_sc_string send_logger;
 	sc_single_subscription_observer_sc_string receive_logger;
 };
 
-extern void yet_logger_init(yet_logger *self);
+extern void ted_logger_init(ted_logger *self);
 
 
 #ifdef __cplusplus
@@ -31,4 +31,4 @@ extern void yet_logger_init(yet_logger *self);
 #endif
 
 
-#endif /* YET_LOGGER_H_ */
+#endif /* TED_LOGGER_H_ */

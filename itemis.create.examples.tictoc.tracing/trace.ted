@@ -1,0 +1,5 @@
+%tictoc@Enter,1
+#0,tictoc@tev.0.Set
+#1,tictoc.b,t
+#1,tictoc.i,42.000000
+#1,tictoc@StateEntered,main.Idle

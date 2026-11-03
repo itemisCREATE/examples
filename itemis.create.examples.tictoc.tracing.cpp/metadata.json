@@ -1,8 +1,8 @@
 {
 	"id": "itemis.create.examples.tictoc.tracing.cpp",
-	"title": "TicToc - Target Animation & Supervision (C++)",
-	"description": "Animate and supervise a state machine running in a C++ application at model level, using Target Animation & Supervision (TAS).",
-	"previewImage": "tas_target_animation_supervision.png",
+	"title": "TicToc - Target Debugging & Tracing (C++)",
+	"description": "Debug and trace a state machine running in a C++ application at model level, using Target Debugging & Tracing (TDT).",
+	"previewImage": "tdt_target_debugging_tracing.png",
     "author": "itemis AG",
     "license": "GNU Free Documentation License version 1.3",
 	"category": ["labs",

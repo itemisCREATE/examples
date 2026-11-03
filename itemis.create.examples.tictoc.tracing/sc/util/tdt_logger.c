@@ -1,26 +1,26 @@
 /*
- * tas_logger.c
+ * tdt_logger.c
  *
  *  Created on: 31.03.2020
  *      Author: terfloth
  */
 
 
-#include "tas_logger.h"
+#include "tdt_logger.h"
 #include <stdio.h>
 
-static void next_receive(tas_logger* self, char* msg)
+static void next_receive(tdt_logger* self, char* msg)
 {
 	if (self->enabled) printf("receive: %s", msg);
 }
 
-static void next_send(tas_logger* self, char* msg)
+static void next_send(tdt_logger* self, char* msg)
 {
 	if (self->enabled) printf("send: %s", msg);
 }
 
 
-void tas_logger_init(tas_logger* self)
+void tdt_logger_init(tdt_logger* self)
 {
 	self->enabled = true;
 

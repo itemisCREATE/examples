@@ -14,8 +14,8 @@
 
 static char buf[20];
 static Blink* blink;
-static tas_logger* trace_logger;
-static tas_udp_stream* trace_stream;
+static tdt_logger* trace_logger;
+static tdt_udp_stream* trace_stream;
 
 
 static void increaseDelay() {
@@ -65,7 +65,7 @@ void hmi_help() {
     printf("... followed by ENTER.\n\n\n");
 }
 
-void hmi_init(Blink* machine, tas_logger* logger, tas_udp_stream* udp_trace)
+void hmi_init(Blink* machine, tdt_logger* logger, tdt_udp_stream* udp_trace)
 {
 	blink = machine;
 	trace_logger = logger;

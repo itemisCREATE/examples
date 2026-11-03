@@ -7,7 +7,7 @@
 
 namespace channels {
 
-/*! Writes the TAS messages a tracer sends to a trace file, which the debugger can replay. */
+/*! Writes the TDT messages a tracer sends to a trace file, which the debugger can replay. */
 class FileWriter
 {
 public:

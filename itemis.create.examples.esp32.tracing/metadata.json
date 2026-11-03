@@ -1,8 +1,8 @@
 {
 	"id": "itemis.create.examples.esp32.tracing",
-	"title": "ESP32 - Target Animation & Supervision (C)",
-	"description": "Animate and supervise a state machine running on an ESP32 at model level, using Target Animation & Supervision (TAS).",
-	"previewImage": "tas_target_animation_supervision.png",
+	"title": "ESP32 - Target Debugging & Tracing (C)",
+	"description": "Debug and trace a state machine running on an ESP32 at model level, using Target Debugging & Tracing (TDT).",
+	"previewImage": "tdt_target_debugging_tracing.png",
     "author": "itemis AG",
     "license": "GNU Free Documentation License version 1.3",
 	"category": ["labs",

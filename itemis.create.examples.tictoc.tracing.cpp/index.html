@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>TicToc - Target Animation &amp; Supervision (C++)</title>
+<title>TicToc - Target Debugging &amp; Tracing (C++)</title>
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
 	<div class="primary">
 		<b style='color:red;font-size: 2em;'>DISCLAIMER: This example only works on UNIX based systems due to the nature of the Eclipse console</b>
-		<h1>Animate and supervise a C++ state machine with TAS</h1>
+		<h1>Debug and trace a C++ state machine with TDT</h1>
 		<p>
-			Target Animation &amp; Supervision (TAS) shows a state machine that runs in your application at model level:
+			Target Debugging &amp; Tracing (TDT) shows a state machine that runs in your application at model level:
 			the application reports each execution step, and itemis CREATE shows the active states, the raised
 			events and the variable values in the statechart diagram. While the application is connected, you
 			can also raise events and change variables from the simulation view. Please refer to the
-			<a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/target-animation-supervision">TAS documentation</a>
+			<a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/target-debugging-tracing">TDT documentation</a>
 			for more information.
 		</p>
 
-		<img class="tiny" alt="Animating and supervising the target with TAS" src="images/tas_target_animation_supervision.png" />
+		<img class="tiny" alt="Animating and supervising the target with TDT" src="images/tdt_target_debugging_tracing.png" />
 
 		<h2>The Tic-Toc example application</h2>
 		<p>
@@ -32,16 +32,16 @@
 
 		<p>
 			The state machine runs within an interactive command line application, which reads commands from the
-			standard input and writes to the standard output. It runs on the host machine. To use TAS in your own
+			standard input and writes to the standard output. It runs on the host machine. To use TDT in your own
 			application, you can take this example as a template.
 		</p>
 
 		<h2>Building the application</h2>
 		<p>
 			The example project is an Eclipse CDT project for C++11; configure the compiler tool chain of your platform
-			in the project properties. The state machine and its TAS tracer are generated into <i>src-gen</i> from the two
+			in the project properties. The state machine and its TDT tracer are generated into <i>src-gen</i> from the two
 			generator models in <i>model</i>: <i>tictoc_sm.sgen</i> enables generic tracing for the state machine,
-			<i>tictoc_tas.sgen</i> generates the class <code>TictocTracer</code> with <code>create::cpp::tas</code>. Both
+			<i>tictoc_tdt.sgen</i> generates the class <code>TictocTracer</code> with <code>create::cpp::tdt</code>. Both
 			use the same options. With automatic build switched on this happens automatically, otherwise select
 			<i>Generate Code Artifacts</i> from the context menu of both files.
 		</p>
@@ -85,24 +85,24 @@ send: #1,tictoc@StateEntered,main.Idle
 
 		<p>
 			The first block is the application's start-up output, with the commands it understands. The second
-			block logs the TAS messages the state machine sends. Besides the console, the messages go to the UDP
-			socket and to the file <i>trace.tas</i>.
+			block logs the TDT messages the state machine sends. Besides the console, the messages go to the UDP
+			socket and to the file <i>trace.tdt</i>.
 		</p>
 
-		<h2>Animating and supervising the state machine</h2>
+		<h2>Debugging and tracing the state machine</h2>
 		<p>
-			Choose <i>Run As > Target Animation &amp; Supervision (Beta)</i> from the context menu of <i>model/tictoc.sct</i>.
-			The execution is shown in the regular simulation view. By default, it replays the trace file <i>trace.tas</i>
+			Choose <i>Run As > Target Debugging &amp; Tracing (Beta)</i> from the context menu of <i>model/tictoc.sct</i>.
+			The execution is shown in the regular simulation view. By default, it replays the trace file <i>trace.tdt</i>
 			in the root of the project.
 		</p>
-		<img class="small" alt="Starting a TAS session" src="images/tas_launch.png" />
+		<img class="small" alt="Starting a TDT session" src="images/tdt_launch.png" />
 		<p>
-			To supervise the running application instead, open <i>Run As > Run Configurations…</i>, select the
-			configuration in the category <i>Target Animation &amp; Supervision</i>, and choose <i>Read trace from UDP socket</i>
-			on the tab <i>Statechart Trace</i>, with port 4444. Start the TAS run configuration first, then start the application. While it is
+			To debug the running application instead, open <i>Run As > Run Configurations…</i>, select the
+			configuration in the category <i>Target Debugging &amp; Tracing</i>, and choose <i>Read trace from UDP socket</i>
+			on the tab <i>Statechart Trace</i>, with port 4444. Start the TDT run configuration first, then start the application. While it is
 			connected, you can raise <i>toggle</i> and change <i>delay</i> from the simulation view.
 		</p>
-		<img class="small" alt="Configuring a TAS session" src="images/tas_run_configuration.png" />
+		<img class="small" alt="Configuring a TDT session" src="images/tdt_run_configuration.png" />
 	</div>
 </body>
 </html>

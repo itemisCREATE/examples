@@ -1,5 +1,5 @@
-/* Generates the TAS tracer; its options have to match those of the state machine. */
-GeneratorModel for create::cpp::tas {
+/* Generates the TDT tracer; its options have to match those of the state machine. */
+GeneratorModel for create::cpp::tdt {
 
 	statechart tictoc {
 

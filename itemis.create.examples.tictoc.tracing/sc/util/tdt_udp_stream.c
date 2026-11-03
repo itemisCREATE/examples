@@ -1,5 +1,5 @@
 /*
- * tas_udp_stream.c
+ * tdt_udp_stream.c
  *
  *  Created on: 30.03.2020
  *      Author: terfloth
@@ -16,25 +16,25 @@
 
 #include "../base/sc_types.h"
 #include "../base/sc_rxc.h"
-#include "tas_udp_stream.h"
+#include "tdt_udp_stream.h"
 
 
 
-static sc_boolean is_enabled(tas_udp_stream* self) {
+static sc_boolean is_enabled(tdt_udp_stream* self) {
 
 	if ( self->enabled ) {
 		if ( self->transport.socket == -1 ) {
-			tas_udp_stream_connect(self);
+			tdt_udp_stream_connect(self);
 		}
 	} else if ( self->transport.socket != -1 ) {
-		tas_udp_stream_disconnect(self);
+		tdt_udp_stream_disconnect(self);
 	}
 
 	return self->enabled;
 }
 
 
-static void next(tas_udp_stream* self, char* msg)
+static void next(tdt_udp_stream* self, char* msg)
 {
 	if (! is_enabled(self) ) return;
 
@@ -51,7 +51,7 @@ static void next(tas_udp_stream* self, char* msg)
 }
 
 
-void tas_udp_stream_init(tas_udp_stream* self, char* ip, uint16_t port)
+void tdt_udp_stream_init(tdt_udp_stream* self, char* ip, uint16_t port)
 {
 	self->conf.ip = ip;
 	self->conf.port = port;
@@ -83,15 +83,15 @@ static void print_udp_err(int err) {
 	}
 }
 
-static sc_boolean use_broadcast_address(tas_udp_stream* self) {
+static sc_boolean use_broadcast_address(tdt_udp_stream* self) {
 	return (ntohl(self->transport.address.sin_addr.s_addr) & 0x000000ff) == 0x000000ff;
 }
 
-static sc_boolean use_multicast_address(tas_udp_stream* self) {
+static sc_boolean use_multicast_address(tdt_udp_stream* self) {
 	return IN_MULTICAST(ntohl(self->transport.address.sin_addr.s_addr));
 }
 
-static int open_socket(tas_udp_stream* self) {
+static int open_socket(tdt_udp_stream* self) {
 
 	int broadcast_options;
 	unsigned char multicast_ttl = 1;
@@ -132,7 +132,7 @@ static int open_socket(tas_udp_stream* self) {
 }
 
 
-int tas_udp_stream_connect(tas_udp_stream* self) {
+int tdt_udp_stream_connect(tdt_udp_stream* self) {
 
 	int err;
 	if((err = open_socket(self)) != 0) {
@@ -143,7 +143,7 @@ int tas_udp_stream_connect(tas_udp_stream* self) {
 	return 0;
 }
 
-int tas_udp_stream_disconnect(tas_udp_stream* self) {
+int tdt_udp_stream_disconnect(tdt_udp_stream* self) {
 
 	int err;
 	if ((err = close(self->transport.socket)) != 0) {
@@ -156,7 +156,7 @@ int tas_udp_stream_disconnect(tas_udp_stream* self) {
 }
 
 
-static int receive_from_socket(tas_udp_stream* self, char* buf, int len) {
+static int receive_from_socket(tdt_udp_stream* self, char* buf, int len) {
 	struct pollfd pfd;
 	pfd.fd = self->transport.socket;
 	pfd.events = POLLIN;
@@ -168,7 +168,7 @@ static int receive_from_socket(tas_udp_stream* self, char* buf, int len) {
 }
 
 
-extern void tas_udp_stream_receive(tas_udp_stream* self) {
+extern void tdt_udp_stream_receive(tdt_udp_stream* self) {
 
 	if (! is_enabled(self) ) return;
 

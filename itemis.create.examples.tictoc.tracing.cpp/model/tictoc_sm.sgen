@@ -1,4 +1,4 @@
-/* Generates the state machine with generic tracing, which TAS is built on. */
+/* Generates the state machine with generic tracing, which TDT is built on. */
 GeneratorModel for create::cpp {
 
 	statechart tictoc {

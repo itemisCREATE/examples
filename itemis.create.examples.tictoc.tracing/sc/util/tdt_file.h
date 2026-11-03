@@ -1,12 +1,12 @@
 /*
- * tas_file.h
+ * tdt_file.h
  *
  *  Created on: 30.03.2020
  *      Author: terfloth
  */
 
-#ifndef TAS_FILE_H_
-#define TAS_FILE_H_
+#ifndef TDT_FILE_H_
+#define TDT_FILE_H_
 
 #include <stdio.h>
 #include "../base/sc_rxc.h"
@@ -16,17 +16,17 @@ extern "C" {
 #endif
 
 
-typedef struct tas_file_writer tas_file_writer;
+typedef struct tdt_file_writer tdt_file_writer;
 
-struct tas_file_writer {
+struct tdt_file_writer {
 	FILE* tracefile;
 	sc_single_subscription_observer_sc_string message_writer;
 };
 
-extern void tas_file_writer_init(tas_file_writer *self, char* filename);
+extern void tdt_file_writer_init(tdt_file_writer *self, char* filename);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* TAS_FILE_H_ */
+#endif /* TDT_FILE_H_ */

@@ -2,27 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ESP32 - Target Animation &amp; Supervision (C)</title>
+<title>ESP32 - Target Debugging &amp; Tracing (C)</title>
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/custom.css" rel="stylesheet">
 </head>
 <body class="body-container">
 	<div class="primary">
 		<b style='color:red;font-size: 2em;'>DISCLAIMER: This example only work with UNIX based systems due to the nature of Eclipse console</b>
-		<h1>Animate and supervise an ESP32 state machine with TAS</h1>
+		<h1>Debug and trace an ESP32 state machine with TDT</h1>
 		<p>
 			<iframe width="960" height="540" src="https://www.youtube.com/embed/A4qGZ1E2mEM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 			<p>
-			Target Animation &amp; Supervision (TAS) shows a state machine that runs on your target at model level:
+			Target Debugging &amp; Tracing (TDT) shows a state machine that runs on your target at model level:
 			the target reports each execution step, and itemis CREATE shows the active states, the raised
 			events and the variable values in the statechart diagram. While the target is connected, you can
-			also raise events and change variables from the simulation view. This example animates and supervises a state
+			also raise events and change variables from the simulation view. This example debugs and traces a state
 			machine running on an ESP32. Please refer to the
-			<a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/target-animation-supervision">TAS documentation</a>
+			<a href="https://www.itemis.com/en/products/itemis-create/documentation/user-guide/create-for-eclipse/target-debugging-tracing">TDT documentation</a>
 			for more information.
 		</p>
 
-		<img class="tiny" alt="Animating and supervising the target with TAS" src="images/tas_target_animation_supervision.png" />
+		<img class="tiny" alt="Animating and supervising the target with TDT" src="images/tdt_target_debugging_tracing.png" />
 
 		<h2>ESP32 blinky LED example</h2>
 		<p>
@@ -36,8 +36,8 @@
 			This state machine is executed within an interactive application. This application can be used 
 			from the command line. It reads user input from the standard input and writes to the standard output.
 			It is built to run on an ESP32. itemis CREATE runs on any other machine; both have to be in the same
-			local network. The state machine is generated with generic tracing from <i>model/sm.sgen</i>, its TAS
-			tracer with <code>create::c::tas</code> from <i>model/tas.sgen</i>.
+			local network. The state machine is generated with generic tracing from <i>model/sm.sgen</i>, its TDT
+			tracer with <code>create::c::tdt</code> from <i>model/tdt.sgen</i>.
 		</p>
 			
 		<h2>Building, flashing and running the application</h2>
@@ -48,13 +48,13 @@
 		</p>If you're running the application via UDP you must set the IP of the machine, which runs itemis CREATE:<code>#define SCT_IP "Add your IP here"</code>. The simplest way finding your ip address using <code>ifconfing</code> on linux or mac and <code>ipconfing</code> on windows. It should be something like 192.168.0.42</p>
 
 
-		<h2>Animating and supervising the state machine</h2>
+		<h2>Debugging and tracing the state machine</h2>
 		<p>
-			Choose <i>Run As > Target Animation &amp; Supervision (Beta)</i> from the context menu of <i>model/blink.ysc</i>
+			Choose <i>Run As > Target Debugging &amp; Tracing (Beta)</i> from the context menu of <i>model/blink.ysc</i>
 			in the statechart editor or the project explorer.
 		</p>
 
-		<img class= "small" alt="Starting a TAS session" src="images/tas_launch.png" />
+		<img class= "small" alt="Starting a TDT session" src="images/tdt_launch.png" />
 		
 		<p>
 			In its run configuration, choose <i>Read trace from UDP socket</i> on the tab <i>Statechart Trace</i>, with port 4444,

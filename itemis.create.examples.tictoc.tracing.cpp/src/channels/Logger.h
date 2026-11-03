@@ -6,7 +6,7 @@
 
 namespace channels {
 
-/*! Prints the TAS messages a tracer sends and receives to the console. */
+/*! Prints the TDT messages a tracer sends and receives to the console. */
 class Logger
 {
 public:
